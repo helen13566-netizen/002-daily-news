@@ -1,0 +1,2090 @@
+{
+  "collection_timestamp": "2026-04-19T02:44:36+09:00",
+  "source_stats": {
+    "AI타임스": {
+      "fetched": 50,
+      "ai_matched": 4,
+      "kept": 4
+    },
+    "ZDNet Korea": {
+      "fetched": 26,
+      "ai_matched": 2,
+      "kept": 2
+    },
+    "전자신문": {
+      "fetched": 29,
+      "ai_matched": 0,
+      "kept": 0
+    },
+    "연합뉴스": {
+      "fetched": 120,
+      "ai_matched": 0,
+      "kept": 120
+    },
+    "매일경제": {
+      "fetched": 50,
+      "ai_matched": 0,
+      "kept": 48
+    },
+    "한겨레": {
+      "fetched": 30,
+      "ai_matched": 0,
+      "kept": 30
+    }
+  },
+  "articles": [
+    {
+      "article_id": "392e734e655187fb",
+      "title": "세계로 번지는 '미소스' 경계령...영국·인도, 모델 조기 접근 권한 요구",
+      "source": "AI타임스",
+      "published_at": "2026-04-19T05:51:03+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=209414",
+      "content_text": "앤트로픽이 차세대 AI 모델 ‘클로드 미소스(Claude Mythos)’의 제한적 공개를 확대하며, 글로벌 금융권과 규제 당국에 긴장감이 고조되고 있다. 이 모델이 기존 사이버보안 체계를 무력화할 수 있는 잠재력을 지닌 것으로 평가되면서, 모델 접근 권한 요구가 이어지는 것으로 전해졌다.16일(현지시간) 블룸버그에 따르면, 앤트로픽은 이르면 다음 주 영국 금융기관을 대상으로 미소스 모델 접근을 제공할 계획이다. 이는 ‘프로젝트 글라스윙(Project Glasswing)’ 프로그램에 따라, 일부 기업과 기관에 한해 사전 테스트 기회를",
+      "category": "ai_news",
+      "keywords": [
+        "Claude"
+      ]
+    },
+    {
+      "article_id": "ebc3cf3a4eb9755d",
+      "title": "앤트로픽, 올인원 디자인 도구 ‘클로드 디자인’ 공개...어도비·캔바 위협",
+      "source": "AI타임스",
+      "published_at": "2026-04-18T20:23:03+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=209428",
+      "content_text": "앤트로픽이 사업 영역을 디자인으로 확장했다. 전문가 위주의 기존 디자인 도구 시장을 뒤흔들 수 있을 정도의 파괴력을 가진 것으로 드러났다. 앤트로픽은 17일(현지시간) 대화형 AI를 활용해 시각 디자인과 프로토타입을 제작할 수 있는 새로운 도구 ‘클로드 디자인(Claude Design)’을 공개했다.최신 모델인 '클로드 오퍼스 4.7'을 기반으로 하며, 현재 연구 미리보기 형태로 유료 구독제인 프로, 맥스, 팀, 엔터프라이즈 사용자에게 차례로 제공되고 있다.자연어로 원하는 디자인을 설명하면, AI가 초안을 생성하는 방식이다. 여기에",
+      "category": "ai_news",
+      "keywords": [
+        "Claude"
+      ]
+    },
+    {
+      "article_id": "6952c657a5910840",
+      "title": "'챗GPT'에 한글 문서 지원 추가…”공공기관 업무 활용 극대화”",
+      "source": "AI타임스",
+      "published_at": "2026-04-17T23:59:06+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=209415",
+      "content_text": "오픈AI가 국내 비즈니스 환경에서 가장 큰 문제 중 하나로 꼽히던 '챗GPT'의 한글 문서 지원 문제를 해결했다.오픈AI 코리아는 17일 챗GPT가 한컴오피스 ‘한글’에서 사용되는 대표 문서 형식인 HWP와 HWPX 파일을 지원한다고 밝혔다. 국내 사용자들은 별도의 파일 변환 없이 한글 문서를 직접 업로드해 내용을 확인하고 분석할 수 있게 됐다.HWP와 HWPX는 국내 공공 기관과 교육 기관, 주요 기업 등에서 널리 사용되는 문서 형식이다. 그동안은 챗GPT가 이 포맷 문서를 읽지 못해, 사용자들이 문서를 PDF나 워드 파일로 변환",
+      "category": "ai_news",
+      "keywords": [
+        "GPT"
+      ]
+    },
+    {
+      "article_id": "6311abf979edcbd9",
+      "title": "오픈AI, 생명과학 연구를 위한 AI 모델 ‘GPT-로절린드’ 출시",
+      "source": "AI타임스",
+      "published_at": "2026-04-17T21:50:01+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=209384",
+      "content_text": "오픈AI가 가설 생성부터 실험 설계, 데이터 분석까지 수행하는 생명과학 특화 AI 모델을 공개하며 신약 개발과 바이오 연구의 패러다임 전환에 나섰다. 이 모델은 인간 연구자와 협업하는 ‘AI 연구 파트너’로 설계된 것이 핵심이다.오픈AI는 16일(현지시간) 생명과학 연구를 위한 특화 AI 모델 ‘GPT-로절린드(GPT-Rosalind)’를 공개했다.GPT-로절린드는 DNA 구조 규명에 기여한 영국 과학자 로절린드 프랭클린의 이름에서 따왔다. 생화학, 유전체학, 신약 개발, 전임상 연구 등 생명과학 전반에서 활용될 수 있도록 설계됐으",
+      "category": "ai_news",
+      "keywords": [
+        "GPT"
+      ]
+    },
+    {
+      "article_id": "db758e1b93409982",
+      "title": "윤두식 보안TF 위원 \"한국, 제로데이 방어 환경 아냐\"",
+      "source": "ZDNet Korea",
+      "published_at": "2026-04-18T21:55:14+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260418172056",
+      "content_text": "[지디넷코리아]\"AI 3대 강국 목표를 세웠지만, 실행이 되려면 AI 기본 사회 기본을 갖춰 놔야만 하는데 AI 기본 사회 밑에는 보안이 깔려 있습니다.\"국가인공지능전략위원회 보안TF 위원인 윤두식 이로운앤컴퍼니 대표는 지난 17일 한국정보보호학회가 주관해 코엑스에서 열린 '제32회 정보통신망 정보보호 컨퍼런스'에서 'AI 시대의 국가 AI 보안 전략과 기본 방향'을 주제로 발표했다.윤 대표는 \"국내에는 매년 15% 이상씩 한국인터넷진흥원(KISA)에 침해사고 신고 접수가 늘어나고 있다. 올해가 지나면 이 비율이 더욱 늘어날 것이다\"라며 \"제로데이(취약점 공개 후 보안 업데이트 전 0일 만에 이뤄지는 공격) 방어를 할 수 있어야 하는데 우리나라는 제로데이를 제대로 패치할 수 있는 환경이 갖춰져 있지 않다\"고 진단했다.이날 그는 국가AI전략위의 AI 3대 강국 도약을 위한 3대 축, 12대 전략 분야 중 보안 관련 핵심 과제에 대해 세부적으로 소개하는 시간을 가졌다.윤 대표는 \"지난 2월 국가AI전략위가 전체회의를 거쳐 확정한 AI 행동계획을 보면 핵심은 ▲AI 혁신 생태계 조성 ▲범국가 AI 기반 대전환 ▲글로벌 AI기본사회 기여 등 3가지 축이다\"라며 \"3대 정책축과 12대 전략을 통해 AI를 새로운 도약의 발판으로 삼아 AI 기본사회를 이루는 것이 목표\"라고 소개했다.윤 대표가 핵심으로 짚은 보안 관련 과제는 ▲민간·공공 AI 보안 생태계 활성화(ISMS-P 개편, CVD/VDP, 화이트해서 및 보안산업 육성) ▲AI 기반 사이버보안 체계 구축(K-사이버보안 LLM, AI-ISAC, 보안 내재화) ▲AI 안보 위협 대응 및 협력 강화(사이버 안보 플랫폼, CBRN 대비, 기술유출 방지 등이다.우선 윤 대표는 \"체크리스트 기반의 ISMS-P(정보보호 및 개인정보보호 관리체계 인증)에 '공격 표면 관리 점검' 방법을 반영하는 등 기업이 IT 자산에 대한 취약점 파악 및 관리가 가능하도록 개선할 예정이고, 올해 2분기 시행할 목표\"라며 \"서류에서 실전 기반의 인증 체계로 개편하는 것\"이라고 강조했다.국가AI전략위가 내세운 AI 시대 보안의 '게임 체인저'는 'CVD(Coordinated Vulnerability Disclosure)/VDP(Vulnerability Disclosure Policy)'다. 이는 보안 취약점을 발견한 자가 이를 체계적으로 신고하고, 해당 기업·기관이 조치한 뒤 공개하는 협력적 프로세스를 말한다. 윤 대표는 미국과 유럽연합 등 국가는 이런 프로세스를 제도적으로 마련해놨으나, 아직 한국은 제도화가 미비돼 있으며 로드맵을 마련해 추진할 계획이라고 설명했다.국가AI전략위에 따르면 CVD/VDP 운영 체계는 먼저, 화이트해커 또는 보안연구자가 정보통신망·디지털 제품의 취약점을 사전에 발굴한다. 이어 CVD/VDP 전문 기관에 체계적으로 신고하는데, 이 때 합법적인 활동이 보장될 수 있도록 법령을 손질할 예정이다. 아울러 해당 기업 및 기관이 취약점을 조치하면, 패치 이후 협력적 가이드라인에 따라 취약점 정보를 공개하는 과정이다.이 외에도 ▲글로벌 빅테크 거대 언어 모델(LLM) 종속 탈피를 위한 국내 위협 특화 분석 LLM 운영 ▲사고 사전 예측·예방 ▲민간 주도 AI 정보 공유 분석 센터(ISAC) 설립 ▲AI 보안 전문 인재 양성 ▲국산 AI 보안 솔루션 육성 및 해외 의존도 탈피 등 과제를 소개했다.이날 윤 대표 외에도 전종홍 한국전자통신연구원(ETRI) 책임연구원, 권현 육군사관학교 교수 등이 각각 'AI 레드팀 테스팅 동향과 전망', '적대적 공격 연구 동향 및 최신 트렌드 분석' 등을 주제로 발표했다.먼저 전 연구원은 AI 레드팀 테스팅 국제표준인 ISO/IEC 42119-7에 대해 소개하며, AI 수명주기 전반에 걸친 지속적인 레드티밍의 중요성에 대해 강조했다. AI레드티밍은 모델을 배포하기 전 단 한 번 수행하는 감사의 개념이 아니라는 지적이다.전 연구원은 \"지속가능한 AI 신뢰성의 완성, 회복탄력성을 갖춰야 한다\"며 \"자율형 에이전트가 통제를 벗어났을 때 어떻게 중단시킬 것인지…",
+      "category": "ai_news",
+      "keywords": [
+        "LLM"
+      ]
+    },
+    {
+      "article_id": "39cf3ed7075c4a65",
+      "title": "[안광섭의 AI 진테제] 어지러운 바이브 마케팅...바이브는 '척'에 불과",
+      "source": "ZDNet Korea",
+      "published_at": "2026-04-18T20:33:17+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260418203317",
+      "content_text": "[지디넷코리아]요즘 한국에서 가장 자주 듣는 접두어 중 하나는 '바이브(vibe)'다. 바이브 코딩, 바이브 페이퍼, 바이브 마케팅. 접두어 하나만 붙이면 기존의 모든 행위가 갑자기 AI 시대를 앞서가는 것처럼 포장된다. 얼마 전 한 언론과의 대담에서 \"바이브의 정체가 도대체 무엇이냐\"는 질문을 받았다. 필자의 대답은 간단했다. 바이브의 한국어 번역은 \"척\"이다. 가볍게 던진 농담이 아니다.이 말에는 세 가지 관점이 겹쳐 있다. 첫째, 기술의 본질에 관한 것이다. 둘째, AI가 어떤 해자(moat·경쟁우위의 기반)를 무너뜨리고 있는지에 관한 것이다. 셋째, 그 공백을 누가 무엇으로 메우려 하는지에 관한 것이다. 하나하나 살펴보자.안드레이 카파시가 만든 말 바이브 코딩, 정작 본인은 \"에이전틱 엔지니어링이 더 적절\"하다며 안써 '바이브 코딩'이라는 말을 만든 사람은 오픈AI 공동창업자이자 전 테슬라 AI 디렉터였던 안드레이 카파시(Andrej Karpathy)다. 그는 2025년 2월 자신의 X(옛 트위터)에 \"바이브에 완전히 몸을 맡기고, 지수 함수를 받아들이고, 코드가 존재한다는 사실조차 잊는 새로운 종류의 코딩을 바이브 코딩이라 부른다\"는 글을 올렸다. 450만 회 이상 노출되며 하나의 문화 현상이 됐다.흥미로운 점은 1년 뒤 카파시 본인이 이 용어와 거리를 두기 시작했다는 것이다. 그는 2026년 2월 올린 회고 글에서, 바이브 코딩이 원래 \"재미로 만드는 일회용 프로젝트나 데모에 주로 쓰이는 표현이었다\"고 밝혔다. 그러면서 전문적으로 다루는 코드에는 '에이전틱 엔지니어링(agentic engineering)'이라는 명칭이 더 적절하다고 제안했다. 용어를 만든 사람은 한발 물러섰는데, 정작 시장은 바이브 코딩을 마케팅 용어로 소비하며 범주를 확장하고 있는 셈이다.그사이 비슷한 양상은 학계에도 번졌다. 2026년 3월, 세계적 머신러닝 학회인 ICML은 리뷰 과정에서 LLM을 무단 사용한 리뷰어들의 논문 497편을 심사도 없이 탈락(데스크 리젝)시켰다고 공식 발표했다. 전체 투고의 약 2%에 해당하는 규모다.ICML은 리뷰어에게 'AI 사용 금지(Policy A)'와 '제한적 허용(Policy B)' 중 하나를 선택하게 한 뒤, 논문 PDF에 사람 눈에 보이지 않는 프롬프트 인젝션(prompt injection) 워터마크를 심어 AI 사용 여부를 적발했다. 학계 일각에서는 이 사건을 두고 '바이브 페이퍼'라는 말까지 나왔다. 논문조차 '쓴 척'으로 대체되고 있다는 것이다.소비자 시장에서는 이 추상화가 더 노골적이다. AX(AI Transformation)라는 표현이 대표적이다. 따져보면 AX는 자기가 원래 하던 일을 AI와 접목하겠다는 뜻 이상이 아니다. 그런데 왜 새 이름표가 필요한가. 과거에도 똑같은 일이 있었다. 전산화가 디지털화가 되고, 디지털화가 유비쿼터스가 됐다가, 어느새 DX가 됐다. 그리고 이제 AX다. 본질은 바뀐 게 없는데 이름만 갈아 끼우는 중이다. 이름을 갈면 다시 팔 수 있기 때문이다.기술의 본질: 해자를 없애는 일, 그리고 AI가 허문 마지막 해자여기서 한 층 내려가 볼 필요가 있다. 애초에 기술이란 무엇인가. 필자가 오랜 시간 기술을 다루면서 내린 결론은 단순하다. 모든 기술의 역할은 해자를 없애는 것이다.자동차는 이동의 해자를, 엘리베이터는 수직 이동의 해자를, 스마트폰 카메라는 촬영의 해자를 각각 낮춰왔다. 기술의 역사는 곧 해자가 무너지는 역사다.그렇다면 AI는 어떤 해자를 없애고 있는가. 필자의 대답은 '지식'이다. 코드를 짤 줄 아는 능력, 영상 편집을 할 줄 아는 능력, 카피를 쓸 줄 아는 능력, 발표 자료를 구조화할 줄 아는 능력. 지난 30년간 개인과 조직의 경쟁우위를 지탱해온 이 지식과 숙련의 장벽이 지금 빠르게 허물어지고 있다.그래서 과거에는 지식과 노하우로 보호받던 영역이 이제 '바이브'라는 이름으로 전복되는 것이다. 회사를 다녀본 적 없는 사람이 기업 컨설팅을 하고, 한 줄도 직접 짜본 적 없는 사람이 바이브 코딩으로 스스로를 개발자로 포지셔닝한다. 이것은 당사…",
+      "category": "ai_news",
+      "keywords": [
+        "LLM",
+        "머신러닝"
+      ]
+    },
+    {
+      "article_id": "9cfbb357648a2e0b",
+      "title": "키이우서 총기난사로 15명 사상…\"용의자 모스크바 출신\"(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T02:37:13+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260419000851085",
+      "content_text": "(런던=연합뉴스) 김지연 특파원 = 18일(현지시간) 우크라이나 수도 키이우에서 총기 난사와 인질극이 벌어지면서 15명이 숨지거나 다쳤다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "f70e1d529f8083cd",
+      "title": "美법무부, 프랑스의 'X' 대상 수사협조 거부…\"표현 자유 침해\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T02:11:44+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260419001800091",
+      "content_text": "(샌프란시스코=연합뉴스) 권영전 특파원 = 미국 법무부가 일론 머스크의 사회관계망서비스(SNS) 플랫폼 엑스(X·옛 트위터)에 대한 프랑스 사법...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "db23a731f8401553",
+      "title": "룰라, 트럼프 겨냥 \"아침마다 '전쟁선포' 트윗보며 깰 순 없어\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T01:40:53+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260419001700087",
+      "content_text": "(멕시코시티=연합뉴스) 송광호 특파원 = 루이스 이나시우 룰라 다시우바 브라질 대통령이 18일(현지시간) 도널드 트럼프 미국 대통령의 강경한 대...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "93771869e4e71d39",
+      "title": "우크라 \"크림반도서 러 군함 3척에 드론 공습\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T01:19:11+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260419001400085",
+      "content_text": "(런던=연합뉴스) 김지연 특파원 = 우크라이나 보안국(SBU)이 크림반도에서 러시아 해군함 세 척을 포함한 군사 자산을 드론으로 공습해 손상을 ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "723ac7a34df00ece",
+      "title": "\"美, 호르무즈 외 해상서 이란연계 선박 며칠내 나포 준비\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T01:13:35+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260419001300071",
+      "content_text": "(워싱턴=연합뉴스) 박성민 특파원 = 미군이 며칠 내로 호르무즈 해협을 넘어선 세계 곳곳의 공해상에서 이란과 연계된 선박을 나포할 준비를 하고 ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "2e8d6923e6b337fd",
+      "title": "교황 \"트럼프와 논쟁, 관심사 아니다\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T01:06:10+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260419001100099",
+      "content_text": "(요하네스버그=연합뉴스) 나확진 특파원 = 레오 14세 교황은 최근 이란 전쟁 등을 두고 도널드 트럼프 미국 대통령과 논쟁하는 것으로 비치는 데...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "dc219877a3e1e1ba",
+      "title": "\"'일시 개방' 발표 이튿날 호르무즈서 선박 잇단 피격\"(종합2보)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T01:04:50+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053553085",
+      "content_text": "(런던=연합뉴스) 김지연 특파원 = 이란이 호르무즈 해협의 일시 개방을 발표한 17일(현지시간) 이후 유조선 10여 척이 해협을 통과했으나 이튿...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "3e702b2013bcee55",
+      "title": "우크라 키이우서 총기난사…2명 사망, 5명 부상",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T00:26:10+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260419000800085",
+      "content_text": "(런던=연합뉴스) 김지연 특파원 = 18일(현지시간) 우크라이나 수도 키이우에서 괴한이 총기를 난사하면서 사상자 여러 명이 발생했다고 로이터 통...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "417ade30a3d939c9",
+      "title": "美, 니카라과 내무차관 美입국 금지 제재…\"인권침해 연루\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T00:13:36+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260419000400071",
+      "content_text": "(워싱턴=연합뉴스) 박성민 특파원 = 도널드 트럼프 미국 행정부는 18일(현지시간) 중미의 대표적 반미(反美) 국가의 하나인 니카라과의 카냐스 ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "f37c661011151d74",
+      "title": "이란 안보수장 \"새로운 美제안 검토…호르무즈 통행료 내야\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T00:05:41+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418058400099",
+      "content_text": "(요하네스버그=연합뉴스) 나확진 특파원 = 이란 최고국가안보위원회(SNSC)가 미국과 2차 협상과 관련해 파키스탄을 통해 제시된 미국 측 새 제...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "c4297921f30a4939",
+      "title": "[알림] 연합뉴스 콘텐츠 저작권 고지",
+      "source": "연합뉴스",
+      "published_at": "2026-04-19T00:00:01+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260419000100011",
+      "content_text": "연합뉴스가 제공하는 기사, 사진, 그래픽, 영상 등 모든 콘텐츠는 관련 법의 보호를 받습니다. 연합뉴스 콘텐츠를 사전허가 없이 전재·방송하거나 ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "aa961afdf627dbe4",
+      "title": "레바논서 프랑스군 피격…1명 사망, 3명 부상(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T23:48:33+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418057051009",
+      "content_text": "(서울=연합뉴스) 강훈상 기자 = 레바논 주둔 유엔평화유지군(UNIFIL)에 배속된 프랑스군 1명이 피격돼 사망하고 3명이 부상했다고 AFP 통...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d25aaef11594ca4e",
+      "title": "트럼프, 이란 '호르무즈 재통제'에도 \"대화 순조롭게 진행\"(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T23:42:31+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418057951071",
+      "content_text": "(워싱턴=연합뉴스) 박성민 특파원 = 도널드 트럼프 미국 대통령은 18일(현지시간) 이란이 호르무즈 해협에 대한 통제를 재개했음에도 이란과의 종...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "1b49b44a27b56ac3",
+      "title": "\"단일화 필수\" 울산시장 민주·진보 진영 3명 후보 한목소리",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T23:18:43+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418057800057",
+      "content_text": "(울산=연합뉴스) 허광무 기자 = 6·3 지방선거 울산시장 선거에 출마한 더불어민주당 김상욱, 조국혁신당 황명필, 진보당 김종훈 등 3명의 후보...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "9e70b77efd4e186f",
+      "title": "트럼프, 이란의 호르무즈 통제 재개에도 \"대화 순조롭게 진행\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T23:16:47+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418057900071",
+      "content_text": "(워싱턴=연합뉴스) 박성민 특파원 = 도널드 트럼프 미국 대통령은 18일(현지시간) 이란이 호르무즈 해협에 대한 통제를 재개했음에도 이란과의 종...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "12dd301923e3bcdf",
+      "title": "하루만에 암초만난 호르무즈 개방…美·이란 협상 '시계제로'",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T23:10:50+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418057200099",
+      "content_text": "(요하네스버그=연합뉴스) 나확진 특파원 = 이스라엘과 레바논의 휴전 합의에 맞춰 이란이 전격 발표했던 호르무즈 해협이 하루만인 18일(현지시간)...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "3d31114c4a0a9c7d",
+      "title": "[속보] 트럼프, 이란의 호르무즈 재봉쇄에도 \"대화 순조롭게 진행\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T22:51:26+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418057500071",
+      "content_text": "(",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "707f845c7ae1fa52",
+      "title": "[속보] 트럼프 \"이란, 호르무즈 재봉쇄 원했지만 우리 협박 못해\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T22:49:14+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418057300071",
+      "content_text": "(",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "44258afc40b32bd7",
+      "title": "\"'일시 개방' 발표 이튿날 호르무즈서 선박 잇단 피격\"(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T22:36:14+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053552085",
+      "content_text": "(런던=연합뉴스) 김지연 특파원 = 이란이 호르무즈 해협의 일시 개방을 발표한 17일(현지시간) 이후 유조선 10여 척이 해협을 통과했으나 이튿...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "45a848101a4bb92b",
+      "title": "'하드록 전설' 딥 퍼플의 명불허전 무대…화려한 연주 빛났다",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T22:23:24+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260417116000005",
+      "content_text": "(인천=연합뉴스) 이태수 기자 = '스모크 온 더 워터, 어 파이어 인 더 스카이∼.'",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "51e65af14dc58fce",
+      "title": "레바논서 프랑스군 피격…1명 사망, 3명 부상",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T22:21:25+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418057000009",
+      "content_text": "(서울=연합뉴스) 강훈상 기자 = 레바논 주둔 유엔평화유지군(UNIFIL)에 배속된 프랑스군 1명이 피격돼 사망하고 3명이 부상했다고 AFP 통...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "034e0c3c9329d4ea",
+      "title": "제주도남부 등 3곳 호우주의보",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T22:08:31+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418056800527",
+      "content_text": "(제주=연합뉴스) 기상청은 18일 오후 10시를 기해 제주도 남부·제주도 동부·제주도 서부에 호우주의보를 발효한다고 밝혔다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "c1a0195e1403aa6e",
+      "title": "일본 여자축구, 북한 1-0 격파…U-20 아시안컵 7번째 우승",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T21:58:44+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418056600007",
+      "content_text": "(서울=연합뉴스) 안홍석 기자 = 일본 축구가 난적 북한을 물리치고 2026 아시아축구연맹(AFC) 20세 이하(U-20) 여자 아시안컵에서 우...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "978b0c42f4b517cb",
+      "title": "'승리의 여신: 니케' 3.5주년…아이돌로 돌아온 아니스",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T21:48:11+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418056000017",
+      "content_text": "(서울=연합뉴스) 김주환 기자 = 시프트업[462870]이 개발하고 레벨인피니트가 퍼블리싱하는 '승리의 여신: 니케'가 서비스 3.5주년을 맞아...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "9b63838ad6a03d89",
+      "title": "이란 군부, 호르무즈 개방 '전격 선언' 외무장관에 '불만'",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T21:31:00+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418055900009",
+      "content_text": "(서울=연합뉴스) 강훈상 기자 = 이란 군부가 호르무즈 해협을 일시 개방하겠다고 전격 선언한 아바스 아라그치 이란 외무장관에 '경고에 가까운' ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "a9a9a324f8d03df9",
+      "title": "유도 중량급 기대주 김종훈, 아시아선수권 남자 90㎏급 우승",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T21:23:36+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418055800007",
+      "content_text": "(서울=연합뉴스) 김경윤 기자 = 유도 중량급 에이스 김종훈(세계랭킹 13위·양평군청)이 2026 아시아유도선수권대회 남자 90㎏급에서 금메달을...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "5dd2dbc3e0b56a82",
+      "title": "[부고] 최광준(부산 삼보정비 대표이사)씨 모친상",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T21:15:17+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418055700051",
+      "content_text": "▲ 김우녀씨 별세, 최광준(부산 삼보정비 대표이사)·최광복·최영채·최공윤·최영주씨 모친상 = 18일, 부산 시민장례식장 303호, 발인 20일 ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "1114c431475363c7",
+      "title": "1220회 로또 1등 14명…당첨금 각 21억1천만원(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:52:23+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418055500002",
+      "content_text": "(서울=연합뉴스) 로또복권 운영사 동행복권은 제1220회 로또복권 추첨에서 '2, 22, 25, 28, 34, 43'이 1등 당첨번호로 뽑혔다고...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "018626c4692a5443",
+      "title": "'데뷔 첫 끝내기' 두산 이유찬 \"찬물 맞았는데 뜨겁더라고요\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:51:44+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418055600007",
+      "content_text": "(서울=연합뉴스) 이대호 기자 = 프로야구 두산 베어스 선수들은 주인공 이유찬이 방송 인터뷰를 마칠 때까지 조용히 '특제 샤워용 음료'를 정수기...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "fca29d5422b0abd8",
+      "title": "프로야구 삼성, 전병우 3점 홈런 앞세워 LG 꺾고 7연승 1위 질주(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:50:57+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418054451007",
+      "content_text": "(서울=연합뉴스) 김동찬 이대호 기자 = 프로야구 삼성 라이온즈가 7연승을 내달리며 선두 자리를 지켰다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "0065a1cf6aa30434",
+      "title": "러, 우크라 공습에 수십명 사상…우크라는 러 석유시설 공습",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:47:54+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418055400085",
+      "content_text": "(런던=연합뉴스) 김지연 특파원 = 러시아가 17∼18(현지시간) 밤사이 우크라이나 전역을 공습하면서 민간인 1명이 사망하고 수십명이 다쳤다고 ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d80dde2663b7d396",
+      "title": "부산 민주 구청장 후보 확정…'전 구청장·여성·50대' 특징",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:46:41+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418054900051",
+      "content_text": "(부산=연합뉴스) 차근호 기자 = 6·3 지방선거 부산 기초단체장 선거에 나설 더불어민주당 후보 라인업이 모두 확정됐다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "8f982715482484c4",
+      "title": "1220회 로또 1등 '2, 22, 25, 28, 34, 43'",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:43:21+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418055300002",
+      "content_text": "(",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "978edb43335aff62",
+      "title": "이란 최고지도자 \"이란 해군, 적에 새로운 패배 안길 준비\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:42:26+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418054700099",
+      "content_text": "(요하네스버그=연합뉴스) 나확진 특파원 = 아야톨라 세예드 모즈타바 하메네이 이란 최고지도자가 18일(현지시간) '이란군의 날'을 맞아 강경한 ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "7eea4eb580d1570f",
+      "title": "수원 장안구 다세대주택서 불…주민 11명 대피",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:42:17+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418055200061",
+      "content_text": "(수원=연합뉴스) 권준우 기자 = 18일 오후 7시 44분께 경기 수원시 장안구 연무동의 한 다세대주택 5층에서 불이 났다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "f3a1d566a244e40c",
+      "title": "[프로야구] 19일 선발투수",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:37:52+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418055100007",
+      "content_text": "▲ 19일 선발투수",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "56ff1bf3acab712f",
+      "title": "[프로야구 중간순위] 18일",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:32:26+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418054800007",
+      "content_text": "◇ 2026 KBO리그 중간순위(18일)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "a06c7f2200852ea6",
+      "title": "[프로야구 창원전적] SSG 11-3 NC",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:31:08+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418054600007",
+      "content_text": "▲ 창원전적(18일)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "c9a714c164a83988",
+      "title": "이란 외무차관 \"미국과 2차 협상 날짜 안잡혀\"(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:28:45+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418051851099",
+      "content_text": "(요하네스버그=연합뉴스) 나확진 특파원 = 사이드 하티브자데 이란 외무차관은 미국과 2차 협상 날짜가 정해지지 않았다고 18일(현지시간) 밝혔다...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "16d4512bf9d16012",
+      "title": "이유찬 끝내기 2루타…두산, KIA에 재역전승하고 3연패 탈출",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:28:42+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418054400007",
+      "content_text": "(서울=연합뉴스) 이대호 기자 = 프로야구 두산 베어스가 이유찬의 끝내기를 앞세워 3연패에서 벗어났다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "753358d91a6dd4f4",
+      "title": "[프로야구 잠실전적] 두산 5-4 KIA",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:26:23+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260417158951007",
+      "content_text": "▲ 잠실전적(18일)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "28932f1b3b88cde8",
+      "title": "트럼프의 '對유럽 문화전쟁' 27세 국무부 수석고문이 주도",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:19:07+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418052300009",
+      "content_text": "(서울=연합뉴스) 김아람 기자 = 미국과 유럽 간 대서양동맹을 뒤흔드는 도널드 트럼프 행정부의 행보 뒤에는 새뮤얼 샘슨(27) 미 국무부 민주주...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ff2ce6200d429c93",
+      "title": "\"이란 혁명수비대, 호르무즈서 유조선에 발포\"< UKMTO>",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:17:13+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053551085",
+      "content_text": "(런던=연합뉴스) 김지연 특파원 = 이란 이슬람혁명수비대와 연계된 고속정 2척이 오만 인근 호르무즈 해협을 지나는 유조선 1척을 공격했다는 신고...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "c607b1ce96518fe5",
+      "title": "SK, 핸드볼 H리그 사상 첫 정규시즌 전승 우승…'21전 21승'(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:07:11+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418049751007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = SK 슈가글라이더즈가 핸드볼 H리그 사상 최초로 정규시즌 전승 우승을 달성했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "6257f720ffcafacc",
+      "title": "류현진, 2년여 만에 7이닝 무실점…한화, 롯데 꺾고 6연패 끝",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:05:37+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418054200007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = 한화 이글스가 베테랑 류현진(39)의 7이닝 무실점 투구에 힘입어 6연패 사슬을 끊었다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "140c0daf46029e4c",
+      "title": "'모디 추진' 의원 증원·여성할당제 개헌안 인도의회서 부결",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:05:28+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053900084",
+      "content_text": "(하노이=연합뉴스) 박진형 특파원 = 나렌드라 모디 인도 총리가 의원 여성 할당제와 함께 추진해온 의원 증원 개헌안이 야당의 반대로 의회에서 부...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "b113df40e9c7e2e6",
+      "title": "[날씨] 서울 낮 최고 29도 '초여름 더위'…제주도 산지 강한 비",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T20:00:00+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418049100004",
+      "content_text": "(서울=연합뉴스) 이율립 기자 = 일요일인 19일 전국 내륙을 중심으로 낮 기온이 25도 이상으로 오르겠다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "8d944ebfc425a429",
+      "title": "[속보] 이란 최고지도자 \"이란군, 적에 새로운 쓰라린 패배 안길 준비\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:54:19+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053700099",
+      "content_text": "(",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "555412e2844435a0",
+      "title": "조국, 평택서 김재연 만나 \"선의의 경쟁 하자\"…金 \"잘 오셨다\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:53:53+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053400001",
+      "content_text": "(서울=연합뉴스) 최평천 기자 = 6·3 지방선거와 동시에 치러지는 경기 평택을 재선거 출마를 선언한 조국혁신당 조국 대표가 18일 평택 팽성시...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "f091d9686c36ffd8",
+      "title": "[프로야구 부산전적] 한화 5-0 롯데",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:53:17+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053800007",
+      "content_text": "▲ 부산전적(18일)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "58c6c060ce078603",
+      "title": "[속보] 英해사무역기구 \"이란 혁명수비대, 유조선에 발포\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:52:54+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053500085",
+      "content_text": "(",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "6b26ef94d3089df0",
+      "title": "프로야구 kt 4연승·보쉴리 벌써 4승째…키움은 5연패 수렁",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:51:59+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053600007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = 프로야구 kt wiz가 벌써 시즌 4승째를 따낸 케일럽 보쉴리의 호투를 앞세워 4연승을 질주했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "1d142c86847e4dd6",
+      "title": "金총리, '기후 대응' 미래세대 공관에 초청…\"꼼꼼히 챙길 것\"(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:50:15+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418045451001",
+      "content_text": "(서울=연합뉴스) 황윤기 기자 = 김민석 국무총리는 18일 기후 위기 대응 활동을 하는 청년·청소년 등 미래 세대를 삼청동 공관에 초청해 간담회...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "0715fd259ebc8b8c",
+      "title": "[프로야구 수원전적] kt 4-2 키움",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:40:22+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053200007",
+      "content_text": "▲ 수원전적(18일)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "3cc6ff8f0f657991",
+      "title": "\"영국인 53%, EU 재가입 희망…어중간한 관계보다 선호\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:38:12+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053100085",
+      "content_text": "(런던=연합뉴스) 김지연 특파원 = 영국의 유럽연합(EU) 재가입을 원하는 영국인이 과반이며, 어중간한 협력 관계보다 재가입에 대한 강력한 지지...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ad03e8996a1cefbb",
+      "title": "제주도남부중산간·제주도북부중산간에 호우주의보",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:37:39+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418053000527",
+      "content_text": "(제주=연합뉴스) 기상청은 18일 오후 7시 30분을 기해 제주도남부중산간·제주도북부중산간에 호우주의보를 발효한다고 밝혔다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d39f60731815ac9c",
+      "title": "정원오 측, 오세훈에 \"서울시장, 대권 징검다리 아냐…자격없어\"(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:27:57+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418031451001",
+      "content_text": "(서울=연합뉴스) 최평천 기자 = 더불어민주당 정원오 서울시장 후보 측은 18일 6·3 지방선거 국민의힘 후보로 선출된 오세훈 서울시장을 향해 ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "76a773218cdc9f07",
+      "title": "제주도지사 선거 4파전 윤곽 드러나…앞으로 46일간 공방전",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:25:01+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418052500056",
+      "content_text": "(제주=연합뉴스) 변지철 기자 = 더불어민주당이 제주도지사 후보를 최종 결정하면서 6월 3일 치러지는 제9회 전국동시지방선거의 제주지사 선거 대...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "2eeb9119113928b0",
+      "title": "계급장 뗀 첫 주말…우상호 '친환경' vs 김진태 '문화예술' 공략",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:24:04+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418052400062",
+      "content_text": "(춘천=연합뉴스) 이재현 기자 = 6·3 지선을 46일 앞둔 18일 강원도지사 선거 여야 주자들이 예비 후보 등록 후 첫 주말을 맞아 계급장을 ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "08272a9cffe83f37",
+      "title": "프로야구 KIA 김도영, 시즌 6호 투런포 발사…홈런 공동 1위",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:22:28+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418052700007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = 프로야구 KIA 타이거즈 김도영이 홈런 공동 1위에 올랐다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "7c6c65cfffeba15a",
+      "title": "제주도산지에 호우주의보",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:11:00+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418052200527",
+      "content_text": "(제주=연합뉴스) 기상청은 18일 오후 7시를 기해 제주도산지에 호우주의보를 발효한다고 밝혔다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "00ca664aa8b206e0",
+      "title": "kt 보쉴리, 외국인 투수 데뷔 후 연속 이닝 무자책 신기록 달성(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:07:45+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418051351007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = 프로야구 kt wiz의 케일럽 보쉴리가 KBO리그 외국인 투수 데뷔 후 연속 이닝 무자책점 신기록을 세웠다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "1d12798773b564b0",
+      "title": "\"히틀러 재현 막아야\"…극우 득세에 '좌파 결집' 스페인 총리",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:03:16+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418051700085",
+      "content_text": "(런던=연합뉴스) 김지연 특파원 = 페드로 산체스 스페인 총리가 18일(현지시간) 우파 득세 흐름에 맞서 세계 주요 좌파 지도자들을 한데 불러 ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "dcf495936625b18a",
+      "title": "\"이란, 美와 2차 협상 아직 합의 안 해\"<이란 매체>",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:01:45+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418051800099",
+      "content_text": "(요하네스버그=연합뉴스) 나확진 특파원 = 이란이 미국과 2차 협상을 아직 합의하지 않았다고 이란 타스님 뉴스가 18일(현지시간) 보도했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "0cf4d5ace06949a9",
+      "title": "김민선, KLPGA 넥센·세인트나인 마스터스 2R 단독 선두",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T19:00:21+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418052000007",
+      "content_text": "(서울=연합뉴스) 최송아 기자 = 김민선이 한국여자프로골프(KLPGA) 투어 넥센·세인트나인 마스터스(총상금 10억원) 2라운드에서 단독 선두에...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "11460476e6fe5964",
+      "title": "송언석 \"'정동영 외교 안보 리스크' 임계점 넘어…경질해야\"(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:53:59+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418027451001",
+      "content_text": "(서울=연합뉴스) 김치연 김효정 기자 = 국민의힘 송언석 원내대표는 18일 정동영 통일부 장관이 북한 영변·강선 외에 평안북도 구성을 핵시설 소...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "97a62057b0c59975",
+      "title": "[프로축구 중간순위] 18일",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:53:02+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260412050051007",
+      "content_text": "◇ 하나은행 K리그1 2026 중간순위(18일)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "067891b033aae87b",
+      "title": "K리그1 대전, 개막무패 서울 꺾고 3연패 탈출…부천-인천 무승부(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:50:49+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418044151007",
+      "content_text": "(서울=연합뉴스) 배진남 안홍석 기자 = 프로축구 K리그1 대전하나시티즌이 개막 7경기 무패를 달리던 FC서울을 제물로 3연패에서 탈출했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "105f47664480ab7f",
+      "title": "고양 10층 건물 옥상서 고교생 추락사…경찰 조사",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:41:48+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418051600060",
+      "content_text": "(고양=연합뉴스) 심민규 기자 = 경기 고양시의 한 건물 옥상에서 고등학생이 추락해 숨지는 사고가 발생했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "1c42307a7f0fe4e1",
+      "title": "1982년 파리 유대인식당 테러 용의자, 44년 만에 프랑스 송환",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:41:23+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418050300009",
+      "content_text": "(서울=연합뉴스) 신재우 기자 = 1982년 프랑스 파리에서 발생한 반(反) 유대 테러 사건의 핵심 용의자가 44년 만에 프랑스로 송환됐다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "86f0165095f27b6f",
+      "title": "kt 보쉴리, 외국인 투수 데뷔 후 연속 이닝 무자책 신기록 달성",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:33:10+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418051300007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = 프로야구 kt wiz의 케일럽 보쉴리가 KBO리그 외국인 투수 데뷔 후 연속 이닝 무자책점 신기록을 세웠다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "396d4a935ac3e200",
+      "title": "이란 군부 \"호르무즈 해협 통제 재개…美해상봉쇄 유지 탓\"(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:31:34+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418048351099",
+      "content_text": "(요하네스버그=연합뉴스) 나확진 특파원 = 이란 정부가 호르무즈 해협 봉쇄를 해제한다고 발표한 지 하루 만에 이란 군부가 통행을 다시 통제하겠다...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "86653e5efa6982b4",
+      "title": "페퍼 배구단 매각 추진에 이용섭 \"광주 떠나선 안 돼\" 대응 촉구",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:28:52+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418050400054",
+      "content_text": "(광주=연합뉴스) 박철홍 기자 = 광주시장 재직 시절 광주 연고 여자 프로배구단을 창단한 이용섭 부영그룹 회장이 18일 'AI페퍼스' 매각 추진...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ad67e051d636c19c",
+      "title": "[프로축구 부천전적] 부천 2-2 인천",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:28:02+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418051100007",
+      "content_text": "◇ 18일 전적(부천종합운동장)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "cca4a49cf6e147f3",
+      "title": "[프로축구 서귀포전적] 제주 1-1 김천",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:26:32+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418051000007",
+      "content_text": "◇ 18일 전적(제주월드컵경기장)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "0175386c5e981d38",
+      "title": "與 제주지사 후보에 위성곤…국민의힘 문성유와 대결",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:20:56+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418050000001",
+      "content_text": "(서울=연합뉴스) 최평천 기자 = 더불어민주당 위성곤 의원이 민주당 6·3 지방선거 제주도지사 후보로 18일 선출됐다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "5046951c866fc5e2",
+      "title": "[속보] 與 제주지사 후보에 위성곤…국힘 문성유와 대결",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:17:05+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418049900001",
+      "content_text": "(",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "acb29a585d3a2f3e",
+      "title": "SK, 핸드볼 H리그 사상 첫 정규시즌 전승 우승…'21전 21승'",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:14:07+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418049700007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = SK 슈가글라이더즈가 핸드볼 H리그 사상 최초로 정규시즌 전승 우승을 달성했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "dd70d21706f00245",
+      "title": "건물 지하에 주차한 승용차서 불…별다른 피해 없어",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:13:41+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418049600055",
+      "content_text": "(전주=연합뉴스) 정경재 기자 = 18일 오후 4시 2분께 전북 전주시 완산구 서신동 한 건물 지하 주차장에 세워진 승용차에서 불이 났다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "70c80c140bd69c8f",
+      "title": "권성열, KPGA 투어 개막전 이틀 연속 선두…8년 만에 우승 기회",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T18:01:03+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418049400007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = 권성열이 한국프로골프(KPGA) 투어 2026시즌 개막전 우승 가능성을 부풀렸다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "63eedbd2b33692af",
+      "title": "강삼영 강원교육감 예비후보, 선거대책위원회 출범식 열어",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:48:24+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418048700062",
+      "content_text": "(춘천=연합뉴스) 양지웅 기자 = 강삼영 강원교육감 예비후보가 18일 춘천시 퇴계동 선거사무실에서 선거대책위원회 출범식을 열고 본격적인 선거운동...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "f3f411190a355794",
+      "title": "검찰, '이종섭 출국금지 비밀누설 의혹' 공수처 고발사건 각하",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:45:30+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418048200004",
+      "content_text": "(서울=연합뉴스) 이밝음 기자 = 이종섭 전 국방부 장관의 출국금지 사실을 언론에 알려줬다는 혐의로 고위공직자범죄수사처(공수처) 관계자가 고발된...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "f44ab7ebcf0e48d1",
+      "title": "부산 사상구 단독주택서 화재…70대 남성 숨져",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:43:09+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418048600051",
+      "content_text": "(부산=연합뉴스) 차근호 기자 = 18일 오후 1시 47분께 부산 사상구 주례동 한 단독주택에서 불이 났다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "c9cee60682ac9f93",
+      "title": "이란 군부 \"호르무즈 해협 통제 재개\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:42:23+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418048300099",
+      "content_text": "(요하네스버그=연합뉴스) 나확진 특파원 = 이란 군부가 미국의 자국 봉쇄가 계속되고 있다며 호르무즈 해협 통제를 재개한다고 18일(현지시간) 밝...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "c9ae579312a803fe",
+      "title": "남자 아이스하키, 평가전서 일본에 1-2 석패…오인교 동점골",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:41:03+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418048500007",
+      "content_text": "(서울=연합뉴스) 이대호 기자 = 남자 아이스하키 대표팀이 세계선수권대회를 앞두고 치른 라이벌 일본과의 첫 평가전에서 아쉽게 무릎을 꿇었다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ef8cf5b1ce5b0ea5",
+      "title": "오산 식자재마트서 차량 돌진 사고…운전자 등 2명 경상",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:33:17+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418048000061",
+      "content_text": "(오산=연합뉴스) 권준우 기자 = 18일 오전 11시 40분께 경기 오산시 지곶동의 한 식자재마트에서 1t 화물차가 건물로 돌진했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "03882f06a7a57935",
+      "title": "'FA 최대어 정호영 영입' 흥국생명, 보호선수 '고민되네'",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:11:26+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260417082300007",
+      "content_text": "(서울=연합뉴스) 이동칠 기자 = 여자 프로배구 흥국생명이 자유계약선수(FA) 최대어였던 국가대표 미들 블로커 정호영을 잡았지만, 고통의 시간이...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "8b0da5021a791920",
+      "title": "프로야구 삼성, 전병우 3점 홈런 앞세워 LG 꺾고 7연승 1위 질주",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:10:41+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418047500007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = 프로야구 삼성 라이온즈가 7연승을 내달리며 선두 자리를 지켰다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "11b4478a521808d9",
+      "title": "'첫 선발에 결승골' 대전 유강현 \"두 자릿수 득점 자신 있어\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:08:44+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418047300007",
+      "content_text": "(서울=연합뉴스) 안홍석 기자 = \"저는 항상 준비돼 있습니다.\"",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "75344359460f5efa",
+      "title": "[프로야구 대구전적] 삼성 7-2 LG",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:07:14+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418047400007",
+      "content_text": "▲ 대구전적(18일)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "6fe381f45f10cb42",
+      "title": "이란 민간항공청 \"민항기에 영공 부분 재개방\"…폐쇄 49일만",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T17:01:00+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418046600099",
+      "content_text": "(요하네스버그=연합뉴스) 나확진 특파원 = 미국과 이란 간 2차 종전협상이 임박한 것으로 알려진 가운데 이란 정부가 자국 동부 영공을 국제 항공...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "53f011aee7cc3b28",
+      "title": "식약처·한국백신, 주사기 온라인 공급망 안정화 협력",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:58:15+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418046300017",
+      "content_text": "(서울=연합뉴스) 유한주 기자 = 식품의약품안전처는 주사기 온라인 공급망 안정화를 위해 주사기 제조업체 한국백신과 업무 협약을 체결했다고 18일...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "a3ede2eee1e8948e",
+      "title": "파키스탄, 美·이란 2차회담 준비 만전…이란 대표단 호위계획도",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:56:50+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418046100084",
+      "content_text": "(하노이=연합뉴스) 박진형 특파원 = 미국과 이란 간 2차 종전협상이 임박한 것으로 알려진 가운데 협상 중재국인 파키스탄이 이란 대표단 호위 계...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "e6ee7bdeff40d6da",
+      "title": "경남도의원 정수 64→68명…지역구 1명·비례 3명 증원(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:55:50+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418030751052",
+      "content_text": "(창원=연합뉴스) 이정훈 기자 = 경남도는 공직선거법 개정안 국회 처리로 이번 6·3 지방선거에서 선출하는 도의회 의원정수가 64명에서 68명으...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d9aaaaabc12005e4",
+      "title": "美 트럼프 정부, 가향 전자담배 확대 추진…FDA 국장은 '반대'",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:44:03+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418045300009",
+      "content_text": "(서울=연합뉴스) 신재우 기자 = 미국 백악관이 자국산 가향 전자담배 출시 확대를 추진하고 있지만 식품의약국(FDA)이 제동을 걸고 있는 것으로...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "fc7f62fcc37e3f82",
+      "title": "KIA 홍건희, 어깨 부상으로 1군 말소…\"4주 후 재검진\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:38:31+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418045900007",
+      "content_text": "(서울=연합뉴스) 이대호 기자 = 8연승으로 순항하는 프로야구 KIA 타이거즈가 핵심 불펜 투수 홍건희 부상 암초와 마주했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "e348d3385877a9ba",
+      "title": "3연패 끊고 200승 채웠지만 웃지 못한 황선홍 \"이제 시작이다\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:36:22+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418045800007",
+      "content_text": "(서울=연합뉴스) 안홍석 기자 = \"이제 시작이다.\"",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "0ae18e62b8bcc2af",
+      "title": "[북한단신] 몽골 대통령, 김일성 생일 맞아 김정은에 축하편지",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:33:06+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418045600504",
+      "content_text": "(서울=연합뉴스) ▲ 오흐나 후렐수흐 몽골 대통령이 김일성 주석 생일(4월 15일)을 맞아 김정은 국무위원장에게 꽃바구니와 축하 편지를 보냈다고...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "9416d6c20aa3c95b",
+      "title": "보석 석방된 전광훈, 광화문집회 참석…\"대한민국 망했다\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:29:57+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418044600004",
+      "content_text": "(서울=연합뉴스) 이율립 기자 = 서울서부지법 폭력 난동 사태의 배후로 지목돼 구속기소 됐다가 병원 치료 등 사유로 풀려나 재판받고 있는 전광훈...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ba30228a4e7dbc8c",
+      "title": "金총리, '기후 대응' 미래세대 공관에 초청…\"꼼꼼히 챙길 것\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:26:36+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418045400001",
+      "content_text": "(서울=연합뉴스) 황윤기 기자 = 김민석 국무총리는 18일 기후 위기 대응 활동을 하는 청년·청소년 등 미래 세대를 삼청동 공관에 초청해 간담회...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "c3d8c4e66b66eb55",
+      "title": "中증시서 반도체기업, 마오타이 제치고 '가장 비싼 주식' 등극",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:24:21+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418045200009",
+      "content_text": "(서울=연합뉴스) 차병섭 기자 = 인공지능(AI) 붐 속에 중국 반도체업체 위안제 과학기술(위안제)이 내수주의 대명사인 주류업체 구이저우 마오타...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "bb9da0a38944e425",
+      "title": "'5선 도전' 오세훈 \"서울 내주면 정권 폭주 제동장치 사라진다\"(종합2보)",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:16:57+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418021952001",
+      "content_text": "(서울=연합뉴스) 김치연 기자 = 오세훈 서울시장은 18일 6·3 지방선거 서울시장 선거와 관련, \"서울을 내어주면 이 정권의 폭주를 막을 마지...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "3ffbcfc09c227ee0",
+      "title": "양산 농수산물유통센터 운영사 법정관리…시, 피해 최소화 나서",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:15:30+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418044700052",
+      "content_text": "(양산=연합뉴스) 김동민 기자 = 경남 양산시는 양산시농수산물종합유통센터의 위·수탁 운영사인 우리마트 양산유통센터가 최근 법원에 기업회생을 신청...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "bb39e6a6640aa0b7",
+      "title": "한국 여자복싱 간판 신보미레, 세계챔피언 바움가드너에 판정패",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:13:55+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418044800007",
+      "content_text": "(서울=연합뉴스) 이대호 기자 = 한국 여자 프로복싱 간판 신보미레(신길권투체육관)가 '복싱 성지' 미국 뉴욕 매디슨스퀘어가든(MSG)에서 아쉬...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "5b5592a45ab69246",
+      "title": "이정효호 수원, 박지원 결승골로 경남 제압…3경기 만에 승전가",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:13:15+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418044900007",
+      "content_text": "(서울=연합뉴스) 배진남 기자 = 이정효호 수원 삼성이 경남FC를 꺾고 3경기 만에 승전가를 불렀다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "dc468c5f952436db",
+      "title": "메이저 11회 우승 일본 가미지, 코리아오픈 휠체어테니스 2관왕",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:07:14+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418044300007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = 가미지 유이(일본)가 서울 코리아오픈 국제휠체어테니스대회 여자 단식에서 우승했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "109f6ebdd574c67d",
+      "title": "'티아고 선제골' 전북, '모재현 동점골' 강원과 1-1 무승부",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:06:51+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418044200007",
+      "content_text": "(서울=연합뉴스) 배진남 기자 = 프로축구 K리그1 디펜딩 챔피언 전북 현대가 강원FC와 비기면서 최근 2경기 연속 승수를 쌓지 못했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "2c1f603ce87beebd",
+      "title": "K리그1 대전, FC서울 1-0 제압하고 3연패 탈출…유강현 결승골",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:06:07+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418044100007",
+      "content_text": "(서울=연합뉴스) 안홍석 기자 = 프로축구 K리그1 대전하나시티즌이 개막 7경기 무패를 달리던 FC서울을 제물로 3연패에서 탈출했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "8ddd0997d3a9aa22",
+      "title": "제주 서부 앞바다·남쪽 먼바다에 풍랑주의보",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:03:14+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418043900527",
+      "content_text": "(제주=연합뉴스) 기상청은 18일 오후 6시를 기해 제주도서부앞바다·제주도남서쪽안쪽먼바다에 풍랑주의보를 발효한다고 밝혔다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "25773d04abaf644e",
+      "title": "'예수 행세 논란' 트럼프, 마라톤 성경 낭독 행사 참여",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:01:30+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418043500009",
+      "content_text": "(서울=연합뉴스) 김아람 기자 = 교황과 설전을 벌이고 자신을 예수에 빗대 논란을 일으킨 도널드 트럼프 미국 대통령이 '성경 낭독 마라톤'에 참...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "3353acb40f18ea19",
+      "title": "춘천시 '번개야시장' 개장…토요일밤 상권·관광 불 밝혔다",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T16:00:00+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260417112400062",
+      "content_text": "(춘천=연합뉴스) 이상학 기자 = 강원 춘천시의 '번개야시장'이 문을 열고 도심 야간상권과 관광 활성화에 시동을 걸었다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "f6de154cc3d1e853",
+      "title": "[프로축구 서울전적] 대전 1-0 서울",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T15:59:57+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418043700007",
+      "content_text": "◇ 18일 전적(서울월드컵경기장)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "2305db615f3f39b7",
+      "title": "[프로축구 강릉전적] 강원 1-1 전북",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T15:57:28+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418043600007",
+      "content_text": "◇ 18일 전적(강릉하이원아레나)",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "49233730d4578ad4",
+      "title": "[부고] 윤학수(대한전문건설협회 중앙회장)씨 모친상",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T15:45:03+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418043000003",
+      "content_text": "▲ 이채옥 씨 별세, 윤학수(대한전문건설협회 중앙회장)씨 모친상 = 18일, 서울아산병원 장례식장 30호, 발인 21일 오전 5시 ☎ 02-30...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "e8eb17ba6b97149f",
+      "title": "천주교 마산교구, 설립 60주년 새 청사…지역의 '희망의 등대'",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T15:43:51+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418043100052",
+      "content_text": "(창원=연합뉴스) 김동민 기자 = 천주교 마산교구(敎區)가 설립 60주년을 기념해 경남 창원시 마산합포구 진전면 죽헌로에 새 청사를 마련하고, ...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "42cb539f4e1f2770",
+      "title": "올림픽 농구에서 1천93점 기록…브라질 선수 오스카 슈미트 별세",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T15:27:05+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418042800505",
+      "content_text": "(서울=연합뉴스) 이충원 기자 = 1988년 9월24일 서울 잠실체육관(현 잠실실내체육관)에서 열린 서울올림픽 농구 브라질 대 스페인전. 스페인...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "b5748302a8b9a04d",
+      "title": "안 고쳐지는 두산 카메론 '4발 앞으로'…속 타는 김원형 감독",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T15:20:47+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418042600007",
+      "content_text": "(서울=연합뉴스) 이대호 기자 = 17일 서울 잠실구장에서 열린 프로야구 두산 베어스와 KIA 타이거즈 맞대결 승패는 사실상 외야 수비에서 갈렸...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d1c7ad02dcaf20bb",
+      "title": "광주 광역의원 4곳 중대선거구 시범 도입…선거 판도 바뀐다",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T15:12:32+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418042000054",
+      "content_text": "(광주·무안=연합뉴스) 박철홍 기자 = 정치개혁 방안을 담은 공직선거법 개정안이 국회를 통과하면서 전남광주통합특별시 지방의원 선거제도가 '비례대...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "6d5a13b8cc12e5a0",
+      "title": "프로야구 삼성 오러클린, LG전 4회에 헤드샷 퇴장…시즌 3호",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T15:05:35+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418042400007",
+      "content_text": "(서울=연합뉴스) 김동찬 기자 = 프로야구 삼성 라이온즈의 외국인 투수 잭 오러클린이 시즌 3호 헤드샷 퇴장을 당했다.",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "9477f736d5832bdf",
+      "title": "일본 나가노현 나가노시 서남서쪽서 규모 5.1 지진 발생",
+      "source": "연합뉴스",
+      "published_at": "2026-04-18T15:03:39+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260418042100530",
+      "content_text": "(서울=연합뉴스) 18일 오후 2시 54분(한국시간) 일본 나가노현 나가노시 서남서쪽 27km 지역에서 규모 5.1의 지진이 발생했다고 기상청이...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "3fb2935c13c41425",
+      "title": "광역단체장 후보 정리 끝낸 민주…재보선 공천 속도전",
+      "source": "매일경제",
+      "published_at": "2026-04-18T23:02:52+09:00",
+      "original_url": "https://www.mk.co.kr/news/politics/12020843",
+      "content_text": "與 ‘1호 영입 인재’ 발표…재보선 준비 ‘전략 공천’ 원칙…내부 교통정리 난항 전재수 사퇴 미루고 보선 연기 주장에 정청래 “꼼수 없다…사퇴하고 공천”더불어민주당의 6·3 지방선..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "a5a35c1d3f625ceb",
+      "title": "“월드컵 티켓 리셀 생각보다 짭짤하네”…美 투자사, 통 크게 질렀다",
+      "source": "매일경제",
+      "published_at": "2026-04-18T22:21:27+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020837",
+      "content_text": "리셀업체 지원 5000만달러로 증액 액면가보다 3배 올려 내놔도 잘팔려 BTS콘서트표 리셀 시장서 4배에 거래미국 투자사가 2026 국제축구연맹(FIFA) 북중미월드컵을 앞두고 축..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "2c0c95228a8ace33",
+      "title": "요즘 가장 핫하다는 국중박 ‘뮷즈’…중고시장 거래량도 10배 껑충",
+      "source": "매일경제",
+      "published_at": "2026-04-18T21:44:15+09:00",
+      "original_url": "https://www.mk.co.kr/news/business/12020836",
+      "content_text": "전통문화, MZ 팬덤소비로 진화박물관 기념품으로 여겨지던 전통 굿즈가 MZ세대의 ‘팬덤 소비’ 대상으로 급부상하고 있다. 국립박물관문화재단이 선보인 브랜드 ‘뮷즈(MU:DS)’가 ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "328231a0982bfbb6",
+      "title": "“적에 쓰라린 패배 안길 준비 돼 있다”…강경 메시지 낸 이란 최고지도자",
+      "source": "매일경제",
+      "published_at": "2026-04-18T20:53:03+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020832",
+      "content_text": "아야톨라 세예드 모즈타바 하메네이 이란 최고지도자가 18일(현지시간) ‘이란군의 날’을 맞아 강경한 메시지를 발표했다. 아야톨라 하메네이는 이날 성명에서 “이란의 드론이 미국과 시..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d62c7ab71a5b11a6",
+      "title": "“3년간 집값 안오르고 사겠단 사람도 없어요”…매물만 쏟아지는 세종",
+      "source": "매일경제",
+      "published_at": "2026-04-18T20:48:44+09:00",
+      "original_url": "https://www.mk.co.kr/news/realestate/12020831",
+      "content_text": "행정수도 호재에도 ‘무용지물’ 외지인 등 다주택자 매물 출회에 세종아파트 매물 1년전比 44%↑ 거래량이 매물 출회량 못 따라가시장에 나온 세종 아파트 매물량이 1년 사이 급증한 ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "06589eb8de228a0c",
+      "title": "[속보] 로또 1등 14명, 21억1000만원씩…‘2, 22, 25, 28, 34, 43’",
+      "source": "매일경제",
+      "published_at": "2026-04-18T20:47:01+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020830",
+      "content_text": "2등 보너스 번호 ‘16’로또복권 운영사 동행복권은 제1220회 로또복권 추첨에서 ‘2, 22, 25, 28, 34, 43’이 1등 당첨번호로 뽑혔다고 18일 밝혔다. 2등 보너스..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d0282ba7cc4223cd",
+      "title": "“100만마리 쏟아져 나왔다”…벌떼 태운 트럭 사고에 아수라장",
+      "source": "매일경제",
+      "published_at": "2026-04-18T20:35:04+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020822",
+      "content_text": "미국에서 벌 100만 마리를 태운 트럭이 충돌사고를 내면서 고속도로가 일부 통제됐다. AP통신은 17일(현지시간) 이날 미국 테네시주 동부의 한 고속도로에서 100만 마리에 가까운..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "92fc8407764c3577",
+      "title": "“올여름도 역대급으로 덥다는데”…냉감제품 신제품·생산량 확 늘어난다",
+      "source": "매일경제",
+      "published_at": "2026-04-18T20:30:59+09:00",
+      "original_url": "https://www.mk.co.kr/news/business/12020818",
+      "content_text": "가구·생활용품 업체, 여름맞이 박차최근 서울 한낮 기온이 27도까지 오른 가운데 가구·생활용품 기업들이 일찌감치 냉감 소재 제품을 출시하고 생산량을 늘리는 등 여름철 무더위 특수 ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "dd2a7bb575b83314",
+      "title": "“10대로 돌아간다면 쥐어패서라도”…신화 김동완이 밝힌 과거",
+      "source": "매일경제",
+      "published_at": "2026-04-18T20:22:34+09:00",
+      "original_url": "https://www.mk.co.kr/news/culture/12020813",
+      "content_text": "그룹 신화 멤버 겸 배우 김동완이 10대 시절부터 흡연했다고 고백했다. 김동완은 17일 자신의 SNS에 “10대로 돌아간다면 쥐어패서라도 끊게 만들고 싶은 것”이라며 사진을 올렸다..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d2b4ea7e57288210",
+      "title": "심정지 상태로 발견…고양 10층 건물 옥상서 고교생 추락사",
+      "source": "매일경제",
+      "published_at": "2026-04-18T19:36:23+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020797",
+      "content_text": "경기 고양시의 한 건물 옥상에서 고등학생이 추락해 사망하는 사고가 발생했다. 18일 경찰과 소방 당국에 따르면 이날 낮 12시37분께 고양시 일산동구의 한 건물 사이 바닥에 10대..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "6e007d2e2b0a3d65",
+      "title": "“저 승모근 좀 봐라”…약물 의혹 나온 ‘최강 여성 파이터’의 정체",
+      "source": "매일경제",
+      "published_at": "2026-04-18T18:58:14+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020776",
+      "content_text": "여성 격투기 시대를 열었던 론다 로우지가 MMA 복귀를 앞두고 때 아닌 논란에 휩싸였다. 미국 매체 ‘에센셜리스포츠’는 17일(한국시간) “로우지가 지나 카라노와의 복귀전을 앞두고..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "da5839368a59e891",
+      "title": "“한국은 출렁다리·케이블카만 있나요” 지적에…변화한 지방 관광 산업",
+      "source": "매일경제",
+      "published_at": "2026-04-18T18:48:02+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020772",
+      "content_text": "고래·온천·무인도…지역 특색 입힌 관광지 ‘잠깐 보고 떠나는 곳’에서 ‘머물고 싶은 곳’ 울산·대전·김포·광주·봉화…체류형 관광지지방 관광지 개발의 결이 달라지고 있다. 한국 관광..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "067819fc05115980",
+      "title": "단 5일만에 1조4천억원 벌었다…역대급 매출 기록한 태국 송크란 [제철축제]",
+      "source": "매일경제",
+      "published_at": "2026-04-18T18:41:18+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020770",
+      "content_text": "50만 외국인 몰려…창출 수익 약 4천억태국의 전통 새해 축제 송크란이 역대급 매출을 기록했다. 태국관광청에 따르면 지난 11일부터 15일까지 열린 송크란 축제 기간 동안 전체 관..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "37374ae60de74e9e",
+      "title": "“트럼프보다 제정신인 대통령은 없었다”…‘정신건강’ 지적에 옹호 나선 보건장관",
+      "source": "매일경제",
+      "published_at": "2026-04-18T18:30:08+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020765",
+      "content_text": "도널드 트럼프 미국 대통령의 정신 건강 상태가 도마위에 오르자 보건장관이 역대 대통령 가운데 가장 온전한 정신을 갖고 있다고 옹호했다. 미 정치 전문매체 더힐은 17일(현지시간) ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "747b39c14d9d43d0",
+      "title": "“재킷 하나에 89만원이요?”…가격 논란에도 흥행, 팬심에 스타일 얹자 품절까지",
+      "source": "매일경제",
+      "published_at": "2026-04-18T18:12:10+09:00",
+      "original_url": "https://www.mk.co.kr/news/business/12020758",
+      "content_text": "구장서만 입는게 아닌 일상서도 즐기는 패션 추억 소비 자극 전략도 브랜드 협업 제작까지“가격 보고 눈을 89만번 비볐어요.” 프로야구 롯데 자이언츠가 올해 선보인 89만원짜리 ‘레..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "575cd6b078e899d2",
+      "title": "“호르무즈 통제 다시 한다”…미국 봉쇄 지속에 이란도 ‘맞불’",
+      "source": "매일경제",
+      "published_at": "2026-04-18T18:06:24+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020753",
+      "content_text": "이란 군부는 미국의 자국 봉쇄가 계속되고 있다며 호르무즈 해협 통제를 재개한다고 18일(현지시간) 밝혔다. AFP통신에 따르면 하탐 알안비야 중앙군사본부의 에브라힘 졸파가리 대변인..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "71cb109fddcd3e2b",
+      "title": "이란, 폐쇄 49일만 하늘길 부분 개방…정작 항공기는 우회",
+      "source": "매일경제",
+      "published_at": "2026-04-18T17:56:04+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020749",
+      "content_text": "미국과 이란 간 2차 종전협상이 임박한 것으로 알려진 가운데 이란 정부가 자국 동부 영공을 국제 항공편이 이용할 수 있도록 부분적 개방한다고 18일(현지시간) 밝혔다. 지난 2월2..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ffccda3f2da74947",
+      "title": "“GDP 성장률보다 2배 빠르게 오르고 있어”…관광 공사가 ‘럭셔리 시장’ 공략하는 이유",
+      "source": "매일경제",
+      "published_at": "2026-04-18T17:50:18+09:00",
+      "original_url": "https://www.mk.co.kr/news/culture/12020744",
+      "content_text": "한국관광공사·버츄오소 협약, 럭셔리 시장 공략 동북아 최초 버츄오소 심포지엄, 서울에서 개최 5년간 4135억 효과 전망 고부가가치 관광 강화 K-헤리티지 결합, 한국형 럭셔리 콘..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "a8b0332ba567dca7",
+      "title": "“이제 300만 내면 된다”…월 이자 1200만원, 40억 건물주 이해인 무슨일이",
+      "source": "매일경제",
+      "published_at": "2026-04-18T17:27:57+09:00",
+      "original_url": "https://www.mk.co.kr/news/realestate/12020730",
+      "content_text": "배우 겸 유튜버인 이해인이 공실 문제 부담이 컸던 건물 상황이 나아졌다고 근황을 전했다. 이해인은 최근 자신의 인스타그램에 “안 된다고 했던 건물”이라며 현재 상황을 공개했다. 그..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "961d2f3b22c2215d",
+      "title": "“한국에선 일자리도 알바도 못 구해요”…‘워홀’ 떠난 청년, 2년새 두 배",
+      "source": "매일경제",
+      "published_at": "2026-04-18T17:24:13+09:00",
+      "original_url": "https://www.mk.co.kr/news/economy/12020727",
+      "content_text": "2022년 2만1424건 → 2024년 3만8590건 비자 발급, 호주·캐나다·日·英·뉴질랜드 순 “직무 연관성 없우면 취업 도움 안 될 수도”# 취업 준비 중 여러 번 떨어진 박..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "df86fe5fc9ad678e",
+      "title": "“반죽 많이 할수록 국수 맛있고 아내는 때릴수록”…中국수집 현수막 ‘논란’",
+      "source": "매일경제",
+      "published_at": "2026-04-18T16:51:53+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020708",
+      "content_text": "중국의 한 국수집이 가정 폭력을 옹호하는 듯한 슬로건을 게시해 바난을 받고 있다. 18일 홍콩 사우스차이나모닝포스트(SCMP)에 따르면 중국 북서부 칭하이성 시닝에 있는 한 식당은..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "834d9b3a2d27de73",
+      "title": "5선 도전하는 오세훈…“서울 내주면 정권 폭주 제동장치 사라져”",
+      "source": "매일경제",
+      "published_at": "2026-04-18T16:47:51+09:00",
+      "original_url": "https://www.mk.co.kr/news/politics/12020707",
+      "content_text": "6·3 지방선거를 앞두고 국민의힘 서울시장 후보로 확정된 오세훈 서울시장이 “서울을 내어주면 이 정권의 폭주를 막을 마지막 제동장치가 사라지고 대한민국 민주주의는 치명적인 위험에 ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "5c4380149474b966",
+      "title": "가라는 거야 말라는 거야…미국 이란 신경전에 호르무즈 선박들 ‘대혼란’",
+      "source": "매일경제",
+      "published_at": "2026-04-18T16:13:56+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020703",
+      "content_text": "이란이 미국과의 2차 종전 협상을 앞두고 17일(현지시간) 호르무즈 해협 봉쇄 일시 해제를 발표했지만 실제 해협이 개방돼 선박들의 자유로운 통항이 가능해지기까지는 많은 산을 넘어야..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "64acf438dfbb3f0a",
+      "title": "주요 노선으로 한국 콕 집었다…비행 취소 ‘날벼락’ 걱정 말라는 썬푸꾸옥항공 [현장]",
+      "source": "매일경제",
+      "published_at": "2026-04-18T15:35:51+09:00",
+      "original_url": "https://www.mk.co.kr/news/business/12020698",
+      "content_text": "썬푸꾸옥항공, 인천-푸꾸옥 노선 취항 시작 항공업 진출로 관광 제국 마지막 퍼즐 완성베트남을 대표하는 디벨로퍼 썬그룹이 썬푸꾸옥항공을 설립하고 항공업에 뛰어들었다. 비행기와 호텔·..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d1bcfd4ba874ffa1",
+      "title": "늑구, 동물원 복귀 후 첫 끼는 ‘특식’…소·닭고기 먹으며 회복 중",
+      "source": "매일경제",
+      "published_at": "2026-04-18T15:35:28+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020697",
+      "content_text": "대전 오월드를 벗어나 열흘 만에 집으로 돌아오는 과정에서 전국적인 관심을 받은 늑대 ‘늑구’가 특식을 먹으며 건강을 회복하고 있다. 18일 대전시 등에 따르면 전날 포획된 늑구는 ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "5b23e19b580d703f",
+      "title": "“쇼핑으로 탕진, 건물 샀으면 3채”…전성기 수입 100억, 서인영의 후회",
+      "source": "매일경제",
+      "published_at": "2026-04-18T15:23:06+09:00",
+      "original_url": "https://www.mk.co.kr/news/culture/12020696",
+      "content_text": "가수 서인영이 전성기 시절 소비 습관에 대해 후회한다고 밝혔다. 18일 tvN 예능 프로그램 ‘유퀴즈 온 더 블럭’은 공식 유튜브 채널을 통해 “신데렐라, 신상녀로 대세 찍던 최전..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ace4b7e19b964379",
+      "title": "나홀로 7개월간 22개국을 3만5천km 달려간 끝에 마주한 것 [여책저책]",
+      "source": "매일경제",
+      "published_at": "2026-04-18T15:15:53+09:00",
+      "original_url": "https://www.mk.co.kr/news/culture/12020694",
+      "content_text": "여행은 어떤 이에게는 단순히 즐기는 시간일 수 있습니다. 하지만 또 다른 누군가에게는 삶의 문제를 해결하고 내면을 성장시키기 위한 계기가 될 수 있습니다. 무엇이 더 옳다고 할 수..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "60f15f64bbb03385",
+      "title": "“술집서 떠들 수도 있지”…억울함 호소한 고 김창민 감독 가해자",
+      "source": "매일경제",
+      "published_at": "2026-04-18T15:04:04+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020688",
+      "content_text": "집단 폭행으로 숨진 고 김창민 감독 사건에 대해 가해자가 방송을 통해 억울하다는 입장을 내놨다. 해당 사건의 핵심 피의자인 이모씨는 지난 17일 방송된 SBS ‘궁금한 이야기 Y’..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "c60705a9d2176b5a",
+      "title": "“양도세 직격탄”…‘장특공제 폐지 법안’에 반대만? 찬성 의견도 有",
+      "source": "매일경제",
+      "published_at": "2026-04-18T14:52:04+09:00",
+      "original_url": "https://www.mk.co.kr/news/realestate/12020683",
+      "content_text": "이 대통령 “장특공제 폐지가 세금폭탄? 명백한 거짓선동”최근 범여권에서 1주택자의 양도소득세 장기보유특별공제(이하 장특공제)를 폐지하는 법안을 발의하자 1만 5300여명에 가까운 ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "af8e8e918c8145b1",
+      "title": "이란 “휴전 기간 상선에는 호르무즈 개방”…미 “해군 봉쇄는 유지”",
+      "source": "매일경제",
+      "published_at": "2026-04-18T14:42:31+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020682",
+      "content_text": "이란 당국은 17일(현지시간) 레바논 휴전 발효에 따라 호르무즈 해협 통행 제한을 일시 해제한다고 밝혔다. 아바스 아라그치 이란 외무장관은 이날 자신의 엑스(X) 계정을 통해 “레..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "059034cf26f44f10",
+      "title": "누구나 보험 설계사로 투잡…‘N잡러’에 소비자는 피해 우려 있다는데",
+      "source": "매일경제",
+      "published_at": "2026-04-18T14:28:26+09:00",
+      "original_url": "https://www.mk.co.kr/news/economy/12020679",
+      "content_text": "누구나 부업으로 보험 설계사 활동 금융당국, 보험사에 관리 강화 주문 가입자 장기 관리 힘들다는 우려도본업을 두고 보험설계사를 부업으로 병행하며 수익을 내는 ‘N잡러’(2개 이상의..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "78ea37efa660b1dd",
+      "title": "화물차가 앞서가던 차량 ‘쾅’, 터널서 6중 추돌…12명 중경상",
+      "source": "매일경제",
+      "published_at": "2026-04-18T14:22:01+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020676",
+      "content_text": "세종포천고속도로 금광터널서 6중 추돌 사고가 발생했다. 경찰에 따르면 18일 오전 11시10분께 경기 안성시 세종포천고속도로 세종방면 금광터널 안에서 8.5t 화물차를 포함한 차량..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "592b1dc5cba22bc9",
+      "title": "전쟁 전에는 스테이크 랍스터 먹었는데…중동 배치 미군, 식사 ‘경악’",
+      "source": "매일경제",
+      "published_at": "2026-04-18T14:05:26+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020672",
+      "content_text": "지난달 2월 28일 미국과 이스라엘 공격으로 시작된 이란 전쟁에 파견된 미군 병사들에게 심각하게 부실한 수준의 식사게 제공되고 있다는 폭로가 나오고 있다. 영국 일간 텔레그래프는 ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d86277181597a59c",
+      "title": "‘BJ 추행 혐의’ 유명 걸그룹 멤버 오빠…검찰서 구속영장 반려, 왜?",
+      "source": "매일경제",
+      "published_at": "2026-04-18T14:03:33+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020671",
+      "content_text": "여성 인터넷방송 진행자(BJ)를 추행한 혐의로 체포된 유명 걸그룹 멤버 오빠에 대해 경찰이 신청한 구속영장이 검찰에서 반려됐다. 18일 검찰 등에 따르면 서울중앙지검은 전날 남성 ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ab7df5434c23b207",
+      "title": "“부산서 일본 남자가 성추행”…중국 관광객 주장에 경찰 수사",
+      "source": "매일경제",
+      "published_at": "2026-04-18T14:02:41+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020670",
+      "content_text": "부산을 방문한 중국인 관광객이 일본 국적 남성에게 성추행당했다고 주장하는 글이 확산 중인 가운데 경찰이 관련 수사를 진행하고 있다. 18일 부산진경찰서 등에 따르면 지난 17일 중..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "53eec46923ed5e4a",
+      "title": "“돈 자랑하냐”…고인 장례식에 2억원짜리 벤츠 땅에 묻은 가족들, 논란",
+      "source": "매일경제",
+      "published_at": "2026-04-18T13:42:44+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020666",
+      "content_text": "중국 북동부의 한 마을에서 메르세데스-벤츠 차량을 장례 제물로 매장해 법규 위반을 비롯해 환경 안전 문제로 주민들의 분노를 샀다고 홍콩 사우스차이나모닝포스트(SCMP)가 18일 보..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "faaad02f6d1e35b3",
+      "title": "“꽃 받고, 책 읽고, 달리기까지”…이번 주말 서울에서 할 것 5가지",
+      "source": "매일경제",
+      "published_at": "2026-04-18T13:34:12+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020665",
+      "content_text": "재활용하면 꽃으로…도심 곳곳 ‘봄 체험·힐링’ 확대 광화문에서 한강까지…독서·러닝·스포츠 한 번에이번 주말, 멀리 떠나지 않아도 서울 도심에서 즐길 수 있는 프로그램이 쏟아진다. ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "5ed40d26bcabec2f",
+      "title": "李대통령 “장기보유특별공제 폐지가 세금폭탄? 명백한 거짓선동”",
+      "source": "매일경제",
+      "published_at": "2026-04-18T13:27:09+09:00",
+      "original_url": "https://www.mk.co.kr/news/politics/12020664",
+      "content_text": "이재명 대통령은 18일 부동산 양도세 장기보유특별공제(장특공제)를 폐지하면 ‘세금 폭탄’으로 이어질 것이라는 국민의힘 주장에 “논리모순이자 명백한 거짓 선동”이라고 반박했다. 이 ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "6a6131d818527ad0",
+      "title": "트럼프 “22일까지 이란과 합의 안되면 휴전연장 안할수도”",
+      "source": "매일경제",
+      "published_at": "2026-04-18T12:41:37+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020660",
+      "content_text": "도널드 트럼프 미국 대통령이 17일(현지시간) 오는 22일까지 이란과 종전 협상 합의를 이루지 못하면 휴전 연장을 하지 않을 수도 있다며 이란을 압박했다. 트럼프 대통령은 이날 애..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "bb734619b6bbc72e",
+      "title": "신비주의 깬 임성한 “드라마 집필, 건강에 치명적… 몇 년 쉴까 해”",
+      "source": "매일경제",
+      "published_at": "2026-04-18T11:40:24+09:00",
+      "original_url": "https://www.mk.co.kr/news/culture/12020658",
+      "content_text": "‘시청률 제조기’ 임성한(필명 피비) 작가가 신비주의를 깨고 11년 만에 입을 열었다. 임성한 작가는 지난 17일 유튜브 채널 ‘엄은향’과의 전화 인터뷰를 통해 근황을 전했다. 1..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ad88a66870d5927b",
+      "title": "송언석 “이 대통령, 통일부 장관 경질해야…美가 정보공유 제한”",
+      "source": "매일경제",
+      "published_at": "2026-04-18T11:34:41+09:00",
+      "original_url": "https://www.mk.co.kr/news/politics/12020657",
+      "content_text": "정동영 통일부 장관이 북한 영변·강선 외에 평안북도 구성을 핵시설 소재지가 있다고 언급한 것을 두고 미국 정부가 정보공유 제한 방침 등을 통보했다는 언론 보도가 나오자 송언석 국민..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "a5f343056a035e3b",
+      "title": "‘마약왕’ 박왕열 못지않은 조카…‘흰수염고래’ 상대로 합수본 조사",
+      "source": "매일경제",
+      "published_at": "2026-04-18T10:54:57+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020650",
+      "content_text": "일명 ‘마약왕’으로 불린 박왕열을 수사 중인 마약범죄 정부합동수사본부가 박왕열의 외조카이자 공범인 ‘흰수염고래’ A씨를 필리핀 현지에서 조사했다. 18일 수사당국에 따르면 마약합수..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "7096dc20e22295cc",
+      "title": "주호영 “홍준표가 김부겸 적극 도와도 별로 도움 안 될 것”",
+      "source": "매일경제",
+      "published_at": "2026-04-18T10:54:34+09:00",
+      "original_url": "https://www.mk.co.kr/news/politics/12020649",
+      "content_text": "홍준표 전 대구시장이 김부겸 더불어민주당 대구시장 후보 지지를 공식 선언한 가운데 당의 후보 경선에서 컷오프(공천 배제)된 주호영 국민의힘 의원이 “홍 전 시장이 적극 도와도 김 ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ab2f99ea04868590",
+      "title": "우승하려면 이정도는 써야지…다저스 지난해 쓴돈 ‘입이 쩍’, 얼마길래",
+      "source": "매일경제",
+      "published_at": "2026-04-18T10:53:52+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020648",
+      "content_text": "지난 2025시즌 미국 프로야구 메이저리그(MLB) 월드시리즈 우승팀인 로스앤젤레스(LA) 다저스가 지난해 5억1500만달러(7559억원)을 지출한 것으로 나타났다. 이는 MLB ..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "228010fd0b1c4297",
+      "title": "미·이란, 20일 파키스탄서 2차 종전담판 전망",
+      "source": "매일경제",
+      "published_at": "2026-04-18T10:39:52+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020643",
+      "content_text": "미국과 이란의 2차 종전 담판이 오는 20일(현지시간) 파키스탄 이슬라마바드에서 열릴 것으로 보인다. 도널드 트럼프 미국 대통령이 “하루, 이틀 내 합의”를 자신하고 이란도 이스라..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "a7ae7904d91ce808",
+      "title": "“자식 대학 보낼 생각으로 버텨”…16년간 150kg 시멘트 나른 싱글맘의 월수입",
+      "source": "매일경제",
+      "published_at": "2026-04-18T10:39:11+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12020642",
+      "content_text": "중국에서 16년 동안 건설 현장에서 일하며 두 아이를 키우면서 교육비를 마련해온 싱글맘 이야기가 온라인에서 수많은 감동을 주고 있다고 홍콩 사우스차이나모닝포스트(SCMP)가 18일..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "e82a085bc8f165c1",
+      "title": "“또 음식 갖고 장난질?”…스테이크 원산지 ‘한우’라고 속인 업주",
+      "source": "매일경제",
+      "published_at": "2026-04-18T10:35:29+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12020641",
+      "content_text": "강원도 춘천의 한 유명 레스토랑에서 육우로 만든 스테이크를 한우로 만든 메뉴라고 표기하는 등 4년간 손님들을 속인 50대 업주가 적발돼 처벌받았다. 18일 법조계에 따르면 춘천지법..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ea1ed51b2b7a3782",
+      "title": "공식자리는 이번이 처음…송중기 배우출신 아내와 첫 동반 일정, 어디길래",
+      "source": "매일경제",
+      "published_at": "2026-04-18T10:12:16+09:00",
+      "original_url": "https://www.mk.co.kr/news/culture/12020637",
+      "content_text": "배우 송중기가 아내 케이티 루이스 사운더스와 처음으로 동반 일정에 나선다. 송중기와 케이티부부는 18일 서울 서초구 예술의전당 IBK기업은행 챔버홀에서 열리는 가온 솔로이스츠의 제..",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "1d61550bce1bde10",
+      "title": "“이란 혁명수비대, 유조선에 발포”…호르무즈 해협 다시 긴장",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/international/arabafrica/1254825.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "5214d8b3e1a11ea0",
+      "title": "이란 새 최고지도자 “적에게 쓰라린 패배 안길 것”",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/international/international_general/1254824.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "6d3b09b4f77fb56c",
+      "title": "일요일 서울·춘천 30도 육박…4월 중순에 초여름 더위",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/society/society_general/1254823.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "6a620f4dfe85e206",
+      "title": "이란 군부 “호르무즈 해협 다시 통제…미국이 해적질 계속”",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/international/arabafrica/1254822.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "6232615cf1acc13c",
+      "title": "민주 제주지사 후보에 위성곤…국힘 문성유와 맞대결",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/politics/assembly/1254821.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "32ee1efb893e5b2d",
+      "title": "2.6㎝ 낚싯바늘 제거한 ‘늑구’…“소·닭고기 먹고 휴식 중”",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/society/society_general/1254820.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "9533c52a7d97bb12",
+      "title": "[포토] “지금 당장, 쓰레기와 이별”…지구의 날, 초록 실천의 하루",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/society/environment/1254819.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "195f4e3a6eb365fe",
+      "title": "마이바흐부터 AMG까지…‘21세기 대군부인’ 속 왕가의 차는 벤츠",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/economy/car/1254818.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "35322e54d914a527",
+      "title": "22년 만에 바뀐 정당법…‘차떼기’로 폐지됐던 지구당 부활 수순?",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/politics/politics_general/1254817.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "f453cb0b2a8fb305",
+      "title": "배현진, 장동혁에 “돌아오면 거취 고민하길”…당내선 “탈영” 비판도",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/politics/politics_general/1254816.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "26f42861cb53d6f2",
+      "title": "이게 중동 링컨함 미군 식사라고?…가공육·당근·패티 조각 ‘딸랑’",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/international/america/1254815.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "93ad4c2ab1e7b95a",
+      "title": "트럼프 “이란과 종전 합의 안 되면, 휴전 연장 없이 공습 재개”",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/international/america/1254814.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "fd87e1d334e0d0f2",
+      "title": "이 대통령 “장기보유특별공제 폐지가 세금폭탄?…국힘, 거짓 선동”",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/politics/politics_general/1254813.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "5310f0cb948fbab6",
+      "title": "자궁출혈 등 ‘코로나 백신 부작용’ 추가 인정·보상 한다",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/society/health/1254812.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "9f8ad6b3d5aaad39",
+      "title": "‘유명 인플루언서 수사 무마 의혹’ 경찰 직위 해제",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/society/society_general/1254811.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "2d70acc1b9277399",
+      "title": "오세훈 “장동혁 역할 줄어들 것”…‘독자 선대위’ 구성 속도",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/politics/politics_general/1254810.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "18d106f304675f13",
+      "title": "‘호르무즈 개방’ 발표 직전 유가 하락 1조원 베팅…또 정보 유출?",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/international/america/1254809.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "9045707f4aabb944",
+      "title": "트럼프 “UFO 관련 흥미로운 자료 곧 공개”…오바마 발언 뒤 지시",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/international/america/1254808.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "3b25b64806eb1682",
+      "title": "미국 증시, 연일 사상 최고치 경신…이란 ‘호르무즈 개방’ 효과",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/economy/economy_general/1254807.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "8871663f4fdfc67f",
+      "title": "오세훈, 국힘 서울시장 후보로 선출…민주 정원오와 맞대결",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/politics/politics_general/1254806.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "b6066d358d2906b6",
+      "title": "밤엔 단것 당기고 아침엔 ‘멍’…‘비전형 우울’일지도 [.txt]",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/culture/culture_general/1254805.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "f1d1ce746671f228",
+      "title": "기꺼이 외딴섬이 되라, 그때 ‘나’는 확장된다 [.txt]",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/culture/book/1254804.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "0432c2fe73d4cbb6",
+      "title": "노후, ‘어디서’가 아니라 ‘누구와 어떻게’ [.txt]",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/culture/book/1254803.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "64a163436c67d55a",
+      "title": "‘문단 미투’ 김현진씨 28살 나이로 숨져…박진성 시인 성폭력 폭로",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/society/women/1254802.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "230c6e511097bb96",
+      "title": "미·이란, 2차 종전 담판 20일 파키스탄서 열 듯…핵 이견 여전",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/international/america/1254801.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d32d9aa067a1a0cc",
+      "title": "“목표는 하나” 정치검사들은 어떻게 이재명을 사냥했나 [논썰]",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/politics/politics_general/1254800.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "d0f013ec311aa263",
+      "title": "권세가들의 엽색 범죄, 조선이나 미국이나 [.txt]",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/opinion/column/1254799.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "ec8df14574b90843",
+      "title": "주말 내내 이른 더위…서울 낮 최고 27도까지 오른다",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/society/environment/1254798.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "b219355f096b0241",
+      "title": "“입시 위한 독서 교육은 그만”…아이들이 ‘주인공’ 되는 책읽기 [.txt]",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/culture/book/1254797.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "e78686ccf7dffb17",
+      "title": "지역서점 살릴 방안, 현장의 목소리 들어라 [.txt]",
+      "source": "한겨레",
+      "published_at": "2026-04-19T02:44:36.107028+09:00",
+      "original_url": "https://www.hani.co.kr/arti/culture/book/1254796.html",
+      "content_text": "",
+      "category": "general_news",
+      "keywords": []
+    }
+  ]
+}
