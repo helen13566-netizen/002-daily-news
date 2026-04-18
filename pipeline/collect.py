@@ -24,6 +24,7 @@ from typing import Any, Iterable
 
 import feedparser
 import pytz
+import requests
 from bs4 import BeautifulSoup
 
 from pipeline.config import (
@@ -37,14 +38,20 @@ from pipeline.config import (
 
 logger = logging.getLogger(__name__)
 
+# 한국 뉴스 사이트 다수가 비브라우저 UA를 차단(403·Cloudflare·지역 차단 페이지 응답)하므로 Chrome UA로 위장.
 USER_AGENT = (
-    "DailyNewsBriefing/1.0 "
-    "(+https://github.com/helen13566-netizen/002-daily-news)"
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/131.0.0.0 Safari/537.36"
 )
 
 PER_FEED_TIMEOUT_SECONDS: float = 15.0
 MAX_CONTENT_CHARS: int = 2000
 KST = pytz.timezone(KST_TZ_NAME)
+
+
+class FeedFetchError(Exception):
+    """피드 수집 실패 — HTTP 비정상 응답 또는 비-XML 컨텐츠."""
 
 
 # ---------------------------------------------------------------------------
@@ -188,13 +195,63 @@ def match_ai_keywords(title: str, content: str) -> list[str]:
 # ---------------------------------------------------------------------------
 
 
+_BROWSER_HEADERS: dict[str, str] = {
+    "User-Agent": USER_AGENT,
+    "Accept": (
+        "application/rss+xml, application/atom+xml, application/xml;q=0.9, "
+        "text/xml;q=0.9, text/html;q=0.8, */*;q=0.5"
+    ),
+    "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Cache-Control": "no-cache",
+    "Pragma": "no-cache",
+}
+
+
 def _fetch_feed_once(feed: RSSFeed) -> Any:
-    """feedparser.parse 1회 호출. network timeout 은 feedparser 옵션 위임."""
-    return feedparser.parse(
-        feed.url,
-        agent=USER_AGENT,
-        request_headers={"User-Agent": USER_AGENT},
+    """피드 1회 fetch + 파싱.
+
+    feedparser.parse(URL) 직호출은 SAX 에러 원인을 숨긴다. 여기서는:
+      1. requests 로 받아 HTTP 상태/Content-Type/선두 바이트를 진단 로깅
+      2. 비정상 응답(4xx/5xx 또는 비XML)은 FeedFetchError 로 즉시 예외화
+      3. 200 + XML 본문만 feedparser 에 문자열로 전달
+    """
+    try:
+        resp = requests.get(
+            feed.url,
+            headers=_BROWSER_HEADERS,
+            timeout=PER_FEED_TIMEOUT_SECONDS,
+            allow_redirects=True,
+        )
+    except requests.RequestException as exc:
+        raise FeedFetchError(
+            f"{feed.name} network error: {type(exc).__name__}: {exc}"
+        ) from exc
+
+    status = resp.status_code
+    ctype = resp.headers.get("Content-Type", "")
+    body = resp.content  # bytes — feedparser 가 인코딩 판별
+    preview = body[:200].decode("utf-8", errors="replace")
+
+    if status != 200:
+        raise FeedFetchError(
+            f"{feed.name} HTTP {status} ctype={ctype!r} "
+            f"preview={preview!r}"
+        )
+
+    # 일부 서버가 text/html 로 XML 을 돌려주는 경우가 있어 Content-Type 만으로 거르지 않는다.
+    # 단, 본문이 HTML 문서(<html/<!doctype html)로 시작하면 차단/에러 페이지로 간주.
+    lowered = preview.lstrip().lower()
+    if lowered.startswith(("<!doctype html", "<html")):
+        raise FeedFetchError(
+            f"{feed.name} HTML response (likely blocked) ctype={ctype!r} "
+            f"preview={preview!r}"
+        )
+
+    logger.info(
+        "[%s] HTTP %d %s bytes=%d", feed.name, status, ctype, len(body)
     )
+    return feedparser.parse(body)
 
 
 def fetch_feed_with_retry(
