@@ -16,5 +16,6 @@ node_modules/
 
 # 로컬 렌더 스모크용 샘플 — 커밋하지 않는다.
 tests/fixtures/
-state/analyzed.json
-state/candidates.json
+
+# state/candidates.json 과 state/analyzed.json 은 Actions/Agent 파이프라인에서
+# 의도적으로 저장소에 커밋되므로 ignore 하지 않는다.
