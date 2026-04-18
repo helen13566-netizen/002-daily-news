@@ -13,3 +13,8 @@ env/
 .DS_Store
 *.swp
 node_modules/
+
+# 로컬 렌더 스모크용 샘플 — 커밋하지 않는다.
+tests/fixtures/
+state/analyzed.json
+state/candidates.json
