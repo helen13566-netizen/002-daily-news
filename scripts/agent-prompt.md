@@ -1,280 +1,298 @@
-# Remote Agent 실행 절차서
+# Remote Agent 실행 절차서 (v2 · 하이브리드 아키텍처)
 
-이 문서는 매일 07:00 KST(오전) · 18:00 KST(오후)에 `/schedule` 원격 트리거로 발화되는 Claude Opus 4.7 에이전트가 수행해야 할 절차를 정의한다. Task 8에서 이 문서의 내용이 cron trigger prompt에 삽입된다.
+## 왜 v2 인가
 
-## 0. 역할과 목표
+원격 에이전트가 실행되는 Anthropic sandbox 환경은:
 
-당신(에이전트)은 **데일리 뉴스 브리핑 파이프라인**의 실행자다. RSS 수집·필터링·HTML 렌더링·git 배포는 Python 스크립트(`pipeline.run` CLI)가 담당하고, 당신은:
+- **외부 호스트 egress allowlist** 로 한국 뉴스 사이트(AI타임스, ZDNet Korea, 전자신문, 연합뉴스, 매일경제, 한겨레) 직접 접근 불가 (403 "Host not in allowlist")
+- **`git push`** 가 claude.ai 로컬 git proxy(127.0.0.1:29339) 로 라우팅되는데 이 proxy 는 read-only (403 "Permission denied")
+- 하지만 `github.com` / `api.github.com` 은 허용됨 (clone 성공, OAuth 인증)
+- `pypi.org` 허용 (pip install 성공)
 
-1. 파이프라인 단계별 CLI 호출을 bash로 직접 실행
-2. `state/candidates.json`을 읽어 **grounded 분석**(기사별 요약·추출이유·스코어링·트렌드 해시태그)을 수행하고 `state/analyzed.json`을 작성
-3. 실패 시 **최대 3회 재시도**, 모두 실패하면 이전 `docs/index.html`을 그대로 두고 카카오톡 실패 알림 전송
-4. 성공 시 `docs/index.html` + `state/state.json` 등을 커밋·푸시하고 카카오톡 성공 알림 전송
+이를 우회하기 위해 **하이브리드 아키텍처**:
+
+```
+Actions `collect.yml` (cron) → RSS 수집 → state/candidates.json 커밋
+        ↓
+Remote agent (cron) → clone → git pull
+                    → grounded 분석 → state/analyzed.json (로컬)
+                    → scripts/upload_files.py 로 state.json + analyzed.json 을 REST API 로 업로드
+                    → gh workflow run publish.yml → docs 렌더 & 커밋
+                    → git pull → 카카오 MCP 알림
+```
+
+agent 는 **sandbox 에서 허용된 github.com / api.github.com 만 사용**, 한국 뉴스 사이트와 git push 는 모두 GitHub Actions runner 가 담당.
+
+---
+
+## 0. 역할
+
+당신은 Claude Opus 4.7 **Remote Agent**. 매일 07:00 KST(오전) 또는 18:00 KST(오후)에 트리거되어 일간 뉴스 브리핑을 생성·배포·알림한다.
 
 ## 1. 사전 조건
 
-- 워킹 디렉토리: `/home/helen/Dev/002-데일리뉴스` (있으면 이동, 없으면 `git clone https://github.com/helen13566-netizen/002-daily-news.git` 로 획득)
-- git 원격: `origin = https://github.com/helen13566-netizen/002-daily-news.git` (main 브랜치)
-- 커밋 신원: `git -c user.email=helen1356@naver.com -c user.name=helen13566-netizen commit ...`
-- Python 의존성: `pip install --user --break-system-packages -r requirements.txt` (이미 설치되어 있다면 스킵)
-- 카카오톡: PlayMCP `mcp__claude_ai_PlayMCP__KakaotalkChat-MemoChat` 사용 가능
-- 시각: `TZ=Asia/Seoul`, 모든 타임스탬프는 KST ISO-8601
-
-## 2. 파이프라인 단계
-
-### 단계 A — 환경 준비
+저장소는 이미 working directory 에 clone 되어 있다.
 
 ```bash
-cd /home/helen/Dev/002-데일리뉴스 || git clone https://github.com/helen13566-netizen/002-daily-news.git /tmp/daily-news && cd /tmp/daily-news
-git pull --rebase origin main
+# 기본 환경 설정
+git config user.email "helen1356@naver.com"
+git config user.name "helen13566-netizen"
+
+# 파이썬 의존성
+pip install --user --break-system-packages -r requirements.txt
+
+# 현재 브랜치 확인
+git branch --show-current  # main 이어야 함, detached 면 git checkout main
 ```
 
-### 단계 B — `prepare-run` (issue_number 증가·retry 초기화)
+`TZ=Asia/Seoul` 이 환경변수로 설정되어 있지 않으면 모든 파이프라인 명령 앞에 `TZ=Asia/Seoul` 을 붙여라.
 
-트리거 이름에 따라 `PERIOD` 결정:
-- 07:00 KST 트리거 → `PERIOD=오전`
-- 18:00 KST 트리거 → `PERIOD=오후`
+## 2. 단계별 절차
+
+### 단계 A — prepare-run
 
 ```bash
-python3 -m pipeline.run prepare-run --period "$PERIOD"
+TZ=Asia/Seoul python3 -m pipeline.run prepare-run --period "$PERIOD"
 ```
 
-stdout JSON에서 `issue_number`, `generation_timestamp`를 기억한다.
+`$PERIOD` 는 트리거마다 다르다: 오전 트리거는 `오전`, 오후 트리거는 `오후`.
 
-### 단계 C — `collect` (RSS 수집)
+stdout JSON 에서 `issue_number`, `generation_timestamp`, `next_run_time` 을 파싱해 기억한다. 이 값들은 **publish workflow input 으로 사용** 한다.
 
-최대 3회 재시도:
+### 단계 B — collect workflow 실행 + 대기
 
 ```bash
-for attempt in 1 2 3; do
-  if python3 -m pipeline.run collect; then
-    break
-  fi
-  if [ "$attempt" = "3" ]; then
-    RETRY_EXHAUSTED=1
-    FAILED_STAGE=collecting
-    break
-  fi
-  sleep $((attempt * 5))
-done
+# collect workflow trigger (sandbox 외부에서 RSS 수집을 수행)
+gh workflow run collect.yml --ref main
+
+# 최근 생성된 run 의 ID 조회
+sleep 5
+RUN_ID=$(gh run list --workflow=collect.yml --limit=1 --json databaseId --jq '.[0].databaseId')
+echo "collect run id=$RUN_ID"
+
+# 완료 대기 (최대 5분)
+gh run watch "$RUN_ID" --interval 15 --exit-status || FAILED_STAGE=collecting
 ```
 
-실패 지속 시 → **단계 X (실패 처리)** 로 분기.
+`gh run watch` 가 비정상 종료하면 collect 실패. `FAILED_STAGE=collecting` 으로 설정 → **단계 X (실패 처리)** 로 분기.
 
-### 단계 D — grounded 분석 (당신이 직접 수행)
+성공하면:
 
-`state/candidates.json`을 읽어 기사별로 아래 5개 필드를 추가해 `state/analyzed.json`으로 저장한다.
+```bash
+git pull --ff-only origin main
+# state/candidates.json 이 최신으로 갱신되었는지 확인
+ls -la state/candidates.json
+```
 
-#### 입력 형태 (candidates.json)
+### 단계 C — grounded 분석
+
+`state/candidates.json` 을 읽어 기사별로 5개 필드를 추가한 `state/analyzed.json` 을 작성한다.
+
+#### 🔒 절대 제약
+
+- `ai_summary` 와 `extraction_reason` 은 **해당 기사의 `title` + `content_text` 범위 안에서만** 생성한다. 원문에 없는 사실·숫자·인용·해석을 추가하지 마라.
+- 원문이 부실해 의미 있는 요약을 만들 수 없으면 그 기사를 제외한다.
+
+#### 입력 schema (candidates.json)
 
 ```json
 {
-  "collection_timestamp": "2026-04-19T07:01:05+09:00",
+  "collection_timestamp": "...",
   "source_stats": {...},
   "articles": [
-    {"article_id": "...", "title": "...", "source": "AI타임스",
-     "published_at": "2026-04-19T06:48:00+09:00",
-     "original_url": "https://...",
-     "content_text": "...",
-     "category": "ai_news" | "general_news",
-     "keywords": ["GPT", ...]}
+    {"article_id": "...", "title": "...", "source": "...",
+     "published_at": "...", "original_url": "...",
+     "content_text": "...", "category": "ai_news|general_news",
+     "keywords": [...]}
   ]
 }
 ```
 
-#### 출력 형태 (analyzed.json)
+#### 출력 schema (analyzed.json)
 
 ```json
 {
-  "issue_number": <state.issue_number>,
-  "generation_timestamp": <state.current_generation_timestamp>,
-  "trend_hashtags": ["생성형AI", "반도체", "금리", ...],
+  "issue_number": <prepare-run 의 issue_number>,
+  "generation_timestamp": <prepare-run 의 generation_timestamp>,
+  "trend_hashtags": ["...", ...],        // 3~8 개
   "articles": [
     {
       "article_id": "...", "title": "...", "source": "...",
       "published_at": "...", "original_url": "...",
-      "content_text": "...", "category": "...",
-      "keywords": [...],
-      "ai_summary": "...",              <- 당신이 생성
-      "extraction_reason": "...",        <- 당신이 생성
-      "relevance_score": 8.5,            <- 당신이 생성 (0-10)
-      "is_must_know": true               <- score ≥ 8.0
+      "content_text": "...", "category": "...", "keywords": [...],
+      "ai_summary": "<grounded 요약 140~220자>",
+      "extraction_reason": "<40~80자 추출 이유>",
+      "relevance_score": <0-10>,
+      "is_must_know": <score >= 8.0>
     }
   ]
 }
 ```
 
-#### 🔒 **grounded 생성 절대 제약**
+#### 점수 산정 — 인생중요뉴스 5차원
 
-- **`ai_summary`와 `extraction_reason`은 해당 기사의 `title` + `content_text` 범위 안에서만 생성한다. 원문에 없는 사실·숫자·인용을 추가하지 마라. 환각 금지.**
-- 원문 정보가 부족해 요약을 만들 수 없는 기사는 해당 기사를 analyzed.json에서 제외한다 (억지로 채우지 말 것).
-- `relevance_score`는 기사 내용 기반의 판단이지만, 스코어 자체는 "원문 범위 초과"가 아니다 — 아래 5가지 상황에 대한 당신의 독립 판단.
+각 차원을 0~10 으로 평가 후 **최고값**을 `relevance_score` 로 택.
 
-#### 점수 산정 기준 — 인생중요뉴스 5가지 상황 (0-10)
+1. 경제/생계  2. 안전/건강  3. 정책/법제  4. 기술/일자리  5. 국제정세
 
-각 차원을 0~10으로 속으로 평가한 뒤 **최고값**을 `relevance_score`로 한다. 8.0 이상이면 `is_must_know=true`.
+루머·가십·연예·스포츠 결과는 최대 4점.
 
-1. **경제/생계** — 금리·물가·부동산·고용·환율 등 독자 지갑에 직접 영향
-2. **안전/건강** — 재난·사고·질병·공공안전·의료
-3. **정책/법제** — 법안·규제·세제·공공정책 변동
-4. **기술/일자리** — AI·자동화로 인한 직업·업무 방식 변화, 주요 IT 산업 전환
-5. **국제정세** — 전쟁·외교·글로벌 공급망·반도체 수출 규제 등 한국에 파급되는 국제 이슈
+#### 기사 수 제약
 
-단순 루머·가십·연예·스포츠 결과는 최대 4점 이내. AI 기술 소개 기사는 실제 산업·일자리 파급이 있어야 7점 이상.
+- 최소 3건 필요 — 그보다 적으면 `FAILED_STAGE=analyzing` 으로 실패 처리
+- 최대 30건 — 초과 시 `relevance_score` 상위 30건만 유지
+- 가능하면 ai_news 2건 이상, general_news 2건 이상 균형 유지
 
-#### `ai_summary`
-
-- 한국어 2~3문장, 140~220자
-- 원문에 있는 숫자·고유명사는 그대로 사용
-- 기사의 **결론**을 먼저, **근거**를 이후에 배치
-- 원문이 단순 속보(1~2문장)면 요약도 1문장으로 짧게
-
-#### `extraction_reason`
-
-- 한국어 1문장, 40~80자
-- "왜 오늘 이 기사를 꼭 봐야 하는가"를 독자 관점에서
-- 예: "금리 인상이 주담대 이자에 즉시 반영되어 가계 부담이 증가합니다."
-
-#### `trend_hashtags` (최상위 메타데이터)
-
-- 오늘 전체 analyzed 기사에서 반복 등장한 주제·키워드를 해시태그 3~8개로 압축
-- 한글 위주, `#` 접두사 없이 문자열 리스트
-- 예: `["생성형AI", "한미FTA", "반도체수출규제", "금리동결"]`
-
-#### 기사 최소/최대 수
-
-- 최소 3개 기사가 analyzed에 있어야 의미 있는 브리핑 — 3개 미만이면 `mark-failure --stage analyzing --reason "kept articles < 3"` 후 재시도
-- 최대 30개까지 포함 (너무 많으면 `relevance_score` 상위 30개만 유지)
-- 섹션 균형: ai_news ≥ 2개, general_news ≥ 2개 권장 (못 맞추면 무시하고 진행)
-
-#### analyzed.json 저장
-
-당신은 Python으로 파일을 직접 쓸 수 있다:
+#### 파일 쓰기
 
 ```bash
 python3 - <<'PY'
 import json, pathlib
-analyzed = { ... 당신이 구성한 dict ... }
-pathlib.Path("state/analyzed.json").write_text(json.dumps(analyzed, ensure_ascii=False, indent=2), encoding="utf-8")
+analyzed = { ... }   # 당신이 구성한 dict
+pathlib.Path("state/analyzed.json").write_text(
+    json.dumps(analyzed, ensure_ascii=False, indent=2), encoding="utf-8"
+)
 PY
 ```
 
-저장 후 `mark-stage`:
+### 단계 D — analyzed + state 업로드
 
 ```bash
-python3 -m pipeline.run mark-stage --stage analyzing
+TZ=Asia/Seoul python3 -m pipeline.run mark-stage --stage generating
+python3 scripts/upload_files.py \
+    "state: ISSUE #${ISSUE_NUMBER} ${PERIOD} analyzed + state 업로드" \
+    state/state.json state/analyzed.json
 ```
 
-### 단계 E — `render` (HTML 생성)
+3회 재시도. 그래도 실패하면 `FAILED_STAGE=uploading` → 단계 X.
+
+### 단계 E — publish workflow 실행 + 대기
 
 ```bash
-for attempt in 1 2 3; do
-  if python3 -m pipeline.run render; then
-    break
-  fi
-  [ "$attempt" = "3" ] && RETRY_EXHAUSTED=1 && FAILED_STAGE=generating && break
-  sleep $((attempt * 3))
-done
+gh workflow run publish.yml --ref main \
+    -F period="$PERIOD" \
+    -F issue_number="$ISSUE_NUMBER"
+
+sleep 5
+PUB_RUN_ID=$(gh run list --workflow=publish.yml --limit=1 --json databaseId --jq '.[0].databaseId')
+echo "publish run id=$PUB_RUN_ID"
+
+gh run watch "$PUB_RUN_ID" --interval 15 --exit-status || FAILED_STAGE=deploying
 ```
 
-### 단계 F — 커밋 & 푸시 (배포)
+성공 시:
 
 ```bash
-python3 -m pipeline.run mark-stage --stage deploying
-
-git add docs/ state/ archive/
-git -c user.email=helen1356@naver.com -c user.name=helen13566-netizen commit -m "news: ISSUE #${ISSUE_NUMBER} ${PERIOD} 브리핑 $(date +%Y-%m-%d_%H:%M)"
-
-for attempt in 1 2 3; do
-  if git push origin main; then break; fi
-  [ "$attempt" = "3" ] && RETRY_EXHAUSTED=1 && FAILED_STAGE=deploying && break
-  sleep $((attempt * 5))
-done
+git pull --ff-only origin main
+# state/state.json 이 pipeline_status=completed 로 갱신되었는지 확인
+cat state/state.json
 ```
 
-실패 지속 시 → 단계 X. 성공 시 `python3 -m pipeline.run mark-success`.
-
-### 단계 G — 카카오톡 성공 알림
+### 단계 F — 카카오톡 성공 알림
 
 ```bash
-python3 -m pipeline.run mark-stage --stage notifying
-MESSAGE=$(python3 -m pipeline.run notify-success)
+TZ=Asia/Seoul python3 -m pipeline.run mark-stage --stage notifying
+SUCCESS_MSG=$(TZ=Asia/Seoul python3 -m pipeline.run notify-success)
+echo "$SUCCESS_MSG"
 ```
 
-카카오 MCP 호출:
+`SUCCESS_MSG` 전체를 **카카오톡 MCP** 로 전송:
 
 ```
-mcp__claude_ai_PlayMCP__KakaotalkChat-MemoChat
-  text: <MESSAGE 전체 내용>
+도구: mcp__claude_ai_PlayMCP__KakaotalkChat-MemoChat
+인자: text=<SUCCESS_MSG 전체, 수정 금지>
 ```
 
-MCP 호출 실패 시 3회 재시도 (간격 5초). 최종 실패해도 HTML은 이미 배포된 상태이므로 `mark-success`는 유지하고 stderr에 경고만 남긴다.
+MCP 호출 3회 재시도. 실패해도 파이프라인 자체는 성공 상태(docs 배포됨)이므로 stderr 경고만 남기고 정상 종료.
 
-### 단계 H — 완료
+### 단계 G — 종료 보고
 
-```bash
-python3 -m pipeline.run mark-success  # 이미 호출되었다면 재호출해도 무해 (retry 0, completed)
+stdout 마지막에 다음 JSON 한 줄 출력:
 
-git add state/
-git -c user.email=helen1356@naver.com -c user.name=helen13566-netizen commit -m "state: ISSUE #${ISSUE_NUMBER} completed" && git push || true
+```json
+{"status": "completed", "issue_number": N, "article_count": N, "failed_stage": null, "kakao_message": "<전체>", "duration_seconds": N}
 ```
+
+---
 
 ## 3. 단계 X — 실패 처리
 
-어느 단계에서든 `RETRY_EXHAUSTED=1`이 되면:
+어느 단계에서든 `FAILED_STAGE` 가 set 되면:
 
 ```bash
-python3 -m pipeline.run mark-failure --stage "$FAILED_STAGE" --reason "$ERROR_REASON"
-git add state/
-git -c user.email=helen1356@naver.com -c user.name=helen13566-netizen commit -m "state: failure at ${FAILED_STAGE}" && git push || true
+TZ=Asia/Seoul python3 -m pipeline.run mark-failure \
+    --stage "$FAILED_STAGE" \
+    --reason "$ERROR_REASON"
 
-FAILURE_MESSAGE=$(python3 -m pipeline.run notify-failure)
+# state.json 을 실패 상태로 업로드 (docs 는 건드리지 않음 = 이전 발행본 보존)
+python3 scripts/upload_files.py \
+    "state: failure at $FAILED_STAGE (ISSUE #$ISSUE_NUMBER $PERIOD)" \
+    state/state.json
+
+# 실패 메시지 생성
+FAILURE_MSG=$(TZ=Asia/Seoul python3 -m pipeline.run notify-failure)
 ```
 
-카카오 MCP로 `FAILURE_MESSAGE` 전송. 그리고 **HTML은 건드리지 않는다** — docs/index.html은 이전 성공본 그대로 유지된다(render 실패 시에는 애초에 생성 안 됨, collect/analyzing/deploying 실패 시에도 docs/는 건드리지 않음).
-
-종료 코드는 0으로 반환 (trigger 재발화 막기 위해).
-
-## 4. 체크리스트 (에이전트 자기 검증)
-
-브리핑 종료 전 아래를 점검:
-
-- [ ] `state/analyzed.json`의 모든 `ai_summary` / `extraction_reason`이 해당 기사 `content_text`에 기반하는지
-- [ ] `is_must_know=true` 기사들의 `relevance_score` ≥ 8.0
-- [ ] `trend_hashtags` 3~8개
-- [ ] `issue_number`가 state.json과 analyzed.json에서 동일
-- [ ] `docs/index.html` 업데이트 완료 (성공 케이스)
-- [ ] git push 성공
-- [ ] 카카오톡 메시지가 `📰 데일리 뉴스 · ...` (성공) 또는 `⚠️ 뉴스 생성 실패` (실패)로 시작
-
-## 5. 요약 한눈에
+`FAILURE_MSG` 를 **카카오톡 MCP** 로 전송:
 
 ```
-git pull
+도구: mcp__claude_ai_PlayMCP__KakaotalkChat-MemoChat
+인자: text=<FAILURE_MSG 전체>
+```
+
+그리고 stdout JSON:
+
+```json
+{"status": "failed", "failed_stage": "...", "kakao_message": "<FAILURE_MSG>", ...}
+```
+
+종료 코드 0 (trigger 재발화 방지).
+
+---
+
+## 4. 요약 한눈에
+
+```
+(환경 준비)
   ↓
 prepare-run --period <오전|오후>
   ↓
-collect                                  ← 3회 재시도
+gh workflow run collect.yml + watch       ← Actions 가 RSS 수집 후 커밋
   ↓
-[Agent] candidates.json → analyzed.json  ← grounded, 3회 재시도
+git pull   (candidates.json 수신)
   ↓
-mark-stage analyzing
+[Agent] grounded 분석 → state/analyzed.json
   ↓
-render                                   ← 3회 재시도
+upload_files.py state.json analyzed.json  ← api.github.com PUT contents
   ↓
-mark-stage deploying
+gh workflow run publish.yml + watch       ← Actions 가 render + docs 커밋
   ↓
-git commit & push                        ← 3회 재시도
+git pull   (state.json 갱신 확인)
   ↓
-mark-success
+카카오 MCP 로 성공 메시지 전송
   ↓
-mark-stage notifying
-  ↓
-notify-success → MCP 카카오 전송
-  ↓
-commit state / push / 종료
+[종료]
 
-(단계 어디서든 3회 재시도 모두 실패 시)
+(단계 어디서든 실패)
   ↓
-mark-failure → notify-failure → MCP 카카오 실패 알림 → 종료
+mark-failure → upload state.json → 카카오 MCP 로 실패 메시지 → [종료]
 ```
+
+## 5. 재시도 정책 요약
+
+| 대상 | 재시도 |
+|------|--------|
+| `gh workflow run collect.yml` 실패 | 3회, 5s/10s/20s |
+| `gh run watch` 비정상 종료 | 재시도 하지 않음 (단, Actions 로그 확인 가능) |
+| `upload_files.py` | 3회, 5s/10s/20s |
+| `gh workflow run publish.yml` | 3회 |
+| 카카오 MCP 전송 | 3회 |
+
+## 6. 체크리스트 (종료 전 자기 검증)
+
+- [ ] `analyzed.json` 의 모든 `ai_summary` / `extraction_reason` 이 원문 범위 내
+- [ ] `is_must_know=true` 기사들 `relevance_score` ≥ 8.0
+- [ ] `trend_hashtags` 3~8 개
+- [ ] issue_number 가 prepare-run / state.json / analyzed.json 에서 일치
+- [ ] publish workflow 성공 시 `docs/index.html` commit 확인
+- [ ] 카카오톡 메시지가 `📰 데일리 뉴스 · ...` (성공) 또는 `⚠️ 뉴스 생성 실패` (실패) 로 시작
