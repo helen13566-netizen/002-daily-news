@@ -87,24 +87,6 @@
       margin-bottom: 32px;
     }
 
-    .tabs {
-      display: flex;
-      gap: 28px;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-    .tabs a {
-      color: var(--text-mute);
-      text-decoration: none;
-      padding-bottom: 4px;
-      transition: color 0.15s;
-    }
-    .tabs a.active {
-      color: var(--accent);
-      border-bottom: 1px solid var(--accent);
-    }
-    .tabs a:hover { color: var(--text-sub); }
-
     .trending {
       color: var(--text-mute);
       font-size: 13px;
@@ -444,10 +426,6 @@
       <span class="issue">ISSUE #{{ issue_number }}</span>
     </div>
     <div class="accent-bar"></div>
-    <nav class="tabs" aria-label="정렬 기준">
-      <a href="#" class="active">최신성</a>
-      <a href="#">중요도</a>
-    </nav>
     {% if trend_hashtags %}
     <div class="trending">
       <span class="label">오늘의 트렌드</span>
