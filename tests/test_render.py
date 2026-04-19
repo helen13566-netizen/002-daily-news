@@ -552,3 +552,104 @@ def test_section_has_two_pixel_amber_border_and_12_radius(tmp_path, analyzed_sam
     block = section_block.group(0)
     assert "border-radius: 12px" in block
     assert "border: 2px solid var(--accent)" in block
+
+
+# ---------------------------------------------------------------------------
+# 인사이트 레이어 (v9)
+# ---------------------------------------------------------------------------
+
+
+def _minimal_article(**overrides: Any) -> dict[str, Any]:
+    base = {
+        "article_id": "a1",
+        "title": "샘플 기사",
+        "source": "테스트",
+        "published_at": "2026-04-19T06:00:00+09:00",
+        "original_url": "https://example.com/a1",
+        "content_text": "본문",
+        "category": "ai_news",
+        "keywords": ["AI"],
+        "ai_summary": "요약입니다.",
+        "extraction_reason": "주목해야 할 이유",
+        "relevance_score": 9.0,
+        "is_must_know": True,
+    }
+    base.update(overrides)
+    return base
+
+
+def _wrap_analyzed(article: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "issue_number": 1,
+        "generation_timestamp": "2026-04-19T07:00:00+09:00",
+        "trend_hashtags": ["AI"],
+        "articles": [article],
+    }
+
+
+def _render_to_html(tmp_path: Path, analyzed: dict[str, Any]) -> str:
+    path = tmp_path / "analyzed.json"
+    path.write_text(json.dumps(analyzed, ensure_ascii=False), encoding="utf-8")
+    out_path = tmp_path / "index.html"
+    archive_dir = tmp_path / "archive"
+    archive_dir.mkdir()
+    render(
+        analyzed_path=str(path),
+        template_path=TEMPLATE_PATH,
+        output_path=str(out_path),
+        archive_dir=str(archive_dir),
+    )
+    return out_path.read_text(encoding="utf-8")
+
+
+def test_insights_block_rendered_when_present(tmp_path: Path) -> None:
+    """insights 필드가 있으면 details 토글 블록이 렌더된다."""
+    art = _minimal_article(insights={
+        "ripple": {
+            "title": "이게 우리한테 어떻게 영향을 줄까?",
+            "icon": "📡",
+            "text": "파급 효과 설명 문단입니다.",
+        },
+        "history": {
+            "title": "예전에도 이런 일이 있었을까?",
+            "icon": "🗂",
+            "text": "역사 비교 설명 문단입니다.",
+        },
+        "bonus": [],
+    })
+    html = _render_to_html(tmp_path, _wrap_analyzed(art))
+    assert '<details class="why-insights"' in html
+    assert "이게 우리한테 어떻게 영향을 줄까?" in html
+    assert "예전에도 이런 일이 있었을까?" in html
+    assert "파급 효과 설명 문단입니다." in html
+    assert "역사 비교 설명 문단입니다." in html
+
+
+def test_insights_absent_falls_back_to_simple_why(tmp_path: Path) -> None:
+    """insights 필드가 없으면 기존 .why 박스만 렌더 (하위호환)."""
+    art = _minimal_article(extraction_reason="이유")  # insights 없음
+    html = _render_to_html(tmp_path, _wrap_analyzed(art))
+    assert '<details class="why-insights"' not in html
+    assert '<div class="why">' in html
+    assert "추출 이유</strong>이유" in html
+
+
+def test_insights_bonus_axes_rendered(tmp_path: Path) -> None:
+    """insights.bonus 리스트 각 항목이 독립 블록으로 렌더된다."""
+    art = _minimal_article(insights={
+        "ripple": {"title": "RT", "icon": "📡", "text": "R text"},
+        "history": {"title": "HT", "icon": "🗂", "text": "H text"},
+        "bonus": [
+            {"type": "personal", "title": "나는 뭘 해야 할까?",
+             "icon": "💡", "text": "P text"},
+            {"type": "scenario", "title": "앞으로 어떻게 될까?",
+             "icon": "🔮", "text": "S text"},
+        ],
+    })
+    html = _render_to_html(tmp_path, _wrap_analyzed(art))
+    assert "나는 뭘 해야 할까?" in html
+    assert "P text" in html
+    assert "앞으로 어떻게 될까?" in html
+    assert "S text" in html
+    assert 'data-axis="personal"' in html
+    assert 'data-axis="scenario"' in html

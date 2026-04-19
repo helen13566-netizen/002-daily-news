@@ -244,6 +244,56 @@
       font-weight: 600;
       margin-right: 4px;
     }
+
+    /* 인사이트 토글 — <details> 기반, JS 불필요 */
+    .article .why-insights {
+      background: var(--accent-soft);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 3px 3px 0;
+      padding: 9px 13px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+    .article .why-insights > summary.why {
+      background: transparent;
+      border-left: 0;
+      padding: 0;
+      margin-bottom: 0;
+      cursor: pointer;
+      list-style: none;
+      border-radius: 0;
+    }
+    .article .why-insights > summary.why::-webkit-details-marker { display: none; }
+    .article .why-insights > summary.why::marker { content: ""; }
+    .article .why-insights .expand-hint {
+      margin-left: 8px;
+      color: var(--accent);
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+    .article .why-insights[open] > summary.why .expand-hint { transform: rotate(180deg); }
+    .article .why-insights .insights-body {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+    }
+    .article .why-insights .insight { margin-bottom: 14px; }
+    .article .why-insights .insight:last-child { margin-bottom: 0; }
+    .article .why-insights .insight h4 {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 4px;
+      letter-spacing: 0;
+    }
+    .article .why-insights .insight p {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+    }
+
     .article .summary {
       font-size: 15px;
       color: var(--text);
@@ -472,7 +522,27 @@
           {% for kw in article.keywords %}<span># {{ kw }}</span>{% endfor %}
         </div>
         {% endif %}
-        {% if article.extraction_reason %}
+        {% if article.insights and article.extraction_reason %}
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>{{ article.extraction_reason }}<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>{{ article.insights.ripple.icon }} {{ article.insights.ripple.title }}</h4>
+              <p>{{ article.insights.ripple.text }}</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>{{ article.insights.history.icon }} {{ article.insights.history.title }}</h4>
+              <p>{{ article.insights.history.text }}</p>
+            </div>
+            {% for b in article.insights.bonus %}
+            <div class="insight" data-axis="{{ b.type }}">
+              <h4>{{ b.icon }} {{ b.title }}</h4>
+              <p>{{ b.text }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </details>
+        {% elif article.extraction_reason %}
         <div class="why"><strong>추출 이유</strong>{{ article.extraction_reason }}</div>
         {% endif %}
         {% if article.ai_summary %}
