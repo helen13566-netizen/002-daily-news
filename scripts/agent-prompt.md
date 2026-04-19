@@ -1,104 +1,81 @@
-# Remote Agent 실행 절차서 (v3 · MCP push 전용)
+# Remote Agent 실행 절차서 (v5 · SSH Deploy Key)
 
-## v3 가 바뀐 점
+## v5 핵심
 
-v2 에서 `gh` CLI 로 workflow dispatch 와 파일 업로드를 하려 했지만 **sandbox 에 `gh` 바이너리가 없다**. 대신 환경에 **GitHub MCP integration** 이 있으므로 그 도구로만 원격 쓰기를 수행한다.
+PAT·MCP push_files 모두 권한 이슈로 막혔다. 대신 **저장소 전용 SSH deploy key** 로 `git push` 한다. trigger prompt 첫머리에서 sandbox 의 `~/.ssh/id_ed25519` 에 개인키가 미리 설치되어 있다.
 
-| v2 가정 | v3 실제 |
-|---------|---------|
-| `gh workflow run publish.yml` | 없음 (publish.yml 삭제) |
-| `scripts/upload_files.py` (gh 래퍼) | 사용 안 함, MCP `push_files` 사용 |
-| `git push origin main` | 사용 안 함 (claude.ai proxy read-only) |
-
-## 환경 제약 (확정)
-
-| 가능 | 불가 |
+| 경로 | 상태 |
 |------|------|
-| `git clone` / `git pull` | `git push` (모든 경로) |
-| Python, pip install | `gh` CLI |
-| PlayMCP (카카오톡) | |
-| GitHub MCP (push_files, create_or_update_file, get_file_contents 등) | |
-| 외부 호스트 접근: github.com, api.github.com, pypi.org | 한국 뉴스 호스트 |
+| PAT 주입 | 폐기 |
+| MCP push_files | 폐기 (contents:write 없음) |
+| `gh` CLI | 사용 불가 (sandbox 에 없음) |
+| **SSH Deploy Key + `git push`** | ✅ v5 |
 
-## 아키텍처
+Deploy key 는 저장소 1개에만 write 권한을 주고 workflow scope 개념이 없다(= workflow 파일이 아닌 변경은 자유롭게 push).
+
+## 환경 확인
+
+- working directory: clone 된 저장소
+- `~/.ssh/id_ed25519` 는 trigger prompt 에서 이미 설치됨 (읽기권한 600)
+- `git remote get-url origin` → 이미 `git@github.com:helen13566-netizen/002-daily-news.git`
+- `TZ=Asia/Seoul` set, `pip install --user --break-system-packages -r requirements.txt` 완료
+- git identity `helen1356@naver.com` / `helen13566-netizen`
+
+## 파이프라인
 
 ```
 Actions collect.yml (cron 06:55/17:55 KST)
   → RSS 6개 수집 → state/candidates.json 커밋
          ↓
 Remote agent (cron 07:00/18:00 KST)
-  → clone · git pull
-  → prepare-run  (로컬 state.json 수정)
-  → grounded 분석 → state/analyzed.json (로컬)
-  → render → docs/index.html + archive/YYYY-MM-DD-HHMM.html (로컬)
-  → mark-success → state/state.json pipeline_status=completed (로컬)
-  → GitHub MCP push_files 로 4개 파일을 단일 커밋으로 원격 푸시
-       · docs/index.html, archive/...html, state/state.json, state/analyzed.json
-  → 카카오 MCP 로 성공 메시지 전송
+  → git pull                     ← candidates.json 수신
+  → prepare-run                  ← issue_number 증가, state.json 로컬 수정
+  → grounded 분석 → state/analyzed.json
+  → render → docs/index.html + archive/YYYY-MM-DD-HHMM.html
+  → mark-success → state/state.json 갱신
+  → git add + commit + push      ← SSH deploy key 경로
+  → 카카오 MCP 성공 메시지
 ```
 
-## 전제
+## 단계별
 
-- working directory 에 저장소 clone 됨
-- `git config user.email`, `user.name` 이미 설정됨 (안 됐으면 설정)
-- `pip install --user --break-system-packages -r requirements.txt`
-- `TZ=Asia/Seoul` 환경변수 설정
-
-## 단계별 절차
-
-### 단계 A — 준비
+### 단계 A — git pull
 
 ```bash
-cd $(git rev-parse --show-toplevel 2>/dev/null || pwd)
-git config user.email "helen1356@naver.com" 2>/dev/null || true
-git config user.name "helen13566-netizen" 2>/dev/null || true
-pip install --user --break-system-packages -r requirements.txt >/dev/null 2>&1 || true
-export TZ=Asia/Seoul
+git pull --ff-only origin main || {
+  git fetch origin main && git reset --hard origin/main
+}
 ```
 
 ### 단계 B — prepare-run
 
 ```bash
-python3 -m pipeline.run prepare-run --period "$PERIOD"
+PREP=$(python3 -m pipeline.run prepare-run --period "$PERIOD")
+echo "$PREP"
+ISSUE_NUMBER=$(echo "$PREP" | python3 -c "import sys,json; print(json.load(sys.stdin)['issue_number'])")
 ```
 
-stdout JSON 에서 `issue_number`, `generation_timestamp`, `next_run_time` 을 기억.
+`$PERIOD` 는 오전 트리거면 `"오전"`, 오후 트리거면 `"오후"`.
 
-### 단계 C — candidates.json 동기화
-
-Actions `collect.yml` 이 cron 에 따라 이미 `state/candidates.json` 을 commit 해 놓았다(매일 06:55 / 17:55 KST). 이 파일을 받아온다:
+### 단계 C — candidates.json 신선도 검증
 
 ```bash
-git pull --ff-only origin main || {
-  # 로컬 변경이 있어 merge 실패 시 reset
-  git fetch origin main
-  git reset --hard origin/main
-  git pull --ff-only origin main
-}
-ls -la state/candidates.json
-```
-
-`candidates.json` 이 **최근 60분 이내**에 갱신되지 않았으면(= collect cron 이 누락되었을 가능성) **실패 처리**(`FAILED_STAGE=collecting`).
-
-확인:
-```bash
-CANDIDATES_MTIME_EPOCH=$(stat -c %Y state/candidates.json)
-NOW_EPOCH=$(date +%s)
-AGE_MIN=$(( (NOW_EPOCH - CANDIDATES_MTIME_EPOCH) / 60 ))
+test -s state/candidates.json || { FAILED_STAGE=collecting; ERROR_REASON="candidates.json 없음"; }
+AGE_MIN=$(( ($(date +%s) - $(stat -c %Y state/candidates.json)) / 60 ))
 if [ "$AGE_MIN" -gt 60 ]; then
   FAILED_STAGE=collecting
-  ERROR_REASON="candidates.json 이 ${AGE_MIN}분 전에 마지막으로 갱신됨 (Actions collect cron 누락 의심)"
+  ERROR_REASON="candidates.json 이 ${AGE_MIN}분 전 수집 (Actions cron 누락 의심)"
 fi
 ```
 
+`FAILED_STAGE` set 되면 **단계 X** 로.
+
 ### 단계 D — grounded 분석
 
-`state/candidates.json` 을 읽어 각 기사에 5개 필드를 덧붙인 `state/analyzed.json` 을 작성한다.
+`state/candidates.json` → `state/analyzed.json` 작성.
 
 #### 🔒 절대 제약
-
-- `ai_summary` / `extraction_reason` 은 해당 기사의 `title` + `content_text` 범위 안에서만. 원문에 없는 사실·숫자·인용·해석 금지.
-- 원문이 부실해 의미 있는 요약을 만들 수 없으면 제외.
+`ai_summary` / `extraction_reason` 은 해당 기사의 `title` + `content_text` 범위 안에서만. 원문에 없는 사실·숫자·인용·해석 금지. 원문 부실 시 기사 제외.
 
 #### 출력 schema
 
@@ -106,47 +83,40 @@ fi
 {
   "issue_number": <prepare-run 의 issue_number>,
   "generation_timestamp": <prepare-run 의 generation_timestamp>,
-  "trend_hashtags": ["...", ...],     // 3~8 개, # 접두사 없는 문자열
+  "trend_hashtags": ["...", ...],
   "articles": [
     {
       "article_id": "...", "title": "...", "source": "...",
       "published_at": "...", "original_url": "...",
       "content_text": "...", "category": "ai_news|general_news",
       "keywords": [...],
-      "ai_summary": "<140~220자 grounded>",
+      "ai_summary": "<140~220자>",
       "extraction_reason": "<40~80자>",
-      "relevance_score": <0-10 float>,
+      "relevance_score": <0-10>,
       "is_must_know": <score >= 8.0>
     }
   ]
 }
 ```
 
-#### 점수 산정 — 인생중요뉴스 5차원 (최고값 채택)
+#### 점수 기준 — 5차원 최고값
 
 1. 경제/생계  2. 안전/건강  3. 정책/법제  4. 기술/일자리  5. 국제정세
 
-루머·가십·연예·스포츠 결과는 최대 4점.
+루머·가십·연예·스포츠 ≤ 4점.
 
-#### 분량 제약
-
+#### 제약
 - 최소 3건 (미달 시 `FAILED_STAGE=analyzing`)
-- 최대 30건 (초과 시 `relevance_score` 상위 30건만)
+- 최대 30건 (초과 시 score 상위 30건)
 
-#### 파일 쓰기
-
+#### 저장
 ```bash
 python3 - <<'PY'
 import json, pathlib
-analyzed = { ... 당신이 구성한 dict ... }
+analyzed = { ... 당신이 구성 ... }
 pathlib.Path("state/analyzed.json").write_text(
-    json.dumps(analyzed, ensure_ascii=False, indent=2), encoding="utf-8"
-)
+    json.dumps(analyzed, ensure_ascii=False, indent=2), encoding="utf-8")
 PY
-```
-
-`mark-stage`:
-```bash
 python3 -m pipeline.run mark-stage --stage analyzing
 ```
 
@@ -155,49 +125,31 @@ python3 -m pipeline.run mark-stage --stage analyzing
 ```bash
 python3 -m pipeline.run render
 python3 -m pipeline.run mark-success
+ls -la docs/index.html archive/ state/
 ```
 
-render 성공 시 로컬에 다음 파일들이 갱신된다:
-- `docs/index.html` (덮어쓰기)
-- `archive/YYYY-MM-DD-HHMM.html` (신규)
-- `state/state.json` (pipeline_status=completed, retry_count=0, last_success_at 등)
+### 단계 F — git commit + push (핵심)
 
-### 단계 F — GitHub MCP 로 원격 push (핵심)
+```bash
+git add docs/ archive/ state/state.json state/analyzed.json
+git status --short
 
-**도구**: GitHub MCP integration 의 **`push_files`** (여러 파일 단일 커밋) 를 우선 사용한다. 없으면 `create_or_update_file` 을 파일별로 4회 호출한다.
+git commit -m "news: ISSUE #${ISSUE_NUMBER} ${PERIOD} 브리핑 $(date +%Y-%m-%d_%H:%M_KST)"
 
-커밋 대상 4개 파일 (archive 는 이번 실행의 파일명 하나):
-- `docs/index.html`
-- `archive/<YYYY-MM-DD-HHMM>.html`
-- `state/state.json`
-- `state/analyzed.json`
-
-**`push_files` 호출 예** (도구 스펙에 따라 조정):
-```
-owner: helen13566-netizen
-repo: 002-daily-news
-branch: main
-message: "news: ISSUE #${ISSUE_NUMBER} ${PERIOD} 브리핑 $(date +%Y-%m-%d_%H:%M)"
-files: [
-  {"path": "docs/index.html", "content": <본문 문자열>},
-  {"path": "archive/2026-04-19-0700.html", "content": <본문>},
-  {"path": "state/state.json", "content": <본문>},
-  {"path": "state/analyzed.json", "content": <본문>}
-]
+# 3회 재시도
+for attempt in 1 2 3; do
+  if git push origin main; then
+    echo "✓ push 성공 (attempt $attempt)"
+    PUSH_OK=1
+    break
+  fi
+  echo "push 실패 (attempt $attempt)" >&2
+  [ "$attempt" = "3" ] && { FAILED_STAGE=deploying; ERROR_REASON="git push 3회 재시도 실패"; }
+  sleep $((attempt * 5))
+done
 ```
 
-각 파일의 `content` 는 UTF-8 텍스트. 필요한 경우 base64 인코딩 (도구 스펙 확인).
-
-#### 권한 문제 시
-
-`push_files` 또는 `create_or_update_file` 이 **403 "Resource not accessible by integration"** 을 리턴하면 → GitHub MCP integration 에 `contents:write` 권한이 없는 것. 이 경우:
-
-1. `FAILED_STAGE=deploying`, `ERROR_REASON="GitHub MCP 403 contents:write 권한 없음"` 으로 기록
-2. 단계 X 로 분기
-
-#### 재시도
-
-MCP push 실패 시 3회 재시도, 간격 5s / 10s / 20s. 3회 모두 실패 시 단계 X.
+`FAILED_STAGE=deploying` 되면 단계 X. 성공이면 단계 G.
 
 ### 단계 G — 카카오 성공 알림
 
@@ -208,81 +160,55 @@ echo "=== 전송할 메시지 ==="
 echo "$SUCCESS_MSG"
 ```
 
-PlayMCP 카카오톡 도구 호출:
-
+**PlayMCP 호출**:
 ```
 도구: mcp__claude_ai_PlayMCP__KakaotalkChat-MemoChat
-인자: text=<SUCCESS_MSG 전체, 수정·요약 금지>
+인자: text=<SUCCESS_MSG 전체 원문, 수정·요약 금지>
 ```
 
-**MCP 응답을 stdout 에 그대로 기록하라** — 성공/실패 여부를 사후 검증하기 위해. (이전 실행에서 전송 "성공" 반환이 실제 카카오톡 수신으로 이어졌는지 확인 필요했음.)
+**MCP 응답을 stdout 에 그대로 기록** (수신 검증용).
 
-3회 재시도. 파이프라인 자체는 이미 성공이므로 MCP 실패해도 종료 상태는 completed.
+MCP 실패 시 3회 재시도. 파이프라인 성공 이미 확정이므로 MCP 실패 시에도 종료 상태는 completed, stderr 경고만.
 
 ### 단계 H — 종료 보고
 
-stdout 마지막에 JSON 한 줄:
-
 ```json
-{"status": "completed", "issue_number": N, "article_count": N, "failed_stage": null, "kakao_message": "<전체>", "mcp_kakao_response": "<MCP 응답 원문>", "duration_seconds": N}
+{"status": "completed", "issue_number": N, "article_count": N, "failed_stage": null, "kakao_message": "<원문>", "mcp_kakao_response": "<원문>", "duration_seconds": N}
 ```
 
 ---
 
 ## 단계 X — 실패 처리
 
-어디서든 `FAILED_STAGE` 세팅되면:
-
 ```bash
 python3 -m pipeline.run mark-failure --stage "$FAILED_STAGE" --reason "$ERROR_REASON"
 
-# state.json 만 MCP 로 push (docs 는 이전 성공본 보존)
-# GitHub MCP create_or_update_file 로 state/state.json 업로드
-```
+# state.json 만 커밋·푸시, docs 는 건드리지 않음
+git add state/state.json
+git commit -m "state: failure at $FAILED_STAGE (ISSUE #$ISSUE_NUMBER $PERIOD)" || true
+git push origin main 2>&1 || echo "state push 실패 (무시)" >&2
 
-`create_or_update_file`:
-```
-owner: helen13566-netizen
-repo: 002-daily-news
-branch: main
-path: state/state.json
-content: <state.json 내용>
-message: "state: failure at ${FAILED_STAGE} (ISSUE #${ISSUE_NUMBER} ${PERIOD})"
-```
-
-state 업로드마저 실패해도 무시하고 카카오 알림은 전송:
-
-```bash
 FAILURE_MSG=$(python3 -m pipeline.run notify-failure)
+echo "$FAILURE_MSG"
 ```
 
-카카오 MCP 로 `FAILURE_MSG` 전체 전송. 그리고 stdout JSON:
+PlayMCP 로 `FAILURE_MSG` 전송 (3회 재시도). stdout JSON:
 
 ```json
-{"status": "failed", "failed_stage": "...", "error_reason": "...", "kakao_message": "<FAILURE_MSG>", "mcp_kakao_response": "...", ...}
+{"status": "failed", "failed_stage": "...", "error_reason": "...", "kakao_message": "<원문>", "mcp_kakao_response": "<원문>"}
 ```
 
 종료 코드 0.
 
 ---
 
-## 체크리스트 (종료 전 자기 검증)
+## 자기 검증 체크
 
-- [ ] analyzed.json 의 모든 `ai_summary` / `extraction_reason` 이 원문 범위 내
-- [ ] `is_must_know=true` 기사들 `relevance_score` ≥ 8.0
-- [ ] `trend_hashtags` 3~8 개
-- [ ] issue_number 가 prepare-run / state.json / analyzed.json 에서 일치
-- [ ] 성공 시: GitHub MCP push_files 응답이 200 OK, 새 commit SHA 반환 확인
-- [ ] 카카오 MCP 응답 원문을 stdout 에 기록했는지
-- [ ] 카카오 메시지가 정확한 템플릿으로 시작하는지
-
-## 한눈에
-
-```
-(환경) → prepare-run → git pull (candidates.json) → grounded 분석
-      → render → mark-success → GitHub MCP push_files (4 files, single commit)
-      → 카카오 MCP notify-success → 종료
-
-(실패 시) mark-failure → MCP create_or_update_file (state.json만)
-      → 카카오 MCP notify-failure → 종료
-```
+- [ ] `ssh -T git@github.com` 이 `successfully authenticated` 반환
+- [ ] candidates.json 이 60분 이내 수집
+- [ ] analyzed.json grounded 준수
+- [ ] must_know 기사 score ≥ 8.0
+- [ ] trend_hashtags 3~8 개
+- [ ] issue_number 일치 (prepare-run/state/analyzed)
+- [ ] git push 성공
+- [ ] 카카오 MCP 응답 원문 stdout 기록
