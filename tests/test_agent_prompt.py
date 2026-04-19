@@ -79,3 +79,46 @@ def test_v13_checklist_is_internal_not_leaked_to_text(prompt_text: str) -> None:
     assert has_internal_instruction, (
         "체크리스트를 속으로 수행하고 text 에 나열하지 말라는 지시가 없습니다"
     )
+
+
+# v14 — 분량 확대 · 구조 드러내기 · 구체성 강제 · chunk 2건
+
+def test_v14_text_length_expanded(prompt_text: str) -> None:
+    """insight text 분량 하한이 200 이상, 상한이 350 이하로 상향됐는지."""
+    assert "200" in prompt_text and "350" in prompt_text, (
+        "insight text 분량 가이드에 200~350자 범위가 명시돼야 합니다"
+    )
+
+
+def test_v14_concrete_evidence_required(prompt_text: str) -> None:
+    """구체 수치·회사·연도를 최소 N개 포함하도록 강제."""
+    has_concrete_instruction = (
+        ("구체" in prompt_text or "수치" in prompt_text)
+        and ("연도" in prompt_text or "회사" in prompt_text or "숫자" in prompt_text)
+    )
+    assert has_concrete_instruction, (
+        "구체 수치·회사명·연도를 최소 2개 포함하도록 하는 지시가 있어야 합니다"
+    )
+
+
+def test_v14_structure_visible_in_text(prompt_text: str) -> None:
+    """분석 단계·구조를 text 에 드러내도록 지시. '1차/2차/3차' 같은 라벨 권장."""
+    has_visible_structure = any(
+        kw in prompt_text
+        for kw in ["1차 효과", "구조를 드러", "단계를 명시", "분석 흐름"]
+    )
+    assert has_visible_structure, (
+        "분석 구조(1차·2차·3차 등)를 text 에 드러내라는 지시가 있어야 합니다"
+    )
+
+
+def test_v14_chunk_size_two_articles(prompt_text: str) -> None:
+    """chunk 크기가 2건 단위로 축소됐는지 (v12/v13: 3건)."""
+    has_two_chunk = (
+        "2건 단위" in prompt_text
+        or "2건씩" in prompt_text
+        or "2건 chunk" in prompt_text
+    )
+    assert has_two_chunk, (
+        "chunk 크기가 2건 단위로 축소됐다는 표시가 있어야 합니다 (v14)"
+    )
