@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>굿이브닝 · 데일리 뉴스 — ISSUE #5</title>
+  <title>굿이브닝 · 데일리 뉴스 — ISSUE #6</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -332,32 +332,35 @@
     }
     @keyframes fxDE-bar { to { transform: scaleX(1); } }
 
-    /* ── 섹션: D 줌인 (테두리는 베이스 CSS에서 이미 2px accent) ── */
+    /* ── 섹션: D 줌인 — CSS keyframe 로 JS 의존 없이 자동 재생 ── */
     body[data-fx="de"] .section {
       transform: scale(0.94);
       opacity: 0;
-      transition: transform 0.7s cubic-bezier(.2,.8,.2,1), opacity 0.6s;
+      animation: fxDE-section-in 0.7s cubic-bezier(.2,.8,.2,1) 0.1s forwards;
     }
-    body[data-fx="de"] .section.fx-in { transform: scale(1); opacity: 1; }
+    @keyframes fxDE-section-in {
+      to { transform: scale(1); opacity: 1; }
+    }
 
     /* ── 기사 카드: D 슬라이드 진입 + E 지그재그 미세 회전 + invert 호버 ── */
     body[data-fx="de"] .article {
       opacity: 0;
       transform: translateX(-60px) rotate(-0.8deg);
-      transition: opacity 0.55s cubic-bezier(.2,.8,.2,1),
-                  transform 0.55s cubic-bezier(.2,.8,.2,1),
-                  background 0.2s ease, color 0.2s ease;
+      animation: fxDE-article-in 0.55s cubic-bezier(.2,.8,.2,1) 0.2s forwards;
       cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
     }
-    body[data-fx="de"] .article.fx-in {
-      opacity: 1;
-      transform: translateX(0) rotate(-0.25deg);
+    @keyframes fxDE-article-in {
+      to { opacity: 1; transform: translateX(0) rotate(-0.25deg); }
     }
-    body[data-fx="de"] .article:nth-of-type(even).fx-in {
-      transform: translateX(0) rotate(0.25deg);
+    body[data-fx="de"] .article:nth-of-type(even) {
+      animation-name: fxDE-article-in-even;
     }
-    body[data-fx="de"] .article:nth-of-type(2).fx-in { transition-delay: 0.08s; }
-    body[data-fx="de"] .article:nth-of-type(3).fx-in { transition-delay: 0.16s; }
+    @keyframes fxDE-article-in-even {
+      to { opacity: 1; transform: translateX(0) rotate(0.25deg); }
+    }
+    body[data-fx="de"] .article:nth-of-type(2) { animation-delay: 0.28s; }
+    body[data-fx="de"] .article:nth-of-type(3) { animation-delay: 0.36s; }
     body[data-fx="de"] .article:hover {
       background: var(--accent);
       transform: translateX(-8px) rotate(0);
@@ -419,56 +422,69 @@
       <span class="line">데일리 뉴스</span>
     </h1>
     <div class="meta-line">
-      <span>2026.04.19 15:59 KST</span>
+      <span>2026.04.19 16:13 KST</span>
       <span class="dot">·</span>
       <span>오후</span>
       <span class="dot">·</span>
-      <span class="issue">ISSUE #5</span>
+      <span class="issue">ISSUE #6</span>
     </div>
     <div class="accent-bar"></div>
     <div class="trending">
       <span class="label">오늘의 트렌드</span>
-      <span class="tag"># #AI</span>
-      <span class="tag"># #인공지능</span>
-      <span class="tag"># #에이전트</span>
-      <span class="tag"># #앤트로픽</span>
-      <span class="tag"># #로봇</span>
-      <span class="tag"># #엔비디아</span>
-      <span class="tag"># #Claude</span>
-      <span class="tag"># #제미나이</span>
+      <span class="tag"># AI</span>
+      <span class="tag"># 인공지능</span>
+      <span class="tag"># 앤트로픽</span>
+      <span class="tag"># 에이전트</span>
+      <span class="tag"># 엔비디아</span>
+      <span class="tag"># 로봇</span>
+      <span class="tag"># Claude</span>
+      <span class="tag"># 자율주행</span>
     </div>
   </header>
 
   <section class="must-read" aria-label="꼭 알아야 할 뉴스">
     <h2>꼭 알아야 할 뉴스</h2>
     <div class="item">
-      <h3><a href="https://zdnet.co.kr/view/?no=20260419093440" target="_blank" rel="noopener noreferrer">[ZD브리핑] &#34;하루 1조씩 손해&#34;…&#39;성과급 5.4억&#39; 제안 받은 삼성전자 노조, 파업 시계 &#39;째깍&#39;</a></h3>
-      <div class="meta">ZDNet Korea · 09:36 · <span class="score">점수 10.0/10</span></div>
+      <h3><a href="https://www.mk.co.kr/news/economy/12020954" target="_blank" rel="noopener noreferrer">배달앱 핀셋규제조차도 “통상마찰 우려”…수수료상한제에 국회 제동</a></h3>
+      <div class="meta">매일경제 · 13:00 · <span class="score">점수 10.0/10</span></div>
     </div>
     <div class="item">
-      <h3><a href="https://www.etnews.com/20260419000009" target="_blank" rel="noopener noreferrer">[FDE 급부상] 팔란티어 시작하고 오픈AI·구글 가세…채용공고 800% 증가</a></h3>
-      <div class="meta">전자신문 · 09:00 · <span class="score">점수 10.0/10</span></div>
+      <h3><a href="https://zdnet.co.kr/view/?no=20260419120939" target="_blank" rel="noopener noreferrer">HPV 백신, 5월6일부터 12세 남성 청소년도 무료접종</a></h3>
+      <div class="meta">ZDNet Korea · 12:09 · <span class="score">점수 10.0/10</span></div>
     </div>
     <div class="item">
-      <h3><a href="https://zdnet.co.kr/view/?no=20260419080659" target="_blank" rel="noopener noreferrer">한국피지컬AI협회, 피지컬AI 국제표준 선점 공동연구기관 참여</a></h3>
-      <div class="meta">ZDNet Korea · 08:06 · <span class="score">점수 10.0/10</span></div>
+      <h3><a href="https://www.mk.co.kr/news/politics/12020928" target="_blank" rel="noopener noreferrer">일요일 새벽 6시의 굉음...북한, 11일만에 탄도미사일 무력시위</a></h3>
+      <div class="meta">매일경제 · 11:25 · <span class="score">점수 10.0/10</span></div>
     </div>
     <div class="item">
-      <h3><a href="https://zdnet.co.kr/view/?no=20260417170554" target="_blank" rel="noopener noreferrer">AI 투자로 끌어올린 SKT 기업가치, 엔트로픽에 리벨리온 가세</a></h3>
-      <div class="meta">ZDNet Korea · 08:01 · <span class="score">점수 10.0/10</span></div>
+      <h3><a href="https://zdnet.co.kr/view/?no=20260419083146" target="_blank" rel="noopener noreferrer">[영상] 위기의 기업 구하는 금융권 어벤져스…&#39;AWS 게임데이 2026&#39; 현장은</a></h3>
+      <div class="meta">ZDNet Korea · 11:00 · <span class="score">점수 10.0/10</span></div>
     </div>
     <div class="item">
-      <h3><a href="https://www.etnews.com/20260417000261" target="_blank" rel="noopener noreferrer">산학연·지방정부 AI 협력…&#39;K-소버린 AX 얼라이언스&#39; 뜬다</a></h3>
-      <div class="meta">전자신문 · 04.18 17:00 · <span class="score">점수 10.0/10</span></div>
+      <h3><a href="https://zdnet.co.kr/view/?no=20260419100631" target="_blank" rel="noopener noreferrer">좋은 소식 있다더니 또 막힌 호르무즈…미·이란 긴장 재고조</a></h3>
+      <div class="meta">ZDNet Korea · 10:14 · <span class="score">점수 10.0/10</span></div>
     </div>
   </section>
 
   <section class="section" aria-label="AI 뉴스">
     <div class="section-header">
       <h2>AI 뉴스</h2>
-      <span class="count">22건</span>
+      <span class="count">25건</span>
     </div>
     <div class="section-body">
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260419083146" target="_blank" rel="noopener noreferrer">[영상] 위기의 기업 구하는 금융권 어벤져스…&#39;AWS 게임데이 2026&#39; 현장은</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>11:00</span><span class="dot">·</span>
+          <span class="score">점수 10.0/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span><span># 인공지능</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10)</div>
+        <div class="summary">[지디넷코리아]아마존웹서비스(AWS)가 주최한 금융 고객 대상 인공지능(AI)·클라우드 경진대회 &#39;AWS 게임데이 2026&#39;의 생생한 현장을 담은 영상이 공개됐다. 이번 대회는 AI 주도 개발(AI-DLC)을 핵심 주제로, 위기를 맞은 가상의 기업 &#39;유니콘 렌탈&#39;을 구하는 미션으로 진행됐다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260419083146" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
       <article class="article">
         <h3><a href="https://zdnet.co.kr/view/?no=20260419093440" target="_blank" rel="noopener noreferrer">[ZD브리핑] &#34;하루 1조씩 손해&#34;…&#39;성과급 5.4억&#39; 제안 받은 삼성전자 노조, 파업 시계 &#39;째깍&#39;</a></h3>
         <div class="meta">
@@ -478,22 +494,9 @@
         </div>
         <div class="tags">
 <span># AI</span><span># 인공지능</span><span># 에이전트</span><span># 자율주행</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. [ZD브리핑] &#34;하루 1조씩 손해&#34;…&#39;성과급 5.4억&#39; 제안 받은 삼성전자 노조, 파업 시</div>
-        <div class="summary">[지디넷코리아]지디넷코리아는 IT 업계의 이슈를 미리 체크하는 &#39;이번 주 꼭 챙겨봐야 할 뉴스&#39;를 제공합니다. &#39;꼭 챙길 뉴스&#39;는 정보통신, 소프트웨어(SW), 전자기기, 소재부품, 콘텐츠, 플랫폼, e커머스, 금융, 디지털 헬스케어, 게임, 블록체인, 과학 등의 소식을 담았습니다. 바쁜 현대인들의 월요병을 조금이나마 덜어 줄 &#39;꼭 챙길 뉴스&#39;를 통해 한 주 동안 발생할 IT 이슈를 미...</div>
+        <div class="why"><strong>추출 이유</strong>정책/법제 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10) — 주요 기사</div>
+        <div class="summary">[지디넷코리아]지디넷코리아는 IT 업계의 이슈를 미리 체크하는 &#39;이번 주 꼭 챙겨봐야 할 뉴스&#39;를 제공합니다. &#39;꼭 챙길 뉴스&#39;는 정보통신, 소프트웨어(SW), 전자기기, 소재부품, 콘텐츠, 플랫폼, e커머스, 금융, 디지털 헬스케어, 게임, 블록체인, 과학 등의 소식을 담았습니다.</div>
         <a href="https://zdnet.co.kr/view/?no=20260419093440" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260419000009" target="_blank" rel="noopener noreferrer">[FDE 급부상] 팔란티어 시작하고 오픈AI·구글 가세…채용공고 800% 증가</a></h3>
-        <div class="meta">
-          <span>전자신문</span><span class="dot">·</span>
-          <span>09:00</span><span class="dot">·</span>
-          <span class="score">점수 10.0/10</span>
-        </div>
-        <div class="tags">
-<span># 앤트로픽</span><span># AI</span><span># 인공지능</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. [FDE 급부상] 팔란티어 시작하고 오픈AI·구글 가세…채용공고 800% 증가</div>
-        <div class="summary">전방배치 엔지니어(FDE) 개념을 처음 도입한 팔란티어 테크놀로지스를 비롯해 해외에서도 FDE 채용이 확대되는 추세다. 오픈AI, 앤트로픽, 구글 등 글로벌 인공지능(AI) 선도기업뿐만 아니라 데이터브릭스·세일즈포스 등 소프트웨어(SW) 기업도 FDE 직군을 채용해 현</div>
-        <a href="https://www.etnews.com/20260419000009" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://zdnet.co.kr/view/?no=20260419080659" target="_blank" rel="noopener noreferrer">한국피지컬AI협회, 피지컬AI 국제표준 선점 공동연구기관 참여</a></h3>
@@ -504,8 +507,8 @@
         </div>
         <div class="tags">
 <span># AI</span><span># 로봇</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 한국피지컬AI협회, 피지컬AI 국제표준 선점 공동연구기관 참여</div>
-        <div class="summary">[지디넷코리아]한국피지컬AI협회(협회장 유태준)는 과학기술정보통신부의 2026년도 제1차 정보통신표준개발지원사업 내 ‘피지컬 AI 표준전문연구실’ 과제에 공동연구개발기관으로 선정됐다고 19일 밝혔다.사업은 과학기술정보통신부가 추진하고 정보통신기획평가원(IITP)이 전담·관리하는 국가 연구개발 사업이다. 이번 과제는 한국전자통신연구원(ETRI)이 주관연구개발기관을 맡고, 한국외국어대학교,...</div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10)</div>
+        <div class="summary">[지디넷코리아]한국피지컬AI협회(협회장 유태준)는 과학기술정보통신부의 2026년도 제1차 정보통신표준개발지원사업 내 ‘피지컬 AI 표준전문연구실’ 과제에 공동연구개발기관으로 선정됐다고 19일 밝혔다. 사업은 과학기술정보통신부가 추진하고 정보통신기획평가원(IITP)이 전담·관리하는 국가 연구개발 사업이다.</div>
         <a href="https://zdnet.co.kr/view/?no=20260419080659" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
@@ -517,9 +520,48 @@
         </div>
         <div class="tags">
 <span># 앤트로픽</span><span># AI</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. AI 투자로 끌어올린 SKT 기업가치, 엔트로픽에 리벨리온 가세</div>
-        <div class="summary">[지디넷코리아]SK텔레콤이 본업 통신에 더해 AI 기업으로 진화하면서 기업가치를 부쩍 올리고 있다.앞서 투자한 앤트로픽 지분가치와 회사의 기술 혁신을 더해 ‘리벨리온’ 효과가 맞물리면서 매수가 급증했고, 시가총액은 21조원을 기록했다.17일 한국거래소에 따르면 SK텔레콤은 오후 3시 30분 종가 기준 주가 9만 8300원을 기록했다. 지난 15일엔 장중 10만 400원까지 오르며 52주...</div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10)</div>
+        <div class="summary">[지디넷코리아]SK텔레콤이 본업 통신에 더해 AI 기업으로 진화하면서 기업가치를 부쩍 올리고 있다. 앞서 투자한 앤트로픽 지분가치와 회사의 기술 혁신을 더해 ‘리벨리온’ 효과가 맞물리면서 매수가 급증했고, 시가총액은 21조원을 기록했다. 17일 한국거래소에 따르면 SK텔레콤은 오후 3시 30분 종가 기준 주가 9만 8300원을 기록했다.</div>
         <a href="https://zdnet.co.kr/view/?no=20260417170554" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209436" target="_blank" rel="noopener noreferrer">[AI 이슈트렌드] &#39;호르무즈 통제권&#39; 공방에 관심 집중...충남 교사 피습·세종 이전도 화제</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>01:21</span><span class="dot">·</span>
+          <span class="score">점수 10.0/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span>        </div>
+        <div class="why"><strong>추출 이유</strong>국제정세 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10) — 주요 기사</div>
+        <div class="summary">AI타임스와 이스트에이드의 4월 셋째 주(4월 10일~16일) 이슈 분석 결과, 호르무즈 해협을 둘러싼 미국과 이란의 대치와 사회적 파장을 일으킨 사건·사고들이 상위권을 차지했다. 이번 주도 가장 높은 검색량을 기록한 키워드 1, 2위는 ‘트럼프 호르무즈 봉쇄(11.6%)’와 ‘이란 호르무즈 합의(8.4%)’다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209436" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209432" target="_blank" rel="noopener noreferrer">&#39;바이브 코딩&#39; 커서, 73조 기업 가치 평가로 AI 스타트업 최상위권 도약</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 21:35</span><span class="dot">·</span>
+          <span class="score">점수 10.0/10</span>
+        </div>
+        <div class="tags">
+<span># 엔비디아</span><span># AI</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10)</div>
+        <div class="summary">&#39;바이브 코딩&#39; 선두 주자 커서가 약 20억달러(약 2조9000억원) 규모의 신규 투자 유치를 추진하며 기업 가치 500억달러(약 73조원)를 넘보는 것으로 알려졌다. 이제는 실리콘 밸리를 대표하는 스타트업으로 올라서는 분위기다. 17일(현지시간) CNBC에 따르면, 이번 투자 라운드는 기존 투자사인 앤드리슨 호로비츠와 스라이브 캐피털이 공동 주도하고 있다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209432" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209429" target="_blank" rel="noopener noreferrer">메타, 5월20일 직원 10% 감축...후반기 추가 감원 예정</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 19:47</span><span class="dot">·</span>
+          <span class="score">점수 10.0/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10)</div>
+        <div class="summary">메타가 AI 중심 조직 전환을 위해 대규모 구조조정에 나선다. 내부 계획에 따르면, 오는 5월20일을 시작으로 올해 첫 대규모 감원이 단행되며, 이후 추가 감원이 이어질 예정이다. 로이터는 17일(현지시간) 복수의 소식통을 인용, 메타가 1차로 전체 인력의 10%, 즉 8000여명을 감원할 계획이라고 보도했다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209429" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://www.etnews.com/20260417000261" target="_blank" rel="noopener noreferrer">산학연·지방정부 AI 협력…&#39;K-소버린 AX 얼라이언스&#39; 뜬다</a></h3>
@@ -530,9 +572,22 @@
         </div>
         <div class="tags">
 <span># AI</span><span># 인공지능</span><span># 로봇</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 산학연·지방정부 AI 협력…&#39;K-소버린 AX 얼라이언스&#39; 뜬다</div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10)</div>
         <div class="summary">지역·산업별 인공지능 전환(AX) 확산을 위한 민간 주도 연합체가 출범한다. 기술·데이터·거버넌스 주권을 기반으로 기업과 대학·연구소·지방정부와 함께하는 K-소버린 AX 얼라이언스가 이달 발족할 예정이다. 반도체·로봇·AI 모델로 대표되는 기술 주권, 산업 데이터를 국</div>
         <a href="https://www.etnews.com/20260417000261" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.etnews.com/20260417000091" target="_blank" rel="noopener noreferrer">JB금융, 전 계열사 &#39;AI 에이전트화&#39; 착수…업무·시스템 동시 재편</a></h3>
+        <div class="meta">
+          <span>전자신문</span><span class="dot">·</span>
+          <span>13:00</span><span class="dot">·</span>
+          <span class="score">점수 9.0/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span><span># 인공지능</span><span># 에이전트</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9.0)</div>
+        <div class="summary">JB금융그룹이 계열사 전반에 적용되는 &#39;인공지능(AI) 에이전트 플랫폼&#39; 구축에 착수하는 것으로 확인됐다. 업무 자동화와 AI 운영 체계를 통합한 그룹 표준 플랫폼을 구축해 디지털 전환(DX)을 가속하려는 전략이다. 금융권에 따르면 JB금융지주는 그룹에 적용되는 AI</div>
+        <a href="https://www.etnews.com/20260417000091" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://www.etnews.com/20260417000095" target="_blank" rel="noopener noreferrer">리벨리온 AI 반도체 &#39;리벨100&#39;, 글로벌 오픈소스 AI 추론 모델에서 성능 입증</a></h3>
@@ -543,224 +598,211 @@
         </div>
         <div class="tags">
 <span># AI</span><span># 인공지능</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 리벨리온 AI 반도체 &#39;리벨100&#39;, 글로벌 오픈소스 AI 추론 모델에서 성능 입증</div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9) — 주요 기사</div>
         <div class="summary">리벨리온이 최신 인공지능(AI) 반도체 &#39;리벨 100&#39;을 탑재한 서버 제품이 개방형 AI 모델 작동에서 업계 최고 수준을 입증했다. AI가 학습에서 추론으로 확대되는 수요를 겨냥, 성능과 효율성을 앞세워 데이터센터 시장 공략에 속도를 낼 방침이다. 리벨리온은 최근 &#39;g</div>
         <a href="https://www.etnews.com/20260417000095" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://zdnet.co.kr/view/?no=20260419083146" target="_blank" rel="noopener noreferrer">[영상] 위기의 기업 구하는 금융권 어벤져스…&#39;AWS 게임데이 2026&#39; 현장은</a></h3>
+        <h3><a href="https://www.mk.co.kr/news/it/12020910" target="_blank" rel="noopener noreferrer">“공무원이 AI 직접 만든다”···과기정통부, 행정 에이전트 실무 투입</a></h3>
         <div class="meta">
-          <span>ZDNet Korea</span><span class="dot">·</span>
-          <span>11:00</span><span class="dot">·</span>
+          <span>매일경제</span><span class="dot">·</span>
+          <span>12:00</span><span class="dot">·</span>
           <span class="score">점수 9.0/10</span>
         </div>
         <div class="tags">
-<span># AI</span><span># 인공지능</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. [영상] 위기의 기업 구하는 금융권 어벤져스…&#39;AWS 게임데이 2026&#39; 현장은</div>
-        <div class="summary">[지디넷코리아]아마존웹서비스(AWS)가 주최한 금융 고객 대상 인공지능(AI)·클라우드 경진대회 &#39;AWS 게임데이 2026&#39;의 생생한 현장을 담은 영상이 공개됐다.이번 대회는 AI 주도 개발(AI-DLC)을 핵심 주제로, 위기를 맞은 가상의 기업 &#39;유니콘 렌탈&#39;을 구하는 미션으로 진행됐다. 총 24개 금융사가 3시간 동안 AWS &#39;아마존 Q 디벨로퍼&#39;와 &#39;키로 CLI&#39; 도구를 활용해 코...</div>
-        <a href="https://zdnet.co.kr/view/?no=20260419083146" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://zdnet.co.kr/view/?no=20260418225227" target="_blank" rel="noopener noreferrer">KETI, 연 1천만 건 ‘안전신문고’에 AI 기술 입힌다</a></h3>
-        <div class="meta">
-          <span>ZDNet Korea</span><span class="dot">·</span>
-          <span>11:00</span><span class="dot">·</span>
-          <span class="score">점수 9.0/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span><span># 에이전트</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. KETI, 연 1천만 건 ‘안전신문고’에 AI 기술 입힌다</div>
-        <div class="summary">[지디넷코리아]한국전자기술연구원(KETI·원장 신희동)은 행정안전부의 안전신문고 시스템과 관련해 중요한 신고를 자동으로 선별·분류·이송하는 ‘차세대 AI 안전신문고’를 위한 기반 기술 개발을 완료하고, 올해 말 시범 서비스 개시를 목표로 현장 실증을 착수했다고 19일 밝혔다.이번 사업은 정부 국정과제인 ‘국민안전 보장을 위한 재난안전 관리체계 확립’ 일환으로 추진됐다. 행안부는 현재 안...</div>
-        <a href="https://zdnet.co.kr/view/?no=20260418225227" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209392" target="_blank" rel="noopener noreferrer">오픈AI, &#39;코덱스&#39; 데스크톱 앱 대폭 업데이트...&#34;맥에서 컴퓨터 조작&#34;</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.18 00:12</span><span class="dot">·</span>
-          <span class="score">점수 9.0/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span><span># 에이전트</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 오픈AI, &#39;코덱스&#39; 데스크톱 앱 대폭 업데이트...&#34;맥에서 컴퓨터 조작&#34;</div>
-        <div class="summary">오픈AI가 개발자 도구 ‘코덱스(Codex)’를 코딩 보조 수준을 넘어 컴퓨터 전체를 직접 다루는 ‘AI 에이전트’로 확장하며, 개발 환경의 패러다임 전환을 예고했다.오픈AI는 16일(현지시간) 주간 300만명 이상이 사용하는 개발자용 AI 도구 코덱스를 소프트웨어 개발 전 과정을 포괄하는 통합 플랫폼으로 개편했다고 밝혔다.가장 눈에 띄는 변화는 ‘컴퓨터 유즈(Computer Use)’...</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209392" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209443" target="_blank" rel="noopener noreferrer">&#39;자기학습 AI&#39;로 설립 4개월 만에 7300억 투자 유치한 슈퍼 스타트업 등장</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>21:17</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. &#39;자기학습 AI&#39;로 설립 4개월 만에 7300억 투자 유치한 슈퍼 스타트업 등장</div>
-        <div class="summary">구글 딥마인드와 오픈AI 출신 연구진이 설립한 신생 AI 스타트업이 대규모 투자를 유치하며 업계의 주목을 받고 있다. 설립 4개월에 불과한 이 스타트업은 ‘스스로 학습하고 진화하는 AI’ 개발을 핵심 비전으로 제시하고 있다.18일(현지시간) 파이낸셜 타임스에 따르면, 스타트업 리커시브 슈퍼인텔리전스(Recursive Superintelligence)는 최근 5억달러(약 7300억원) 규...</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209443" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+<span># AI</span><span># 인공지능</span><span># 에이전트</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9.0)</div>
+        <div class="summary">글로벌 동향 분석·업무 자동화까지 젊은 직원들이 직접 개발해 현장 적용과학기술정보통신부가 인공지능(AI) 에이전트를 공직 현장에 도입한다. 외부 개발사에 의존하던 관행에서 벗어나 ..</div>
+        <a href="https://www.mk.co.kr/news/it/12020910" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://www.etnews.com/20260417000118" target="_blank" rel="noopener noreferrer">테라텍-엣지에이아이, 국산 NPU 기반 AI 인프라 생태계 확장에 &#39;맞손&#39;</a></h3>
         <div class="meta">
           <span>전자신문</span><span class="dot">·</span>
           <span>10:40</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
+          <span class="score">점수 9.0/10</span>
         </div>
         <div class="tags">
 <span># AI</span><span># 인공지능</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 테라텍-엣지에이아이, 국산 NPU 기반 AI 인프라 생태계 확장에 &#39;맞손&#39;</div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9) — 주요 기사</div>
         <div class="summary">인공지능(AI) 연산에 특화된 국산 신경망처리장치(NPU) 기반 엣지 AI 솔루션과 AI 서버·데이터센터 인프라를 연계한 공동 사업 모델이 탄생할 전망이다. AI 인프라 전문기업 테라텍(대표 공영삼)은 국산 엣지 AI 반도체 전문기업 엣지에이아이(대표 김정욱·양정웅)와</div>
         <a href="https://www.etnews.com/20260417000118" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209432" target="_blank" rel="noopener noreferrer">&#39;바이브 코딩&#39; 커서, 73조 기업 가치 평가로 AI 스타트업 최상위권 도약</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.18 21:35</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># 엔비디아</span><span># AI</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. &#39;바이브 코딩&#39; 커서, 73조 기업 가치 평가로 AI 스타트업 최상위권 도약</div>
-        <div class="summary">&#39;바이브 코딩&#39; 선두 주자 커서가 약 20억달러(약 2조9000억원) 규모의 신규 투자 유치를 추진하며 기업 가치 500억달러(약 73조원)를 넘보는 것으로 알려졌다. 이제는 실리콘 밸리를 대표하는 스타트업으로 올라서는 분위기다.17일(현지시간) CNBC에 따르면, 이번 투자 라운드는 기존 투자사인 앤드리슨 호로비츠와 스라이브 캐피털이 공동 주도하고 있다.여기에 엔비디아도 전략적 투자자...</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209432" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260417000091" target="_blank" rel="noopener noreferrer">JB금융, 전 계열사 &#39;AI 에이전트화&#39; 착수…업무·시스템 동시 재편</a></h3>
+        <h3><a href="https://www.etnews.com/20260419000009" target="_blank" rel="noopener noreferrer">[FDE 급부상] 팔란티어 시작하고 오픈AI·구글 가세…채용공고 800% 증가</a></h3>
         <div class="meta">
           <span>전자신문</span><span class="dot">·</span>
-          <span>13:00</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
+          <span>09:00</span><span class="dot">·</span>
+          <span class="score">점수 9.0/10</span>
         </div>
         <div class="tags">
-<span># AI</span><span># 인공지능</span><span># 에이전트</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. JB금융, 전 계열사 &#39;AI 에이전트화&#39; 착수…업무·시스템 동시 재편</div>
-        <div class="summary">JB금융그룹이 계열사 전반에 적용되는 &#39;인공지능(AI) 에이전트 플랫폼&#39; 구축에 착수하는 것으로 확인됐다. 업무 자동화와 AI 운영 체계를 통합한 그룹 표준 플랫폼을 구축해 디지털 전환(DX)을 가속하려는 전략이다. 금융권에 따르면 JB금융지주는 그룹에 적용되는 AI</div>
-        <a href="https://www.etnews.com/20260417000091" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+<span># 앤트로픽</span><span># AI</span><span># 인공지능</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9) — 주요 기사</div>
+        <div class="summary">전방배치 엔지니어(FDE) 개념을 처음 도입한 팔란티어 테크놀로지스를 비롯해 해외에서도 FDE 채용이 확대되는 추세다. 오픈AI, 앤트로픽, 구글 등 글로벌 인공지능(AI) 선도기업뿐만 아니라 데이터브릭스·세일즈포스 등 소프트웨어(SW) 기업도 FDE 직군을 채용해 현</div>
+        <a href="https://www.etnews.com/20260419000009" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.etnews.com/20260417000067" target="_blank" rel="noopener noreferrer">에이치에너지, AI 에이전트 &#39;헬리오스&#39; 공개…“에너지 소유·분배 구조 바꿀 것”</a></h3>
+        <h3><a href="https://www.etnews.com/20260419000008" target="_blank" rel="noopener noreferrer">[FDE 급부상] &#39;FDE&#39; 도입이 AX 필승 전략?…“성공 조건 따로 있다”</a></h3>
         <div class="meta">
           <span>전자신문</span><span class="dot">·</span>
-          <span>12:00</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
+          <span>09:00</span><span class="dot">·</span>
+          <span class="score">점수 9.0/10</span>
         </div>
         <div class="tags">
-<span># AI</span><span># 인공지능</span><span># 에이전트</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 에이치에너지, AI 에이전트 &#39;헬리오스&#39; 공개…“에너지 소유·분배 구조 바꿀 것”</div>
-        <div class="summary">재생에너지 플랫폼 기업 에이치에너지가 태양광 설계·인허가·운영 전 과정을 자동화하는 인공지능(AI) 에이전트 &#39;헬리오스(Helios)&#39;를 공개했다. 단순 태양광 설치·운영 기업이 아니라, 전국에 흩어진 지붕 자산을 연결해 누구나 에너지 생산과 수익 분배에 참여할 수 있</div>
-        <a href="https://www.etnews.com/20260417000067" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://zdnet.co.kr/view/?no=20260418221410" target="_blank" rel="noopener noreferrer">엔비디아 젠슨 황 &#34;AI는 도구... 못 쓰는 사람이 밀려난다&#34;</a></h3>
-        <div class="meta">
-          <span>ZDNet Korea</span><span class="dot">·</span>
-          <span>10:00</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
-        </div>
-        <div class="tags">
-<span># 엔비디아</span><span># AI</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 엔비디아 젠슨 황 &#34;AI는 도구... 못 쓰는 사람이 밀려난다&#34;</div>
-        <div class="summary">[지디넷코리아]젠슨 황 엔비디아 CEO가 최근 미국 스탠포드대학교 경영대학원 강연에서 AI 시대의 일자리 변화에 대해 &#34;AI 활용을 통해 경쟁력을 갖춰야 한다&#34;는 견해를 밝혔다.17일(현지시간) 스탠포드대학교가 공개한 동영상에서 젠슨 황 CEO는 &#34;AI로 대부분의 사람들이 직업을 잃는 일이 일어날 가능성은 낮다. 오히려 AI를 활용하는 사람때문에 일자리를 잃을 것이며 모두 AI를 쓸 줄...</div>
-        <a href="https://zdnet.co.kr/view/?no=20260418221410" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+<span># AI</span><span># 인공지능</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9.0)</div>
+        <div class="summary">국내에서도 비즈니스 현장에서 인공지능(AI) 기술을 실제 현장에 적용하고 문제를 해결하는 &#39;전방 배치 엔지니어(FDE)&#39;가 존재감을 키우고 있다. 단순 개발이나 기술 지원을 넘어 직접 고객사의 심장부로 들어가 문제를 정의하고 해결하는 &#39;현장형 엔지니어&#39;로, AI 전환(</div>
+        <a href="https://www.etnews.com/20260419000008" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209414" target="_blank" rel="noopener noreferrer">세계로 번지는 &#39;미소스&#39; 경계령...영국·인도, 모델 조기 접근 권한 요구</a></h3>
         <div class="meta">
           <span>AI타임스</span><span class="dot">·</span>
           <span>05:51</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
+          <span class="score">점수 9.0/10</span>
         </div>
         <div class="tags">
 <span># Claude</span><span># 앤트로픽</span><span># AI</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 세계로 번지는 &#39;미소스&#39; 경계령...영국·인도, 모델 조기 접근 권한 요구</div>
-        <div class="summary">앤트로픽이 차세대 AI 모델 ‘클로드 미소스(Claude Mythos)’의 제한적 공개를 확대하며, 글로벌 금융권과 규제 당국에 긴장감이 고조되고 있다. 이 모델이 기존 사이버보안 체계를 무력화할 수 있는 잠재력을 지닌 것으로 평가되면서, 모델 접근 권한 요구가 이어지는 것으로 전해졌다.16일(현지시간) 블룸버그에 따르면, 앤트로픽은 이르면 다음 주 영국 금융기관을 대상으로 미소스 모델...</div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9) — 주요 기사</div>
+        <div class="summary">앤트로픽이 차세대 AI 모델 ‘클로드 미소스(Claude Mythos)’의 제한적 공개를 확대하며, 글로벌 금융권과 규제 당국에 긴장감이 고조되고 있다. 이 모델이 기존 사이버보안 체계를 무력화할 수 있는 잠재력을 지닌 것으로 평가되면서, 모델 접근 권한 요구가 이어지는 것으로 전해졌다.</div>
         <a href="https://www.aitimes.com/news/articleView.html?idxno=209414" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209436" target="_blank" rel="noopener noreferrer">[AI 이슈트렌드] &#39;호르무즈 통제권&#39; 공방에 관심 집중...충남 교사 피습·세종 이전도 화제</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>01:21</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span>        </div>
-        <div class="why"><strong>추출 이유</strong>국제정세 파급. [AI 이슈트렌드] &#39;호르무즈 통제권&#39; 공방에 관심 집중...충남 교사 피습·세종 이전도 </div>
-        <div class="summary">AI타임스와 이스트에이드의 4월 셋째 주(4월 10일~16일) 이슈 분석 결과, 호르무즈 해협을 둘러싼 미국과 이란의 대치와 사회적 파장을 일으킨 사건·사고들이 상위권을 차지했다.이번 주도 가장 높은 검색량을 기록한 키워드 1, 2위는 ‘트럼프 호르무즈 봉쇄(11.6%)’와 ‘이란 호르무즈 합의(8.4%)’다.앞서 이란은 이스라엘과 레바논의 휴전 기간 호르무즈 해협을 완전 개방하겠다고 ...</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209436" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209428" target="_blank" rel="noopener noreferrer">앤트로픽, 올인원 디자인 도구 ‘클로드 디자인’ 공개...어도비·캔바 위협</a></h3>
         <div class="meta">
           <span>AI타임스</span><span class="dot">·</span>
           <span>04.18 20:23</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
+          <span class="score">점수 9.0/10</span>
         </div>
         <div class="tags">
 <span># Claude</span><span># 앤트로픽</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 앤트로픽, 올인원 디자인 도구 ‘클로드 디자인’ 공개...어도비·캔바 위협</div>
-        <div class="summary">앤트로픽이 사업 영역을 디자인으로 확장했다. 전문가 위주의 기존 디자인 도구 시장을 뒤흔들 수 있을 정도의 파괴력을 가진 것으로 드러났다. 앤트로픽은 17일(현지시간) 대화형 AI를 활용해 시각 디자인과 프로토타입을 제작할 수 있는 새로운 도구 ‘클로드 디자인(Claude Design)’을 공개했다.최신 모델인 &#39;클로드 오퍼스 4.7&#39;을 기반으로 하며, 현재 연구 미리보기 형태로 유료 ...</div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9) — 주요 기사</div>
+        <div class="summary">앤트로픽이 사업 영역을 디자인으로 확장했다. 전문가 위주의 기존 디자인 도구 시장을 뒤흔들 수 있을 정도의 파괴력을 가진 것으로 드러났다. 앤트로픽은 17일(현지시간) 대화형 AI를 활용해 시각 디자인과 프로토타입을 제작할 수 있는 새로운 도구 ‘클로드 디자인(Claude Design)’을 공개했다.</div>
         <a href="https://www.aitimes.com/news/articleView.html?idxno=209428" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209400" target="_blank" rel="noopener noreferrer">구글, 퍼스널 인텔리전스에 &#39;나노 바나나&#39; 연결...&#34;개인화된 사진 생성&#34;</a></h3>
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209415" target="_blank" rel="noopener noreferrer">&#39;챗GPT&#39;에 한글 문서 지원 추가…”공공기관 업무 활용 극대화”</a></h3>
         <div class="meta">
           <span>AI타임스</span><span class="dot">·</span>
-          <span>04.18 01:03</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
+          <span>04.17 23:59</span><span class="dot">·</span>
+          <span class="score">점수 9.0/10</span>
         </div>
         <div class="tags">
-<span># 제미나이</span><span># AI</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 구글, 퍼스널 인텔리전스에 &#39;나노 바나나&#39; 연결...&#34;개인화된 사진 생성&#34;</div>
-        <div class="summary">구글이 &#39;제미나이&#39;에 개인 데이터를 기반으로 한 이미지 생성 기능을 추가하며, ‘맞춤형 AI’ 경쟁에 속도를 내고 있다. 이번 업데이트를 통해 사용자는 별도의 상세한 설명 없이도 자신의 취향과 관심사가 반영된 이미지를 생성할 수 있게 된다.구글은 16일(현지시간) 제미나이의 ‘퍼스널 인텔리전스(Personal Intelligence)’ 기능에 이미지 생성 모델 ‘나노 바나나(Nano B...</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209400" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+<span># 챗GPT</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9) — 주요 기사</div>
+        <div class="summary">오픈AI가 국내 비즈니스 환경에서 가장 큰 문제 중 하나로 꼽히던 &#39;챗GPT&#39;의 한글 문서 지원 문제를 해결했다. 오픈AI 코리아는 17일 챗GPT가 한컴오피스 ‘한글’에서 사용되는 대표 문서 형식인 HWP와 HWPX 파일을 지원한다고 밝혔다. 국내 사용자들은 별도의 파일 변환 없이 한글 문서를 직접 업로드해 내용을 확인하고 분석할 수 있게 됐다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209415" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209388" target="_blank" rel="noopener noreferrer">구글, 미 국방부 기밀 분야에 &#39;제미나이&#39; 도입 논의</a></h3>
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209386" target="_blank" rel="noopener noreferrer">백악관, 미국 정부 기관에 앤트로픽 &#39;미소스&#39; 테스트 허용 예정</a></h3>
         <div class="meta">
           <span>AI타임스</span><span class="dot">·</span>
-          <span>04.17 22:37</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
+          <span>04.17 22:56</span><span class="dot">·</span>
+          <span class="score">점수 9.0/10</span>
         </div>
         <div class="tags">
-<span># 제미나이</span><span># AI</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 구글, 미 국방부 기밀 분야에 &#39;제미나이&#39; 도입 논의</div>
-        <div class="summary">그동안 기술의 군사적 활용에 신중한 입장을 보여왔던 구글이 미국 국방부와 AI 기밀 계약을 두고 협상에 나서면서, 정책 기조 변화 가능성에 관심이 모이고 있다.디 인포메이션은 16일(현지시간) 정통한 소식통을 인용, 구글이 미 국방부와 AI 모델을 기밀 환경에서 활용하는 방안을 두고 협상을 진행 중이라고 보도했다.협상이 성사될 경우, 구글의 &#39;제미나이&#39;가 군사와 국가안보 영역으로 확장되...</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209388" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+<span># 앤트로픽</span>        </div>
+        <div class="why"><strong>추출 이유</strong>정책/법제 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9.0)</div>
+        <div class="summary">미국 정부가 사이버 보안 강화를 위해 앤트로픽의 &#39;미소스&#39;를 정부 기관들이 테스트하도록 허락할 것으로 알려졌다. 도널드 트럼프 대통령이 &#34;미국 정부의 모든 연방 기관에 앤트로픽의 기술 사용을 즉시 중단하라&#34;라고 지시한 지 50여일 만이다. 블룸버그는 16일(현지시간) 미 행정부가 미소스를 연방 주요 기관에 도입하는 방안을 검토 중이라고 보도했다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209386" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209399" target="_blank" rel="noopener noreferrer">우주청, 우주 데이터센터 구축 논의...&#34;누리호에 AI 핵심기술 탑재·실증&#34;</a></h3>
         <div class="meta">
           <span>AI타임스</span><span class="dot">·</span>
           <span>04.17 22:28</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
+          <span class="score">점수 9.0/10</span>
         </div>
         <div class="tags">
 <span># AI</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 우주청, 우주 데이터센터 구축 논의...&#34;누리호에 AI 핵심기술 탑재·실증&#34;</div>
-        <div class="summary">우주항공청(청장 오태석)은 17일 대전 한국항공우주연구원(원장 이상철)에서 한국형 우주 데이터센터의 개발 방향을 논의하기 위해 국내 전문가들을 초청, 간담회를 개최했다고 밝혔다.우주 데이터센터 구축은 AI 시대를 맞아 원천기술을 확보하고 실증하는 임무다. 이를 달성하기 위해 2030년까지 우주 데이터센터 기술에 대한 검증을 목표로 설정하고, 3가지 핵심기술을 구성했다.▲우주공간에서 전력...</div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9.0)</div>
+        <div class="summary">우주항공청(청장 오태석)은 17일 대전 한국항공우주연구원(원장 이상철)에서 한국형 우주 데이터센터의 개발 방향을 논의하기 위해 국내 전문가들을 초청, 간담회를 개최했다고 밝혔다. 우주 데이터센터 구축은 AI 시대를 맞아 원천기술을 확보하고 실증하는 임무다. 이를 달성하기 위해 2030년까지 우주 데이터센터 기술에 대한 검증을 목표로 설정하고, 3가지 핵심기술을 구성했다.</div>
         <a href="https://www.aitimes.com/news/articleView.html?idxno=209399" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209353" target="_blank" rel="noopener noreferrer">“교육비 무료에 210만원 수당까지”...광양, AI·스마트팩토리 실무 인재 키운다</a></h3>
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209397" target="_blank" rel="noopener noreferrer">해피사이언스 축제, AI 주제로 개최… 인공지능게임협회 체험부스 참여</a></h3>
         <div class="meta">
           <span>AI타임스</span><span class="dot">·</span>
-          <span>04.17 22:00</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
+          <span>04.17 22:10</span><span class="dot">·</span>
+          <span class="score">점수 9.0/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span><span># 인공지능</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9.0)</div>
+        <div class="summary">한국인공지능게임협회는 국립과천과학관에서 진행하는 &#39;2026년 제18회 해피사이언스 축제&#39;에 참여하여 인공지능과 게임을 결합한 체험형 콘텐츠를 선보인다고 17일 밝혔다. 4월18~19일 야외 체험부스를 운영하며 관람객이 직접 참여할 수 있는 다양한 프로그램을 구성했다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209397" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260418225227" target="_blank" rel="noopener noreferrer">KETI, 연 1천만 건 ‘안전신문고’에 AI 기술 입힌다</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>11:00</span><span class="dot">·</span>
+          <span class="score">점수 7.8/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span><span># 에이전트</span>        </div>
+        <div class="why"><strong>추출 이유</strong>정책/법제 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 7.8)</div>
+        <div class="summary">[지디넷코리아]한국전자기술연구원(KETI·원장 신희동)은 행정안전부의 안전신문고 시스템과 관련해 중요한 신고를 자동으로 선별·분류·이송하는 ‘차세대 AI 안전신문고’를 위한 기반 기술 개발을 완료하고, 올해 말 시범 서비스 개시를 목표로 현장 실증을 착수했다고 19일 밝혔다. 이번 사업은 정부 국정과제인 ‘국민안전 보장을 위한 재난안전 관리체계 확립’ 일환으로 추진됐다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260418225227" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260418221410" target="_blank" rel="noopener noreferrer">엔비디아 젠슨 황 &#34;AI는 도구... 못 쓰는 사람이 밀려난다&#34;</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>10:00</span><span class="dot">·</span>
+          <span class="score">점수 7.8/10</span>
+        </div>
+        <div class="tags">
+<span># 엔비디아</span><span># AI</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 7.8)</div>
+        <div class="summary">[지디넷코리아]젠슨 황 엔비디아 CEO가 최근 미국 스탠포드대학교 경영대학원 강연에서 AI 시대의 일자리 변화에 대해 &#34;AI 활용을 통해 경쟁력을 갖춰야 한다&#34;는 견해를 밝혔다. 17일(현지시간) 스탠포드대학교가 공개한 동영상에서 젠슨 황 CEO는 &#34;AI로 대부분의 사람들이 직업을 잃는 일이 일어날 가능성은 낮다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260418221410" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209442" target="_blank" rel="noopener noreferrer">앤트로픽 &#39;클로드&#39; 인증 강화에 중국 개발자 ‘우회 경쟁’ 격화</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>21:41</span><span class="dot">·</span>
+          <span class="score">점수 7.5/10</span>
+        </div>
+        <div class="tags">
+<span># 앤트로픽</span>        </div>
+        <div class="why"><strong>추출 이유</strong>정책/법제 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 7.5)</div>
+        <div class="summary">앤트로픽이 ‘클로드’에 대해 신원 인증 절차를 도입하면서, 글로벌 사용자들 사이에서 논란이 커지고 있다. 특히 중국에서는 기존 우회 접근 방식이 차단될 수 있다는 우려 속에 대체 경로 확보 경쟁이 치열해지고 있다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209442" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209443" target="_blank" rel="noopener noreferrer">&#39;자기학습 AI&#39;로 설립 4개월 만에 7300억 투자 유치한 슈퍼 스타트업 등장</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>21:17</span><span class="dot">·</span>
+          <span class="score">점수 7.5/10</span>
         </div>
         <div class="tags">
 <span># AI</span>        </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. “교육비 무료에 210만원 수당까지”...광양, AI·스마트팩토리 실무 인재 키운다</div>
-        <div class="summary">광양시가 지역 청년 구직자의 취업역량 강화를 위해 AI 기반 자동화 실무교육자 추가모집에 나섰다.광양만권HRD센터는 광양 AX 실증 프로젝트 지능형 자동화 교육 참여자를 모집한다고 16일 밝혔다.지역 산업현장에서 요구되는 스마트팩토리 자동화와 AI·데이터 활용 역량을 동시에 키우려는 의도다. 실습 프로젝트 중심으로, 지역 구직자를 첨단 제조와 AI 자동화 흐름에 연결하려는 것으로 해석된...</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209353" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 7.5)</div>
+        <div class="summary">구글 딥마인드와 오픈AI 출신 연구진이 설립한 신생 AI 스타트업이 대규모 투자를 유치하며 업계의 주목을 받고 있다. 설립 4개월에 불과한 이 스타트업은 ‘스스로 학습하고 진화하는 AI’ 개발을 핵심 비전으로 제시하고 있다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209443" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209426" target="_blank" rel="noopener noreferrer">[게시판] NC AI, 아시아 주요국 대상 산업 맞춤형 AX 전략 소개 등 단신</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 00:50</span><span class="dot">·</span>
+          <span class="score">점수 7.5/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span>        </div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 7.5)</div>
+        <div class="summary">■ NC AI(대표 이연수)는 아시아개발은행(ADB)과 과학기술정보통신부가 공동 주관한 글로벌 워크숍에 초청돼 아시아 주요국 정책 결정자를 대상으로 AI 혁신 기술과 비전을 발표했다고 밝혔다. 산업 맞춤형 풀스택 AI 솔루션과 제조, 국방, 유통, 콘텐츠 등 산업 현장의 효율을 극대화한 AX 사례를 공유했다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209426" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
     </div>
   </section>
   <section class="section" aria-label="종합 뉴스">
     <div class="section-header">
       <h2>종합 뉴스</h2>
-      <span class="count">22건</span>
+      <span class="count">25건</span>
     </div>
     <div class="section-body">
       <article class="article">
@@ -768,10 +810,10 @@
         <div class="meta">
           <span>매일경제</span><span class="dot">·</span>
           <span>13:00</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
+          <span class="score">점수 10.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>정책/법제 이슈. 배달앱 핀셋규제조차도 “통상마찰 우려”…수수료상한제에 국회 제동</div>
-        <div class="summary">배달앱 핀셋규제조차도 “통상마찰 우려”…수수료상한제에 국회 제동. 정무위 검토보고서 “쿠팡에 적용, 통상마찰 소지”여당이 추진해온 배달앱 규제법안에 국회가 “통상마찰이 발생할 가능성을 배제할 수 없다”며 제동을 걸었다. 온라인플랫폼법 도입이 미뤄..</div>
+        <div class="why"><strong>추출 이유</strong>정책/법제 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10) — 주요 기사</div>
+        <div class="summary">정무위 검토보고서 “쿠팡에 적용, 통상마찰 소지”여당이 추진해온 배달앱 규제법안에 국회가 “통상마찰이 발생할 가능성을 배제할 수 없다”며 제동을 걸었다. 온라인플랫폼법 도입이 미뤄..</div>
         <a href="https://www.mk.co.kr/news/economy/12020954" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
@@ -779,21 +821,32 @@
         <div class="meta">
           <span>ZDNet Korea</span><span class="dot">·</span>
           <span>12:09</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
+          <span class="score">점수 10.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>안전/건강 관련. HPV 백신, 5월6일부터 12세 남성 청소년도 무료접종</div>
-        <div class="summary">[지디넷코리아]12세 남성 청소년도 HPV 백신의 무료접종이 가능해진다.질병관리청에 따르면 오는 5월6일부터 12세 남성 청소년(2014년생)을 대상으로 사람유두종바이러스(이하 HPV) 백신 국가예방접종 지원사업을 새롭게 시행한다.이번 사업은 기존 여성 청소년 중심의 HPV 국가예방접종 지원을 남성 청소년까지 확대해 남녀 모두 접종함으로써 관련 질환 예방을 강화하기 위한 것이다. HPV...</div>
+        <div class="why"><strong>추출 이유</strong>안전/건강 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10) — 주요 기사</div>
+        <div class="summary">[지디넷코리아]12세 남성 청소년도 HPV 백신의 무료접종이 가능해진다. 질병관리청에 따르면 오는 5월6일부터 12세 남성 청소년(2014년생)을 대상으로 사람유두종바이러스(이하 HPV) 백신 국가예방접종 지원사업을 새롭게 시행한다. 이번 사업은 기존 여성 청소년 중심의 HPV 국가예방접종 지원을 남성 청소년까지 확대해 남녀 모두 접종함으로써 관련 질환 예방을 강화하기 위한 것이다.</div>
         <a href="https://zdnet.co.kr/view/?no=20260419120939" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.mk.co.kr/news/politics/12020928" target="_blank" rel="noopener noreferrer">일요일 새벽 6시의 굉음...북한, 11일만에 탄도미사일 무력시위</a></h3>
+        <div class="meta">
+          <span>매일경제</span><span class="dot">·</span>
+          <span>11:25</span><span class="dot">·</span>
+          <span class="score">점수 10.0/10</span>
+        </div>
+        <div class="why"><strong>추출 이유</strong>국제정세 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10) — 주요 기사</div>
+        <div class="summary">잠수함기지·조선소 있는 신포서 발사돼 동북쪽 표적지 ‘알섬’쪽으로 140㎞ 비행 중동불안 활용해 핵·미사일 고도화 속도 “트럼프 방중 前 대미 접촉 고려” 분석도북한이 19일 오전..</div>
+        <a href="https://www.mk.co.kr/news/politics/12020928" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://zdnet.co.kr/view/?no=20260419100631" target="_blank" rel="noopener noreferrer">좋은 소식 있다더니 또 막힌 호르무즈…미·이란 긴장 재고조</a></h3>
         <div class="meta">
           <span>ZDNet Korea</span><span class="dot">·</span>
           <span>10:14</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
+          <span class="score">점수 10.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>정책/법제 이슈. 좋은 소식 있다더니 또 막힌 호르무즈…미·이란 긴장 재고조</div>
-        <div class="summary">[지디넷코리아]미국과 이란 간 협상 기대가 이어지는 가운데 이란이 호르무즈 해협 통제를 다시 강화하면서 중동 정세가 다시 흔들리고 있다.18일(현지시간) 로이터통신에 따르면 이란 이슬람혁명수비대(IRGC)는 성명을 내고 호르무즈 해협이 18일 저녁부터 다시 폐쇄됐다고 밝혔다. 미국의 대이란 해상 봉쇄가 해제되기 전까지는 해협을 정상 개방하지 않겠다는 입장도 내놨다.IRGC는 미국이 지난...</div>
+        <div class="why"><strong>추출 이유</strong>정책/법제 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 10) — 주요 기사</div>
+        <div class="summary">[지디넷코리아]미국과 이란 간 협상 기대가 이어지는 가운데 이란이 호르무즈 해협 통제를 다시 강화하면서 중동 정세가 다시 흔들리고 있다. 18일(현지시간) 로이터통신에 따르면 이란 이슬람혁명수비대(IRGC)는 성명을 내고 호르무즈 해협이 18일 저녁부터 다시 폐쇄됐다고 밝혔다. 미국의 대이란 해상 봉쇄가 해제되기 전까지는 해협을 정상 개방하지 않겠다는 입장도 내놨다.</div>
         <a href="https://zdnet.co.kr/view/?no=20260419100631" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
@@ -801,66 +854,55 @@
         <div class="meta">
           <span>매일경제</span><span class="dot">·</span>
           <span>12:55</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
+          <span class="score">점수 9.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>경제/생계 영향. 봄 이사철 서울 전세 매물 반토막…임대차 절반이 월세 — 주목할 만한 보도.</div>
-        <div class="summary">봄 이사철 서울 전세 매물 반토막…임대차 절반이 월세. 서울 전세 매물 전 자치구 감소 전세가율 반등·월세 매물도 감소봄 이사 철을 맞았지만 서울 아파트 전세 매물이 2년 전 대비 절반가량 감소한 것으로 나타났다. 19일 부동산 빅데이..</div>
+        <div class="why"><strong>추출 이유</strong>경제/생계 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9) — 주요 기사</div>
+        <div class="summary">서울 전세 매물 전 자치구 감소 전세가율 반등·월세 매물도 감소봄 이사 철을 맞았지만 서울 아파트 전세 매물이 2년 전 대비 절반가량 감소한 것으로 나타났다. 19일 부동산 빅데이..</div>
         <a href="https://www.mk.co.kr/news/realestate/12020948" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209438" target="_blank" rel="noopener noreferrer">오픈AI, 과학팀 담당 부사장 등 임원 3명 사임</a></h3>
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209334" target="_blank" rel="noopener noreferrer">옥스퍼드PV, 영국 SUITE 프로젝트 합류… 닛산과 손잡고 태양광 자동차 개발</a></h3>
         <div class="meta">
           <span>AI타임스</span><span class="dot">·</span>
-          <span>04:31</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
+          <span>04.17 22:20</span><span class="dot">·</span>
+          <span class="score">점수 9.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 오픈AI, 과학팀 담당 부사장 등 임원 3명 사임 — 주목할 만한 보도.</div>
-        <div class="summary">오픈AI에서 핵심 프로젝트를 이끌었던 임원들이 사임을 발표했다. 이처럼 B2B 중심으로 사업 구조를 개편하고 기업공개(IPO)에 대비하는 과정에서 경영진이 잇달아 개편되고 있다.오픈AI 과학팀 책임자인 케빈 웨일 부사장과 소라 팀 리더인 빌 피블스, B2B 애플리케이션 최고 기술책임자(CTO) 스리니바스 나라야난 등은 17일(현지시간) 각각 X에 글을 올려 퇴사 소식을 알렸다.이들의 퇴...</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209438" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 9.0)</div>
+        <div class="summary">영국 페로브스카이트-실리콘 탠덤 태양광 기술 기업 옥스퍼드PV가 차량 일체형 태양광 연구개발 프로젝트에 참여한다. 리뉴어블스나우는 15일(현지시간) 옥스퍼드PV가 영국 주도의 협력형 연구개발 프로그램 &#39;스위트(SUITE)&#39;에 합류했다고 보도했다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209334" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260419024151083" target="_blank" rel="noopener noreferrer">中, 日군함 대만해협 통과에 &#34;자신이 지른 불에 타 죽을 것&#34;(종합)</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>13:52</span><span class="dot">·</span>
-          <span class="score">점수 6.0/10</span>
-        </div>
-        <div class="why"><strong>추출 이유</strong>국제정세 파급. 中, 日군함 대만해협 통과에 &#34;자신이 지른 불에 타 죽을 것&#34;(종합)</div>
-        <div class="summary">中, 日군함 대만해협 통과에 &#34;자신이 지른 불에 타 죽을 것&#34;(종합). (베이징=연합뉴스) 한종구 특파원 = 일본 해상자위대 군함의 대만해협 통과를 둘러싸고 중국이 무인기 감시 영상까지 공개하며 대응 수위를 끌어올렸...</div>
-        <a href="https://www.yna.co.kr/view/AKR20260419024151083" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260419031100084" target="_blank" rel="noopener noreferrer">파키스탄, 美·이란 2차회담 대비 &#39;봉쇄 수준&#39; 강력 보안 조치</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>13:30</span><span class="dot">·</span>
-          <span class="score">점수 6.0/10</span>
-        </div>
-        <div class="why"><strong>추출 이유</strong>국제정세 파급. 파키스탄, 美·이란 2차회담 대비 &#39;봉쇄 수준&#39; 강력 보안 조치</div>
-        <div class="summary">파키스탄, 美·이란 2차회담 대비 &#39;봉쇄 수준&#39; 강력 보안 조치. (하노이=연합뉴스) 박진형 특파원 = 파키스탄이 자국에서 조만간 열릴 것으로 예상되는 미국·이란 2차 회담 준비를 위해 코로나19 팬데믹(대유행...</div>
-        <a href="https://www.yna.co.kr/view/AKR20260419031100084" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.mk.co.kr/news/world/12020949" target="_blank" rel="noopener noreferrer">중국, 일본 군함 대만해협 통과에 “자신이 지른 불에 타죽을 것”</a></h3>
+        <h3><a href="https://www.mk.co.kr/news/politics/12020979" target="_blank" rel="noopener noreferrer">서울시장 선거 최대 이슈는 부동산... “집값대책이 결국 표심 가를 것”</a></h3>
         <div class="meta">
           <span>매일경제</span><span class="dot">·</span>
-          <span>12:55</span><span class="dot">·</span>
-          <span class="score">점수 6.0/10</span>
+          <span>14:08</span><span class="dot">·</span>
+          <span class="score">점수 7.5/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>국제정세 파급. 중국, 일본 군함 대만해협 통과에 “자신이 지른 불에 타죽을 것”</div>
-        <div class="summary">중국, 일본 군함 대만해협 통과에 “자신이 지른 불에 타죽을 것”. 일본 해상자위대 군함이 타이완 해협을 통과하자 중국이 무인기 감시 영상을 공개하며 대응 수위를 끌어올렸다. 중국 중앙TV(CCTV)가 운영하는 소셜미디어 계정 ‘위위안탄톈’(玉淵譚..</div>
-        <a href="https://www.mk.co.kr/news/world/12020949" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+        <div class="why"><strong>추출 이유</strong>경제/생계 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 7.5)</div>
+        <div class="summary">정당학회 교수들이 본 서울시장 선거 짒값 변화가 선거 영향 줄 듯...교통도 변수 오세훈, 4선 서울시장 경험은 독보적 강점 정원오, 대통령 지지율 높아 후광효과 기대 吳, 중도만..</div>
+        <a href="https://www.mk.co.kr/news/politics/12020979" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260418047100002" target="_blank" rel="noopener noreferrer">&#34;부실기업, 상폐 회피용 불법기승 우려&#34;…금감원, 총력대응 예고</a></h3>
+        <h3><a href="https://www.etnews.com/20260419000010" target="_blank" rel="noopener noreferrer">北 탄도미사일 도발, 11일 만에 재개...日 “EEZ 밖 낙하 추정, 피해는 없어”</a></h3>
         <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>12:00</span><span class="dot">·</span>
+          <span>전자신문</span><span class="dot">·</span>
+          <span>07:14</span><span class="dot">·</span>
+          <span class="score">점수 7.5/10</span>
+        </div>
+        <div class="why"><strong>추출 이유</strong>국제정세 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 7.5) — 주요 기사</div>
+        <div class="summary">일본 방위성은 19일 오전 북한이 탄도미사일로 추정되는 물체를 발사했다고 밝혔다. 현지 공영방송과 통신에 따르면 일본 정부 관계자는 해당 물체가 일본의 배타적경제수역 밖에 낙하한 것으로 보인다고 전했다. 방위성은 현재까지 이 물체로 인한 피해는 확인되지 않았다고 설명했</div>
+        <a href="https://www.etnews.com/20260419000010" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.mk.co.kr/news/politics/12020971" target="_blank" rel="noopener noreferrer">이대통령과 오찬 뒤 ‘총리설’ 돌자…홍준표 “밥 준다 해서 간 것, 오해 안해도 돼”</a></h3>
+        <div class="meta">
+          <span>매일경제</span><span class="dot">·</span>
+          <span>13:48</span><span class="dot">·</span>
           <span class="score">점수 6.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>경제/생계 영향. &#34;부실기업, 상폐 회피용 불법기승 우려&#34;…금감원, 총력대응 예고</div>
-        <div class="summary">&#34;부실기업, 상폐 회피용 불법기승 우려&#34;…금감원, 총력대응 예고. (서울=연합뉴스) 배영경 기자 = 금융감독원은 19일 부실기업들이 상장폐지를 회피하기 위해 인위적으로 주가를 부양하는 등의 각종 불법행위가 기승...</div>
-        <a href="https://www.yna.co.kr/view/AKR20260418047100002" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+        <div class="why"><strong>추출 이유</strong>정책/법제 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 6) — 주요 기사</div>
+        <div class="summary">홍준표 전 대구시장이 이재명 대통령과의 비공개 오찬 이후 확산되고 있는 ‘총리 기용설’을 정면으로 부인했다. 홍 전 시장은 지난 18일 자신의 유튜브 채널 ‘TV 홍카콜라’에 올린..</div>
+        <a href="https://www.mk.co.kr/news/politics/12020971" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://zdnet.co.kr/view/?no=20260417172007" target="_blank" rel="noopener noreferrer">우본, EMS 국제 우편 요금 최대 6% 추가 할인</a></h3>
@@ -869,20 +911,31 @@
           <span>12:00</span><span class="dot">·</span>
           <span class="score">점수 6.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>경제/생계 영향. 우본, EMS 국제 우편 요금 최대 6% 추가 할인 — 주목할 만한 보도.</div>
-        <div class="summary">[지디넷코리아]우체국이 영세 수출 기업의 해외 운송비 절감을 위해 발송 비용을 할인하는 등 상생 방안을 마련했다.우정사업본부는 오는 20일부터 다음 달 31일까지 국제 우편 국제특급우편(EMS)과 EMS프리미엄 우편 요금 4~6%를 추가 할인한다고 밝혔다.요금 할인은 최근 국제 유가 상승 등으로 항공 화물 운임 비용이 급등함에 따라 영세한 수출 기업 부담을 줄이기 위해 마련됐다. 우정사...</div>
+        <div class="why"><strong>추출 이유</strong>경제/생계 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 6.0)</div>
+        <div class="summary">[지디넷코리아]우체국이 영세 수출 기업의 해외 운송비 절감을 위해 발송 비용을 할인하는 등 상생 방안을 마련했다. 우정사업본부는 오는 20일부터 다음 달 31일까지 국제 우편 국제특급우편(EMS)과 EMS프리미엄 우편 요금 4~6%를 추가 할인한다고 밝혔다. 요금 할인은 최근 국제 유가 상승 등으로 항공 화물 운임 비용이 급등함에 따라 영세한 수출 기업 부담을 줄이기 위해 마련됐다.</div>
         <a href="https://zdnet.co.kr/view/?no=20260417172007" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260419022500003" target="_blank" rel="noopener noreferrer">2분기 소매경기 &#39;봄철 특수&#39; 없을 듯…&#34;중동전쟁·고환율 여파&#34;</a></h3>
+        <h3><a href="https://www.mk.co.kr/news/society/12020936" target="_blank" rel="noopener noreferrer">“하이닉스 성과금, 전국민에게 나눠줘야”...공무원의 황당 주장, 근거는?</a></h3>
         <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>12:00</span><span class="dot">·</span>
+          <span>매일경제</span><span class="dot">·</span>
+          <span>11:39</span><span class="dot">·</span>
           <span class="score">점수 6.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>국제정세 파급. 2분기 소매경기 &#39;봄철 특수&#39; 없을 듯…&#34;중동전쟁·고환율 여파&#34;</div>
-        <div class="summary">2분기 소매경기 &#39;봄철 특수&#39; 없을 듯…&#34;중동전쟁·고환율 여파&#34;. (서울=연합뉴스) 강태우 기자 = 중동전쟁 여파로 유통업계의 &#39;봄철 특수&#39;가 기대만큼 나타나기 어려울 것이라는 전망이 나왔다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260419022500003" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 6) — 주요 기사</div>
+        <div class="summary">“과거 국세 지원했으니 환원하라” 익명 커뮤니티서 ‘성과급 공유’ 논란삼성전자와 SK하이닉스 임직원이 사상 최대 규모의 성과급을 예고한 가운데 이를 전국민 모두에게 나눠야 한다는 ..</div>
+        <a href="https://www.mk.co.kr/news/society/12020936" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.mk.co.kr/news/politics/12020935" target="_blank" rel="noopener noreferrer">민주당 소속 조작기소 국조특위 위원 기자간담회</a></h3>
+        <div class="meta">
+          <span>매일경제</span><span class="dot">·</span>
+          <span>11:39</span><span class="dot">·</span>
+          <span class="score">점수 6.0/10</span>
+        </div>
+        <div class="why"><strong>추출 이유</strong>정책/법제 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 6) — 주요 기사</div>
+        <div class="summary">민주당 소속 조작기소 국조특위 위원 기자간담회 19일 오전 서울 여의도 국회에서 윤석열 정치검찰 조작기소 국조특위 더불어민주당 위원 기자간담회가 열리고 있다. 2025.04.19...</div>
+        <a href="https://www.mk.co.kr/news/politics/12020935" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://www.mk.co.kr/news/world/12020929" target="_blank" rel="noopener noreferrer">“이제 대만 못따라잡나요”…IMF “5년 뒤 韓·台 1인당 GDP, 1만불 이상 차”</a></h3>
@@ -891,63 +944,63 @@
           <span>11:28</span><span class="dot">·</span>
           <span class="score">점수 6.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>국제정세 파급. “이제 대만 못따라잡나요”…IMF “5년 뒤 韓·台 1인당 GDP, 1만불 이상 차”</div>
-        <div class="summary">“이제 대만 못따라잡나요”…IMF “5년 뒤 韓·台 1인당 GDP, 1만불 이상 차”. 대만, 올해 4만달러 돌파 전망 한국은 2년 뒤에 4만달러 진입 5년 뒤 양국 격차 1만달러 이상 IB, 글로벌 반도체 슈퍼사이클에 중동전쟁에도 대만 성장 전망치 상향우리나라 국민..</div>
+        <div class="why"><strong>추출 이유</strong>국제정세 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 6) — 주요 기사</div>
+        <div class="summary">대만, 올해 4만달러 돌파 전망 한국은 2년 뒤에 4만달러 진입 5년 뒤 양국 격차 1만달러 이상 IB, 글로벌 반도체 슈퍼사이클에 중동전쟁에도 대만 성장 전망치 상향우리나라 국민..</div>
         <a href="https://www.mk.co.kr/news/world/12020929" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.mk.co.kr/news/politics/12020928" target="_blank" rel="noopener noreferrer">일요일 새벽 6시의 굉음...북한, 11일만에 탄도미사일 무력시위</a></h3>
-        <div class="meta">
-          <span>매일경제</span><span class="dot">·</span>
-          <span>11:25</span><span class="dot">·</span>
-          <span class="score">점수 6.0/10</span>
-        </div>
-        <div class="why"><strong>추출 이유</strong>국제정세 파급. 일요일 새벽 6시의 굉음...북한, 11일만에 탄도미사일 무력시위</div>
-        <div class="summary">일요일 새벽 6시의 굉음...북한, 11일만에 탄도미사일 무력시위. 잠수함기지·조선소 있는 신포서 발사돼 동북쪽 표적지 ‘알섬’쪽으로 140㎞ 비행 중동불안 활용해 핵·미사일 고도화 속도 “트럼프 방중 前 대미 접촉 고려” 분석도북한이 19일 오전..</div>
-        <a href="https://www.mk.co.kr/news/politics/12020928" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260419024300003" target="_blank" rel="noopener noreferrer">[게시판] 코트라·국토부, 우즈베키스탄서 수출 상담회…韓 기업 진출지원</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>11:12</span><span class="dot">·</span>
-          <span class="score">점수 6.0/10</span>
-        </div>
-        <div class="why"><strong>추출 이유</strong>경제/생계 영향. [게시판] 코트라·국토부, 우즈베키스탄서 수출 상담회…韓 기업 진출지원</div>
-        <div class="summary">[게시판] 코트라·국토부, 우즈베키스탄서 수출 상담회…韓 기업 진출지원. ▲ 대한무역투자진흥공사(코트라)는 국토교통부와 함께 지난 15일 우즈베키스탄 타슈켄트에서 열린 &#39;우즈베키스탄 스마트시티 로드쇼 및 수출 포럼·상...</div>
-        <a href="https://www.yna.co.kr/view/AKR20260419024300003" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260417000014" target="_blank" rel="noopener noreferrer">호서대 반도체패키지랩, &#39;K-반도체 후공정(OSAT) 산교육의 장&#39; 자리매김</a></h3>
+        <h3><a href="https://www.etnews.com/20260417000104" target="_blank" rel="noopener noreferrer">&#39;꿈의 배터리&#39; 올라탄 동박 3사…니켈도금 동박 선점전 가열</a></h3>
         <div class="meta">
           <span>전자신문</span><span class="dot">·</span>
           <span>11:00</span><span class="dot">·</span>
           <span class="score">점수 6.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>경제/생계 영향. 호서대 반도체패키지랩, &#39;K-반도체 후공정(OSAT) 산교육의 장&#39; 자리매김</div>
-        <div class="summary">“전국 40여개 대학의 재학생·미취업 졸업생 200여명이 장비와 재료를 직접 다루는 후공정 실습 교육을 받기 위해 &#39;호서대 반도체 패키지랩&#39; 문을 두드렸습니다. 지역별로 충청권이 44%, 서울·경기권 45%, 그 외 11%를 차지해 폭넓은 관심을 받았습니다. 특히, 실</div>
-        <a href="https://www.etnews.com/20260417000014" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 6.0)</div>
+        <div class="summary">&#39;꿈의 배터리&#39;로 불리는 전고체 배터리 상용화 경쟁이 본격화되면서 동박 소재사도 차세대 소재 시장 선점에 나섰다. 배터리사 양산 로드맵에 맞춰 동박 3사도 기술 개발을 마치고 특허 확보와 고객사 협력 확대에 속도를 내고 있다. 19일 업계에 따르면 롯데에너지머티리얼즈·</div>
+        <a href="https://www.etnews.com/20260417000104" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209375" target="_blank" rel="noopener noreferrer">광주 광산구,  청년 &#39;체감형 정책&#39; 대폭 강화한다.</a></h3>
+        <h3><a href="https://www.etnews.com/20260419000013" target="_blank" rel="noopener noreferrer">몰디브 신혼여행이 악몽으로…상어 습격, 스페인 남성 다리 절단</a></h3>
         <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.18 00:40</span><span class="dot">·</span>
+          <span>전자신문</span><span class="dot">·</span>
+          <span>07:55</span><span class="dot">·</span>
           <span class="score">점수 6.0/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>정책/법제 이슈. 광주 광산구,  청년 &#39;체감형 정책&#39; 대폭 강화한다. — 주목할 만한 보도.</div>
-        <div class="summary">광주 광산구가 청년이 머물고 싶은 도시를 목표로 청년 삶 전반을 아우르는 체감형 정책 강화에 나섰다고 17일 밝혔다.광산구는 일자리와 주거, 복지, 문화, 정책 참여에 이르는 다양한 분야에서 청년의 삶을 실질적으로 뒷받침하는 지원사업을 추진하고 있다.단순 지원 항목을 늘리는 데 그치지 않고 청년이 지역 안에서 자립하고 정착할 수 있는 기반을 촘촘히 짜겠다는 방향이 이번 발표의 핵심이다....</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209375" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+        <div class="why"><strong>추출 이유</strong>안전/건강 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 6) — 주요 기사</div>
+        <div class="summary">몰디브로 신혼여행을 떠난 스페인 남성이 상어의 공격을 받아 중상을 입는 사고가 발생했다. 영국 데일리메일은 16일(현지시간) 몰디브 쿠두섬을 방문한 신혼부부가 지난 13일 해양 투어 프로그램에 참가하던 중 상어와 마주쳤다고 보도했다. 남편 보르하는 사고 직후 병원으로</div>
+        <a href="https://www.etnews.com/20260419000013" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.etnews.com/20260419000012" target="_blank" rel="noopener noreferrer">타이타닉 생존자의 &#39;그 구명조끼&#39;…114년 만에 경매 등장</a></h3>
+        <div class="meta">
+          <span>전자신문</span><span class="dot">·</span>
+          <span>07:36</span><span class="dot">·</span>
+          <span class="score">점수 6.0/10</span>
+        </div>
+        <div class="why"><strong>추출 이유</strong>안전/건강 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 6) — 주요 기사</div>
+        <div class="summary">1500명 이상의 사망자를 낸 타이타닉호 침몰 사고 당시 생존자가 실제 착용했던 구명조끼가 처음으로 경매에 나온다. 17일(현지시간) 외신에 따르면 영국의 경매업체는 타이타닉호 일등석 승객이었던 로라 메이블 프랑카텔리가 착용한 구명조끼를 경매에 부칠 예정이라고 밝혔다.</div>
+        <a href="https://www.etnews.com/20260419000012" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.etnews.com/20260418000065" target="_blank" rel="noopener noreferrer">“이란 혁명수비대, 호르무즈 유조선에 발포”…모즈타바 “적에 쓰라린 패배 안길 준비”</a></h3>
+        <div class="meta">
+          <span>전자신문</span><span class="dot">·</span>
+          <span>04.18 21:32</span><span class="dot">·</span>
+          <span class="score">점수 6.0/10</span>
+        </div>
+        <div class="why"><strong>추출 이유</strong>국제정세 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 6) — 주요 기사</div>
+        <div class="summary">이란 혁명수비대와 연계된 고속정이 호르무즈 해협 인근에서 유조선을 공격했다는 신고가 접수되며 중동 지역 긴장이 다시 고조되고 있다. 영국해사무역기구는 18일(현지시간) 오만 인근 해역을 항해 중이던 유조선 선장의 신고를 인용해 이란 측 고속정 2척이 경고 없이 발포했다</div>
+        <a href="https://www.etnews.com/20260418000065" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://zdnet.co.kr/view/?no=20260417091220" target="_blank" rel="noopener noreferrer">전자파·중성자 동시에 막는 &#39;3D프린팅 필름&#39; 세계 첫 공개</a></h3>
         <div class="meta">
           <span>ZDNet Korea</span><span class="dot">·</span>
           <span>12:00</span><span class="dot">·</span>
-          <span class="score">점수 5.0/10</span>
+          <span class="score">점수 4.8/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>안전/건강 관련. 전자파·중성자 동시에 막는 &#39;3D프린팅 필름&#39; 세계 첫 공개</div>
-        <div class="summary">[지디넷코리아]전자파와 중성자를 동시에 차단 가능한 3D프린팅 초박막 필름이 개발됐다.한국과학기술연구원(KIST)은 주용호 극한환경차폐소재연구센터 책임연구원이 고무처럼 늘어나고 3D 프린팅까지 가능한 혁신적인 복합 차폐 소재를 세계 최초로 개발했다고 19일 밝혔다.연구 성과는 국제 학술지 &#39;어드밴스드 머티리얼즈&#39;( (IF 27.4)에 게재됐다.이 복합소재는 두 종류의 나노튜브를 결합했다...</div>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 4.8)</div>
+        <div class="summary">[지디넷코리아]전자파와 중성자를 동시에 차단 가능한 3D프린팅 초박막 필름이 개발됐다. 한국과학기술연구원(KIST)은 주용호 극한환경차폐소재연구센터 책임연구원이 고무처럼 늘어나고 3D 프린팅까지 가능한 혁신적인 복합 차폐 소재를 세계 최초로 개발했다고 19일 밝혔다. 연구 성과는 국제 학술지 &#39;어드밴스드 머티리얼즈&#39;( (IF 27.4)에 게재됐다.</div>
         <a href="https://zdnet.co.kr/view/?no=20260417091220" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
@@ -955,10 +1008,10 @@
         <div class="meta">
           <span>ZDNet Korea</span><span class="dot">·</span>
           <span>10:24</span><span class="dot">·</span>
-          <span class="score">점수 5.0/10</span>
+          <span class="score">점수 4.8/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>안전/건강 관련. 첨단재생의료 심의체계 개선해 심의 수요 증가 대응 — 주목할 만한 보도.</div>
-        <div class="summary">[지디넷코리아]보건복지부는 지난 17일 첨단재생의료 및 첨단바이오의약품 심의위원회(이하 심의위원회) 및 전문위원회(이하 전문위원회) 제1차 워크숍을 열고, 운영 과정에서 발생한 애로사항 청취 및 심의체계 고도화를 위한 개선 방안을 논의했다.2025년 2월 첨단재생의료 치료제도(중증·희귀·난치 질환 대상 검증된 임상연구에 한하여 환자에게 치료 허용) 도입 이후 첨단재생의료에 대한 관심과 ...</div>
+        <div class="why"><strong>추출 이유</strong>안전/건강 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 4.8)</div>
+        <div class="summary">[지디넷코리아]보건복지부는 지난 17일 첨단재생의료 및 첨단바이오의약품 심의위원회(이하 심의위원회) 및 전문위원회(이하 전문위원회) 제1차 워크숍을 열고, 운영 과정에서 발생한 애로사항 청취 및 심의체계 고도화를 위한 개선 방안을 논의했다.</div>
         <a href="https://zdnet.co.kr/view/?no=20260417144650" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
@@ -966,43 +1019,65 @@
         <div class="meta">
           <span>ZDNet Korea</span><span class="dot">·</span>
           <span>10:23</span><span class="dot">·</span>
-          <span class="score">점수 5.0/10</span>
+          <span class="score">점수 4.8/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>경제/생계 영향. HD현대重, 美 최대 방산전시회 &#39;SAS 2026&#39; 韓 기업 최초 참가</div>
-        <div class="summary">[지디넷코리아]HD현대중공업이 미국 최대 방산전시회에 참가해 미국 함정 시장 공략에 본격 나선다.HD현대중공업은 현지시간으로 19일부터 나흘간 미국 워싱턴 D.C.에서 열리는 미국 최대규모 해양 방산전시회인 ‘해양항공우주 전시회(SAS 2026)’에 한국 기업으로 최초로 부스를 꾸렸다고 밝혔다.SAS 2026에는 전 세계 57개국에서 430여개 방산기업이 참여하며, 1만 6000여명의 ...</div>
+        <div class="why"><strong>추출 이유</strong>경제/생계 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 4.8)</div>
+        <div class="summary">[지디넷코리아]HD현대중공업이 미국 최대 방산전시회에 참가해 미국 함정 시장 공략에 본격 나선다. HD현대중공업은 현지시간으로 19일부터 나흘간 미국 워싱턴 D.C.에서 열리는 미국 최대규모 해양 방산전시회인 ‘해양항공우주 전시회(SAS 2026)’에 한국 기업으로 최초로 부스를 꾸렸다고 밝혔다.</div>
         <a href="https://zdnet.co.kr/view/?no=20260419102315" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://zdnet.co.kr/view/?no=20260419080308" target="_blank" rel="noopener noreferrer">우버이츠, 반품 대행 도입…수거·환불 한 번에</a></h3>
+        <h3><a href="https://zdnet.co.kr/view/?no=20260419081136" target="_blank" rel="noopener noreferrer">나들이엔 양고기…롯데마트, ‘동원청정램 양고기’ 반값 할인</a></h3>
         <div class="meta">
           <span>ZDNet Korea</span><span class="dot">·</span>
-          <span>10:00</span><span class="dot">·</span>
-          <span class="score">점수 5.0/10</span>
+          <span>08:40</span><span class="dot">·</span>
+          <span class="score">점수 4.8/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 우버이츠, 반품 대행 도입…수거·환불 한 번에 — 주목할 만한 보도.</div>
-        <div class="summary">[지디넷코리아]우버이츠가 배송 기사가 직접 상품을 수거해 반품까지 대행하는 서비스를 도입했다. 온라인 쇼핑 확대에 따른 반품 번거로움을 줄이기 위한 조치다.17일(현지시간) CNBC에 따르면 우버는 우버이츠에 ‘반품 기능’을 도입했다고 밝혔다. 이용자가 앱에서 반품을 신청하면 배송 기사가 상품을 수거해 소매업체에 대신 반납하는 방식이다. 이용자는 별도의 포장이나 방문 절차 없이 휴대폰으...</div>
-        <a href="https://zdnet.co.kr/view/?no=20260419080308" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+        <div class="why"><strong>추출 이유</strong>경제/생계 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 4.8)</div>
+        <div class="summary">[지디넷코리아]롯데마트가 봄 나들이 시즌을 맞아 양고기 할인 행사를 진행한다. 롯데마트는 주한호주대사관 무역투자대표부와 협업해 22일까지 전 점에서 ‘동원 청정램 양고기 전품목’에 대해 행사카드 결제 시 최대 50% 할인 판매한다고 19일 밝혔다. 이후 23일부터 29일까지는 최대 40% 할인 혜택을 제공한다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260419081136" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209433" target="_blank" rel="noopener noreferrer">머스크, &#39;테라팹&#39; 장비 제조업체에 &#39;광속 대응&#39; 요청...바도체 자체 제조 본격화</a></h3>
+        <h3><a href="https://www.etnews.com/20260417000014" target="_blank" rel="noopener noreferrer">호서대 반도체패키지랩, &#39;K-반도체 후공정(OSAT) 산교육의 장&#39; 자리매김</a></h3>
+        <div class="meta">
+          <span>전자신문</span><span class="dot">·</span>
+          <span>11:00</span><span class="dot">·</span>
+          <span class="score">점수 4.5/10</span>
+        </div>
+        <div class="why"><strong>추출 이유</strong>경제/생계 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 4.5)</div>
+        <div class="summary">“전국 40여개 대학의 재학생·미취업 졸업생 200여명이 장비와 재료를 직접 다루는 후공정 실습 교육을 받기 위해 &#39;호서대 반도체 패키지랩&#39; 문을 두드렸습니다. 지역별로 충청권이 44%, 서울·경기권 45%, 그 외 11%를 차지해 폭넓은 관심을 받았습니다.</div>
+        <a href="https://www.etnews.com/20260417000014" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209438" target="_blank" rel="noopener noreferrer">오픈AI, 과학팀 담당 부사장 등 임원 3명 사임</a></h3>
         <div class="meta">
           <span>AI타임스</span><span class="dot">·</span>
-          <span>04.18 22:03</span><span class="dot">·</span>
-          <span class="score">점수 5.0/10</span>
+          <span>04:31</span><span class="dot">·</span>
+          <span class="score">점수 4.5/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>기술/일자리 변화. 머스크, &#39;테라팹&#39; 장비 제조업체에 &#39;광속 대응&#39; 요청...바도체 자체 제조 본격화</div>
-        <div class="summary">일론 머스크 CEO의 차세대 반도체 프로젝트 ‘테라팹(Terafab)’이 본격적인 준비 단계에 들어섰다. 기존 반도체 산업 질서를 뒤흔들 수 있는 초대형 구상으로 평가되지만, 업계에서는 실현 가능성을 둘러싼 회의론도 동시에 제기되고 있다.블룸버그는 17일(현지시간) 복수의 관계자를 인용, 테슬라와 스페이스X의 합작 형태로 추진되는 테라팹 프로젝트팀이 최근 글로벌 주요 반도체 장비 업체들...</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209433" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+        <div class="why"><strong>추출 이유</strong>기술/일자리 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 4.5)</div>
+        <div class="summary">오픈AI에서 핵심 프로젝트를 이끌었던 임원들이 사임을 발표했다. 이처럼 B2B 중심으로 사업 구조를 개편하고 기업공개(IPO)에 대비하는 과정에서 경영진이 잇달아 개편되고 있다. 오픈AI 과학팀 책임자인 케빈 웨일 부사장과 소라 팀 리더인 빌 피블스, B2B 애플리케이션 최고 기술책임자(CTO) 스리니바스 나라야난 등은 17일(현지시간) 각각 X에 글을 올려 퇴사 소식을 알렸다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209438" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209377" target="_blank" rel="noopener noreferrer">베트남, 태양광 누적 &#39;19GW&#39; 돌파...성장폭은 둔화</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.17 22:05</span><span class="dot">·</span>
+          <span class="score">점수 4.5/10</span>
+        </div>
+        <div class="why"><strong>추출 이유</strong>국제정세 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 4.5) — 주요 기사</div>
+        <div class="summary">베트남의 누적 태양광 설비용량이 지난해 19기가와트(GW)를 넘어섰다. PV 매거진은 16일(현지시간) 국제재생에너지기구(IRENA) 통계를 인용해 베트남의 누적 태양광 설비용량이 2025년 말 기준 19GW에 도달했다고 보도했다. 베트남 태양광 시장은 여전히 성장세를 이어가고 있지만, 연간 증가폭만 보면 과거보다 속도가 둔화된 흐름도 함께 나타난다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209377" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
       <article class="article">
         <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209360" target="_blank" rel="noopener noreferrer">미국 커뮤니티 태양광 &#39;10GW&#39; 시대 개막… 역풍 뚫고 세운 금자탑</a></h3>
         <div class="meta">
           <span>AI타임스</span><span class="dot">·</span>
           <span>04.17 22:05</span><span class="dot">·</span>
-          <span class="score">점수 5.0/10</span>
+          <span class="score">점수 4.5/10</span>
         </div>
-        <div class="why"><strong>추출 이유</strong>국제정세 파급. 미국 커뮤니티 태양광 &#39;10GW&#39; 시대 개막… 역풍 뚫고 세운 금자탑</div>
-        <div class="summary">미국 커뮤니티 태양광 시장이 누적 설치 10기가와트(GW)를 넘어섰다.PV매거진 USA는 15일(현지시간) 우드매킨지와 미국커뮤니티솔라연합(CCSA) 최신 보고서를 인용해 미국 커뮤니티 태양광 누적 설치량이 2025년 말 10GW를 돌파했다고 보도했다.커뮤니티 태양광이란 특정 지역의 유휴 부지에 대규모 태양광 발전소를 건설, 지역 주민들이 발전소의 지분을 사거나 매달 사용료를 내고 구독...</div>
+        <div class="why"><strong>추출 이유</strong>국제정세 차원 핵심 이슈로 독자 실생활·판단에 영향 큼 (점수 4.5) — 주요 기사</div>
+        <div class="summary">미국 커뮤니티 태양광 시장이 누적 설치 10기가와트(GW)를 넘어섰다. PV매거진 USA는 15일(현지시간) 우드매킨지와 미국커뮤니티솔라연합(CCSA) 최신 보고서를 인용해 미국 커뮤니티 태양광 누적 설치량이 2025년 말 10GW를 돌파했다고 보도했다.</div>
         <a href="https://www.aitimes.com/news/articleView.html?idxno=209360" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
       </article>
     </div>
@@ -1010,7 +1085,7 @@
 
   <footer>
     <div class="footer-block">
-      <span class="footer-label">생성시각</span>2026.04.19 15:59 KST
+      <span class="footer-label">생성시각</span>2026.04.19 16:13 KST
     </div>
     <div class="footer-block sources">
       <span class="footer-label">RSS 출처</span>AI타임스 · ZDNet Korea · 전자신문 · 연합뉴스 · 매일경제 · 한겨레
@@ -1019,7 +1094,7 @@
       본 리포트는 Claude Opus 4.7이 RSS 원문을 분석해 생성합니다. 사실관계는 각 원문에서 확인하세요.
     </div>
     <div class="footer-block footer-issue">
-      ISSUE #5
+      ISSUE #6
     </div>
   </footer>
 
