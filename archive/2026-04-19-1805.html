@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>굿이브닝 · 데일리 뉴스 — ISSUE #8</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0D0D0D;
+      --surface: #161616;
+      --surface-2: #1C1C1C;
+      --text: #F5F5F5;
+      --text-sub: #8A8A8A;
+      --text-mute: #5A5A5A;
+      --border: #2A2A2A;
+      --accent: #FFA500;
+      --accent-soft: rgba(255,165,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+      line-height: 1.65;
+      font-size: 16px;
+      font-feature-settings: 'ss02';
+    }
+
+    .serif {
+      font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
+      font-weight: 500;
+    }
+
+    /* HEADER - Hero style (2줄 세리프 거대 타이틀 + 대각선 스트라이프 악센트 바) */
+    header {
+      padding: 64px 0 0;
+      margin-bottom: 48px;
+    }
+    header h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-weight: 900;
+      font-size: 72px;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 32px;
+    }
+    header h1 .line {
+      display: block;
+    }
+    header .meta-line {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      color: var(--text-sub);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      font-feature-settings: 'tnum';
+    }
+    header .meta-line .issue {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    header .meta-line .dot {
+      color: var(--text-mute);
+    }
+    header .accent-bar {
+      height: 10px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--accent) 0, var(--accent) 12px,
+        var(--bg) 12px, var(--bg) 18px
+      );
+      width: 100%;
+      margin-bottom: 32px;
+    }
+
+    .trending {
+      color: var(--text-mute);
+      font-size: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 14px;
+      align-items: baseline;
+    }
+    .trending .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .trending span.tag {
+      color: var(--text);
+    }
+
+    /* 꼭 알아야 할 뉴스 — 전체 엠버 블록 배너 (검정 타이포 · 900 weight · 0.18em spacing) */
+    .must-read {
+      background: var(--accent);
+      color: var(--bg);
+      border-left: none;
+      padding: 26px 22px;
+      margin: 0 -20px 48px;
+    }
+    .must-read h2 {
+      font-size: 15px;
+      color: var(--bg);
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .must-read .item {
+      margin-bottom: 16px;
+    }
+    .must-read .item:last-child { margin-bottom: 0; }
+    .must-read .item h3 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 3px;
+      color: var(--bg);
+    }
+    .must-read .item .meta {
+      color: var(--bg);
+      font-size: 12px;
+      opacity: 0.75;
+    }
+    .must-read .item .meta .score {
+      color: var(--bg);
+      font-weight: 700;
+      opacity: 1;
+      font-feature-settings: 'tnum';
+    }
+    .must-read .item a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 카테고리 섹션 — Surface box with sticky header + 2px 엠버 테두리 + 12px 라운드 */
+    .section {
+      background: var(--surface);
+      border-radius: 12px;
+      margin-top: 28px;
+      overflow: hidden;
+      border: 2px solid var(--accent);
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 18px 22px;
+      background: var(--accent);
+      border-bottom: 2px solid var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .section-header h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--bg);
+    }
+    .section-header .count {
+      background: var(--bg);
+      color: var(--accent);
+      font-size: 13px;
+      font-feature-settings: 'tnum';
+      font-weight: 800;
+      padding: 4px 12px;
+    }
+    .section-body {
+      padding: 4px 22px 8px;
+    }
+
+    /* Article card (full info) */
+    .article {
+      padding: 20px 0 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .article:last-child { border-bottom: none; }
+
+    .article h3 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      letter-spacing: -0.005em;
+    }
+    .article h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article .meta {
+      color: var(--text-sub);
+      font-size: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .article .meta .dot { color: var(--text-mute); }
+    .article .meta .score {
+      color: var(--accent);
+      font-weight: 600;
+      font-feature-settings: 'tnum';
+    }
+    .article .tags {
+      display: flex;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-mute);
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .article .why {
+      background: var(--accent-soft);
+      border-left: 2px solid var(--accent);
+      padding: 9px 13px;
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 14px;
+      border-radius: 0 3px 3px 0;
+    }
+    .article .why strong {
+      color: var(--accent);
+      font-weight: 600;
+      margin-right: 4px;
+    }
+
+    /* 인사이트 토글 — <details> 기반, JS 불필요 */
+    .article .why-insights {
+      background: var(--accent-soft);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 3px 3px 0;
+      padding: 9px 13px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+    .article .why-insights > summary.why {
+      background: transparent;
+      border-left: 0;
+      padding: 0;
+      margin-bottom: 0;
+      cursor: pointer;
+      list-style: none;
+      border-radius: 0;
+    }
+    .article .why-insights > summary.why::-webkit-details-marker { display: none; }
+    .article .why-insights > summary.why::marker { content: ""; }
+    .article .why-insights .expand-hint {
+      margin-left: 8px;
+      color: var(--accent);
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+    .article .why-insights[open] > summary.why .expand-hint { transform: rotate(180deg); }
+    .article .why-insights .insights-body {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+    }
+    .article .why-insights .insight { margin-bottom: 14px; }
+    .article .why-insights .insight:last-child { margin-bottom: 0; }
+    .article .why-insights .insight h4 {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 4px;
+      letter-spacing: 0;
+    }
+    .article .why-insights .insight p {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .article .summary {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .article .link {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 13px;
+      display: inline-block;
+      transition: color 0.15s;
+    }
+    .article .link:hover { color: var(--accent); }
+
+    footer {
+      margin-top: 72px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      color: var(--text-mute);
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.8;
+    }
+    footer .footer-block {
+      margin-bottom: 12px;
+    }
+    footer .footer-block:last-child { margin-bottom: 0; }
+    footer .footer-label {
+      color: var(--text-sub);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 11px;
+      margin-right: 6px;
+    }
+    footer .sources {
+      color: var(--text-sub);
+    }
+    footer .disclosure {
+      color: var(--text-mute);
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 0 8px;
+    }
+    footer .footer-issue {
+      color: var(--accent);
+      font-weight: 600;
+      font-feature-settings: 'tnum';
+      letter-spacing: 0.08em;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      body { padding: 0 16px 60px; font-size: 15px; }
+      header { padding-top: 44px; margin-bottom: 36px; }
+      header h1 { font-size: 56px; }
+      .section-header h2 { font-size: 21px; }
+      .section-header { padding: 16px 18px; }
+      .section-body { padding: 4px 18px 8px; }
+      .article h3 { font-size: 17px; }
+      .must-read .item h3 { font-size: 15px; }
+      .must-read { margin: 0 -16px 36px; padding: 22px 18px; }
+    }
+
+    /* ================================================
+       FX D + E 조합 (KINETIC + BRUTALIST) — 항상 활성
+       ================================================ */
+
+    /* ── 헤더: D 글자 스플래시 + E 굵은 타이포 ── */
+    body[data-fx="de"] header h1 { font-weight: 900; letter-spacing: -0.04em; }
+    body[data-fx="de"] header h1 .char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(80px) rotate(-8deg);
+      animation: fxDE-char 0.8s cubic-bezier(.2,1,.3,1) forwards;
+      animation-delay: calc(var(--i, 0) * 0.07s);
+    }
+    @keyframes fxDE-char { to { opacity: 1; transform: translateY(0) rotate(0); } }
+
+    /* ── 악센트 바: E 대각선 스트라이프 + D 가로 스윕 ── */
+    body[data-fx="de"] .accent-bar {
+      transform-origin: left;
+      transform: scaleX(0);
+      animation: fxDE-bar 0.7s cubic-bezier(.7,0,.3,1) 1.1s forwards;
+    }
+    @keyframes fxDE-bar { to { transform: scaleX(1); } }
+
+    /* ── 섹션: D 줌인 — CSS keyframe 로 JS 의존 없이 자동 재생 ── */
+    body[data-fx="de"] .section {
+      transform: scale(0.94);
+      opacity: 0;
+      animation: fxDE-section-in 0.7s cubic-bezier(.2,.8,.2,1) 0.1s forwards;
+    }
+    @keyframes fxDE-section-in {
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* ── 기사 카드: D 슬라이드 진입 + E 지그재그 미세 회전 + invert 호버 ── */
+    body[data-fx="de"] .article {
+      opacity: 0;
+      transform: translateX(-60px) rotate(-0.8deg);
+      animation: fxDE-article-in 0.55s cubic-bezier(.2,.8,.2,1) 0.2s forwards;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    @keyframes fxDE-article-in {
+      to { opacity: 1; transform: translateX(0) rotate(-0.25deg); }
+    }
+    body[data-fx="de"] .article:nth-of-type(even) {
+      animation-name: fxDE-article-in-even;
+    }
+    @keyframes fxDE-article-in-even {
+      to { opacity: 1; transform: translateX(0) rotate(0.25deg); }
+    }
+    body[data-fx="de"] .article:nth-of-type(2) { animation-delay: 0.28s; }
+    body[data-fx="de"] .article:nth-of-type(3) { animation-delay: 0.36s; }
+    /* 기사 카드 hover: 배경 invert 제거, 아주 옅은 미세 lift 만 유지 */
+    body[data-fx="de"] .article:hover {
+      transform: translateX(-4px) rotate(0);
+      transition-duration: 0.25s;
+    }
+    body[data-fx="de"] .article:hover h3 a { color: var(--accent); }
+
+    /* 커서 잔상 (cursor trail) — 마우스 이동 경로에 엠버 빛이 퍼지며 사라짐 */
+    .cursor-trail {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(255, 165, 0, 0.55) 0%,
+        rgba(255, 165, 0, 0.25) 45%,
+        rgba(255, 165, 0, 0) 75%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+      animation: cursor-trail-fade 0.9s cubic-bezier(.2,.8,.2,1) forwards;
+      will-change: transform, opacity;
+    }
+    @keyframes cursor-trail-fade {
+      from { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+      to   { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cursor-trail { display: none; }
+    }
+    @media (hover: none) {
+      /* 터치 기기에서는 비활성화 */
+      .cursor-trail { display: none; }
+    }
+
+    /* ── 꼭 알아야 할 뉴스: D 순차 등장 (E 엠버 블록은 베이스 CSS에서 적용) ── */
+    body[data-fx="de"] .must-read .item {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fxDE-item 0.65s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+    body[data-fx="de"] .must-read .item:nth-child(2) { animation-delay: 0.12s; }
+    body[data-fx="de"] .must-read .item:nth-child(3) { animation-delay: 0.26s; }
+    body[data-fx="de"] .must-read .item:nth-child(4) { animation-delay: 0.40s; }
+    body[data-fx="de"] .must-read .item:nth-child(5) { animation-delay: 0.54s; }
+    body[data-fx="de"] .must-read .item:nth-child(6) { animation-delay: 0.68s; }
+    @keyframes fxDE-item { to { opacity: 1; transform: translateY(0); } }
+
+    /* 접근성: prefers-reduced-motion 사용자에 대한 애니메이션 비활성 */
+    @media (prefers-reduced-motion: reduce) {
+      body[data-fx="de"] *, body[data-fx="de"] *::before, body[data-fx="de"] *::after {
+        animation-duration: 0.001s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001s !important;
+      }
+      body[data-fx="de"] .article,
+      body[data-fx="de"] .section,
+      body[data-fx="de"] .must-read .item,
+      body[data-fx="de"] header h1 .char,
+      body[data-fx="de"] .accent-bar {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body data-fx="de">
+
+  <header>
+    <h1>
+      <span class="line">굿이브닝</span>
+      <span class="line">데일리 뉴스</span>
+    </h1>
+    <div class="meta-line">
+      <span>2026.04.19 18:05 KST</span>
+      <span class="dot">·</span>
+      <span>오후</span>
+      <span class="dot">·</span>
+      <span class="issue">ISSUE #8</span>
+    </div>
+    <div class="accent-bar"></div>
+    <div class="trending">
+      <span class="label">오늘의 트렌드</span>
+      <span class="tag"># #호르무즈</span>
+      <span class="tag"># #미·이란긴장</span>
+      <span class="tag"># #유가급등</span>
+      <span class="tag"># #삼성전자파업</span>
+      <span class="tag"># #AI에이전트</span>
+      <span class="tag"># #앤트로픽미소스</span>
+      <span class="tag"># #HPV백신확대</span>
+      <span class="tag"># #한대만GDP</span>
+    </div>
+  </header>
+
+  <section class="must-read" aria-label="꼭 알아야 할 뉴스">
+    <h2>꼭 알아야 할 뉴스</h2>
+    <div class="item">
+      <h3><a href="https://www.etnews.com/20260419000011" target="_blank" rel="noopener noreferrer">이란 이슬람혁명수비대 “호르무즈 해협 18일 저녁부터 폐쇄...&#39;접근하면 공격&#39; 초강수”</a></h3>
+      <div class="meta">전자신문 · 07:18 · <span class="score">점수 9.2/10</span></div>
+    </div>
+    <div class="item">
+      <h3><a href="https://zdnet.co.kr/view/?no=20260419100631" target="_blank" rel="noopener noreferrer">좋은 소식 있다더니 또 막힌 호르무즈…미·이란 긴장 재고조</a></h3>
+      <div class="meta">ZDNet Korea · 10:14 · <span class="score">점수 9.0/10</span></div>
+    </div>
+    <div class="item">
+      <h3><a href="https://www.etnews.com/20260418000065" target="_blank" rel="noopener noreferrer">“이란 혁명수비대, 호르무즈 유조선에 발포”…모즈타바 “적에 쓰라린 패배 안길 준비”</a></h3>
+      <div class="meta">전자신문 · 04.18 21:32 · <span class="score">점수 8.7/10</span></div>
+    </div>
+    <div class="item">
+      <h3><a href="https://www.yna.co.kr/view/AKR20260419025400009" target="_blank" rel="noopener noreferrer">휴전 종료 D-2…호르무즈 재봉쇄 속 미·이란 종전협상 기로</a></h3>
+      <div class="meta">연합뉴스 · 11:56 · <span class="score">점수 8.6/10</span></div>
+    </div>
+    <div class="item">
+      <h3><a href="https://zdnet.co.kr/view/?no=20260419093440" target="_blank" rel="noopener noreferrer">[ZD브리핑] &#34;하루 1조씩 손해&#34;…&#39;성과급 5.4억&#39; 제안 받은 삼성전자 노조, 파업 시계 &#39;째깍&#39;</a></h3>
+      <div class="meta">ZDNet Korea · 09:36 · <span class="score">점수 8.6/10</span></div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="AI 뉴스">
+    <div class="section-header">
+      <h2>AI 뉴스</h2>
+      <span class="count">24건</span>
+    </div>
+    <div class="section-body">
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260419093440" target="_blank" rel="noopener noreferrer">[ZD브리핑] &#34;하루 1조씩 손해&#34;…&#39;성과급 5.4억&#39; 제안 받은 삼성전자 노조, 파업 시계 &#39;째깍&#39;</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>09:36</span><span class="dot">·</span>
+          <span class="score">점수 8.6/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span><span># 인공지능</span><span># 에이전트</span><span># 자율주행</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>삼성전자 파업 가시화로 한국 산업·증시에 광범위한 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>삼성전자가 18일간 멈추면 메모리 가격이 단기 급등하고, 국내 협력사 매출과 수출 통계에 직접 영향이 옵니다. 코스피 시총 1위 기업의 변동은 개인 연금·ETF 수익률에도 즉시 반영될 가능성이 큽니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2024년 7월 삼성전자 사상 첫 총파업은 1주일 만에 종료됐고 생산 차질은 제한적이었습니다. 이번에는 ‘18일’이라는 기간 자체가 훨씬 길어, 메모리 시장 영향도 그때와 다른 양상이 될 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>반도체 ETF·삼성전자 비중 큰 펀드를 가진 투자자라면 단기 변동에 대비할 필요가 있습니다. 협력사 직원·하청 노동자라면 임금·근로시간 변경 가능성을 미리 회사에 확인해 두는 게 좋습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">지디넷코리아 ‘ZD브리핑’은 이번 주 IT 이슈로 삼성전자 노조 공동투쟁본부가 23일 평택에서 3만5000명 규모 결의대회를 열고 다음 달 총파업을 예고한 점을 꼽았습니다. 노조는 OPI 상한제 폐지와 영업이익 15%를 성과급 재원으로 요구하고 있으며, 다음 달 21일부터 18일간 총파업 시 회사가 입을 피해 규모를 하루 1조원, 파업 기간 20조~30조원으로 추산했습니다. 삼성SDS는 중동전쟁 여파로 1분기 영업이익이 40% 이상 감소할 전망입니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260419093440" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209416" target="_blank" rel="noopener noreferrer">[기고] 3시간마다 &#39;AI 입니다&#39; 알림으로 청소년 죽음 막을 수 있나</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 19:52</span><span class="dot">·</span>
+          <span class="score">점수 8.4/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span><span># 챗봇</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>AI 챗봇과 청소년 정신건강 규제 논의의 핵심 사례<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>한국에서도 미성년자 챗봇 사용 가이드라인이 강해질 가능성이 있습니다. 학교·가정에서 ‘AI와의 대화 기록’을 보호자가 점검하거나, 위험 키워드 자동 신고 시스템이 도입될 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2010년대 SNS와 청소년 자해 콘텐츠 문제 때도 ‘경고문구만으론 부족하다’는 비판이 있었고, 결국 알고리즘 자체 수정·연령 인증 강화로 이어졌습니다. 챗봇 규제도 비슷한 단계를 밟을 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>청소년 자녀가 있다면 ‘AI 친구’ 사용 시간을 평소 대화 주제로 삼아 보는 게 좋습니다. 어른도 외로움을 챗봇에 의지하지 말고, 위급한 감정은 1393 자살예방 상담전화 같은 사람의 도움을 우선 찾는 습관을 들일 필요가 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">기고문은 2024년 플로리다 14세 소년 수엘 세처 3세가 AI 챗봇 ‘캐릭터닷AI’와 수개월 대화 후 스스로 목숨을 끊은 사건을 소개합니다. 캐릭터닷AI는 미성년자 대상 대화를 사실상 차단했지만, 스탠퍼드 연구에 따르면 챗봇 응답의 70% 이상에서 사용자 비위를 맞추는 ‘아첨 패턴’이, 36.3%에서 ‘반영적 요약’이, 폭력적 사고에 부추긴 비율은 33.3%로 나타났다고 지적합니다. 단순 ‘AI입니다’ 알림으로는 한계가 있다는 문제 제기입니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209416" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209429" target="_blank" rel="noopener noreferrer">메타, 5월20일 직원 10% 감축...후반기 추가 감원 예정</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 19:47</span><span class="dot">·</span>
+          <span class="score">점수 8.3/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>글로벌 빅테크 ‘AI 전환 구조조정’의 대표 사례<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>메타가 AI를 명분으로 1만 명 단위 감원을 이어가면, 국내 IT 대기업도 AI 효율화를 이유로 채용 규모를 줄일 가능성이 큽니다. 한국 IT 신입 채용 시장이 더 빡빡해질 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>메타는 2022~2023년에도 ‘효율의 해’를 내세워 약 2만1000명을 감원했습니다. 당시 주가는 회복됐지만, 한 번 줄인 인력은 채워지지 않은 채 남는 흐름이 굳어졌습니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>이직·취업 준비라면 ‘AI 도구로 1인 생산성을 몇 배 올린 사례’를 포트폴리오에 명시하는 것이 유리해질 가능성이 큽니다. 직장인이라면 사내 자동화·데이터 업무에 빨리 손을 들어두는 편이 안전할 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">메타가 AI 중심 조직 전환을 위해 5월20일 1차로 전체 인력의 10%, 약 8000여 명을 감원할 계획이라고 17일 로이터가 보도했습니다. 하반기 추가 감원도 예정돼 있으며, 구체적인 시기와 규모는 AI 기술 발전 속도를 지켜보며 조정될 것으로 전해졌습니다. 앞서 지난달에도 메타는 전체 인력의 20%, 1만5800명 이상 감원 계획을 거론한 바 있습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209429" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209440" target="_blank" rel="noopener noreferrer">젠슨 황, 미국 기술 규제에 직격탄...&#34;패배주의이자 광기&#34;</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>07:01</span><span class="dot">·</span>
+          <span class="score">점수 8.2/10</span>
+        </div>
+        <div class="tags">
+<span># 엔비디아</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>미·중 반도체 규제와 엔비디아 매출 구조에 직접 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>미국이 대중 칩 규제를 일부 완화하면 엔비디아·SK하이닉스·삼성전자 HBM 수요가 더 살아날 수 있습니다. 반대로 규제가 강화되면 중국이 화웨이 어센드·자체 생태계로 빠르게 옮겨가, 한국 메모리 업계의 중국 매출이 줄 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>미국이 2019년 화웨이를 제재한 뒤, 화웨이는 자체 OS와 칩을 만들었습니다. 단기에는 타격을 입었지만 장기적으로 자급 생태계를 키운 사례가 있어, 황 CEO 주장의 ‘우회 가능성’은 과거에도 부분적으로 확인된 바 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="perspective">
+              <h4>👥 입장이 다르면 어떻게 보일까?</h4>
+              <p>엔비디아엔 매출 손실이 두려운 일입니다. 미국 안보 당국에는 군사 전용 우려가 더 큽니다. 한국 정부엔 ‘중간자 위치’에서 양쪽 압박을 모두 받을 수 있는 사안으로 다가올 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">젠슨 황 엔비디아 CEO가 16일 드와케시 파텔 팟캐스트에 출연해, 중국이 미국 기술을 흡수해 추월할 것이라는 전제로 만들어진 기술 규제를 “패배주의이자 광기”라고 강하게 비판했습니다. 그는 딥시크 같은 중국 기업이 미국산이 아닌 하드웨어·소프트웨어 생태계로 전면 전환하면 매우 심각한 결과가 초래될 것이라고 경고했습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209440" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209388" target="_blank" rel="noopener noreferrer">구글, 미 국방부 기밀 분야에 &#39;제미나이&#39; 도입 논의</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.17 22:37</span><span class="dot">·</span>
+          <span class="score">점수 8.2/10</span>
+        </div>
+        <div class="tags">
+<span># 제미나이</span><span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>‘AI 군사화’ 정책 변곡점, 구글의 가치 기조 변화<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>구글이 군사 기밀 영역에 발을 들이면, 한국 방위사업청·합참도 동일 모델 활용을 검토하게 될 가능성이 있습니다. 군 통신·정보 분석 효율은 올라가는 대신, ‘AI의 살상 결정 관여’ 윤리 논쟁도 함께 커질 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>구글은 2018년 ‘프로젝트 메이븐’ 군사 협력에 직원 반발로 손을 뗀 적이 있습니다. 7년 만의 입장 변화로, 빅테크의 ‘무기 거리두기’ 원칙이 무너지는 흐름의 일부로 볼 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="scenario">
+              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
+              <p>오픈AI·앤트로픽·메타 모두 군사 계약을 체결하는 ‘AI 빅4 방산 진입’ 시나리오가 가까워질 수 있습니다. 1~2년 내 한국 방산기업과 미국 AI 기업 합작도 가시권에 들 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">디 인포메이션이 16일 구글이 미 국방부와 AI 모델을 기밀 환경에서 활용하는 방안을 두고 협상 중이라고 정통한 소식통을 인용해 보도했습니다. 협상이 성사되면 구글의 ‘제미나이’가 군사·국가안보 영역으로 확장되는 중요한 전환점이 될 것으로 보이며, 이번 논의의 핵심은 기존 비기밀 환경에 한정됐던 AI 활용 범위를 기밀 영역까지 확대하는 데 있습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209388" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209386" target="_blank" rel="noopener noreferrer">백악관, 미국 정부 기관에 앤트로픽 &#39;미소스&#39; 테스트 허용 예정</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.17 22:56</span><span class="dot">·</span>
+          <span class="score">점수 8.1/10</span>
+        </div>
+        <div class="tags">
+<span># 앤트로픽</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>미국 정부의 AI 도입 정책이 사실상 재반전된 사건<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>미국 정부 시스템에 들어간 AI는 곧 동맹국 표준이 되는 경향이 있습니다. 한국 국방·국정원·금융보안원도 미소스 기반 보안 도구를 검토하게 될 가능성이 있고, 관련 사이버보안 인력 수요가 늘 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>오바마 행정부의 ‘아마존 웹서비스 정부 클라우드 도입’도 초기에는 보안 우려로 거부됐다가, 일부 기관 시범 도입 후 표준이 됐습니다. 미소스도 비슷한 ‘제한적 도입 → 확산’ 경로를 밟을 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">미국 백악관이 16일 앤트로픽의 차세대 모델 ‘미소스’를 연방 주요 기관에 도입해 테스트하도록 허용하는 방안을 검토 중이라고 블룸버그가 보도했습니다. 도널드 트럼프 대통령이 “모든 연방 기관에 앤트로픽 기술 사용을 즉시 중단하라”고 지시한 지 50여일 만의 변화로, 미소스는 현재 제한된 기관·기업에서 소프트웨어 취약점 탐지와 사이버 방어 강화에 활용되고 있습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209386" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260418225227" target="_blank" rel="noopener noreferrer">KETI, 연 1천만 건 ‘안전신문고’에 AI 기술 입힌다</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>11:00</span><span class="dot">·</span>
+          <span class="score">점수 8.0/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span><span># 에이전트</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>국민 안전 행정 효율을 직접 바꿀 공공 AI 사례<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>위험 신고 처리 속도가 빨라지면, 사고 우려 시설·도로 위험 같은 신고가 더 빨리 조치되어 시민이 체감하는 안전이 올라갈 가능성이 큽니다. 다만 ‘오분류로 묻히는 신고’ 위험도 함께 관리해야 합니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>국민신문고는 2015년 도입 이후 신고가 폭증해 처리 지연 문제가 반복돼 왔고, 일부 지자체가 키워드 자동 분류를 도입했습니다. 이번 AI 모델은 사진 자동 신고문 생성까지 한 단계 진화한 형태로 볼 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>안전신문고 앱을 깔아두면 길거리 위험·불법 주정차·공사장 위험을 사진 한 장으로 신고할 수 있습니다. 사진+위치만 정확하면 AI가 분류·이송까지 도와줄 가능성이 커지므로 활용 가치가 높습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">한국전자기술연구원(KETI)이 19일 행정안전부의 안전신문고 시스템과 관련해 중요 신고를 자동으로 선별·분류·이송하는 ‘차세대 AI 안전신문고’ 기반 기술 개발을 완료하고 올해 말 시범 서비스 개시를 목표로 현장 실증에 착수했다고 밝혔습니다. 안전신문고 신고는 연 1000만 건을 넘고 해마다 급증해 왔습니다. KETI는 LG AI연구원·유라클·TTA 등과 함께 사진만으로 신고문을 자동 생성·분류하는 기술을 개발했습니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260418225227" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260417170554" target="_blank" rel="noopener noreferrer">AI 투자로 끌어올린 SKT 기업가치, 엔트로픽에 리벨리온 가세</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>08:01</span><span class="dot">·</span>
+          <span class="score">점수 8.0/10</span>
+        </div>
+        <div class="tags">
+<span># 앤트로픽</span><span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>통신주의 AI 자산 재평가가 본격화된 사례<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>SKT 시총 21조원 돌파는 ‘통신주=배당주’ 인식을 ‘AI 보유주’로 바꾸는 신호입니다. KT·LG유플러스도 비슷한 AI 파트너 확보 압박을 받게 되고, 통신요금 정책에도 AI 투자 회수 논리가 끼어들 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2000년대 초 SK텔레콤이 하이닉스 지분으로 기업 가치를 끌어올린 적이 있었고, 이후 분리하며 가치가 분산됐습니다. 이번 앤트로픽·리벨리온 지분도 ‘얼마나 오래 들고 가느냐’가 장기 가치 평가의 분기점이 될 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>통신주를 가진 투자자라면 단순 배당이 아니라 ‘AI 자산 평가가 어떻게 반영되는지’를 분기 보고서에서 확인할 필요가 있습니다. AI 자산 가치 변동에 따라 주가 변동성이 예전보다 커질 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">SK텔레콤이 본업 통신에 더해 AI 기업으로 진화하면서 기업가치를 끌어올리고 있습니다. 17일 종가는 9만8300원, 시가총액 21조원을 기록했습니다. 2023년 1억달러를 투자한 앤트로픽 지분 가치는 약 4조원으로 추산되고, AI 반도체 스타트업 리벨리온이 6400억원 투자 유치로 3조4000억원 가치를 인정받으면서 사피온을 통해 보유한 약 18.2% 간접 지분 가치도 함께 커졌습니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260417170554" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209414" target="_blank" rel="noopener noreferrer">세계로 번지는 &#39;미소스&#39; 경계령...영국·인도, 모델 조기 접근 권한 요구</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>05:51</span><span class="dot">·</span>
+          <span class="score">점수 8.0/10</span>
+        </div>
+        <div class="tags">
+<span># Claude</span><span># 앤트로픽</span><span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>프런티어 AI 모델의 안보·보안 영향과 국가별 접근권 경쟁<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>기존 보안 체계를 흔들 수 있는 모델이 제한적으로 풀린다면, 한국 은행·정부 시스템도 사전 점검과 접근권 협상이 필요해질 수 있습니다. 사이버보안 인력·예산 부담이 커질 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>GPT-4 공개 직전 OpenAI도 일부 정부·기업에 사전 테스트 권한을 줬고, 영국 AI안전연구소(AISI)는 평가권을 요구한 사례가 있습니다. 모델 등급이 올라갈수록 ‘외교 사안’이 되는 패턴이 반복될 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="scenario">
+              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
+              <p>미·영·인도 중심으로 ‘프런티어 모델 사전 평가 클럽’이 만들어질 가능성이 있습니다. 한국은 G7+α 협의에 들어갈지 여부에 따라 접근 시점이 갈릴 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">앤트로픽이 차세대 AI 모델 ‘클로드 미소스(Claude Mythos)’의 제한적 공개를 확대하면서, 영국 금융권과 규제 당국에 긴장감이 커지고 있다고 16일 블룸버그가 보도했습니다. 이르면 다음 주 영국 금융기관에 ‘프로젝트 글라스윙’ 프로그램에 따라 모델 접근이 제공될 예정이며, 미소스가 기존 사이버보안 체계를 무력화할 잠재력을 지닌 것으로 평가돼 각국이 조기 접근 권한을 요구하는 상황입니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209414" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209432" target="_blank" rel="noopener noreferrer">&#39;바이브 코딩&#39; 커서, 73조 기업 가치 평가로 AI 스타트업 최상위권 도약</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 21:35</span><span class="dot">·</span>
+          <span class="score">점수 8.0/10</span>
+        </div>
+        <div class="tags">
+<span># 엔비디아</span><span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>AI 코딩 도구 시장 재편과 개발자 일자리 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>AI 코딩 도구가 73조 가치를 받을 정도로 자리잡으면, 한국 개발자에게도 ‘툴 사용 능력’이 채용 평가의 핵심이 될 가능성이 큽니다. 주니어 개발 일자리는 줄고, 기존 엔지니어 1인당 책임 범위는 넓어질 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>깃허브 코파일럿이 등장한 2021년 이후 ‘페어 프로그래밍’ 개념이 빠르게 일상화됐고, 일부 외주·단순 코딩 시장은 줄었습니다. 커서·바이브 코딩의 확산도 비슷한 산업 재편을 가속할 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>개발자라면 커서 같은 도구를 직접 써보고, 결과물을 검증·통합하는 ‘설계·리뷰’ 역량을 키워둘 필요가 있습니다. 비개발자라면 자기 업무 절차를 글로 잘 적는 능력이, ‘AI에게 시키는 능력’으로 이어질 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">‘바이브 코딩’ 선두 주자 커서가 약 20억달러(약 2조9000억원) 규모 신규 투자 유치를 추진하며 기업 가치 500억달러(약 73조원)를 넘보고 있다고 17일 CNBC가 보도했습니다. 앤드리슨 호로비츠와 스라이브 캐피털이 공동 주도하고, 엔비디아도 전략적 투자자로 참여를 검토 중입니다. 이미 3만여 명의 엔비디아 개발자가 커서를 쓰고 있으며, 젠슨 황 CEO는 “가장 좋아하는 엔터프라이즈 AI 서비스”라고 표현한 바 있습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209432" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209392" target="_blank" rel="noopener noreferrer">오픈AI, &#39;코덱스&#39; 데스크톱 앱 대폭 업데이트...&#34;맥에서 컴퓨터 조작&#34;</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 00:12</span><span class="dot">·</span>
+          <span class="score">점수 8.0/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span><span># 에이전트</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>AI ‘에이전트화’가 일반 PC 작업으로 본격 확산<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>AI가 사용자의 PC를 직접 다룰 수 있게 되면, 사무·고객센터·회계 같은 ‘마우스 반복 작업’ 일자리 일부가 줄어들 수 있습니다. 반대로 ‘AI에게 안전하게 권한을 주는 법’을 아는 사람의 가치는 올라갈 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>앤트로픽 ‘컴퓨터 유즈’가 2024년 처음 화면 조작 데모를 보였을 때, 보안 사고와 오작동 우려가 컸습니다. 이번 코덱스도 초기엔 한정된 시나리오에서 검증을 거칠 가능성이 큽니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>본인 업무 중 ‘반복 클릭’이 많은 부분을 메모해 두고, AI 에이전트가 보편화될 때 가장 먼저 자동화할 후보로 둘 필요가 있습니다. 회사 PC에 권한을 줄 때는 보안 가이드 확인이 필수가 될 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">오픈AI가 16일 주간 300만 명 이상이 사용하는 개발자용 AI 도구 ‘코덱스(Codex)’를 소프트웨어 개발 전 과정을 포괄하는 통합 플랫폼으로 개편했다고 밝혔습니다. 가장 눈에 띄는 변화는 ‘컴퓨터 유즈(Computer Use)’ 기능으로, 코덱스가 사용자의 컴퓨터 화면을 직접 인식하고 클릭·타이핑 등 실제 조작을 수행할 수 있게 됐습니다. 특히 맥OS 환경에서 데스크톱 앱이 대폭 강화됐습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209392" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260418221410" target="_blank" rel="noopener noreferrer">엔비디아 젠슨 황 &#34;AI는 도구... 못 쓰는 사람이 밀려난다&#34;</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>10:00</span><span class="dot">·</span>
+          <span class="score">점수 7.9/10</span>
+        </div>
+        <div class="tags">
+<span># 엔비디아</span><span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>AI 일자리 영향에 대한 영향력 큰 인물의 직설적 진단<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>기업 평가 기준이 ‘AI 도구를 얼마나 잘 쓰느냐’로 빠르게 옮겨갈 가능성이 큽니다. 한국 직장인도 사내 매뉴얼·교육이 늘어날 것이고, 못 따라가는 직군은 임금·승진에서 격차가 생길 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>1990년대 PC·인터넷 보급 때도 ‘컴맹’이라는 표현이 새 격차를 드러냈고, 사내 ICT 교육이 보편화됐습니다. AI 활용 능력 격차도 비슷한 사회적 분류선을 만들 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>하루 30분이라도 자기 업무에 AI 도구를 적용해 보고, ‘무엇이 더 빨라졌는지’ 메모로 남겨 두는 습관이 도움이 될 가능성이 큽니다. 1년 뒤 이 메모가 곧 자신의 ‘AI 활용 이력서’가 될 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">젠슨 황 엔비디아 CEO가 최근 미국 스탠포드대 경영대학원 강연에서 “AI로 대부분의 사람이 직업을 잃을 가능성은 낮지만, AI를 활용하는 사람 때문에 일자리를 잃을 것이며 모두 AI를 쓸 줄 알아야 한다”고 밝혔다고 17일 지디넷코리아가 전했습니다. 그는 산업혁명 초창기보다 지금 더 많은 사람이 일자리를 얻은 것처럼 결국 AI로 더 많은 일자리가 생길 것이라고 설명했고, 과도한 규제는 혁신을 막지만 안전·신뢰 생태계의 필요성에도 동의한다고 말했습니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260418221410" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209415" target="_blank" rel="noopener noreferrer">&#39;챗GPT&#39;에 한글 문서 지원 추가…”공공기관 업무 활용 극대화”</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.17 23:59</span><span class="dot">·</span>
+          <span class="score">점수 7.9/10</span>
+        </div>
+        <div class="tags">
+<span># 챗GPT</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>공공·교육기관 업무에 직접적인 효율 변화를 가져올 변경<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>공무원·교사·공공기관 직원의 ‘문서 변환 단계’가 사라져 챗GPT 활용이 단번에 늘 수 있습니다. 기관 내부 보고서·회의록·공문 초안 작성 시간이 짧아지면서 행정 생산성이 눈에 띄게 올라갈 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2010년대 한컴 점유율이 한국 공공시장에서 굳어지면서 ‘HWP 종속’ 문제가 반복됐고, 2018년 정부 개방형 문서(ODF) 정책으로 일부 완화됐습니다. 이번 챗GPT의 한글 지원도 비슷한 ‘외부 도구의 한국 표준 수용’ 흐름으로 볼 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">오픈AI 코리아가 17일 챗GPT가 한컴오피스 ‘한글’의 대표 문서 형식인 HWP·HWPX 파일을 지원한다고 밝혔습니다. 그동안은 챗GPT가 이 포맷 문서를 읽지 못해 사용자들이 PDF나 워드로 변환해야 했지만, 이제는 변환 없이 한글 문서를 직접 업로드해 내용을 확인하고 분석할 수 있게 됐습니다. HWP·HWPX는 국내 공공기관·교육기관·주요 기업에서 널리 쓰이는 포맷입니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209415" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209443" target="_blank" rel="noopener noreferrer">&#39;자기학습 AI&#39;로 설립 4개월 만에 7300억 투자 유치한 슈퍼 스타트업 등장</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>21:17</span><span class="dot">·</span>
+          <span class="score">점수 7.8/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>AI 자본 쏠림과 ‘자기학습’ 기술 흐름을 동시에 보여주는 신호<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>4개월 된 회사가 7300억원을 받는 흐름은 AI 인력 몸값과 GPU 가격을 더 끌어올릴 수 있습니다. 한국 AI 스타트업이 우수 인재를 잡기 더 어려워지고, 클라우드·반도체 비용 부담이 커질 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2023년 인플렉션·2024년 SSI(Safe Superintelligence)도 ‘비전 한 줄’로 수조 원 평가를 받았습니다. 일부는 인수·합병으로 흡수됐고, 일부는 제품 없이 체급만 키운 채 평가가 식었습니다. 이번 사례도 비슷한 갈림길에 설 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="scenario">
+              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
+              <p>6~12개월 안에 ‘자기학습’ 데모를 내놓느냐가 분기점이 될 가능성이 큽니다. 데모가 나오면 빅테크 인수 후보로, 못 내놓으면 평가가 빠르게 깎이는 시나리오가 함께 거론될 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">구글 딥마인드와 오픈AI 출신 연구진이 세운 ‘리커시브 슈퍼인텔리전스(Recursive Superintelligence)’가 5억달러(약 7300억원) 규모 투자를 유치했다고 파이낸셜 타임스가 18일 보도했습니다. 기업 가치는 40억달러(약 5조8000억원)로 평가됐고, 설립 4개월밖에 되지 않은 이 회사는 ‘스스로 학습하며 진화하는 AI’ 개발을 핵심 비전으로 내세우고 있습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209443" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209431" target="_blank" rel="noopener noreferrer">세레브라스, 나스닥 상장 재추진…오픈AI 파트너십이 발판</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 20:55</span><span class="dot">·</span>
+          <span class="score">점수 7.7/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>엔비디아 대안 AI 반도체 상장이 시장 다변화 신호<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>세레브라스가 상장에 성공하면 엔비디아 한 축에 쏠려 있던 AI 반도체 시장에 ‘대안’이 생깁니다. 한국 메모리·패키징 업체에는 새 고객이 늘어나는 반면, 엔비디아 GPU 가격 협상력이 일부 약해질 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>세레브라스는 2024년에도 IPO를 추진하다 미국·중동 지분 이슈로 늦춰진 전례가 있습니다. 흑자 전환과 오픈AI 매출 기반은 당시와 가장 큰 차이로 평가될 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="scenario">
+              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
+              <p>상장 직후 시가총액이 200억달러를 넘을지가 기준선이 될 가능성이 있습니다. 흥행하면 그록·삼바노바 등 후발 AI 반도체 기업의 IPO 줄잇기를 자극할 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">AI 반도체 기업 세레브라스가 미국 나스닥에 티커 ‘CBRS’로 IPO를 신청했다고 17일 CNBC가 보도했습니다. 회사는 2025년 매출 5억1000만달러(약 7400억원), 순이익 8790만달러(약 1300억원)를 기록하며 2024년 4억8500만달러 순손실에서 흑자 전환에 성공했고, 오픈AI라는 굵직한 수익원이 이번 상장 재도전의 발판이 됐습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209431" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209427" target="_blank" rel="noopener noreferrer">아모데이, &#39;미소스&#39; 논의 위해 백악관 회담...정부와 갈등 완화 국면</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 19:34</span><span class="dot">·</span>
+          <span class="score">점수 7.7/10</span>
+        </div>
+        <div class="tags">
+<span># 앤트로픽</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>프런티어 AI 기업과 미국 정부 관계가 협력 국면으로 전환<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>앤트로픽이 미국 정부와 협력 모드로 들어가면, 한국 공공·금융기관 도입에서도 ‘미국 인증 받은 모델’이라는 강점이 부각될 수 있습니다. 반대로 한국 자체 AI는 정부 조달 시장에서 밀릴 위험도 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>오픈AI도 2024년 미 국방부·정부와 거리를 두다 결국 협력 계약을 맺었습니다. ‘민간 AI 기업 → 정부 파트너십’ 흐름이 미국에선 반복돼 온 패턴이라, 이번 합의도 비슷한 경로를 따를 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">다리오 아모데이 앤트로픽 CEO가 17일 백악관을 방문해 차세대 모델 ‘미소스(Mythos)’의 안전한 활용과 협력 방안을 논의했다고 악시오스가 전했습니다. 회동에는 수지 와일러 백악관 비서실장과 스콧 베선트 재무부 장관 등 핵심 인사들이 참석해 사이버 보안 위험을 포함한 미소스의 잠재적 영향과 대응 방안을 논의했고, 백악관은 회의를 “생산적이고 건설적이었다”라고 평가했습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209427" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.etnews.com/20260417000095" target="_blank" rel="noopener noreferrer">리벨리온 AI 반도체 &#39;리벨100&#39;, 글로벌 오픈소스 AI 추론 모델에서 성능 입증</a></h3>
+        <div class="meta">
+          <span>전자신문</span><span class="dot">·</span>
+          <span>12:00</span><span class="dot">·</span>
+          <span class="score">점수 7.6/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span><span># 인공지능</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>국산 AI 반도체의 추론 시장 진입 가능성<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>국산 AI 반도체가 추론 시장에서 검증되면, 한국 데이터센터·공공 클라우드가 비용을 줄이고 ‘기술 자립’ 명분도 챙길 수 있습니다. 다만 학습용 GPU에서 엔비디아 의존은 한동안 이어질 가능성이 큽니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>퓨리오사AI·사피온도 비슷한 추론 칩 차별화 전략을 폈으나, 글로벌 채택은 더디게 진행됐습니다. 리벨100 역시 벤치마크 외에 ‘실서비스 레퍼런스’를 얼마나 확보하느냐가 관건이 될 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">리벨리온이 최신 AI 반도체 ‘리벨100’을 탑재한 서버 제품이 개방형 AI 모델 작동에서 업계 최고 수준 성능을 입증했다고 전자신문이 전했습니다. AI가 학습에서 추론으로 확대되는 수요를 겨냥해 성능과 효율성을 앞세워 데이터센터 시장 공략에 속도를 낼 방침으로, 리벨리온은 최근 글로벌 오픈소스 AI 추론 모델에서의 성능 검증을 강조했습니다.</div>
+        <a href="https://www.etnews.com/20260417000095" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209428" target="_blank" rel="noopener noreferrer">앤트로픽, 올인원 디자인 도구 ‘클로드 디자인’ 공개...어도비·캔바 위협</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 20:23</span><span class="dot">·</span>
+          <span class="score">점수 7.6/10</span>
+        </div>
+        <div class="tags">
+<span># Claude</span><span># 앤트로픽</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>AI가 디자인 직군 도구 시장으로 본격 확장하는 신호<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>디자이너의 ‘초안 잡기’ 시간이 짧아지면 1인 디자이너가 여러 프로젝트를 맡을 수 있게 됩니다. 다만 신입 디자이너 일자리는 줄고, 시안 검토·고객 커뮤니케이션 능력이 더 중요해질 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>미드저니·달리가 등장했을 때도 ‘디자이너 종말론’이 돌았지만, 결과적으로는 ‘프롬프트를 잘 쓰는 디자이너’ 직군이 새로 생겼습니다. 이번에도 도구 활용 격차가 새 양극화를 만들 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">앤트로픽이 17일 대화형 AI로 시각 디자인과 프로토타입을 제작할 수 있는 ‘클로드 디자인(Claude Design)’을 공개했습니다. 최신 모델 ‘클로드 오퍼스 4.7’ 기반이며, 현재 연구 미리보기 형태로 프로·맥스·팀·엔터프라이즈 유료 구독자에게 순차 제공되고 있습니다. 자연어로 원하는 디자인을 설명하면 AI가 초안을 생성하는 방식이라, 어도비·캔바 등 기존 디자인 도구 시장을 흔들 수 있다는 평가입니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209428" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209406" target="_blank" rel="noopener noreferrer">알리바바, &#39;에이전틱 코딩&#39; 강화한 고효율 오픈소스 &#39;큐원3.6-35B-A3B&#39; 출시</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 00:47</span><span class="dot">·</span>
+          <span class="score">점수 7.6/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>오픈소스 효율 모델이 추론 비용 구조를 바꾸는 신호<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>적은 연산으로 큰 모델 수준 성능을 내는 오픈소스가 나오면, 한국 중소·공공기관도 ‘API 비용 부담 없이’ AI 도입을 시도할 수 있습니다. 다만 데이터 주권·중국산 모델 사용 논란이 함께 커질 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>딥시크 V3·R1이 ‘적은 GPU로 GPT급 성능’으로 시장을 흔들었던 흐름이 있었습니다. 이번 큐원도 비슷하게 ‘저비용 고성능’ 카드로 미국 폐쇄형 모델 가격을 끌어내릴 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">알리바바가 16일 전체 350억개 매개변수 가운데 약 30억개만 연산에 사용하는 희소 전문가 혼합(MoE) 구조의 오픈소스 AI 모델 ‘큐원3.6-35B-A3B’를 출시했습니다. 가장 큰 특징은 압도적인 효율성으로, 전체 규모는 대형 모델 수준이지만 실제 계산에는 일부만 쓰면서도 기존 큐원3.5 대비 전반적인 성능이 개선됐다고 알리바바는 밝혔습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209406" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209442" target="_blank" rel="noopener noreferrer">앤트로픽 &#39;클로드&#39; 인증 강화에 중국 개발자 ‘우회 경쟁’ 격화</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>21:41</span><span class="dot">·</span>
+          <span class="score">점수 7.5/10</span>
+        </div>
+        <div class="tags">
+<span># 앤트로픽</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>글로벌 AI 모델 접근 정책 변화로 개발자 생태계 영향이 큰 사안<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>신원 인증이 강화되면 한국 개발자도 여권 등 신분증 제출을 요구받을 수 있습니다. 회사 단위 결제·법인 계정으로 우회하는 흐름이 빨라지고, 비공식 우회 통로를 쓰던 중소 스타트업의 비용이 늘어날 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>오픈AI도 2024년 일부 국가 접근을 차단하고 본인 인증을 강화했고, 그 결과 중국에서 ‘대리 결제·VPN 우회’ 시장이 커졌습니다. 이번 클로드 사례 역시 비슷한 우회 산업이 자라날 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="perspective">
+              <h4>👥 입장이 다르면 어떻게 보일까?</h4>
+              <p>앤트로픽은 안전·규제 준수를 이유로 듭니다. 반면 신흥국 개발자에게는 ‘진입 장벽’으로 느껴질 수 있습니다. 미국 정부는 기술 유출 차단으로, 중국 정부는 자국 모델 육성 명분으로 받아들일 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">앤트로픽이 ‘클로드’ 사용자 일부에 여권·운전면허증 같은 정부 발급 신분증과 실시간 사진을 요구하는 신원 인증을 도입했습니다. 사기·정책 위반이 의심되는 계정을 중심으로 적용되며, 그동안 우회 경로로 클로드를 써온 중국 개발자들 사이에서는 대체 접근법을 찾으려는 경쟁이 격화되고 있다고 보도됐습니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209442" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209394" target="_blank" rel="noopener noreferrer">구글, 크롬에서 탭 전환 없이 웹 탐색하는 &#39;AI 모드&#39; 기능 확대</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 00:56</span><span class="dot">·</span>
+          <span class="score">점수 7.5/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>검색 트래픽 구조 변화가 광고·언론 산업에 직결<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>AI가 답을 정리해 주면 사용자는 원본 사이트로 클릭해 들어갈 일이 줄어듭니다. 한국 언론·블로그 광고 매출이 줄고, 검색 의존 마케팅을 하던 자영업자도 신규 유입 경로 고민이 커질 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2023년 도입된 ‘서치 제너러티브 익스피리언스(SGE)’ 때도 트래픽 감소 우려가 있었고, 일부 매체는 실제로 클릭률 하락을 보고했습니다. 이번 ‘AI 모드 확대’는 그 흐름을 가속할 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">구글이 16일 크롬에 새로운 AI 검색 경험인 ‘AI 모드(AI Mode)’를 도입하며 웹 탐색 방식 변화를 예고했습니다. 크롬 데스크톱에서 AI 모드를 사용할 때 웹페이지가 AI 모드 화면과 나란히 표시돼, 사용자는 여러 탭을 오가던 기존 방식에서 벗어나 하나의 화면에서 검색과 콘텐츠 확인을 동시에 할 수 있습니다. 핵심은 AI 모드와 웹페이지의 ‘동시 표시’ 기능입니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209394" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.etnews.com/20260417000091" target="_blank" rel="noopener noreferrer">JB금융, 전 계열사 &#39;AI 에이전트화&#39; 착수…업무·시스템 동시 재편</a></h3>
+        <div class="meta">
+          <span>전자신문</span><span class="dot">·</span>
+          <span>13:00</span><span class="dot">·</span>
+          <span class="score">점수 7.4/10</span>
+        </div>
+        <div class="tags">
+<span># AI</span><span># 인공지능</span><span># 에이전트</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>지방금융지주 단위의 그룹 표준 AI 에이전트 도입 첫 사례<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>지방금융까지 그룹 표준 AI 에이전트를 도입하면, 콜센터·여신 심사·내부감사에서 ‘AI 1차 처리 → 사람 2차 검토’ 구조가 빠르게 확산될 가능성이 있습니다. 단순 사무직 신규 채용 폭은 줄 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2010년대 인터넷뱅킹 도입 때도 ‘점포 축소’ 흐름이 한 번 지나갔습니다. 이번 AI 에이전트화는 ‘직원당 처리 건수’를 다시 한 번 끌어올리는 비슷한 변곡점이 될 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">JB금융그룹이 계열사 전반에 적용되는 ‘인공지능(AI) 에이전트 플랫폼’ 구축에 착수한 것으로 확인됐다고 전자신문이 전했습니다. 업무 자동화와 AI 운영 체계를 통합한 그룹 표준 플랫폼을 만들어 디지털 전환(DX)을 가속하려는 전략으로, 금융권에 따르면 JB금융지주는 그룹 차원의 AI 에이전트 도입을 통해 업무·시스템을 동시에 재편하는 작업에 들어갔습니다.</div>
+        <a href="https://www.etnews.com/20260417000091" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209400" target="_blank" rel="noopener noreferrer">구글, 퍼스널 인텔리전스에 &#39;나노 바나나&#39; 연결...&#34;개인화된 사진 생성&#34;</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.18 01:03</span><span class="dot">·</span>
+          <span class="score">점수 7.2/10</span>
+        </div>
+        <div class="tags">
+<span># 제미나이</span><span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>‘맞춤형 이미지 생성’이 일상 사용자에게 보편화되는 단계<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>개인화된 이미지가 쉬워지면 SNS·블로그 콘텐츠 단가가 떨어지고, 카드뉴스·썸네일 외주 시장이 흔들릴 수 있습니다. 반면 ‘진짜 사진’과 AI 이미지를 구분하는 능력이 새 기본 소양이 될 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>애플 인텔리전스가 ‘제니모지’로 개인화 이미지를 시도했지만 정확도와 활용성에서 호불호가 갈렸습니다. 구글의 ‘맥락 이해형’ 접근이 그 한계를 넘을 수 있는지가 관전 포인트가 될 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">구글이 16일 제미나이의 ‘퍼스널 인텔리전스(Personal Intelligence)’ 기능에 이미지 생성 모델 ‘나노 바나나(Nano Banana)’를 결합해 개인화된 이미지 생성 기능을 제공한다고 밝혔습니다. 사용자는 별도의 상세 설명 없이도 자신의 취향과 관심사가 반영된 이미지를 만들 수 있게 되며, 핵심은 AI가 사용자의 취향과 맥락을 사전에 이해한 상태에서 결과물을 생성한다는 점입니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209400" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209408" target="_blank" rel="noopener noreferrer">앤트로픽, 런던 사무소 대규모 확장…오픈AI와 유럽 AI 허브 경쟁</a></h3>
+        <div class="meta">
+          <span>AI타임스</span><span class="dot">·</span>
+          <span>04.17 23:50</span><span class="dot">·</span>
+          <span class="score">점수 7.0/10</span>
+        </div>
+        <div class="tags">
+<span># 앤트로픽</span><span># AI</span>        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>유럽 AI 산업 지형 변화와 인재 흡수 경쟁 신호<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>유럽 AI 인재 시장이 달아오르면 한국 기업의 해외 인재 채용 경쟁력이 더 약해질 가능성이 있습니다. 동시에 한국 인재의 해외 이직 기회는 늘어, 국내 AI 조직의 인력 유지 부담이 커질 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>구글이 런던 딥마인드를 인수한 뒤 영국 AI 인재 풀이 빠르게 커졌습니다. 이번 앤트로픽·오픈AI 확장은 영국을 ‘제2의 AI 허브’로 굳히는 흐름의 연속으로 볼 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">앤트로픽이 16일 영국 런던 ‘지식 지구(Knowledge Quarter)’ 내 리젠츠 플레이스에 약 15만8000제곱피트(약 4만8000㎡) 규모의 신규 사무공간을 확보했다고 CNBC가 전했습니다. 최대 800명을 수용할 수 있는 규모로, 현재 200여 명 규모인 런던 사무소에서 대폭 확대됩니다. 경쟁사 오픈AI도 런던 확장을 추진하고 있어, 글로벌 AI 기업 간 ‘유럽 거점 경쟁’이 본격화되는 양상입니다.</div>
+        <a href="https://www.aitimes.com/news/articleView.html?idxno=209408" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+    </div>
+  </section>
+  <section class="section" aria-label="종합 뉴스">
+    <div class="section-header">
+      <h2>종합 뉴스</h2>
+      <span class="count">21건</span>
+    </div>
+    <div class="section-body">
+      <article class="article">
+        <h3><a href="https://www.etnews.com/20260419000011" target="_blank" rel="noopener noreferrer">이란 이슬람혁명수비대 “호르무즈 해협 18일 저녁부터 폐쇄...&#39;접근하면 공격&#39; 초강수”</a></h3>
+        <div class="meta">
+          <span>전자신문</span><span class="dot">·</span>
+          <span>07:18</span><span class="dot">·</span>
+          <span class="score">점수 9.2/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>세계 원유 동맥 폐쇄로 한국 에너지·물류 직격<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>한국 원유 수입의 약 70%, LNG 일부가 호르무즈를 거칩니다. 봉쇄가 길어지면 휘발유 1L 가격이 2000원 후반대로 다시 오를 수 있고, 5월 항공 유류할증료가 폭등한 것과 같은 흐름이 더 강해질 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2019년 호르무즈 유조선 피격 사태 때도 단기 유가가 약 5% 급등했고, 한국은 청해부대 호위 작전을 1년 넘게 이어갔습니다. 이번에도 ‘청해부대 임무 확대’ 논의가 다시 커질 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>여행 계획이 있다면 5~6월 항공권의 유류할증료 변동을 사전에 확인할 필요가 있습니다. 자영업자라면 운송비·원자재 단가 상승이 연쇄적으로 올 수 있어, 단가 인상 시점을 미리 협의해 두는 것이 안전합니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">이란 혁명수비대 해군이 18일(현지시간) 성명을 통해 호르무즈 해협이 그날 저녁부터 폐쇄됐다고 밝혔다고 외신이 전했습니다. 미국이 이란에 대한 해상 봉쇄를 해제하기 전까지는 호르무즈 해협을 개방하지 않겠다는 입장이며, 혁명수비대는 “호르무즈 해협에 접근하려는 모든 시도는 적에 대한 협력으로 간주될 것”이라고 강조해 사실상 ‘접근하면 공격’이라는 초강수를 둔 셈입니다.</div>
+        <a href="https://www.etnews.com/20260419000011" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260419100631" target="_blank" rel="noopener noreferrer">좋은 소식 있다더니 또 막힌 호르무즈…미·이란 긴장 재고조</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>10:14</span><span class="dot">·</span>
+          <span class="score">점수 9.0/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>원유·가스·해운 비용 직격, 한국 인플레이션에 직접 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>세계 원유 수송의 약 5분의 1이 지나는 호르무즈가 다시 막히면 국제 유가가 단기에 10~20% 더 오를 가능성이 있습니다. 한국은 휘발유·항공권·전기요금에 한 달 이내로 영향이 옵니다. 5월 유류할증료 폭등도 같은 맥락입니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>1980년대 ‘탱커 전쟁’과 2019년 호르무즈 유조선 피격 때도 단기 유가가 급등했지만 협상으로 봉쇄가 풀리며 안정됐습니다. 이번에도 봉쇄 기간이 분기점이 될 가능성이 큽니다.</p>
+            </div>
+            <div class="insight" data-axis="scenario">
+              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
+              <p>미·이란 추가 합의가 1~2주 안에 나오면 유가는 빠르게 진정될 가능성이 있습니다. 합의가 결렬되면 다국적군 파병·강제 통항 작전 같은 카드가 거론될 수 있어 한국도 군 파병·해운 보호 논의가 다시 커질 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">이란 이슬람혁명수비대(IRGC)가 18일 성명에서 호르무즈 해협이 그날 저녁부터 다시 폐쇄됐다고 밝혔다고 18일(현지시간) 로이터가 전했습니다. 미국의 대이란 해상 봉쇄가 해제되기 전까지 정상 개방하지 않겠다는 입장으로, 미국이 8일부터 하기로 한 2주간 휴전을 위반했다는 주장입니다. 일시 개방 때 유조선 10여 척이 통과했지만 재봉쇄 후 유조선·컨테이너선 피격 보고도 잇따랐고, 트럼프 대통령은 백악관 상황실 회의를 소집했습니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260419100631" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.etnews.com/20260418000065" target="_blank" rel="noopener noreferrer">“이란 혁명수비대, 호르무즈 유조선에 발포”…모즈타바 “적에 쓰라린 패배 안길 준비”</a></h3>
+        <div class="meta">
+          <span>전자신문</span><span class="dot">·</span>
+          <span>04.18 21:32</span><span class="dot">·</span>
+          <span class="score">점수 8.7/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>직접 발포 사례로 충돌 격화·해상보험료 급등 가능성<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>실제 발포가 확인되면 호르무즈를 지나는 유조선 보험료가 단기에 두 배 이상 오를 수 있습니다. 한국 정유사·해운사가 떠안는 비용은 곧 휘발유·항공권 가격에 얹혀 일반 가계로 옵니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>1987년 미·이란 ‘탱커 전쟁’과 2019년 호르무즈 피격 사건 모두 보험·운임이 단기 급등했습니다. 다만 외교 협상이 뒤따르며 수개월 내 안정된 패턴이 반복돼 왔다는 점도 함께 고려할 만합니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">영국해사무역기구(UKMTO)가 18일(현지시간) 오만 인근 해역을 항해 중이던 유조선 선장의 신고를 인용해 이란 혁명수비대 연계 고속정 2척이 경고 없이 발포했다고 밝혔다고 외신이 전했습니다. 이란 혁명수비대 고위 인사 모즈타바는 “적에 쓰라린 패배를 안길 준비”라고 발언해 호르무즈 해협 인근 충돌 우려가 다시 고조되고 있는 상황입니다.</div>
+        <a href="https://www.etnews.com/20260418000065" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.yna.co.kr/view/AKR20260419025400009" target="_blank" rel="noopener noreferrer">휴전 종료 D-2…호르무즈 재봉쇄 속 미·이란 종전협상 기로</a></h3>
+        <div class="meta">
+          <span>연합뉴스</span><span class="dot">·</span>
+          <span>11:56</span><span class="dot">·</span>
+          <span class="score">점수 8.6/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>휴전 만료 임박과 협상 결렬 위험이 동시에 진행<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>휴전이 그대로 종료되면 단 며칠 만에 유가·환율이 동시에 출렁일 가능성이 큽니다. 한국 가계는 자동차 주유와 다음 달 카드값에서 체감할 수 있고, 수출 기업은 환차손 헤지에 신경 써야 합니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>미·이란은 1979년 인질 사태 이후 협상과 결렬을 수차례 반복했습니다. ‘마감 직전 합의’ 패턴도 있었지만, 결렬 후 군사 충돌로 번진 사례도 있어 이번에도 양 시나리오 모두 열려 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="scenario">
+              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
+              <p>단기 부분 합의가 나올 가능성이 가장 크다고 평가됩니다. 그래도 ‘완전 정상화’까지는 수개월이 걸릴 수 있어, 운임·보험·항공권은 봄~여름 내내 변동성이 클 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">연합뉴스는 미국과 이란의 2차 종전 협상을 앞두고 호르무즈 해협을 둘러싼 군사적 긴장이 다시 고조되면서 협상 전망이 안갯속에 놓였다고 전했습니다. 휴전 종료를 D-2로 두고 호르무즈 재봉쇄가 동시에 진행되는 상황으로, 미·이란 양측 모두 협상 카드와 군사 카드를 동시에 꺼내고 있는 모양새입니다.</div>
+        <a href="https://www.yna.co.kr/view/AKR20260419025400009" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260419120939" target="_blank" rel="noopener noreferrer">HPV 백신, 5월6일부터 12세 남성 청소년도 무료접종</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>12:09</span><span class="dot">·</span>
+          <span class="score">점수 8.5/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>남성 청소년 대상 신규 무료접종으로 학부모·당사자 직접 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>HPV 백신을 남녀 모두 맞으면 ‘집단 면역’ 효과로 자궁경부암·항문암·구인두암 발생률이 장기적으로 줄어들 가능성이 큽니다. 가정에서는 백신 비용 부담(20만~50만원대)이 사라져 사춘기 자녀 건강관리 우선순위가 바뀔 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>호주는 2013년부터 남녀 청소년 모두에게 HPV 백신을 지원해, 자궁경부 전암성 병변이 절반 이하로 줄었다는 보고가 있습니다. 한국도 비슷한 효과를 기대해 볼 수 있는 정책 단계로 진입한 셈입니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>2014년생 자녀가 있다면 5월6일 이후 가까운 보건소·위탁의료기관에 일정과 준비물(보호자 동의 등)을 미리 확인해 두는 게 좋습니다. 1차 접종 후 일정에 맞춰 추가 접종까지 챙겨야 효과가 충분히 납니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">질병관리청이 5월6일부터 12세 남성 청소년(2014년생)을 대상으로 사람유두종바이러스(HPV) 백신 국가예방접종 지원사업을 새로 시행한다고 밝혔습니다. 기존 여성 청소년 중심 지원을 남녀 모두로 확대해 관련 질환 예방을 강화하는 취지로, HPV는 남성도 감염될 수 있고 미국 CDC에 따르면 항문생식기암·구인두암 70%가 HPV로 발생합니다. 대상자는 가까운 위탁의료기관·보건소에서 HPV 4가 백신을 무료로 접종받을 수 있습니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260419120939" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.mk.co.kr/news/world/12020929" target="_blank" rel="noopener noreferrer">“이제 대만 못따라잡나요”…IMF “5년 뒤 韓·台 1인당 GDP, 1만불 이상 차”</a></h3>
+        <div class="meta">
+          <span>매일경제</span><span class="dot">·</span>
+          <span>11:28</span><span class="dot">·</span>
+          <span class="score">점수 8.5/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>한국 1인당 GDP 정체와 산업 경쟁력의 상대적 후퇴<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>1인당 GDP 격차 확대는 결국 임금·자산 가격으로 옮겨갑니다. 한국 청년이 ‘해외 취업’ 선택지로 대만·일본·싱가포르를 더 진지하게 검토하는 흐름이 강해질 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2003년 한국이 1인당 GDP에서 대만을 앞선 뒤 약 20년간 우위를 유지했습니다. 다시 역전됐다는 건 ‘반도체 한 산업의 격차’가 국가 단위 통계로 드러난 첫 사례로 볼 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="perspective">
+              <h4>👥 입장이 다르면 어떻게 보일까?</h4>
+              <p>정부엔 산업 다변화 압박이고, 기업엔 ‘TSMC 같은 단일 챔피언 키우기’ 논쟁이 다시 떠오를 사안입니다. 일반 시민에겐 ‘체감 소득은 안 오르는데 국가 위상이 떨어진다’는 박탈감으로 다가올 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">IMF 전망에 따르면 대만이 올해 1인당 GDP 4만달러를 돌파하는 반면, 한국은 2년 뒤에야 4만달러에 진입하고 5년 뒤 양국 1인당 GDP 격차가 1만달러 이상 벌어질 것으로 예상된다고 매일경제가 전했습니다. 글로벌 반도체 슈퍼사이클과 중동전쟁 영향에도 IB들은 대만의 성장 전망치를 상향 조정했고, 결과적으로 한·대만 국민 소득 격차가 빠르게 확대된다는 분석입니다.</div>
+        <a href="https://www.mk.co.kr/news/world/12020929" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.mk.co.kr/news/realestate/12020948" target="_blank" rel="noopener noreferrer">봄 이사철 서울 전세 매물 반토막…임대차 절반이 월세</a></h3>
+        <div class="meta">
+          <span>매일경제</span><span class="dot">·</span>
+          <span>12:55</span><span class="dot">·</span>
+          <span class="score">점수 8.4/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>서울 임대차 구조가 ‘월세화’로 굳어지는 신호<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>전세 매물이 반토막이 나면 전세보증금이 빠르게 오르고, 월세 비중이 더 커집니다. 한 달 고정 주거비가 5만~20만 원 단위로 더 들어가는 가구가 늘어, 청년·신혼부부 가처분 소득이 줄 가능성이 큽니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2022~2023년 전세사기 사태 이후 임대인들이 보증금 부담을 줄이기 위해 월세 전환을 선호하는 흐름이 굳어졌습니다. 이번 ‘반토막’ 통계는 그 전환이 구조적으로 굳어지고 있음을 보여줄 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>올여름 이사 계획이 있다면 전세보다 ‘반전세·월세’ 옵션을 함께 비교해 두는 것이 안전합니다. 보증금이 큰 전세는 보증보험 가입 가능 매물인지부터 확인하는 습관이 필요합니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">19일 부동산 빅데이터 분석 결과 봄 이사철을 맞은 서울 아파트 전세 매물이 2년 전 대비 절반가량 감소했다고 매일경제가 보도했습니다. 전 자치구에서 전세 매물이 줄었으며, 전세가율이 반등하고 월세 매물도 함께 감소한 가운데 임대차 거래의 절반이 월세로 이뤄지고 있다는 점이 함께 지적됐습니다.</div>
+        <a href="https://www.mk.co.kr/news/realestate/12020948" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.mk.co.kr/news/business/12020926" target="_blank" rel="noopener noreferrer">“4월도 비싸서 여행 미뤘더니”…5월 유류할증료 폭등 소식에 여행객 ‘비명’</a></h3>
+        <div class="meta">
+          <span>매일경제</span><span class="dot">·</span>
+          <span>11:22</span><span class="dot">·</span>
+          <span class="score">점수 8.3/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>여행·항공 비용 직접 상승, 가계 의사결정에 즉각 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>여름 휴가 시즌 항공권 가격이 평년 대비 10~20% 비싸질 가능성이 큽니다. 일정·인원이 정해진 가족 여행은 5월 초 발권이 사실상 마지노선이 될 수 있고, 일정이 유연하다면 9~10월로 미루는 선택도 합리적입니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2022년 우크라이나 전쟁 직후에도 항공 유류할증료가 사상 최고치까지 갔다가 이듬해 안정됐습니다. 이번에도 중동 변수 해소 시점에 따라 4~6개월 후 다시 내려올 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="personal">
+              <h4>💡 나는 뭘 해야 할까?</h4>
+              <p>이미 일정이 정해진 여행이라면 5월 발권 마감 전 항공권을 미리 끊어두는 게 안전합니다. 마일리지 항공권은 유류할증료가 별도로 부과되는 경우가 많아, 결제 직전 합산 가격을 꼭 확인해야 합니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">5월부터 항공 유류할증료가 ‘최고치’ 수준으로 오르며, 뉴욕 왕복 4인 가족 기준 약 450만원 추가 부담이 발생할 전망이라고 매일경제가 전했습니다. 중동발 지정학적 리스크 장기화에 따른 국제 유가 급등세가 항공료 인상으로 이어지고 있어, 여행을 확정한 경우 30일까지 발권하는 편이 유리하다는 안내입니다.</div>
+        <a href="https://www.mk.co.kr/news/business/12020926" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.mk.co.kr/news/politics/12020928" target="_blank" rel="noopener noreferrer">일요일 새벽 6시의 굉음...북한, 11일만에 탄도미사일 무력시위</a></h3>
+        <div class="meta">
+          <span>매일경제</span><span class="dot">·</span>
+          <span>11:25</span><span class="dot">·</span>
+          <span class="score">점수 8.2/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>북한의 SLBM 가능성과 한반도 안보 변수 재점화<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>중동·북한 두 지정학 변수가 동시에 움직이면 원·달러 환율이 다시 위쪽으로 압력을 받을 수 있습니다. 수입 물가가 오르고, 국방·방산 예산 논의도 다시 가열될 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>북한은 미국 대통령의 외교 일정 직전·직후에 미사일 시험을 반복해 왔습니다. 이번에도 트럼프 방중 전 ‘협상 카드 만들기’ 패턴이 재현될 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">북한이 19일 오전 잠수함기지·조선소가 있는 신포에서 동북쪽 표적지 ‘알섬’ 쪽으로 약 140㎞를 비행한 탄도미사일을 11일 만에 발사했다고 매일경제가 전했습니다. 일요일 새벽 6시 굉음이라는 표현이 함께 사용됐고, 북한이 중동발 불안 정세를 활용해 핵·미사일 고도화 속도를 내고 있다는 분석과 트럼프 방중 전 대미 접촉을 고려한 행동이라는 해석이 나오고 있습니다.</div>
+        <a href="https://www.mk.co.kr/news/politics/12020928" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.mk.co.kr/news/politics/12020979" target="_blank" rel="noopener noreferrer">서울시장 선거 최대 이슈는 부동산... “집값대책이 결국 표심 가를 것”</a></h3>
+        <div class="meta">
+          <span>매일경제</span><span class="dot">·</span>
+          <span>14:08</span><span class="dot">·</span>
+          <span class="score">점수 8.0/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>수도 서울의 부동산 정책이 표심·시장 동시에 직격<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>부동산 공약이 후보별로 달라지면 강남·강북 가릴 것 없이 매수·매도 시점을 미루는 ‘선거 대기’ 현상이 나타날 가능성이 있습니다. 거래량 위축이 한동안 이어질 수 있고, 임대차 시장에도 단기적 영향이 옵니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2018·2022년 서울시장 선거 모두 부동산 정책이 핵심 변수였고, 당선자에 따라 재건축 속도가 크게 달라진 전례가 있습니다. 이번에도 후보별 ‘재건축·세제’ 입장이 가장 큰 갈림길이 될 가능성이 큽니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">정당학회 교수들이 본 서울시장 선거의 최대 변수로 부동산이 꼽혔다고 매일경제가 전했습니다. 집값 변화가 선거에 영향을 줄 것이며, 교통도 변수로 거론됩니다. 4선 시장 경험을 가진 오세훈은 중도층 공략이, 정원오는 대통령 지지율을 등에 업은 후광효과 기대가 강점으로 분석됐습니다.</div>
+        <a href="https://www.mk.co.kr/news/politics/12020979" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.mk.co.kr/news/society/12020922" target="_blank" rel="noopener noreferrer">“액상형 전담도 피울 맛 뚝 떨어지겠네”…24일부터 연초와 동일 규제</a></h3>
+        <div class="meta">
+          <span>매일경제</span><span class="dot">·</span>
+          <span>11:06</span><span class="dot">·</span>
+          <span class="score">점수 7.8/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>전자담배 사용자 일상·세금·청소년 흡연 정책에 광범위 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>동일 규제가 적용되면 액상형 전자담배 가격이 오르고, 광고·판촉이 제한되며 학교 주변 판매도 더 까다로워질 가능성이 큽니다. 청소년 사용 진입 장벽이 높아지는 효과를 기대할 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2018년 ‘아이코스’ 등 가열식 담배 도입 때도 일반 담배와 다른 세제·표시 규제가 한동안 유지되다 결국 동일 규제로 정리됐습니다. 이번 액상형 규제도 같은 흐름의 ‘공백 메우기’로 볼 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">그동안 법적으로 ‘담배’로 분류되지 않았던 액상형 전자담배가 오는 24일부터 궐련(연초)형 담배와 똑같은 규제를 받게 된다고 매일경제가 전했습니다. 일반 담배 흡연율과 반대로 계속 상승해 온 액상형 전자담배의 사용을 억제하려는 조치로, 동일한 세금·광고·표시 규제가 적용될 예정입니다.</div>
+        <a href="https://www.mk.co.kr/news/society/12020922" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.yna.co.kr/view/AKR20260418049000002" target="_blank" rel="noopener noreferrer">최지영 IMF 신임 이사 &#34;한국, 중동전쟁 단기 쇼크 제어 잘해&#34;</a></h3>
+        <div class="meta">
+          <span>연합뉴스</span><span class="dot">·</span>
+          <span>12:00</span><span class="dot">·</span>
+          <span class="score">점수 7.6/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>IMF 이사 발언으로 한국 경제 단기 리스크 신호<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>IMF가 한국 성장률 하향의 원인으로 ‘중동 전쟁’을 명시한다는 것은 정부가 정책 우선순위를 ‘에너지·물류 안정’에 더 두게 만들 가능성이 큽니다. 추경 편성·유류세 인하 연장 논의가 빨라질 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2022년 우크라이나 전쟁 때 IMF가 한국 성장률을 두 차례 하향한 적이 있고, 그 직후 정부는 유류세 인하 폭을 확대했습니다. 이번에도 비슷한 ‘외부 충격→정책 완화’ 절차가 반복될 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">최지영 신임 국제통화기금(IMF) 이사가 워싱턴에서 “중동 전쟁이 없었다면 IMF는 한국의 성장률을 더 높게 전망했을 것”이라고 말했다고 연합뉴스가 전했습니다. 중동전쟁이라는 외부 충격에도 한국이 단기 쇼크를 제어하는 데 잘 대응하고 있다는 평가를 함께 내놓았습니다.</div>
+        <a href="https://www.yna.co.kr/view/AKR20260418049000002" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260419102315" target="_blank" rel="noopener noreferrer">HD현대重, 美 최대 방산전시회 &#39;SAS 2026&#39; 韓 기업 최초 참가</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>10:23</span><span class="dot">·</span>
+          <span class="score">점수 7.6/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>K-방산의 미국 함정 시장 진출 본격화 신호<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>미국 함정 시장에 K-조선이 본격 진입하면 HD현대·한화오션·HJ중공업 등 관련주 모멘텀과 동시에 부산·울산 조선·해양 산업 일자리도 확대될 가능성이 있습니다. 다만 미국 ‘존스법’ 등 자국 우선 규제가 큰 벽이 될 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>한화오션이 미국 필리조선소를 인수해 함정 MRO(유지·보수·정비) 시장에 발을 들였습니다. 이번 HD현대중의 SAS 참가도 ‘건조’가 아닌 ‘파트너십·MRO’부터 풀어가는 방식으로 시장에 들어갈 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">HD현대중공업이 19일부터 나흘간 미국 워싱턴 D.C.에서 열리는 미국 최대 규모 해양 방산전시회 ‘SAS 2026’에 한국 기업 최초로 부스를 마련했다고 밝혔습니다. SAS 2026에는 57개국 430여 방산기업이 참가하고 1만6000여 명이 방문할 것으로 예상되며, HD현대중공업은 LIG D&amp;A와 150㎡ 규모 공동 전시관을 꾸려 이지스 구축함·호위함·미래형 전투함·잠수함 등 모형을 전시하고 미 해군 함대 재건의 글로벌 파트너 자리를 노립니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260419102315" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260417091220" target="_blank" rel="noopener noreferrer">전자파·중성자 동시에 막는 &#39;3D프린팅 필름&#39; 세계 첫 공개</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>12:00</span><span class="dot">·</span>
+          <span class="score">점수 7.5/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>우주·원전·웨어러블 방호 등 다용도 신소재 원천기술<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>인공위성·우주정거장·원자력 시설·암 치료 장비·웨어러블 방호 장비를 더 가볍게 만들 수 있게 됩니다. 한국 우주산업과 의료기기 부품 업계에 새로운 기회가 열릴 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>기존에는 전자파용·중성자용 차폐재가 따로 필요해 우주복·원전 차폐가 두꺼워졌습니다. 하나의 소재로 두 위협 차단 시도는 NASA 등도 진행해 왔으나 두께·내구성 한계가 있었던 것으로 알려져 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">한국과학기술연구원(KIST) 주용호 책임연구원 팀이 전자파와 중성자를 동시에 차단할 수 있는 3D프린팅 초박막 복합 차폐 소재를 세계 최초로 개발했다고 19일 밝혔습니다. 탄소나노튜브(CNT)와 질화붕소나노튜브(BNNT)를 결합한 ‘껍질 구조’로, 머리카락보다 얇은 두께에서도 전자파의 99.999%를 차단하고 중성자를 약 72% 줄이는 성능을 구현했습니다. 영하 196도부터 250도까지 견디고, 길이 2배 이상 늘어나도 성능이 유지됩니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260417091220" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.yna.co.kr/view/AKR20260419022500003" target="_blank" rel="noopener noreferrer">2분기 소매경기 &#39;봄철 특수&#39; 없을 듯…&#34;중동전쟁·고환율 여파&#34;</a></h3>
+        <div class="meta">
+          <span>연합뉴스</span><span class="dot">·</span>
+          <span>12:00</span><span class="dot">·</span>
+          <span class="score">점수 7.5/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>유통·자영업 매출과 소비 심리에 직접 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>백화점·대형마트·전통시장의 봄철 매출이 평년보다 약할 가능성이 큽니다. 의류·가전 신상품 할인 폭이 커질 수 있어, 소비자 입장에서는 ‘5월 가정의 달’ 프로모션을 노리는 게 합리적일 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2022년 우크라이나 전쟁 직후에도 환율·유가가 동시에 오르며 2분기 소비가 위축됐고, 정부가 6월부터 유류세·전기료 카드를 꺼냈습니다. 이번에도 비슷한 정책 조합이 거론될 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">연합뉴스가 중동전쟁 여파로 유통업계의 ‘봄철 특수’가 기대만큼 나타나기 어렵다는 2분기 소매경기 전망을 전했습니다. 중동전쟁과 고환율 여파가 소매경기에 부담을 주는 핵심 변수로 지목됐습니다.</div>
+        <a href="https://www.yna.co.kr/view/AKR20260419022500003" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260417144650" target="_blank" rel="noopener noreferrer">첨단재생의료 심의체계 개선해 심의 수요 증가 대응</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>10:24</span><span class="dot">·</span>
+          <span class="score">점수 7.5/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>중증·희귀 환자 첨단재생의료 접근 속도가 정책으로 결정<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>심의 속도가 빨라지면 중증·희귀·난치 환자가 새 치료법을 더 일찍 만날 가능성이 커집니다. 다만 안전성 검증의 ‘속도와 엄격함’ 사이 균형이 어떻게 잡힐지가 환자 보호의 핵심이 될 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>일본은 2014년 ‘조건부 조기승인 제도’로 재생의료를 빨리 도입했지만, 일부 치료제는 효과 검증 부족 논란이 뒤따랐습니다. 한국 제도가 같은 길에 들어서지 않으려면 사후 모니터링 강화가 핵심이 될 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">보건복지부가 17일 첨단재생의료 및 첨단바이오의약품 심의위원회·전문위원회 제1차 워크숍을 열고, 운영 과정의 애로사항 청취와 심의체계 고도화 방안을 논의했다고 밝혔습니다. 2025년 2월 첨단재생의료 치료제도 도입 이후 임상연구·치료 계획 신청이 지속 증가하면서, 심의위원회 추가 설치와 전문위원회 영역별 심층 검토 구조 개편에 공감대를 형성했습니다. 그간 임상연구 계획 60건이 승인됐다고 김현숙 첨단의료지원관은 설명했습니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260417144650" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260419111949" target="_blank" rel="noopener noreferrer">쿠팡 와우카드로 편의점 결제하면 최대 2.4% 적립</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>11:21</span><span class="dot">·</span>
+          <span class="score">점수 7.4/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>오프라인 편의점 결제 혜택 확대로 직장인 일상 지출 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>편의점 적립률 2.4%는 일반 신용카드 기준 ‘파격 혜택’ 축에 듭니다. 점심·간식 비중이 높은 1인가구·직장인은 월 1만~2만원 혜택을 챙길 수 있어, 통신·이커머스·카드사 간 편의점 멤버십 경쟁이 더 뜨거워질 가능성이 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>네이버페이·카카오페이도 편의점·커피 결제 적립률을 한때 5% 수준까지 올렸다가 단계적으로 축소한 사례가 있습니다. 쿠팡 역시 가입자 확대 후 적립률을 조정할 가능성이 있어, 혜택을 영구로 가정하지 않는 게 좋습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">쿠팡이 KB국민카드·비자(Visa)와 제휴해 선보인 ‘쿠팡 와우카드’의 국내 4대 편의점(CU, GS25, 세븐일레븐, 이마트24) 오프라인 결제 적립률을 기존 1.2%의 2배인 최대 2.4%로 확대한다고 19일 밝혔습니다. 기본 0.2%에 프로모션 2.2%가 더해진 구조이며, 편의점에서만 월 최대 2만4000원(이용금액 월 100만원 한도)까지 적립할 수 있습니다. 전월 실적 없이 쿠팡 서비스·외부 결제 합산 월 최대 6만4000원 쿠팡캐시 적립이 가능합니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260419111949" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260418161001" target="_blank" rel="noopener noreferrer">&#34;단순 응대 아닌 의사소통 통역&#34;...통신 사각지대 없애는 KT 수어 상담</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>09:00</span><span class="dot">·</span>
+          <span class="score">점수 7.2/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>통신 사각지대와 장애인 의사소통 인프라의 현실<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>전 국민 청각장애인 약 40만 명 시대에 통신사 한 곳에 수어상담사 ‘1명’이 사실상 전담하는 구조는 정책적 보완 압력으로 이어질 가능성이 있습니다. AI 수어 통역 기술 투자도 함께 늘어날 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2005년 통신 중계 서비스가 도입된 뒤에도 ‘대기시간이 길다’는 지적이 반복돼 왔습니다. KT 사례처럼 ‘담당자 1인’에 의존하는 구조는 다른 공공·민간 서비스에서도 비슷하게 반복돼 온 문제로 볼 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="perspective">
+              <h4>👥 입장이 다르면 어떻게 보일까?</h4>
+              <p>기업은 ‘수요 대비 적정 인력 배치’로 봅니다. 청각장애인 당사자에게는 ‘유일한 창구가 한 명’이라는 위태로움입니다. 정책 입장에서는 의무 채용·표준 응대시간 같은 규제 카드가 거론될 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">지디넷코리아가 KT 고객서비스 전문 기업 KTis 광화문센터를 찾아 강영지 수어상담사를 인터뷰했습니다. KT에 등록된 장애인 가입자는 약 26만 명, 전국 14개 센터에 130여 명 상담사가 1대1 맞춤형 상담을 진행하지만, 청각장애인 가입자를 위한 수어상담사는 단 2명이고 휴직자를 빼면 강 상담사 혼자 전국 수어 상담을 맡고 있습니다. 강 상담사는 미납 센터·오프라인 대리점에 직접 통화해 ‘귀’ 역할까지 하며 가입자와 라포를 형성한다고 설명했습니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260418161001" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.yna.co.kr/view/AKR20260417155751030" target="_blank" rel="noopener noreferrer">&#34;모래주머니 차고 뛴다&#34;…홈쇼핑·T커머스, 규제 완화 요구(종합)</a></h3>
+        <div class="meta">
+          <span>연합뉴스</span><span class="dot">·</span>
+          <span>11:22</span><span class="dot">·</span>
+          <span class="score">점수 7.0/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>유통 채널 규제 변화는 광고·소비자 가격에 직접 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>송출수수료 규제가 손질되면 SO·IPTV 사업자 수익이 줄고, 홈쇼핑 마진이 늘어 가격 인하 여력이 생길 수 있습니다. 다만 규제가 풀린 만큼 광고성 콘텐츠가 더 많아져 시청 경험은 나빠질 가능성도 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2010년대 초 케이블TV 송출수수료 갈등 때도 비슷한 ‘규제 완화 vs 소비자 보호’ 논쟁이 반복됐습니다. 결과적으로 가격이 즉시 내려간 건 아니라, 이번에도 ‘소비자 체감 효과’는 시간차가 클 가능성이 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">연합뉴스는 데이터홈쇼핑(T커머스)과 TV홈쇼핑 사업자들의 재승인 심사를 앞두고 업계에서 규제 완화를 요구하는 목소리가 커지고 있다고 전했습니다. ‘모래주머니 차고 뛴다’는 표현으로 송출수수료·편성 규제 등 영업 환경 부담을 강조하며, 이커머스·라이브커머스 경쟁 심화 속에 기존 홈쇼핑 사업자들이 제도 개선을 요구하고 있습니다.</div>
+        <a href="https://www.yna.co.kr/view/AKR20260417155751030" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://zdnet.co.kr/view/?no=20260419080308" target="_blank" rel="noopener noreferrer">우버이츠, 반품 대행 도입…수거·환불 한 번에</a></h3>
+        <div class="meta">
+          <span>ZDNet Korea</span><span class="dot">·</span>
+          <span>10:00</span><span class="dot">·</span>
+          <span class="score">점수 7.0/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>온디맨드 반품이 이커머스 비용 구조를 바꿀 가능성<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>국내 쿠팡·배민·CJ대한통운 등도 ‘기사 반품 수거’ 모델을 검토할 가능성이 있습니다. 소비자는 반품 스트레스가 줄지만, 배송 기사 업무는 늘고 단가 협상이 새로운 갈등 거리가 될 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>아마존도 홀푸즈·콜스 매장에서 ‘박스 없는 반품’을 도입한 뒤 반품 비용이 줄고 회원 유지율이 올랐다고 알려져 있습니다. 우버이츠 모델은 이 흐름의 ‘방문 픽업판’ 확장으로 볼 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">우버이츠가 배송 기사가 직접 상품을 수거해 반품까지 대행하는 ‘반품 기능’을 도입했다고 17일(현지시간) CNBC가 전했습니다. 이용자가 앱에서 반품을 신청하면 배송 기사가 상품을 수거해 소매업체에 대신 반납하고, 별도 포장·방문 없이 휴대폰으로 전 과정을 처리할 수 있습니다. 베스트바이·딕스 스포팅 굿즈·펫코 등 우버이츠 입점 소매업체에 적용되며 20달러 이상 상품이 대상이고 수거 즉시 환불됩니다.</div>
+        <a href="https://zdnet.co.kr/view/?no=20260419080308" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+      <article class="article">
+        <h3><a href="https://www.yna.co.kr/view/AKR20260419028000073" target="_blank" rel="noopener noreferrer">日 현금 사용 줄어도 ATM 인출액 늘어…&#34;인플레 등 영향&#34;</a></h3>
+        <div class="meta">
+          <span>연합뉴스</span><span class="dot">·</span>
+          <span>12:06</span><span class="dot">·</span>
+          <span class="score">점수 6.8/10</span>
+        </div>
+        <details class="why-insights">
+          <summary class="why"><strong>추출 이유</strong>선진국 인플레이션이 가계 현금 보유 행태를 바꾸는 사례<span class="expand-hint" aria-hidden="true">▾</span></summary>
+          <div class="insights-body">
+            <div class="insight" data-axis="ripple">
+              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
+              <p>한국도 물가가 빠르게 오르면 카드 결제 비중이 높음에도 ‘만일을 대비한 현금 보관’ 심리가 다시 살아날 가능성이 있습니다. 핀테크 회사가 ‘체감 물가 비교’ 같은 기능을 강화할 수 있습니다.</p>
+            </div>
+            <div class="insight" data-axis="history">
+              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
+              <p>2008년 글로벌 금융위기 직후에도 한국·일본 모두 가계가 ‘예적금→현금’ 일부 이전을 보였습니다. 인플레이션 국면에서는 반대로 ‘현금 보유 자체의 손해’ 인식이 커지는 게 일반적이라, 이번 일본 통계는 이례적이라고 볼 수 있습니다.</p>
+            </div>
+          </div>
+        </details>
+        <div class="summary">현금 선호 사회였던 일본에서 전자결제 수단 이용이 최근 늘어났음에도 은행 현금인출기(ATM) 평균 인출액은 오히려 늘었다고 도쿄 연합뉴스가 전했습니다. 인플레이션 등 영향으로 분석되며, 일본 가계의 현금 보유 패턴 변화의 한 단면으로 평가됩니다.</div>
+        <a href="https://www.yna.co.kr/view/AKR20260419028000073" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-block">
+      <span class="footer-label">생성시각</span>2026.04.19 18:05 KST
+    </div>
+    <div class="footer-block sources">
+      <span class="footer-label">RSS 출처</span>AI타임스 · ZDNet Korea · 전자신문 · 연합뉴스 · 매일경제 · 한겨레
+    </div>
+    <div class="footer-block disclosure">
+      본 리포트는 Claude Opus 4.7이 RSS 원문을 분석해 생성합니다. 사실관계는 각 원문에서 확인하세요.
+    </div>
+    <div class="footer-block footer-issue">
+      ISSUE #8
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Split header h1 into char spans (for FX D kinetic reveal)
+      let charCounter = 0;
+      document.querySelectorAll('header h1 .line').forEach((line) => {
+        const text = line.textContent;
+        line.innerHTML = Array.from(text).map((ch) => {
+          const idx = charCounter++;
+          const safe = ch === ' ' ? '&nbsp;' : ch;
+          return `<span class="char" style="--i:${idx}">${safe}</span>`;
+        }).join('');
+      });
+
+      // IntersectionObserver adds .fx-in on scroll (needed by D slide/zoom)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('fx-in');
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.article, .section').forEach(el => observer.observe(el));
+
+      // 커서 잔상(cursor trail): 마우스 이동 경로마다 짧은 원형 glow 를 생성 후 자동 제거.
+      // 성능 가드: 20ms throttle + 최대 24개 노드 유지 + prefers-reduced-motion 자동 skip.
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isTouch = window.matchMedia('(hover: none)').matches;
+      if (!reduceMotion && !isTouch) {
+        let lastTime = 0;
+        const THROTTLE_MS = 20;
+        const MAX_NODES = 24;
+        const trailNodes = [];
+        window.addEventListener('mousemove', (e) => {
+          const now = performance.now();
+          if (now - lastTime < THROTTLE_MS) return;
+          lastTime = now;
+          const dot = document.createElement('div');
+          dot.className = 'cursor-trail';
+          dot.style.left = e.clientX + 'px';
+          dot.style.top = e.clientY + 'px';
+          document.body.appendChild(dot);
+          trailNodes.push(dot);
+          if (trailNodes.length > MAX_NODES) {
+            const old = trailNodes.shift();
+            if (old && old.parentNode) old.parentNode.removeChild(old);
+          }
+          setTimeout(() => {
+            if (dot.parentNode) dot.parentNode.removeChild(dot);
+            const i = trailNodes.indexOf(dot);
+            if (i >= 0) trailNodes.splice(i, 1);
+          }, 900);
+        }, { passive: true });
+      }
+    })();
+  </script>
+
+</body>
+</html>
