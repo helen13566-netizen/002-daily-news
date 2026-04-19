@@ -327,8 +327,8 @@ def test_run_notify_success_reads_analyzed_and_state_and_prints_message(
     assert rc == 0
 
     captured = capsys.readouterr()
-    # 첫 줄은 Seed 템플릿의 헤더여야 한다.
-    assert captured.out.startswith("📰 데일리 뉴스")
+    # 절취선으로 감싼 헤더 안에 Seed 템플릿 문구가 있어야 한다.
+    assert "📰 데일리 뉴스" in captured.out
     # 날짜 + 오전 표기 포함.
     assert "2026.04.19" in captured.out
     assert "오전" in captured.out
@@ -358,7 +358,7 @@ def test_run_notify_failure_prints_warning_header(
     assert rc == 0
 
     captured = capsys.readouterr()
-    assert captured.out.startswith("⚠️ 뉴스 생성 실패")
+    assert "⚠️ 뉴스 생성 실패" in captured.out
     assert "단계: collecting" in captured.out
     assert "사유: RSS timeout" in captured.out
     assert "재시도: 3/3" in captured.out

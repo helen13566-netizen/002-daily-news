@@ -37,6 +37,9 @@ KST = pytz.timezone(KST_TZ_NAME)
 ERROR_REASON_MAX_CHARS: int = 200
 ERROR_REASON_ELLIPSIS: str = "…"
 
+# 카톡에서 헤더를 위·아래 구분선으로 감싸 시각적 경계를 만들기 위한 절취선.
+SEPARATOR_LINE: str = "━" * 20
+
 
 # ---------------------------------------------------------------------------
 # 유틸
@@ -155,7 +158,13 @@ def build_success_message(
     """
     gen_dt = _parse_kst(generation_timestamp)
     date_str = _format_date(gen_dt)
-    header = f"📰 데일리 뉴스 · {date_str} · {period_label}"
+    header_block = "\n".join(
+        [
+            SEPARATOR_LINE,
+            f"📰 데일리 뉴스 · {date_str} · {period_label}",
+            SEPARATOR_LINE,
+        ]
+    )
 
     numbered_lines = [
         f"{idx}. {title}" for idx, title in enumerate(top_titles[:3], start=1) if title
@@ -164,7 +173,7 @@ def build_success_message(
     footer_line1 = f"총 {int(total_count)}건 · 전체 보기"
     footer_line2 = str(deploy_url).rstrip()
 
-    blocks: list[str] = [header]
+    blocks: list[str] = [header_block]
     if numbered_lines:
         blocks.append("\n".join(numbered_lines))
     blocks.append("\n".join([footer_line1, footer_line2]))
@@ -208,7 +217,9 @@ def build_failure_message(
         next_run_display = "-"
 
     lines = [
+        SEPARATOR_LINE,
         "⚠️ 뉴스 생성 실패",
+        SEPARATOR_LINE,
         "",
         f"시각: {now_str}",
         f"단계: {failed_stage}",

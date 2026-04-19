@@ -21,14 +21,35 @@ RSS_FEEDS: tuple[RSSFeed, ...] = (
     RSSFeed("한겨레", "https://www.hani.co.kr/rss/", "general_news"),
 )
 
-# 6개 AI 키워드 (ai_news 분류 기준, 소문자/한글 모두 매칭)
+# AI 키워드 확장 목록 — 매치 시 해당 기사는 category="ai_news" 로 재분류
+# ASCII 키워드는 word boundary 매칭(대소문자 무시), 한글/공백 포함 키워드는 literal.
 AI_KEYWORDS: tuple[str, ...] = (
+    # 모델·기술
     "GPT",
     "LLM",
     "생성형 AI",
     "딥러닝",
     "머신러닝",
+    "트랜스포머",
+    "뉴럴",
+    # 주요 제품·브랜드
     "Claude",
+    "Anthropic",
+    "앤트로픽",
+    "OpenAI",
+    "챗GPT",
+    "ChatGPT",
+    "Gemini",
+    "제미나이",
+    "Google",
+    "엔비디아",
+    # 일반 용어
+    "AI",
+    "인공지능",
+    "챗봇",
+    "에이전트",
+    "자율주행",
+    "로봇",
 )
 
 # 인생중요뉴스 스코어링 5가지 상황

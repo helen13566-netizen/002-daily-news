@@ -174,15 +174,16 @@ def parse_published(entry: Any, fallback_utc_now: datetime) -> datetime:
 def match_ai_keywords(title: str, content: str) -> list[str]:
     """AI_KEYWORDS 중 title+content 본문과 매치되는 것들을 반환.
 
-    - 영문 키워드(순수 ASCII)는 case-insensitive.
-    - 한글 포함 키워드는 literal 매칭.
+    - ASCII 키워드(영문·숫자)는 word boundary 매칭, 대소문자 무시.
+      (AI 가 AIDS/airplane, GPT 가 GPTs 같은 변형에 false positive 되지 않도록.)
+    - 한글/공백 포함 키워드는 literal substring 매칭.
     """
     hay = f"{title}\n{content}"
-    hay_lower = hay.lower()
     matched: list[str] = []
     for kw in AI_KEYWORDS:
         if kw.isascii():
-            if kw.lower() in hay_lower:
+            pattern = rf"\b{re.escape(kw)}\b"
+            if re.search(pattern, hay, re.IGNORECASE):
                 matched.append(kw)
         else:
             if kw in hay:
@@ -363,9 +364,9 @@ def process_feed(feed: RSSFeed) -> FeedResult:
         if matched_keywords:
             result.ai_matched += 1
 
-        # ai_news 피드는 AI 키워드 매치된 기사만 유지, general_news 는 전부 유지.
-        if feed.category == "ai_news" and not matched_keywords:
-            continue
+        # 분류는 이제 피드 출처가 아니라 AI 키워드 매칭 결과로 결정.
+        # 어떤 피드든 AI 키워드가 매칭되면 ai_news, 아니면 general_news.
+        category = "ai_news" if matched_keywords else "general_news"
 
         article = Article(
             article_id=article_id,
@@ -374,7 +375,7 @@ def process_feed(feed: RSSFeed) -> FeedResult:
             published_at=published_iso,
             original_url=link,
             content_text=content_text,
-            category=feed.category,
+            category=category,
             keywords=matched_keywords,
         )
         result.articles.append(article)

@@ -118,16 +118,21 @@ def test_normalize_title_case_and_punctuation() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 3) AI 피드 키워드 필터
+# 3) 분류는 피드 카테고리가 아니라 AI 키워드 매칭 결과로 결정
 # ---------------------------------------------------------------------------
 
 
-def test_filter_ai_feeds_requires_keyword(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_category_is_decided_by_keyword_match(monkeypatch: pytest.MonkeyPatch) -> None:
+    """어떤 피드든 AI 키워드가 매치되면 ai_news, 아니면 general_news.
+
+    이전에는 피드의 category 필드로 결정했지만 (AI 피드는 매치 필수),
+    이제는 **모든 기사를 유지**하되 분류만 키워드 기준으로 바뀐다.
+    """
     ai_feed = RSSFeed("AI타임스", "https://ai.example/rss", "ai_news")
     gen_feed = RSSFeed("연합뉴스", "https://yna.example/rss", "general_news")
 
     ai_entries = [
-        # 첫 기사: AI 키워드 매칭 O → 유지
+        # AI 키워드 O → ai_news
         {
             "title": "GPT 모델 최신 업데이트",
             "link": "https://ai.example/a1",
@@ -137,7 +142,7 @@ def test_filter_ai_feeds_requires_keyword(monkeypatch: pytest.MonkeyPatch) -> No
                 "2026-04-19 07:00:00", "%Y-%m-%d %H:%M:%S"
             ),
         },
-        # 둘째 기사: AI 키워드 없음 → 드롭
+        # AI 키워드 X → general_news (이전에는 드롭됐음)
         {
             "title": "반도체 업계 뉴스",
             "link": "https://ai.example/a2",
@@ -149,14 +154,24 @@ def test_filter_ai_feeds_requires_keyword(monkeypatch: pytest.MonkeyPatch) -> No
         },
     ]
     gen_entries = [
-        # general_news: AI 키워드 없어도 유지
+        # 종합 피드인데 AI 키워드 O → ai_news 로 분류
         {
-            "title": "경제 동향 브리핑",
+            "title": "OpenAI 신제품 공개",
             "link": "https://yna.example/g1",
-            "summary": "원달러 환율 상승.",
+            "summary": "챗GPT 기반 기능 추가.",
             "published": "Sun, 19 Apr 2026 09:00:00 +0900",
             "published_parsed": time.strptime(
                 "2026-04-19 09:00:00", "%Y-%m-%d %H:%M:%S"
+            ),
+        },
+        # 종합 피드, 키워드 X → general_news
+        {
+            "title": "경제 동향 브리핑",
+            "link": "https://yna.example/g2",
+            "summary": "원달러 환율 상승.",
+            "published": "Sun, 19 Apr 2026 10:00:00 +0900",
+            "published_parsed": time.strptime(
+                "2026-04-19 10:00:00", "%Y-%m-%d %H:%M:%S"
             ),
         },
     ]
@@ -171,13 +186,35 @@ def test_filter_ai_feeds_requires_keyword(monkeypatch: pytest.MonkeyPatch) -> No
     ai_res = collect_mod.process_feed(ai_feed)
     gen_res = collect_mod.process_feed(gen_feed)
 
+    # AI 피드: 두 기사 모두 유지 (드롭 없음), 분류만 다름
     assert ai_res.fetched == 2
-    assert ai_res.ai_matched == 1
-    assert [a.title for a in ai_res.articles] == ["GPT 모델 최신 업데이트"]
+    assert len(ai_res.articles) == 2
+    by_title = {a.title: a for a in ai_res.articles}
+    assert by_title["GPT 모델 최신 업데이트"].category == "ai_news"
+    assert by_title["반도체 업계 뉴스"].category == "general_news"
 
-    assert gen_res.fetched == 1
-    assert len(gen_res.articles) == 1
-    assert gen_res.articles[0].keywords == []
+    # 종합 피드: 두 기사 모두 유지, AI 키워드 매칭된 것은 ai_news
+    assert gen_res.fetched == 2
+    assert len(gen_res.articles) == 2
+    gen_by_title = {a.title: a for a in gen_res.articles}
+    assert gen_by_title["OpenAI 신제품 공개"].category == "ai_news"
+    assert gen_by_title["경제 동향 브리핑"].category == "general_news"
+
+
+def test_match_ai_keywords_word_boundary() -> None:
+    """짧은 ASCII 키워드(AI, GPT 등)가 word boundary 매칭을 쓴다.
+
+    예: AIDS, airplane, GPTs 는 매치되지 않아야.
+    """
+    # 긍정 케이스
+    assert "AI" in collect_mod.match_ai_keywords("AI 열풍 가속", "")
+    assert "GPT" in collect_mod.match_ai_keywords("GPT-6 발표", "")
+    assert "Google" in collect_mod.match_ai_keywords("Google announces…", "")
+    # false positive 방지
+    assert collect_mod.match_ai_keywords("AIDS 환자 증가", "") == []
+    assert collect_mod.match_ai_keywords("airplane 추락", "") == []
+    # 한글 키워드는 literal 매칭 유지
+    assert "인공지능" in collect_mod.match_ai_keywords("인공지능 기술 발전", "")
 
 
 # ---------------------------------------------------------------------------
@@ -279,7 +316,7 @@ def test_collect_writes_candidates_json(
                 "2026-04-19 07:00:00", "%Y-%m-%d %H:%M:%S"
             ),
         },
-        # 키워드 없음 → ai_news 라 드롭되어야 함
+        # 키워드 없음 → general_news 로 분류되어 유지됨 (이전에는 드롭)
         {
             "title": "반도체 업황 개선",
             "link": "https://ai.example/2",
@@ -322,14 +359,21 @@ def test_collect_writes_candidates_json(
 
     stats = summary["source_stats"]
     assert set(stats) == {"AI타임스", "연합뉴스"}
+    # AI 피드도 이제 키워드 없는 기사 드롭 안 함 — kept=2
     assert stats["AI타임스"]["fetched"] == 2
     assert stats["AI타임스"]["ai_matched"] == 1
-    assert stats["AI타임스"]["kept"] == 1
+    assert stats["AI타임스"]["kept"] == 2
     assert stats["연합뉴스"]["fetched"] == 1
     assert stats["연합뉴스"]["kept"] == 1
 
     articles = summary["articles"]
-    assert len(articles) == 2
+    # 총 3건 유지 (AI 피드 2 + 종합 피드 1)
+    assert len(articles) == 3
+    # 카테고리 분포: AI 키워드 매치된 1건만 ai_news, 나머지 2건은 general_news
+    ai_articles = [a for a in articles if a["category"] == "ai_news"]
+    gen_articles = [a for a in articles if a["category"] == "general_news"]
+    assert len(ai_articles) == 1
+    assert len(gen_articles) == 2
     for art in articles:
         assert set(art) == {
             "article_id",

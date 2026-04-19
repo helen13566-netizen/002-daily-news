@@ -45,14 +45,19 @@ def _failure_state(**overrides) -> PipelineState:
 
 
 def test_success_message_has_exact_header_format() -> None:
+    from pipeline.notify import SEPARATOR_LINE
+
     msg = build_success_message(
         generation_timestamp="2026-04-19T07:02:00+09:00",
         period_label="오전",
         top_titles=["알파", "베타", "감마"],
         total_count=5,
     )
-    first_line = msg.split("\n", 1)[0]
-    assert first_line == "📰 데일리 뉴스 · 2026.04.19 · 오전"
+    lines = msg.split("\n")
+    # 절취선 → 헤더 → 절취선 순
+    assert lines[0] == SEPARATOR_LINE
+    assert lines[1] == "📰 데일리 뉴스 · 2026.04.19 · 오전"
+    assert lines[2] == SEPARATOR_LINE
 
 
 def test_success_message_lists_top3_numbered() -> None:
@@ -114,9 +119,14 @@ def test_success_message_total_count_and_url() -> None:
 
 
 def test_failure_message_exact_header() -> None:
+    from pipeline.notify import SEPARATOR_LINE
+
     state = _failure_state()
     msg = build_failure_message(state, now_kst=_kst(2026, 4, 19, 7, 10))
-    assert msg.split("\n", 1)[0] == "⚠️ 뉴스 생성 실패"
+    lines = msg.split("\n")
+    assert lines[0] == SEPARATOR_LINE
+    assert lines[1] == "⚠️ 뉴스 생성 실패"
+    assert lines[2] == SEPARATOR_LINE
 
 
 def test_failure_message_fields() -> None:
