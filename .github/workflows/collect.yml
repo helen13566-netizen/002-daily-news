@@ -2,10 +2,10 @@ name: collect
 
 on:
   schedule:
-    # 매일 06:55 KST (= 21:55 UTC 전날) 오전용 수집
-    - cron: "55 21 * * *"
-    # 매일 17:55 KST (= 08:55 UTC) 오후용 수집
-    - cron: "55 8 * * *"
+    # 매일 08:15 KST (= 23:15 UTC 전날) 오전용 수집 — 08:25 KST 브리핑 10분 전
+    - cron: "15 23 * * *"
+    # 매일 17:15 KST (= 08:15 UTC) 오후용 수집 — 17:25 KST 브리핑 10분 전
+    - cron: "15 8 * * *"
   workflow_dispatch: {}
 
 permissions:

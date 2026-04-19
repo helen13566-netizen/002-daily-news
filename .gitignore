@@ -19,3 +19,6 @@ tests/fixtures/
 
 # state/candidates.json 과 state/analyzed.json 은 Actions/Agent 파이프라인에서
 # 의도적으로 저장소에 커밋되므로 ignore 하지 않는다.
+
+# 대화 세션 로그 — 자격증명 포함 가능성으로 커밋 금지
+sessions/
