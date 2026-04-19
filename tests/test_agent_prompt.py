@@ -122,3 +122,26 @@ def test_v14_chunk_size_two_articles(prompt_text: str) -> None:
     assert has_two_chunk, (
         "chunk 크기가 2건 단위로 축소됐다는 표시가 있어야 합니다 (v14)"
     )
+
+
+def test_v15_hard_floor_20_not_10(prompt_text: str) -> None:
+    """v15: 하한이 20건으로 상향됐고 10건 조항은 제거."""
+    # 각 섹션 하한 20 건 명시
+    assert "하한 20건" in prompt_text or "최소 20건" in prompt_text, (
+        "각 섹션 하한을 20건으로 명시해야 합니다 (v15)"
+    )
+    # 10건 완화 조항 제거 검증
+    assert "하한 10건" not in prompt_text, (
+        "v14 의 '하한 10건' 완화 조항은 v15 에서 제거되어야 합니다"
+    )
+
+
+def test_v15_floor_is_last_resort(prompt_text: str) -> None:
+    """v15: 하한 완화는 최후 수단 (stream idle timeout 직전에만)."""
+    has_last_resort = any(
+        kw in prompt_text
+        for kw in ["최후 수단", "정말 촉박", "timeout 직전"]
+    )
+    assert has_last_resort, (
+        "하한을 최후 수단으로만 허용한다는 문구가 있어야 합니다 (v15)"
+    )
