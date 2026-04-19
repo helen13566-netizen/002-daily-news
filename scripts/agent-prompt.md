@@ -74,6 +74,30 @@ fi
 
 `state/candidates.json` → `state/analyzed.json`.
 
+#### ⚡ 효율 수칙 (시간 예산 엄수, v8)
+
+sandbox 세션에는 시간 한계가 있다. 다음 규칙을 엄수하지 않으면 타임아웃으로 실패 처리된다.
+
+1. **candidates.json 은 단 한 번만 로드하라.** Python 스크립트를 여러 번 실행해 탐색·샘플링·통계 출력하지 마라.
+2. **탐색을 위해 기사의 `content_text` 전체를 출력하지 마라.** stdout 에 찍히는 모든 토큰은 세션 시간을 먹는다. 확인용이면 title/source/score 등 요약 메타만 3건 이하로.
+3. **단일 Python 블록으로 분석을 끝내라.** 권장 파이프라인:
+   ```
+   import json, pathlib
+   data = json.load(open("state/candidates.json"))
+   articles = data["articles"]
+   # 1) 카테고리별 분류 (이미 category 필드 있음 — 그대로 사용)
+   ai_pool = [a for a in articles if a["category"]=="ai_news"]
+   gen_pool = [a for a in articles if a["category"]=="general_news"]
+   # 2) 1차 스코어링은 title + keywords + source 만으로 (빠른 heuristic)
+   # 3) 상위 N건 선별 (AI 20, 종합 20)
+   # 4) 선별된 기사만 content_text 를 읽어 ai_summary/extraction_reason/relevance_score 를 당신 추론으로 채움
+   # 5) analyzed = {"issue_number": ..., "generation_timestamp": ..., "trend_hashtags": [...], "articles": [...]}
+   # 6) pathlib.Path("state/analyzed.json").write_text(json.dumps(analyzed, ensure_ascii=False, indent=2), encoding="utf-8")
+   ```
+4. **선별 후보 리스트는 내부 변수로만.** stdout 에 인덱스 리스트나 제목 리스트 나열하지 마라.
+5. 기사 수가 목표치(AI 20 / 종합 20)에 미달해도 OK — **억지로 채우지 말고 바로 진행**.
+6. 시간이 촉박하면 각 섹션 **하한 10건**까지 완화해도 좋다 (총 20건). 품질 > 분량.
+
 #### 🔒 절대 제약
 `ai_summary` / `extraction_reason` 은 해당 기사의 `title` + `content_text` 범위 안에서만. 원문 밖 사실·숫자·인용·해석 금지. 원문 부실 시 기사 제외.
 
