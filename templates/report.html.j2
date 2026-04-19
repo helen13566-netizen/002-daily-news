@@ -332,32 +332,35 @@
     }
     @keyframes fxDE-bar { to { transform: scaleX(1); } }
 
-    /* ── 섹션: D 줌인 (테두리는 베이스 CSS에서 이미 2px accent) ── */
+    /* ── 섹션: D 줌인 — CSS keyframe 로 JS 의존 없이 자동 재생 ── */
     body[data-fx="de"] .section {
       transform: scale(0.94);
       opacity: 0;
-      transition: transform 0.7s cubic-bezier(.2,.8,.2,1), opacity 0.6s;
+      animation: fxDE-section-in 0.7s cubic-bezier(.2,.8,.2,1) 0.1s forwards;
     }
-    body[data-fx="de"] .section.fx-in { transform: scale(1); opacity: 1; }
+    @keyframes fxDE-section-in {
+      to { transform: scale(1); opacity: 1; }
+    }
 
     /* ── 기사 카드: D 슬라이드 진입 + E 지그재그 미세 회전 + invert 호버 ── */
     body[data-fx="de"] .article {
       opacity: 0;
       transform: translateX(-60px) rotate(-0.8deg);
-      transition: opacity 0.55s cubic-bezier(.2,.8,.2,1),
-                  transform 0.55s cubic-bezier(.2,.8,.2,1),
-                  background 0.2s ease, color 0.2s ease;
+      animation: fxDE-article-in 0.55s cubic-bezier(.2,.8,.2,1) 0.2s forwards;
       cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
     }
-    body[data-fx="de"] .article.fx-in {
-      opacity: 1;
-      transform: translateX(0) rotate(-0.25deg);
+    @keyframes fxDE-article-in {
+      to { opacity: 1; transform: translateX(0) rotate(-0.25deg); }
     }
-    body[data-fx="de"] .article:nth-of-type(even).fx-in {
-      transform: translateX(0) rotate(0.25deg);
+    body[data-fx="de"] .article:nth-of-type(even) {
+      animation-name: fxDE-article-in-even;
     }
-    body[data-fx="de"] .article:nth-of-type(2).fx-in { transition-delay: 0.08s; }
-    body[data-fx="de"] .article:nth-of-type(3).fx-in { transition-delay: 0.16s; }
+    @keyframes fxDE-article-in-even {
+      to { opacity: 1; transform: translateX(0) rotate(0.25deg); }
+    }
+    body[data-fx="de"] .article:nth-of-type(2) { animation-delay: 0.28s; }
+    body[data-fx="de"] .article:nth-of-type(3) { animation-delay: 0.36s; }
     body[data-fx="de"] .article:hover {
       background: var(--accent);
       transform: translateX(-8px) rotate(0);
