@@ -411,26 +411,40 @@
     }
     body[data-fx="de"] .article:nth-of-type(2) { animation-delay: 0.28s; }
     body[data-fx="de"] .article:nth-of-type(3) { animation-delay: 0.36s; }
+    /* 기사 카드 hover: 배경 invert 제거, 아주 옅은 미세 lift 만 유지 */
     body[data-fx="de"] .article:hover {
-      background: var(--accent);
-      transform: translateX(-8px) rotate(0);
-      transition-duration: 0.2s;
+      transform: translateX(-4px) rotate(0);
+      transition-duration: 0.25s;
     }
-    body[data-fx="de"] .article:hover h3,
-    body[data-fx="de"] .article:hover h3 a,
-    body[data-fx="de"] .article:hover .meta,
-    body[data-fx="de"] .article:hover .meta span,
-    body[data-fx="de"] .article:hover .meta .dot,
-    body[data-fx="de"] .article:hover .meta .score,
-    body[data-fx="de"] .article:hover .tags,
-    body[data-fx="de"] .article:hover .tags span,
-    body[data-fx="de"] .article:hover .summary,
-    body[data-fx="de"] .article:hover .why,
-    body[data-fx="de"] .article:hover .why strong,
-    body[data-fx="de"] .article:hover .link { color: var(--bg); }
-    body[data-fx="de"] .article:hover .why {
-      background: rgba(0,0,0,0.12);
-      border-left-color: var(--bg);
+    body[data-fx="de"] .article:hover h3 a { color: var(--accent); }
+
+    /* 커서 잔상 (cursor trail) — 마우스 이동 경로에 엠버 빛이 퍼지며 사라짐 */
+    .cursor-trail {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(255, 165, 0, 0.55) 0%,
+        rgba(255, 165, 0, 0.25) 45%,
+        rgba(255, 165, 0, 0) 75%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+      animation: cursor-trail-fade 0.9s cubic-bezier(.2,.8,.2,1) forwards;
+      will-change: transform, opacity;
+    }
+    @keyframes cursor-trail-fade {
+      from { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+      to   { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cursor-trail { display: none; }
+    }
+    @media (hover: none) {
+      /* 터치 기기에서는 비활성화 */
+      .cursor-trail { display: none; }
     }
 
     /* ── 꼭 알아야 할 뉴스: D 순차 등장 (E 엠버 블록은 베이스 CSS에서 적용) ── */
@@ -591,6 +605,37 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
       document.querySelectorAll('.article, .section').forEach(el => observer.observe(el));
+
+      // 커서 잔상(cursor trail): 마우스 이동 경로마다 짧은 원형 glow 를 생성 후 자동 제거.
+      // 성능 가드: 20ms throttle + 최대 24개 노드 유지 + prefers-reduced-motion 자동 skip.
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isTouch = window.matchMedia('(hover: none)').matches;
+      if (!reduceMotion && !isTouch) {
+        let lastTime = 0;
+        const THROTTLE_MS = 20;
+        const MAX_NODES = 24;
+        const trailNodes = [];
+        window.addEventListener('mousemove', (e) => {
+          const now = performance.now();
+          if (now - lastTime < THROTTLE_MS) return;
+          lastTime = now;
+          const dot = document.createElement('div');
+          dot.className = 'cursor-trail';
+          dot.style.left = e.clientX + 'px';
+          dot.style.top = e.clientY + 'px';
+          document.body.appendChild(dot);
+          trailNodes.push(dot);
+          if (trailNodes.length > MAX_NODES) {
+            const old = trailNodes.shift();
+            if (old && old.parentNode) old.parentNode.removeChild(old);
+          }
+          setTimeout(() => {
+            if (dot.parentNode) dot.parentNode.removeChild(dot);
+            const i = trailNodes.indexOf(dot);
+            if (i >= 0) trailNodes.splice(i, 1);
+          }, 900);
+        }, { passive: true });
+      }
     })();
   </script>
 
