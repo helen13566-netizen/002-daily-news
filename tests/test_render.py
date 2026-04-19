@@ -634,6 +634,63 @@ def test_insights_absent_falls_back_to_simple_why(tmp_path: Path) -> None:
     assert "추출 이유</strong>이유" in html
 
 
+def test_period_respects_explicit_period_field_over_clock(tmp_path: Path) -> None:
+    """analyzed.json 에 'period' 가 명시되면 시각이 아닌 그 값을 우선해 hero 결정.
+
+    21시(저녁)에 오전 수동 실행 시 generation_timestamp 만 봐서
+    '굿이브닝' 으로 잘못 렌더되던 버그 재현·수정.
+    """
+    analyzed = {
+        "issue_number": 10,
+        "generation_timestamp": "2026-04-19T21:16:00+09:00",  # 저녁 시각
+        "period": "오전",  # 하지만 명시적으로 오전 브리핑
+        "trend_hashtags": [],
+        "articles": [{
+            "article_id": "a1",
+            "title": "샘플",
+            "source": "테스트",
+            "published_at": "2026-04-19T20:00:00+09:00",
+            "original_url": "https://example.com/a1",
+            "content_text": "",
+            "category": "ai_news",
+            "keywords": [],
+            "ai_summary": "요약",
+            "extraction_reason": "이유",
+            "relevance_score": 9.0,
+            "is_must_know": True,
+        }],
+    }
+    html = _render_to_html(tmp_path, analyzed)
+    assert "굿모닝" in html, "period='오전' 이면 시각이 저녁이어도 '굿모닝'이 나와야 한다"
+    assert "굿이브닝" not in html
+
+
+def test_period_falls_back_to_clock_when_not_specified(tmp_path: Path) -> None:
+    """analyzed.json 에 period 없으면 기존처럼 generation_timestamp 시각으로 판단."""
+    analyzed = {
+        "issue_number": 11,
+        "generation_timestamp": "2026-04-19T07:02:00+09:00",  # 오전 시각
+        # period 필드 없음
+        "trend_hashtags": [],
+        "articles": [{
+            "article_id": "a1",
+            "title": "샘플",
+            "source": "테스트",
+            "published_at": "2026-04-19T06:00:00+09:00",
+            "original_url": "https://example.com/a1",
+            "content_text": "",
+            "category": "ai_news",
+            "keywords": [],
+            "ai_summary": "요약",
+            "extraction_reason": "이유",
+            "relevance_score": 9.0,
+            "is_must_know": True,
+        }],
+    }
+    html = _render_to_html(tmp_path, analyzed)
+    assert "굿모닝" in html  # 07시 → 오전
+
+
 def test_insights_bonus_axes_rendered(tmp_path: Path) -> None:
     """insights.bonus 리스트 각 항목이 독립 블록으로 렌더된다."""
     art = _minimal_article(insights={

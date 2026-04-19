@@ -289,6 +289,7 @@ state = json.load(open("state/state.json"))
 analyzed = {
     "issue_number": state["issue_number"],
     "generation_timestamp": state["current_generation_timestamp"],
+    "period": state["current_period"],  # 명시적 오전/오후 — render 가 이걸 우선 사용
     "trend_hashtags": [...],  # 이 줄만 너가 LLM 추론으로 채워 (공통 주제 3~8개)
     "articles": arts,
 }

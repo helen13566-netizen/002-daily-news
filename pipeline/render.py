@@ -215,7 +215,14 @@ def render(
     articles: list[dict[str, Any]] = list(analyzed.get("articles") or [])
     trend_hashtags: list[str] = list(analyzed.get("trend_hashtags") or [])
 
-    period_label, hero_line1 = period_and_hero(gen_dt)
+    # 명시적 period 가 analyzed.json 에 있으면 그걸 우선. 없으면 시각으로 판단.
+    # 수동 실행이 오후 시각에 '오전' 브리핑을 트리거해도 헤더가 올바르게 나오도록.
+    explicit_period = analyzed.get("period")
+    if explicit_period in ("오전", "오후"):
+        period_label = explicit_period
+        hero_line1 = "굿모닝" if explicit_period == "오전" else "굿이브닝"
+    else:
+        period_label, hero_line1 = period_and_hero(gen_dt)
 
     must_know_raw = pick_must_know(articles)
     sections_raw = build_sections(articles)
