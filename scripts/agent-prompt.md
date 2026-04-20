@@ -57,14 +57,54 @@ echo "$PREP"
 ISSUE_NUMBER=$(echo "$PREP" | python3 -c "import sys,json; print(json.load(sys.stdin)['issue_number'])")
 ```
 
-### 단계 C — candidates.json 신선도
+### 단계 C — candidates.json 신선도 + Actions 폴백 (v16)
+
+> 🚨 **금지 — sandbox 안에서 절대 다음을 시도하지 마라**
+>
+> ```
+> python3 -m pipeline.collect      ← 금지
+> python3 pipeline/collect.py      ← 금지
+> 어떤 형태로든 RSS 호스트 직접 fetch ← 금지
+> ```
+>
+> sandbox proxy 가 한국 RSS 호스트(aitimes / zdkorea / etnews / yna / mk / hani) 를 `host_not_allowed 403` 으로 차단한다. 직접 호출하지 마라. RSS 수집은 **GitHub Actions 만** 담당한다.
 
 ```bash
-test -s state/candidates.json || { FAILED_STAGE=collecting; ERROR_REASON="candidates.json 없음"; }
-AGE_MIN=$(( ($(date +%s) - $(stat -c %Y state/candidates.json)) / 60 ))
-if [ "$AGE_MIN" -gt 60 ]; then
-  FAILED_STAGE=collecting
-  ERROR_REASON="candidates.json 이 ${AGE_MIN}분 전 수집 (Actions cron 누락 의심)"
+ensure_fresh_candidates() {
+  test -s state/candidates.json || return 1
+  local age_min=$(( ($(date +%s) - $(stat -c %Y state/candidates.json)) / 60 ))
+  [ "$age_min" -le 60 ]
+}
+
+if ! ensure_fresh_candidates; then
+  AGE_MIN=$(( ($(date +%s) - $(stat -c %Y state/candidates.json 2>/dev/null || echo 0)) / 60 ))
+  echo "[stale] candidates.json 이 ${AGE_MIN}분 전 → Actions collect.yml workflow_dispatch 트리거"
+
+  # GitHub REST API 로 워크플로 강제 실행 (sandbox 가 api.github.com 은 허용)
+  curl -fsS -X POST \
+    -H "Accept: application/vnd.github+json" \
+    -H "Authorization: Bearer $GITHUB_TOKEN" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    https://api.github.com/repos/helen13566-netizen/002-daily-news/actions/workflows/collect.yml/dispatches \
+    -d '{"ref":"main"}' \
+    || { FAILED_STAGE=collecting; ERROR_REASON="workflow_dispatch 호출 실패"; }
+
+  # 폴링: 30초 간격으로 git fetch + reset → 신선도 재확인 (최대 5분)
+  for i in 1 2 3 4 5 6 7 8 9 10; do
+    sleep 30
+    git fetch origin main >/dev/null 2>&1
+    git reset --hard origin/main >/dev/null 2>&1
+    if ensure_fresh_candidates; then
+      echo "[fresh] candidates.json 폴링 $((i*30))초만에 갱신 완료"
+      unset FAILED_STAGE ERROR_REASON
+      break
+    fi
+  done
+
+  if ! ensure_fresh_candidates; then
+    FAILED_STAGE=collecting
+    ERROR_REASON="Actions collect 5분 폴링 후에도 candidates 미갱신 (Actions schedule jitter)"
+  fi
 fi
 ```
 

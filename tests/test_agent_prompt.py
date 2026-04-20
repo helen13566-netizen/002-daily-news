@@ -145,3 +145,46 @@ def test_v15_floor_is_last_resort(prompt_text: str) -> None:
     assert has_last_resort, (
         "하한을 최후 수단으로만 허용한다는 문구가 있어야 합니다 (v15)"
     )
+
+
+# v16 — sandbox 안에서 직접 collect 금지 + Actions workflow_dispatch 폴백
+
+
+def test_v16_forbids_direct_collect_in_sandbox(prompt_text: str) -> None:
+    """sandbox 안에서 pipeline.collect 직접 호출 금지가 명시돼야 한다."""
+    has_forbid = (
+        "pipeline.collect" in prompt_text
+        and any(
+            kw in prompt_text
+            for kw in ["직접 호출하지", "직접 실행하지", "절대 호출", "금지"]
+        )
+    )
+    assert has_forbid, (
+        "agent 가 sandbox 안에서 pipeline.collect 를 직접 실행하지 못하도록 "
+        "명시적 금지 문구가 있어야 합니다 (v16)"
+    )
+
+
+def test_v16_workflow_dispatch_fallback(prompt_text: str) -> None:
+    """candidates.json 신선도 부족 시 collect.yml workflow_dispatch 폴백 명시."""
+    has_dispatch = (
+        "workflows/collect.yml/dispatches" in prompt_text
+        or "workflow_dispatch" in prompt_text
+        or ("collect.yml" in prompt_text and "dispatches" in prompt_text)
+    )
+    assert has_dispatch, (
+        "candidates 가 오래되면 GitHub Actions collect.yml 을 workflow_dispatch 로 "
+        "트리거하는 폴백 절차가 명시돼야 합니다 (v16)"
+    )
+
+
+def test_v16_polling_after_dispatch(prompt_text: str) -> None:
+    """workflow 트리거 후 git pull 폴링 절차가 명시돼야 한다."""
+    has_polling = (
+        ("폴링" in prompt_text or "polling" in prompt_text.lower())
+        and any(kw in prompt_text for kw in ["git fetch", "git pull", "git reset"])
+    )
+    assert has_polling, (
+        "workflow_dispatch 트리거 후 git fetch/pull 로 폴링하는 절차가 "
+        "명시돼야 합니다 (v16)"
+    )
