@@ -18,7 +18,7 @@ import string
 import time
 import unicodedata
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -30,8 +30,12 @@ from bs4 import BeautifulSoup
 from pipeline.config import (
     AI_KEYWORDS,
     CANDIDATES_JSON_PATH,
+    EVENING_CUTOFF_HOUR,
+    EVENING_CUTOFF_MINUTE,
     KST_TZ_NAME,
     MAX_RETRY,
+    MORNING_CUTOFF_HOUR,
+    MORNING_CUTOFF_MINUTE,
     RSS_FEEDS,
     RSSFeed,
 )
@@ -137,6 +141,38 @@ def truncate(text: str, limit: int = MAX_CONTENT_CHARS) -> str:
     if len(text) <= limit:
         return text
     return text[: max(0, limit - 1)].rstrip() + "…"
+
+
+def window_start_for(now_kst: datetime) -> datetime:
+    """수집 시각(KST) 을 받아 브리핑 시간 윈도우의 시작 시점을 반환.
+
+    - 오전 수집(정오 이전) → 윈도우 시작 = **전날 ``EVENING_CUTOFF`` (17:25 KST)**.
+      오전 브리핑은 "전날 저녁 ~ 당일 아침" 구간을 대상으로 한다.
+    - 오후 수집(정오 이후) → 윈도우 시작 = **당일 ``MORNING_CUTOFF`` (08:25 KST)**.
+      오후 브리핑은 "당일 아침 ~ 당일 저녁" 구간을 대상으로 한다.
+
+    윈도우 끝(상한) 은 이 함수에서 다루지 않는다. 호출측은 수집 시각 자체를 상한으로
+    두어 지연 발행된 기사도 포함시킨다.
+    """
+    if now_kst.tzinfo is None:
+        now_kst = KST.localize(now_kst)
+    else:
+        now_kst = now_kst.astimezone(KST)
+
+    if now_kst.hour < 12:
+        prev_day = now_kst - timedelta(days=1)
+        return prev_day.replace(
+            hour=EVENING_CUTOFF_HOUR,
+            minute=EVENING_CUTOFF_MINUTE,
+            second=0,
+            microsecond=0,
+        )
+    return now_kst.replace(
+        hour=MORNING_CUTOFF_HOUR,
+        minute=MORNING_CUTOFF_MINUTE,
+        second=0,
+        microsecond=0,
+    )
 
 
 def parse_published(entry: Any, fallback_utc_now: datetime) -> datetime:
@@ -327,7 +363,14 @@ def _is_benign_bozo(exc: Exception) -> bool:
 # ---------------------------------------------------------------------------
 
 
-def process_feed(feed: RSSFeed) -> FeedResult:
+def process_feed(
+    feed: RSSFeed, *, now_kst: datetime | None = None
+) -> FeedResult:
+    """피드 1개 파싱 + 시간 윈도우 필터.
+
+    ``now_kst`` 를 주면 그 시각 기준으로 오전/오후 윈도우를 결정한다.
+    None 이면 호출 시점의 KST 현재 시각을 사용.
+    """
     result = FeedResult(feed=feed)
     parsed, err = fetch_feed_with_retry(feed)
     if parsed is None:
@@ -337,6 +380,9 @@ def process_feed(feed: RSSFeed) -> FeedResult:
 
     entries: Iterable[Any] = getattr(parsed, "entries", []) or []
     now_utc = datetime.now(timezone.utc)
+    if now_kst is None:
+        now_kst = now_utc.astimezone(KST)
+    window_start = window_start_for(now_kst)
 
     for entry in entries:
         title = (entry.get("title") or "").strip()
@@ -351,6 +397,12 @@ def process_feed(feed: RSSFeed) -> FeedResult:
         content_text = truncate(strip_html(raw_summary))
 
         published_dt = parse_published(entry, now_utc)
+
+        # 시간 윈도우 밖(오전 수집 기준 전날 17:25 이전, 오후 수집 기준 당일 08:25 이전)
+        # 기사는 이전 브리핑에서 이미 다뤘거나 너무 오래된 것이므로 드롭.
+        if published_dt < window_start:
+            continue
+
         published_raw = (
             entry.get("published")
             or entry.get("updated")
@@ -419,17 +471,40 @@ def dedupe_articles(articles: list[Article]) -> list[Article]:
 # ---------------------------------------------------------------------------
 
 
-def collect(output_path: str | Path = CANDIDATES_JSON_PATH) -> dict[str, Any]:
+def collect(
+    output_path: str | Path = CANDIDATES_JSON_PATH,
+    *,
+    now_kst: datetime | None = None,
+) -> dict[str, Any]:
     """모든 피드를 병렬 수집 → 필터/dedup → JSON 기록.
+
+    ``now_kst`` 는 수집 기준 시각. 주어지면 모든 피드에 동일하게 전파되어 윈도우
+    경계가 일관되게 적용된다. None 이면 실제 현재 KST 시각 사용.
 
     Returns a summary dict with collection_timestamp, source_stats, articles.
     """
     out_path = Path(output_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
+    if now_kst is None:
+        now_kst = datetime.now(KST)
+    elif now_kst.tzinfo is None:
+        now_kst = KST.localize(now_kst)
+    else:
+        now_kst = now_kst.astimezone(KST)
+
+    window_start = window_start_for(now_kst)
+    logger.info(
+        "수집 기준 시각 %s → 윈도우 시작 %s (윈도우 밖 기사는 드롭)",
+        now_kst.isoformat(timespec="seconds"),
+        window_start.isoformat(timespec="seconds"),
+    )
+
     feed_results: list[FeedResult] = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
-        future_map = {pool.submit(process_feed, f): f for f in RSS_FEEDS}
+        future_map = {
+            pool.submit(process_feed, f, now_kst=now_kst): f for f in RSS_FEEDS
+        }
         for future in concurrent.futures.as_completed(
             future_map, timeout=PER_FEED_TIMEOUT_SECONDS * MAX_RETRY + 10
         ):
@@ -469,7 +544,7 @@ def collect(output_path: str | Path = CANDIDATES_JSON_PATH) -> dict[str, Any]:
         stat["kept"] = kept_per_source.get(name, 0)
 
     summary = {
-        "collection_timestamp": datetime.now(KST).isoformat(timespec="seconds"),
+        "collection_timestamp": now_kst.isoformat(timespec="seconds"),
         "source_stats": source_stats,
         "articles": [a.to_dict() for a in deduped],
     }

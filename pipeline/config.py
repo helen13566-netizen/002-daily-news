@@ -67,6 +67,13 @@ MAX_RETRY: int = 3
 
 KST_TZ_NAME: str = "Asia/Seoul"
 
+# 수집 시간 윈도우 경계 — 오전 브리핑(08:25 KST)·오후 브리핑(17:25 KST) 시각과 일치.
+# 수집이 이 시각 이전에 실행되어도(브리핑 10분 전 cron) 윈도우 경계는 브리핑 시각을 기준으로 한다.
+MORNING_CUTOFF_HOUR: int = 8
+MORNING_CUTOFF_MINUTE: int = 25
+EVENING_CUTOFF_HOUR: int = 17
+EVENING_CUTOFF_MINUTE: int = 25
+
 DEPLOY_URL: str = "https://helen13566-netizen.github.io/002-daily-news/"
 
 STATE_JSON_PATH: str = "state/state.json"

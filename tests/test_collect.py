@@ -9,13 +9,17 @@ from __future__ import annotations
 import json
 import time
 import types
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
 import pytest
+import pytz
 
 from pipeline import collect as collect_mod
 from pipeline.config import RSSFeed
+
+KST = pytz.timezone("Asia/Seoul")
 
 
 # ---------------------------------------------------------------------------
@@ -183,8 +187,12 @@ def test_category_is_decided_by_keyword_match(monkeypatch: pytest.MonkeyPatch) -
 
     monkeypatch.setattr(collect_mod, "_fetch_feed_once", fake_parse)
 
-    ai_res = collect_mod.process_feed(ai_feed)
-    gen_res = collect_mod.process_feed(gen_feed)
+    # fixture 의 published_parsed 는 UTC 로 해석되어 KST 16:00~19:00 으로 떨어진다.
+    # 2026-04-19 19:30 KST (오후 evening 윈도우 = 당일 08:25 이후) 에서 수집한다고 고정.
+    fixed_now = KST.localize(datetime(2026, 4, 19, 19, 30, 0))
+
+    ai_res = collect_mod.process_feed(ai_feed, now_kst=fixed_now)
+    gen_res = collect_mod.process_feed(gen_feed, now_kst=fixed_now)
 
     # AI 피드: 두 기사 모두 유지 (드롭 없음), 분류만 다름
     assert ai_res.fetched == 2
@@ -347,8 +355,12 @@ def test_collect_writes_candidates_json(
     monkeypatch.setattr(collect_mod, "_fetch_feed_once", fake_parse)
     monkeypatch.setattr(collect_mod.time, "sleep", lambda _s: None)
 
+    # fixture 의 published_parsed (07:00 UTC = 16:00 KST 등) 이 윈도우 안에 들어오도록
+    # 2026-04-19 19:30 KST (evening) 로 고정.
+    fixed_now = KST.localize(datetime(2026, 4, 19, 19, 30, 0))
+
     out_path = tmp_path / "candidates.json"
-    summary = collect_mod.collect(output_path=out_path)
+    summary = collect_mod.collect(output_path=out_path, now_kst=fixed_now)
 
     assert out_path.exists()
     on_disk = json.loads(out_path.read_text(encoding="utf-8"))
@@ -415,3 +427,171 @@ def test_collect_handles_all_feeds_failing(
     for name in ("AI타임스", "연합뉴스"):
         assert summary["source_stats"][name]["error"] == "ConnectionError"
         assert summary["source_stats"][name]["kept"] == 0
+
+
+# ---------------------------------------------------------------------------
+# 7) 시간 윈도우 필터 — 오전/오후 브리핑 별로 기간이 다르다.
+#    - 오전 브리핑 (08:25 KST) 용 수집: 전날 17:25 KST ~ 수집 시각
+#    - 오후 브리핑 (17:25 KST) 용 수집: 당일 08:25 KST ~ 수집 시각
+# ---------------------------------------------------------------------------
+
+
+def test_window_start_for_morning_returns_previous_day_evening() -> None:
+    """수집 시각이 정오 이전이면 전날 17:25 KST 를 반환한다."""
+    now = KST.localize(datetime(2026, 4, 20, 8, 15, 0))  # 오전 08:15 KST 수집
+    start = collect_mod.window_start_for(now)
+    assert start == KST.localize(datetime(2026, 4, 19, 17, 25, 0))
+
+
+def test_window_start_for_evening_returns_same_day_morning() -> None:
+    """수집 시각이 정오 이후면 당일 08:25 KST 를 반환한다."""
+    now = KST.localize(datetime(2026, 4, 20, 17, 15, 0))  # 오후 17:15 KST 수집
+    start = collect_mod.window_start_for(now)
+    assert start == KST.localize(datetime(2026, 4, 20, 8, 25, 0))
+
+
+def test_window_start_for_boundary_noon() -> None:
+    """정오(12:00) 는 '이후' 로 취급 (오후 윈도우)."""
+    now = KST.localize(datetime(2026, 4, 20, 12, 0, 0))
+    start = collect_mod.window_start_for(now)
+    assert start == KST.localize(datetime(2026, 4, 20, 8, 25, 0))
+
+
+def test_process_feed_drops_articles_before_morning_window(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """오전 수집: 전날 17:25 KST 이전 기사는 드롭된다."""
+    feed = RSSFeed("test", "https://t.example/rss", "ai_news")
+    # 수집 시각: 2026-04-20 08:15 KST → 윈도우 시작 = 2026-04-19 17:25 KST
+    fixed_now = KST.localize(datetime(2026, 4, 20, 8, 15, 0))
+
+    # published_parsed 는 UTC 로 해석됨 → UTC 08:26 = KST 17:26 (윈도우 안),
+    # UTC 08:24 = KST 17:24 (윈도우 밖, 딱 1분 일찍).
+    entries = [
+        {
+            "title": "GPT 신규 업데이트 (윈도우 안)",
+            "link": "https://t.example/inside",
+            "summary": "AI 관련 본문.",
+            "published": "Sun, 19 Apr 2026 08:26:00 +0000",
+            "published_parsed": time.strptime(
+                "2026-04-19 08:26:00", "%Y-%m-%d %H:%M:%S"
+            ),
+        },
+        {
+            "title": "이전 GPT 뉴스 (윈도우 밖)",
+            "link": "https://t.example/outside",
+            "summary": "너무 오래된 기사.",
+            "published": "Sun, 19 Apr 2026 08:24:00 +0000",
+            "published_parsed": time.strptime(
+                "2026-04-19 08:24:00", "%Y-%m-%d %H:%M:%S"
+            ),
+        },
+        {
+            "title": "아주 오래된 기사 (이틀 전)",
+            "link": "https://t.example/old",
+            "summary": "하루 이상 전.",
+            "published": "Sat, 18 Apr 2026 03:00:00 +0000",
+            "published_parsed": time.strptime(
+                "2026-04-18 03:00:00", "%Y-%m-%d %H:%M:%S"
+            ),
+        },
+    ]
+
+    def fake_parse(_feed: RSSFeed) -> Any:
+        return _make_parsed(entries)
+
+    monkeypatch.setattr(collect_mod, "_fetch_feed_once", fake_parse)
+    result = collect_mod.process_feed(feed, now_kst=fixed_now)
+
+    # fetched 는 전체 3건 카운트되지만, 윈도우 안 1건만 articles 에 남는다.
+    kept_titles = [a.title for a in result.articles]
+    assert kept_titles == ["GPT 신규 업데이트 (윈도우 안)"]
+
+
+def test_process_feed_drops_articles_before_evening_window(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """오후 수집: 당일 08:25 KST 이전 기사는 드롭된다."""
+    feed = RSSFeed("test", "https://t.example/rss", "ai_news")
+    # 수집 시각: 2026-04-20 17:15 KST → 윈도우 시작 = 2026-04-20 08:25 KST
+    fixed_now = KST.localize(datetime(2026, 4, 20, 17, 15, 0))
+
+    # UTC 00:00 = KST 09:00 (윈도우 안)
+    # UTC 23:00 (전날) = KST 08:00 (윈도우 밖)
+    entries = [
+        {
+            "title": "AI 오전 기사 (윈도우 안)",
+            "link": "https://t.example/morning",
+            "summary": "당일 09시 KST.",
+            "published": "Mon, 20 Apr 2026 00:00:00 +0000",
+            "published_parsed": time.strptime(
+                "2026-04-20 00:00:00", "%Y-%m-%d %H:%M:%S"
+            ),
+        },
+        {
+            "title": "AI 전날 저녁 기사 (윈도우 밖)",
+            "link": "https://t.example/yesterday-evening",
+            "summary": "전날 19시 KST.",
+            "published": "Sun, 19 Apr 2026 10:00:00 +0000",
+            "published_parsed": time.strptime(
+                "2026-04-19 10:00:00", "%Y-%m-%d %H:%M:%S"
+            ),
+        },
+    ]
+
+    def fake_parse(_feed: RSSFeed) -> Any:
+        return _make_parsed(entries)
+
+    monkeypatch.setattr(collect_mod, "_fetch_feed_once", fake_parse)
+    result = collect_mod.process_feed(feed, now_kst=fixed_now)
+
+    kept_titles = [a.title for a in result.articles]
+    assert kept_titles == ["AI 오전 기사 (윈도우 안)"]
+
+
+def test_collect_respects_window_with_injected_now(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """collect() 가 now_kst 를 전 피드에 일관적으로 전파한다."""
+    ai_feed = RSSFeed("AI타임스", "https://ai.example/rss", "ai_news")
+    monkeypatch.setattr(collect_mod, "RSS_FEEDS", (ai_feed,))
+
+    # 오전 수집 시각 고정
+    fixed_now = KST.localize(datetime(2026, 4, 20, 8, 15, 0))
+
+    entries = [
+        # 윈도우 안 (전날 18:00 KST = UTC 09:00)
+        {
+            "title": "Claude 신규 발표",
+            "link": "https://ai.example/new",
+            "summary": "어제 저녁 발표.",
+            "published": "Sun, 19 Apr 2026 09:00:00 +0000",
+            "published_parsed": time.strptime(
+                "2026-04-19 09:00:00", "%Y-%m-%d %H:%M:%S"
+            ),
+        },
+        # 윈도우 밖 (전날 10:00 KST = UTC 01:00)
+        {
+            "title": "옛 AI 기사",
+            "link": "https://ai.example/old",
+            "summary": "어제 오전 기사.",
+            "published": "Sun, 19 Apr 2026 01:00:00 +0000",
+            "published_parsed": time.strptime(
+                "2026-04-19 01:00:00", "%Y-%m-%d %H:%M:%S"
+            ),
+        },
+    ]
+
+    monkeypatch.setattr(
+        collect_mod, "_fetch_feed_once", lambda _f: _make_parsed(entries)
+    )
+    monkeypatch.setattr(collect_mod.time, "sleep", lambda _s: None)
+
+    summary = collect_mod.collect(
+        output_path=tmp_path / "candidates.json", now_kst=fixed_now
+    )
+
+    titles = [a["title"] for a in summary["articles"]]
+    assert titles == ["Claude 신규 발표"]
+    # collection_timestamp 는 주입된 now_kst 에 기반
+    assert summary["collection_timestamp"].startswith("2026-04-20T08:15:00")
