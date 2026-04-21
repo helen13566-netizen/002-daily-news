@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daily Brief Reels #{{ issue_number }}</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+body {
+  font-family: "Inter", "Pretendard", -apple-system, BlinkMacSystemFont,
+               "Noto Sans KR", sans-serif;
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+.reel {
+  height: 100vh; overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.reel::-webkit-scrollbar { display: none; }
+
+.slide {
+  position: relative; height: 100vh; width: 100vw;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 2rem 1.5rem 5rem;
+  overflow: hidden;
+}
+.slide::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 0%, transparent 40%, rgba(0,0,0,0.85) 100%);
+  z-index: 1;
+}
+.slide::after {
+  content: ""; position: absolute; inset: 0;
+  opacity: 0.4; mix-blend-mode: overlay;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.2) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15) 0%, transparent 45%);
+  z-index: 0;
+}
+.slide-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; width: 100%; }
+
+.slide .number {
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; opacity: 0.75; margin-bottom: 0.8rem;
+}
+.slide .number::before { content: "●"; color: #f59e0b; margin-right: 0.5rem; }
+.slide h1 {
+  font-size: clamp(1.8rem, 6.5vw, 3rem); font-weight: 900;
+  line-height: 1.12; letter-spacing: -0.02em;
+  margin: 0 0 1rem; text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+}
+.slide .summary {
+  font-size: 1rem; line-height: 1.5; margin: 0 0 1rem;
+  opacity: 0.92; max-width: 56ch;
+}
+.slide .insight-box {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+.slide .insight-box .tag {
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; opacity: 0.8; margin-bottom: 0.4rem;
+}
+.slide .meta-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.82rem; opacity: 0.85;
+}
+.slide .src-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(255,255,255,0.18); padding: 0.3rem 0.7rem;
+  border-radius: 999px; font-weight: 700;
+}
+.slide .score {
+  font-size: 0.75rem; padding: 0.3rem 0.7rem; border-radius: 999px;
+  background: rgba(245,158,11,0.3); font-weight: 700;
+}
+
+.slide .cta {
+  display: inline-block; margin-top: 1rem;
+  padding: 0.8rem 1.4rem; background: #fff; color: #000;
+  border-radius: 999px; font-weight: 700; font-size: 0.92rem;
+}
+
+/* 인트로 */
+.intro { justify-content: center; align-items: center; text-align: center; padding: 2rem; }
+.intro::before { background: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.5) 100%); }
+.intro .brand {
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 0.3em;
+  text-transform: uppercase; opacity: 0.7; margin-bottom: 1rem;
+}
+.intro h1 {
+  font-size: clamp(2.5rem, 9vw, 4.5rem); font-weight: 900;
+  letter-spacing: -0.03em; line-height: 1; margin: 0;
+  background: linear-gradient(90deg, #f59e0b, #ef4444, #8b5cf6);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.intro .hashtags {
+  margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center;
+}
+.intro .hashtags span {
+  background: rgba(255,255,255,0.12); padding: 0.5rem 1rem;
+  border-radius: 999px; font-size: 0.88rem; font-weight: 600;
+}
+.intro .swipe-hint {
+  position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
+  font-size: 0.8rem; opacity: 0.6; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: bounce 1.8s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* 슬라이드별 그라디언트 색상 (13개) */
+.grad-0 { background: linear-gradient(135deg, #ef4444 0%, #7c2d12 100%); }
+.grad-1 { background: linear-gradient(135deg, #f97316 0%, #7c2d12 100%); }
+.grad-2 { background: linear-gradient(135deg, #f59e0b 0%, #78350f 100%); }
+.grad-3 { background: linear-gradient(135deg, #10b981 0%, #064e3b 100%); }
+.grad-4 { background: linear-gradient(135deg, #06b6d4 0%, #164e63 100%); }
+.grad-5 { background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); }
+.grad-6 { background: linear-gradient(135deg, #8b5cf6 0%, #4c1d95 100%); }
+.grad-7 { background: linear-gradient(135deg, #d946ef 0%, #701a75 100%); }
+.grad-8 { background: linear-gradient(135deg, #ec4899 0%, #831843 100%); }
+.grad-9 { background: linear-gradient(135deg, #14b8a6 0%, #134e4a 100%); }
+.grad-10 { background: linear-gradient(135deg, #0ea5e9 0%, #075985 100%); }
+.grad-11 { background: linear-gradient(135deg, #6366f1 0%, #312e81 100%); }
+.grad-12 { background: linear-gradient(135deg, #f43f5e 0%, #881337 100%); }
+
+/* 진행 인디케이터 */
+.progress {
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; gap: 3px; padding: 0.5rem 1rem;
+  z-index: 10;
+}
+.progress .bar {
+  flex: 1; height: 2.5px; background: rgba(255,255,255,0.25);
+  border-radius: 2px;
+}
+
+.back-link {
+  position: fixed; top: 1.5rem; right: 1rem; z-index: 20;
+  padding: 0.5rem 0.9rem; background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px; font-size: 0.78rem; font-weight: 600;
+  color: #fff;
+}
+</style>
+</head>
+<body>
+
+<a class="back-link" href="./index.html">✕ 갤러리</a>
+
+<div class="progress">
+  {% set total_slides = must_know|length + 1 %}
+  {% for i in range(total_slides) %}<div class="bar"></div>{% endfor %}
+</div>
+
+<div class="reel" id="reel">
+
+  <!-- Intro Slide -->
+  <section class="slide intro">
+    <div class="slide-inner">
+      <div class="brand">Daily Brief Reels · Issue #{{ issue_number }}</div>
+      <h1>오늘의 {{ period_label }}<br>핵심 {{ must_know|length }}개</h1>
+      <div style="opacity: 0.7; margin-top: 0.8rem; font-size: 0.95rem;">{{ generation_timestamp }}</div>
+      {% if trend_hashtags %}
+      <div class="hashtags">
+        {% for h in trend_hashtags[:6] %}<span>#{{ h }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="swipe-hint">▼ 아래로 스와이프</div>
+  </section>
+
+  {% for art in must_know %}
+  <section class="slide grad-{{ loop.index0 % 13 }}">
+    <div class="slide-inner">
+      <div class="number">#{{ "%02d" % loop.index }} · {{ art.source }}</div>
+      <h1>{{ art.title }}</h1>
+      <p class="summary">{{ art.ai_summary[:180] }}{% if art.ai_summary|length > 180 %}…{% endif %}</p>
+
+      {% set first_insight = (art.insights or {}).get('ripple') or (art.insights or {}).get('history') %}
+      {% if first_insight and first_insight.text %}
+      <div class="insight-box">
+        <div class="tag">{% if first_insight.icon %}{{ first_insight.icon }} {% endif %}{{ first_insight.title or '인사이트' }}</div>
+        <div>{{ first_insight.text[:180] }}{% if first_insight.text|length > 180 %}…{% endif %}</div>
+      </div>
+      {% endif %}
+
+      <div class="meta-row">
+        <span class="src-badge">{{ art.published_at_display }}</span>
+        <span class="score">중요도 {{ '%.1f' % art.relevance_score }}</span>
+      </div>
+      <a class="cta" href="{{ art.original_url }}" target="_blank" rel="noopener">원문 읽기 →</a>
+    </div>
+  </section>
+  {% endfor %}
+
+</div>
+
+<script>
+// 진행 바 동적 업데이트 — 현재 슬라이드에 색 채움
+(function() {
+  var reel = document.getElementById('reel');
+  var bars = document.querySelectorAll('.progress .bar');
+  function update() {
+    var idx = Math.round(reel.scrollTop / window.innerHeight);
+    bars.forEach(function(b, i) {
+      b.style.background = i <= idx
+        ? 'rgba(255,255,255,0.95)'
+        : 'rgba(255,255,255,0.25)';
+    });
+  }
+  reel.addEventListener('scroll', update);
+  update();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ hero_line1 }} · Daily Brief #{{ issue_number }}</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+               "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  background: #f5f4ef;
+  color: #1d1d1f;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+.topbar {
+  max-width: 1200px; margin: 0 auto;
+  padding: 2rem 2rem 0;
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #86868b;
+}
+.topbar .brand { font-weight: 700; color: #1d1d1f; }
+
+.hero-wrap { max-width: 1200px; margin: 1.5rem auto; padding: 0 2rem; }
+.hero {
+  position: relative; padding: 4rem 3rem;
+  background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 35%, #f59e0b 100%);
+  border-radius: 22px; color: #1d1d1f; overflow: hidden;
+  min-height: 360px;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.45), transparent 55%);
+  pointer-events: none;
+}
+.hero .eyebrow {
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.18em; opacity: 0.7; margin-bottom: 1rem;
+}
+.hero h1 {
+  font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 900;
+  letter-spacing: -0.02em; line-height: 1.08; margin: 0 0 1rem;
+  max-width: 90%;
+}
+.hero .sub {
+  font-size: 1.06rem; max-width: 62ch; margin-bottom: 1.5rem;
+  color: rgba(29,29,31,0.8);
+}
+.hero .meta { font-size: 0.82rem; color: rgba(29,29,31,0.7); }
+.hero .hashtags { margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.hero .hashtags span {
+  background: rgba(255,255,255,0.6); color: #92400e;
+  padding: 0.3rem 0.7rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+}
+
+.mk-grid {
+  max-width: 1200px; margin: 1.5rem auto; padding: 0 2rem;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem;
+}
+.mk-card {
+  background: #fff; border-radius: 18px; padding: 1.8rem;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.mk-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.mk-card .tag {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #c2410c;
+  margin-bottom: 0.6rem;
+}
+.mk-card h3 {
+  font-size: 1.28rem; font-weight: 700; line-height: 1.28;
+  margin: 0 0 0.8rem; color: #1d1d1f;
+}
+.mk-card .src {
+  font-size: 0.78rem; color: #86868b; margin-bottom: 0.7rem;
+}
+.mk-card p { font-size: 0.92rem; color: #3a3a3c; margin: 0; }
+
+.section {
+  max-width: 1200px; margin: 3rem auto 1.5rem; padding: 0 2rem;
+}
+.section h2 {
+  font-size: 2rem; font-weight: 800; letter-spacing: -0.02em;
+  margin: 0 0 1.5rem; color: #1d1d1f;
+}
+.cards {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.1rem;
+}
+.card {
+  background: #fff; border-radius: 16px; padding: 1.3rem; display: flex; flex-direction: column;
+  transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-2px); }
+.card .src {
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #86868b; margin-bottom: 0.5rem;
+}
+.card h4 {
+  font-size: 1.05rem; font-weight: 700; line-height: 1.3; margin: 0 0 0.6rem;
+}
+.card .summary { font-size: 0.88rem; color: #3a3a3c; margin: 0; }
+
+.back-link {
+  display: inline-block; margin: 2rem; padding: 0.6rem 1.1rem;
+  background: #1d1d1f; color: #f5f5f7; border-radius: 999px;
+  font-size: 0.85rem; font-weight: 600;
+}
+footer { max-width: 1200px; margin: 3rem auto; padding: 0 2rem 3rem; color: #86868b; font-size: 0.82rem; }
+
+@media (max-width: 720px) {
+  .mk-grid { grid-template-columns: 1fr; }
+  .hero { padding: 2.5rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="brand">DAILY BRIEF — Magazine Edition</span>
+  <span>Issue #{{ issue_number }} · {{ generation_timestamp }} · {{ period_label }}</span>
+</div>
+
+{% if must_know and must_know|length > 0 %}
+<div class="hero-wrap">
+  {% set top = must_know[0] %}
+  <article class="hero">
+    <div class="eyebrow">★ Top Story · {{ top.source }}</div>
+    <h1>{{ top.title }}</h1>
+    <p class="sub">{{ top.ai_summary }}</p>
+    <div class="meta">{{ top.published_at_display }} · 인생중요도 {{ '%.1f' % top.relevance_score }} / 10</div>
+    {% if trend_hashtags %}
+    <div class="hashtags">
+      {% for h in trend_hashtags[:6] %}<span>#{{ h }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </article>
+</div>
+{% endif %}
+
+{% if must_know and must_know|length > 1 %}
+<div class="mk-grid">
+  {% for art in must_know[1:5] %}
+  <a class="mk-card" href="{{ art.original_url }}" target="_blank" rel="noopener">
+    <div class="tag">{{ art.source }}</div>
+    <h3>{{ art.title }}</h3>
+    <div class="src">{{ art.published_at_display }}</div>
+    <p>{{ art.ai_summary[:180] }}{% if art.ai_summary|length > 180 %}…{% endif %}</p>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% for sec in sections %}
+{% if sec.articles %}
+<section class="section">
+  <h2>{{ sec.title }}</h2>
+  <div class="cards">
+    {% for art in sec.articles[:12] %}
+    <a class="card" href="{{ art.original_url }}" target="_blank" rel="noopener">
+      <div class="src">{{ art.source }} · {{ art.published_at_display }}</div>
+      <h4>{{ art.title }}</h4>
+      <p class="summary">{{ art.ai_summary[:140] }}{% if art.ai_summary|length > 140 %}…{% endif %}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+<a class="back-link" href="./index.html">← 갤러리로 돌아가기</a>
+
+<footer>Generated {{ generation_timestamp }} · Daily Brief Magazine Edition</footer>
+
+</body>
+</html>

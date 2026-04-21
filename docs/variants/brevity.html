@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Brief #18 · Smart Brevity</title>
+<style>
+:root {
+  --accent: #ff6b00;
+  --accent-soft: #fff5ed;
+  --text: #111;
+  --muted: #6b7280;
+  --rule: #111;
+  --card: #ffffff;
+  --bg: #faf9f7;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Inter", "Pretendard", -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
+
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+.top {
+  border-bottom: 3px solid var(--accent);
+  padding: 2.5rem 0 1.5rem;
+}
+.top .tag {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 0.25rem 0.65rem; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; border-radius: 4px;
+}
+.top h1 {
+  font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 900;
+  margin: 1rem 0 0.5rem; letter-spacing: -0.02em; line-height: 1.05;
+}
+.top .meta { font-size: 0.9rem; color: var(--muted); }
+.top .reading { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+.top .reading b { color: var(--accent); font-weight: 700; }
+
+.summary-box {
+  background: var(--accent-soft); border: 2px solid var(--accent);
+  border-radius: 10px; padding: 1.3rem 1.5rem; margin: 2rem 0;
+}
+.summary-box h2 {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; margin: 0 0 0.8rem; color: var(--accent);
+}
+.summary-box ul { margin: 0; padding: 0 0 0 1.1rem; }
+.summary-box li { margin-bottom: 0.45rem; font-size: 0.98rem; font-weight: 500; }
+.summary-box li b { font-weight: 800; }
+
+.section {
+  padding: 2rem 0; border-top: 1px solid #d6d3cf;
+}
+.section > h2 {
+  font-size: 1.3rem; font-weight: 900; letter-spacing: -0.01em;
+  margin: 0 0 1.5rem; display: flex; align-items: center; gap: 0.6rem;
+}
+.section > h2::before {
+  content: ""; width: 6px; height: 22px; background: var(--accent);
+  display: inline-block; border-radius: 2px;
+}
+
+.story {
+  background: var(--card); border-radius: 10px; padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem; border: 1px solid #ece9e4;
+  transition: border-color 0.15s;
+}
+.story:hover { border-color: var(--accent); }
+.story .src {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+}
+.story h3 {
+  font-size: 1.12rem; font-weight: 800; line-height: 1.3;
+  margin: 0 0 0.8rem; letter-spacing: -0.005em;
+}
+.story .why {
+  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--accent); margin-top: 0.8rem;
+}
+.story .why::after { content: " ↓"; }
+.story p { font-size: 0.95rem; margin: 0.4rem 0 0; color: #2d2d2d; }
+.story .footer-meta {
+  font-size: 0.75rem; color: var(--muted); margin-top: 0.8rem;
+  display: flex; justify-content: space-between;
+}
+.story .score {
+  font-weight: 700; color: var(--accent);
+}
+
+.hashtag-row { margin: 1.5rem 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.hashtag-row span {
+  background: #fff; border: 1px solid var(--rule); padding: 0.3rem 0.75rem;
+  font-size: 0.8rem; font-weight: 700; border-radius: 999px;
+}
+
+.big-num {
+  font-size: clamp(4rem, 10vw, 6rem); font-weight: 900;
+  line-height: 1; color: var(--accent); margin: 0 0 0.3rem;
+}
+.big-num + .label {
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+.back-link {
+  display: inline-block; margin: 2rem 1.5rem 3rem;
+  padding: 0.7rem 1.2rem; background: var(--text); color: #fff;
+  font-size: 0.85rem; font-weight: 700; border-radius: 4px;
+}
+
+footer {
+  padding: 2rem 1.5rem 3rem; color: var(--muted); font-size: 0.82rem;
+  border-top: 3px solid var(--accent);
+}
+
+@media (max-width: 600px) {
+  .top h1 { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="top">
+    <span class="tag">Smart Brevity · Issue #18</span>
+    <h1>오늘의 오후 브리핑 · 5분이면 끝</h1>
+    <div class="meta">2026.04.21 23:04 KST</div>
+    <div class="reading">
+      총 <b>50건</b> 중 핵심 <b>13건</b>만 추렸습니다.
+    </div>
+  </header>
+
+  <div class="summary-box">
+    <h2>⚡ 3가지만 기억하세요</h2>
+    <ul>
+      <li><b>&#39;미소스 쇼크&#39;에 아시아 금융권도 경계령 발효...홍콩·싱가포르·호주 방어 나서</b> — AI 사이버 위협이 금융 규제 사안으로 격상, 한국 은행도 직접 영향</li>
+      <li><b>앤트로픽, 아마존에 147조 투입해 5GW 컴퓨팅 구축...아마존은 36조 추가 투자</b> — AI 인프라 초거대 투자 경쟁이 전력·반도체 글로벌 가격 변동 촉발</li>
+      <li><b>중동발 에너지 쇼크에… 유럽 풍력업계 “인허가 빗장 풀고 자생력 키워야”</b> — 중동 전쟁발 에너지 가격 급등이 유럽·한국 가계 물가에 직결</li>
+    </ul>
+  </div>
+
+  <div class="hashtag-row">
+<span>#중동긴장유가</span><span>#AI인프라투자</span><span>#코스피사상최고</span><span>#화물연대CU파업</span><span>#피지컬AI</span><span>#한국-베트남정상회담</span><span>#애플CEO교체</span><span>#AI반도체</span>  </div>
+
+  <section class="section">
+    <h2>꼭 알아야 할 뉴스</h2>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209558" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>&#39;미소스 쇼크&#39;에 아시아 금융권도 경계령 발효...홍콩·싱가포르·호주 방어 나서</h3>
+      <p>&#39;미소스&#39; 경계령이 아시아권에서 본격적으로 부각되며 홍콩·싱가포르·호주 당국이 일제히 첨단 AI 모델 기반 사이버 위협 대응에 나섰다고 로이터·블룸버그 등이 전했습니다. 홍콩 금융관리국(HKMA)은 20일 주요 은행들과 협력해 &#39;미소스&#39;와 같은 첨단 모델 기반 사이버 위협 대응 프레임워…</p>
+      <div class="why">왜 중요한가</div>
+      <p>AI 사이버 위협이 금융 규제 사안으로 격상, 한국 은행도 직접 영향</p>
+      <div class="footer-meta">
+        <span>04.22 01:53</span>
+        <span class="score">중요도 8.5 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209521" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>앤트로픽, 아마존에 147조 투입해 5GW 컴퓨팅 구축...아마존은 36조 추가 투자</h3>
+      <p>앤트로픽이 20일(현지시간) 앞으로 10년간 1000억달러(약 147조원) 이상을 아마존웹서비스(AWS) 기술에 투입한다고 밝혔습니다. 아마존 자체 AI 칩 &#39;트레이니엄&#39; 시리즈가 핵심이며, 앤트로픽은 &#39;클로드&#39; 학습·배포를 위해 최대 5기가와트(GW)에 달하는 컴퓨팅 용량을 확보했다고…</p>
+      <div class="why">왜 중요한가</div>
+      <p>AI 인프라 초거대 투자 경쟁이 전력·반도체 글로벌 가격 변동 촉발</p>
+      <div class="footer-meta">
+        <span>04.22 00:22</span>
+        <span class="score">중요도 8.5 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209541" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>중동발 에너지 쇼크에… 유럽 풍력업계 “인허가 빗장 풀고 자생력 키워야”</h3>
+      <p>유럽 풍력에너지협회(WindEurope)가 중동발 에너지 불안에 대응하기 위한 풍력 확대 방안을 다시 전면에 내세웠다고 리차지가 21일(현지시간) 보도했습니다. 이란 전쟁과 호르무즈 해협 봉쇄 여파로 국제 유가·가스 가격 변동성이 커지자 수입 화석연료 의존도를 낮추려면 자국 내 전력원인…</p>
+      <div class="why">왜 중요한가</div>
+      <p>중동 전쟁발 에너지 가격 급등이 유럽·한국 가계 물가에 직결</p>
+      <div class="footer-meta">
+        <span>04.22 00:15</span>
+        <span class="score">중요도 8.5 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421172551009" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">연합뉴스</div>
+      <h3>미군, 인도양서 이란연계 유조선 나포…협상 목전 봉쇄범위 확대(종합)</h3>
+      <p>미군이 이란과의 2차 종전협상을 앞두고 인도태평양 사령부 책임 구역 내에서 이란과 연계된 유조선을 나포했다고 연합뉴스가 전했습니다. 미국이 협상 직전 해상 봉쇄 범위를 확대하는 흐름으로 해석됩니다.</p>
+      <div class="why">왜 중요한가</div>
+      <p>협상 앞둔 해상 봉쇄 확대는 중동 긴장과 유가·한국 수출에 직접 영향</p>
+      <div class="footer-meta">
+        <span>22:20</span>
+        <span class="score">중요도 8.5 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421149600504" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">연합뉴스</div>
+      <h3>살상력 극대화한 北집속탄, 軍방공망으로 방어 가능할까</h3>
+      <p>북한이 최근 연이어 집속탄(확산탄)을 실은 탄도미사일을 시험발사하면서 우리 군의 기존 방공망으로 집속탄 방어가 가능한지에 대한 우려가 제기된다는 내용이 연합뉴스를 통해 전해졌습니다. 살상력이 극대화된 북한 집속탄에 대한 군사 방어 역량 점검이 필요하다는 취지의 보도입니다.</p>
+      <div class="why">왜 중요한가</div>
+      <p>북한 신형 무기 위협은 국방·방위비·국민 안전에 직접 연결</p>
+      <div class="footer-meta">
+        <span>17:52</span>
+        <span class="score">중요도 8.5 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421172227" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">ZDNet Korea</div>
+      <h3>CU 파업 장기화 조짐…봉쇄 이어 사망사고까지</h3>
+      <p>CU 물품 배송기사들의 처우 개선을 위한 교섭을 요구하며 시작된 파업이 사망사고로 번지며 사태가 장기화 조짐입니다. 20일 경남 진주 CU 물류센터 앞에서 대체 투입된 2.5톤 화물차가 출차 중 조합원들과 부딪혀 50대 남성이 숨지고 2명이 중경상을 입었습니다. 화물연대 CU 지회는 B…</p>
+      <div class="why">왜 중요한가</div>
+      <p>사망사고 동반 물류 파업은 편의점 이용 소비자·노동권 모두에 중대 영향</p>
+      <div class="footer-meta">
+        <span>17:29</span>
+        <span class="score">중요도 8.5 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421171051" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">ZDNet Korea</div>
+      <h3>김민석 총리 &#34;과학기술 5대 강국 목표로 과감한 투자하겠다&#34;</h3>
+      <p>김민석 국무총리가 21일 서울 한국과학기술회관에서 열린 2026 과학·정보통신의 날 기념식에서 &#39;과학기술 5대 강국 목표로 과감한 투자와 제도 혁신을 이어가겠다&#39;고 밝혔습니다. 총리는 &#39;AI 3대 강국 도약 총력&#39;을 강조하며 지난해 GPU 26만 장 확보·AI 컴퓨팅센터 기반 마련, 올…</p>
+      <div class="why">왜 중요한가</div>
+      <p>총리 직접 발언으로 AI·과학기술 예산 방향 확정, 국가 정책 핵심</p>
+      <div class="footer-meta">
+        <span>17:10</span>
+        <span class="score">중요도 8.5 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000216" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">전자신문</div>
+      <h3>“유가상승 압박” 급해진 트럼프…&#39;한국전쟁때 만든 법&#39;까지 동원해 자금 투입</h3>
+      <p>이란발 긴장으로 국제 유가 상승 압박이 커지는 가운데 트럼프 미국 대통령이 에너지 공급 확대를 위한 긴급 조치에 나섰다고 기사가 전했습니다. 트럼프 대통령은 20일(현지시간) 석유 생산·정제, 석탄 공급망, 천연가스 송전, 전력망 인프라 등 에너지 전반을 지원하는 5건의 대통령 조치(한…</p>
+      <div class="why">왜 중요한가</div>
+      <p>미국 대통령의 전시 권한 발동은 글로벌 유가·한국 경제 결정 요인</p>
+      <div class="footer-meta">
+        <span>13:31</span>
+        <span class="score">중요도 8.5 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209563" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>국가AI전략위 &#34;자율주행·휴머노이느 소분과 신설...산업 AX 확산 지원&#34;</h3>
+      <p>국가인공지능전략위원회가 산업AX·생태계 분과 내에 &#39;자율주행 소분과&#39;와 &#39;휴머노이드 소분과&#39;를 신설하고 제1차 킥오프 회의를 열었다고 21일 밝혔습니다. 최근 &#39;피지컬 AI&#39; 강조 흐름에 맞춰 전략 육성이 시급하다는 판단입니다. 자율주행 소분과장은 현대차 김수영 상무(총 12명), 휴머…</p>
+      <div class="why">왜 중요한가</div>
+      <p>대통령 직속 AI 위원회의 피지컬 AI 전략 구체화로 산업·정책 영향 큼</p>
+      <div class="footer-meta">
+        <span>04.22 02:05</span>
+        <span class="score">중요도 8.0 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209546" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>SK하이닉스, AI 서버 메모리 &#39;SOCAMM2 192GB&#39; 본격 양산</h3>
+      <p>SK하이닉스가 10나노급 6세대(1c) LPDDR5X 저전력 D램 기반 차세대 메모리 모듈 SOCAMM2 192GB 제품을 21일 본격 양산한다고 밝혔습니다. SOCAMM2는 스마트폰용 저전력 메모리를 서버 환경에 맞게 변형한 모듈로, 차세대 AI 서버에 주력 활용됩니다. 얇은 두께와 …</p>
+      <div class="why">왜 중요한가</div>
+      <p>한국 대표 반도체 기업의 AI 서버 메모리 양산은 수출·고용 핵심</p>
+      <div class="footer-meta">
+        <span>04.22 00:50</span>
+        <span class="score">중요도 8.0 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209536" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>과기부-복지부, 노후화된 공공의료시스템 AI-SaaS로 전면 교체 나선다</h3>
+      <p>과학기술정보통신부와 한국지능정보사회진흥원(NIA)이 &#39;공공 병원정보시스템 AI 클라우드 서비스 전환 지원 사업&#39; 참여 기업 모집 공모를 5월 22일까지 진행한다고 밝혔습니다. 과기정통부·보건복지부·국립중앙의료원·지방의료원이 공동 추진하며, 기존 시스템 통합(SI) 방식의 노후 병원정보시…</p>
+      <div class="why">왜 중요한가</div>
+      <p>의료 IT 인프라 전환은 환자 진료 속도·보안·세금 지출에 직결</p>
+      <div class="footer-meta">
+        <span>04.22 00:03</span>
+        <span class="score">중요도 8.0 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209523" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>LG, &#39;암 치료&#39; 에이전트 연구 성과 공개…”글로벌 제약사 등과 협업 추진”</h3>
+      <p>LG AI연구원이 17~22일(현지시간) 미국 샌디에이고에서 열리는 &#39;미국암연구학회(AACR) 2026&#39;에서 밴더빌트대학교 메디컬 센터와 공동 개발 중인 &#39;암 에이전틱 AI&#39; 연구 성과를 공개했다고 밝혔습니다. 이 AI는 암 환자 조직 분석부터 치료 전략 설계까지 전 과정을 하루 만에 …</p>
+      <div class="why">왜 중요한가</div>
+      <p>국내 대표 AI 연구소의 글로벌 암 진료 기술 공개로 의료·산업 파급</p>
+      <div class="footer-meta">
+        <span>23:46</span>
+        <span class="score">중요도 8.0 / 10</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421175200071" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">연합뉴스</div>
+      <h3>트럼프, 휴전만료 전날 &#34;훌륭한 합의할것…휴전연장 원치않아&#34;</h3>
+      <p>도널드 트럼프 미국 대통령이 21일(현지시간) 이란과의 2차 종전 협상을 앞두고 &#39;결국 훌륭한 합의를 하게 될 것&#39;이라며 휴전 연장을 원치 않는다는 입장을 밝혔다고 연합뉴스가 전했습니다.</p>
+      <div class="why">왜 중요한가</div>
+      <p>트럼프의 휴전 연장 거부 발언은 중동 협상 방향을 좌우할 변수</p>
+      <div class="footer-meta">
+        <span>21:46</span>
+        <span class="score">중요도 8.0 / 10</span>
+      </div>
+    </a>
+  </section>
+
+  <section class="section">
+    <h2>AI 뉴스</h2>
+    <div style="display:flex; align-items:baseline; gap: 1rem; margin-bottom: 1rem;">
+      <div>
+        <div class="big-num">25</div>
+        <div class="label">건 수집</div>
+      </div>
+      <div style="color: var(--muted); font-size: 0.92rem;">
+        아래 15건만 엄선 · 스크롤로 넘기기
+      </div>
+    </div>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209558" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>&#39;미소스 쇼크&#39;에 아시아 금융권도 경계령 발효...홍콩·싱가포르·호주 방어 나서</h3>
+      <p>&#39;미소스&#39; 경계령이 아시아권에서 본격적으로 부각되며 홍콩·싱가포르·호주 당국이 일제히 첨단 AI 모델 기반 사이버 위협 대응에 나섰다고 로이터·블룸버그 등이 전했습니다. 홍콩 금융관리국(HKMA)은 20일 주요 은행들과 협력해 &#39;미소…</p>
+      <div class="footer-meta">
+        <span>04.22 01:53</span>
+        <span class="score">8.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209521" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>앤트로픽, 아마존에 147조 투입해 5GW 컴퓨팅 구축...아마존은 36조 추가 투자</h3>
+      <p>앤트로픽이 20일(현지시간) 앞으로 10년간 1000억달러(약 147조원) 이상을 아마존웹서비스(AWS) 기술에 투입한다고 밝혔습니다. 아마존 자체 AI 칩 &#39;트레이니엄&#39; 시리즈가 핵심이며, 앤트로픽은 &#39;클로드&#39; 학습·배포를 위해 최…</p>
+      <div class="footer-meta">
+        <span>04.22 00:22</span>
+        <span class="score">8.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421171051" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">ZDNet Korea</div>
+      <h3>김민석 총리 &#34;과학기술 5대 강국 목표로 과감한 투자하겠다&#34;</h3>
+      <p>김민석 국무총리가 21일 서울 한국과학기술회관에서 열린 2026 과학·정보통신의 날 기념식에서 &#39;과학기술 5대 강국 목표로 과감한 투자와 제도 혁신을 이어가겠다&#39;고 밝혔습니다. 총리는 &#39;AI 3대 강국 도약 총력&#39;을 강조하며 지난해 …</p>
+      <div class="footer-meta">
+        <span>17:10</span>
+        <span class="score">8.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209563" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>국가AI전략위 &#34;자율주행·휴머노이느 소분과 신설...산업 AX 확산 지원&#34;</h3>
+      <p>국가인공지능전략위원회가 산업AX·생태계 분과 내에 &#39;자율주행 소분과&#39;와 &#39;휴머노이드 소분과&#39;를 신설하고 제1차 킥오프 회의를 열었다고 21일 밝혔습니다. 최근 &#39;피지컬 AI&#39; 강조 흐름에 맞춰 전략 육성이 시급하다는 판단입니다. 자율…</p>
+      <div class="footer-meta">
+        <span>04.22 02:05</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209546" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>SK하이닉스, AI 서버 메모리 &#39;SOCAMM2 192GB&#39; 본격 양산</h3>
+      <p>SK하이닉스가 10나노급 6세대(1c) LPDDR5X 저전력 D램 기반 차세대 메모리 모듈 SOCAMM2 192GB 제품을 21일 본격 양산한다고 밝혔습니다. SOCAMM2는 스마트폰용 저전력 메모리를 서버 환경에 맞게 변형한 모듈로…</p>
+      <div class="footer-meta">
+        <span>04.22 00:50</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209536" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>과기부-복지부, 노후화된 공공의료시스템 AI-SaaS로 전면 교체 나선다</h3>
+      <p>과학기술정보통신부와 한국지능정보사회진흥원(NIA)이 &#39;공공 병원정보시스템 AI 클라우드 서비스 전환 지원 사업&#39; 참여 기업 모집 공모를 5월 22일까지 진행한다고 밝혔습니다. 과기정통부·보건복지부·국립중앙의료원·지방의료원이 공동 추진…</p>
+      <div class="footer-meta">
+        <span>04.22 00:03</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209523" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>LG, &#39;암 치료&#39; 에이전트 연구 성과 공개…”글로벌 제약사 등과 협업 추진”</h3>
+      <p>LG AI연구원이 17~22일(현지시간) 미국 샌디에이고에서 열리는 &#39;미국암연구학회(AACR) 2026&#39;에서 밴더빌트대학교 메디컬 센터와 공동 개발 중인 &#39;암 에이전틱 AI&#39; 연구 성과를 공개했다고 밝혔습니다. 이 AI는 암 환자 조…</p>
+      <div class="footer-meta">
+        <span>23:46</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421182924" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">ZDNet Korea</div>
+      <h3>기후부, AI 시대 대응 위한 ‘민관 고위급 에너지 정책’ 대화</h3>
+      <p>기후에너지환경부가 클라이밋 그룹의 RE100 이니셔티브와 공동으로 21일 여수 소노캄에서 &#39;AI 시대 에너지 전략대화&#39;를 개최했습니다. 전략대화에서는 AI·데이터 산업 급성장에 대응한 안정적 재생에너지 전력 확충 방안과 국내 재생에너…</p>
+      <div class="footer-meta">
+        <span>18:29</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209522" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>구글, 앤트로픽 추격 위해 &#39;코딩 특별팀&#39; 구성...세르게이 브린 직접 지휘</h3>
+      <p>구글이 AI 코딩 역량 강화를 위해 연구진과 엔지니어로 구성된 &#39;특별팀&#39;을 꾸렸습니다. 공동 창립자 세르게이 브린과 CTO까지 합류해 앤트로픽 대비 뒤처진 코드 생성 능력을 끌어올리려는 총력전입니다. 디 인포메이션에 따르면 이 팀은 …</p>
+      <div class="footer-meta">
+        <span>04.22 03:48</span>
+        <span class="score">7.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209540" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>오픈AI, 코덱스의 메모리 기능 &#39;크로니클&#39; 공개...&#34;리콜보다 위험&#34; 경고도</h3>
+      <p>오픈AI가 개발자용 AI 도구 코덱스의 메모리를 강화한 실험적 기능 &#39;크로니클&#39;을 20일(현지시간) 공개했습니다. 사용자의 최근 화면 정보까지 반영해 AI가 작업 흐름을 자동으로 이해·저장하고, 반복 설명 없이 업무를 이어가도록 돕는…</p>
+      <div class="footer-meta">
+        <span>04.22 03:00</span>
+        <span class="score">7.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209542" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>MS 깃허브, AI 코딩 사용량 제한...최고 요금제만 앤트로픽 모델 사용</h3>
+      <p>MS 깃허브가 AI 코딩 도구 &#39;코파일럿&#39;의 사용량 제한을 강화하고 신규 개인 가입을 일시 중단했습니다. 최근 에이전트 기반 코딩 수요 급증으로 인프라 부담이 커지고 서비스 장애까지 발생하자 사실상 가격 인상에 해당하는 대응입니다. …</p>
+      <div class="footer-meta">
+        <span>04.22 02:33</span>
+        <span class="score">7.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209518" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>중기부, 중소제조·스타트업에 GPU 264장 공급...&#34;AX 본격 지원&#34;</h3>
+      <p>중소벤처기업부가 &#39;국가 AI 프로젝트&#39;를 통해 확보한 GPU 264장을 중소기업 제조현장과 창업기업 혁신 지원에 활용한다고 21일 밝혔습니다. 앞서 과기정통부는 2025년 추경으로 확보한 GPU 1만장 중 3000여장을 부처별 사업에…</p>
+      <div class="footer-meta">
+        <span>23:30</span>
+        <span class="score">7.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421181850" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">ZDNet Korea</div>
+      <h3>[현장] &#34;벤치마크보다 중요한 건 실전&#34;… AI 리더가 짚은 국내 AI 생태계 과제</h3>
+      <p>21일 서울 마포 디캠프에서 열린 &#39;엔비디아 네모트론 개발자 데이 서울 2026&#39; 기술 패널 토론에서 SKT·업스테이지·모티프·엘리스그룹 등 한국 AI 리더들이 &#39;K-AI 빌더의 연결과 글로벌 진출&#39;을 주제로 논의했습니다. 패널들은 …</p>
+      <div class="footer-meta">
+        <span>18:22</span>
+        <span class="score">7.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209511" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>구글, ‘제미나이 인 크롬’ 국내 출시…“사이드 패널로 AI 호출”</h3>
+      <p>구글이 생성 AI를 브라우저에 직접 통합한 &#39;제미나이 인 크롬&#39; 기능을 21일 국내에 공식 출시했습니다. 이번 업데이트는 최신 AI 모델인 제미나이 3.1 기반이며, 데스크톱과 iOS 환경에 우선 적용됩니다. 브라우저 우측 상단 아이…</p>
+      <div class="footer-meta">
+        <span>17:20</span>
+        <span class="score">7.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000247" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">전자신문</div>
+      <h3>우리은행, &#39;AI 에이전트 전용 GPU 클러스터&#39; 구축…생성형 AI 내재화 본격화</h3>
+      <p>우리은행이 생성형 AI 기반 &#39;AI 에이전트&#39; 구축을 위해 GPU 서버 인프라를 직접 도입한다고 전자신문이 보도했습니다. 외부 클라우드 의존 구조에서 벗어나 AI 전략을 &#39;내재화&#39;로 전환하는 움직임으로 풀이됩니다. 기사에 따르면 우리…</p>
+      <div class="footer-meta">
+        <span>17:00</span>
+        <span class="score">7.5</span>
+      </div>
+    </a>
+  </section>
+  <section class="section">
+    <h2>종합 뉴스</h2>
+    <div style="display:flex; align-items:baseline; gap: 1rem; margin-bottom: 1rem;">
+      <div>
+        <div class="big-num">25</div>
+        <div class="label">건 수집</div>
+      </div>
+      <div style="color: var(--muted); font-size: 0.92rem;">
+        아래 15건만 엄선 · 스크롤로 넘기기
+      </div>
+    </div>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209541" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">AI타임스</div>
+      <h3>중동발 에너지 쇼크에… 유럽 풍력업계 “인허가 빗장 풀고 자생력 키워야”</h3>
+      <p>유럽 풍력에너지협회(WindEurope)가 중동발 에너지 불안에 대응하기 위한 풍력 확대 방안을 다시 전면에 내세웠다고 리차지가 21일(현지시간) 보도했습니다. 이란 전쟁과 호르무즈 해협 봉쇄 여파로 국제 유가·가스 가격 변동성이 커…</p>
+      <div class="footer-meta">
+        <span>04.22 00:15</span>
+        <span class="score">8.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421172551009" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">연합뉴스</div>
+      <h3>미군, 인도양서 이란연계 유조선 나포…협상 목전 봉쇄범위 확대(종합)</h3>
+      <p>미군이 이란과의 2차 종전협상을 앞두고 인도태평양 사령부 책임 구역 내에서 이란과 연계된 유조선을 나포했다고 연합뉴스가 전했습니다. 미국이 협상 직전 해상 봉쇄 범위를 확대하는 흐름으로 해석됩니다.</p>
+      <div class="footer-meta">
+        <span>22:20</span>
+        <span class="score">8.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421149600504" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">연합뉴스</div>
+      <h3>살상력 극대화한 北집속탄, 軍방공망으로 방어 가능할까</h3>
+      <p>북한이 최근 연이어 집속탄(확산탄)을 실은 탄도미사일을 시험발사하면서 우리 군의 기존 방공망으로 집속탄 방어가 가능한지에 대한 우려가 제기된다는 내용이 연합뉴스를 통해 전해졌습니다. 살상력이 극대화된 북한 집속탄에 대한 군사 방어 역…</p>
+      <div class="footer-meta">
+        <span>17:52</span>
+        <span class="score">8.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421172227" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">ZDNet Korea</div>
+      <h3>CU 파업 장기화 조짐…봉쇄 이어 사망사고까지</h3>
+      <p>CU 물품 배송기사들의 처우 개선을 위한 교섭을 요구하며 시작된 파업이 사망사고로 번지며 사태가 장기화 조짐입니다. 20일 경남 진주 CU 물류센터 앞에서 대체 투입된 2.5톤 화물차가 출차 중 조합원들과 부딪혀 50대 남성이 숨지고…</p>
+      <div class="footer-meta">
+        <span>17:29</span>
+        <span class="score">8.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000216" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">전자신문</div>
+      <h3>“유가상승 압박” 급해진 트럼프…&#39;한국전쟁때 만든 법&#39;까지 동원해 자금 투입</h3>
+      <p>이란발 긴장으로 국제 유가 상승 압박이 커지는 가운데 트럼프 미국 대통령이 에너지 공급 확대를 위한 긴급 조치에 나섰다고 기사가 전했습니다. 트럼프 대통령은 20일(현지시간) 석유 생산·정제, 석탄 공급망, 천연가스 송전, 전력망 인…</p>
+      <div class="footer-meta">
+        <span>13:31</span>
+        <span class="score">8.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421175200071" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">연합뉴스</div>
+      <h3>트럼프, 휴전만료 전날 &#34;훌륭한 합의할것…휴전연장 원치않아&#34;</h3>
+      <p>도널드 트럼프 미국 대통령이 21일(현지시간) 이란과의 2차 종전 협상을 앞두고 &#39;결국 훌륭한 합의를 하게 될 것&#39;이라며 휴전 연장을 원치 않는다는 입장을 밝혔다고 연합뉴스가 전했습니다.</p>
+      <div class="footer-meta">
+        <span>21:46</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421172200108" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">연합뉴스</div>
+      <h3>프랑스·폴란드, 연합 핵훈련 검토…러시아 &#34;핵무장하나&#34; 반발</h3>
+      <p>유럽연합(EU) 내 유일한 핵무기 보유국인 프랑스가 폴란드와 핵 억지력을 위한 양국 간 연합훈련을 검토한다는 내용이 연합뉴스를 통해 전해졌습니다. 러시아는 이에 대해 &#39;핵무장하나&#39;라며 반발하고 있습니다.</p>
+      <div class="footer-meta">
+        <span>20:45</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421095100001" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">연합뉴스</div>
+      <h3>李대통령, 하노이 도착…내일 韓-베트남 정상회담</h3>
+      <p>인도 국빈 방문을 마친 이재명 대통령이 21일 오후(현지시간) 하노이에 도착해 3박 4일간의 베트남 일정을 시작한다고 연합뉴스가 전했습니다. 내일 한-베트남 정상회담이 예정돼 있습니다.</p>
+      <div class="footer-meta">
+        <span>20:30</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421167600079" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">연합뉴스</div>
+      <h3>네타냐후 &#34;이란과 전쟁으로 &#39;제2의 홀로코스트&#39; 막았다&#34;</h3>
+      <p>베냐민 네타냐후 이스라엘 총리가 이란 정부가 &#39;제2의 홀로코스트&#39;를 획책했으며, 이란을 상대로 선제적인 대응을 통해 이를 막았다는 취지의 발언을 했다고 연합뉴스가 카이로발로 전했습니다.</p>
+      <div class="footer-meta">
+        <span>19:15</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/economy/12023259" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">매일경제</div>
+      <h3>[단독] 미국·일본 “한국산 석유 없으면 큰일”…휘발유·항공유 요청 빗발쳐</h3>
+      <p>중동발 원유 공급 불안이 장기화하자 미국, 일본 등 주요국들이 우리 정부에 &#39;석유 제품 수출 통제&#39;와 관련된 자료 요청을 하며 한국 정유 산업의 공급 역량에 의존하려는 흐름이 나타난다는 매일경제 보도입니다. 호주·뉴질랜드는 휘발유, …</p>
+      <div class="footer-meta">
+        <span>18:54</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/stock/12023235" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">매일경제</div>
+      <h3>전쟁공포 이겼다, 코스피 &#39;사상최고&#39;</h3>
+      <p>삼성전자와 SK하이닉스 주가 변동에 따른 이익을 2배로 누릴 수 있는 상장지수펀드(ETF)가 다음 달 22일 국내에 첫선을 보인다고 매일경제가 전했습니다. 금융위원회는 21일 단일 종목을 기초자산으로 하는 상품 관련 발표를 했다는 내…</p>
+      <div class="footer-meta">
+        <span>18:05</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000390" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">전자신문</div>
+      <h3>전쟁 2년 만에 77년 후퇴…유엔·EU “가자지구 복구에 105조원 필요”</h3>
+      <p>2023년 10월 하마스 공격으로 발발한 가자 전쟁 이후 지역 개발 수준이 77년 후퇴했으며, 향후 10년간 복구 비용이 105조원에 달할 것이라는 추산이 나왔습니다. 20일(현지시간) 유럽연합(EU)·유엔(UN)·세계은행이 공동 연…</p>
+      <div class="footer-meta">
+        <span>16:55</span>
+        <span class="score">8.0</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/society/12023412" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">매일경제</div>
+      <h3>중국의 20배 ‘대박’…충북 영동에 ‘세계 최대 규모’ 희귀 광물 매장</h3>
+      <p>충북 영동지역에 세계 최대 규모인 약 1억450만 톤의 일라이트(illite)가 매장된 것으로 확인됐다는 보도가 나왔습니다. 영동군이 2024년부터 최근까지 한국지질자원연구원에 의뢰해 진행한 조사 결과라는 내용이 매일경제를 통해 전해…</p>
+      <div class="footer-meta">
+        <span>22:09</span>
+        <span class="score">7.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000458" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">전자신문</div>
+      <h3>“중동발 유가쇼크” 세계가 기름값 올릴때…中, 휘발유·경유 가격 내렸다</h3>
+      <p>중국이 중동 정세 불안 속에서도 국제유가 흐름을 반영해 올해 첫 유가 인하에 나섰다고 21일 신화통신이 전했습니다. 중국 국가발전개혁위원회는 22일 0시부터 휘발유와 경유 소매가격을 각각 톤당 555위안, 530위안 인하한다고 밝혔습…</p>
+      <div class="footer-meta">
+        <span>21:23</span>
+        <span class="score">7.5</span>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421169900082" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">연합뉴스</div>
+      <h3>폭스바겐 CEO &#34;생산능력 100만대 추가 감축 추진&#34;</h3>
+      <p>유럽 최대 자동차업체 폭스바겐그룹이 생산능력을 연간 900만대 수준으로 줄일 계획이라고 21일(현지시간) 연합뉴스가 전했습니다. CEO가 기존 대비 100만대 추가 감축을 추진한다는 내용입니다.</p>
+      <div class="footer-meta">
+        <span>19:59</span>
+        <span class="score">7.5</span>
+      </div>
+    </a>
+  </section>
+
+</div>
+
+<a class="back-link" href="./index.html">← 갤러리로 돌아가기</a>
+
+<footer>
+  <div class="container" style="padding:0;">
+    Smart Brevity Edition · Issue #18 · 2026.04.21 23:04 KST<br>
+    "Why it matters? Because your time does."
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Brief #{{ issue_number }} · Smart Brevity</title>
+<style>
+:root {
+  --accent: #ff6b00;
+  --accent-soft: #fff5ed;
+  --text: #111;
+  --muted: #6b7280;
+  --rule: #111;
+  --card: #ffffff;
+  --bg: #faf9f7;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Inter", "Pretendard", -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
+
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+.top {
+  border-bottom: 3px solid var(--accent);
+  padding: 2.5rem 0 1.5rem;
+}
+.top .tag {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 0.25rem 0.65rem; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; border-radius: 4px;
+}
+.top h1 {
+  font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 900;
+  margin: 1rem 0 0.5rem; letter-spacing: -0.02em; line-height: 1.05;
+}
+.top .meta { font-size: 0.9rem; color: var(--muted); }
+.top .reading { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+.top .reading b { color: var(--accent); font-weight: 700; }
+
+.summary-box {
+  background: var(--accent-soft); border: 2px solid var(--accent);
+  border-radius: 10px; padding: 1.3rem 1.5rem; margin: 2rem 0;
+}
+.summary-box h2 {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; margin: 0 0 0.8rem; color: var(--accent);
+}
+.summary-box ul { margin: 0; padding: 0 0 0 1.1rem; }
+.summary-box li { margin-bottom: 0.45rem; font-size: 0.98rem; font-weight: 500; }
+.summary-box li b { font-weight: 800; }
+
+.section {
+  padding: 2rem 0; border-top: 1px solid #d6d3cf;
+}
+.section > h2 {
+  font-size: 1.3rem; font-weight: 900; letter-spacing: -0.01em;
+  margin: 0 0 1.5rem; display: flex; align-items: center; gap: 0.6rem;
+}
+.section > h2::before {
+  content: ""; width: 6px; height: 22px; background: var(--accent);
+  display: inline-block; border-radius: 2px;
+}
+
+.story {
+  background: var(--card); border-radius: 10px; padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem; border: 1px solid #ece9e4;
+  transition: border-color 0.15s;
+}
+.story:hover { border-color: var(--accent); }
+.story .src {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+}
+.story h3 {
+  font-size: 1.12rem; font-weight: 800; line-height: 1.3;
+  margin: 0 0 0.8rem; letter-spacing: -0.005em;
+}
+.story .why {
+  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--accent); margin-top: 0.8rem;
+}
+.story .why::after { content: " ↓"; }
+.story p { font-size: 0.95rem; margin: 0.4rem 0 0; color: #2d2d2d; }
+.story .footer-meta {
+  font-size: 0.75rem; color: var(--muted); margin-top: 0.8rem;
+  display: flex; justify-content: space-between;
+}
+.story .score {
+  font-weight: 700; color: var(--accent);
+}
+
+.hashtag-row { margin: 1.5rem 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.hashtag-row span {
+  background: #fff; border: 1px solid var(--rule); padding: 0.3rem 0.75rem;
+  font-size: 0.8rem; font-weight: 700; border-radius: 999px;
+}
+
+.big-num {
+  font-size: clamp(4rem, 10vw, 6rem); font-weight: 900;
+  line-height: 1; color: var(--accent); margin: 0 0 0.3rem;
+}
+.big-num + .label {
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+.back-link {
+  display: inline-block; margin: 2rem 1.5rem 3rem;
+  padding: 0.7rem 1.2rem; background: var(--text); color: #fff;
+  font-size: 0.85rem; font-weight: 700; border-radius: 4px;
+}
+
+footer {
+  padding: 2rem 1.5rem 3rem; color: var(--muted); font-size: 0.82rem;
+  border-top: 3px solid var(--accent);
+}
+
+@media (max-width: 600px) {
+  .top h1 { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="top">
+    <span class="tag">Smart Brevity · Issue #{{ issue_number }}</span>
+    <h1>오늘의 {{ period_label }} 브리핑 · 5분이면 끝</h1>
+    <div class="meta">{{ generation_timestamp }}</div>
+    <div class="reading">
+      총 <b>{{ all_count }}건</b> 중 핵심 <b>{{ must_know|length }}건</b>만 추렸습니다.
+    </div>
+  </header>
+
+  {% if must_know %}
+  <div class="summary-box">
+    <h2>⚡ 3가지만 기억하세요</h2>
+    <ul>
+      {% for art in must_know[:3] %}
+      <li><b>{{ art.title }}</b> — {{ art.extraction_reason[:70] }}{% if art.extraction_reason|length > 70 %}…{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% if trend_hashtags %}
+  <div class="hashtag-row">
+    {% for h in trend_hashtags[:8] %}<span>#{{ h }}</span>{% endfor %}
+  </div>
+  {% endif %}
+
+  {% if must_know %}
+  <section class="section">
+    <h2>꼭 알아야 할 뉴스</h2>
+    {% for art in must_know %}
+    <a class="story" href="{{ art.original_url }}" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">{{ art.source }}</div>
+      <h3>{{ art.title }}</h3>
+      <p>{{ art.ai_summary[:160] }}{% if art.ai_summary|length > 160 %}…{% endif %}</p>
+      <div class="why">왜 중요한가</div>
+      <p>{{ art.extraction_reason[:200] }}{% if art.extraction_reason|length > 200 %}…{% endif %}</p>
+      <div class="footer-meta">
+        <span>{{ art.published_at_display }}</span>
+        <span class="score">중요도 {{ '%.1f' % art.relevance_score }} / 10</span>
+      </div>
+    </a>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% for sec in sections %}
+  {% if sec.articles %}
+  <section class="section">
+    <h2>{{ sec.title }}</h2>
+    {% set num = sec.articles|length %}
+    <div style="display:flex; align-items:baseline; gap: 1rem; margin-bottom: 1rem;">
+      <div>
+        <div class="big-num">{{ num }}</div>
+        <div class="label">건 수집</div>
+      </div>
+      <div style="color: var(--muted); font-size: 0.92rem;">
+        아래 {{ [num, 15]|min }}건만 엄선 · 스크롤로 넘기기
+      </div>
+    </div>
+    {% for art in sec.articles[:15] %}
+    <a class="story" href="{{ art.original_url }}" target="_blank" rel="noopener" style="display:block;">
+      <div class="src">{{ art.source }}</div>
+      <h3>{{ art.title }}</h3>
+      <p>{{ art.ai_summary[:130] }}{% if art.ai_summary|length > 130 %}…{% endif %}</p>
+      <div class="footer-meta">
+        <span>{{ art.published_at_display }}</span>
+        <span class="score">{{ '%.1f' % art.relevance_score }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </section>
+  {% endif %}
+  {% endfor %}
+
+</div>
+
+<a class="back-link" href="./index.html">← 갤러리로 돌아가기</a>
+
+<footer>
+  <div class="container" style="padding:0;">
+    Smart Brevity Edition · Issue #{{ issue_number }} · {{ generation_timestamp }}<br>
+    "Why it matters? Because your time does."
+  </div>
+</footer>
+
+</body>
+</html>
