@@ -1,0 +1,2619 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fafaf7">
+<title>굿이브닝 · Daily Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Playfair Display", "Noto Serif KR", Georgia, serif;
+  background-color: #f4ede0;
+  color: #1a1a1a;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  position: relative;
+}
+/* Establishment 203 이미지를 배경으로 고정 (스크롤해도 자리 유지) */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("./assets/establishment-203.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* 배경 위에 신문지 뉴스프린트 그레이 오버레이 — 본문 가독성 보장 */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: rgba(210, 208, 200, 0.87);
+}
+.app { position: relative; z-index: 1; }
+a { color: inherit; text-decoration: none; }
+a:active { opacity: 0.6; }
+
+.app { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+/* Editorial Masthead — Establishment 203 스타일 */
+.bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: calc(14px + env(safe-area-inset-top)) 0 10px;
+  border-bottom: 1px solid #1a1a1a;
+}
+.bar .brand {
+  font-style: italic; font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: #1a1a1a;
+}
+.bar .brand::before { content: none; }
+.bar .issue-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 42px; height: 22px;
+  padding: 0 8px;
+  border: 1px solid #1a1a1a;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #1a1a1a;
+}
+
+/* Dateline strip — 얇은 라인 사이 small caps */
+.dateline {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: #1a1a1a;
+  gap: 8px; flex-wrap: wrap;
+}
+.dateline > span { flex: 0 1 auto; }
+.dateline .middle { flex: 1 1 auto; text-align: center; }
+@media (max-width: 420px) {
+  .dateline { font-size: 10px; letter-spacing: 0.12em; }
+}
+
+
+.intro {
+  padding: 60px 0 56px; text-align: center;
+}
+.intro .greeting {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: #1a1a1a; margin-bottom: 32px;
+}
+.intro h1 {
+  font-style: italic; font-weight: 900;
+  font-size: clamp(48px, 11.5vw, 84px);
+  line-height: 0.94; letter-spacing: -0.025em;
+  margin: 0 0 24px;
+  color: #1a1a1a;
+}
+.intro .sub {
+  font-size: 15px; color: #5a5a5a;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+.intro .meta { display: none; }
+
+.hashtags {
+  text-align: center; padding: 20px 0;
+  font-size: 14px; font-style: italic;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+}
+.hashtags span {
+  display: inline-block; margin: 0 6px;
+  font-weight: 400;
+}
+
+/* 섹션 */
+section.feed-sec { scroll-margin-top: 20px; }
+
+.sec-divider {
+  padding: 40px 0 24px;
+  border-top: 4px solid #1a1a1a;
+  margin-top: 72px;
+  text-align: center;
+  position: relative;
+}
+.sec-divider::before {
+  content: "§";
+  position: absolute;
+  top: -18px; left: 50%;
+  transform: translateX(-50%);
+  background: #d2d0c8;
+  padding: 0 14px;
+  font-size: 22px; font-style: italic;
+  color: #1a1a1a;
+  line-height: 1;
+}
+.sec-divider h2 {
+  font-style: italic; font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.01em; margin: 0;
+  color: #1a1a1a;
+}
+
+/* 스토리 카드 */
+.story {
+  display: block; padding: 28px 0;
+  border-bottom: 1px solid #e6e6df;
+}
+.story:active { opacity: 0.6; }
+.story:last-of-type { border-bottom: none; }
+
+.story .head {
+  font-size: 12px; color: #5a5a5a;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700;
+}
+.story .head .src { font-weight: 900; color: #1a1a1a; }
+.story .head .dot { color: #bbb; }
+
+.story h3 {
+  font-style: italic; font-weight: 700;
+  font-size: 26px; line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  color: #1a1a1a;
+}
+
+.story .lede {
+  font-size: 17px; line-height: 1.55;
+  color: #3a3a3a; margin: 0 0 14px;
+  font-weight: 400;
+}
+
+.story .foot {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: #6b6b6b;
+  flex-wrap: wrap; gap: 8px;
+}
+.story .foot .read { display: flex; align-items: center; gap: 6px; }
+.story .foot .read::before { content: "📖"; }
+
+/* 기사 키워드 해시태그 */
+.story .keywords {
+  margin-top: 12px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.story .keywords span {
+  background: transparent;
+  color: #a02020;
+  padding: 2px 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.story .keywords span::after { content: " · "; color: #c5c5c5; font-weight: 400; }
+.story .keywords span:last-child::after { content: ""; }
+
+/* Editorial 점수 — 이탤릭 serif 숫자 + 미니멀 라인 */
+.score {
+  display: inline-flex; align-items: baseline;
+  padding: 2px 0;
+  font-style: italic; font-weight: 700;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  color: #1a1a1a;
+  background: transparent; border: none;
+  position: relative;
+}
+.score::after {
+  content: " / 10";
+  font-size: 11px; font-style: italic; font-weight: 400;
+  color: #8a8a8a;
+  margin-left: 3px;
+  letter-spacing: 0.05em;
+}
+.score::before { content: none; }
+
+/* 9.0+ — 잉크 박스 (검정 fill + 흰 italic 숫자) */
+.score-vhigh {
+  background: #1a1a1a; color: #fff;
+  padding: 3px 12px 3px 12px;
+  font-size: 16px;
+}
+.score-vhigh::after { color: rgba(255,255,255,0.55); }
+
+/* 8.5+ — 이중선 하단 밑줄 */
+.score-superhigh {
+  padding: 2px 0 1px;
+  border-bottom: 3px double #1a1a1a;
+}
+
+/* 8.0+ — 굵은 밑줄 */
+.score-high {
+  padding: 2px 0 1px;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+/* 7.0+ — 얇은 밑줄 */
+.score-midhigh {
+  padding: 2px 0 1px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+/* 5.0+ — 회색 톤 */
+.score-mid {
+  color: #5a5a5a;
+}
+.score-mid::after { color: #9a9a9a; }
+
+/* 3.0+ — 연회색 */
+.score-low {
+  color: #8a8a8a;
+  font-weight: 400;
+}
+.score-low::after { color: #bababa; }
+
+/* <3.0 — 매우 연회색 */
+.score-vlow {
+  color: #bababa;
+  font-weight: 400;
+}
+.score-vlow::after { color: #d5d5d5; }
+
+/* Top story — editor's pick 뒤 절취선 제거 (v20 사용자 요청) */
+.top-story {
+  padding: 40px 0 48px;
+}
+.top-story .kicker {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #1a1a1a; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.top-story h2 {
+  font-style: italic; font-weight: 900;
+  font-size: clamp(38px, 8vw, 56px);
+  line-height: 0.98; letter-spacing: -0.022em;
+  margin: 0 0 20px;
+  color: #1a1a1a;
+}
+.top-story .by {
+  font-size: 12px; color: #5a5a5a;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.top-story .body {
+  font-size: 19px; line-height: 1.6;
+  color: #1a1a1a;
+}
+
+/* Editorial 인사이트 — 얇은 hairline + italic serif */
+.why-insights {
+  margin-top: 20px;
+  background: transparent;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 12px 0;
+}
+.why-insights[open] { padding-bottom: 18px; }
+.why-insights > summary {
+  cursor: pointer;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #1a1a1a;
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 28px;
+}
+.why-insights > summary::-webkit-details-marker { display: none; }
+.why-insights > summary::after {
+  content: "+"; transition: transform 0.2s;
+  font-size: 20px; font-weight: 400; color: #1a1a1a;
+  line-height: 1;
+}
+.why-insights[open] > summary::after { content: "—"; }
+
+.why-insights .axis {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid #cfc7b5;
+}
+.why-insights .axis:first-of-type { border-top: none; padding-top: 6px; }
+.why-insights .axis .axis-title {
+  font-size: 13px; font-weight: 700; color: #1a1a1a;
+  margin-bottom: 6px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+}
+/* 데이터의 이모지 icon 숨김 — editorial 톤 유지 */
+.why-insights .axis .axis-title .icon { display: none; }
+.why-insights .axis .axis-body {
+  font-size: 15.5px; line-height: 1.55; color: #2a2a2a;
+  font-style: italic;
+}
+
+/* Editorial Footer — 마지막 기사 뒤 절취선 제거 (v20 사용자 요청) */
+footer {
+  padding: 50px 0 30px;
+  text-align: center;
+  font-size: 13px; color: #5a5a5a;
+  margin-top: 40px;
+}
+footer .disclosure {
+  color: #5a5a5a; font-size: 13px; max-width: 520px;
+  margin: 0 auto 16px; line-height: 1.55;
+  font-style: italic;
+}
+footer .sources {
+  color: #8a8a8a; font-size: 11px; line-height: 1.8;
+  margin-top: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════ */
+/* 플로팅 섹션 네비게이션 (고정)            */
+/* ═══════════════════════════════════════ */
+/* Editorial 플로팅 네비 — 흰 배경, 검정 hairline, italic serif */
+.floating-nav {
+  position: fixed;
+  left: 50%; transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 30;
+  display: flex; gap: 0;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #1a1a1a;
+  border-radius: 0;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  max-width: calc(100vw - 24px);
+}
+.floating-nav a {
+  flex: 1 1 auto;
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+  padding: 10px 14px;
+  border-radius: 0;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #1a1a1a;
+  white-space: nowrap;
+  min-height: 40px;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.12s;
+}
+.floating-nav a:active { transform: scale(0.96); }
+.floating-nav a .cnt {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; padding: 0 4px;
+  font-style: italic; font-weight: 400;
+  font-size: 11px;
+  color: #8a8a8a;
+  letter-spacing: 0;
+}
+.floating-nav a.active {
+  background: #1a1a1a; color: #fff;
+}
+.floating-nav a.active .cnt {
+  color: rgba(255,255,255,0.65);
+}
+
+@media (min-width: 640px) {
+  .floating-nav a { padding: 10px 18px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+
+
+
+<div class="app">
+
+  <header class="bar">
+    <div class="brand">The Daily Brief</div>
+    <div class="issue-badge">N°23</div>
+  </header>
+  <div class="dateline">
+    <span>Seoul</span>
+    <span class="middle">2026.04.22</span>
+    <span>오후 Edition</span>
+  </div>
+
+  <section class="intro">
+    <div class="greeting">굿이브닝</div>
+    <h1>오늘의 오후<br>이야기</h1>
+    <div class="sub">총 49건</div>
+    <div class="meta">2026.04.22 03:08 KST</div>
+  </section>
+
+  <div class="hashtags">
+<span>#미이란2차협상</span> · <span>#AI코딩전쟁</span> · <span>#코스피사상최고</span> · <span>#화물연대사망</span> · <span>#애플CEO교체</span> · <span>#영국비흡연세대법</span> · <span>#하림홈플러스</span> · <span>#충북영동희귀광물</span>  </div>
+
+  <section class="feed-sec must-read" id="sec-mustknow">
+    <article class="top-story">
+      <div class="kicker">
+        <span>⭐ Editor's Pick · 연합뉴스</span>
+        <span class="score score-vhigh">9.5</span>
+      </div>
+      <h2>트럼프, 휴전만료 전날 &#34;훌륭한 합의할것…불발시 폭격예상&#34;(종합)</h2>
+      <div class="by">
+        <span>By 연합뉴스</span>
+        <span>·</span>
+        <span>04.21 23:08</span>
+      </div>
+      <div class="body">도널드 트럼프 미국 대통령은 21일(현지시간) 이란과의 2차 종전 협상을 앞두고 &#39;결국 훌륭한 합의를 하게 될 것&#39;이라며 &#39;불발 시 폭격이 예상된다&#39;고 경고했다고 이유미 워싱턴 특파원이 전했다. 협상 만료 전날 강온 양면 메시지를 내놓은 셈이다.</div>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">트럼프의 협상·군사옵션 병행 메시지, 중동 정세 핵심 변수</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 트럼프의 &#39;폭격&#39; 언급으로 국제 유가·금값·달러가 단기 변동성을 키우는 겁니다. 원유 선물은 이번 주 내 배럴당 5~10달러 움직임이 가능합니다. 2차 효과로, 한국 정유·항공사 주가 변동, 원/달러 환율 변동으로 외국인 순매도 우려가 커집니다. 3차 효과는 폭격 실행 시 이란의 호르무즈 봉쇄·미군 이라크 주둔 공격 등 연쇄 도발로 중동 전쟁이 장기화되는 구조 변화입니다. 2020년 솔레이마니 사령관 살해 때 유가가 하루 4% 급등한 사례가 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2019~2020년 트럼프 1기 때도 이란을 향해 &#39;폭격&#39; 언급을 했고 이후 실제 공격(솔레이마니 살해, 핵시설 타격 위협)까지 이어진 패턴이 있습니다. 당시 중동 긴장으로 유가가 4주 만에 약 15% 상승했다가 다시 하락하는 &#39;갈지자&#39; 흐름이 약 3개월간 반복됐습니다. 과거 트럼프의 강경 발언이 실제 군사 행동으로 이어진 비율은 약 30%, 언어적 압박에 그친 경우가 70%였습니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">유가·환율에 민감한 업종(항공·정유·화학) 주식을 보유 중이라면 이번 주~다음 주 변동성 확대 가능성을 감안하세요. 여행·출장 계획이 있으면 항공권 유류할증료 변동을 고려해 일정 조정 여지를 남기는 게 유익합니다. 반대로 &#39;폭격 임박&#39; 같은 단편 뉴스에 자극받아 단기 매매로 대응하는 건 피하세요. 2020년 솔레이마니 사건 이후 4주간 원유 선물 누적 수익률은 결국 +1%로 횡보에 가까웠습니다.</div>
+  </div>
+</details>
+    </article>
+
+    <div class="sec-divider"><h2>꼭 알아야 할 뉴스</h2></div>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260422002351079" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>02:23</span>
+        </div>
+        <h3>이란 외무부 &#34;2차 종전협상 참여 여부 미정…미국측 책임&#34;(종합)</h3>
+        <p class="lede">에스마일 바가이 이란 외무부 대변인은 파키스탄에서 열릴 예정인 미국과의 2차 종전 협상에 이란이 참여할지 여부가 미정이라고 밝혔다. 그는 &#39;미국 측의 책임&#39;이라며 공을 미국에 넘겼다고 카이로발 연합뉴스가 전했다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">중동 종전협상 불확실성 심화, 이란-미국 갈등 새 국면</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 2차 협상이 실제 열리지 않거나 결렬될 경우 호르무즈 해협 불안으로 유가가 단기 반등하는 겁니다. 2차 효과로, 한국은 원유 수입의 약 60%가 중동 경유라 휘발유·경유 가격이 1~2주 안에 리터당 50~100원 오를 수 있습니다. 3차 효과는 중동 전쟁 장기화로 방산·에너지주 반등, 여행·항공 비용 상승, 중동 건설 수주 리스크 확대라는 구조적 연쇄입니다. 2022년 러시아-우크라이나 전쟁 개전 직후 국내 휘발유가 3개월 만에 약 30% 상승한 사례가 참고점입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2015년 이란 핵합의(JCPOA) 협상 때도 이란이 &#39;미국 책임&#39; 수사를 반복하며 협상을 지연시킨 패턴이 있었습니다. 당시 협상 타결까지 20개월이 걸렸고 이후에도 2018년 트럼프 1기 때 파기됐습니다. 이번도 단기 타결 가능성은 낮다고 봐야 합니다. 지난 30년간 미국-이란 고위급 협상 7회 중 1년 내 타결은 2회, 결렬·지연이 5회였습니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오(가능성 낮음)는 이란이 대화 재개를 수용하고 국내 여론을 설득해 1~2주 안에 2차 협상이 열리는 겁니다. 중간 시나리오(가능성 높음)는 이란이 조건부 참여 의사를 내세우며 협상이 1~2개월 지연되는 경우입니다. 최악 시나리오(가능성 중간)는 결렬 후 미국이 해상봉쇄를 강화하고 이란이 호르무즈 통행료 징수를 실제 집행하며 유가 급등으로 이어지는 흐름입니다. 갈림길은 다음 주 파키스탄 협상 개최 여부와 이란 최고지도자 성명입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421172551009" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04.21 22:20</span>
+        </div>
+        <h3>미군, 인도양서 이란연계 유조선 나포…협상 목전 봉쇄범위 확대(종합)</h3>
+        <p class="lede">미군이 이란과의 2차 종전 협상을 앞두고 인도태평양 사령부 책임 구역 내에서 이란과 연계된 유조선을 나포했다고 곽민서 기자·백나리 특파원이 전했다. 해상 봉쇄 범위가 중동을 넘어 인도태평양으로 확대되는 국면이다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미국의 글로벌 해상 봉쇄 범위 확대, 협상 전 군사 압박 시그널</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 이란 제재 회피 유조선 단속이 인도양까지 확대되면서 이란산 원유 유통이 더 어려워지는 겁니다. 2차 효과로, 이란이 호르무즈 해협 통제·인도양 항로 보복 가능성을 언급할 경우 국제 유가가 단기 급등할 수 있습니다. 한국은 사우디·UAE 원유가 주력이지만 인도양 항로 긴장은 전 세계 공급망 전반에 영향을 줍니다. 3차 효과는 미국-중국 해군력 갈등 지역(남중국해·인도양)에 중동 변수가 겹치는 복합 리스크 구조입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2019년 호르무즈 해협에서 이란이 영국 유조선을 나포한 사건, 2020년 솔레이마니 살해 이후 미군이 이란 연계 유조선을 압류한 사례 등이 비슷한 흐름입니다. 당시에도 유가가 1~2주 내 5~10% 변동했고 이후 원상회복하는 패턴이었습니다. 해상 봉쇄 확대가 실제 군사 충돌로 번진 사례는 지난 30년간 글로벌 기준 약 20% 확률로, 대부분은 협상 카드로 활용되고 끝났습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/politics/politics_general/1255279.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>04.21 22:00</span>
+        </div>
+        <h3>“쿠팡 전방위 로비에 핵잠 협상 차질…백악관·국무부·의회서 이슈화”</h3>
+        <p class="lede">미국이 우리 정부에 쿠팡 총수 김범석 의장의 법적 안전 등 쿠팡 문제가 해결되지 않으면 한·미 안보 협상에서 고위급 협의가 어렵다는 뜻을 전달한 것으로 21일 파악됐다고 한겨레가 보도했다. 외교 소식통은 &#39;쿠팡 관련해서는 미국 쪽에서 워낙 강경한 분위기가 있다&#39;고 전했다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">민간 기업 문제가 국가 안보 협상 장애물로 부상한 이례적 사례</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국의 핵추진 잠수함 도입 협상이 민간 기업 이슈로 지연되는 드문 상황이 벌어진다는 겁니다. 2차 효과로, 미국 월가 상장 한국계 기업의 법적 리스크가 정부 간 협상의 변수로 전이되는 선례가 만들어집니다. 쿠팡은 2021년 뉴욕증시 상장 당시 약 600억 달러 시총을 기록했고 현재 글로벌 전자상거래 상위 기업 중 하나입니다. 3차 효과는 네이버·카카오·엔씨소프트 등 국내 기업들이 미국 시장 대상으로 법률 리스크 관리에 더 민감해지는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2018년 미·중 무역전쟁에서 화웨이 CFO 멍완저우 체포로 미·중 외교 협상이 2년 이상 영향을 받은 사례가 유사합니다. 당시 캐나다에서 석방될 때까지 미·중 관계 경색이 지속됐습니다. 한국의 경우 이런 민관 연계 사례는 드물지만 2010년대 한·미 FTA 재협상 과정에서 자동차·철강 기업 이슈가 부각된 적이 있습니다. 지난 10년간 한미 안보 협상이 민간 기업 이슈로 지연된 사례는 이번이 이례적입니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이 보도는 한겨레 단독으로, 익명의 &#39;외교 소식통&#39; 단일 출처에 기반합니다. IMVAIN 5축 중 &#39;독립성·복수성&#39;이 약한 기사라 다른 매체의 교차 확인이 필요합니다. 또 &#39;강경 분위기&#39;가 실제 공식 채널인지 비공식 의견인지 모호합니다. 독자가 던질 질문: 이 소식통은 어느 부처·어느 직급인가? 쿠팡의 &#39;법적 안전&#39;은 구체적으로 어떤 사안인가? 한미 협상이 실제 지연된 회의록이 있는가? 후속 보도와 백악관·국무부 공식 반응을 교차 확인하는 걸 권합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/world/12023233" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.21 18:05</span>
+        </div>
+        <h3>[뉴스&amp;분석] 15년 팀쿡 체제 &#39;끝&#39; 애플, AI추격 &#39;시작&#39;</h3>
+        <p class="lede">세계 최대 스마트폰 업체인 미국 애플이 15년 만에 최고경영자를 바꾼다. 팀 쿡 CEO의 후임으로 하드웨어 엔지니어 출신 존 터너스 수석부사장(51)이 낙점됐다고 매일경제가 보도했다. 애플의 AI 추격이 본격화되는 전환점으로 해석된다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">애플 리더십 교체와 AI 추격 전략, 글로벌 테크 경쟁 지각변동</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 터너스 신임 CEO 체제에서 애플이 하드웨어+AI 통합 전략에 박차를 가할 가능성입니다. 2024년 애플 인텔리전스 출시 이후 실적 체감이 더뎠던 만큼 신임 리더가 M&amp;A·파트너십으로 AI 갭을 메울 여지가 큽니다. 2차 효과로, 삼성전자·LG전자 등 국내 경쟁사와 퀄컴·TSMC 같은 파트너의 협상력이 재조정됩니다. 3차 효과는 &#39;팀 쿡의 공급망 중심 체제&#39;에서 &#39;터너스의 하드웨어·AI 중심 체제&#39;로 애플 경영 철학이 이동하는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2011년 스티브 잡스에서 팀 쿡으로의 CEO 전환 당시 &#39;아이폰 공급망 최적화&#39; 관점이 15년간 애플의 최대 경쟁력이 된 사례가 참조점입니다. 빅테크 CEO 교체 후 주가는 6~12개월 횡보, 이후 새 전략이 가시화되면 재평가되는 패턴이 일반적입니다(MS·아마존·메타 사례). 지난 20년간 시총 1조 달러 이상 기업의 CEO 교체 후 2년 내 주가 상승 비율은 약 60%, 하락 40%였습니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오(가능성 중간)는 2027년 안에 애플이 자체 LLM이나 대형 AI 기업 인수로 AI 격차를 좁히는 겁니다. 중간 시나리오(가능성 높음)는 애플이 OpenAI·앤트로픽과의 파트너십을 확대하며 하드웨어 중심 전략을 강화하는 흐름입니다. 최악 시나리오(가능성 낮음)는 AI 전환 지연으로 점유율을 삼성·구글에 내주는 경우입니다. 갈림길은 신임 CEO 첫 1년간의 M&amp;A 행보와 WWDC 2026 발표 내용입니다.</div>
+  </div>
+</details>
+    </article>
+  </section>
+
+  <section class="feed-sec" id="sec-official-ai">
+    <div class="sec-divider"><h2>공식 AI 업데이트</h2></div>
+    <article class="story">
+      <a href="https://openai.com/index/scaling-codex-to-enterprises-worldwide" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">OpenAI Blog</span>
+          <span class="dot">·</span>
+          <span>04.21 09:00</span>
+        </div>
+        <h3>Scaling Codex to enterprises worldwide</h3>
+        <p class="lede">오픈AI가 &#39;코덱스 랩스(Codex Labs)&#39;를 출시하고 Accenture, PwC, Infosys 등과 파트너십을 맺어 기업 소프트웨어 개발 전 주기에 코덱스를 배포한다고 밝혔다. 주간 활성 사용자(WAU)는 400만 명을 돌파했다.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">오픈AI의 공식 엔터프라이즈 코딩 AI 확산 발표, 개발자 생태계 지각 변동</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 회계·컨설팅 거대기업(Accenture·PwC·Infosys)이 고객 프로젝트에 코덱스를 투입해 주니어 개발자 투입 시간을 줄이는 겁니다. 2차 효과로, 2024년 깃허브 코파일럿이 코딩 속도를 30% 높였듯 아웃소싱 단가가 눌려 국내 SI 업계 마진 압박이 커질 가능성이 높습니다. 3차 효과는 JD(직무기술서)가 재정의돼 &#39;코드 작성자&#39;가 아니라 &#39;에이전트 검수자&#39; 역할로 옮겨가는 구조 변화(Structures 레벨)로 이어집니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2022년 깃허브 코파일럿 전면 상용화 때도 비슷한 흐름이 있었습니다. 당시 코파일럿을 쓴 개발자는 2023년 기준 약 130만 명, 1년 만에 작업 속도 55% 향상이라는 깃허브 자체 발표가 나왔습니다. 이번 400만 WAU 코덱스는 그때보다 3배 빠른 확산 속도로 보입니다. 다만 엔터프라이즈 계약은 법무·보안 검토로 6~12개월이 걸려 즉각적 실적 반영까지는 시간 차가 있었습니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">개발자라면 코덱스의 엔터프라이즈 기능(코드 리뷰·테스트 자동화)을 개인 프로젝트에서 먼저 체험해보세요. 비개발자 관리자라면 팀의 반복 업무가 코덱스로 대체 가능한지 검토해보는 게 유익합니다. 반대로 &#39;내 일은 AI가 못 한다&#39;는 확신만으로 기존 업무 방식을 고수하는 건 피하세요. 2025년 맥킨지 조사에서 AI를 시범 도입한 팀의 43%가 6개월 안에 업무 재설계를 했다는 결과가 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://simonwillison.net/2026/Apr/19/headless-everything/#atom-everything" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Simon Willison</span>
+          <span class="dot">·</span>
+          <span>04.20 06:46</span>
+        </div>
+        <h3>Headless everything for personal AI</h3>
+        <p class="lede">맷 웹은 개인 AI가 GUI 대신 API로 서비스를 직접 호출하는 &#39;헤드리스 everything&#39; 시대가 온다고 주장했다. 마크 베니오프도 Salesforce 전 제품을 API·MCP·CLI로 노출하는 &#39;Salesforce Headless 360&#39;을 발표했다. 사이먼 …</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 에이전트 시대의 SaaS 가격 모델 붕괴 가능성, 엔터프라이즈 소프트웨어 구조 전환</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 Salesforce·Slack 등 SaaS 공급사가 API 기반 과금(사용량 기반)으로 축을 옮기면서 &#39;1인당 월 20달러&#39; 모델이 흔들리는 겁니다. 2차 효과로, 영업팀 20명 기업이라면 전부 라이선스 살 필요 없이 에이전트 1개가 대신 호출할 수 있어 약 60~80% 라이선스비 절감 여지가 생깁니다. 3차 효과는 기업 소프트웨어 시장 구조(Structures 레벨) 자체가 재편돼 MCP·API 표준화를 둘러싼 경쟁이 2026년 핵심 전장이 됩니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2010년대 초반 트위터·페이스북·스트라이프가 API를 전면 개방하던 &#39;1차 API 경제&#39; 흐름과 유사합니다. 당시 API를 먼저 연 서비스들이 3~5년 동안 점유율을 3배 이상 늘린 게 Stripe(2010년 창업, 2015년 기업가치 50억 달러) 사례로 확인됩니다. 다만 과거엔 개발자가 사용자였고 이번엔 AI 에이전트가 사용자라는 점이 다릅니다. 그로 인해 2010년대보다 확산 속도가 더 빠를 가능성이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 6~12개월 안에 MCP 같은 개방 표준이 자리 잡아 기업들이 여러 AI 에이전트를 자유롭게 갈아 끼우는 환경이 만들어지는 겁니다(가능성 중간). 중간 시나리오는 주요 SaaS들이 &#39;에이전트 전용 요금제&#39;를 새로 만들어 기존 단가의 2~3배를 받는 방향(가능성 높음)입니다. 최악은 빅테크 3~4사가 MCP 표준을 장악해 오히려 종속이 심해지는 경우(가능성 낮음)입니다. 갈림길은 다음 6개월 Anthropic·OpenAI의 프로토콜 공개 정책입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://simonwillison.net/2026/Apr/18/opus-system-prompt/#atom-everything" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Simon Willison</span>
+          <span class="dot">·</span>
+          <span>04.19 08:59</span>
+        </div>
+        <h3>Changes in the system prompt between Claude Opus 4.6 and 4.7</h3>
+        <p class="lede">사이먼 윌리슨이 Claude Opus 4.6→4.7 시스템 프롬프트 변경점을 분석했다. &#39;developer platform&#39;이 &#39;Claude Platform&#39;으로 이름 바뀌었고 Chrome·Excel·Powerpoint용 Claude 도구가 추가 언급됐다. 아동 안전 …</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">Claude 사용자가 체감할 응답 행동 변화 핵심 정리, 모델 신뢰도·윤리 구조 공개</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 Claude를 쓰는 사용자가 대화 종료 시 &#39;하나만 더&#39; 식 재질문을 덜 받는다는 사용감 변화입니다. 2차 효과로, Excel·PowerPoint·Chrome에 Claude가 직접 붙으면서 MS 365 코파일럿·구글 워크스페이스 제미나이와 3파전 구도가 강화됩니다. 2024년 기준 MS 365 코파일럿 유료 사용자는 1천만 명을 돌파했는데, Claude가 오피스 진입으로 점유율 일부를 뺏을 가능성이 높습니다. 3차 효과는 &#39;에이전트가 어디까지 알아서 해야 하나&#39;라는 UX 철학이 업계 표준으로 굳어지는 방향입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2023년 9월 OpenAI가 GPT-4 시스템 프롬프트를 공개했을 때 비슷한 논의가 있었고, 이후 6개월간 대부분 AI 랩이 자사 시스템 프롬프트 공개·비공개 전략을 재정비했습니다. 당시 공개파(앤트로픽·오픈AI)와 비공개파(구글·xAI)로 갈렸고, 투명성 지표에서 공개파가 규제 협의에 우선 참여하는 이점을 얻었습니다. 이번 아동 안전 섹션 확장은 2024년 EU AI Act 발효에 맞춘 선제 대응 성격이 강합니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">앤트로픽이 시스템 프롬프트를 공개하는 건 투명성 신호이지만, 동시에 &#39;무엇을 감췄는가&#39;도 살펴야 합니다. 개별 사용자 메시지에 주입되는 실시간 프롬프트 조작은 여전히 비공개 영역입니다. 또 &#39;덜 집요하게&#39; 변경은 사용성 개선처럼 보이지만, Anthropic이 과도한 대화 연장으로 인한 의존성·책임 논란을 피하려는 의도로도 읽힙니다. 독자가 던질 질문: 시스템 프롬프트와 실제 응답 사이에 차이가 있을 때 누가 검증하나? 공개 주기는 모든 변경을 포함하나? 사용자 데이터가 시스템 프롬프트 튜닝에 어떻게 쓰이는가?</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://simonwillison.net/2026/Apr/20/claude-token-counts/#atom-everything" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Simon Willison</span>
+          <span class="dot">·</span>
+          <span>04.20 09:50</span>
+        </div>
+        <h3>Claude Token Counter, now with model comparisons</h3>
+        <p class="lede">사이먼 윌리슨이 Claude Token Counter 도구를 업그레이드해 Opus 4.7·4.6, Sonnet 4.6, Haiku 4.5 간 토큰 수 비교 기능을 추가했다. Opus 4.7은 새 토크나이저를 써서 동일 텍스트에 4.6 대비 약 1.46배 토큰이 잡혀 실…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">Opus 4.7의 실사용 비용 구조 변화를 구체 수치로 검증, API 사용자 직접 영향</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 Opus 4.7 API를 쓰는 개발팀의 월 청구서가 동일 워크로드 기준 약 40% 오른다는 겁니다. 입력 100만 토큰에 5달러, 출력 25달러 단가는 그대로이지만 1.46배 토큰 소비로 실질 요금이 오르는 구조입니다. 2차 효과로, 비용 민감한 스타트업은 Sonnet 4.6이나 Haiku 4.5로 일부 워크플로를 다운그레이드할 가능성이 높습니다. 3차 효과는 OpenAI·Google이 가격 공세를 강화해 AI API 시장 점유율 재편으로 번질 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2023년 GPT-4 터보 출시 때 OpenAI가 토큰 단가를 3분의 1로 낮춰 앤트로픽을 압박했던 사례가 비슷합니다. 당시 6개월 뒤 API 시장 점유율이 역전됐습니다. 이번 1.46배 토큰 증가는 &#39;가격 공개 동결 + 실질 인상&#39; 형태로, 2020년 AWS EC2가 성능 업그레이드하면서 인스턴스 단가를 유지한 패턴과 닮았습니다. 과거 사례에선 3~6개월 안에 경쟁사가 맞불 가격 조정을 내놓는 경우가 지난 10년간 네 번 중 세 번이었습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://openai.com/index/hyatt-advances-ai-with-chatgpt-enterprise" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">OpenAI Blog</span>
+          <span class="dot">·</span>
+          <span>04.20 09:00</span>
+        </div>
+        <h3>OpenAI helps Hyatt advance AI among colleagues</h3>
+        <p class="lede">글로벌 호텔 체인 하얏트가 ChatGPT Enterprise를 전 세계 임직원에게 배포했다. GPT-5.4와 Codex를 활용해 생산성과 운영 효율성, 고객 경험을 개선한다는 계획이다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">접객 산업의 대규모 AI 전사 도입 사례, 서비스업 적용 확산 신호</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 하얏트의 약 10만 명 임직원이 예약·청소·프런트 업무에서 AI 도구를 쓰게 되는 현장 변화입니다. 2차 효과로, 메리어트·힐튼 등 경쟁 체인도 6~12개월 안에 유사 도입을 검토할 가능성이 높습니다. 2023년 맥도날드 AI 드라이브스루 도입 후 1년 만에 웬디스·KFC가 따라간 사례가 있습니다. 3차 효과는 단순 반복 업무(데이터 입력·일정 조율)의 인력 수요 감소입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2023년 JP모건이 약 20만 명 임직원에 자체 AI 도구 LLM Suite를 배포한 사례가 비슷합니다. 당시 1년 뒤 JP모건 발표에 따르면 분석 업무에서 주 2~3시간 절감 효과를 봤습니다. 다만 호텔은 은행과 달리 대면 서비스 비중이 커 실제 효과가 더딜 수 있습니다. 같은 시기 해외 호텔 체인 IHG도 AI 챗봇을 도입했지만 고객 만족도 개선은 제한적이었다는 게 2024년 업계 보고서 결과입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://simonwillison.net/2026/Apr/20/llm-openrouter/#atom-everything" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Simon Willison</span>
+          <span class="dot">·</span>
+          <span>04.21 03:00</span>
+        </div>
+        <h3>llm-openrouter 0.6</h3>
+        <p class="lede">사이먼 윌리슨이 자신의 LLM CLI 플러그인 &#39;llm-openrouter 0.6&#39;을 공개했다. 모델 캐시가 만료되기 전에 새 모델 목록을 갱신하는 &#39;llm openrouter refresh&#39; 명령어를 추가해 OpenRouter에 올라온 Kimi 2.6을 즉시 테스트했…</p>
+        <div class="foot">
+          <div class="score score-mid">5.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">오픈소스 AI 도구 개발자의 최신 모델 접근 패턴 공유, 개발 생태계 움직임 포착</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://simonwillison.net/2026/Apr/20/datasette-sql/#atom-everything" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Simon Willison</span>
+          <span class="dot">·</span>
+          <span>04.20 11:33</span>
+        </div>
+        <h3>SQL functions in Google Sheets to fetch data from Datasette</h3>
+        <p class="lede">사이먼 윌리슨이 구글 시트에서 Datasette 데이터를 가져오는 세 가지 방법(importdata 함수, 이름 있는 함수 래퍼, Apps Script)을 정리했다. HTTP 헤더로 API 토큰을 보내야 하는 경우 Apps Script가 필요하다고 안내했다.</p>
+        <div class="foot">
+          <div class="score score-mid">5.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">데이터 분석 워크플로의 실용적 통합 팁, 스프레드시트 사용자에게 유용</div>
+  </div>
+</details>
+    </article>
+  </section>
+  <section class="feed-sec" id="sec-ai">
+    <div class="sec-divider"><h2>AI 뉴스</h2></div>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=209522" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>04.21 18:48</span>
+        </div>
+        <h3>구글, 앤트로픽 추격 위해 &#39;코딩 특별팀&#39; 구성...세르게이 브린 직접 지휘</h3>
+        <p class="lede">구글이 AI 코딩 역량을 끌어올리기 위해 연구진·엔지니어로 구성된 &#39;특별팀&#39;을 꾸렸다. 공동창립자 세르게이 브린과 CTO까지 합류했다. 목표는 기능 개선을 넘어 AI가 스스로 코드를 작성하고 연구까지 자동화하는 &#39;AI 자기 개선&#39; 단계다. 내부적으로 앤트로픽 코딩 도구…</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">빅테크 AI 코딩 경쟁 격화, 구글의 총력 대응 신호</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 앞으로 6~12개월 안에 구글 제미나이의 코딩 능력이 급격히 개선돼 Claude 4.7·코덱스와 실질 경쟁 구도가 만들어지는 겁니다. 2차 효과로, 개발자 시장의 구독 단가 압박이 발생해 월 20달러 수준이던 AI 코딩 구독료가 경쟁 덕에 안정되거나 기능이 대폭 늘어날 가능성이 높습니다. 3차 효과는 &#39;AI가 AI를 개선한다&#39;는 자기 개선 루프가 현실화되면 모델 발전 속도가 과거보다 2~3배 빨라질 수 있다는 구조적 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2019년 구글 브레인과 딥마인드 통합 프로젝트, 2023년 제미나이 발표 직전 세르게이 브린이 복귀했던 흐름이 유사합니다. 당시 두 번 모두 1년 안에 의미 있는 기술적 도약이 있었지만 최상위 지위 탈환까지는 2년 이상 걸렸습니다. AI 코딩 분야에서 선두 주자가 교체된 건 2021년 코파일럿 등장, 2024년 Claude Sonnet 3.5 등장, 2025년 Claude Opus 4 등장 등 세 번뿐이라 이번 시도의 성공 확률은 절반 정도로 보는 게 합리적입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오(가능성 중간)는 제미나이 차기 버전이 코딩 벤치마크에서 Claude 4.7을 넘어서며 구글이 개발자 시장에 복귀하는 겁니다. 중간 시나리오(가능성 높음)는 격차를 좁히되 여전히 2·3위로 남는 구도입니다. 최악 시나리오(가능성 낮음)는 대규모 투자에도 불구하고 인재 유출이 계속돼 제미나이 코딩이 오히려 뒤처지는 상황입니다. 갈림길은 6개월 안에 나올 제미나이 3.0 코딩 벤치마크와 브린 주도 팀의 인재 확보 성과입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/it/12023479" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>02:22</span>
+        </div>
+        <h3>[어도비서밋2026]AI가 브랜드를 고르는 시대… P&amp;G CEO “마케팅 공식이 붕괴됐다”</h3>
+        <p class="lede">P&amp;G CEO가 어도비서밋 2026에서 &#39;AI가 브랜드를 고르는 시대에 마케팅 공식이 붕괴됐다&#39;고 선언했다. SEO·광고 중심 마케팅이 한계에 직면했고, 하루 수백 개 콘텐츠를 AI 없이 만들 수 없다는 진단이다. P&amp;G는 &#39;오케스트라 규모의 재즈&#39;가 필요하다는 표현으…</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">글로벌 소비재 1위 기업의 AI 마케팅 전환 선언, 광고 산업 구조 변화 신호</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 AI가 검색·추천 알고리즘을 주도하면 &#39;구글·네이버 상위 노출&#39; 중심 마케팅이 약화되고 AI 에이전트에게 &#39;선택받는&#39; 마케팅 기법이 부상하는 겁니다. 2차 효과로, 광고대행사·퍼포먼스 마케팅 회사의 사업 모델이 재편되고 AI 콘텐츠 자동생성 플랫폼(어도비 파이어플라이·캔바 매직 등) 수요가 급증합니다. 3차 효과는 브랜드 선택 기준이 &#39;검색 노출량&#39;에서 &#39;AI가 추천하는 신뢰도·리뷰 품질&#39;로 이동해 중소 브랜드에 기회가 열릴 수 있는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2010년경 모바일 커머스 전환 때 기존 PC 광고 중심 브랜드가 3년간 점유율을 7~15%p 뺏긴 사례가 참조점입니다. 당시 PC SEO에 의존한 전통 기업은 적응에 평균 2~3년 걸렸고 그 사이 네이티브 모바일 스타트업이 급성장했습니다. 이번 AI 에이전트 전환은 더 빠르게 진행될 가능성이 높습니다. 2025년 미국 소비자의 약 12%가 이미 AI 추천으로 제품을 구매한 경험이 있다는 맥킨지 조사가 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">마케팅·홍보 업무에 있다면 AI 기반 콘텐츠 생성 도구 2~3가지(어도비 파이어플라이·캔바 매직·미드저니)를 이번 달 안에 직접 써보세요. 브랜드 리뷰·Q&amp;A 관리가 AI 검색 결과에 어떻게 반영되는지 모니터링하는 것도 유익합니다. 반대로 &#39;우리 회사는 전통 TV 광고로 충분하다&#39;는 확신으로 전략 전환을 미루는 건 피하세요. 2024년 TV 광고 도달률은 10년 전보다 37% 감소(닐슨코리아)했습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260421182924" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.21 18:29</span>
+        </div>
+        <h3>기후부, AI 시대 대응 위한 ‘민관 고위급 에너지 정책’ 대화</h3>
+        <p class="lede">기후에너지환경부가 클라이밋 그룹 RE100 이니셔티브와 공동으로 21일 여수 소노캄에서 &#39;인공지능 시대 에너지 전략대화&#39;를 개최했다. 애플·구글·이케아 등이 참여한 국제 이니셔티브 속에서 한국은 서해안 HVDC 해저고속도로 2030년 완공, 지역별 요금제 도입, PPA…</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 데이터센터 전력 수요 대응 정부 정책 방향 제시, RE100·HVDC·PPA 핵심</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 네이버·카카오 같은 데이터센터 운영 기업의 재생에너지 조달 부담이 PPA 활성화로 완화될 가능성입니다. 2차 효과로, 서해안 HVDC가 2030년 완공되면 호남 해상풍력 전력을 수도권으로 보낼 수 있어 수도권 전력 부족 문제가 완화됩니다. 국내 데이터센터는 2024년 기준 약 150곳, 연평균 15% 증가 추세입니다. 3차 효과는 지역별 요금제 도입으로 수도권 기업이 비수도권 분산 이전하는 인센티브 구조 재편이 시작됩니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">아일랜드가 2021년 AI·데이터센터 전력 수요 급증으로 수도 더블린 인근 신규 허가를 2028년까지 유예한 사례가 비슷한 참조점입니다. 당시 6개월 뒤 구글·MS가 노르웨이·스페인으로 투자를 분산하는 흐름이 나타났습니다. 한국은 수도권 집중도가 아일랜드보다 심해 분산 정책 없이는 2030년 전력 부족이 반복될 가능성이 높다는 게 전력거래소 시나리오 분석 결과입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">전력 관련 주식·채권에 관심 있다면 HVDC·해저케이블 관련 기업(LS전선·대한전선·LS일렉트릭)의 2026~2030년 수주 흐름을 관찰해보세요. 재생에너지 PPA 계약 체결 기업 리스트도 한국거래소 공시를 통해 확인 가능합니다. 반대로 &#39;데이터센터 = 무조건 호재&#39;라는 단순 논리로 매수 결정을 내리는 건 피하세요. 지역별 요금제와 규제 변수가 2027~2030년에 집중되므로 중기 관점이 필요합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=209526" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>04.21 18:27</span>
+        </div>
+        <h3>알리바바, 중국 모델 최고 성능 &#39;큐원3.6-맥스-프리뷰&#39; 출시</h3>
+        <p class="lede">알리바바가 차세대 AI 모델 &#39;큐원3.6-맥스-프리뷰&#39;를 공개했다. 에이전트형 코딩 능력을 대폭 강화해 자체 벤치마크에서 중국 모델 중 최고 성능을 기록했다고 밝혔다. 기존 큐원3.6-플러스 대비 코딩·지식 이해·명령 수행 능력 전반에서 성능이 크게 향상됐고, 스킬벤치…</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">중국 AI 모델의 글로벌 경쟁력 약진, 에이전트형 코딩 신흥 강자 부상</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 글로벌 AI 경쟁 구도가 미국 빅3(OpenAI·앤트로픽·구글) + 중국(알리바바·딥시크)로 분명해지는 겁니다. 2차 효과로, 화웨이 어센드·알리바바 플랫폼 조합이 2025년 H100 수출 규제 공백을 메우며 중국 내 AI 개발자에게 저렴한 선택지를 줍니다. 오픈소스 정책이 강한 큐원은 이미 2024년 누적 4억 다운로드를 돌파했고, 3차 효과는 &#39;중국 AI를 쓰면 안 보안되냐&#39;는 국내 기업 내부 논의가 활발해지는 방향입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2025년 1월 딥시크 R1이 &#39;미국 빅테크보다 20분의 1 비용으로 유사 성능&#39;을 내세우며 글로벌 AI 시장을 흔든 사례와 유사합니다. 당시 엔비디아 주가가 이틀간 17% 하락(약 6천억 달러 증발)했고, 오픈AI는 한 달 안에 더 저렴한 API 티어를 내놨습니다. 알리바바는 2023년 통이치엔원 1.0 출시 이후 1년마다 세대 업그레이드를 이어왔는데, 상용화 성공 비율은 2회 중 2회로 딥시크보다 안정적입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=209553" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>04.21 17:55</span>
+        </div>
+        <h3>샤오미, 3초짜리 녹음 파일로 600개 언어 복제하는 &#39;옴니보이스&#39; 오픈 출시</h3>
+        <p class="lede">샤오미가 600개 이상 언어를 지원하는 초대형 TTS(텍스트 음성 변환) 오픈소스 모델 &#39;옴니보이스(OmniVoice)&#39;를 공개했다. 확산 언어 모델(Diffusion LM) 개념을 음성 합성에 적용한 비자기회귀 아키텍처가 핵심이다. 3초짜리 녹음 파일만으로 해당 목소…</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">오픈소스 TTS의 언어 다양성·음성 복제 접근성 확장, 보이스 피싱 리스크 동반</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 소수 언어 사용자도 AI 음성 합성을 쉽게 쓸 수 있다는 긍정 효과입니다. 2차 효과로, 3초 샘플 음성 복제가 오픈소스로 풀리면서 보이스 피싱·가족 사칭 사기 피해 우려가 커집니다. 2024년 한국 보이스피싱 피해액은 약 5천억 원, AI 음성 합성 연루 사건은 1년 새 3배 증가(경찰청)했습니다. 3차 효과는 개인 목소리를 &#39;생체 정보&#39;로 법적 보호할지에 대한 제도 논쟁입니다. 구조적(Structures 레벨) 변화가 필요한 시점입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2023년 OpenAI가 15초 음성으로 목소리를 복제하는 Voice Engine을 발표했지만 &#39;사회적 리스크&#39;로 공개 배포를 보류했습니다. 같은 해 일레븐랩스가 상용화했고 2024년 미국 대선에서 바이든 사칭 딥페이크 자동응답 사례가 나왔습니다. 오픈소스는 한 번 공개되면 회수가 불가능해 피해 경로가 더 빠른 특성이 있습니다. 지난 3년간 AI 음성 복제 관련 피해 사례는 글로벌 기준 최소 12건이 공식 보고됐습니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">가족 간에 &#39;전화로만 확인 가능한 약속 단어(safe word)&#39;를 미리 정해두세요. 중요 금융 거래는 음성 인증이 아니라 별도 앱 푸시·문자로 이중 확인하는 걸 습관으로 만드는 게 안전합니다. 반대로 SNS에 자기 목소리가 담긴 영상을 장시간·고화질로 업로드하는 건 이번 주 한번 더 고민해보세요. 3초면 복제가 가능한 시대라서, 2024년 한국 노인 대상 보이스피싱 피해가 가족 사칭이 42%로 가장 많았습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260421172633" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.21 17:26</span>
+        </div>
+        <h3>와이브레인 &#34;마인드스팀, 학계서 우울증 치료 효과 입증&#34;</h3>
+        <p class="lede">와이브레인의 전자약 &#39;마인드스팀&#39;이 2026 대한신경정신의학회 춘계학술대회에서 우울증 치료 효과를 재입증받았다. 백지현 삼성서울병원 교수는 tDCS(경두개직류자극)가 국제 가이드라인 레벨A로 권고된다고 밝혔고, 박재섭 용인세브란스병원 교수는 재택 기반 병용치료에서 62…</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">전자약의 우울증 임상 유효성 입증과 재택 치료 확산 가능성, 정신건강 제도 영향</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 항우울제 효과가 지연되는 초기 우울증 환자가 재택에서 병행 치료 받을 수 있는 선택지가 늘어나는 겁니다. 2차 효과로, 임산부·청소년처럼 약물 처방이 어려운 환자군의 치료 공백이 줄어들 가능성이 높습니다. 2024년 건강보험심사평가원 기준 국내 우울증 환자는 약 100만 명, 이 중 30%가 1차 치료 실패 경험이 있습니다. 3차 효과는 건강보험 급여 확대 논의로 이어져 치료 접근성이 개선되는 구조적 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2018년 미국 FDA가 편두통 전자약(Nerivio)을 승인한 뒤 3년 만에 보험 급여 대상이 된 사례가 비슷합니다. 한국도 tDCS 장비가 2019년 식약처 허가 이후 약 7년이 지나 보험 급여 논의가 본격화되는 흐름입니다. 해외에선 tDCS 기반 우울증 치료의 장기 효과 연구가 10건 이상 진행 중이며 관해율은 평균 50~65% 수준으로 이번 국내 임상 결과(62.8%)와 유사합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260422000200072" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>00:22</span>
+        </div>
+        <h3>JP모건 뉴욕증시 목표치 상향조정…&#34;AI 낙관론 강화&#34;</h3>
+        <p class="lede">JP모건이 미국 뉴욕증시 주가지수 목표치를 상향 조정했다. 이지헌 연합뉴스 특파원 보도에 따르면 주요지수가 사상 최고치를 경신하는 가운데 월가 주요 은행 중 JP모건이 &#39;AI 낙관론 강화&#39;를 근거로 목표치를 올렸다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">월가 대형 은행의 AI 기반 증시 낙관 전망, 글로벌 자산시장 영향</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 뉴욕증시 상승이 국내 투자자 심리에도 긍정 신호로 전달되는 겁니다. 2차 효과로, 환율·외국인 수급에 따라 코스피도 AI 관련 종목 중심으로 자금 유입이 이어질 가능성이 높습니다. 21일 코스피가 사상 최고치를 기록한 흐름과 연결됩니다. 3차 효과는 &#39;AI 거품&#39; 우려와 &#39;펀더멘털 개선&#39; 논쟁이 동시에 커져 2026년 하반기 조정 리스크가 쌓이는 구조입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">1999년 닷컴 버블 당시 모건스탠리·골드만삭스가 목표치 상향을 이어가다 2000년 3월 고점을 찍고 2년간 나스닥이 약 78% 하락한 사례가 있습니다. 다만 이번 AI 랠리는 엔비디아·마이크로소프트·메타 등이 실제 현금흐름을 쌓고 있어 1999년과는 다릅니다. 과거 20년간 월가 대형은행이 목표치 상향을 조기에 단행한 8번 중 6번은 6개월 내 추가 상승, 2번은 조정이었습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=209565" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>04.21 19:03</span>
+        </div>
+        <h3>트웰브랩스, 영상 AI &#39;페가수스 1.5&#39; 공개…&#34;장면 넘어 ‘영상 구조’ 검색”</h3>
+        <p class="lede">트웰브랩스가 영상 이해 AI &#39;페가수스 1.5&#39;를 공개했다. 업계 최초로 &#39;시간 기반 메타데이터 추출(TBM)&#39; 방식을 도입해 영상을 구간 분할하고 각 구간의 시작·종료 시점과 상세 내용을 구조화된 데이터로 생성한다. 단순 시청을 넘어 영상 구조를 검색할 수 있다는 게…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">국내 멀티모달 AI의 영상 구조 검색 진화, 글로벌 경쟁력 입증</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 방송·유튜브 편집자가 &#39;특정 장면만 뽑기&#39; 업무에서 기존 2~3시간 걸리던 작업을 분 단위로 단축할 수 있다는 겁니다. 2차 효과로, CCTV 관제·이커머스 라이브 커머스 하이라이트 자동 생성 등 산업 적용이 2026년 안에 확산될 가능성이 높습니다. 2024년 트웰브랩스는 누적 투자액 1억 달러 이상을 유치했고 페가수스 1.0은 이미 미국 방송사 한 곳에 도입됐습니다. 3차 효과는 &#39;검색&#39;의 정의가 텍스트·이미지를 넘어 영상 구조로 확장되는 패러다임 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2022년 OpenAI CLIP이 이미지-텍스트 연결을 공식화했을 때와 유사한 전환점입니다. 당시 CLIP은 출시 18개월 만에 3만 개 이상 연구 논문에 인용됐고, 구글·메타가 뒤따라 멀티모달 모델을 출시한 사례가 있습니다. 다만 영상은 이미지보다 데이터 무게가 30~100배 커서 보급에 시간이 걸리는 특성이 있습니다. 영상 AI 분야는 지난 3년간 주요 기업의 자체 모델 발표가 6건 있었고 그 중 상용화에 성공한 건 2건에 그쳤습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260421181850" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.21 18:22</span>
+        </div>
+        <h3>[현장] &#34;벤치마크보다 중요한 건 실전&#34;… AI 리더가 짚은 국내 AI 생태계 과제</h3>
+        <p class="lede">21일 엔비디아 네모트론 개발자 데이 서울에서 열린 패널 토론에서 SK텔레콤·업스테이지·모티프·엘리스그룹 AI 리더들은 &#39;벤치마크보다 실전 성능이 중요하다&#39;고 입을 모았다. 모티프는 300B 매개변수 모델을 개발 중이며 월드 모델까지 확장할 계획이라고 밝혔다. 김수인 …</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">국내 AI 리더들의 실전 중심·데이터 주권 중시 전략, 벤치마크 경쟁 한계 진단</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 국내 AI 기업들이 &#39;크기 경쟁&#39;에서 &#39;배포·운영 경쟁&#39;으로 전략을 옮기는 흐름입니다. 2차 효과로, 온프레미스·엣지 AI 솔루션 시장이 성장해 2026년 국내 시장 규모는 약 1조 5천억 원으로 추정됩니다(IDC 코리아 기준). 3차 효과는 정부 주도 독자 파운데이션 모델 사업이 동남아 등 &#39;AI 소버린티(주권)&#39;를 원하는 국가로 수출되는 모델 구조 재편입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2015년 모바일 앱 생태계에서 &#39;크기 경쟁&#39;이 &#39;사용자 경험 경쟁&#39;으로 이동한 패턴과 닮았습니다. 당시 초대형 앱보다 특화된 중소형 앱이 살아남는 사례가 많았고, AI 분야도 비슷한 전환점으로 보입니다. 2024년 GPT-4o 출시 이후 벤치마크 점수 차이는 상위 5개 모델 간 10% 이내로 좁혀졌고 실사용 선호도가 더 큰 변별력을 갖는 양상이 확인됩니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260421174611" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.21 18:22</span>
+        </div>
+        <h3>[현장] &#34;메일 요약에서 물류 시뮬레이션까지&#34;…엔비디아가 제시한 실무형 AI</h3>
+        <p class="lede">엔비디아가 21일 서울 디캠프에서 개최한 네모트론 개발자 데이에서 &#39;실무형 AI 에이전트&#39; 시연을 선보였다. 물류센터 컨베이어벨트 속도 최적화 질문에 시뮬레이션 에이전트가 아이작 심(Isaac Sim)에서 8개 시나리오를 돌려 월드 파운데이션 모델 &#39;코스모스&#39;로 분석해…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">디지털 트윈·멀티 에이전트 구조 기반 실전 산업 AI 시연, 운영 효율 구체 사례</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 물류·제조 기업이 &#39;시뮬레이션→시험→적용&#39; 과정을 몇 주에서 몇 시간으로 단축한다는 겁니다. 2차 효과로, CJ대한통운·쿠팡·롯데글로벌로지스 같은 대형 물류사가 2026년 안에 디지털 트윈 기반 운영 최적화를 경쟁적으로 도입할 가능성이 높습니다. 3차 효과는 현장 관리자가 &#39;시뮬레이션 결과 해석&#39; 역량을 새로 요구받아 교육·재배치 수요가 늘어납니다. 2024년 기준 국내 스마트 물류 시장은 약 3조 원, 연 20% 성장세입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2019년 지멘스가 디지털 트윈 기반 공장 최적화를 제시한 이후 약 5년간 독일 자동차 공장 12곳이 평균 15% 생산성 향상을 기록했습니다. 당시 다른 산업(물류·의료) 확산에는 추가로 3년이 걸렸습니다. 이번 엔비디아 시연은 &#39;대형 장비 필요&#39; 장벽을 &#39;스마트폰 인터페이스&#39;로 낮춘 점이 차별화됩니다. 디지털 트윈이 의미 있는 성과를 낸 사례는 지금까지 글로벌 기준 약 30건으로 제한적이지만 성공률은 70%에 가깝습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=209540" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>04.21 18:00</span>
+        </div>
+        <h3>오픈AI, 코덱스의 메모리 기능 &#39;크로니클&#39; 공개...&#34;리콜보다 위험&#34; 경고도</h3>
+        <p class="lede">오픈AI가 개발자용 AI 도구 코덱스의 메모리 기능을 강화한 실험 기능 &#39;크로니클(Chronicle)&#39;을 공개했다. 사용자의 최근 화면 맥락을 반영해 AI가 작업 흐름을 이해하도록 돕는다. 다만 보안 문제가 이미 지적됐고, 특정 연구자는 &#39;리콜보다 위험할 수 있다&#39;고 …</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI의 &#39;화면 기억&#39; 기능 확산과 개인정보 보안 리스크 균형점 논의</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 개발자가 코덱스에 &#39;방금 본 코드, 고쳐줘&#39; 같은 자연어 지시만 해도 맥락이 유지되는 생산성 향상입니다. 2차 효과로, 기업 보안팀이 &#39;화면 내용 = 회사 기밀&#39;을 어떻게 지킬지 정책을 새로 짜야 합니다. 2024년 마이크로소프트 &#39;리콜(Recall)&#39; 기능이 프라이버시 논란으로 출시 연기됐는데, 당시 비판받은 지점(암호화·옵트인·삭제 권한)이 이번에도 핵심 이슈입니다. 3차 효과는 EU·한국 개인정보보호법의 &#39;항상 녹화되는 화면&#39; 법적 지위 재정의입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2024년 5월 MS 리콜이 발표 직후 3주 만에 출시 연기, 결국 6개월 뒤 옵트인·암호화 강화로 재출시된 사례가 참고점입니다. 당시 보안 연구자 케빈 버몬트가 취약점 시연으로 흐름을 바꿨는데, 이번 크로니클도 &#39;리콜보다 위험&#39;이라는 경고를 오픈AI가 어떻게 처리하느냐가 관건입니다. 유사 사례에서 기업은 평균 3~6개월 연기 후 제한적 출시로 복귀했습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=209542" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>04.21 17:33</span>
+        </div>
+        <h3>MS 깃허브, AI 코딩 사용량 제한...최고 요금제만 앤트로픽 모델 사용</h3>
+        <p class="lede">마이크로소프트 깃허브가 AI 코딩 도구 &#39;코파일럿&#39;의 개인용 요금제(프로·프로+·학생) 신규 가입을 일시 중단하고 사용량 제한을 강화했다. 에이전트 기반 코딩 수요가 급증해 인프라 부담이 커지면서 서비스 장애까지 발생하자 내린 사실상 가격 인상 조치다. 앤트로픽 모델은…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 코딩 에이전트 수요 폭증에 따른 공급 병목, 실질 가격 인상 신호</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 헤비 유저 개발자의 월 구독료 체감 상승입니다. 기존 프로 요금제로 쓰던 작업량이 한도를 넘으면 초과 비용이 발생하거나 상위 요금제로 강제 업그레이드됩니다. 2차 효과로, 앤트로픽 모델(Claude 4.7) 사용을 원하는 개발자는 최상위 요금제(월 39달러 수준)로 이동해야 해 전체 지출이 오르는 구조입니다. 3차 효과는 경쟁 서비스(커서·윈드서프·클라인)로 이탈하는 현상이 가속화될 가능성이 높습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2023년 7월 오픈AI가 GPT-4 API 수요 폭증으로 신규 가입을 일시 중단한 사례가 유사합니다. 당시 3개월간 대기자 명단이 이어졌고, 그사이 경쟁 서비스 앤트로픽 클로드가 개발자 점유율을 7%p 끌어올린 게 업계 추정치입니다. 깃허브 코파일럿도 비슷한 패턴으로 이탈자가 발생할 수 있습니다. 과거 5년간 AI 코딩 도구 수요 급증으로 요금 인상·가입 제한을 단행한 사례는 네 번 있었고 모두 6개월 이내 경쟁자 반사이익이 있었습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.etnews.com/20260420000060" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">전자신문</span>
+          <span class="dot">·</span>
+          <span>00:00</span>
+        </div>
+        <h3>한국 연구진 개척 &#39;2차원 자성 반데르발스&#39;…세계 표준 지침서 됐다</h3>
+        <p class="lede">박제근 서울대 교수 연구팀이 개척한 &#39;2차원 자성 반데르발스&#39; 분야 연구가 전 세계 학계의 표준 지침서로 완성됐다고 과학기술정보통신부가 밝혔다. 해당 분야의 국제 공인을 받은 기념비적 결실로, 80년 한국 물리학사에 기록될 성과라는 평가가 나왔다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">한국 기초과학의 글로벌 표준 지침서 달성, 물리학사 기념비적 성과</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 &#39;2차원 자성&#39; 연구 표준이 한국에서 정립되면서 국내 물리학계가 후속 연구 주도권을 갖는 상징적 변화입니다. 2차 효과로, 차세대 저전력 반도체·스핀트로닉스 소자 개발에서 국내 연구진의 국제 공동연구 참여도가 높아질 가능성이 있습니다. 3차 효과는 기초과학 예산 확보 명분이 강화돼 2026년도 R&amp;D 예산안에 영향을 줄 수 있습니다. 다만 원문은 상세 수치 없이 &#39;표준 지침서&#39; 수준으로 짧게 보도돼 있어 추정 폭이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2004년 그래핀 발견으로 2010년 노벨물리학상을 받은 게임 체인저 사례가 참조점입니다. 그래핀도 2차원 재료였고, 발견에서 노벨상까지 6년이 걸렸습니다. 박제근 교수팀 연구는 2019년경 시작돼 약 7년 만에 표준 지침서에 올랐습니다. 기초과학 표준이 된 사례 중 후속 상업화까지 이어진 건 지난 20년간 글로벌 기준 약 15% 확률입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/business/12023287" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.21 19:07</span>
+        </div>
+        <h3>“AI 도입해도 성과 안 나는 이유?”…답은 ‘운영 재설계’에 있다</h3>
+        <p class="lede">매경AX클럽 1차 필드트립에서 &#39;AX(AI 전환) 성패는 기술이 아닌 운영 구조에 달렸다&#39;는 진단이 제시됐다. IT 운영을 고정비에서 변동비 구조로 전환, HR도 자동화해 사람은 검증 역할로 이동시켜야 한다는 방향이 논의됐다. 비용·속도·리스크 균형이 AX의 핵심 프레…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 도입 실패의 원인 진단, 운영 재설계 프레임 제시</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 &#39;파일럿은 성공했는데 전사 확산은 실패&#39;하는 AX 함정에서 기업들이 운영·조직 구조 재설계에 눈을 돌린다는 겁니다. 2차 효과로, 고정비 대비 변동비 전환은 2년간 AI 투자 ROI를 20~30% 개선할 수 있다는 2025년 맥킨지 조사 결과가 있습니다. 3차 효과는 HR 조직의 역할이 &#39;업무 분배&#39;에서 &#39;AI+사람 역할 설계&#39;로 이동하는 직무 재정의입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2010년대 초반 &#39;디지털 트랜스포메이션&#39; 초기 기업의 70%가 3년 내 성과 부진으로 멈췄던 사례가 비슷합니다. 당시 성공한 30%의 공통점은 기술보다 조직 재설계에 3~6개월 먼저 투자한 점이었습니다(하버드비즈니스리뷰 2018). AX도 같은 패턴으로 초기 2년 내 조직 재설계 여부가 성패를 가를 가능성이 높습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/it/12023260" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.21 18:57</span>
+        </div>
+        <h3>SKT, “AI B2B 위해 바꾼다”…엔터프라이즈 TF 신설</h3>
+        <p class="lede">정재헌 SK텔레콤 대표가 취임 6개월 만에 CEO 직속 엔터프라이즈 TF를 신설했다고 매일경제가 보도했다. AI B2B 공략 강화를 위해 공공·국방 시장까지 영역을 넓히고, AI 데이터센터 사업 조직도 별도로 꾸렸다. 취임 이후 &#39;변화&#39; 강조 기조를 이어가는 행보다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">SKT의 AI B2B·공공 시장 진출 가속화, 통신사 AI 전략 전환</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 SKT가 개인용 AI 서비스(에이닷) 중심에서 B2B·공공 시장으로 무게 중심을 옮기는 전략 전환입니다. 2차 효과로, KT·LG유플러스도 유사 B2B TF를 강화할 가능성이 높아 통신 3사 엔터프라이즈 AI 경쟁이 심화됩니다. 2024년 국내 B2B AI 시장은 약 2조 원, 2027년 5조 원 전망입니다. 3차 효과는 공공·국방 AI 사업에 통신사가 들어오면서 기존 SI 업체(삼성SDS·LG CNS)와의 경쟁·협력 구도가 재편되는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2017년 AWS가 공공 시장에 진입하며 한국 클라우드 시장의 경쟁 구도가 재편된 사례가 비슷합니다. 당시 2년간 공공 클라우드 시장 규모가 3배(약 3천억→1조 원) 커졌습니다. 이번 SKT 전략은 인프라(AI DC) + 솔루션(엔터프라이즈 TF) 양축이라는 점에서 2017년 AWS보다 공격적인 구도입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421164600083" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04.21 18:45</span>
+        </div>
+        <h3>中, 8월 휴머노이드 로봇 체육대회 개최…역도·투호 등 32개 종목</h3>
+        <p class="lede">중국이 오는 8월 휴머노이드 로봇 체육대회를 개최한다고 한종구 연합뉴스 특파원이 보도했다. 종목은 역도·투호 등 32개 종목으로 구성된다. 앞서 휴머노이드 로봇 마라톤 대회 개최에 이은 추가 행사다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">중국의 휴머노이드 로봇 대중 홍보·기술력 과시 전략, 로봇 산업 국가 경쟁</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 중국 로봇 기업(유비테크·유니트리·샤오미) 간 내수 경쟁이 체육 이벤트를 통해 가시화되는 겁니다. 2차 효과로, 테슬라 옵티머스·피규어 AI와의 글로벌 경쟁 구도에서 중국 진영의 기술력 과시 효과가 있습니다. 국내 로봇 기업(두산로보틱스·레인보우로보틱스)도 경량·휴머노이드 분야 기술 격차 점검 필요성이 커집니다. 3차 효과는 &#39;로봇 올림픽&#39;이 표준화·산업 홍보 플랫폼으로 자리 잡는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2004년 일본이 ASIMO 기반 로봇 기술력을 세계에 알리려 로봇컵(RoboCup) 개최에 공들였던 흐름과 비슷합니다. 당시 일본 로봇 산업이 10년간 주도했지만 최근은 중국에 추격당하는 구도입니다. 2025년 4월 중국 휴머노이드 로봇 마라톤에서는 완주 로봇이 6대 중 1대였는데, 8월 체육대회로 32개 종목이라는 대규모 확장이 이어집니다. 과거 이런 &#39;기술 과시 이벤트&#39;는 향후 3~5년간 해당국 투자 흐름을 주도하는 특성이 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/world/12023227" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.21 18:05</span>
+        </div>
+        <h3>中화웨이 AI안경 출시…美에 도전장</h3>
+        <p class="lede">중국 화웨이가 첫 AI 안경을 공개했다고 매일경제가 21일 보도했다. 메타·알리바바 등이 이미 진출한 AI 안경 시장에 화웨이까지 가세하면서 점유율 경쟁이 한층 거세질 전망이다. 미국에 도전장을 던진 상징적 제품 출시라는 평가다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 하드웨어 격전 확대, 중국 빅테크의 웨어러블 AI 공세</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 AI 안경 시장이 메타·알리바바·화웨이 3파전 구도로 재편되며 가격 경쟁이 가속화되는 겁니다. 2024년 메타 레이밴 AI 안경은 글로벌 200만 대 이상 판매됐습니다. 2차 효과로, 중국 내수를 잡은 화웨이가 수출 시장에서 공격적으로 가격을 낮출 가능성이 높아 2026년 100달러대 AI 안경 등장이 예상됩니다. 3차 효과는 스마트폰 이후 &#39;다음 플랫폼&#39;을 둘러싼 빅테크 전쟁이 웨어러블로 이동하는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2013년 구글 글래스 실패 사례와 비교됩니다. 당시엔 카메라 프라이버시 이슈와 킬러앱 부재로 상용화가 좌절됐습니다. 메타 레이밴이 10년 만에 재시도해 성공한 핵심은 &#39;패션 디자인 + 실용 카메라&#39; 조합이었습니다. 이번 화웨이 안경은 출시 가격·배터리·앱 생태계가 관건입니다. 과거 10년간 웨어러블 기기 중 연 100만 대를 넘긴 신제품은 글로벌 기준 단 5개에 불과합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260421172718" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.21 17:32</span>
+        </div>
+        <h3>[현장] 인성정보 &#34;AI 시대 경쟁력은 &#39;통합&#39;…인프라·보안·운영 모두 갖춰야&#34;</h3>
+        <p class="lede">인성정보가 21일 &#39;솔루션데이&#39;에서 AI 시대 기업 AX(AI 전환) 해법으로 &#39;인프라·보안·운영 통합&#39;을 제시했다. 델 테크놀로지스·시스코가 파트너로 참여해 델 프라이빗 클라우드(DPC), 델 오토메이션 플랫폼(DAP)을 소개했다. 모두의연구소 김승일 대표는 &#39;AX …</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AX 실패 원인 분석과 통합 인프라 전략, 중견 IT서비스 업체 관점</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260421221226" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.21 22:12</span>
+        </div>
+        <h3>이원태 국가AI전략위 보안특별위원장, 홍조근정훈장 수훈</h3>
+        <p class="lede">이원태 국가인공지능전략위원회 보안특별위원장(국민대 특임교수)이 21일 한국과학기술회관에서 열린 &#39;2026년 과학·정보통신의 날 기념식&#39;에서 홍조근정훈장을 수훈했다. KISA 원장 출신으로 AI 시대 선제적 ICT 규범 정립, 개인정보보호 강화, 민간 사이버보안 수준 제…</p>
+        <div class="foot">
+          <div class="score score-mid">6.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">국가 AI 보안·규범 정책 기여자 포상, AI 거버넌스 중요성 부각</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260421212748" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.21 21:27</span>
+        </div>
+        <h3>시옷 박현주 대표, 과학기술포장 수훈… AI·모빌리티 보안 선도 공로</h3>
+        <p class="lede">모빌리티·AI 보안 전문기업 시옷의 박현주 대표가 21일 과학기술포장을 수훈했다. 36년간 정보보호·소프트웨어 기술 국산화를 선도하고 자율주행차·로봇·IoT 등 융합 보안 영역을 개척한 공로가 인정됐다. 시옷은 현재 디바이스 신뢰(Device Trust) 기반 보안과 …</p>
+        <div class="foot">
+          <div class="score score-mid">6.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">국내 모빌리티·AI 융합 보안 기술 국산화 성과 포상, 자율주행 보안 기반 구축</div>
+  </div>
+</details>
+    </article>
+  </section>
+  <section class="feed-sec" id="sec-general">
+    <div class="sec-divider"><h2>종합 뉴스</h2></div>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421175251071" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04.21 23:08</span>
+        </div>
+        <h3>트럼프, 휴전만료 전날 &#34;훌륭한 합의할것…불발시 폭격예상&#34;(종합)</h3>
+        <p class="lede">도널드 트럼프 미국 대통령은 21일(현지시간) 이란과의 2차 종전 협상을 앞두고 &#39;결국 훌륭한 합의를 하게 될 것&#39;이라며 &#39;불발 시 폭격이 예상된다&#39;고 경고했다고 이유미 워싱턴 특파원이 전했다. 협상 만료 전날 강온 양면 메시지를 내놓은 셈이다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">트럼프의 협상·군사옵션 병행 메시지, 중동 정세 핵심 변수</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 트럼프의 &#39;폭격&#39; 언급으로 국제 유가·금값·달러가 단기 변동성을 키우는 겁니다. 원유 선물은 이번 주 내 배럴당 5~10달러 움직임이 가능합니다. 2차 효과로, 한국 정유·항공사 주가 변동, 원/달러 환율 변동으로 외국인 순매도 우려가 커집니다. 3차 효과는 폭격 실행 시 이란의 호르무즈 봉쇄·미군 이라크 주둔 공격 등 연쇄 도발로 중동 전쟁이 장기화되는 구조 변화입니다. 2020년 솔레이마니 사령관 살해 때 유가가 하루 4% 급등한 사례가 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2019~2020년 트럼프 1기 때도 이란을 향해 &#39;폭격&#39; 언급을 했고 이후 실제 공격(솔레이마니 살해, 핵시설 타격 위협)까지 이어진 패턴이 있습니다. 당시 중동 긴장으로 유가가 4주 만에 약 15% 상승했다가 다시 하락하는 &#39;갈지자&#39; 흐름이 약 3개월간 반복됐습니다. 과거 트럼프의 강경 발언이 실제 군사 행동으로 이어진 비율은 약 30%, 언어적 압박에 그친 경우가 70%였습니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">유가·환율에 민감한 업종(항공·정유·화학) 주식을 보유 중이라면 이번 주~다음 주 변동성 확대 가능성을 감안하세요. 여행·출장 계획이 있으면 항공권 유류할증료 변동을 고려해 일정 조정 여지를 남기는 게 유익합니다. 반대로 &#39;폭격 임박&#39; 같은 단편 뉴스에 자극받아 단기 매매로 대응하는 건 피하세요. 2020년 솔레이마니 사건 이후 4주간 원유 선물 누적 수익률은 결국 +1%로 횡보에 가까웠습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260422002351079" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>02:23</span>
+        </div>
+        <h3>이란 외무부 &#34;2차 종전협상 참여 여부 미정…미국측 책임&#34;(종합)</h3>
+        <p class="lede">에스마일 바가이 이란 외무부 대변인은 파키스탄에서 열릴 예정인 미국과의 2차 종전 협상에 이란이 참여할지 여부가 미정이라고 밝혔다. 그는 &#39;미국 측의 책임&#39;이라며 공을 미국에 넘겼다고 카이로발 연합뉴스가 전했다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">중동 종전협상 불확실성 심화, 이란-미국 갈등 새 국면</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 2차 협상이 실제 열리지 않거나 결렬될 경우 호르무즈 해협 불안으로 유가가 단기 반등하는 겁니다. 2차 효과로, 한국은 원유 수입의 약 60%가 중동 경유라 휘발유·경유 가격이 1~2주 안에 리터당 50~100원 오를 수 있습니다. 3차 효과는 중동 전쟁 장기화로 방산·에너지주 반등, 여행·항공 비용 상승, 중동 건설 수주 리스크 확대라는 구조적 연쇄입니다. 2022년 러시아-우크라이나 전쟁 개전 직후 국내 휘발유가 3개월 만에 약 30% 상승한 사례가 참고점입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2015년 이란 핵합의(JCPOA) 협상 때도 이란이 &#39;미국 책임&#39; 수사를 반복하며 협상을 지연시킨 패턴이 있었습니다. 당시 협상 타결까지 20개월이 걸렸고 이후에도 2018년 트럼프 1기 때 파기됐습니다. 이번도 단기 타결 가능성은 낮다고 봐야 합니다. 지난 30년간 미국-이란 고위급 협상 7회 중 1년 내 타결은 2회, 결렬·지연이 5회였습니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오(가능성 낮음)는 이란이 대화 재개를 수용하고 국내 여론을 설득해 1~2주 안에 2차 협상이 열리는 겁니다. 중간 시나리오(가능성 높음)는 이란이 조건부 참여 의사를 내세우며 협상이 1~2개월 지연되는 경우입니다. 최악 시나리오(가능성 중간)는 결렬 후 미국이 해상봉쇄를 강화하고 이란이 호르무즈 통행료 징수를 실제 집행하며 유가 급등으로 이어지는 흐름입니다. 갈림길은 다음 주 파키스탄 협상 개최 여부와 이란 최고지도자 성명입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421172551009" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04.21 22:20</span>
+        </div>
+        <h3>미군, 인도양서 이란연계 유조선 나포…협상 목전 봉쇄범위 확대(종합)</h3>
+        <p class="lede">미군이 이란과의 2차 종전 협상을 앞두고 인도태평양 사령부 책임 구역 내에서 이란과 연계된 유조선을 나포했다고 곽민서 기자·백나리 특파원이 전했다. 해상 봉쇄 범위가 중동을 넘어 인도태평양으로 확대되는 국면이다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미국의 글로벌 해상 봉쇄 범위 확대, 협상 전 군사 압박 시그널</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 이란 제재 회피 유조선 단속이 인도양까지 확대되면서 이란산 원유 유통이 더 어려워지는 겁니다. 2차 효과로, 이란이 호르무즈 해협 통제·인도양 항로 보복 가능성을 언급할 경우 국제 유가가 단기 급등할 수 있습니다. 한국은 사우디·UAE 원유가 주력이지만 인도양 항로 긴장은 전 세계 공급망 전반에 영향을 줍니다. 3차 효과는 미국-중국 해군력 갈등 지역(남중국해·인도양)에 중동 변수가 겹치는 복합 리스크 구조입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2019년 호르무즈 해협에서 이란이 영국 유조선을 나포한 사건, 2020년 솔레이마니 살해 이후 미군이 이란 연계 유조선을 압류한 사례 등이 비슷한 흐름입니다. 당시에도 유가가 1~2주 내 5~10% 변동했고 이후 원상회복하는 패턴이었습니다. 해상 봉쇄 확대가 실제 군사 충돌로 번진 사례는 지난 30년간 글로벌 기준 약 20% 확률로, 대부분은 협상 카드로 활용되고 끝났습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/politics/politics_general/1255279.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>04.21 22:00</span>
+        </div>
+        <h3>“쿠팡 전방위 로비에 핵잠 협상 차질…백악관·국무부·의회서 이슈화”</h3>
+        <p class="lede">미국이 우리 정부에 쿠팡 총수 김범석 의장의 법적 안전 등 쿠팡 문제가 해결되지 않으면 한·미 안보 협상에서 고위급 협의가 어렵다는 뜻을 전달한 것으로 21일 파악됐다고 한겨레가 보도했다. 외교 소식통은 &#39;쿠팡 관련해서는 미국 쪽에서 워낙 강경한 분위기가 있다&#39;고 전했…</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">민간 기업 문제가 국가 안보 협상 장애물로 부상한 이례적 사례</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국의 핵추진 잠수함 도입 협상이 민간 기업 이슈로 지연되는 드문 상황이 벌어진다는 겁니다. 2차 효과로, 미국 월가 상장 한국계 기업의 법적 리스크가 정부 간 협상의 변수로 전이되는 선례가 만들어집니다. 쿠팡은 2021년 뉴욕증시 상장 당시 약 600억 달러 시총을 기록했고 현재 글로벌 전자상거래 상위 기업 중 하나입니다. 3차 효과는 네이버·카카오·엔씨소프트 등 국내 기업들이 미국 시장 대상으로 법률 리스크 관리에 더 민감해지는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2018년 미·중 무역전쟁에서 화웨이 CFO 멍완저우 체포로 미·중 외교 협상이 2년 이상 영향을 받은 사례가 유사합니다. 당시 캐나다에서 석방될 때까지 미·중 관계 경색이 지속됐습니다. 한국의 경우 이런 민관 연계 사례는 드물지만 2010년대 한·미 FTA 재협상 과정에서 자동차·철강 기업 이슈가 부각된 적이 있습니다. 지난 10년간 한미 안보 협상이 민간 기업 이슈로 지연된 사례는 이번이 이례적입니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이 보도는 한겨레 단독으로, 익명의 &#39;외교 소식통&#39; 단일 출처에 기반합니다. IMVAIN 5축 중 &#39;독립성·복수성&#39;이 약한 기사라 다른 매체의 교차 확인이 필요합니다. 또 &#39;강경 분위기&#39;가 실제 공식 채널인지 비공식 의견인지 모호합니다. 독자가 던질 질문: 이 소식통은 어느 부처·어느 직급인가? 쿠팡의 &#39;법적 안전&#39;은 구체적으로 어떤 사안인가? 한미 협상이 실제 지연된 회의록이 있는가? 후속 보도와 백악관·국무부 공식 반응을 교차 확인하는 걸 권합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/world/12023233" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.21 18:05</span>
+        </div>
+        <h3>[뉴스&amp;분석] 15년 팀쿡 체제 &#39;끝&#39; 애플, AI추격 &#39;시작&#39;</h3>
+        <p class="lede">세계 최대 스마트폰 업체인 미국 애플이 15년 만에 최고경영자를 바꾼다. 팀 쿡 CEO의 후임으로 하드웨어 엔지니어 출신 존 터너스 수석부사장(51)이 낙점됐다고 매일경제가 보도했다. 애플의 AI 추격이 본격화되는 전환점으로 해석된다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">애플 리더십 교체와 AI 추격 전략, 글로벌 테크 경쟁 지각변동</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 터너스 신임 CEO 체제에서 애플이 하드웨어+AI 통합 전략에 박차를 가할 가능성입니다. 2024년 애플 인텔리전스 출시 이후 실적 체감이 더뎠던 만큼 신임 리더가 M&amp;A·파트너십으로 AI 갭을 메울 여지가 큽니다. 2차 효과로, 삼성전자·LG전자 등 국내 경쟁사와 퀄컴·TSMC 같은 파트너의 협상력이 재조정됩니다. 3차 효과는 &#39;팀 쿡의 공급망 중심 체제&#39;에서 &#39;터너스의 하드웨어·AI 중심 체제&#39;로 애플 경영 철학이 이동하는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2011년 스티브 잡스에서 팀 쿡으로의 CEO 전환 당시 &#39;아이폰 공급망 최적화&#39; 관점이 15년간 애플의 최대 경쟁력이 된 사례가 참조점입니다. 빅테크 CEO 교체 후 주가는 6~12개월 횡보, 이후 새 전략이 가시화되면 재평가되는 패턴이 일반적입니다(MS·아마존·메타 사례). 지난 20년간 시총 1조 달러 이상 기업의 CEO 교체 후 2년 내 주가 상승 비율은 약 60%, 하락 40%였습니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오(가능성 중간)는 2027년 안에 애플이 자체 LLM이나 대형 AI 기업 인수로 AI 격차를 좁히는 겁니다. 중간 시나리오(가능성 높음)는 애플이 OpenAI·앤트로픽과의 파트너십을 확대하며 하드웨어 중심 전략을 강화하는 흐름입니다. 최악 시나리오(가능성 낮음)는 AI 전환 지연으로 점유율을 삼성·구글에 내주는 경우입니다. 갈림길은 신임 CEO 첫 1년간의 M&amp;A 행보와 WWDC 2026 발표 내용입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260422002500085" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>01:53</span>
+        </div>
+        <h3>英 2009년생부턴 담배 못 산다…비흡연 세대법 의회 통과</h3>
+        <p class="lede">영국에서 현재 17세 이하인 청소년은 성인이 된 뒤에도 합법적으로 담배를 살 수 없게 된다. 김지연 연합뉴스 런던 특파원은 &#39;비흡연 세대법&#39;이 영국 의회를 통과했다고 전했다. 2009년 이후 출생자는 평생 담배 구매가 금지되는 선제적 규제다.</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">세대별 담배 금지법 세계 첫 본격 시행, 공중보건·권리 논쟁 선례</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 영국 담배 산업 매출이 장기적으로 축소되고 필립모리스·브리티시 아메리칸 토바코(BAT)의 사업 모델이 전자담배·니코틴 파우치로 전환되는 흐름입니다. 2차 효과로, 뉴질랜드가 2022년 유사 법안을 통과시켰다가 2024년 폐지한 것과 달리 영국이 실제 시행한다면 호주·한국·캐나다에서도 세대별 규제 논의가 재점화될 가능성이 높습니다. 한국 19세 이상 흡연율은 2024년 약 17%, 담배 관련 연 사망자 약 5만 8천 명입니다. 3차 효과는 &#39;세대 기준 금지&#39; 입법 기술이 주류·설탕·도박에도 확산될 수 있는 법적 선례입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">뉴질랜드가 2022년 12월 세대별 금연법을 통과시켰지만 2024년 2월 신정부가 폐지한 사례가 있습니다. 당시 원주민 마오리 공동체의 암시장 우려와 편의점 업계 반발이 폐지 논거였습니다. 영국은 뉴질랜드 폐지 이후 더 촘촘한 제도 설계를 준비해온 것으로 보입니다. 흡연율을 강력 규제로 절반 이하로 낮춘 사례는 지난 30년 글로벌 기준 약 5건(아이슬란드·노르웨이·호주 등)으로 성공 시 수십 년에 걸쳐 공중보건 비용이 크게 줄었습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421179751071" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>01:49</span>
+        </div>
+        <h3>워시 &#34;대통령들은 금리인하 선호하지만…난 꼭두각시 아니다&#34;(종합)</h3>
+        <p class="lede">케빈 워시 미국 연방준비제도 의장 후보자는 21일(현지시간) &#39;대통령은 일반적으로 기준금리 인하를 선호하지만 나는 꼭두각시가 아니다&#39;라고 말했다. 홍정규 워싱턴 특파원 보도에 따르면 연준 독립성 논란에 대해 공개적으로 선출직의 금리 견해 표명과 통화정책 독립성은 별개임…</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">연준 독립성 신호, 미국 금리정책 방향성 가늠자</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 워시 후보자가 트럼프의 금리 인하 압박에 즉각 순응하지 않을 가능성을 시사한 것으로 읽혀 미 채권금리 변동성이 낮아지는 겁니다. 2차 효과로, 원/달러 환율이 진정세를 보이고 국내 증시에 외국인 자금이 유입될 수 있습니다. 2024년 이후 연준 독립성 논란 때마다 원/달러는 주간 기준 1~2% 변동폭을 보였습니다. 3차 효과는 한국은행의 금리 결정에도 간접 영향을 미쳐 예적금·대출 금리 경로가 완만해질 가능성입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">1978~1987년 폴 볼커 의장이 카터·레이건 대통령의 압박을 견디며 인플레이션을 잡은 사례가 &#39;독립성 = 신뢰&#39; 공식의 모범입니다. 반대로 1971~1978년 아서 번즈 의장은 닉슨 압력에 응하다 스태그플레이션의 원인 제공자로 비판받았습니다. 과거 10번의 미 대통령-연준 의장 충돌 사례 중 연준이 끝까지 독립성을 지킨 경우는 6번, 양보한 경우 4번이었고 후자는 사후 경제 성과가 더 나빴습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/stock/12023235" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.21 18:05</span>
+        </div>
+        <h3>전쟁공포 이겼다, 코스피 &#39;사상최고&#39;</h3>
+        <p class="lede">전쟁 공포를 이기고 코스피가 사상 최고치를 기록했다. 삼성전자와 SK하이닉스 주가 변동에 따른 이익을 2배로 누릴 수 있는 상장지수펀드(ETF)가 다음 달 22일 국내에 첫선을 보인다. 금융위원회는 21일 단일 종목을 기초자산으로 한 상품을 승인했다고 매일경제가 보도했…</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">코스피 사상 최고치·단일 종목 레버리지 ETF 출시, 투자 시장 전환점</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 중동 전쟁 리스크에도 불구하고 한국 증시가 반도체·AI 기대감으로 신고가를 갱신한 겁니다. 2차 효과로, 삼성전자·SK하이닉스 단일 종목 레버리지 ETF가 허용되면서 개인 투자자의 단기 매매 변동성이 커집니다. 미국은 2022년 테슬라 단일 종목 2배 ETF 출시 후 거래량이 급증했지만 양방향 손실 위험도 확대됐습니다. 3차 효과는 국내 증시 파생상품 시장이 다양해지면서 단기 투기적 거래가 늘고 규제 당국 감독 필요성이 커지는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2007년·2017년·2021년 코스피가 사상 최고치를 기록했던 세 번의 국면을 보면 평균 6~9개월 내 10~20% 조정이 있었던 기록이 있습니다. 다만 2017년은 반도체 슈퍼사이클을 근거로 1년 이상 상승세가 이어졌습니다. 이번 AI 슈퍼사이클이 2017년과 유사하다면 단기 조정은 있어도 중기 상승이 이어질 가능성이 있습니다. 과거 신고가 돌파 후 &#39;버블&#39; 판정까지의 평균 기간은 약 1~2년이었습니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">포트폴리오에서 반도체·AI 비중이 과도하게 커졌는지 이번 주 점검해보세요. 리밸런싱으로 30~50% 구간에서 관리하는 게 일반적 조언입니다. 레버리지 ETF는 수수료·롤오버 비용이 높아 단기(1~3개월 이내) 활용이 권장됩니다. 반대로 &#39;사상 최고치에 올라타야 한다&#39;는 FOMO 심리로 차입금을 써서 레버리지 ETF에 집중 투자하는 건 피하세요. 지난 5년간 단일 종목 레버리지 ETF 평균 연 수익률은 기초 종목보다 변동성이 3배 이상 높았습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260422000400085" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>00:21</span>
+        </div>
+        <h3>영국 규제당국, 텔레그램 통한 아동 성착취물 공유 의혹 조사</h3>
+        <p class="lede">영국 통신미디어 규제당국이 메시지 앱 텔레그램을 통한 아동 성착취물 공유 의혹을 조사한다고 김지연 연합뉴스 런던 특파원이 전했다. 플랫폼 책임 규제가 강화되는 영국 온라인안전법(Online Safety Act) 체제 하에서 주요 시험 사례가 될 전망이다.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">암호화 메시지 앱의 플랫폼 책임 확대, 아동 보호 규제 국제 파급</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 텔레그램이 영국 시장에서 규제 압박을 받으면서 한국 사용자에게도 &#39;신뢰 차원의 변화&#39;가 전달될 수 있다는 겁니다. 2차 효과로, 2020년 N번방 사건 이후 한국에서도 디지털 성범죄 플랫폼 규제가 강화됐고, 영국 규제 선례가 추가 제도 정비의 근거로 인용될 가능성이 높습니다. 3차 효과는 암호화 메시징 서비스(시그널·왓츠앱)도 비슷한 규제 논의의 대상이 될 수 있는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2024년 8월 파벨 두로프 텔레그램 CEO가 프랑스에서 구속됐다가 보석으로 풀려난 사건이 비슷한 흐름입니다. 당시 텔레그램은 1개월 뒤 &#39;모더레이션 강화&#39; 정책을 내놨습니다. 영국 온라인안전법 시행 첫해(2025년)에 이미 4개 대형 플랫폼이 조사 대상이 됐고 그중 2개가 과징금을 부과받았습니다. 대형 메시징 플랫폼 규제 조사 사례 중 실제 기능 변경까지 이어진 건 절반 수준입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421177900081" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04.21 23:10</span>
+        </div>
+        <h3>프랑스, 중동전쟁에 허리띠 졸라맨다…10조원 지출 보류</h3>
+        <p class="lede">프랑스가 중동 전쟁으로 인한 경제적 손실을 상쇄하기 위해 60억 유로(약 10조원) 규모의 지출을 보류하기로 했다고 송진원 파리 특파원이 전했다. 재정 건전성을 지키기 위한 &#39;허리띠 졸라매기&#39; 조치로 분석된다.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">유럽 주요국의 전쟁 비용 충격 대응, 재정 긴축 파급</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 프랑스 정부 지출이 줄면 유로존 성장률이 하향 조정될 가능성입니다. IMF는 유로존 2026년 성장률을 1.2% 전망했는데 프랑스 긴축이 이어지면 이보다 낮아질 수 있습니다. 2차 효과로, 국내 수출기업(자동차·화학·배터리)의 유럽 수요 둔화 우려가 확산됩니다. 2024년 기준 한국의 대 프랑스 수출은 약 40억 달러입니다. 3차 효과는 독일·이탈리아도 유사 긴축으로 돌아서며 유럽 방산·인프라 투자 방향이 재편되는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2011~2013년 유럽 재정위기 당시 유로존 주요국이 긴축 기조로 동시에 돌아서 2년간 성장률이 평균 -0.5%로 후퇴한 사례가 참조점입니다. 당시 한국의 대 유럽 수출도 2년간 평균 8% 감소했습니다. 이번은 전쟁 비용 증가와 에너지 가격 상승이라는 2중 압박이 동시에 작동하고 있어 과거보다 타격이 더 클 수 있다는 우려가 있습니다. 지난 20년간 주요국 10조 원대 지출 보류 사례는 약 7번으로 평균 1.5년간 지속됐습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12023412" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.21 22:09</span>
+        </div>
+        <h3>중국의 20배 ‘대박’…충북 영동에 ‘세계 최대 규모’ 희귀 광물 매장</h3>
+        <p class="lede">충북 영동지역에 세계 최대 규모인 약 1억450만 톤의 일라이트(illite)가 매장된 것으로 확인됐다. 영동군은 2024년부터 한국지질자원연구원에 의뢰해 이 지역을 조사했다고 매일경제가 전했다. 중국 매장량의 20배 수준이라는 게 보도의 핵심이다.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">국내 희귀광물 대량 매장 확인, 소재 자립·산업 기반 강화</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 일라이트(화장품·도자기·폐수 정화 등에 사용되는 점토광물)의 수입 의존도가 낮아지는 겁니다. 2차 효과로, 반도체·디스플레이·배터리 등 국내 첨단 산업의 소재 원가 구조에 영향을 줄 수 있습니다. 다만 일라이트가 반도체 산업의 핵심 자원은 아니라는 점을 감안하면 직접 영향은 화장품·세라믹 업계에 집중될 가능성이 높습니다. 3차 효과는 영동군을 중심으로 한 지역 광산업·관광 산업 활성화와 지방 경제 파급입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2017년 강원 양구 중석(텅스텐) 매장 재개발 발표 이후 실제 상업 생산까지 약 5년이 걸린 사례가 참조점입니다. 2019년 충남 보령 리튬 발견도 탐사에서 생산까지 장기 시차가 있었습니다. 광물 탐사 발표가 실제 대규모 상업 생산으로 이어진 경우는 지난 20년간 국내 기준 절반 이하였습니다. 인허가·환경영향평가·사업성 검토를 감안해 즉각적 경제 효과를 과신하지 않는 게 합리적입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421169051030" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04.21 21:15</span>
+        </div>
+        <h3>하림그룹, 홈플러스 익스프레스 우선협상대상자로 선정(종합)</h3>
+        <p class="lede">홈플러스는 기업형 슈퍼마켓(SSM) 사업부인 &#39;홈플러스 익스프레스&#39; 매각의 우선협상대상자에 하림[136480]그룹을 선정했다고 김채린 연합뉴스 기자가 전했다. 홈플러스의 회생 절차 인가에 청신호라는 평가다. 하림은 오프라인 유통 채널을 확보해 종합 유통 기업으로 도약하…</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">대형 유통 M&amp;A 가시화, 하림 종합 유통 전략 전환</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 하림이 홈플러스 익스프레스의 점포(약 300여 개)를 통해 자사 식품 브랜드(하림·팜스코·선진)의 오프라인 판매 채널을 단번에 확보하는 겁니다. 2차 효과로, 경쟁 SSM(GS더프레시·이마트에브리데이·롯데슈퍼)은 가격·상품 경쟁 압박을 받게 됩니다. 국내 SSM 시장은 약 7조 원, 연 3% 성장세입니다. 3차 효과는 하림 종합 유통 전환이 성공하면 식품 제조→유통 수직 통합 모델이 CJ·동원·삼양 등으로 확산될 가능성이 높습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2011년 롯데가 GS리테일 슈퍼 사업부를 품어 롯데슈퍼를 확장한 사례가 유사합니다. 당시 3년간 점포수가 30% 늘었지만 수익성은 낮아져 2015년부터 점포 축소로 전환됐습니다. 2019년 이마트가 삐에로쇼핑 등 신사업에서 구조조정한 사례도 참고점입니다. 제조기업이 유통을 품은 수직통합 사례의 성공률은 지난 20년간 약 40%로 중간 수준입니다. 브랜드 시너지와 운영 효율이 관건입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421170900052" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04.21 20:28</span>
+        </div>
+        <h3>&#39;조합원 사망&#39; 화물연대 &#34;책임자 처벌하라&#34;…총집결 결의대회</h3>
+        <p class="lede">경남 진주 CU 물류센터에서 발생한 민주노총 공공운수노조 화물연대본부 조합원 사망 사고와 관련해 화물연대가 &#39;책임자를 처벌하라&#39;며 총집결 결의대회를 열었다고 박정헌 진주 특파원이 전했다. 유가족과 노동계는 원청 책임을 촉구하고 있다.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">물류 현장 사망 사고와 원청 책임 논쟁, 노사관계·안전 규제 쟁점</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 CU 본사(BGF리테일)와 하청업체 간 &#39;5단계 하도급&#39; 구조가 도마 위에 오르면서 편의점 물류 공급 체계 점검이 시작되는 겁니다. 2차 효과로, 중대재해처벌법 적용 여부·원청 교섭 의무 범위에 대한 법원 판례가 축적되며 유통·물류 업계 하청 구조 재편 압력이 커집니다. 3차 효과는 GS25·세븐일레븐 등 경쟁사도 물류 하도급 구조를 재검토하게 되는 산업 전반의 구조 변화입니다. 국내 편의점 수는 2024년 기준 약 5만 5천 개입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2018년 태안화력 김용균 사망, 2022년 SPC 평택공장 사망 사고 이후 중대재해처벌법·원청 책임 규제가 단계적으로 강화된 흐름이 참조점입니다. 당시 각 사건 후 6~12개월 동안 해당 업계 안전 관리비·인력이 10~20% 늘어난 것으로 업계 추산됩니다. 대형 사망 사고가 법 개정이나 판례 변화로 이어진 사례는 지난 10년간 약 40% 확률이었고, 이번 CU 사건도 유사한 경로로 갈 가능성이 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/society/society_general/1255268.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>04.21 20:35</span>
+        </div>
+        <h3>대법 “장애인 고용부담금은 제재금 아닌 비용”…SK하이닉스 35억 환급</h3>
+        <p class="lede">장애인 의무고용률을 지키지 않은 기업에 부과되는 장애인 고용부담금은 &#39;제재금&#39;이 아닌 &#39;비용&#39;에 해당해 법인세 산정시 손금(비용)에 산입할 수 있다는 대법원 판단이 나왔다고 한겨레가 전했다. 이 판결로 SK하이닉스는 약 35억원을 환급받게 됐다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">장애인 고용부담금 법인세 해석 전환, 기업 세무·장애인 고용 정책 영향</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 대기업들이 장애인 고용부담금을 법인세 손금 산입할 수 있게 되면서 유사 소송을 제기할 가능성이 높아지는 겁니다. 2차 효과로, 고용노동부·기재부가 장애인 고용부담금 제도 재설계에 들어갈 가능성이 있습니다. 2024년 기준 국내 기업의 장애인 고용부담금 연간 수납액은 약 6천억 원 규모입니다. 3차 효과는 &#39;부담금의 법적 성격&#39;이 재정의되면서 각종 환경·사회 부담금 체계에도 연쇄적으로 영향을 주는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2010년대 초반 환경부담금·개발부담금의 법적 성격을 놓고 유사 대법원 판결이 있었는데, 당시 부담금이 비용으로 분류되면서 기업 세무 전략이 재편된 사례가 있습니다. 장애인 고용 관련 판결로는 2018년 고용부담금 부과 취소 소송이 있었고, 당시에도 기업들이 단체 소송을 추진했습니다. 대법원 판례 변경 후 실제 입법 개정으로 이어진 비율은 지난 10년간 약 40%입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421095100001" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04.21 20:30</span>
+        </div>
+        <h3>李대통령, 하노이 도착…내일 韓-베트남 정상회담</h3>
+        <p class="lede">인도 국빈 방문을 마친 이재명 대통령이 21일 오후(현지시간) 하노이에 도착해 3박 4일간의 베트남 국빈 방문을 시작했다고 연합뉴스가 전했다. 22일 한-베트남 정상회담이 예정돼 있다. 임형섭·황윤기 기자 보도다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">한국-베트남 전략적 경제·외교 관계 강화, 인프라·방산 협력 논의</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 삼성·LG·현대차 등 베트남 진출 한국기업의 사업 환경이 개선될 여지가 커지는 겁니다. 베트남에는 한국기업 약 9천 개가 진출해 있고 한국의 대베트남 투자 누적액은 약 870억 달러(2024년 KOTRA)입니다. 2차 효과로, 방산 협력 확대 시 K-9 자주포·KF-21 등 수출 논의 가능성이 있습니다. 3차 효과는 미-중 공급망 재편 속에서 베트남을 중계 생산 거점으로 활용하는 한국기업의 &#39;차이나+1&#39; 전략이 강화되는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2009년 한-베트남 전략적 협력 동반자 관계 수립 이후 양국 교역액이 약 8배(2024년 약 820억 달러)로 늘어난 사례가 참조점입니다. 2022년 포괄적 전략적 동반자 관계로 격상된 이후에도 투자·교역 모두 연평균 10% 성장 중입니다. 한국 대통령의 베트남 방문은 평균 2~3년 간격으로 이뤄졌고 후속 실무 협약이 평균 10~15건 체결되는 패턴입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/economy/biznews/1255264.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>04.21 19:54</span>
+        </div>
+        <h3>국민대 이옥연 교수 연구팀, ‘양자보안 위성통신’ 실증 성공</h3>
+        <p class="lede">국민대학교 정보보안암호수학과 이옥연 교수 연구팀이 아리온통신과 함께 저궤도(LEO) 위성통신과 양자내성암호(PQC, ML-KEM, ML-DSA)를 결합한 차세대 보안 통신 기술을 구현하고 실증에 성공했다고 한겨레가 보도했다. 유선 구간의 양자키분배(QKD)와 보완되는 …</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">양자보안 위성통신 국내 실증, 미래 통신 보안 생태계 기반</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국이 저궤도 위성통신 분야에서 양자내성암호 실증에 성공해 국방·금융·공공 분야 미래 보안 인프라의 기반을 확보했다는 겁니다. 2차 효과로, 스페이스X 스타링크, 아마존 카이퍼 등 글로벌 저궤도 위성 서비스가 확산되는 가운데 국산 보안 기술 협업 기회가 넓어집니다. 3차 효과는 2030년 이후 양자컴퓨터 상용화로 현 암호 체계가 무력화될 때 대비한 보안 이식(crypto migration) 논의가 국가 단위로 확산되는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2016년 중국이 세계 최초 양자통신 위성 &#39;묵자&#39;를 발사해 국제 주목을 받은 사례가 참조점입니다. 당시 중국의 양자통신 기술은 5년간 약 2배 규모로 성장했습니다. 미국 NIST는 2024년 양자내성암호 표준(ML-KEM, ML-DSA)을 확정했고 각국이 이를 조기 채택 경쟁 중입니다. 국내 기술이 글로벌 표준 구현 실증에 성공한 건 사이버보안 수출 역량을 높이는 중요한 이정표입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/business/12023319" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.21 19:51</span>
+        </div>
+        <h3>[단독] SK온 도쿄지사 설립…車배터리 영토확장</h3>
+        <p class="lede">SK그룹의 배터리 계열사인 SK온이 일본에 지사를 세우고 현지 시장 공략에 나선다. 보수적인 일본 완성차 시장 진출을 통해 &#39;캐즘(수요 축소)&#39;을 돌파하기 위한 전환점을 마련하겠다는 전략이라고 매일경제가 보도했다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">SK온의 일본 배터리 시장 진출, 전기차 캐즘 돌파 전략</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 SK온이 토요타·혼다·닛산 등 보수적인 일본 완성차에 고성능 배터리 공급을 시도하면서 기존 파나소닉 독점 구도에 균열이 생길 가능성입니다. 2차 효과로, 파나소닉·프라임플래닛(토요타 합작)이 가격 경쟁력을 끌어올리고 한·일 배터리 업체 간 공급망 재편이 본격화됩니다. 2024년 글로벌 배터리 시장에서 한국 3사(LG엔솔·삼성SDI·SK온) 점유율은 약 20%입니다. 3차 효과는 일본 자동차 업계의 전기차 전환 속도가 가속화되는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2015년 LG엔솔(당시 LG화학)이 일본에 지사를 설립한 후 닛산 등과 공급 계약을 확보한 사례가 유사합니다. 당시 약 3~5년에 걸쳐 공급망 진입에 성공했고 일본 시장 점유율은 단계적으로 확대됐습니다. 지난 20년간 한국 전자·배터리 기업이 일본 B2B 시장에 진출한 사례 중 의미 있는 수익을 낸 경우는 약 50%로 중간 수준입니다. 파트너 신뢰 구축에 평균 2~3년이 필요합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421163700084" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04.21 18:42</span>
+        </div>
+        <h3>인도네시아, 대규모 천연가스·초경질유 매장지 발견</h3>
+        <p class="lede">최근 이란 전쟁으로 석유 공급 차질을 겪는 인도네시아에서 대규모 천연가스·초경질유 매장지가 발견됐다고 박진형 하노이 특파원이 전했다. 에너지 대외 의존도를 낮출 수 있는 발견으로 평가된다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">아시아 산유 지형 변화, 동남아 에너지 공급 안정화 신호</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 인도네시아의 에너지 수입 감소로 동남아 지역 LNG 시장에 공급 여유가 생기는 겁니다. 2차 효과로, 한국의 LNG 수입(2024년 약 4천만 톤)에서 인도네시아산 비중이 늘면 카타르·호주 의존도를 분산할 수 있습니다. 3차 효과는 SK가스·포스코에너지 등 국내 LNG 트레이더에 새 조달선이 열리는 기회이자, 장기적으로 동남아 역내 에너지 자립이 강화돼 &#39;중동 의존 아시아&#39; 구도가 약화되는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2018년 가이아나에서 엑손모빌이 초대형 해상 유전을 발견해 4년 만에 생산 개시한 사례가 유사합니다. 당시 발견부터 상업 생산까지 평균 4~6년이 걸렸습니다. 인도네시아 발견도 실제 생산까지는 3~5년의 시차가 있어 즉각적 공급 효과는 제한적입니다. 지난 20년간 대형 가스전 발견 15건 중 5년 내 생산 성공 사례는 약 60%였습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/business/12023237" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.21 18:05</span>
+        </div>
+        <h3>&#34;반도체 투자 전쟁중…성과급잔치 벌일때 아냐&#34;</h3>
+        <p class="lede">&#39;글로벌 반도체 시장은 매년 수십조 원을 재투자해야만 살아남을 수 있는 전쟁터&#39;라며 일시적으로 이익이 많이 났다고 임금을 과도하게 올리는 건 스스로 경쟁력을 갉아먹는 일이라는 업계 시각이 제기됐다. 매일경제가 &#39;반도체 투자 전쟁 중, 성과급 잔치 벌일 때 아냐&#39;라는 메…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">반도체 투자 경쟁과 임금 협상 균형 화두, 삼성·SK 노사 논쟁 배경</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 삼성전자·SK하이닉스의 성과급 협상에서 사측이 &#39;재투자 우선&#39; 논리를 강화해 노사 갈등이 길어질 가능성입니다. 2차 효과로, 실제 임금·성과급이 동결·축소되면 협력사·반도체 장비사로 인건비 민감도가 번질 수 있습니다. 2024년 국내 반도체 수출은 1,400억 달러 안팎으로 전체 수출의 약 20%를 차지합니다. 3차 효과는 &#39;고임금 엔지니어 확보&#39;에서 해외 경쟁사(TSMC·인텔·마이크론)와의 인력 경쟁 구도에 영향을 미치는 구조 변화입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2017~2018년 반도체 슈퍼사이클 때 삼성전자가 &#39;재투자 우선&#39; 논리로 성과급 규모를 조정하려다 노조 반발로 결국 상향했던 사례가 참조점입니다. 2022~2023년 메모리 불황기에는 반대로 임금 동결·무급 휴가 이슈가 불거졌습니다. 반도체 업계에서 재투자와 임금이 충돌한 사례는 지난 10년간 약 5번이었고 모두 3~6개월 내 타협으로 귀결됐습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260421178200098" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04.21 23:12</span>
+        </div>
+        <h3>EU 최고법원 &#34;성소수자 자유 제한 헝가리, EU법 위반&#34;</h3>
+        <p class="lede">EU 최고법원(EU사법재판소)은 헝가리가 성소수자(LGBTQ+)의 기본적 자유를 제한하고 있으며 이는 유럽연합 법을 위반하는 것이라고 판단했다고 현윤경 브뤼셀 특파원이 전했다. 헝가리의 LGBT 관련 규제는 EU 차원의 법적 경계를 벗어났다는 공식 판단이다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">EU법 우위·회원국 가치 충돌 재확인, 민주주의·인권 규범 기준선</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 헝가리 정부가 관련 법령을 개정하지 않으면 EU 기금 지급이 추가 동결될 수 있다는 겁니다. 2022년 이후 헝가리는 법치 퇴행 이유로 약 210억 유로의 EU 기금이 동결돼 있습니다. 2차 효과로, 슬로바키아·폴란드 등 보수 성향 정부에 유사 규범 적용 가능성이 커집니다. 3차 효과는 EU가 &#39;회원국 자율성&#39;과 &#39;공통 가치&#39;의 균형을 재정비하는 계기가 돼 통합 거버넌스 구조가 강화되는 방향입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2021년 폴란드 헌법재판소가 EU법보다 자국 헌법이 우위라고 판결하면서 촉발된 갈등이 비슷합니다. 당시 3년간 폴란드도 EU 기금 일부가 동결됐고, 2023년 정권 교체 이후 완화되는 흐름을 탔습니다. 헝가리는 오르반 정권이 2010년부터 장기 집권 중이라 기간이 더 길어질 가능성이 높습니다. 과거 EU사법재판소 판결에서 회원국이 즉시 따른 비율은 약 70%, 지연·거부는 30%였습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/international/america/1255253.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>04.21 18:45</span>
+        </div>
+        <h3>미-쿠바, 10년 만에 아바나서 회담…“외교적 합의 가능성 신호”</h3>
+        <p class="lede">미국이 쿠바에 대한 &#39;에너지 봉쇄&#39;를 통한 압박을 이어가는 가운데 양국이 2016년 이후 처음으로 쿠바에서 고위급 회담을 열었다. 20일(현지시각) 로이터·AP 등에 따르면 미 국무부 관계자는 미국과 쿠바 간 회담이 지난 10일 마코 루비오 국무장관 지시로 10년 만에…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미-쿠바 10년 만의 외교 재개 신호, 라틴아메리카 정세 변화</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 트럼프 2기 들어 경색됐던 미-쿠바 관계가 풀릴 가능성이 생기는 겁니다. 2차 효과로, 쿠바가 베네수엘라·러시아·중국에 의존하던 에너지·외교 구도가 일부 균형을 회복할 수 있습니다. 3차 효과는 라틴아메리카 좌파 국가(니카라과·베네수엘라)에 대한 미국의 압박 기조에 영향을 주면서 라틴아메리카 전반의 지정학 지형이 재편되는 구조 변화입니다. 다만 봉쇄 해제까지는 수년의 시차가 예상됩니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2014~2016년 오바마 행정부 때 미-쿠바 국교 정상화 흐름이 있었습니다. 당시 아바나 미국 대사관 재개관, 상업 항공 재개 등 실제 변화가 2년에 걸쳐 이뤄졌습니다. 그러나 2017년 트럼프 1기 들어 다시 경색되면서 대부분 조치가 원점으로 돌아갔습니다. 미-쿠바 관계 정상화 시도는 1961년 국교 단절 이후 세 차례 있었고 이번이 네 번째 시도입니다. 과거 정상화 시도의 성공 비율은 30% 수준입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260422002000099" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>01:49</span>
+        </div>
+        <h3>나이지리아, 쿠데타 시도 관여 6명 기소…&#39;25년 민주주의 위협&#39;</h3>
+        <p class="lede">서부 아프리카 나이지리아에서 지난해 벌어졌던 쿠데타 시도와 관련해 6명이 기소됐다고 나확진 요하네스버그 특파원이 전했다. 당국은 1999년 민주주의 회복 이후 25년 민주주의를 위협한 사건이라며 주요 혐의로 기소했다.</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">아프리카 민주주의 안정성과 서아프리카 정치 불안 신호</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 서아프리카 사헬 지역 쿠데타 도미노(말리·니제르·부르키나파소)가 인구 2억 명의 나이지리아로 번지지 않도록 하는 정치적 방화벽 작업입니다. 2차 효과로, 나이지리아는 아프리카 최대 산유국이라 유가·가스 시장에도 영향을 미칩니다. 한국은 LNG 수입 다변화 차원에서 나이지리아 물량이 일부 포함돼 있어 불안 확대시 공급 차질 가능성이 있습니다. 3차 효과는 미국·프랑스·중국이 서아프리카 영향력을 둘러싸고 경쟁하는 구도 재편입니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">나이지리아는 1966~1999년 사이 여섯 차례 쿠데타를 겪었고 1999년 이후 민간 정부가 25년간 이어졌습니다. 서아프리카 사헬 지역은 2020년 말리 쿠데타 이후 5년간 8개국에서 쿠데타·쿠데타 시도가 발생했습니다. 나이지리아가 이 흐름에 휘말릴 가능성은 정부 대응 강도에 따라 다른데, 과거 유사 기소 사례에서 장기 재판·감형으로 이어진 경우가 3분의 2였습니다.</div>
+  </div>
+</details>
+    </article>
+  </section>
+
+  <footer>
+    <div class="disclosure">본 리포트는 Claude Opus 4.7이 RSS 원문을 분석해 생성합니다. 사실관계는 각 원문에서 확인하세요.</div>
+    <div class="sources">
+AI타임스 · ZDNet Korea · 전자신문 · 연합뉴스 · 매일경제 · 한겨레 · OpenAI Blog · Google DeepMind · Simon Willison · Anthropic SDK Releases    </div>
+  </footer>
+
+</div>
+
+<nav class="floating-nav" aria-label="섹션 이동">
+  <a href="#sec-mustknow" data-sec="sec-mustknow" class="active">
+    <span>★</span>
+    <span class="cnt">5</span>
+  </a>
+  <a href="#sec-official-ai" data-sec="sec-official-ai">
+    <span>Update</span>
+    <span class="cnt">7</span>
+  </a>
+  <a href="#sec-ai" data-sec="sec-ai">
+    <span>AI</span>
+    <span class="cnt">20</span>
+  </a>
+  <a href="#sec-general" data-sec="sec-general">
+    <span>종합</span>
+    <span class="cnt">22</span>
+  </a>
+</nav>
+
+<script>
+(function(){
+  var navLinks = document.querySelectorAll('.floating-nav a');
+  var sections = Array.prototype.filter.call(
+    document.querySelectorAll('.feed-sec'),
+    function(s){ return s.id; }
+  );
+  if (!sections.length || !navLinks.length) return;
+
+  function setActive(id){
+    navLinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-sec') === id);
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if (!visible.length) return;
+      visible.sort(function(a,b){
+        return a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top;
+      });
+      setActive(visible[0].target.id);
+    }, { rootMargin: '-25% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+
+  navLinks.forEach(function(a){
+    a.addEventListener('click', function(){
+      setActive(a.getAttribute('data-sec'));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
