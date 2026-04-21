@@ -296,7 +296,10 @@ _BROWSER_HEADERS: dict[str, str] = {
         "text/xml;q=0.9, text/html;q=0.8, */*;q=0.5"
     ),
     "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Accept-Encoding": "gzip, deflate, br",
+    # brotli('br') 은 일부 서버(OpenAI, Simon Willison 등) 가 사용하지만 Python
+    # requests 기본 설치에는 디코더가 없어 content 가 압축된 상태로 feedparser
+    # 에 전달돼 파싱이 깨진다. gzip/deflate 만 요청.
+    "Accept-Encoding": "gzip, deflate",
     "Cache-Control": "no-cache",
     "Pragma": "no-cache",
 }
