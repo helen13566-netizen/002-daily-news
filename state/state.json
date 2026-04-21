@@ -1,8 +1,8 @@
 {
   "issue_number": 22,
-  "pipeline_status": "completed",
+  "pipeline_status": "notifying",
   "last_success_at": "2026-04-22T03:02:36+09:00",
-  "last_attempt_at": "2026-04-22T03:02:36+09:00",
+  "last_attempt_at": "2026-04-22T03:04:25+09:00",
   "failed_stage": null,
   "error_reason": null,
   "retry_count": 0,
