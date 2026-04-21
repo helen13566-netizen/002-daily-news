@@ -902,3 +902,5 @@ def test_process_feed_uses_feed_window_hours(
     result = collect_mod.process_feed(feed, now_kst=fixed_now)
     assert len(result.articles) == 1
     assert result.articles[0].title == "Old but within 72h"
+    # v20: 피드 category="official_ai" 는 그대로 존중 — ai_news 로 재분류 금지
+    assert result.articles[0].category == "official_ai"
