@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fafaf7">
+<title>굿모닝 · ISSUE #21</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Charter", "Merriweather", "Noto Serif KR", Georgia, serif;
+  background: #fafaf7;
+  color: #242424;
+  font-size: 18px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0;
+  /* 플로팅 네비 공간 확보 */
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+}
+a { color: inherit; text-decoration: none; }
+a:active { opacity: 0.6; }
+
+.app { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+/* 상단 바 */
+.bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: calc(16px + env(safe-area-inset-top)) 0 16px;
+  border-bottom: 1px solid #e6e6df;
+}
+.bar .brand { font-family: -apple-system, sans-serif; font-size: 14px; font-weight: 800; letter-spacing: -0.01em; }
+.bar .brand::before { content: "■ "; color: #1a8917; }
+.bar .edition { font-family: -apple-system, sans-serif; font-size: 13px; color: #6b6b6b; }
+
+.intro { padding: 40px 0 32px; text-align: center; }
+.intro .greeting {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #1a8917; margin-bottom: 16px;
+}
+.intro h1 {
+  font-size: 40px; font-weight: 700;
+  line-height: 1.12; letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+.intro .sub { font-family: -apple-system, sans-serif; font-size: 15px; color: #6b6b6b; }
+.intro .meta {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; color: #999; margin-top: 20px; letter-spacing: 0.04em;
+}
+.intro .meta::before { content: "—— "; }
+.intro .meta::after { content: " ——"; }
+
+.hashtags {
+  text-align: center; padding: 8px 0 24px;
+  font-family: -apple-system, sans-serif; font-size: 13px;
+}
+.hashtags span {
+  display: inline-block; margin: 4px 6px;
+  color: #1a8917; font-weight: 600;
+}
+
+/* 섹션 */
+section.feed-sec { scroll-margin-top: 20px; }
+
+.sec-divider {
+  text-align: center; padding: 50px 0 24px;
+  position: relative;
+}
+.sec-divider::before {
+  content: ""; position: absolute; top: 50%; left: 0; right: 0;
+  height: 1px; background: #e6e6df;
+}
+.sec-divider h2 {
+  display: inline-block; position: relative;
+  background: #fafaf7; padding: 0 20px;
+  font-size: 20px; font-weight: 700;
+  letter-spacing: -0.01em; margin: 0;
+}
+
+/* 스토리 카드 */
+.story {
+  display: block; padding: 28px 0;
+  border-bottom: 1px solid #e6e6df;
+}
+.story:active { opacity: 0.6; }
+.story:last-of-type { border-bottom: none; }
+
+.story .head {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; color: #6b6b6b;
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.story .head .src { font-weight: 700; color: #242424; }
+.story .head .dot { color: #c5c5c5; }
+
+.story h3 {
+  font-size: 24px; font-weight: 700;
+  line-height: 1.22; letter-spacing: -0.018em;
+  margin: 0 0 10px;
+  color: #242424;
+}
+
+.story .lede {
+  font-size: 16px; line-height: 1.55;
+  color: #4a4a4a; margin: 0 0 14px;
+}
+
+.story .foot {
+  font-family: -apple-system, sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: #6b6b6b;
+  flex-wrap: wrap; gap: 8px;
+}
+.story .foot .read { display: flex; align-items: center; gap: 6px; }
+.story .foot .read::before { content: "📖"; }
+
+/* 기사 키워드 해시태그 */
+.story .keywords {
+  font-family: -apple-system, sans-serif;
+  margin-top: 12px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.story .keywords span {
+  background: #f2f2ed;
+  color: #1a8917;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 중요도 pill — 점수별 색 스케일 (v3) */
+.score {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  min-height: 24px;
+  position: relative;
+}
+.score::before { content: "★"; font-size: 10px; }
+
+/* 9.0+ — 최고 등급: 그라디언트 + 더블 링 + 글로우 펄스 + 🔥 */
+.score-vhigh {
+  background: linear-gradient(135deg, #991b1b 0%, #dc2626 50%, #f59e0b 100%);
+  color: #fff;
+  padding: 5px 13px;
+  font-size: 12.5px;
+  font-weight: 900;
+  box-shadow:
+    0 0 0 2px #fafaf7,
+    0 0 0 4px #991b1b,
+    0 4px 14px rgba(153, 27, 27, 0.55);
+  animation: glow-vhigh 2.2s ease-in-out infinite;
+}
+.score-vhigh::before { content: "🔥"; font-size: 11px; }
+@keyframes glow-vhigh {
+  0%, 100% {
+    box-shadow:
+      0 0 0 2px #fafaf7,
+      0 0 0 4px #991b1b,
+      0 4px 14px rgba(153, 27, 27, 0.55);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px #fafaf7,
+      0 0 0 5px #dc2626,
+      0 6px 22px rgba(220, 38, 38, 0.8);
+  }
+}
+
+/* 8.5+ — 매우 높음: 파스텔 초록 */
+.score-superhigh {
+  background: #86efac; color: #14532d;
+  border: 1px solid #4ade80;
+}
+
+/* 8.0+ — 높음: 파스텔 노랑 */
+.score-high {
+  background: #fde68a; color: #713f12;
+  border: 1px solid #facc15;
+}
+
+/* 7.0+ — 중상: 파스텔 시안 */
+.score-midhigh {
+  background: #cffafe; color: #0e7490;
+  border: 1px solid #a5f3fc;
+}
+
+/* 5.0+ — 중간: 파스텔 라벤더 */
+.score-mid {
+  background: #e0e7ff; color: #3730a3;
+  border: 1px solid #c7d2fe;
+}
+
+/* 3.0+ — 낮음: 파스텔 민트 */
+.score-low {
+  background: #dcfce7; color: #14532d;
+  border: 1px solid #bbf7d0;
+}
+
+/* <3.0 — 매우 낮음: 연회색 */
+.score-vlow {
+  background: #f3f4f6; color: #9ca3af;
+  border: 1px solid #e5e7eb;
+}
+
+/* Top story */
+.top-story {
+  padding: 32px 0 40px;
+  border-bottom: 1px solid #e6e6df;
+}
+.top-story .kicker {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #c2410c; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.top-story h2 {
+  font-size: 32px; font-weight: 700;
+  line-height: 1.12; letter-spacing: -0.022em;
+  margin: 0 0 14px;
+}
+.top-story .by {
+  font-family: -apple-system, sans-serif;
+  font-size: 14px; color: #6b6b6b;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6e6df;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.top-story .body {
+  font-size: 18px; line-height: 1.68;
+}
+.top-story .body::first-letter {
+  font-size: 64px; float: left;
+  line-height: 0.85; margin: 8px 12px 0 0;
+  font-weight: 700; color: #1a8917;
+}
+.top-story .keywords {
+  font-family: -apple-system, sans-serif;
+  margin-top: 20px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.top-story .keywords span {
+  background: #f2f2ed; color: #1a8917;
+  padding: 4px 12px; border-radius: 999px;
+  font-size: 12.5px; font-weight: 600;
+}
+
+/* 인사이트 레이어 — <details> 토글 */
+.why-insights {
+  margin-top: 20px;
+  background: #f7f7f2;
+  border: 1px solid #e6e6df;
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+.why-insights[open] { padding-bottom: 18px; }
+.why-insights > summary {
+  cursor: pointer;
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #1a8917;
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 32px;
+}
+.why-insights > summary::-webkit-details-marker { display: none; }
+.why-insights > summary::after {
+  content: "▾"; transition: transform 0.2s;
+  font-size: 14px; color: #6b6b6b;
+}
+.why-insights[open] > summary::after { transform: rotate(180deg); }
+
+.why-insights .axis {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px dashed #d6cdbb;
+}
+.why-insights .axis:first-of-type { border-top: none; padding-top: 4px; }
+.why-insights .axis .axis-title {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; font-weight: 800; color: #242424;
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.why-insights .axis .axis-title .icon { font-size: 16px; }
+.why-insights .axis .axis-body {
+  font-size: 14.5px; line-height: 1.55; color: #3a3a3a;
+}
+
+/* 뒤로 / footer */
+footer {
+  padding: 50px 0 30px;
+  text-align: center;
+  font-family: -apple-system, sans-serif;
+  font-size: 12.5px; color: #6b6b6b;
+  border-top: 1px solid #e6e6df;
+  margin-top: 40px;
+}
+footer .disclosure {
+  color: #6b6b6b; font-size: 12px; max-width: 520px;
+  margin: 0 auto 14px; line-height: 1.6;
+}
+footer .issue { font-weight: 800; color: #242424; margin-bottom: 14px; letter-spacing: 0.05em; }
+footer .sources {
+  color: #999; font-size: 11.5px; line-height: 1.8;
+  margin-top: 8px;
+}
+
+/* ═══════════════════════════════════════ */
+/* 플로팅 섹션 네비게이션 (고정)            */
+/* ═══════════════════════════════════════ */
+.floating-nav {
+  position: fixed;
+  left: 50%; transform: translateX(-50%);
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 30;
+  display: flex; gap: 4px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border: 2px solid #1a8917;
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.9),
+    0 8px 28px rgba(26, 137, 23, 0.22),
+    0 2px 10px rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+  max-width: calc(100vw - 24px);
+}
+.floating-nav a {
+  flex: 1 1 auto;
+  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 13px; font-weight: 700;
+  color: #4a4a4a;
+  white-space: nowrap;
+  min-height: 40px;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.12s;
+}
+.floating-nav a:active { transform: scale(0.95); }
+.floating-nav a .cnt {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 20px; padding: 0 6px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 999px;
+  font-size: 11px; font-weight: 800;
+  color: #6b6b6b;
+  font-variant-numeric: tabular-nums;
+}
+.floating-nav a.active {
+  background: #1a8917; color: #fff;
+  box-shadow: 0 2px 8px rgba(26, 137, 23, 0.35);
+}
+.floating-nav a.active .cnt {
+  background: rgba(255, 255, 255, 0.25);
+  color: #d9f99d;
+}
+
+@media (min-width: 640px) {
+  .floating-nav a { padding: 10px 18px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+
+
+
+<div class="app">
+
+  <header class="bar">
+    <div class="brand">Daily Reader</div>
+    <div class="edition">Vol. 21 · 오전</div>
+  </header>
+
+  <section class="intro">
+    <div class="greeting">굿모닝</div>
+    <h1>오늘의 오전<br>이야기</h1>
+    <div class="sub">총 44건 · 읽는 데 약 22분</div>
+    <div class="meta">2026.04.22 01:02 KST · Issue #21</div>
+  </section>
+
+  <div class="hashtags">
+<span>##국가AI전략위</span> · <span>##엔비디아네모트론</span> · <span>##앤트로픽147조</span> · <span>##SK하이닉스SOCAMM2</span> · <span>##공공의료AI전환</span> · <span>##미이란휴전협상</span> · <span>##코스피사상최고</span> · <span>##K정유수출</span>  </div>
+
+  <section class="feed-sec must-read" id="sec-mustknow">
+    <article class="top-story">
+      <div class="kicker">
+        <span>⭐ Editor's Pick · AI타임스</span>
+        <span class="score score-superhigh">8.5</span>
+      </div>
+      <h2>앤트로픽, 아마존에 147조 투입해 5GW 컴퓨팅 구축...아마존은 36조 추가 투자</h2>
+      <div class="by">
+        <span>By AI타임스</span>
+        <span>·</span>
+        <span>04.21 15:22</span>
+      </div>
+      <div class="body">앤트로픽이 앞으로 10년간 1000억달러(약 147조원) 이상을 아마존웹서비스(AWS) 기술에 투입한다고 20일(현지시간) 밝혔다. 아마존의 자체 AI 칩 &#39;트레이니엄&#39;이 핵심이며 클로드 학습·배포용으로 최대 5기가와트(GW) 컴퓨팅 용량을 확보했다. 아마존도 기존 80억달러 투자에 더해 최대 250억달러(약 36조원)를 추가 투자하기로 했다.</div>
+      <div class="keywords">
+<span># 앤트로픽</span><span># AI</span>      </div>
+      <details class="why-insights" open>
+  <summary>🧭 인사이트 보기</summary>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 아마존 트레이니엄 칩 생산 확대로 TSMC 파운드리 라인과 SK하이닉스 HBM·SOCAMM2 공급 계약이 커지는 흐름입니다. 2차 효과는 5GW 컴퓨팅 규모는 일반 가정 500만 세대 전력에 맞먹어 버지니아·오하이오 등 미국 데이터센터 밀집 지역 전기요금 상승과 송전망 투자 압박이 심해질 것입니다. 3차 효과는 엔비디아 의존도를 낮추려는 빅테크 &#39;자체 칩&#39; 흐름이 가속돼 2027년 전후 글로벌 AI 칩 시장 점유율 구도가 지금과 상당히 달라질 가능성이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">2017년 전후 마이크로소프트·오픈AI가 애저에 130억달러 규모 계약을 맺은 사례가 비슷한 reference class입니다. 당시 계약 뒤 2년 안에 GPT-3·GPT-4가 나왔고, 애저 매출이 2배로 뛰었습니다. 147조원은 그보다 훨씬 큰 규모지만 회수 구조도 비슷합니다. 단, 당시보다 AI 수익 모델(구독·API)이 아직 불확실해 투자 회수에 5~10년이 걸릴 가능성이 있고, 거품 논란도 잇따를 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">가장 가능성 높은 중간 시나리오는 2027년까지 클로드 매출이 연 500억달러대에 도달하면서 앤트로픽 기업가치가 추가로 커지는 그림입니다. 최선 시나리오(가능성 중간)는 트레이니엄이 엔비디아 H200·B200 대비 30% 저렴한 구간을 만들어내 AI 단가를 낮추는 것. 최악 시나리오(가능성 낮음)는 수요가 기대만큼 못 따라오면서 147조원 투자가 과잉 설비로 남아 AI 버블 논쟁이 커지는 경우입니다. 갈림길은 2026년 말 클로드·트레이니엄 공동 실적 공개입니다.</div>
+  </div>
+</details>
+    </article>
+
+    <div class="sec-divider"><h2>꼭 알아야 할 뉴스</h2></div>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421175251071" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 23:08</span>
+      </div>
+      <h3>트럼프, 휴전만료 전날 &#34;훌륭한 합의할것…불발시 폭격예상&#34;(종합)</h3>
+      <p class="lede">도널드 트럼프 미국 대통령이 21일(현지시간) 이란과의 2차 종전 협상을 앞두고 &#39;결국 훌륭한 합의를 하게 될 것&#39;이라고 말하면서도, 휴전만료 전날 &#39;합의 불발 시 폭격이 예상된다&#39;는 취지의 발언을 했다고 연합뉴스가 보도했다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.4</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/economy/12023259" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:54</span>
+      </div>
+      <h3>[단독] 미국·일본 “한국산 석유 없으면 큰일”…휘발유·항공유 요청 빗발쳐</h3>
+      <p class="lede">중동발 원유 공급 불안이 장기화하자 미국·일본 등 주요국이 우리 정부에 &#39;석유 제품 수출 통제 자제&#39;를 요청하는 사례가 늘었다고 매일경제가 보도했다. 호주·뉴질랜드는 휘발유, 미국은 항공유 공급 요청이 접수됐으며 공급 불안 속에 한국 정유 수요가 증가하고 있다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.3</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209523" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 14:46</span>
+      </div>
+      <h3>LG, &#39;암 치료&#39; 에이전트 연구 성과 공개…”글로벌 제약사 등과 협업 추진”</h3>
+      <p class="lede">LG AI연구원(원장 이홍락·임우형)이 미국 샌디에이고에서 열린 미국암연구학회(AACR) 2026에서 밴더빌트대 메디컬 센터와 공동 개발 중인 &#39;암 에이전틱 AI&#39; 연구 성과를 17~22일(현지시간) 공개했다. 이 AI는 암 환자 조직 분석부터 치료 전략 설계까지 전 과정을 하루 만에 수행하도록 설계됐고, 출발점은 조직 …</p>
+      <div class="keywords">
+<span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.3</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209546" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 15:50</span>
+      </div>
+      <h3>SK하이닉스, AI 서버 메모리 &#39;SOCAMM2 192GB&#39; 본격 양산</h3>
+      <p class="lede">SK하이닉스가 10나노급 6세대(1c) LPDDR5X 기반 차세대 메모리 모듈 &#39;SOCAMM2 192GB&#39;를 본격 양산한다고 21일 밝혔다. 모바일용 저전력 메모리를 서버 환경으로 변형한 모듈로, AI 서버에 주력 투입된다. 압착식 커넥터로 신호 무결성을 높이고, 기존 RDIMM 대비 2배 이상의 대역폭과 얇은 두께·높은…</p>
+      <div class="keywords">
+<span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.2</div>
+      </div>
+    </a>
+  </section>
+
+  <section class="feed-sec" id="sec-ai">
+    <div class="sec-divider"><h2>AI 뉴스</h2></div>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209521" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 15:22</span>
+      </div>
+      <h3>앤트로픽, 아마존에 147조 투입해 5GW 컴퓨팅 구축...아마존은 36조 추가 투자</h3>
+      <p class="lede">앤트로픽이 앞으로 10년간 1000억달러(약 147조원) 이상을 아마존웹서비스(AWS) 기술에 투입한다고 20일(현지시간) 밝혔다. 아마존의 자체 AI 칩 &#39;트레이니엄&#39;이 핵심이며 클로드 학습·배포용으로 최대 5기가와트(GW) 컴퓨팅 용량을 확보했다. 아마존도 기존 8…</p>
+      <div class="keywords">
+<span># 앤트로픽</span><span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-superhigh">8.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209523" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 14:46</span>
+      </div>
+      <h3>LG, &#39;암 치료&#39; 에이전트 연구 성과 공개…”글로벌 제약사 등과 협업 추진”</h3>
+      <p class="lede">LG AI연구원(원장 이홍락·임우형)이 미국 샌디에이고에서 열린 미국암연구학회(AACR) 2026에서 밴더빌트대 메디컬 센터와 공동 개발 중인 &#39;암 에이전틱 AI&#39; 연구 성과를 17~22일(현지시간) 공개했다. 이 AI는 암 환자 조직 분석부터 치료 전략 설계까지 전 …</p>
+      <div class="keywords">
+<span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.3</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209546" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 15:50</span>
+      </div>
+      <h3>SK하이닉스, AI 서버 메모리 &#39;SOCAMM2 192GB&#39; 본격 양산</h3>
+      <p class="lede">SK하이닉스가 10나노급 6세대(1c) LPDDR5X 기반 차세대 메모리 모듈 &#39;SOCAMM2 192GB&#39;를 본격 양산한다고 21일 밝혔다. 모바일용 저전력 메모리를 서버 환경으로 변형한 모듈로, AI 서버에 주력 투입된다. 압착식 커넥터로 신호 무결성을 높이고, 기존…</p>
+      <div class="keywords">
+<span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.2</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209536" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 15:03</span>
+      </div>
+      <h3>과기부-복지부, 노후화된 공공의료시스템 AI-SaaS로 전면 교체 나선다</h3>
+      <p class="lede">과학기술정보통신부와 한국지능정보사회진흥원(NIA)이 &#39;공공 병원정보시스템 AI 클라우드 서비스 전환 지원 사업&#39; 참여 기업 모집 공모를 5월 22일까지 진행한다고 밝혔다. 과기정통부·보건복지부·국립중앙의료원·지방의료원이 공동 추진하며, 기존 시스템통합(SI) 방식의 노…</p>
+      <div class="keywords">
+<span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.2</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209563" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 17:05</span>
+      </div>
+      <h3>국가AI전략위 &#34;자율주행·휴머노이느 소분과 신설...산업 AX 확산 지원&#34;</h3>
+      <p class="lede">국가인공지능전략위원회(위원장 이재명 대통령)가 산업AX·생태계 분과 아래 &#39;자율주행 소분과&#39;와 &#39;휴머노이드 소분과&#39;를 신설해 제1차 킥오프 회의를 열었다. 피지컬 AI가 강조되는 흐름에 맞춰 자율주행 모빌리티와 휴머노이드 로봇 분야 육성이 시급하다는 판단이 배경이다. …</p>
+      <div class="keywords">
+<span># AI</span><span># 인공지능</span><span># 자율주행</span><span># 로봇</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000387" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 16:43</span>
+      </div>
+      <h3>엔비디아 “한국 개발자 생태계 수용성 높아”…&#39;네모트론&#39; AI 거점으로 낙점</h3>
+      <p class="lede">엔비디아가 자사 AI 플랫폼 &#39;네모트론&#39; 생태계 확대의 거점으로 한국을 낙점했다. 한국 개발자 커뮤니티의 기술 수용성이 높고 에이전틱 AI에 대한 관심도 크다는 점을 이유로 들었다. 브라이언 카탄자로 엔비디아 응용 딥러닝 연구 부문 부사장의 발언이 인용됐다.</p>
+      <div class="keywords">
+<span># 딥러닝</span><span># 엔비디아</span><span># AI</span><span># 인공지능</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.8</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000286" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 14:36</span>
+      </div>
+      <h3>펀진 AI 참모 &#39;KWM&#39;, 연합지휘통제체계 공급…실전 운용 단계 진입</h3>
+      <p class="lede">국방 인공지능(AI) 전문기업 펀진의 AI 지휘결심지원체계 &#39;킬웹매칭(KWM)&#39;이 연합지휘통제체계(AKJCCS) 성능개량 체계개발 사업에 적용돼 실전 운용 단계로 진입했다. 전자신문 보도에 따르면 향후 다양한 국방 체계 사업으로 확산이 전망된다.</p>
+      <div class="keywords">
+<span># AI</span><span># 인공지능</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.8</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209518" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 14:30</span>
+      </div>
+      <h3>중기부, 중소제조·스타트업에 GPU 264장 공급...&#34;AX 본격 지원&#34;</h3>
+      <p class="lede">중소벤처기업부(장관 한성숙)가 &#39;국가 AI 프로젝트&#39;로 확보한 GPU 264장을 중소제조현장과 창업기업 혁신 지원에 투입한다고 21일 밝혔다. 과기정통부가 2025년 추경으로 확보한 GPU 1만장 중 3000여장이 부처 사업에 배분됐고, 중기부는 &#39;중소제조 특화 멀티 …</p>
+      <div class="keywords">
+<span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.6</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209522" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:48</span>
+      </div>
+      <h3>구글, 앤트로픽 추격 위해 &#39;코딩 특별팀&#39; 구성...세르게이 브린 직접 지휘</h3>
+      <p class="lede">구글이 AI 코딩 역량 강화를 위해 연구진과 엔지니어로 구성된 &#39;특별팀&#39;을 꾸렸다고 20일(현지시간) 디 인포메이션이 보도했다. 공동창립자 세르게이 브린과 CTO까지 직접 합류하며 총력전을 펼치고 있으며, 앤트로픽의 코딩 도구가 제미나이보다 앞서는 것으로 내부 평가됐다…</p>
+      <div class="keywords">
+<span># 앤트로픽</span><span># 제미나이</span><span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209526" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:27</span>
+      </div>
+      <h3>알리바바, 중국 모델 최고 성능 &#39;큐원3.6-맥스-프리뷰&#39; 출시</h3>
+      <p class="lede">알리바바가 20일(현지시간) 차세대 AI 모델 &#39;큐원3.6-맥스-프리뷰&#39;를 공개했다. 자체 벤치마크에서 중국 모델 중 최고 성능을 기록했다고 회사는 밝혔다. 기존 큐원3.6-플러스 대비 코딩·지식 이해·명령 수행 능력 전반이 크게 향상됐으며 특히 에이전트형 코딩 능력에…</p>
+      <div class="keywords">
+<span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421181850" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">ZDNet Korea</span>
+        <span class="dot">·</span>
+        <span>04.21 18:22</span>
+      </div>
+      <h3>[현장] &#34;벤치마크보다 중요한 건 실전&#34;… AI 리더가 짚은 국내 AI 생태계 과제</h3>
+      <p class="lede">엔비디아 네모트론 개발자 데이에서 SKT·업스테이지·모티프·엘리스 리더들이 토론했다. 이들은 벤치마크 점수보다 실제 기업 환경에서 쓸 수 있는 모델, 데이터 거버넌스, 엣지·온프레미스 배포 역량이 관건이라고 입을 모았다. 엔비디아 소프트웨어의 반영 속도와 종속성 문제도…</p>
+      <div class="keywords">
+<span># 엔비디아</span><span># AI</span><span># 인공지능</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000247" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 17:00</span>
+      </div>
+      <h3>우리은행, &#39;AI 에이전트 전용 GPU 클러스터&#39; 구축…생성형 AI 내재화 본격화</h3>
+      <p class="lede">우리은행이 생성형 AI 기반 &#39;AI 에이전트&#39; 구축을 위해 GPU 서버 인프라를 직접 도입한다고 전자신문이 보도했다. 외부 클라우드 의존 구조에서 벗어나 AI 전략을 &#39;내재화&#39; 방향으로 전환하는 움직임으로 풀이된다. 우리은행은 GPU 기반 고성능 서버 클러스터를 자체 …</p>
+      <div class="keywords">
+<span># 생성형 AI</span><span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209559" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 15:05</span>
+      </div>
+      <h3>KAIST, AI로 생체 내부 사진도 ‘선명하게’...&#34;장비 없이 소프트웨어로 해결&#34;</h3>
+      <p class="lede">KAIST 강익성 전기및전자공학부 교수가 UC 버클리 나지 교수 연구팀과 공동으로 신경장(neural field) 모델을 이용해 이광자 형광 현미경의 이미지 왜곡을 정밀 보정하는 기술을 개발했다고 21일 밝혔다. 이광자 형광 현미경은 살아있는 생체 조직 깊은 곳을 관찰…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.4</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209542" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 17:33</span>
+      </div>
+      <h3>MS 깃허브, AI 코딩 사용량 제한...최고 요금제만 앤트로픽 모델 사용</h3>
+      <p class="lede">MS 깃허브가 AI 코딩 도구 &#39;코파일럿&#39;의 사용량 제한을 강화하고 신규 개인 가입을 일시 중단하는 조치를 단행했다. 에이전트 기반 코딩 수요가 급증하면서 인프라 부담이 커지고 서비스 장애까지 발생하자, 사실상 가격 인상에 해당하는 대응에 나선 것으로 해석된다. 20일…</p>
+      <div class="keywords">
+<span># 앤트로픽</span><span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.3</div>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421174611" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">ZDNet Korea</span>
+        <span class="dot">·</span>
+        <span>04.21 18:22</span>
+      </div>
+      <h3>[현장] &#34;메일 요약에서 물류 시뮬레이션까지&#34;…엔비디아가 제시한 실무형 AI</h3>
+      <p class="lede">엔비디아는 네모트론 개발자 데이 서울 2026에서 &#39;빌드-어-클로&#39; 시연으로 복수 에이전트 팀이 물류 컨베이어벨트 속도 최적화를 8가지 시나리오로 디지털 트윈 시뮬레이션한 결과를 공개했다. 아이작 심과 월드 파운데이션 모델 코스모스가 동원됐다. 메일 요약·일정 자동화 …</p>
+      <div class="keywords">
+<span># 엔비디아</span><span># AI</span><span># 인공지능</span><span># 챗봇</span><span># 에이전트</span><span># 로봇</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.2</div>
+      </div>
+    </a>
+    <a class="story" href="https://openai.com/index/scaling-codex-to-enterprises-worldwide" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">OpenAI Blog</span>
+        <span class="dot">·</span>
+        <span>04.21 09:00</span>
+      </div>
+      <h3>Scaling Codex to enterprises worldwide</h3>
+      <p class="lede">OpenAI가 Codex Labs를 공식 출범하고 Accenture·PwC·Infosys 등과 손잡아 기업 소프트웨어 개발 전 과정에 Codex를 배포·확산한다고 발표했다. 원문에 따르면 Codex는 주간 활성 사용자(WAU) 400만명에 도달했다.</p>
+      <div class="keywords">
+<span># OpenAI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.2</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209565" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 19:03</span>
+      </div>
+      <h3>트웰브랩스, 영상 AI &#39;페가수스 1.5&#39; 공개…&#34;장면 넘어 ‘영상 구조’ 검색”</h3>
+      <p class="lede">글로벌 멀티모달 영상 AI 전문 트웰브랩스가 21일 차세대 영상 추론 AI 모델 &#39;페가수스 1.5(Pegasus 1.5)&#39;를 전격 공개했다. 업계 최초로 &#39;시간 기반 메타데이터 추출(TBM)&#39; 방식이 도입돼, AI가 단순 영상 시청을 넘어 사용자 기준에 따라 영상을 구…</p>
+      <div class="keywords">
+<span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/world/12023227" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:05</span>
+      </div>
+      <h3>中화웨이 AI안경 출시…美에 도전장</h3>
+      <p class="lede">중국 화웨이가 첫 인공지능(AI) 안경을 공개하며 메타·알리바바가 선점한 AI 안경 시장에 가세했다. 기사에 따르면 화웨이의 참전으로 점유율 경쟁이 한층 거세질 전망이다.</p>
+      <div class="keywords">
+<span># AI</span><span># 인공지능</span>      </div>
+      <div class="foot">
+        <div class="read">1 min read</div>
+        <div class="score score-midhigh">7.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209540" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:00</span>
+      </div>
+      <h3>오픈AI, 코덱스의 메모리 기능 &#39;크로니클&#39; 공개...&#34;리콜보다 위험&#34; 경고도</h3>
+      <p class="lede">오픈AI가 개발자용 AI 도구 코덱스의 메모리를 강화한 실험적 기능 &#39;크로니클&#39;을 20일(현지시간) 공개했다. 사용자가 보고 있는 최근 화면 맥락을 자동 저장해 반복 설명 없이 작업 흐름을 이어가도록 돕는 것이 핵심이다. 다만 보안 문제가 이미 지적돼 정식 출시까지는 …</p>
+      <div class="keywords">
+<span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209549" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 17:17</span>
+      </div>
+      <h3>화웨이, &#39;하모니 OS&#39; 탑재 AI 안경 출시…&#34;더 얇고 가볍게&#34;</h3>
+      <p class="lede">화웨이가 20일(현지시간) 하모니 OS 기반 첫 안경형 웨어러블 기기 &#39;화웨이 AI 안경(Huawei AI Glasses)&#39;을 공개했다. AI 카메라, 음성 인터랙션, 실시간 번역, 결제 기능을 통합했고 1/2.8인치 센서로 사진·영상 촬영과 1인칭 라이브 스트리밍까지…</p>
+      <div class="keywords">
+<span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-mid">6.8</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209555" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 15:00</span>
+      </div>
+      <h3>롯데이노베이트, ‘아이멤버 워크 4.0’ 공개…&#34;보고서·PPT·영상 생성까지&#34;</h3>
+      <p class="lede">롯데이노베이트가 &#39;아이멤버(Aimember)&#39; 브랜드로 업무 영역별 전문 플랫폼을 통합한 &#39;5대 브랜드 체계&#39;를 21일 공개했다. 단일 챗봇 도입을 넘어 기업 전 업무 영역을 포괄하는 통합 AI 플랫폼으로, 비즈니스용 &#39;아이멤버 워크&#39;, 코드 없이 AI 에이전트 플로우…</p>
+      <div class="keywords">
+<span># AI</span><span># 챗봇</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-mid">6.8</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209531" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 14:27</span>
+      </div>
+      <h3>과기부, 엔비디아와 AI 개발자 대상 &#39;네모트론 해커톤&#39; 개최</h3>
+      <p class="lede">과학기술정보통신부와 정보통신산업진흥원이 엔비디아와 공동으로 &#39;엔비디아 네모트론 개발자 데이&#39;를 21일부터 24일까지 서울 마포 프론트원에서 개최한다. 최신 오픈소스 AI 모델 &#39;네모트론&#39;의 연구 성과를 공유하고 국내 개발자 실무 역량을 키우는 것이 목적이다. 엔비디아 …</p>
+      <div class="keywords">
+<span># 엔비디아</span><span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-mid">6.5</div>
+      </div>
+    </a>
+  </section>
+  <section class="feed-sec" id="sec-general">
+    <div class="sec-divider"><h2>종합 뉴스</h2></div>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421175251071" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 23:08</span>
+      </div>
+      <h3>트럼프, 휴전만료 전날 &#34;훌륭한 합의할것…불발시 폭격예상&#34;(종합)</h3>
+      <p class="lede">도널드 트럼프 미국 대통령이 21일(현지시간) 이란과의 2차 종전 협상을 앞두고 &#39;결국 훌륭한 합의를 하게 될 것&#39;이라고 말하면서도, 휴전만료 전날 &#39;합의 불발 시 폭격이 예상된다&#39;는 취지의 발언을 했다고 연합뉴스가 보도했다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.4</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/economy/12023259" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:54</span>
+      </div>
+      <h3>[단독] 미국·일본 “한국산 석유 없으면 큰일”…휘발유·항공유 요청 빗발쳐</h3>
+      <p class="lede">중동발 원유 공급 불안이 장기화하자 미국·일본 등 주요국이 우리 정부에 &#39;석유 제품 수출 통제 자제&#39;를 요청하는 사례가 늘었다고 매일경제가 보도했다. 호주·뉴질랜드는 휘발유, 미국은 항공유 공급 요청이 접수됐으며 공급 불안 속에 한국 정유 수요가 증가하고 있다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.3</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.hani.co.kr/arti/society/rights/1255274.html" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">한겨레</span>
+        <span class="dot">·</span>
+        <span>04.21 20:55</span>
+      </div>
+      <h3>[Q＆A] 국가가 치매 어르신 재산 관리…누가 신청하고 어떤 서비스 받나</h3>
+      <p class="lede">보건복지부가 22일부터 치매·경도인지장애 등을 앓는 어르신을 대상으로 &#39;치매안심재산관리 지원서비스&#39; 시범사업을 실시한다고 한겨레가 보도했다. 민간 신탁의 문턱을 낮춰 서민층 치매 환자의 사기 피해를 예방하고 재산을 보호하도록 국민연금공단이 재산을 위탁받아 관리하는 사업…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.1</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421137251052" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 17:55</span>
+      </div>
+      <h3>&#39;하동 주택 화재 70대 사망&#39; 방화 용의자 사위도 숨진 채 발견(종합)</h3>
+      <p class="lede">21일 경남 하동군에서 발생한 주택 화재 현장에서 70대 여성이 사망한 사건과 관련해, 방화 용의자로 지목된 사위가 숨진 채 발견됐다고 연합뉴스가 전했다.</p>
+      <div class="foot">
+        <div class="read">1 min read</div>
+        <div class="score score-high">8.1</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.hani.co.kr/arti/society/labor/1255270.html" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">한겨레</span>
+        <span class="dot">·</span>
+        <span>04.21 20:39</span>
+      </div>
+      <h3>[포토] 씨유물류센터 사망사고, 책임자 처벌·원청 교섭 촉구</h3>
+      <p class="lede">21일 진주 BGF로지스 진주센터 들머리에서 화물연대 조합원들이 CU·BGF·경찰 규탄 결의대회를 열었다. 전날 조합원이 원청 교섭 등을 요구하며 연 집회 도중 회사 측 출고차량에 치여 1명이 사망하고 2명이 다쳤다. 주최 측 추산 2700명이 참석해 책임자 처벌과 원…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/world/12023226" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:05</span>
+      </div>
+      <h3>워시 &#34;트럼프의 금리 발언 … 연준 독립성에 위협 아냐&#34;</h3>
+      <p class="lede">미국 연방준비제도(Fed·연준) 의장 후보자 케빈 워시가 20일(현지시간) &#39;대통령 등 선출직 공직자가 금리에 대한 견해를 내놓는 것이 통화정책 운영 독립성을 특별히 위협한다고 보지는 않는다&#39;는 취지로 발언했다고 매일경제가 보도했다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/society/12023412" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 22:09</span>
+      </div>
+      <h3>중국의 20배 ‘대박’…충북 영동에 ‘세계 최대 규모’ 희귀 광물 매장</h3>
+      <p class="lede">충북 영동지역에 세계 최대 규모인 약 1억 450만 톤(t)의 일라이트(illite)가 매장된 것으로 확인됐다고 매일경제가 보도했다. 영동군이 2024년부터 최근까지 한국지질자원연구원에 의뢰해 해당 지역을 조사한 결과로, 기사 제목에 따르면 중국의 20배에 해당하는 규…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.9</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/politics/12023359" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 20:40</span>
+      </div>
+      <h3>[속보] 이재명 대통령, 하노이 도착…내일 한-베트남 정상회담</h3>
+      <p class="lede">이재명 대통령이 21일 오후(현지시간) 하노이에 도착하면서 3박 4일 일정의 베트남 국빈 방문에 들어갔다고 매일경제가 보도했다. 대통령과 부인 김혜경 여사를 태운 전용기는 이날 오후 베트남 노이바이 공항에 도착했으며, 다음 날 한-베트남 정상회담이 열릴 예정이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.9</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/stock/12023258" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:50</span>
+      </div>
+      <h3>“재무·전략 연동된 지속가능성 공시, 韓증시 밸류업 기여할 것”</h3>
+      <p class="lede">곽병진 제10대 한국회계기준원장이 &#39;재무·전략과 연동된 지속가능성 공시가 한국 증시 밸류업에 기여할 것&#39;이라고 밝혔다. K-디스카운트 해소를 위해 공시 신뢰성이 필수이며, 재무·지속가능성 부서의 공동 준비가 시급하다고 지적했다. 미국을 제외한 EU·일본·중국이 모두 E…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.8</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/stock/12023235" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:05</span>
+      </div>
+      <h3>전쟁공포 이겼다, 코스피 &#39;사상최고&#39;</h3>
+      <p class="lede">코스피가 중동발 전쟁 공포를 이기고 사상 최고치를 기록한 가운데, 삼성전자·SK하이닉스 주가 변동에 따른 이익을 2배로 누릴 수 있는 단일종목 레버리지 ETF가 다음 달 22일 국내에 첫 출시된다. 매일경제 보도에 따르면 금융위원회는 21일 단일 종목을 기초자산으로 하…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.8</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/world/12023228" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:05</span>
+      </div>
+      <h3>트럼프, 정국 전환 시도하나 … 한달 반 새 세번째 장관 교체</h3>
+      <p class="lede">미국 도널드 트럼프 행정부의 로리 차베즈-디러머 노동장관이 사임한다고 백악관이 밝혔다고 매일경제가 보도했다. 트럼프 대통령 집권 2기 취임 이후 크리스티 놈 국토안보장관, 팸 본디 법무장관에 이어 한달 반 사이 세 번째 장관 교체로 &#39;정국 전환 시도&#39; 해석이 나온다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.8</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421160700003" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:16</span>
+      </div>
+      <h3>최태원 &#34;우리 정부가 직접 게임 참여해 기업 지원해야&#34;</h3>
+      <p class="lede">최태원 대한상공회의소 회장이 21일 &#39;현재 각국 정부가 직접 시장에 참여하는 상황에서, 우리 정부가 직접 게임에 참여해 기업을 지원해야 한다&#39;는 취지로 발언했다고 연합뉴스가 전했다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.7</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/politics/12023246" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:08</span>
+      </div>
+      <h3>尹정부 감사원 때리는 與 … 유병호에 동행명령장</h3>
+      <p class="lede">국회 &#39;윤석열 정권 정치검찰 조작기소 의혹 사건 진상규명 국정조사 특별위원회&#39;가 21일 서해 공무원 피격 사건과 통계 조작 의혹 등을 주제로 청문회를 열었다. 매일경제 보도에 따르면 유병호 감사원 감사위원, 김숙동 등을 청문회에 불렀으며 출석하지 않은 유병호 감사위원에…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.7</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421178600009" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 23:08</span>
+      </div>
+      <h3>뉴욕증시, 미-이란 2차 협상 주목하며 상승 출발</h3>
+      <p class="lede">뉴욕증시 3대 주가지수가 미국과 이란의 2차 협상, 케빈 워시 연방준비제도(Fed·연준) 의장 후보 관련 재료를 주목하며 상승 출발했다고 연합인포맥스가 전했다.</p>
+      <div class="foot">
+        <div class="read">1 min read</div>
+        <div class="score score-midhigh">7.6</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/business/12023255" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:38</span>
+      </div>
+      <h3>삼성전자 주주들, 노조 집회에 ‘맞불 집회’ 예고</h3>
+      <p class="lede">삼성전자 노조가 23일 평택 사업장에서 대규모 집회를 개최할 예정인 가운데 &#39;삼성전자 주주운동본부&#39;라는 단체가 같은 시간 노조 집회 맞은편에서 &#39;삼성전자 500만 주주 총궐기 대회&#39;를 열겠다며 맞불 집회를 예고했다고 매일경제가 보도했다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.6</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421163500003" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:35</span>
+      </div>
+      <h3>SK온, 일본 지사 설립 추진…배터리·ESS 시장 동시 공략</h3>
+      <p class="lede">SK온이 일본 시장 공략을 위해 현지 지사 설립에 나선다고 연합뉴스가 보도했다. 자동차 배터리와 에너지저장장치(ESS) 시장을 동시에 공략하겠다는 전략이다.</p>
+      <div class="foot">
+        <div class="read">1 min read</div>
+        <div class="score score-midhigh">7.6</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.hani.co.kr/arti/society/society_general/1255268.html" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">한겨레</span>
+        <span class="dot">·</span>
+        <span>04.21 20:35</span>
+      </div>
+      <h3>대법 “장애인 고용부담금은 제재금 아닌 비용”…SK하이닉스 35억 환급</h3>
+      <p class="lede">장애인 의무고용률을 지키지 않은 기업에 부과되는 장애인 고용부담금이 &#39;제재금&#39;이 아닌 &#39;비용&#39;에 해당해 법인세 산정 시 손금(비용)에 산입할 수 있다는 대법원 판단이 나왔다고 한겨레가 보도했다. 법인세는 수익에서 비용을 뺀 총액을 기준으로 계산되는데, 비용으로 인정받으…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/society/12023242" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:08</span>
+      </div>
+      <h3>“마약밀수 구속 안 되게”…‘억대 뇌물’ 관세청 특별사법경찰관 구속기소</h3>
+      <p class="lede">가상화폐 투자금을 마련하기 위해 수사를 무마해주거나 불구속 수사를 받게 해주겠다며 피의자와 그 가족에게 뒷돈을 수수한 혐의를 받는 관세청 특별사법경찰관(특사경)이 구속 상태로 재판에 넘겨졌다고 매일경제가 보도했다. 마약밀수 구속을 피하기 위한 억대 뇌물 수수 혐의가 적…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.4</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.hani.co.kr/arti/area/chungcheong/1255257.html" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">한겨레</span>
+        <span class="dot">·</span>
+        <span>04.21 19:03</span>
+      </div>
+      <h3>오송역 일대 농지 3천평에 ‘가짜 농업인 주택’…대지 불법 전용 일당 적발</h3>
+      <p class="lede">개발 붐이 인 충북 청주 오송역 일대 농지에 들어선 벌집 형태의 &#39;농업인 주택&#39;은 부동산 투기 업자들의 작업이었던 것으로 드러났다. 오송역 일대 농지 수천 평을 대지로 탈바꿈시켜 이익을 챙긴 일당이 검찰에 적발됐다고 한겨레가 보도했다. 청주지검 형사2부(부장 유시동)가…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.3</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421164400530" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:42</span>
+      </div>
+      <h3>복지부, 올해 학대피해아동쉼터 4곳 추가 설치</h3>
+      <p class="lede">보건복지부가 학대피해아동쉼터를 올해 4곳 추가 설치할 계획이라고 21일 밝혔다고 연합뉴스가 보도했다.</p>
+      <div class="foot">
+        <div class="read">1 min read</div>
+        <div class="score score-midhigh">7.2</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/society/12023384" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 21:27</span>
+      </div>
+      <h3>“아파트 현관에 똥 뿌려줄게”…돈 받고 ‘보복대행 테러’, 일당 3명 구속기소</h3>
+      <p class="lede">남의 집 현관에 인분을 뿌리고 래커칠·욕설 낙서를 하는 &#39;보복 대행 테러&#39;를 저지른 일당 3명이 구속 상태로 재판에 넘겨졌다. 서울남부지검이 서울 양천구 등지에서 저지른 범행을 적발했다고 21일 연합뉴스가 보도했다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-mid">6.8</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/politics/12023256" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:43</span>
+      </div>
+      <h3>조광한, 경기지사 경선 사퇴하고 이성배 지지…양향자 반발</h3>
+      <p class="lede">국민의힘 경기도지사 경선에서 조광한 최고위원이 사퇴 후 이성배 예비후보를 지지하자 경쟁자인 양향자 예비후보가 &#39;경선 방해&#39;라며 강력히 반발했다고 매일경제가 보도했다. 조광한 최고위원은 21일 매일경제와의 인터뷰에서 이 같은 입장을 밝혔다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-mid">6.4</div>
+      </div>
+    </a>
+  </section>
+
+  <footer>
+    <div class="disclosure">본 리포트는 Claude Opus 4.7이 RSS 원문을 분석해 생성합니다. 사실관계는 각 원문에서 확인하세요.</div>
+    <div class="issue">ISSUE #21</div>
+    <div class="sources">
+AI타임스 · ZDNet Korea · 전자신문 · 연합뉴스 · 매일경제 · 한겨레 · OpenAI Blog · Google DeepMind · Simon Willison · Anthropic SDK Releases    </div>
+  </footer>
+
+</div>
+
+<nav class="floating-nav" aria-label="섹션 이동">
+  <a href="#sec-mustknow" data-sec="sec-mustknow" class="active">
+    <span>⭐</span>
+    <span>꼭알아야</span>
+    <span class="cnt">5</span>
+  </a>
+  <a href="#sec-ai" data-sec="sec-ai">
+    <span>🤖</span>
+    <span>AI뉴스</span>
+    <span class="cnt">22</span>
+  </a>
+  <a href="#sec-general" data-sec="sec-general">
+    <span>📰</span>
+    <span>종합뉴스</span>
+    <span class="cnt">22</span>
+  </a>
+</nav>
+
+<script>
+(function(){
+  var navLinks = document.querySelectorAll('.floating-nav a');
+  var sections = Array.prototype.filter.call(
+    document.querySelectorAll('.feed-sec'),
+    function(s){ return s.id; }
+  );
+  if (!sections.length || !navLinks.length) return;
+
+  function setActive(id){
+    navLinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-sec') === id);
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if (!visible.length) return;
+      visible.sort(function(a,b){
+        return a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top;
+      });
+      setActive(visible[0].target.id);
+    }, { rootMargin: '-25% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+
+  navLinks.forEach(function(a){
+    a.addEventListener('click', function(){
+      setActive(a.getAttribute('data-sec'));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
