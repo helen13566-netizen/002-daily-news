@@ -1,5 +1,5 @@
 {
-  "collection_timestamp": "2026-04-21T23:50:31+09:00",
+  "collection_timestamp": "2026-04-21T23:53:06+09:00",
   "source_stats": {
     "AI타임스": {
       "fetched": 50,
@@ -38,11 +38,10 @@
       "parse_failed": 0
     },
     "OpenAI Blog": {
-      "fetched": 0,
-      "ai_matched": 0,
-      "kept": 0,
-      "parse_failed": 0,
-      "error": "SAXParseException"
+      "fetched": 942,
+      "ai_matched": 1,
+      "kept": 1,
+      "parse_failed": 0
     },
     "Google DeepMind": {
       "fetched": 100,
@@ -51,11 +50,10 @@
       "parse_failed": 0
     },
     "Simon Willison": {
-      "fetched": 0,
+      "fetched": 30,
       "ai_matched": 0,
       "kept": 0,
-      "parse_failed": 0,
-      "error": "SAXParseException"
+      "parse_failed": 0
     },
     "Anthropic SDK Releases": {
       "fetched": 10,
@@ -1105,6 +1103,46 @@
       "original_url": "https://www.etnews.com/20260421000221",
       "content_text": "장동혁 국민의힘 대표가 6·3 지방선거를 앞두고 노동계 공략에 나섰다. 63년 만에 한국노총 서울지역본부를 찾으며 '거리 좁히기'에 시동을 걸었다. 장 대표는 21일 한국노총 서울지역본부를 방문해 지도부와 간담회를 갖고 노동계 정책 제안을 청취했다. 이날 자리에는 정점",
       "category": "ai_news",
+      "keywords": []
+    },
+    {
+      "article_id": "07e040c34b21f991",
+      "title": "'개막 19경기 연속 안타' 박성한 \"초구 칠 생각으로 들어갔죠\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-21T23:49:21+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260421179200007",
+      "content_text": "(대구=연합뉴스) 김동한 기자 = 프로야구 SSG 랜더스의 내야수 박성한이 개막전 이후 연속 경기 안타 신기록을 수립하고 짜릿한 결승 적시타까지...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "5a4296e9d8e61584",
+      "title": "우간다·민주콩고 연합 작전…무장단체 피랍 200명 구출",
+      "source": "연합뉴스",
+      "published_at": "2026-04-21T23:49:16+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260421179100099",
+      "content_text": "(요하네스버그=연합뉴스) 나확진 특파원 = 아프리카 중부 우간다와 콩고민주공화국(민주콩고) 군이 연합 작전을 펼쳐 이슬람국가(IS) 연계 무장단...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "e949a22ce91eece3",
+      "title": "주한미군사령관 \"주한미군, 숫자보다 역량에 확고히 초점\"",
+      "source": "연합뉴스",
+      "published_at": "2026-04-21T23:49:08+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260421179400071",
+      "content_text": "(워싱턴=연합뉴스) 백나리 특파원 = 제이비어 브런슨 주한미군사령관은 21일(현지시간) 주한미군 현대화를 추진하고 있다며 병력 규모보다는 역량에...",
+      "category": "general_news",
+      "keywords": []
+    },
+    {
+      "article_id": "65338eaf17431158",
+      "title": "이스라엘군, '예수상 파괴' 병사 2명 보직해임·30일 구금",
+      "source": "연합뉴스",
+      "published_at": "2026-04-21T23:42:33+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260421179300079",
+      "content_text": "(카이로=연합뉴스) 김상훈 특파원 = 이스라엘군은 레바논 남부에서 예수상을 망치로 부순 병사와 이를 촬영한 병사를 전투 임무에서 배제하고 30일...",
+      "category": "general_news",
       "keywords": []
     },
     {
@@ -2272,46 +2310,6 @@
       "keywords": []
     },
     {
-      "article_id": "9796ae8dacf5d4ea",
-      "title": "외교부, 호주와 에너지·공급망 협력 강화 논의",
-      "source": "연합뉴스",
-      "published_at": "2026-04-21T17:54:31+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260421149500504",
-      "content_text": "(서울=연합뉴스) 김지헌 기자 = 외교부는 김희상 G20(주요 20개국) 셰르파가 리사 엘리스턴 호주 G20 셰르파와 21일 화상으로 면담하면서...",
-      "category": "general_news",
-      "keywords": []
-    },
-    {
-      "article_id": "20714eda570a1b32",
-      "title": "LIG디펜스앤에어로스페이스, 애프터마켓서 10%대 급등",
-      "source": "연합뉴스",
-      "published_at": "2026-04-21T17:53:01+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260421158700008",
-      "content_text": "(서울=연합뉴스) 코스피 상장사 LIG디펜스앤에어로스페이스[079550]가 21일 애프터마켓에서 10%대 급등 중이다.",
-      "category": "general_news",
-      "keywords": []
-    },
-    {
-      "article_id": "1091a36d4608ceed",
-      "title": "살상력 극대화한 北집속탄, 軍방공망으로 방어 가능할까",
-      "source": "연합뉴스",
-      "published_at": "2026-04-21T17:52:20+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260421149600504",
-      "content_text": "(서울=연합뉴스) 이정현 김철선 기자 = 북한이 최근 연이어 집속탄(확산탄)을 실은 탄도미사일을 시험발사하면서 우리 군의 기존 방공망으로 집속탄...",
-      "category": "general_news",
-      "keywords": []
-    },
-    {
-      "article_id": "55a0fd56d40d85ec",
-      "title": "천안 독립기념관 IC 인근서 화물차가 시설물 들이받아",
-      "source": "연합뉴스",
-      "published_at": "2026-04-21T17:51:58+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260421157700063",
-      "content_text": "(천안=연합뉴스) 강수환 기자 = 21일 오전 10시 40분께 충남 천안 동남구 경부고속도로 독립기념관 IC로 진입하려던 5t 화물차가 갓길에 ...",
-      "category": "general_news",
-      "keywords": []
-    },
-    {
       "article_id": "3505427531e80ac5",
       "title": "“680번 걸쳐 5억 빼돌리고 문서까지 조작”…간 큰 20대 경리, 결국",
       "source": "매일경제",
@@ -3107,6 +3105,18 @@
       "content_text": "미국이 쿠바에 대한 ‘에너지 봉쇄’를 통한 압박을 이어가는 가운데 양국이 2016년 이후 처음으로 쿠바에서 고위급 회담을 열었다. 20일(현지시각) 로이터·에이피(AP) 통신 등에 따르면 익명을 요구한 미 국무부 관계자는 미국과 쿠바 간 회담이 지난 10일 마코 루비오",
       "category": "general_news",
       "keywords": []
+    },
+    {
+      "article_id": "cb2f99b4c6a66967",
+      "title": "Scaling Codex to enterprises worldwide",
+      "source": "OpenAI Blog",
+      "published_at": "2026-04-21T09:00:00+09:00",
+      "original_url": "https://openai.com/index/scaling-codex-to-enterprises-worldwide",
+      "content_text": "OpenAI launches Codex Labs, partners with with Accenture, PwC, Infosys, and others to help enterprises deploy and scale Codex across the software development lifecycle, and hits 4M Codex WAU.",
+      "category": "ai_news",
+      "keywords": [
+        "OpenAI"
+      ]
     }
   ]
 }
