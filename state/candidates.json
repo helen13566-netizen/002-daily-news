@@ -1,5 +1,5 @@
 {
-  "collection_timestamp": "2026-04-22T02:36:34+09:00",
+  "collection_timestamp": "2026-04-22T02:39:22+09:00",
   "source_stats": {
     "AI타임스": {
       "fetched": 50,
@@ -39,8 +39,8 @@
     },
     "OpenAI Blog": {
       "fetched": 942,
-      "ai_matched": 0,
-      "kept": 0,
+      "ai_matched": 2,
+      "kept": 2,
       "parse_failed": 0
     },
     "Google DeepMind": {
@@ -51,8 +51,8 @@
     },
     "Simon Willison": {
       "fetched": 30,
-      "ai_matched": 2,
-      "kept": 2,
+      "ai_matched": 7,
+      "kept": 7,
       "parse_failed": 0
     },
     "Anthropic SDK Releases": {
@@ -2432,13 +2432,40 @@
       "keywords": []
     },
     {
+      "article_id": "cb2f99b4c6a66967",
+      "title": "Scaling Codex to enterprises worldwide",
+      "source": "OpenAI Blog",
+      "published_at": "2026-04-21T09:00:00+09:00",
+      "original_url": "https://openai.com/index/scaling-codex-to-enterprises-worldwide",
+      "content_text": "OpenAI launches Codex Labs, partners with with Accenture, PwC, Infosys, and others to help enterprises deploy and scale Codex across the software development lifecycle, and hits 4M Codex WAU.",
+      "category": "official_ai",
+      "keywords": [
+        "OpenAI"
+      ]
+    },
+    {
+      "article_id": "0090c658685cc07f",
+      "title": "OpenAI helps Hyatt advance AI among colleagues",
+      "source": "OpenAI Blog",
+      "published_at": "2026-04-20T09:00:00+09:00",
+      "original_url": "https://openai.com/index/hyatt-advances-ai-with-chatgpt-enterprise",
+      "content_text": "Hyatt deploys ChatGPT Enterprise across its global workforce, using GPT-5.4 and Codex to improve productivity, operations, and guest experiences.",
+      "category": "official_ai",
+      "keywords": [
+        "GPT",
+        "OpenAI",
+        "ChatGPT",
+        "AI"
+      ]
+    },
+    {
       "article_id": "4b57bd33c808956d",
       "title": "Quoting Andreas Påhlsson-Notini",
       "source": "Simon Willison",
       "published_at": "2026-04-22T01:39:33+09:00",
       "original_url": "https://simonwillison.net/2026/Apr/21/andreas-pahlsson-notini/#atom-everything",
       "content_text": "AI agents are already too human. Not in the romantic sense, not because they love or fear or dream, but in the more banal and frustrating one. The current implementations keep showing their human origin again and again: lack of stringency, lack of patience, lack of focus. Faced with an awkward task, they drift towards the familiar. Faced with hard constraints, they start negotiating with reality. — Andreas Påhlsson-Notini , Less human AI agents, please. Tags: ai-agents , coding-agents , ai",
-      "category": "ai_news",
+      "category": "official_ai",
       "keywords": [
         "AI"
       ]
@@ -2450,8 +2477,73 @@
       "published_at": "2026-04-22T00:54:43+09:00",
       "original_url": "https://simonwillison.net/2026/Apr/21/scosman/#atom-everything",
       "content_text": "scosman/pelicans_riding_bicycles I firmly approve of Steve Cosman's efforts to pollute the training set of pelicans riding bicycles. (To be fair, most of the examples I've published count as poisoning too.) Via Hacker News comment Tags: ai , generative-ai , llms , training-data , pelican-riding-a-bicycle",
-      "category": "ai_news",
+      "category": "official_ai",
       "keywords": [
+        "AI"
+      ]
+    },
+    {
+      "article_id": "3e853e3e3b5949dc",
+      "title": "llm-openrouter 0.6",
+      "source": "Simon Willison",
+      "published_at": "2026-04-21T03:00:26+09:00",
+      "original_url": "https://simonwillison.net/2026/Apr/20/llm-openrouter/#atom-everything",
+      "content_text": "Release: llm-openrouter 0.6 llm openrouter refresh command for refreshing the list of available models without waiting for the cache to expire. I added this feature so I could try Kimi 2.6 on OpenRouter as soon as it became available there . Here's its pelican - this time as an HTML page because Kimi chose to include an HTML and JavaScript UI to control the animation. Transcript here . Tags: openrouter , llm , llm-release , pelican-riding-a-bicycle , kimi , ai-in-china , llms , ai , generative-ai",
+      "category": "official_ai",
+      "keywords": [
+        "LLM",
+        "AI"
+      ]
+    },
+    {
+      "article_id": "8a355f8d7de55929",
+      "title": "SQL functions in Google Sheets to fetch data from Datasette",
+      "source": "Simon Willison",
+      "published_at": "2026-04-20T11:33:58+09:00",
+      "original_url": "https://simonwillison.net/2026/Apr/20/datasette-sql/#atom-everything",
+      "content_text": "TIL: SQL functions in Google Sheets to fetch data from Datasette I put together some notes on patterns for fetching data from a Datasette instance directly into Google Sheets - using the importdata() function, a \"named function\" that wraps it or a Google Apps Script if you need to send an API token in an HTTP header (not supported by importdata() .) Here's an example sheet demonstrating all three methods. Tags: spreadsheets , datasette , google",
+      "category": "official_ai",
+      "keywords": [
+        "Google"
+      ]
+    },
+    {
+      "article_id": "25870009cd542979",
+      "title": "Claude Token Counter, now with model comparisons",
+      "source": "Simon Willison",
+      "published_at": "2026-04-20T09:50:45+09:00",
+      "original_url": "https://simonwillison.net/2026/Apr/20/claude-token-counts/#atom-everything",
+      "content_text": "Claude Token Counter, now with model comparisons I upgraded my Claude Token Counter tool to add the ability to run the same count against different models in order to compare them. As far as I can tell Claude Opus 4.7 is the first model to change the tokenizer, so it's only worth running comparisons between 4.7 and 4.6. The Claude token counting API accepts any Claude model ID though so I've included options for all four of the notable current models (Opus 4.7 and 4.6, Sonnet 4.6, and Haiku 4.5). In the Opus 4.7 announcement Anthropic said : Opus 4.7 uses an updated tokenizer that improves how the model processes text. The tradeoff is that the same input can map to more tokens—roughly 1.0–1.35× depending on the content type. I pasted the Opus 4.7 system prompt into the token counting tool and found that the Opus 4.7 tokenizer used 1.46x the number of tokens as Opus 4.6. Opus 4.7 uses the same pricing is Opus 4.6 - $5 per million input tokens and $25 per million output tokens - but this token inflation means we can expect it to be around 40% more expensive. The token counter tool also accepts images. Opus 4.7 has improved image support, described like this: Opus 4.7 has better vision for high-resolution images: it can accept images up to 2,576 pixels on the long edge (~3.75 megapixels), more than three times as many as prior Claude models. I tried counting tokens for a 3456x2234 pixel 3.7MB PNG and got an even bigger increase in token counts - 3.01x times the number of tokens for 4.7 compared to 4.6: Update : That 3x increase for images is entirely due to Opus 4.7 being able to handle higher resolutions. I tried that again with a 682x318 pixel image and it took 314 tokens with Opus 4.7 and 310 with Opus 4.6, so effectively the same cost. Update 2 : I tried a 15MB, 30 page text-heavy PDF and Opus 4.7 reported 60,934 tokens while 4.6 reported 56,482 - that's a 1.08x multiplier, significantly lower than the multiplier I got for raw text. Tags: ai , generative-ai , llms…",
+      "category": "official_ai",
+      "keywords": [
+        "Claude",
+        "Anthropic",
+        "AI"
+      ]
+    },
+    {
+      "article_id": "3703fee534cac32e",
+      "title": "Headless everything for personal AI",
+      "source": "Simon Willison",
+      "published_at": "2026-04-20T06:46:38+09:00",
+      "original_url": "https://simonwillison.net/2026/Apr/19/headless-everything/#atom-everything",
+      "content_text": "Headless everything for personal AI Matt Webb thinks headless services are about to become much more common: Why? Because using personal AIs is a better experience for users than using services directly (honestly); and headless services are quicker and more dependable for the personal AIs than having them click round a GUI with a bot-controlled mouse. Evidently Marc Benioff thinks so too : Welcome Salesforce Headless 360: No Browser Required! Our API is the UI. Entire Salesforce & Agentforce & Slack platforms are now exposed as APIs, MCP, & CLI. All AI agents can access data, workflows, and tasks directly in Slack, Voice, or anywhere else with Salesforce Headless. If this model does take off it's going to play havoc with existing per-head SaaS pricing schemes. I'm reminded of the early 2010s era when every online service was launching APIs. Brandur Leach reminisces about that time in The Second Wave of the API-first Economy , and predicts that APIs are ready to make a comeback: Suddenly, an API is no longer liability, but a major saleable vector to give users what they want: a way into the services they use and pay for so that an agent can carry out work on their behalf. Especially given a field of relatively undifferentiated products, in the near future the availability of an API might just be the crucial deciding factor that leads to one choice winning the field. Tags: apis , definitions , matt-webb , salesforce , saas , ai , brandur-leach",
+      "category": "official_ai",
+      "keywords": [
+        "AI"
+      ]
+    },
+    {
+      "article_id": "6063f2d5af856968",
+      "title": "Changes in the system prompt between Claude Opus 4.6 and 4.7",
+      "source": "Simon Willison",
+      "published_at": "2026-04-19T08:59:40+09:00",
+      "original_url": "https://simonwillison.net/2026/Apr/18/opus-system-prompt/#atom-everything",
+      "content_text": "Anthropic are the only major AI lab to publish the system prompts for their user-facing chat systems. Their system prompt archive now dates all the way back to Claude 3 in July 2024 and it's always interesting to see how the system prompt evolves as they publish new models. Opus 4.7 shipped the other day (April 16, 2026) with a Claude.ai system prompt update since Opus 4.6 (February 5, 2026). I had Claude Code take the Markdown version of their system prompts , break that up into separate documents for each of the models and then construct a Git history of those files over time with fake commit dates representing the publication dates of each updated prompt - here's the prompt I used with Claude Code for the web. Here is the git diff between Opus 4.6 and 4.7 . These are my own highlights extracted from that diff - in all cases text in bold is my emphasis: The \"developer platform\" is now called the \"Claude Platform\". The list of Claude tools mentioned in the system prompt now includes \"Claude in Chrome - a browsing agent that can interact with websites autonomously, Claude in Excel - a spreadsheet agent, and Claude in Powerpoint - a slides agent. Claude Cowork can use all of these as tools.\" - Claude in Powerpoint was not mentioned in the 4.6 prompt. The child safety section has been greatly expanded, and is now wrapped in a new <critical_child_safety_instructions> tag. Of particular note: \"Once Claude refuses a request for reasons of child safety, all subsequent requests in the same conversation must be approached with extreme caution.\" It looks like they're trying to make Claude less pushy: \"If a user indicates they are ready to end the conversation, Claude does not request that the user stay in the interaction or try to elicit another turn and instead respects the user's request to stop.\" The new <acting_vs_clarifying> section includes: When a request leaves minor details unspecified, the person typically wants Claude to make a reasonable attempt now, not to be i…",
+      "category": "official_ai",
+      "keywords": [
+        "Claude",
+        "Anthropic",
         "AI"
       ]
     }
