@@ -93,6 +93,7 @@ class FeedResult:
     articles: list[Article] = field(default_factory=list)
     fetched: int = 0
     ai_matched: int = 0
+    parse_failed: int = 0
     error: str | None = None
 
 
@@ -175,18 +176,20 @@ def window_start_for(now_kst: datetime) -> datetime:
     )
 
 
-def parse_published(entry: Any, fallback_utc_now: datetime) -> datetime:
+def parse_published(entry: Any, fallback_utc_now: datetime) -> datetime | None:
     """RSS entry 에서 published 시각을 KST-aware datetime 으로 추출.
 
     - ``published_parsed`` 또는 ``updated_parsed`` (time.struct_time, UTC naive) 우선.
     - 둘 다 없으면 dateutil 로 문자열 파싱 시도.
-    - 모든 실패 시 ``fallback_utc_now`` 사용.
+    - 모두 실패하면 **None 반환** (sentinel). 이전에는 ``fallback_utc_now`` 를
+      반환해서 윈도우 필터를 우회했지만 (한겨레 같은 시각 태그 없는 RSS 에서
+      전 기사가 수집 시각으로 찍혔음) — v18 부터는 호출측에서 enrich 또는 drop
+      선택할 수 있게 None 을 돌려준다.
     - tz 정보 없으면 KST 로 간주.
     """
     struct = entry.get("published_parsed") or entry.get("updated_parsed")
     if struct is not None:
         try:
-            # feedparser 는 published_parsed 를 UTC struct_time 으로 보정한다.
             dt_utc = datetime(*struct[:6], tzinfo=timezone.utc)
             return dt_utc.astimezone(KST)
         except Exception:
@@ -204,7 +207,48 @@ def parse_published(entry: Any, fallback_utc_now: datetime) -> datetime:
         except Exception:
             logger.debug("published 문자열 파싱 실패: %r", raw)
 
-    return fallback_utc_now.astimezone(KST)
+    # 이 지점까지 오면 RSS entry 에 어떤 시각 정보도 없다. 호출측이 enrich 시도.
+    _ = fallback_utc_now  # kept for signature stability
+    return None
+
+
+def _fetch_article_meta(url: str, timeout: float = 5.0) -> dict[str, str]:
+    """기사 페이지에서 og:description + article:published_time 을 추출.
+
+    한겨레처럼 RSS item 에 본문·시각 정보가 부족한 소스를 보강하기 위한 경량 fetch.
+    실패 시 빈 dict 반환 (caller 에서 drop 결정).
+
+    반환 키:
+    - ``description``: og:description 콘텐츠 (있으면)
+    - ``published_time``: article:published_time 또는 대체 태그 (있으면)
+    """
+    try:
+        resp = requests.get(url, headers=_BROWSER_HEADERS, timeout=timeout)
+        if resp.status_code != 200:
+            return {}
+        soup = BeautifulSoup(resp.content, "lxml")
+    except Exception as exc:  # noqa: BLE001
+        logger.debug("article meta fetch 실패 %s: %s", url, exc)
+        return {}
+
+    result: dict[str, str] = {}
+    og_desc = soup.find("meta", property="og:description")
+    if og_desc and og_desc.get("content"):
+        result["description"] = og_desc["content"].strip()
+
+    # published_time 은 여러 표준이 섞여있어 순차 시도.
+    for finder in (
+        lambda: soup.find("meta", property="article:published_time"),
+        lambda: soup.find("meta", attrs={"name": "article:published_time"}),
+        lambda: soup.find("meta", attrs={"name": "h:published_time"}),
+        lambda: soup.find("meta", property="og:article:published_time"),
+    ):
+        tag = finder()
+        if tag and tag.get("content"):
+            result["published_time"] = tag["content"].strip()
+            break
+
+    return result
 
 
 def match_ai_keywords(title: str, content: str) -> list[str]:
@@ -398,8 +442,32 @@ def process_feed(
 
         published_dt = parse_published(entry, now_utc)
 
-        # 시간 윈도우 밖(오전 수집 기준 전날 17:25 이전, 오후 수집 기준 당일 08:25 이전)
-        # 기사는 이전 브리핑에서 이미 다뤘거나 너무 오래된 것이므로 드롭.
+        # RSS item 에 본문/시각 정보가 부족하면 기사 페이지 og:meta 로 enrich 시도.
+        # (한겨레 등 시각 태그 없는 RSS 를 위한 fallback.)
+        if not content_text or published_dt is None:
+            meta = _fetch_article_meta(link)
+            if not content_text and meta.get("description"):
+                content_text = truncate(meta["description"])
+            if published_dt is None and meta.get("published_time"):
+                try:
+                    from dateutil import parser as dtparser
+
+                    dt = dtparser.parse(meta["published_time"])
+                    if dt.tzinfo is None:
+                        dt = KST.localize(dt)
+                    published_dt = dt.astimezone(KST)
+                except Exception:
+                    logger.debug(
+                        "enrich published_time 파싱 실패: %r",
+                        meta.get("published_time"),
+                    )
+
+        # enrich 후에도 시각 정보가 없으면 grounded 분석 대상에서 제외.
+        if published_dt is None:
+            result.parse_failed += 1
+            continue
+
+        # 시간 윈도우 밖 기사는 이번 brief 대상이 아니므로 드롭.
         if published_dt < window_start:
             continue
 
@@ -528,6 +596,7 @@ def collect(
             "fetched": fr.fetched,
             "ai_matched": fr.ai_matched,
             "kept": len(fr.articles),
+            "parse_failed": fr.parse_failed,
         }
         if fr.error:
             stat["error"] = fr.error

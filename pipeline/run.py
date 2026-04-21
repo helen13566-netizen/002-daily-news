@@ -258,6 +258,88 @@ def cmd_prepare_run(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_validate_analyzed(args: argparse.Namespace) -> int:
+    """analyzed.json 의 모든 기사가 candidates.json 에 있는지 검증.
+
+    LLM 이 candidates 밖 기사(과거 커밋·외부 소스)를 analyzed 에 끌어오는 것을
+    차단. 불일치 1건이라도 있으면 FAILED_STAGE=analyzing 으로 기록 후 exit 1.
+    """
+    state = state_mod.load_state(args.state_path)
+
+    cand_path = Path(args.candidates_path)
+    ana_path = Path(args.analyzed_path)
+    if not cand_path.exists() or not ana_path.exists():
+        reason = (
+            f"validate-analyzed 대상 파일 누락: "
+            f"candidates={cand_path.exists()}, analyzed={ana_path.exists()}"
+        )
+        state_mod.mark_failure(state, "analyzing", reason)
+        state_mod.save_state(state, args.state_path)
+        _log(f"ERROR: {reason}")
+        return 1
+
+    try:
+        candidates = json.loads(cand_path.read_text(encoding="utf-8"))
+        analyzed = json.loads(ana_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        reason = f"validate-analyzed 파싱 실패: {exc!r}"
+        state_mod.mark_failure(state, "analyzing", reason)
+        state_mod.save_state(state, args.state_path)
+        _log(f"ERROR: {reason}")
+        return 1
+
+    cand_ids = {
+        a.get("article_id")
+        for a in (candidates.get("articles") or [])
+        if a.get("article_id")
+    }
+    ana_articles = analyzed.get("articles") or []
+
+    foreign: list[str] = []
+    missing_id: list[str] = []
+    for art in ana_articles:
+        aid = art.get("article_id")
+        if not aid:
+            missing_id.append(art.get("title") or "<no title>")
+        elif aid not in cand_ids:
+            foreign.append(f"{aid}:{art.get('title') or '<no title>'}")
+
+    if foreign or missing_id:
+        details = []
+        if foreign:
+            details.append(
+                f"candidates 밖 기사 {len(foreign)}건 (샘플: {foreign[:3]})"
+            )
+        if missing_id:
+            details.append(
+                f"article_id 누락 기사 {len(missing_id)}건 (샘플: {missing_id[:3]})"
+            )
+        reason = "validate-analyzed 실패 — " + " / ".join(details)
+        state_mod.mark_failure(state, "analyzing", reason)
+        state_mod.save_state(state, args.state_path)
+        _log(f"ERROR: {reason}")
+        _print_json(
+            {
+                "valid": False,
+                "foreign_count": len(foreign),
+                "missing_id_count": len(missing_id),
+                "foreign_samples": foreign[:5],
+            }
+        )
+        return 1
+
+    _log(
+        f"validate-analyzed OK: {len(ana_articles)} 건 모두 candidates 매칭"
+    )
+    _print_json(
+        {
+            "valid": True,
+            "count": len(ana_articles),
+        }
+    )
+    return 0
+
+
 def cmd_state(args: argparse.Namespace) -> int:
     state = state_mod.load_state(args.state_path)
     _print_json(state.to_dict())
@@ -369,6 +451,23 @@ def _build_parser() -> argparse.ArgumentParser:
         help="현재 스케줄 라벨",
     )
     sp_pr.set_defaults(func=cmd_prepare_run)
+
+    # validate-analyzed
+    sp_va = sub.add_parser(
+        "validate-analyzed",
+        help="analyzed.json 이 candidates.json 밖 기사를 포함하는지 검증",
+    )
+    sp_va.add_argument(
+        "--candidates-path",
+        default=CANDIDATES_JSON_PATH,
+        help="candidates.json 경로",
+    )
+    sp_va.add_argument(
+        "--analyzed-path",
+        default=ANALYZED_JSON_PATH,
+        help="analyzed.json 경로",
+    )
+    sp_va.set_defaults(func=cmd_validate_analyzed)
 
     # state
     sp_st = sub.add_parser("state", help="현재 state JSON 을 stdout 으로 출력")

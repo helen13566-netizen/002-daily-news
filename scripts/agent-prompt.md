@@ -89,11 +89,14 @@ if ! ensure_fresh_candidates; then
     -d '{"ref":"main"}' \
     || { FAILED_STAGE=collecting; ERROR_REASON="workflow_dispatch 호출 실패"; }
 
-  # 폴링: 30초 간격으로 git fetch + reset → 신선도 재확인 (최대 5분)
+  # 폴링: 30초 간격으로 **candidates.json 만** path-level checkout (최대 5분)
+  # ⚠️ 이전(v16)은 git reset --hard origin/main 을 썼지만, 이는 단계 B 의 prepare-run 이
+  # 올려놓은 state/state.json 로컬 수정(issue_number++ 등) 까지 롤백하여 버그를 일으켰다.
+  # v18 부터는 candidates.json 만 체크아웃하여 state.json 을 보호한다.
   for i in 1 2 3 4 5 6 7 8 9 10; do
     sleep 30
     git fetch origin main >/dev/null 2>&1
-    git reset --hard origin/main >/dev/null 2>&1
+    git checkout origin/main -- state/candidates.json >/dev/null 2>&1
     if ensure_fresh_candidates; then
       echo "[fresh] candidates.json 폴링 $((i*30))초만에 갱신 완료"
       unset FAILED_STAGE ERROR_REASON
@@ -395,6 +398,16 @@ pathlib.Path("state/analyzed.json").write_text(
 PY
 python3 -m pipeline.run mark-stage --stage analyzing
 ```
+
+### 단계 D.5 — analyzed 검증 (v18 신규)
+
+analyzed.json 의 모든 기사가 candidates.json 에 있는지 **Python 이 강제 검증**. LLM 이 과거 커밋의 candidates 를 참조하거나 학습된 기억에서 기사를 끌어오는 경우(실제 관측됨)에 `FAILED_STAGE=analyzing` 으로 브리핑을 실패 처리하여 오염된 콘텐츠가 배포되는 것을 막는다.
+
+```bash
+python3 -m pipeline.run validate-analyzed
+```
+
+exit 1 이면 이미 state.json 에 `failed_stage=analyzing` 이 기록됐으므로 단계 E 로 가지 말고 **단계 X** 로 분기.
 
 ### 단계 E — render (로컬)
 

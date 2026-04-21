@@ -595,3 +595,135 @@ def test_collect_respects_window_with_injected_now(
     assert titles == ["Claude 신규 발표"]
     # collection_timestamp 는 주입된 now_kst 에 기반
     assert summary["collection_timestamp"].startswith("2026-04-20T08:15:00")
+
+
+# ---------------------------------------------------------------------------
+# v18 — parse_published sentinel + 한겨레 og:meta enrich
+# ---------------------------------------------------------------------------
+
+
+def test_parse_published_returns_none_when_nothing_available() -> None:
+    """모든 published 관련 필드가 없으면 None 반환 (sentinel).
+
+    이전에는 fallback_utc_now 를 반환해서 윈도우 필터를 우회했음.
+    """
+
+    class _Entry:
+        def get(self, key, default=None):
+            return default
+
+    entry = _Entry()
+    now_utc = datetime(2026, 4, 21, 0, 0, 0, tzinfo=pytz.utc)
+    result = collect_mod.parse_published(entry, now_utc)
+    assert result is None
+
+
+def test_parse_published_keeps_parsing_from_struct() -> None:
+    """published_parsed (struct_time) 이 있으면 정상 파싱한다 (기존 동작 유지)."""
+
+    class _Entry:
+        def get(self, key, default=None):
+            if key == "published_parsed":
+                return time.strptime("2026-04-19 05:00:00", "%Y-%m-%d %H:%M:%S")
+            return default
+
+    entry = _Entry()
+    now_utc = datetime(2026, 4, 21, 0, 0, 0, tzinfo=pytz.utc)
+    result = collect_mod.parse_published(entry, now_utc)
+    assert result is not None
+    assert result.hour == 14  # UTC 05:00 → KST 14:00
+
+
+def test_process_feed_enriches_missing_content_from_article_page(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """RSS entry 의 content/published 가 부족하면 기사 페이지 og:meta 로 복구."""
+    feed = RSSFeed("한겨레", "https://www.hani.co.kr/rss/", "general_news")
+    fixed_now = KST.localize(datetime(2026, 4, 21, 17, 30, 0))
+
+    # 한겨레 style — published 없고 description 은 이미지 HTML 뿐
+    entries = [
+        {
+            "title": "테스트 기사",
+            "link": "https://www.hani.co.kr/arti/test/1234.html",
+            "summary": "<table><tr><td><img src=x></td></tr></table>",
+            # published_parsed / published 일부러 생략
+        },
+    ]
+
+    def fake_parse(_f: RSSFeed) -> Any:
+        return _make_parsed(entries)
+
+    # enrich fetch mock: og:description + article:published_time 제공
+    def fake_enrich(url: str, timeout: float = 5.0) -> dict[str, str]:
+        return {
+            "description": "이 기사의 본문 요약입니다.",
+            "published_time": "2026-04-21T15:00:00+09:00",
+        }
+
+    monkeypatch.setattr(collect_mod, "_fetch_feed_once", fake_parse)
+    monkeypatch.setattr(collect_mod, "_fetch_article_meta", fake_enrich)
+
+    result = collect_mod.process_feed(feed, now_kst=fixed_now)
+    assert len(result.articles) == 1
+    art = result.articles[0]
+    assert "본문 요약" in art.content_text
+    assert art.published_at.startswith("2026-04-21T15:00:00")
+
+
+def test_process_feed_drops_article_when_enrich_also_fails(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """RSS 가 부족하고 enrich 도 실패하면 parse_failed 카운트 + 드롭."""
+    feed = RSSFeed("한겨레", "https://www.hani.co.kr/rss/", "general_news")
+    fixed_now = KST.localize(datetime(2026, 4, 21, 17, 30, 0))
+
+    entries = [
+        {
+            "title": "시각 없는 기사",
+            "link": "https://www.hani.co.kr/arti/test/9999.html",
+            "summary": "",
+        },
+    ]
+
+    def fake_parse(_f: RSSFeed) -> Any:
+        return _make_parsed(entries)
+
+    def fake_enrich(url: str, timeout: float = 5.0) -> dict[str, str]:
+        return {}  # 전부 실패
+
+    monkeypatch.setattr(collect_mod, "_fetch_feed_once", fake_parse)
+    monkeypatch.setattr(collect_mod, "_fetch_article_meta", fake_enrich)
+
+    result = collect_mod.process_feed(feed, now_kst=fixed_now)
+    assert result.articles == []
+    assert result.parse_failed == 1
+    assert result.fetched == 1
+
+
+def test_collect_source_stats_include_parse_failed(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """source_stats 에 parse_failed 카운트가 노출된다."""
+    feed = RSSFeed("한겨레", "https://www.hani.co.kr/rss/", "general_news")
+    monkeypatch.setattr(collect_mod, "RSS_FEEDS", (feed,))
+    fixed_now = KST.localize(datetime(2026, 4, 21, 17, 30, 0))
+
+    entries = [
+        {"title": "A", "link": "https://www.hani.co.kr/a", "summary": ""},
+        {"title": "B", "link": "https://www.hani.co.kr/b", "summary": ""},
+    ]
+
+    monkeypatch.setattr(
+        collect_mod, "_fetch_feed_once", lambda _f: _make_parsed(entries)
+    )
+    monkeypatch.setattr(
+        collect_mod, "_fetch_article_meta", lambda _url, timeout=5.0: {}
+    )
+    monkeypatch.setattr(collect_mod.time, "sleep", lambda _s: None)
+
+    summary = collect_mod.collect(
+        output_path=tmp_path / "candidates.json", now_kst=fixed_now
+    )
+    assert summary["source_stats"]["한겨레"]["parse_failed"] == 2
+    assert summary["source_stats"]["한겨레"]["kept"] == 0

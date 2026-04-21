@@ -369,6 +369,135 @@ def test_run_notify_failure_prints_warning_header(
 # ---------------------------------------------------------------------------
 
 
+def test_run_validate_analyzed_passes_when_all_ids_match(
+    tmp_path: Path,
+) -> None:
+    """analyzed 의 모든 article_id 가 candidates 에 있으면 exit 0."""
+    state_path = _state_path(tmp_path)
+    _write_state(state_path, retry_count=0)
+
+    candidates = tmp_path / "candidates.json"
+    candidates.write_text(
+        json.dumps(
+            {
+                "collection_timestamp": "2026-04-21T08:30:00+09:00",
+                "articles": [
+                    {"article_id": "aaa111", "title": "A", "published_at": "2026-04-20T18:00:00+09:00"},
+                    {"article_id": "bbb222", "title": "B", "published_at": "2026-04-21T06:00:00+09:00"},
+                ],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    analyzed = tmp_path / "analyzed.json"
+    analyzed.write_text(
+        json.dumps(
+            {
+                "issue_number": 17,
+                "generation_timestamp": "2026-04-21T08:30:00+09:00",
+                "articles": [
+                    {"article_id": "aaa111", "title": "A"},
+                    {"article_id": "bbb222", "title": "B"},
+                ],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    rc = _call(
+        [
+            "--state-path",
+            str(state_path),
+            "validate-analyzed",
+            "--candidates-path",
+            str(candidates),
+            "--analyzed-path",
+            str(analyzed),
+        ]
+    )
+    assert rc == 0
+    st = load_state(str(state_path))
+    assert st.failed_stage is None
+
+
+def test_run_validate_analyzed_fails_when_foreign_article(
+    tmp_path: Path, capsys: pytest.CaptureFixture
+) -> None:
+    """analyzed 에 candidates 밖 article_id 가 있으면 exit 1, FAILED_STAGE=analyzing."""
+    state_path = _state_path(tmp_path)
+    _write_state(state_path, retry_count=0)
+
+    candidates = tmp_path / "candidates.json"
+    candidates.write_text(
+        json.dumps(
+            {
+                "collection_timestamp": "2026-04-21T08:30:00+09:00",
+                "articles": [
+                    {"article_id": "aaa111", "title": "A"},
+                ],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    analyzed = tmp_path / "analyzed.json"
+    analyzed.write_text(
+        json.dumps(
+            {
+                "issue_number": 17,
+                "generation_timestamp": "2026-04-21T08:30:00+09:00",
+                "articles": [
+                    {"article_id": "aaa111", "title": "A"},
+                    # ↓ candidates 에 없는 외부 유입 기사
+                    {"article_id": "xxx999", "title": "외부 기사 (윈도우 밖)"},
+                ],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    rc = _call(
+        [
+            "--state-path",
+            str(state_path),
+            "validate-analyzed",
+            "--candidates-path",
+            str(candidates),
+            "--analyzed-path",
+            str(analyzed),
+        ]
+    )
+    assert rc == 1
+    st = load_state(str(state_path))
+    assert st.failed_stage == "analyzing"
+    assert st.pipeline_status == "failed"
+    assert "xxx999" in (st.error_reason or "")
+
+
+def test_run_validate_analyzed_fails_when_file_missing(
+    tmp_path: Path,
+) -> None:
+    """candidates 또는 analyzed 파일이 없으면 exit 1."""
+    state_path = _state_path(tmp_path)
+    _write_state(state_path)
+
+    rc = _call(
+        [
+            "--state-path",
+            str(state_path),
+            "validate-analyzed",
+            "--candidates-path",
+            str(tmp_path / "missing-cand.json"),
+            "--analyzed-path",
+            str(tmp_path / "missing-ana.json"),
+        ]
+    )
+    assert rc == 1
+
+
 def test_run_stdout_vs_stderr_separation(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture
 ) -> None:
