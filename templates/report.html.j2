@@ -4,82 +4,151 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#fafaf7">
-<title>{{ hero_title_line1 }} · ISSUE #{{ issue_number }}</title>
+<title>{{ hero_title_line1 }} · Daily Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 html, body { margin: 0; padding: 0; }
 body {
-  font-family: "Charter", "Merriweather", "Noto Serif KR", Georgia, serif;
-  background: #fafaf7;
-  color: #242424;
+  font-family: "Playfair Display", "Noto Serif KR", Georgia, serif;
+  background-color: #f4ede0;
+  color: #1a1a1a;
   font-size: 18px;
-  line-height: 1.68;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   letter-spacing: 0;
-  /* 플로팅 네비 공간 확보 */
   padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  position: relative;
 }
+/* Establishment 203 이미지를 배경으로 고정 (스크롤해도 자리 유지) */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("./assets/establishment-203.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* 배경 위에 신문지 뉴스프린트 그레이 오버레이 — 본문 가독성 보장 */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: rgba(210, 208, 200, 0.87);
+}
+.app { position: relative; z-index: 1; }
 a { color: inherit; text-decoration: none; }
 a:active { opacity: 0.6; }
 
 .app { max-width: 640px; margin: 0 auto; padding: 0 20px; }
 
-/* 상단 바 */
+/* Editorial Masthead — Establishment 203 스타일 */
 .bar {
   display: flex; justify-content: space-between; align-items: center;
-  padding: calc(16px + env(safe-area-inset-top)) 0 16px;
-  border-bottom: 1px solid #e6e6df;
+  padding: calc(14px + env(safe-area-inset-top)) 0 10px;
+  border-bottom: 1px solid #1a1a1a;
 }
-.bar .brand { font-family: -apple-system, sans-serif; font-size: 14px; font-weight: 800; letter-spacing: -0.01em; }
-.bar .brand::before { content: "■ "; color: #1a8917; }
-.bar .edition { font-family: -apple-system, sans-serif; font-size: 13px; color: #6b6b6b; }
-
-.intro { padding: 40px 0 32px; text-align: center; }
-.intro .greeting {
-  font-family: -apple-system, sans-serif;
+.bar .brand {
+  font-style: italic; font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: #1a1a1a;
+}
+.bar .brand::before { content: none; }
+.bar .issue-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 42px; height: 22px;
+  padding: 0 8px;
+  border: 1px solid #1a1a1a;
   font-size: 13px; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: #1a8917; margin-bottom: 16px;
+  letter-spacing: 0.05em;
+  color: #1a1a1a;
+}
+
+/* Dateline strip — 얇은 라인 사이 small caps */
+.dateline {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: #1a1a1a;
+  gap: 8px; flex-wrap: wrap;
+}
+.dateline > span { flex: 0 1 auto; }
+.dateline .middle { flex: 1 1 auto; text-align: center; }
+@media (max-width: 420px) {
+  .dateline { font-size: 10px; letter-spacing: 0.12em; }
+}
+
+
+.intro {
+  padding: 60px 0 56px; text-align: center;
+}
+.intro .greeting {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: #1a1a1a; margin-bottom: 32px;
 }
 .intro h1 {
-  font-size: 40px; font-weight: 700;
-  line-height: 1.12; letter-spacing: -0.02em;
-  margin: 0 0 14px;
+  font-style: italic; font-weight: 900;
+  font-size: clamp(48px, 11.5vw, 84px);
+  line-height: 0.94; letter-spacing: -0.025em;
+  margin: 0 0 24px;
+  color: #1a1a1a;
 }
-.intro .sub { font-family: -apple-system, sans-serif; font-size: 15px; color: #6b6b6b; }
-.intro .meta {
-  font-family: -apple-system, sans-serif;
-  font-size: 13px; color: #999; margin-top: 20px; letter-spacing: 0.04em;
+.intro .sub {
+  font-size: 15px; color: #5a5a5a;
+  font-style: italic;
+  letter-spacing: 0.02em;
 }
-.intro .meta::before { content: "—— "; }
-.intro .meta::after { content: " ——"; }
+.intro .meta { display: none; }
 
 .hashtags {
-  text-align: center; padding: 8px 0 24px;
-  font-family: -apple-system, sans-serif; font-size: 13px;
+  text-align: center; padding: 20px 0;
+  font-size: 14px; font-style: italic;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
 }
 .hashtags span {
-  display: inline-block; margin: 4px 6px;
-  color: #1a8917; font-weight: 600;
+  display: inline-block; margin: 0 6px;
+  font-weight: 400;
 }
 
 /* 섹션 */
 section.feed-sec { scroll-margin-top: 20px; }
 
 .sec-divider {
-  text-align: center; padding: 50px 0 24px;
+  padding: 40px 0 24px;
+  border-top: 4px solid #1a1a1a;
+  margin-top: 72px;
+  text-align: center;
   position: relative;
 }
 .sec-divider::before {
-  content: ""; position: absolute; top: 50%; left: 0; right: 0;
-  height: 1px; background: #e6e6df;
+  content: "§";
+  position: absolute;
+  top: -18px; left: 50%;
+  transform: translateX(-50%);
+  background: #d2d0c8;
+  padding: 0 14px;
+  font-size: 22px; font-style: italic;
+  color: #1a1a1a;
+  line-height: 1;
 }
 .sec-divider h2 {
-  display: inline-block; position: relative;
-  background: #fafaf7; padding: 0 20px;
-  font-size: 20px; font-weight: 700;
+  font-style: italic; font-weight: 700;
+  font-size: 32px;
   letter-spacing: -0.01em; margin: 0;
+  color: #1a1a1a;
 }
 
 /* 스토리 카드 */
@@ -91,28 +160,30 @@ section.feed-sec { scroll-margin-top: 20px; }
 .story:last-of-type { border-bottom: none; }
 
 .story .head {
-  font-family: -apple-system, sans-serif;
-  font-size: 13px; color: #6b6b6b;
-  margin-bottom: 8px;
+  font-size: 12px; color: #5a5a5a;
+  margin-bottom: 10px;
   display: flex; align-items: center; gap: 8px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700;
 }
-.story .head .src { font-weight: 700; color: #242424; }
-.story .head .dot { color: #c5c5c5; }
+.story .head .src { font-weight: 900; color: #1a1a1a; }
+.story .head .dot { color: #bbb; }
 
 .story h3 {
-  font-size: 24px; font-weight: 700;
-  line-height: 1.22; letter-spacing: -0.018em;
-  margin: 0 0 10px;
-  color: #242424;
+  font-style: italic; font-weight: 700;
+  font-size: 26px; line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  color: #1a1a1a;
 }
 
 .story .lede {
-  font-size: 16px; line-height: 1.55;
-  color: #4a4a4a; margin: 0 0 14px;
+  font-size: 17px; line-height: 1.55;
+  color: #3a3a3a; margin: 0 0 14px;
+  font-weight: 400;
 }
 
 .story .foot {
-  font-family: -apple-system, sans-serif;
   display: flex; justify-content: space-between; align-items: center;
   font-size: 13px; color: #6b6b6b;
   flex-wrap: wrap; gap: 8px;
@@ -122,251 +193,224 @@ section.feed-sec { scroll-margin-top: 20px; }
 
 /* 기사 키워드 해시태그 */
 .story .keywords {
-  font-family: -apple-system, sans-serif;
   margin-top: 12px;
   display: flex; flex-wrap: wrap; gap: 6px;
 }
 .story .keywords span {
-  background: #f2f2ed;
-  color: #1a8917;
-  padding: 3px 10px;
-  border-radius: 999px;
+  background: transparent;
+  color: #a02020;
+  padding: 2px 0;
   font-size: 12px;
-  font-weight: 600;
-}
-
-/* 중요도 pill — 점수별 색 스케일 (v3) */
-.score {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 4px 10px; border-radius: 999px;
-  font-size: 11.5px; font-weight: 800;
-  font-variant-numeric: tabular-nums;
+  font-weight: 700;
   letter-spacing: 0.02em;
-  min-height: 24px;
+}
+.story .keywords span::after { content: " · "; color: #c5c5c5; font-weight: 400; }
+.story .keywords span:last-child::after { content: ""; }
+
+/* Editorial 점수 — 이탤릭 serif 숫자 + 미니멀 라인 */
+.score {
+  display: inline-flex; align-items: baseline;
+  padding: 2px 0;
+  font-style: italic; font-weight: 700;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  color: #1a1a1a;
+  background: transparent; border: none;
   position: relative;
 }
-.score::before { content: "★"; font-size: 10px; }
+.score::after {
+  content: " / 10";
+  font-size: 11px; font-style: italic; font-weight: 400;
+  color: #8a8a8a;
+  margin-left: 3px;
+  letter-spacing: 0.05em;
+}
+.score::before { content: none; }
 
-/* 9.0+ — 최고 등급: 그라디언트 + 더블 링 + 글로우 펄스 + 🔥 */
+/* 9.0+ — 잉크 박스 (검정 fill + 흰 italic 숫자) */
 .score-vhigh {
-  background: linear-gradient(135deg, #991b1b 0%, #dc2626 50%, #f59e0b 100%);
-  color: #fff;
-  padding: 5px 13px;
-  font-size: 12.5px;
-  font-weight: 900;
-  box-shadow:
-    0 0 0 2px #fafaf7,
-    0 0 0 4px #991b1b,
-    0 4px 14px rgba(153, 27, 27, 0.55);
-  animation: glow-vhigh 2.2s ease-in-out infinite;
+  background: #1a1a1a; color: #fff;
+  padding: 3px 12px 3px 12px;
+  font-size: 16px;
 }
-.score-vhigh::before { content: "🔥"; font-size: 11px; }
-@keyframes glow-vhigh {
-  0%, 100% {
-    box-shadow:
-      0 0 0 2px #fafaf7,
-      0 0 0 4px #991b1b,
-      0 4px 14px rgba(153, 27, 27, 0.55);
-  }
-  50% {
-    box-shadow:
-      0 0 0 2px #fafaf7,
-      0 0 0 5px #dc2626,
-      0 6px 22px rgba(220, 38, 38, 0.8);
-  }
-}
+.score-vhigh::after { color: rgba(255,255,255,0.55); }
 
-/* 8.5+ — 매우 높음: 파스텔 초록 */
+/* 8.5+ — 이중선 하단 밑줄 */
 .score-superhigh {
-  background: #86efac; color: #14532d;
-  border: 1px solid #4ade80;
+  padding: 2px 0 1px;
+  border-bottom: 3px double #1a1a1a;
 }
 
-/* 8.0+ — 높음: 파스텔 노랑 */
+/* 8.0+ — 굵은 밑줄 */
 .score-high {
-  background: #fde68a; color: #713f12;
-  border: 1px solid #facc15;
+  padding: 2px 0 1px;
+  border-bottom: 2px solid #1a1a1a;
 }
 
-/* 7.0+ — 중상: 파스텔 시안 */
+/* 7.0+ — 얇은 밑줄 */
 .score-midhigh {
-  background: #cffafe; color: #0e7490;
-  border: 1px solid #a5f3fc;
+  padding: 2px 0 1px;
+  border-bottom: 1px solid #1a1a1a;
 }
 
-/* 5.0+ — 중간: 파스텔 라벤더 */
+/* 5.0+ — 회색 톤 */
 .score-mid {
-  background: #e0e7ff; color: #3730a3;
-  border: 1px solid #c7d2fe;
+  color: #5a5a5a;
 }
+.score-mid::after { color: #9a9a9a; }
 
-/* 3.0+ — 낮음: 파스텔 민트 */
+/* 3.0+ — 연회색 */
 .score-low {
-  background: #dcfce7; color: #14532d;
-  border: 1px solid #bbf7d0;
+  color: #8a8a8a;
+  font-weight: 400;
 }
+.score-low::after { color: #bababa; }
 
-/* <3.0 — 매우 낮음: 연회색 */
+/* <3.0 — 매우 연회색 */
 .score-vlow {
-  background: #f3f4f6; color: #9ca3af;
-  border: 1px solid #e5e7eb;
+  color: #bababa;
+  font-weight: 400;
 }
+.score-vlow::after { color: #d5d5d5; }
 
-/* Top story */
+/* Top story — editor's pick 뒤 절취선 제거 (v20 사용자 요청) */
 .top-story {
-  padding: 32px 0 40px;
-  border-bottom: 1px solid #e6e6df;
+  padding: 40px 0 48px;
 }
 .top-story .kicker {
-  font-family: -apple-system, sans-serif;
-  font-size: 13px; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: #c2410c; margin-bottom: 12px;
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #1a1a1a; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
 }
 .top-story h2 {
-  font-size: 32px; font-weight: 700;
-  line-height: 1.12; letter-spacing: -0.022em;
-  margin: 0 0 14px;
+  font-style: italic; font-weight: 900;
+  font-size: clamp(38px, 8vw, 56px);
+  line-height: 0.98; letter-spacing: -0.022em;
+  margin: 0 0 20px;
+  color: #1a1a1a;
 }
 .top-story .by {
-  font-family: -apple-system, sans-serif;
-  font-size: 14px; color: #6b6b6b;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e6e6df;
+  font-size: 12px; color: #5a5a5a;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #1a1a1a;
   display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
 }
 .top-story .body {
-  font-size: 18px; line-height: 1.68;
-}
-.top-story .body::first-letter {
-  font-size: 64px; float: left;
-  line-height: 0.85; margin: 8px 12px 0 0;
-  font-weight: 700; color: #1a8917;
-}
-.top-story .keywords {
-  font-family: -apple-system, sans-serif;
-  margin-top: 20px;
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
-.top-story .keywords span {
-  background: #f2f2ed; color: #1a8917;
-  padding: 4px 12px; border-radius: 999px;
-  font-size: 12.5px; font-weight: 600;
+  font-size: 19px; line-height: 1.6;
+  color: #1a1a1a;
 }
 
-/* 인사이트 레이어 — <details> 토글 */
+/* Editorial 인사이트 — 얇은 hairline + italic serif */
 .why-insights {
   margin-top: 20px;
-  background: #f7f7f2;
-  border: 1px solid #e6e6df;
-  border-radius: 12px;
-  padding: 14px 18px;
+  background: transparent;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 12px 0;
 }
 .why-insights[open] { padding-bottom: 18px; }
 .why-insights > summary {
   cursor: pointer;
-  font-family: -apple-system, sans-serif;
-  font-size: 13px; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: #1a8917;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #1a1a1a;
   list-style: none;
   display: flex; align-items: center; justify-content: space-between;
-  min-height: 32px;
+  min-height: 28px;
 }
 .why-insights > summary::-webkit-details-marker { display: none; }
 .why-insights > summary::after {
-  content: "▾"; transition: transform 0.2s;
-  font-size: 14px; color: #6b6b6b;
+  content: "+"; transition: transform 0.2s;
+  font-size: 20px; font-weight: 400; color: #1a1a1a;
+  line-height: 1;
 }
-.why-insights[open] > summary::after { transform: rotate(180deg); }
+.why-insights[open] > summary::after { content: "—"; }
 
 .why-insights .axis {
   margin-top: 14px; padding-top: 14px;
-  border-top: 1px dashed #d6cdbb;
+  border-top: 1px solid #cfc7b5;
 }
-.why-insights .axis:first-of-type { border-top: none; padding-top: 4px; }
+.why-insights .axis:first-of-type { border-top: none; padding-top: 6px; }
 .why-insights .axis .axis-title {
-  font-family: -apple-system, sans-serif;
-  font-size: 13px; font-weight: 800; color: #242424;
+  font-size: 13px; font-weight: 700; color: #1a1a1a;
   margin-bottom: 6px;
+  letter-spacing: 0.08em; text-transform: uppercase;
   display: flex; align-items: center; gap: 6px;
 }
-.why-insights .axis .axis-title .icon { font-size: 16px; }
+/* 데이터의 이모지 icon 숨김 — editorial 톤 유지 */
+.why-insights .axis .axis-title .icon { display: none; }
 .why-insights .axis .axis-body {
-  font-size: 14.5px; line-height: 1.55; color: #3a3a3a;
+  font-size: 15.5px; line-height: 1.55; color: #2a2a2a;
+  font-style: italic;
 }
 
-/* 뒤로 / footer */
+/* Editorial Footer — 마지막 기사 뒤 절취선 제거 (v20 사용자 요청) */
 footer {
   padding: 50px 0 30px;
   text-align: center;
-  font-family: -apple-system, sans-serif;
-  font-size: 12.5px; color: #6b6b6b;
-  border-top: 1px solid #e6e6df;
+  font-size: 13px; color: #5a5a5a;
   margin-top: 40px;
 }
 footer .disclosure {
-  color: #6b6b6b; font-size: 12px; max-width: 520px;
-  margin: 0 auto 14px; line-height: 1.6;
+  color: #5a5a5a; font-size: 13px; max-width: 520px;
+  margin: 0 auto 16px; line-height: 1.55;
+  font-style: italic;
 }
-footer .issue { font-weight: 800; color: #242424; margin-bottom: 14px; letter-spacing: 0.05em; }
 footer .sources {
-  color: #999; font-size: 11.5px; line-height: 1.8;
-  margin-top: 8px;
+  color: #8a8a8a; font-size: 11px; line-height: 1.8;
+  margin-top: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700;
 }
 
 /* ═══════════════════════════════════════ */
 /* 플로팅 섹션 네비게이션 (고정)            */
 /* ═══════════════════════════════════════ */
+/* Editorial 플로팅 네비 — 흰 배경, 검정 hairline, italic serif */
 .floating-nav {
   position: fixed;
   left: 50%; transform: translateX(-50%);
-  bottom: calc(14px + env(safe-area-inset-bottom));
+  bottom: calc(16px + env(safe-area-inset-bottom));
   z-index: 30;
-  display: flex; gap: 4px;
-  padding: 5px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: saturate(180%) blur(16px);
-  -webkit-backdrop-filter: saturate(180%) blur(16px);
-  border: 2px solid #1a8917;
-  border-radius: 999px;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.9),
-    0 8px 28px rgba(26, 137, 23, 0.22),
-    0 2px 10px rgba(0, 0, 0, 0.08);
-  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+  display: flex; gap: 0;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #1a1a1a;
+  border-radius: 0;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
   max-width: calc(100vw - 24px);
 }
 .floating-nav a {
   flex: 1 1 auto;
-  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px;
   padding: 10px 14px;
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 13px; font-weight: 700;
-  color: #4a4a4a;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #1a1a1a;
   white-space: nowrap;
   min-height: 40px;
-  transition: background 0.18s ease, color 0.18s ease, transform 0.12s;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.12s;
 }
-.floating-nav a:active { transform: scale(0.95); }
+.floating-nav a:active { transform: scale(0.96); }
 .floating-nav a .cnt {
   display: inline-flex; align-items: center; justify-content: center;
-  min-width: 20px; height: 20px; padding: 0 6px;
-  background: rgba(0, 0, 0, 0.06);
-  border-radius: 999px;
-  font-size: 11px; font-weight: 800;
-  color: #6b6b6b;
-  font-variant-numeric: tabular-nums;
+  min-width: 20px; padding: 0 4px;
+  font-style: italic; font-weight: 400;
+  font-size: 11px;
+  color: #8a8a8a;
+  letter-spacing: 0;
 }
 .floating-nav a.active {
-  background: #1a8917; color: #fff;
-  box-shadow: 0 2px 8px rgba(26, 137, 23, 0.35);
+  background: #1a1a1a; color: #fff;
 }
 .floating-nav a.active .cnt {
-  background: rgba(255, 255, 255, 0.25);
-  color: #d9f99d;
+  color: rgba(255,255,255,0.65);
 }
 
 @media (min-width: 640px) {
@@ -389,41 +433,54 @@ footer .sources {
 {%- endmacro %}
 
 {# 섹션 카운트 사전 계산 #}
-{% set ns = namespace(ai_count=0, gen_count=0, all_count=0) %}
+{% set ns = namespace(official_count=0, ai_count=0, gen_count=0, all_count=0) %}
 {% for sec in sections %}
   {% set ns.all_count = ns.all_count + sec.articles|length %}
-  {% if 'AI' in sec.title %}{% set ns.ai_count = sec.articles|length %}{% endif %}
-  {% if '종합' in sec.title %}{% set ns.gen_count = sec.articles|length %}{% endif %}
+  {% if '공식' in sec.title %}{% set ns.official_count = sec.articles|length %}
+  {% elif sec.title == 'AI 뉴스' %}{% set ns.ai_count = sec.articles|length %}
+  {% elif '종합' in sec.title %}{% set ns.gen_count = sec.articles|length %}{% endif %}
 {% endfor %}
+{% set official_count = ns.official_count %}
 {% set ai_count = ns.ai_count %}
 {% set gen_count = ns.gen_count %}
 {% set all_count = ns.all_count %}
 
-{# ─────────────────────────────── 인사이트 블록 매크로 ─────────────────────────────── #}
-{% macro render_insights(insights) -%}
-{%- if insights -%}
-<details class="why-insights" open>
-  <summary>🧭 인사이트 보기</summary>
-  {% if insights.ripple and insights.ripple.text %}
+{# 인사이트 블록 매크로 — article 전체를 받아 extraction_reason 을 첫 축으로 #}
+{% macro render_insights(article) -%}
+{%- set ins = article.insights -%}
+{%- set reason = article.extraction_reason -%}
+{%- if ins or reason -%}
+<details class="why-insights">
+  <summary>Reader's Note</summary>
+  {% if reason %}
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">{{ reason }}</div>
+  </div>
+  {% endif %}
+  {% if ins and ins.ripple and ins.ripple.text %}
   <div class="axis" data-axis="ripple">
     <div class="axis-title">
-      <span class="icon">{{ insights.ripple.icon or "📡" }}</span>
-      <span>{{ insights.ripple.title }}</span>
+      <span class="icon">{{ ins.ripple.icon or "📡" }}</span>
+      <span>{{ ins.ripple.title }}</span>
     </div>
-    <div class="axis-body">{{ insights.ripple.text }}</div>
+    <div class="axis-body">{{ ins.ripple.text }}</div>
   </div>
   {% endif %}
-  {% if insights.history and insights.history.text %}
+  {% if ins and ins.history and ins.history.text %}
   <div class="axis" data-axis="history">
     <div class="axis-title">
-      <span class="icon">{{ insights.history.icon or "🗂" }}</span>
-      <span>{{ insights.history.title }}</span>
+      <span class="icon">{{ ins.history.icon or "🗂" }}</span>
+      <span>{{ ins.history.title }}</span>
     </div>
-    <div class="axis-body">{{ insights.history.text }}</div>
+    <div class="axis-body">{{ ins.history.text }}</div>
   </div>
   {% endif %}
-  {% if insights.bonus %}
-  {% for b in insights.bonus %}
+  {% if ins and ins.bonus %}
+  {% for b in ins.bonus %}
   <div class="axis" data-axis="{{ b.type }}">
     <div class="axis-title">
       <span class="icon">{{ b.icon }}</span>
@@ -440,15 +497,20 @@ footer .sources {
 <div class="app">
 
   <header class="bar">
-    <div class="brand">Daily Reader</div>
-    <div class="edition">Vol. {{ issue_number }} · {{ period_label }}</div>
+    <div class="brand">The Daily Brief</div>
+    <div class="issue-badge">N°{{ issue_number }}</div>
   </header>
+  <div class="dateline">
+    <span>Seoul</span>
+    <span class="middle">{{ generation_timestamp[:10] }}</span>
+    <span>{{ period_label }} Edition</span>
+  </div>
 
   <section class="intro">
     <div class="greeting">{{ hero_title_line1 }}</div>
     <h1>오늘의 {{ period_label }}<br>이야기</h1>
-    <div class="sub">총 {{ all_count }}건 · 읽는 데 약 {{ (all_count * 0.5) | int }}분</div>
-    <div class="meta">{{ generation_timestamp }} · Issue #{{ issue_number }}</div>
+    <div class="sub">총 {{ all_count }}건</div>
+    <div class="meta">{{ generation_timestamp }}</div>
   </section>
 
   {% if trend_hashtags %}
@@ -473,35 +535,27 @@ footer .sources {
         <span>{{ top.published_at_display }}</span>
       </div>
       <div class="body">{{ top.ai_summary }}</div>
-      {% if top.keywords %}
-      <div class="keywords">
-        {% for kw in top.keywords %}<span># {{ kw }}</span>{% endfor %}
-      </div>
-      {% endif %}
-      {{ render_insights(top.insights) }}
+      {{ render_insights(top) }}
     </article>
 
     {% if must_know|length > 1 %}
     <div class="sec-divider"><h2>꼭 알아야 할 뉴스</h2></div>
     {% for art in must_know[1:] %}
-    <a class="story" href="{{ art.original_url }}" target="_blank" rel="noopener">
-      <div class="head">
-        <span class="src">{{ art.source }}</span>
-        <span class="dot">·</span>
-        <span>{{ art.published_at_display }}</span>
-      </div>
-      <h3>{{ art.title }}</h3>
-      <p class="lede">{{ art.ai_summary[:180] }}{% if art.ai_summary|length > 180 %}…{% endif %}</p>
-      {% if art.keywords %}
-      <div class="keywords">
-        {% for kw in art.keywords %}<span># {{ kw }}</span>{% endfor %}
-      </div>
-      {% endif %}
-      <div class="foot">
-        <div class="read">{{ (art.ai_summary|length / 200) | round | int + 1 }} min read</div>
-        <div class="score {{ score_class(art.relevance_score) }}">{{ '%.1f' % art.relevance_score }}</div>
-      </div>
-    </a>
+    <article class="story">
+      <a href="{{ art.original_url }}" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">{{ art.source }}</span>
+          <span class="dot">·</span>
+          <span>{{ art.published_at_display }}</span>
+        </div>
+        <h3>{{ art.title }}</h3>
+        <p class="lede">{{ art.ai_summary[:180] }}{% if art.ai_summary|length > 180 %}…{% endif %}</p>
+        <div class="foot">
+          <div class="score {{ score_class(art.relevance_score) }}">{{ '%.1f' % art.relevance_score }}</div>
+        </div>
+      </a>
+      {{ render_insights(art) }}
+    </article>
     {% endfor %}
     {% endif %}
   </section>
@@ -510,28 +564,25 @@ footer .sources {
   {# ══ 카테고리별 섹션 — AI 뉴스 / 종합 뉴스 ══ #}
   {% for sec in sections %}
   {% if sec.articles %}
-  {% set sid = 'sec-ai' if 'AI' in sec.title else 'sec-general' %}
+  {% set sid = 'sec-official-ai' if '공식' in sec.title else ('sec-ai' if sec.title == 'AI 뉴스' else 'sec-general') %}
   <section class="feed-sec" id="{{ sid }}">
     <div class="sec-divider"><h2>{{ sec.title }}</h2></div>
     {% for art in sec.articles %}
-    <a class="story" href="{{ art.original_url }}" target="_blank" rel="noopener">
-      <div class="head">
-        <span class="src">{{ art.source }}</span>
-        <span class="dot">·</span>
-        <span>{{ art.published_at_display }}</span>
-      </div>
-      <h3>{{ art.title }}</h3>
-      <p class="lede">{{ art.ai_summary[:150] }}{% if art.ai_summary|length > 150 %}…{% endif %}</p>
-      {% if art.keywords %}
-      <div class="keywords">
-        {% for kw in art.keywords %}<span># {{ kw }}</span>{% endfor %}
-      </div>
-      {% endif %}
-      <div class="foot">
-        <div class="read">{{ (art.ai_summary|length / 200) | round | int + 1 }} min read</div>
-        <div class="score {{ score_class(art.relevance_score) }}">{{ '%.1f' % art.relevance_score }}</div>
-      </div>
-    </a>
+    <article class="story">
+      <a href="{{ art.original_url }}" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">{{ art.source }}</span>
+          <span class="dot">·</span>
+          <span>{{ art.published_at_display }}</span>
+        </div>
+        <h3>{{ art.title }}</h3>
+        <p class="lede">{{ art.ai_summary[:150] }}{% if art.ai_summary|length > 150 %}…{% endif %}</p>
+        <div class="foot">
+          <div class="score {{ score_class(art.relevance_score) }}">{{ '%.1f' % art.relevance_score }}</div>
+        </div>
+      </a>
+      {{ render_insights(art) }}
+    </article>
     {% endfor %}
   </section>
   {% endif %}
@@ -539,7 +590,6 @@ footer .sources {
 
   <footer>
     <div class="disclosure">본 리포트는 Claude Opus 4.7이 RSS 원문을 분석해 생성합니다. 사실관계는 각 원문에서 확인하세요.</div>
-    <div class="issue">ISSUE #{{ issue_number }}</div>
     <div class="sources">
       {% for src in rss_sources %}{{ src }}{% if not loop.last %} · {% endif %}{% endfor %}
     </div>
@@ -550,21 +600,24 @@ footer .sources {
 {# ═══════════════ 플로팅 섹션 네비게이션 ═══════════════ #}
 <nav class="floating-nav" aria-label="섹션 이동">
   <a href="#sec-mustknow" data-sec="sec-mustknow" class="active">
-    <span>⭐</span>
-    <span>꼭알아야</span>
+    <span>★</span>
     <span class="cnt">{{ must_know|length }}</span>
   </a>
+  {% if official_count > 0 %}
+  <a href="#sec-official-ai" data-sec="sec-official-ai">
+    <span>Update</span>
+    <span class="cnt">{{ official_count }}</span>
+  </a>
+  {% endif %}
   {% if ai_count > 0 %}
   <a href="#sec-ai" data-sec="sec-ai">
-    <span>🤖</span>
-    <span>AI뉴스</span>
+    <span>AI</span>
     <span class="cnt">{{ ai_count }}</span>
   </a>
   {% endif %}
   {% if gen_count > 0 %}
   <a href="#sec-general" data-sec="sec-general">
-    <span>📰</span>
-    <span>종합뉴스</span>
+    <span>종합</span>
     <span class="cnt">{{ gen_count }}</span>
   </a>
   {% endif %}

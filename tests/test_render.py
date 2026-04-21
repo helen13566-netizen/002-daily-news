@@ -202,11 +202,16 @@ def test_section_grouping_unit():
         make_article(idx=3, category="ai_news", score=9.5),
     ]
     sections = build_sections(articles)
-    assert [s["title"] for s in sections] == ["AI 뉴스", "종합 뉴스"]
-    # AI 뉴스 섹션은 score desc 정렬: 9.5 먼저.
-    assert sections[0]["articles"][0]["article_id"] == "art-0003"
-    assert sections[0]["articles"][1]["article_id"] == "art-0001"
-    assert sections[1]["articles"][0]["article_id"] == "art-0002"
+    # v20: 3 섹션 순서 — 공식 AI → AI 뉴스 → 종합 뉴스
+    assert [s["title"] for s in sections] == [
+        "공식 AI 업데이트", "AI 뉴스", "종합 뉴스",
+    ]
+    # 공식 AI 섹션은 fixture 에 없음 → 빈 articles
+    assert sections[0]["articles"] == []
+    # AI 뉴스 섹션은 score desc: 9.5 먼저.
+    assert sections[1]["articles"][0]["article_id"] == "art-0003"
+    assert sections[1]["articles"][1]["article_id"] == "art-0001"
+    assert sections[2]["articles"][0]["article_id"] == "art-0002"
 
 
 # ---------------------------------------------------------------------------
@@ -415,7 +420,6 @@ def test_footer_contains_ai_disclosure(tmp_path, analyzed_sample):
         "본 리포트는 Claude Opus 4.7이 RSS 원문을 분석해 생성합니다. "
         "사실관계는 각 원문에서 확인하세요." in html
     )
-    assert "ISSUE #112" in html
 
 
 # ---------------------------------------------------------------------------
@@ -423,12 +427,15 @@ def test_footer_contains_ai_disclosure(tmp_path, analyzed_sample):
 # ---------------------------------------------------------------------------
 
 
-def test_keywords_rendered_as_hashtags(tmp_path):
+def test_article_keywords_not_rendered_in_cards(tmp_path):
+    """기사별 keywords 해시태그는 카드에 렌더되지 않는다 (AI뉴스에만 표시되던 비대칭 제거).
+
+    상단 trend_hashtags strip 만 유지, 각 기사 카드의 # 태그 블록은 없음.
+    """
     articles = [
         make_article(
-            idx=1,
-            category="ai_news",
-            keywords=["GPT", "LLM"],
+            idx=1, category="ai_news",
+            keywords=["UniqueKW_ABC", "UniqueKW_XYZ"],
             title="KeywordArticle",
         )
     ]
@@ -442,9 +449,8 @@ def test_keywords_rendered_as_hashtags(tmp_path):
         archive_dir=str(tmp_path / "archive"),
     )
     html = out.read_text(encoding="utf-8")
-    # "# GPT"와 "# LLM"이 모두 렌더되어야 함.
-    assert "# GPT" in html
-    assert "# LLM" in html
+    assert "# UniqueKW_ABC" not in html
+    assert "# UniqueKW_XYZ" not in html
 
 
 # ---------------------------------------------------------------------------
@@ -586,12 +592,12 @@ def test_insights_block_rendered_when_present(tmp_path: Path) -> None:
 
 
 def test_insights_absent_omits_details_block(tmp_path: Path) -> None:
-    """insights 가 없으면 why-insights details 블록은 렌더되지 않는다 (Medium Reader).
+    """insights 도 extraction_reason 도 없으면 why-insights 블록 생략.
 
-    이전 다크엠버 디자인은 extraction_reason 전용 fallback 블록이 있었지만
-    Medium Reader 디자인에서는 insights 가 없으면 간결하게 생략한다.
+    매크로는 article 전체를 받아 extraction_reason 을 첫 축으로, 이어서 insights
+    3축을 렌더. 둘 다 없을 때만 details 자체를 생략한다.
     """
-    art = _minimal_article(extraction_reason="이유")  # insights 없음
+    art = _minimal_article(extraction_reason="")  # insights 없음, reason 도 빈값
     html = _render_to_html(tmp_path, _wrap_analyzed(art))
     assert '<details class="why-insights"' not in html
 
@@ -672,3 +678,71 @@ def test_insights_bonus_axes_rendered(tmp_path: Path) -> None:
     assert "S text" in html
     assert 'data-axis="personal"' in html
     assert 'data-axis="scenario"' in html
+
+
+# ---------------------------------------------------------------------------
+# v20 — 공식 AI 업데이트 섹션 (category=official_ai)
+# ---------------------------------------------------------------------------
+
+
+def test_official_ai_section_grouped_separately(tmp_path: Path) -> None:
+    """category='official_ai' 기사는 별도 섹션으로 그룹핑된다."""
+    art = _minimal_article(
+        category="official_ai",
+        source="OpenAI Blog",
+        title="OpenAI launches something",
+    )
+    html = _render_to_html(tmp_path, _wrap_analyzed(art))
+    assert "공식 AI 업데이트" in html
+    assert 'id="sec-official-ai"' in html
+
+
+def test_official_ai_section_order_first(tmp_path: Path) -> None:
+    """세 섹션 동시 존재 시 순서: 공식 AI → AI 뉴스 → 종합 뉴스."""
+    arts = [
+        _minimal_article(category="general_news", title="General 1",
+                         source="연합뉴스"),
+        _minimal_article(category="ai_news", title="AI 1",
+                         source="AI타임스"),
+        _minimal_article(category="official_ai", title="Official 1",
+                         source="OpenAI Blog"),
+    ]
+    analyzed = {
+        "issue_number": 1,
+        "generation_timestamp": "2026-04-22T07:00:00+09:00",
+        "trend_hashtags": [],
+        "articles": arts,
+    }
+    html = _render_to_html(tmp_path, analyzed)
+    p_off = html.find("공식 AI 업데이트")
+    p_ai = html.find("AI 뉴스")
+    p_gen = html.find("종합 뉴스")
+    assert 0 <= p_off < p_ai < p_gen
+
+
+def test_floating_nav_has_official_ai_link(tmp_path: Path) -> None:
+    """플로팅 네비에 공식 AI 섹션으로 점프하는 링크."""
+    art = _minimal_article(category="official_ai", source="OpenAI Blog",
+                           title="Foo")
+    html = _render_to_html(tmp_path, _wrap_analyzed(art))
+    assert 'href="#sec-official-ai"' in html
+    assert "Update" in html  # 네비 라벨
+
+
+def test_top_story_and_footer_have_no_separators(tmp_path, analyzed_sample) -> None:
+    """top-story 의 border-bottom, footer 의 border-top 둘 다 없어야 한다."""
+    analyzed = _write_analyzed(tmp_path, analyzed_sample)
+    out = tmp_path / "index.html"
+    render(
+        analyzed_path=str(analyzed),
+        template_path=TEMPLATE_PATH,
+        output_path=str(out),
+        archive_dir=str(tmp_path / "archive"),
+    )
+    html = out.read_text(encoding="utf-8")
+    footer_css = re.search(r"footer\s*\{[^}]*\}", html, flags=re.DOTALL)
+    assert footer_css is not None
+    assert "border-top" not in footer_css.group(0)
+    top_css = re.search(r"\.top-story\s*\{[^}]*\}", html, flags=re.DOTALL)
+    assert top_css is not None
+    assert "border-bottom" not in top_css.group(0)
