@@ -10,15 +10,38 @@ class RSSFeed:
     name: str
     url: str
     category: str  # "ai_news" | "general_news"
+    # tz 없는 pubDate 를 해석할 기본 시간대. 한국 소스는 KST 의미로 주지만
+    # feedparser 가 UTC 로 가정해 +9h 미래로 찍히는 버그가 있었음 (v19 수정).
+    # 해외 소스는 pubDate 가 tz 명시되거나 UTC 의미가 관행.
+    default_tz: str = "Asia/Seoul"
 
 
 RSS_FEEDS: tuple[RSSFeed, ...] = (
+    # 한국 소스 (default_tz=KST 이 기본값)
     RSSFeed("AI타임스", "https://www.aitimes.com/rss/allArticle.xml", "ai_news"),
     RSSFeed("ZDNet Korea", "https://feeds.feedburner.com/zdkorea", "ai_news"),
     RSSFeed("전자신문", "https://rss.etnews.com/Section901.xml", "ai_news"),
     RSSFeed("연합뉴스", "https://www.yna.co.kr/rss/news.xml", "general_news"),
     RSSFeed("매일경제", "https://www.mk.co.kr/rss/30000001/", "general_news"),
     RSSFeed("한겨레", "https://www.hani.co.kr/rss/", "general_news"),
+    # 공식 AI 소스 (v19 추가) — default_tz=UTC (pubDate 관행)
+    RSSFeed(
+        "OpenAI Blog", "https://openai.com/blog/rss.xml",
+        "ai_news", default_tz="UTC",
+    ),
+    RSSFeed(
+        "Google DeepMind", "https://deepmind.google/blog/rss.xml",
+        "ai_news", default_tz="UTC",
+    ),
+    RSSFeed(
+        "Simon Willison", "https://simonwillison.net/atom/everything/",
+        "ai_news", default_tz="UTC",
+    ),
+    RSSFeed(
+        "Anthropic SDK Releases",
+        "https://github.com/anthropics/anthropic-sdk-python/releases.atom",
+        "ai_news", default_tz="UTC",
+    ),
 )
 
 # AI 키워드 확장 목록 — 매치 시 해당 기사는 category="ai_news" 로 재분류

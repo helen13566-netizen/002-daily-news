@@ -127,33 +127,34 @@ def test_normalize_title_case_and_punctuation() -> None:
 
 
 def test_category_is_decided_by_keyword_match(monkeypatch: pytest.MonkeyPatch) -> None:
-    """어떤 피드든 AI 키워드가 매치되면 ai_news, 아니면 general_news.
+    """general_news 카테고리 피드에서는 AI 키워드 매칭으로 분류가 결정된다 (v19).
 
-    이전에는 피드의 category 필드로 결정했지만 (AI 피드는 매치 필수),
-    이제는 **모든 기사를 유지**하되 분류만 키워드 기준으로 바뀐다.
+    ai_news 카테고리 피드는 별도 테스트(feed_category_ai_news_forces)에서 다룸.
+    종합·경제 피드에서는 여전히 키워드 매칭이 분류 기준.
     """
-    ai_feed = RSSFeed("AI타임스", "https://ai.example/rss", "ai_news")
+    # v19: 두 피드 모두 general_news 로 선언 → 키워드 매칭에 따라 분류됨.
+    ai_feed = RSSFeed("경제일반", "https://ai.example/rss", "general_news")
     gen_feed = RSSFeed("연합뉴스", "https://yna.example/rss", "general_news")
 
     ai_entries = [
-        # AI 키워드 O → ai_news
+        # AI 키워드 O → ai_news (KST 10:00 — evening window 08:25~17:25 안)
         {
             "title": "GPT 모델 최신 업데이트",
             "link": "https://ai.example/a1",
             "summary": "LLM 기반 성능 개선.",
-            "published": "Sun, 19 Apr 2026 07:00:00 +0900",
+            "published": "Sun, 19 Apr 2026 10:00:00 +0900",
             "published_parsed": time.strptime(
-                "2026-04-19 07:00:00", "%Y-%m-%d %H:%M:%S"
+                "2026-04-19 10:00:00", "%Y-%m-%d %H:%M:%S"
             ),
         },
-        # AI 키워드 X → general_news (이전에는 드롭됐음)
+        # AI 키워드 X → general_news (KST 11:00)
         {
             "title": "반도체 업계 뉴스",
             "link": "https://ai.example/a2",
             "summary": "반도체 생산 동향.",
-            "published": "Sun, 19 Apr 2026 08:00:00 +0900",
+            "published": "Sun, 19 Apr 2026 11:00:00 +0900",
             "published_parsed": time.strptime(
-                "2026-04-19 08:00:00", "%Y-%m-%d %H:%M:%S"
+                "2026-04-19 11:00:00", "%Y-%m-%d %H:%M:%S"
             ),
         },
     ]
@@ -319,9 +320,9 @@ def test_collect_writes_candidates_json(
             "title": "Claude 3.5 국내 출시",
             "link": "https://ai.example/1",
             "summary": "생성형 AI <b>신제품</b> 발표.",
-            "published": "Sun, 19 Apr 2026 07:00:00 +0900",
+            "published": "Sun, 19 Apr 2026 10:00:00 +0900",
             "published_parsed": time.strptime(
-                "2026-04-19 07:00:00", "%Y-%m-%d %H:%M:%S"
+                "2026-04-19 10:00:00", "%Y-%m-%d %H:%M:%S"
             ),
         },
         # 키워드 없음 → general_news 로 분류되어 유지됨 (이전에는 드롭)
@@ -329,9 +330,9 @@ def test_collect_writes_candidates_json(
             "title": "반도체 업황 개선",
             "link": "https://ai.example/2",
             "summary": "DRAM 가격 반등.",
-            "published": "Sun, 19 Apr 2026 07:30:00 +0900",
+            "published": "Sun, 19 Apr 2026 10:30:00 +0900",
             "published_parsed": time.strptime(
-                "2026-04-19 07:30:00", "%Y-%m-%d %H:%M:%S"
+                "2026-04-19 10:30:00", "%Y-%m-%d %H:%M:%S"
             ),
         },
     ]
@@ -381,11 +382,12 @@ def test_collect_writes_candidates_json(
     articles = summary["articles"]
     # 총 3건 유지 (AI 피드 2 + 종합 피드 1)
     assert len(articles) == 3
-    # 카테고리 분포: AI 키워드 매치된 1건만 ai_news, 나머지 2건은 general_news
+    # v19: ai_news 카테고리 피드는 키워드 무관하게 ai_news 로 강제 분류 →
+    # AI 피드 2건 모두 ai_news. 종합 피드는 키워드 없으므로 general_news.
     ai_articles = [a for a in articles if a["category"] == "ai_news"]
     gen_articles = [a for a in articles if a["category"] == "general_news"]
-    assert len(ai_articles) == 1
-    assert len(gen_articles) == 2
+    assert len(ai_articles) == 2
+    assert len(gen_articles) == 1
     for art in articles:
         assert set(art) == {
             "article_id",
@@ -699,6 +701,128 @@ def test_process_feed_drops_article_when_enrich_also_fails(
     assert result.articles == []
     assert result.parse_failed == 1
     assert result.fetched == 1
+
+
+def test_feed_category_ai_news_forces_ai_classification_regardless_of_keywords(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """피드의 category='ai_news' 면 본문에 AI 키워드가 없어도 ai_news 로 분류한다 (v19).
+
+    Anthropic / OpenAI / DeepMind 같은 공식 AI 소스는 제목/본문에 'AI' 가
+    안 써 있어도 AI 소식이므로 피드 카테고리 선언을 우선 존중.
+    """
+    from pipeline.config import RSSFeed
+
+    feed = RSSFeed(
+        name="OpenAI", url="https://openai.com/blog/rss.xml",
+        category="ai_news", default_tz="UTC",
+    )
+    fixed_now = KST.localize(datetime(2026, 4, 21, 20, 0, 0))
+
+    entries = [
+        # AI_KEYWORDS 어느 것도 포함 안 된 기사 (순수 제품명만)
+        {
+            "title": "New pelican benchmark dataset released",
+            "link": "https://example/a",
+            "summary": "A fresh benchmark for evaluating reasoning on pelicans.",
+            "published": "Tue, 21 Apr 2026 00:00:00 GMT",
+        },
+    ]
+
+    monkeypatch.setattr(collect_mod, "_fetch_feed_once", lambda _f: _make_parsed(entries))
+    result = collect_mod.process_feed(feed, now_kst=fixed_now)
+    assert len(result.articles) == 1
+    # 키워드 전혀 없어도 피드 category 가 ai_news 이므로 ai_news 분류.
+    assert result.articles[0].keywords == []
+    assert result.articles[0].category == "ai_news"
+
+
+def test_parse_published_naive_string_uses_default_tz() -> None:
+    """tz 없는 pubDate 문자열은 default_tz 로 localize 해야 한다 (v19).
+
+    AI타임스 RSS 는 pubDate 에 '2026-04-21 16:53:12' 같이 tz 없는 문자열을
+    주는데, feedparser 가 이를 UTC struct_time 으로 저장해서 우리 코드가
+    +9h 시프트로 미래 시각을 만들어냈다. raw 문자열을 먼저 파싱하고 tz 가
+    없으면 default_tz (한국 소스 = KST) 로 localize.
+    """
+
+    class _Entry:
+        def get(self, key, default=None):
+            if key == "published":
+                return "2026-04-21 16:53:12"
+            # published_parsed 는 일부러 제공 — feedparser 가 UTC 로 해석한 상태.
+            if key == "published_parsed":
+                return time.strptime("2026-04-21 16:53:12", "%Y-%m-%d %H:%M:%S")
+            return default
+
+    entry = _Entry()
+    now_utc = datetime(2026, 4, 21, 0, 0, 0, tzinfo=pytz.utc)
+
+    # default_tz 로 KST 를 명시하면 raw 문자열이 KST 로 해석되어야 한다.
+    result = collect_mod.parse_published(entry, now_utc, default_tz=KST)
+    assert result is not None
+    # 2026-04-21 16:53:12 KST (= 07:53:12 UTC). +9h 미래(01:53 익일)가 아님.
+    assert result.strftime("%Y-%m-%d %H:%M") == "2026-04-21 16:53"
+
+
+def test_parse_published_respects_explicit_tz_in_raw() -> None:
+    """raw pubDate 에 tz 가 명시돼 있으면 default_tz 는 무시하고 그걸 따른다."""
+
+    class _Entry:
+        def get(self, key, default=None):
+            if key == "published":
+                return "Mon, 21 Apr 2026 08:00:00 +0000"  # UTC 명시
+            return default
+
+    entry = _Entry()
+    now_utc = datetime(2026, 4, 21, 0, 0, 0, tzinfo=pytz.utc)
+    result = collect_mod.parse_published(entry, now_utc, default_tz=KST)
+    assert result is not None
+    # UTC 08:00 = KST 17:00
+    assert result.strftime("%Y-%m-%d %H:%M") == "2026-04-21 17:00"
+
+
+def test_rssfeed_has_default_tz_field() -> None:
+    """RSSFeed 에 default_tz 필드가 있어 소스별 tz 힌트를 선언할 수 있다."""
+    from pipeline.config import RSSFeed
+
+    f = RSSFeed(
+        name="test", url="https://example.com", category="ai_news",
+        default_tz="UTC",
+    )
+    assert f.default_tz == "UTC"
+
+
+def test_process_feed_uses_feed_default_tz_for_naive_times(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """AI타임스 style (tz 없는 pubDate) 가 feed.default_tz=Asia/Seoul 로 정정된다."""
+    from pipeline.config import RSSFeed
+
+    feed = RSSFeed(
+        name="AI타임스", url="https://ai.example/rss", category="ai_news",
+        default_tz="Asia/Seoul",
+    )
+    fixed_now = KST.localize(datetime(2026, 4, 21, 20, 0, 0))
+
+    entries = [
+        {
+            "title": "KST 의미인 기사",
+            "link": "https://ai.example/1",
+            "summary": "테스트.",
+            # tz 없음 — KST 로 해석되어야 함
+            "published": "2026-04-21 16:53:12",
+            "published_parsed": time.strptime(
+                "2026-04-21 16:53:12", "%Y-%m-%d %H:%M:%S"
+            ),
+        },
+    ]
+
+    monkeypatch.setattr(collect_mod, "_fetch_feed_once", lambda _f: _make_parsed(entries))
+    result = collect_mod.process_feed(feed, now_kst=fixed_now)
+    assert len(result.articles) == 1
+    # +9h shift 가 있으면 "2026-04-22T01:53" 으로 나올 것. 정답은 KST 16:53.
+    assert result.articles[0].published_at.startswith("2026-04-21T16:53")
 
 
 def test_collect_source_stats_include_parse_failed(

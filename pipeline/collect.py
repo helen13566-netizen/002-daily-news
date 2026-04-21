@@ -176,24 +176,30 @@ def window_start_for(now_kst: datetime) -> datetime:
     )
 
 
-def parse_published(entry: Any, fallback_utc_now: datetime) -> datetime | None:
+def parse_published(
+    entry: Any,
+    fallback_utc_now: datetime,
+    *,
+    default_tz: Any = None,
+) -> datetime | None:
     """RSS entry 에서 published 시각을 KST-aware datetime 으로 추출.
 
-    - ``published_parsed`` 또는 ``updated_parsed`` (time.struct_time, UTC naive) 우선.
-    - 둘 다 없으면 dateutil 로 문자열 파싱 시도.
-    - 모두 실패하면 **None 반환** (sentinel). 이전에는 ``fallback_utc_now`` 를
-      반환해서 윈도우 필터를 우회했지만 (한겨레 같은 시각 태그 없는 RSS 에서
-      전 기사가 수집 시각으로 찍혔음) — v18 부터는 호출측에서 enrich 또는 drop
-      선택할 수 있게 None 을 돌려준다.
-    - tz 정보 없으면 KST 로 간주.
+    우선순위 (v19 에서 뒤집음 — 이전에는 struct_time 이 우선이었지만 feedparser 가
+    tz 없는 pubDate 를 UTC 로 강제 해석하는 동작 때문에 한국 RSS 에서 +9h 미래
+    시프트 버그가 있었음):
+
+    1. ``entry.published`` / ``entry.updated`` / ``entry.pubDate`` **raw 문자열** 을
+       ``dateutil`` 로 파싱. tz 정보가 있으면 그대로 존중, 없으면 ``default_tz``
+       (피드가 명시한 기본 시간대 — 한국 소스 = KST) 로 localize.
+    2. raw 가 없거나 실패 → ``published_parsed`` / ``updated_parsed`` (feedparser
+       struct_time) 를 UTC 로 간주해 변환 (마지막 fallback).
+    3. 모두 실패 → **None 반환** (sentinel — 호출측에서 enrich 시도).
+
+    Args:
+        default_tz: pytz timezone 또는 None. None 이면 KST 로 간주.
     """
-    struct = entry.get("published_parsed") or entry.get("updated_parsed")
-    if struct is not None:
-        try:
-            dt_utc = datetime(*struct[:6], tzinfo=timezone.utc)
-            return dt_utc.astimezone(KST)
-        except Exception:
-            logger.debug("published_parsed 변환 실패, 문자열 파싱으로 fallback")
+    if default_tz is None:
+        default_tz = KST
 
     raw = entry.get("published") or entry.get("updated") or entry.get("pubDate")
     if raw:
@@ -202,12 +208,19 @@ def parse_published(entry: Any, fallback_utc_now: datetime) -> datetime | None:
 
             dt = dtparser.parse(raw)
             if dt.tzinfo is None:
-                dt = KST.localize(dt)
+                dt = default_tz.localize(dt)
             return dt.astimezone(KST)
         except Exception:
             logger.debug("published 문자열 파싱 실패: %r", raw)
 
-    # 이 지점까지 오면 RSS entry 에 어떤 시각 정보도 없다. 호출측이 enrich 시도.
+    struct = entry.get("published_parsed") or entry.get("updated_parsed")
+    if struct is not None:
+        try:
+            dt_utc = datetime(*struct[:6], tzinfo=timezone.utc)
+            return dt_utc.astimezone(KST)
+        except Exception:
+            logger.debug("published_parsed 변환 실패")
+
     _ = fallback_utc_now  # kept for signature stability
     return None
 
@@ -428,6 +441,11 @@ def process_feed(
         now_kst = now_utc.astimezone(KST)
     window_start = window_start_for(now_kst)
 
+    try:
+        feed_default_tz = pytz.timezone(feed.default_tz)
+    except Exception:
+        feed_default_tz = KST
+
     for entry in entries:
         title = (entry.get("title") or "").strip()
         link = (entry.get("link") or "").strip()
@@ -440,7 +458,7 @@ def process_feed(
         raw_summary = entry.get("summary") or entry.get("description") or ""
         content_text = truncate(strip_html(raw_summary))
 
-        published_dt = parse_published(entry, now_utc)
+        published_dt = parse_published(entry, now_utc, default_tz=feed_default_tz)
 
         # RSS item 에 본문/시각 정보가 부족하면 기사 페이지 og:meta 로 enrich 시도.
         # (한겨레 등 시각 태그 없는 RSS 를 위한 fallback.)
@@ -484,9 +502,13 @@ def process_feed(
         if matched_keywords:
             result.ai_matched += 1
 
-        # 분류는 이제 피드 출처가 아니라 AI 키워드 매칭 결과로 결정.
-        # 어떤 피드든 AI 키워드가 매칭되면 ai_news, 아니면 general_news.
-        category = "ai_news" if matched_keywords else "general_news"
+        # 분류 규칙 (v19):
+        # - 피드의 category 가 "ai_news" 면 키워드 무관하게 ai_news (공식 AI 소스 존중).
+        # - 그 외 피드(종합·경제 등) 는 기존대로 키워드 매칭 결과로 분류.
+        if feed.category == "ai_news":
+            category = "ai_news"
+        else:
+            category = "ai_news" if matched_keywords else "general_news"
 
         article = Article(
             article_id=article_id,
