@@ -9,11 +9,15 @@ from dataclasses import dataclass
 class RSSFeed:
     name: str
     url: str
-    category: str  # "ai_news" | "general_news"
+    category: str  # "ai_news" | "general_news" | "official_ai"
     # tz 없는 pubDate 를 해석할 기본 시간대. 한국 소스는 KST 의미로 주지만
     # feedparser 가 UTC 로 가정해 +9h 미래로 찍히는 버그가 있었음 (v19 수정).
     # 해외 소스는 pubDate 가 tz 명시되거나 UTC 의미가 관행.
     default_tz: str = "Asia/Seoul"
+    # None → 기본 오전/오후 고정 윈도우 적용. 정수면 (now - N시간) ~ now rolling
+    # 윈도우. 공식 AI 소스처럼 발행 주기가 낮은 피드(주 1~3회)에 72 를 주면
+    # 지난 72 시간 안의 발표를 전부 포함해 주기 결핍 완화.
+    window_hours: int | None = None
 
 
 RSS_FEEDS: tuple[RSSFeed, ...] = (
@@ -24,23 +28,23 @@ RSS_FEEDS: tuple[RSSFeed, ...] = (
     RSSFeed("연합뉴스", "https://www.yna.co.kr/rss/news.xml", "general_news"),
     RSSFeed("매일경제", "https://www.mk.co.kr/rss/30000001/", "general_news"),
     RSSFeed("한겨레", "https://www.hani.co.kr/rss/", "general_news"),
-    # 공식 AI 소스 (v19 추가) — default_tz=UTC (pubDate 관행)
+    # 공식 AI 소스 (v20) — category=official_ai · window_hours=72 로 주기 결핍 완화
     RSSFeed(
         "OpenAI Blog", "https://openai.com/blog/rss.xml",
-        "ai_news", default_tz="UTC",
+        "official_ai", default_tz="UTC", window_hours=72,
     ),
     RSSFeed(
         "Google DeepMind", "https://deepmind.google/blog/rss.xml",
-        "ai_news", default_tz="UTC",
+        "official_ai", default_tz="UTC", window_hours=72,
     ),
     RSSFeed(
         "Simon Willison", "https://simonwillison.net/atom/everything/",
-        "ai_news", default_tz="UTC",
+        "official_ai", default_tz="UTC", window_hours=72,
     ),
     RSSFeed(
         "Anthropic SDK Releases",
         "https://github.com/anthropics/anthropic-sdk-python/releases.atom",
-        "ai_news", default_tz="UTC",
+        "official_ai", default_tz="UTC", window_hours=72,
     ),
 )
 

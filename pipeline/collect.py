@@ -144,36 +144,61 @@ def truncate(text: str, limit: int = MAX_CONTENT_CHARS) -> str:
     return text[: max(0, limit - 1)].rstrip() + "…"
 
 
-def window_start_for(now_kst: datetime) -> datetime:
-    """수집 시각(KST) 을 받아 브리핑 시간 윈도우의 시작 시점을 반환.
+def window_for(
+    now_kst: datetime,
+    *,
+    window_hours: int | None = None,
+) -> tuple[datetime, datetime]:
+    """수집 시각(KST) 을 받아 브리핑 시간 윈도우 ``(start, end)`` 를 반환.
 
-    - 오전 수집(정오 이전) → 윈도우 시작 = **전날 ``EVENING_CUTOFF`` (17:25 KST)**.
-      오전 브리핑은 "전날 저녁 ~ 당일 아침" 구간을 대상으로 한다.
-    - 오후 수집(정오 이후) → 윈도우 시작 = **당일 ``MORNING_CUTOFF`` (08:25 KST)**.
-      오후 브리핑은 "당일 아침 ~ 당일 저녁" 구간을 대상으로 한다.
-
-    윈도우 끝(상한) 은 이 함수에서 다루지 않는다. 호출측은 수집 시각 자체를 상한으로
-    두어 지연 발행된 기사도 포함시킨다.
+    - ``window_hours=None`` (기본): 오전 수집 → 전날 17:25 ~ 당일 08:25 KST,
+      오후 수집 → 당일 08:25 ~ 당일 17:25 KST 로 고정 윈도우.
+    - ``window_hours=N`` (정수, v20 추가): ``(now - N시간, now)`` rolling 윈도우.
+      공식 AI 소스처럼 발행 주기가 낮은 피드에 72 를 주면 지난 72 시간 안의
+      글을 전부 포함.
     """
     if now_kst.tzinfo is None:
         now_kst = KST.localize(now_kst)
     else:
         now_kst = now_kst.astimezone(KST)
 
+    if window_hours is not None:
+        return now_kst - timedelta(hours=window_hours), now_kst
+
     if now_kst.hour < 12:
         prev_day = now_kst - timedelta(days=1)
-        return prev_day.replace(
+        start = prev_day.replace(
             hour=EVENING_CUTOFF_HOUR,
             minute=EVENING_CUTOFF_MINUTE,
             second=0,
             microsecond=0,
         )
-    return now_kst.replace(
-        hour=MORNING_CUTOFF_HOUR,
-        minute=MORNING_CUTOFF_MINUTE,
-        second=0,
-        microsecond=0,
-    )
+        end = now_kst.replace(
+            hour=MORNING_CUTOFF_HOUR,
+            minute=MORNING_CUTOFF_MINUTE,
+            second=0,
+            microsecond=0,
+        )
+    else:
+        start = now_kst.replace(
+            hour=MORNING_CUTOFF_HOUR,
+            minute=MORNING_CUTOFF_MINUTE,
+            second=0,
+            microsecond=0,
+        )
+        end = now_kst.replace(
+            hour=EVENING_CUTOFF_HOUR,
+            minute=EVENING_CUTOFF_MINUTE,
+            second=0,
+            microsecond=0,
+        )
+    return start, end
+
+
+def window_start_for(now_kst: datetime) -> datetime:
+    """(legacy alias) 윈도우 시작 시점만 반환."""
+    start, _end = window_for(now_kst)
+    return start
 
 
 def parse_published(
@@ -442,7 +467,11 @@ def process_feed(
     now_utc = datetime.now(timezone.utc)
     if now_kst is None:
         now_kst = now_utc.astimezone(KST)
-    window_start = window_start_for(now_kst)
+    # feed 별 window_hours (None = 기본 오전/오후 고정, 정수 = rolling)
+    feed_window_hours = getattr(feed, "window_hours", None)
+    window_start, _window_end = window_for(
+        now_kst, window_hours=feed_window_hours
+    )
 
     try:
         feed_default_tz = pytz.timezone(feed.default_tz)

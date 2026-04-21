@@ -851,3 +851,54 @@ def test_collect_source_stats_include_parse_failed(
     )
     assert summary["source_stats"]["한겨레"]["parse_failed"] == 2
     assert summary["source_stats"]["한겨레"]["kept"] == 0
+
+
+# ---------------------------------------------------------------------------
+# v20 — 피드별 rolling window_hours
+# ---------------------------------------------------------------------------
+
+
+def test_window_for_with_hours_rolls_back_that_amount() -> None:
+    """window_hours 지정 시 now 로부터 해당 시간만큼 rolling 윈도우."""
+    now = KST.localize(datetime(2026, 4, 22, 10, 0, 0))
+    start, end = collect_mod.window_for(now, window_hours=72)
+    assert end == now
+    assert (end - start).total_seconds() == 72 * 3600
+    assert start == KST.localize(datetime(2026, 4, 19, 10, 0, 0))
+
+
+def test_window_for_without_hours_uses_default() -> None:
+    """window_hours=None 이면 기존 오전/오후 고정 윈도우 유지."""
+    morning = KST.localize(datetime(2026, 4, 22, 8, 15, 0))
+    start, end = collect_mod.window_for(morning, window_hours=None)
+    assert start == KST.localize(datetime(2026, 4, 21, 17, 25, 0))
+    assert end == KST.localize(datetime(2026, 4, 22, 8, 25, 0))
+
+
+def test_process_feed_uses_feed_window_hours(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """feed.window_hours 가 설정되면 해당 rolling 윈도우 적용."""
+    feed = RSSFeed(
+        name="OfficialAI", url="https://ai.example/rss",
+        category="official_ai", default_tz="UTC", window_hours=72,
+    )
+    fixed_now = KST.localize(datetime(2026, 4, 22, 10, 0, 0))
+
+    # 48시간 전 기사 — 기본 윈도우엔 탈락이지만 72h 윈도우엔 통과
+    entries = [
+        {
+            "title": "Old but within 72h",
+            "link": "https://ai.example/1",
+            "summary": "Some AI news.",
+            "published": "Mon, 20 Apr 2026 10:00:00 +0000",
+        },
+    ]
+
+    def fake_parse(_f: RSSFeed) -> Any:
+        return _make_parsed(entries)
+
+    monkeypatch.setattr(collect_mod, "_fetch_feed_once", fake_parse)
+    result = collect_mod.process_feed(feed, now_kst=fixed_now)
+    assert len(result.articles) == 1
+    assert result.articles[0].title == "Old but within 72h"
