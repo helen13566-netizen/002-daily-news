@@ -242,9 +242,9 @@ def test_must_know_is_top5_by_score(tmp_path):
     )
 
     html = out_html.read_text(encoding="utf-8")
-    # must-read section 내부만 추출.
+    # must-read section 내부만 추출 (class 값에 must-read 토큰 포함 여부로 매치).
     section = re.search(
-        r'<section class="must-read"[^>]*>(.*?)</section>',
+        r'<section[^>]*class="[^"]*must-read[^"]*"[^>]*>(.*?)</section>',
         html,
         flags=re.DOTALL,
     )
@@ -376,6 +376,7 @@ def test_published_display_renders_in_html(tmp_path):
 
 
 def test_footer_contains_all_six_sources(tmp_path, analyzed_sample):
+    """footer 에 config.RSS_FEEDS 의 모든 소스 이름이 표시된다 (Medium Reader)."""
     analyzed = _write_analyzed(tmp_path, analyzed_sample)
     out = tmp_path / "index.html"
     render(
@@ -386,7 +387,6 @@ def test_footer_contains_all_six_sources(tmp_path, analyzed_sample):
     )
     html = out.read_text(encoding="utf-8")
 
-    # footer 태그 안에서만 확인.
     footer_match = re.search(r"<footer[^>]*>(.*?)</footer>", html, flags=re.DOTALL)
     assert footer_match is not None
     footer = footer_match.group(1)
@@ -448,11 +448,12 @@ def test_keywords_rendered_as_hashtags(tmp_path):
 
 
 # ---------------------------------------------------------------------------
-# 9. FX D+E 양쪽 활성, FX 스위처 제거
+# 9. Medium Reader 고유 마커 (v19) — 플로팅 네비 + 점수 색상 6단계
 # ---------------------------------------------------------------------------
 
 
-def test_fx_d_and_e_both_active(tmp_path, analyzed_sample):
+def test_floating_nav_rendered(tmp_path, analyzed_sample):
+    """하단 고정 섹션 네비게이션이 렌더된다 (꼭알아야 / AI / 종합 anchor)."""
     analyzed = _write_analyzed(tmp_path, analyzed_sample)
     out = tmp_path / "index.html"
     render(
@@ -462,52 +463,14 @@ def test_fx_d_and_e_both_active(tmp_path, analyzed_sample):
         archive_dir=str(tmp_path / "archive"),
     )
     html = out.read_text(encoding="utf-8")
-
-    # D+E 결합 선택자 사용 확인.
-    assert 'body[data-fx="de"]' in html
-    assert '<body data-fx="de">' in html
-
-    # D 고유: 문자 스플래시 + 슬라이드 진입 + 섹션 줌인.
-    assert "fxDE-char" in html
-    assert "translateX(-60px)" in html  # D 기사 슬라이드 진입
-    assert "scale(0.94)" in html  # D 섹션 줌인
-
-    # E 고유: 엠버 블록 만스트레드 + 대각선 스트라이프 악센트 바 + 지그재그 회전.
-    assert "repeating-linear-gradient" in html  # E 대각선 스트라이프
-    assert "rotate(-0.25deg)" in html or "rotate(-0.8deg)" in html  # E 지그재그
-    assert "background: var(--accent)" in html  # E must-read 엠버 블록
-
-    # E 호버 invert 효과.
-    assert 'body[data-fx="de"] .article:hover' in html
-
-    # FX 스위처 UI 및 다른 FX 블록 제거 확인.
-    assert ".fx-switcher" not in html
-    assert ".fx-label" not in html
-    assert 'data-fx-btn=' not in html
-    # FX A/B/C/F keyframes 제거 확인.
-    assert "fxA-title" not in html
-    assert "fxA-item" not in html
-    assert "fxA-bar" not in html
-    assert "fxB-" not in html
-    assert "fxC-" not in html
-    assert "fxF-" not in html
-    # data-fx="a"/"b"/"c"/"f" 같은 대체 FX 선택자가 없어야 함.
-    assert 'data-fx="a"' not in html
-    assert 'data-fx="b"' not in html
-    assert 'data-fx="c"' not in html
-    assert 'data-fx="f"' not in html
-
-    # IntersectionObserver JS (D에 필요) 유지 확인.
-    assert "IntersectionObserver" in html
-    assert "fx-in" in html
+    assert 'class="floating-nav"' in html
+    assert 'href="#sec-mustknow"' in html
+    assert 'href="#sec-ai"' in html
+    assert 'href="#sec-general"' in html
 
 
-# ---------------------------------------------------------------------------
-# 보너스: must_read 블록이 amber-on-black 타이포 배너인지 스냅샷 체크
-# ---------------------------------------------------------------------------
-
-
-def test_must_read_is_full_amber_banner(tmp_path, analyzed_sample):
+def test_section_anchor_ids_present(tmp_path, analyzed_sample):
+    """3개 섹션 anchor id 가 HTML 에 존재해 플로팅 네비가 유효한 target 을 가진다."""
     analyzed = _write_analyzed(tmp_path, analyzed_sample)
     out = tmp_path / "index.html"
     render(
@@ -517,41 +480,38 @@ def test_must_read_is_full_amber_banner(tmp_path, analyzed_sample):
         archive_dir=str(tmp_path / "archive"),
     )
     html = out.read_text(encoding="utf-8")
-    # .must-read 베이스 CSS: background: var(--accent); color: var(--bg).
-    # CSS 블록 안의 속성 순서를 유연하게 정규식으로 검증.
-    must_read_block = re.search(
-        r"\.must-read\s*\{[^}]*\}", html, flags=re.DOTALL
-    )
-    assert must_read_block is not None
-    block = must_read_block.group(0)
-    assert "background: var(--accent)" in block
-    assert "color: var(--bg)" in block
-
-    # 900 weight + 0.18em spacing.
-    h2_block = re.search(
-        r"\.must-read h2\s*\{[^}]*\}", html, flags=re.DOTALL
-    )
-    assert h2_block is not None
-    assert "font-weight: 900" in h2_block.group(0)
-    assert "letter-spacing: 0.18em" in h2_block.group(0)
+    assert 'id="sec-mustknow"' in html
+    assert 'id="sec-ai"' in html
+    assert 'id="sec-general"' in html
 
 
-def test_section_has_two_pixel_amber_border_and_12_radius(tmp_path, analyzed_sample):
-    analyzed = _write_analyzed(tmp_path, analyzed_sample)
+def test_score_color_class_mapping(tmp_path):
+    """점수 → 색상 클래스 매핑이 의도대로 (9.0+ vhigh, 8.5+ superhigh, ...)."""
+    articles = [
+        make_article(idx=1, category="ai_news", score=9.3, is_must_know=True),
+        make_article(idx=2, category="ai_news", score=8.6, is_must_know=True),
+        make_article(idx=3, category="ai_news", score=8.1, is_must_know=True),
+        make_article(idx=4, category="general_news", score=7.5, is_must_know=True),
+        make_article(idx=5, category="general_news", score=5.5, is_must_know=True),
+        make_article(idx=6, category="general_news", score=3.2, is_must_know=True),
+    ]
+    analyzed = make_analyzed(issue_number=1, articles=articles)
+    path = _write_analyzed(tmp_path, analyzed)
     out = tmp_path / "index.html"
     render(
-        analyzed_path=str(analyzed),
+        analyzed_path=str(path),
         template_path=TEMPLATE_PATH,
         output_path=str(out),
         archive_dir=str(tmp_path / "archive"),
     )
     html = out.read_text(encoding="utf-8")
-
-    section_block = re.search(r"\.section\s*\{[^}]*\}", html, flags=re.DOTALL)
-    assert section_block is not None
-    block = section_block.group(0)
-    assert "border-radius: 12px" in block
-    assert "border: 2px solid var(--accent)" in block
+    # 각 등급 클래스가 최소 1회 나타나야 한다.
+    assert "score-vhigh" in html
+    assert "score-superhigh" in html
+    assert "score-high" in html
+    assert "score-midhigh" in html
+    assert "score-mid" in html
+    assert "score-low" in html
 
 
 # ---------------------------------------------------------------------------
@@ -625,13 +585,15 @@ def test_insights_block_rendered_when_present(tmp_path: Path) -> None:
     assert "역사 비교 설명 문단입니다." in html
 
 
-def test_insights_absent_falls_back_to_simple_why(tmp_path: Path) -> None:
-    """insights 필드가 없으면 기존 .why 박스만 렌더 (하위호환)."""
+def test_insights_absent_omits_details_block(tmp_path: Path) -> None:
+    """insights 가 없으면 why-insights details 블록은 렌더되지 않는다 (Medium Reader).
+
+    이전 다크엠버 디자인은 extraction_reason 전용 fallback 블록이 있었지만
+    Medium Reader 디자인에서는 insights 가 없으면 간결하게 생략한다.
+    """
     art = _minimal_article(extraction_reason="이유")  # insights 없음
     html = _render_to_html(tmp_path, _wrap_analyzed(art))
     assert '<details class="why-insights"' not in html
-    assert '<div class="why">' in html
-    assert "추출 이유</strong>이유" in html
 
 
 def test_period_respects_explicit_period_field_over_clock(tmp_path: Path) -> None:

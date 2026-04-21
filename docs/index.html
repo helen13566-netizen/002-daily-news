@@ -1,1754 +1,1169 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>굿이브닝 · 데일리 뉴스 — ISSUE #20</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0D0D0D;
-      --surface: #161616;
-      --surface-2: #1C1C1C;
-      --text: #F5F5F5;
-      --text-sub: #8A8A8A;
-      --text-mute: #5A5A5A;
-      --border: #2A2A2A;
-      --accent: #FFA500;
-      --accent-soft: rgba(255,165,0,0.08);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fafaf7">
+<title>굿이브닝 · ISSUE #20</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Charter", "Merriweather", "Noto Serif KR", Georgia, serif;
+  background: #fafaf7;
+  color: #242424;
+  font-size: 18px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0;
+  /* 플로팅 네비 공간 확보 */
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+}
+a { color: inherit; text-decoration: none; }
+a:active { opacity: 0.6; }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+.app { max-width: 640px; margin: 0 auto; padding: 0 20px; }
 
-    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+/* 상단 바 */
+.bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: calc(16px + env(safe-area-inset-top)) 0 16px;
+  border-bottom: 1px solid #e6e6df;
+}
+.bar .brand { font-family: -apple-system, sans-serif; font-size: 14px; font-weight: 800; letter-spacing: -0.01em; }
+.bar .brand::before { content: "■ "; color: #1a8917; }
+.bar .edition { font-family: -apple-system, sans-serif; font-size: 13px; color: #6b6b6b; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 20px 80px;
-      line-height: 1.65;
-      font-size: 16px;
-      font-feature-settings: 'ss02';
-    }
+.intro { padding: 40px 0 32px; text-align: center; }
+.intro .greeting {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #1a8917; margin-bottom: 16px;
+}
+.intro h1 {
+  font-size: 40px; font-weight: 700;
+  line-height: 1.12; letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+.intro .sub { font-family: -apple-system, sans-serif; font-size: 15px; color: #6b6b6b; }
+.intro .meta {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; color: #999; margin-top: 20px; letter-spacing: 0.04em;
+}
+.intro .meta::before { content: "—— "; }
+.intro .meta::after { content: " ——"; }
 
-    .serif {
-      font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
-      font-weight: 500;
-    }
+.hashtags {
+  text-align: center; padding: 8px 0 24px;
+  font-family: -apple-system, sans-serif; font-size: 13px;
+}
+.hashtags span {
+  display: inline-block; margin: 4px 6px;
+  color: #1a8917; font-weight: 600;
+}
 
-    /* HEADER - Hero style (2줄 세리프 거대 타이틀 + 대각선 스트라이프 악센트 바) */
-    header {
-      padding: 64px 0 0;
-      margin-bottom: 48px;
-    }
-    header h1 {
-      font-family: 'Noto Serif KR', serif;
-      font-weight: 900;
-      font-size: 72px;
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      margin-bottom: 32px;
-    }
-    header h1 .line {
-      display: block;
-    }
-    header .meta-line {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      color: var(--text-sub);
-      font-size: 13px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      font-feature-settings: 'tnum';
-    }
-    header .meta-line .issue {
-      color: var(--accent);
-      font-weight: 600;
-    }
-    header .meta-line .dot {
-      color: var(--text-mute);
-    }
-    header .accent-bar {
-      height: 10px;
-      background: repeating-linear-gradient(
-        -45deg,
-        var(--accent) 0, var(--accent) 12px,
-        var(--bg) 12px, var(--bg) 18px
-      );
-      width: 100%;
-      margin-bottom: 32px;
-    }
+/* 섹션 */
+section.feed-sec { scroll-margin-top: 20px; }
 
-    .trending {
-      color: var(--text-mute);
-      font-size: 13px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 14px;
-      align-items: baseline;
-    }
-    .trending .label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .trending span.tag {
-      color: var(--text);
-    }
+.sec-divider {
+  text-align: center; padding: 50px 0 24px;
+  position: relative;
+}
+.sec-divider::before {
+  content: ""; position: absolute; top: 50%; left: 0; right: 0;
+  height: 1px; background: #e6e6df;
+}
+.sec-divider h2 {
+  display: inline-block; position: relative;
+  background: #fafaf7; padding: 0 20px;
+  font-size: 20px; font-weight: 700;
+  letter-spacing: -0.01em; margin: 0;
+}
 
-    /* 꼭 알아야 할 뉴스 — 전체 엠버 블록 배너 (검정 타이포 · 900 weight · 0.18em spacing) */
-    .must-read {
-      background: var(--accent);
-      color: var(--bg);
-      border-left: none;
-      padding: 26px 22px;
-      margin: 0 -20px 48px;
-    }
-    .must-read h2 {
-      font-size: 15px;
-      color: var(--bg);
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-    .must-read .item {
-      margin-bottom: 16px;
-    }
-    .must-read .item:last-child { margin-bottom: 0; }
-    .must-read .item h3 {
-      font-family: 'Noto Serif KR', serif;
-      font-size: 17px;
-      font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 3px;
-      color: var(--bg);
-    }
-    .must-read .item .meta {
-      color: var(--bg);
-      font-size: 12px;
-      opacity: 0.75;
-    }
-    .must-read .item .meta .score {
-      color: var(--bg);
-      font-weight: 700;
-      opacity: 1;
-      font-feature-settings: 'tnum';
-    }
-    .must-read .item a {
-      color: inherit;
-      text-decoration: none;
-    }
+/* 스토리 카드 */
+.story {
+  display: block; padding: 28px 0;
+  border-bottom: 1px solid #e6e6df;
+}
+.story:active { opacity: 0.6; }
+.story:last-of-type { border-bottom: none; }
 
-    /* 카테고리 섹션 — Surface box with sticky header + 2px 엠버 테두리 + 12px 라운드 */
-    .section {
-      background: var(--surface);
-      border-radius: 12px;
-      margin-top: 28px;
-      overflow: hidden;
-      border: 2px solid var(--accent);
-    }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 18px 22px;
-      background: var(--accent);
-      border-bottom: 2px solid var(--bg);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .section-header h2 {
-      font-family: 'Noto Serif KR', serif;
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      color: var(--bg);
-    }
-    .section-header .count {
-      background: var(--bg);
-      color: var(--accent);
-      font-size: 13px;
-      font-feature-settings: 'tnum';
-      font-weight: 800;
-      padding: 4px 12px;
-    }
-    .section-body {
-      padding: 4px 22px 8px;
-    }
+.story .head {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; color: #6b6b6b;
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.story .head .src { font-weight: 700; color: #242424; }
+.story .head .dot { color: #c5c5c5; }
 
-    /* Article card (full info) */
-    .article {
-      padding: 20px 0 28px;
-      border-bottom: 1px solid var(--border);
-    }
-    .article:last-child { border-bottom: none; }
+.story h3 {
+  font-size: 24px; font-weight: 700;
+  line-height: 1.22; letter-spacing: -0.018em;
+  margin: 0 0 10px;
+  color: #242424;
+}
 
-    .article h3 {
-      font-family: 'Noto Serif KR', serif;
-      font-size: 19px;
-      font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 8px;
-      letter-spacing: -0.005em;
-    }
-    .article h3 a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .article .meta {
-      color: var(--text-sub);
-      font-size: 12px;
-      margin-bottom: 10px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .article .meta .dot { color: var(--text-mute); }
-    .article .meta .score {
-      color: var(--accent);
-      font-weight: 600;
-      font-feature-settings: 'tnum';
-    }
-    .article .tags {
-      display: flex;
-      gap: 10px;
-      font-size: 12px;
-      color: var(--text-mute);
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-    .article .why {
-      background: var(--accent-soft);
-      border-left: 2px solid var(--accent);
-      padding: 9px 13px;
-      font-size: 13px;
-      color: var(--text-sub);
-      margin-bottom: 14px;
-      border-radius: 0 3px 3px 0;
-    }
-    .article .why strong {
-      color: var(--accent);
-      font-weight: 600;
-      margin-right: 4px;
-    }
+.story .lede {
+  font-size: 16px; line-height: 1.55;
+  color: #4a4a4a; margin: 0 0 14px;
+}
 
-    /* 인사이트 토글 — <details> 기반, JS 불필요 */
-    .article .why-insights {
-      background: var(--accent-soft);
-      border-left: 2px solid var(--accent);
-      border-radius: 0 3px 3px 0;
-      padding: 9px 13px;
-      margin-bottom: 14px;
-      font-size: 13px;
-      color: var(--text-sub);
-    }
-    .article .why-insights > summary.why {
-      background: transparent;
-      border-left: 0;
-      padding: 0;
-      margin-bottom: 0;
-      cursor: pointer;
-      list-style: none;
-      border-radius: 0;
-    }
-    .article .why-insights > summary.why::-webkit-details-marker { display: none; }
-    .article .why-insights > summary.why::marker { content: ""; }
-    .article .why-insights .expand-hint {
-      margin-left: 8px;
-      color: var(--accent);
-      transition: transform 0.2s;
-      display: inline-block;
-    }
-    .article .why-insights[open] > summary.why .expand-hint { transform: rotate(180deg); }
-    .article .why-insights .insights-body {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed var(--border);
-    }
-    .article .why-insights .insight { margin-bottom: 14px; }
-    .article .why-insights .insight:last-child { margin-bottom: 0; }
-    .article .why-insights .insight h4 {
-      font-size: 13px;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 4px;
-      letter-spacing: 0;
-    }
-    .article .why-insights .insight p {
-      font-size: 13.5px;
-      color: var(--text);
-      line-height: 1.7;
-      margin: 0;
-    }
+.story .foot {
+  font-family: -apple-system, sans-serif;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: #6b6b6b;
+  flex-wrap: wrap; gap: 8px;
+}
+.story .foot .read { display: flex; align-items: center; gap: 6px; }
+.story .foot .read::before { content: "📖"; }
 
-    .article .summary {
-      font-size: 15px;
-      color: var(--text);
-      line-height: 1.7;
-      margin-bottom: 14px;
-    }
-    .article .link {
-      color: var(--text-sub);
-      text-decoration: none;
-      font-size: 13px;
-      display: inline-block;
-      transition: color 0.15s;
-    }
-    .article .link:hover { color: var(--accent); }
+/* 기사 키워드 해시태그 */
+.story .keywords {
+  font-family: -apple-system, sans-serif;
+  margin-top: 12px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.story .keywords span {
+  background: #f2f2ed;
+  color: #1a8917;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
 
-    footer {
-      margin-top: 72px;
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
-      color: var(--text-mute);
-      font-size: 12px;
-      text-align: center;
-      line-height: 1.8;
-    }
-    footer .footer-block {
-      margin-bottom: 12px;
-    }
-    footer .footer-block:last-child { margin-bottom: 0; }
-    footer .footer-label {
-      color: var(--text-sub);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 11px;
-      margin-right: 6px;
-    }
-    footer .sources {
-      color: var(--text-sub);
-    }
-    footer .disclosure {
-      color: var(--text-mute);
-      max-width: 520px;
-      margin: 0 auto;
-      padding: 0 8px;
-    }
-    footer .footer-issue {
-      color: var(--accent);
-      font-weight: 600;
-      font-feature-settings: 'tnum';
-      letter-spacing: 0.08em;
-    }
+/* 중요도 pill — 점수별 색 스케일 (v3) */
+.score {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  min-height: 24px;
+  position: relative;
+}
+.score::before { content: "★"; font-size: 10px; }
 
-    /* Mobile adjustments */
-    @media (max-width: 480px) {
-      body { padding: 0 16px 60px; font-size: 15px; }
-      header { padding-top: 44px; margin-bottom: 36px; }
-      header h1 { font-size: 56px; }
-      .section-header h2 { font-size: 21px; }
-      .section-header { padding: 16px 18px; }
-      .section-body { padding: 4px 18px 8px; }
-      .article h3 { font-size: 17px; }
-      .must-read .item h3 { font-size: 15px; }
-      .must-read { margin: 0 -16px 36px; padding: 22px 18px; }
-    }
+/* 9.0+ — 최고 등급: 그라디언트 + 더블 링 + 글로우 펄스 + 🔥 */
+.score-vhigh {
+  background: linear-gradient(135deg, #991b1b 0%, #dc2626 50%, #f59e0b 100%);
+  color: #fff;
+  padding: 5px 13px;
+  font-size: 12.5px;
+  font-weight: 900;
+  box-shadow:
+    0 0 0 2px #fafaf7,
+    0 0 0 4px #991b1b,
+    0 4px 14px rgba(153, 27, 27, 0.55);
+  animation: glow-vhigh 2.2s ease-in-out infinite;
+}
+.score-vhigh::before { content: "🔥"; font-size: 11px; }
+@keyframes glow-vhigh {
+  0%, 100% {
+    box-shadow:
+      0 0 0 2px #fafaf7,
+      0 0 0 4px #991b1b,
+      0 4px 14px rgba(153, 27, 27, 0.55);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px #fafaf7,
+      0 0 0 5px #dc2626,
+      0 6px 22px rgba(220, 38, 38, 0.8);
+  }
+}
 
-    /* ================================================
-       FX D + E 조합 (KINETIC + BRUTALIST) — 항상 활성
-       ================================================ */
+/* 8.5+ — 매우 높음: 파스텔 초록 */
+.score-superhigh {
+  background: #86efac; color: #14532d;
+  border: 1px solid #4ade80;
+}
 
-    /* ── 헤더: D 글자 스플래시 + E 굵은 타이포 ── */
-    body[data-fx="de"] header h1 { font-weight: 900; letter-spacing: -0.04em; }
-    body[data-fx="de"] header h1 .char {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(80px) rotate(-8deg);
-      animation: fxDE-char 0.8s cubic-bezier(.2,1,.3,1) forwards;
-      animation-delay: calc(var(--i, 0) * 0.07s);
-    }
-    @keyframes fxDE-char { to { opacity: 1; transform: translateY(0) rotate(0); } }
+/* 8.0+ — 높음: 파스텔 노랑 */
+.score-high {
+  background: #fde68a; color: #713f12;
+  border: 1px solid #facc15;
+}
 
-    /* ── 악센트 바: E 대각선 스트라이프 + D 가로 스윕 ── */
-    body[data-fx="de"] .accent-bar {
-      transform-origin: left;
-      transform: scaleX(0);
-      animation: fxDE-bar 0.7s cubic-bezier(.7,0,.3,1) 1.1s forwards;
-    }
-    @keyframes fxDE-bar { to { transform: scaleX(1); } }
+/* 7.0+ — 중상: 파스텔 시안 */
+.score-midhigh {
+  background: #cffafe; color: #0e7490;
+  border: 1px solid #a5f3fc;
+}
 
-    /* ── 섹션: D 줌인 — CSS keyframe 로 JS 의존 없이 자동 재생 ── */
-    body[data-fx="de"] .section {
-      transform: scale(0.94);
-      opacity: 0;
-      animation: fxDE-section-in 0.7s cubic-bezier(.2,.8,.2,1) 0.1s forwards;
-    }
-    @keyframes fxDE-section-in {
-      to { transform: scale(1); opacity: 1; }
-    }
+/* 5.0+ — 중간: 파스텔 라벤더 */
+.score-mid {
+  background: #e0e7ff; color: #3730a3;
+  border: 1px solid #c7d2fe;
+}
 
-    /* ── 기사 카드: D 슬라이드 진입 + E 지그재그 미세 회전 + invert 호버 ── */
-    body[data-fx="de"] .article {
-      opacity: 0;
-      transform: translateX(-60px) rotate(-0.8deg);
-      animation: fxDE-article-in 0.55s cubic-bezier(.2,.8,.2,1) 0.2s forwards;
-      cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease;
-    }
-    @keyframes fxDE-article-in {
-      to { opacity: 1; transform: translateX(0) rotate(-0.25deg); }
-    }
-    body[data-fx="de"] .article:nth-of-type(even) {
-      animation-name: fxDE-article-in-even;
-    }
-    @keyframes fxDE-article-in-even {
-      to { opacity: 1; transform: translateX(0) rotate(0.25deg); }
-    }
-    body[data-fx="de"] .article:nth-of-type(2) { animation-delay: 0.28s; }
-    body[data-fx="de"] .article:nth-of-type(3) { animation-delay: 0.36s; }
-    /* 기사 카드 hover: 배경 invert 제거, 아주 옅은 미세 lift 만 유지 */
-    body[data-fx="de"] .article:hover {
-      transform: translateX(-4px) rotate(0);
-      transition-duration: 0.25s;
-    }
-    body[data-fx="de"] .article:hover h3 a { color: var(--accent); }
+/* 3.0+ — 낮음: 파스텔 민트 */
+.score-low {
+  background: #dcfce7; color: #14532d;
+  border: 1px solid #bbf7d0;
+}
 
-    /* 커서 잔상 (cursor trail) — 마우스 이동 경로에 엠버 빛이 퍼지며 사라짐 */
-    .cursor-trail {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: radial-gradient(circle,
-        rgba(255, 165, 0, 0.55) 0%,
-        rgba(255, 165, 0, 0.25) 45%,
-        rgba(255, 165, 0, 0) 75%);
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: screen;
-      animation: cursor-trail-fade 0.9s cubic-bezier(.2,.8,.2,1) forwards;
-      will-change: transform, opacity;
-    }
-    @keyframes cursor-trail-fade {
-      from { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
-      to   { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .cursor-trail { display: none; }
-    }
-    @media (hover: none) {
-      /* 터치 기기에서는 비활성화 */
-      .cursor-trail { display: none; }
-    }
+/* <3.0 — 매우 낮음: 연회색 */
+.score-vlow {
+  background: #f3f4f6; color: #9ca3af;
+  border: 1px solid #e5e7eb;
+}
 
-    /* ── 꼭 알아야 할 뉴스: D 순차 등장 (E 엠버 블록은 베이스 CSS에서 적용) ── */
-    body[data-fx="de"] .must-read .item {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fxDE-item 0.65s cubic-bezier(.2,.8,.2,1) forwards;
-    }
-    body[data-fx="de"] .must-read .item:nth-child(2) { animation-delay: 0.12s; }
-    body[data-fx="de"] .must-read .item:nth-child(3) { animation-delay: 0.26s; }
-    body[data-fx="de"] .must-read .item:nth-child(4) { animation-delay: 0.40s; }
-    body[data-fx="de"] .must-read .item:nth-child(5) { animation-delay: 0.54s; }
-    body[data-fx="de"] .must-read .item:nth-child(6) { animation-delay: 0.68s; }
-    @keyframes fxDE-item { to { opacity: 1; transform: translateY(0); } }
+/* Top story */
+.top-story {
+  padding: 32px 0 40px;
+  border-bottom: 1px solid #e6e6df;
+}
+.top-story .kicker {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #c2410c; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.top-story h2 {
+  font-size: 32px; font-weight: 700;
+  line-height: 1.12; letter-spacing: -0.022em;
+  margin: 0 0 14px;
+}
+.top-story .by {
+  font-family: -apple-system, sans-serif;
+  font-size: 14px; color: #6b6b6b;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6e6df;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.top-story .body {
+  font-size: 18px; line-height: 1.68;
+}
+.top-story .body::first-letter {
+  font-size: 64px; float: left;
+  line-height: 0.85; margin: 8px 12px 0 0;
+  font-weight: 700; color: #1a8917;
+}
+.top-story .keywords {
+  font-family: -apple-system, sans-serif;
+  margin-top: 20px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.top-story .keywords span {
+  background: #f2f2ed; color: #1a8917;
+  padding: 4px 12px; border-radius: 999px;
+  font-size: 12.5px; font-weight: 600;
+}
 
-    /* 접근성: prefers-reduced-motion 사용자에 대한 애니메이션 비활성 */
-    @media (prefers-reduced-motion: reduce) {
-      body[data-fx="de"] *, body[data-fx="de"] *::before, body[data-fx="de"] *::after {
-        animation-duration: 0.001s !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001s !important;
-      }
-      body[data-fx="de"] .article,
-      body[data-fx="de"] .section,
-      body[data-fx="de"] .must-read .item,
-      body[data-fx="de"] header h1 .char,
-      body[data-fx="de"] .accent-bar {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-    }
-  </style>
+/* 인사이트 레이어 — <details> 토글 */
+.why-insights {
+  margin-top: 20px;
+  background: #f7f7f2;
+  border: 1px solid #e6e6df;
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+.why-insights[open] { padding-bottom: 18px; }
+.why-insights > summary {
+  cursor: pointer;
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #1a8917;
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 32px;
+}
+.why-insights > summary::-webkit-details-marker { display: none; }
+.why-insights > summary::after {
+  content: "▾"; transition: transform 0.2s;
+  font-size: 14px; color: #6b6b6b;
+}
+.why-insights[open] > summary::after { transform: rotate(180deg); }
+
+.why-insights .axis {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px dashed #d6cdbb;
+}
+.why-insights .axis:first-of-type { border-top: none; padding-top: 4px; }
+.why-insights .axis .axis-title {
+  font-family: -apple-system, sans-serif;
+  font-size: 13px; font-weight: 800; color: #242424;
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.why-insights .axis .axis-title .icon { font-size: 16px; }
+.why-insights .axis .axis-body {
+  font-size: 14.5px; line-height: 1.55; color: #3a3a3a;
+}
+
+/* 뒤로 / footer */
+footer {
+  padding: 50px 0 30px;
+  text-align: center;
+  font-family: -apple-system, sans-serif;
+  font-size: 12.5px; color: #6b6b6b;
+  border-top: 1px solid #e6e6df;
+  margin-top: 40px;
+}
+footer .disclosure {
+  color: #6b6b6b; font-size: 12px; max-width: 520px;
+  margin: 0 auto 14px; line-height: 1.6;
+}
+footer .issue { font-weight: 800; color: #242424; margin-bottom: 14px; letter-spacing: 0.05em; }
+footer .sources {
+  color: #999; font-size: 11.5px; line-height: 1.8;
+  margin-top: 8px;
+}
+
+/* ═══════════════════════════════════════ */
+/* 플로팅 섹션 네비게이션 (고정)            */
+/* ═══════════════════════════════════════ */
+.floating-nav {
+  position: fixed;
+  left: 50%; transform: translateX(-50%);
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 30;
+  display: flex; gap: 4px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border: 2px solid #1a8917;
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.9),
+    0 8px 28px rgba(26, 137, 23, 0.22),
+    0 2px 10px rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+  max-width: calc(100vw - 24px);
+}
+.floating-nav a {
+  flex: 1 1 auto;
+  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 13px; font-weight: 700;
+  color: #4a4a4a;
+  white-space: nowrap;
+  min-height: 40px;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.12s;
+}
+.floating-nav a:active { transform: scale(0.95); }
+.floating-nav a .cnt {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 20px; padding: 0 6px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 999px;
+  font-size: 11px; font-weight: 800;
+  color: #6b6b6b;
+  font-variant-numeric: tabular-nums;
+}
+.floating-nav a.active {
+  background: #1a8917; color: #fff;
+  box-shadow: 0 2px 8px rgba(26, 137, 23, 0.35);
+}
+.floating-nav a.active .cnt {
+  background: rgba(255, 255, 255, 0.25);
+  color: #d9f99d;
+}
+
+@media (min-width: 640px) {
+  .floating-nav a { padding: 10px 18px; font-size: 14px; }
+}
+</style>
 </head>
-<body data-fx="de">
+<body>
 
-  <header>
-    <h1>
-      <span class="line">굿이브닝</span>
-      <span class="line">데일리 뉴스</span>
-    </h1>
-    <div class="meta-line">
-      <span>2026.04.22 00:01 KST</span>
-      <span class="dot">·</span>
-      <span>오후</span>
-      <span class="dot">·</span>
-      <span class="issue">ISSUE #20</span>
-    </div>
-    <div class="accent-bar"></div>
-    <div class="trending">
-      <span class="label">오늘의 트렌드</span>
-      <span class="tag"># 미_이란_종전협상</span>
-      <span class="tag"># AI_에이전트_경쟁</span>
-      <span class="tag"># 반도체_공급망</span>
-      <span class="tag"># 에너지_안보</span>
-      <span class="tag"># K_방산_확장</span>
-      <span class="tag"># 애플_CEO_교체</span>
-      <span class="tag"># 공공_AI_전환</span>
-      <span class="tag"># 중동_유가쇼크</span>
-    </div>
+
+
+
+<div class="app">
+
+  <header class="bar">
+    <div class="brand">Daily Reader</div>
+    <div class="edition">Vol. 20 · 오후</div>
   </header>
 
-  <section class="must-read" aria-label="꼭 알아야 할 뉴스">
-    <h2>꼭 알아야 할 뉴스</h2>
-    <div class="item">
-      <h3><a href="https://www.yna.co.kr/view/AKR20260421175251071" target="_blank" rel="noopener noreferrer">트럼프, 휴전만료 전날 &#34;훌륭한 합의할것…불발시 폭격예상&#34;(종합)</a></h3>
-      <div class="meta">연합뉴스 · 04.21 23:08 · <span class="score">점수 9.0/10</span></div>
-    </div>
-    <div class="item">
-      <h3><a href="https://www.hani.co.kr/arti/international/arabafrica/1255281.html" target="_blank" rel="noopener noreferrer">수년 걸릴 ‘미-이란 협상’ 난제…핵농축·제재 해제·호르무즈 통행료</a></h3>
-      <div class="meta">한겨레 · 04.21 22:29 · <span class="score">점수 9.0/10</span></div>
-    </div>
-    <div class="item">
-      <h3><a href="https://www.yna.co.kr/view/AKR20260421172551009" target="_blank" rel="noopener noreferrer">미군, 인도양서 이란연계 유조선 나포…협상 목전 봉쇄범위 확대(종합)</a></h3>
-      <div class="meta">연합뉴스 · 04.21 22:20 · <span class="score">점수 9.0/10</span></div>
-    </div>
-    <div class="item">
-      <h3><a href="https://www.mk.co.kr/news/economy/12023259" target="_blank" rel="noopener noreferrer">[단독] 미국·일본 “한국산 석유 없으면 큰일”…휘발유·항공유 요청 빗발쳐</a></h3>
-      <div class="meta">매일경제 · 04.21 18:54 · <span class="score">점수 9.0/10</span></div>
-    </div>
-    <div class="item">
-      <h3><a href="https://www.yna.co.kr/view/AKR20260421161300082" target="_blank" rel="noopener noreferrer">젤렌스키 &#34;러, 발트3국 침공 준비&#34;…에스토니아 발끈</a></h3>
-      <div class="meta">연합뉴스 · 04.21 18:24 · <span class="score">점수 9.0/10</span></div>
-    </div>
+  <section class="intro">
+    <div class="greeting">굿이브닝</div>
+    <h1>오늘의 오후<br>이야기</h1>
+    <div class="sub">총 44건 · 읽는 데 약 22분</div>
+    <div class="meta">2026.04.22 00:01 KST · Issue #20</div>
   </section>
 
-  <section class="section" aria-label="AI 뉴스">
-    <div class="section-header">
-      <h2>AI 뉴스</h2>
-      <span class="count">22건</span>
+  <div class="hashtags">
+<span>#미_이란_종전협상</span> · <span>#AI_에이전트_경쟁</span> · <span>#반도체_공급망</span> · <span>#에너지_안보</span> · <span>#K_방산_확장</span> · <span>#애플_CEO_교체</span> · <span>#공공_AI_전환</span> · <span>#중동_유가쇼크</span>  </div>
+
+  <section class="feed-sec must-read" id="sec-mustknow">
+    <article class="top-story">
+      <div class="kicker">
+        <span>⭐ Editor's Pick · 연합뉴스</span>
+        <span class="score score-vhigh">9.0</span>
+      </div>
+      <h2>트럼프, 휴전만료 전날 &#34;훌륭한 합의할것…불발시 폭격예상&#34;(종합)</h2>
+      <div class="by">
+        <span>By 연합뉴스</span>
+        <span>·</span>
+        <span>04.21 23:08</span>
+      </div>
+      <div class="body">트럼프 미국 대통령이 이란과의 2차 종전 협상을 앞두고 &#39;결국 훌륭한 합의를 하게 될 것&#39;이라며 불발 시 &#39;폭격 예상&#39;이라는 압박 메시지를 냈다. 휴전 만료 전날 워싱턴에서 나온 발언으로, 협상 지렛대를 강화하려는 의도로 읽힌다.</div>
+      <details class="why-insights" open>
+  <summary>🧭 인사이트 보기</summary>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
     </div>
-    <div class="section-body">
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209521" target="_blank" rel="noopener noreferrer">앤트로픽, 아마존에 147조 투입해 5GW 컴퓨팅 구축...아마존은 36조 추가 투자</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.21 15:22</span><span class="dot">·</span>
-          <span class="score">점수 9.0/10</span>
-        </div>
-        <div class="tags">
-<span># 앤트로픽</span><span># AI</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>AI 인프라 경쟁이 수백조원 단위 자본전으로 확대된 구체 사례<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 아마존·앤트로픽 주가와 5GW급 전력·냉각 장비 공급망이 움직입니다. 며칠 뒤엔 트레이니엄 물량 확대로 엔비디아·SK하이닉스·삼성 HBM 주문서에 구조 변화가 감지될 가능성이 높습니다. 몇 달 지나면 국내 데이터센터 전력요금 협상과 재생에너지 인증(RE100) 단가까지 영향이 번집니다. 이건 단순 투자 이벤트가 아니라 AI 인프라 시장의 구조 변화 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2019년 MS의 오픈AI 10억달러 투자, 2023년 MS 추가 130억달러 약정이 비슷한 사례입니다. 당시 MS 애저 매출은 2년 만에 70% 늘었습니다. 이번 147조원은 그때의 10배 규모로, 구글-앤트로픽 분리 투자 구조와도 다릅니다. 과거 평균 2~3년 안에 공급업체 재편이 왔다는 점을 감안하면 2027~2028년 사이 국내 HBM·ASIC 업계 지형이 재편될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="scenario">
-              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
-              <p>가능성 높은 시나리오(중간): 5GW 중 3~4GW가 2027년까지 가동되며 클로드 5세대 학습에 쓰이는 그림입니다. 가능성 중간(낙관): 트레이니엄 성능이 H100 70% 수준 도달해 엔비디아 마진이 10%p 압박받는 전개. 가능성 낮음(비관): 전력 인허가 지연으로 1~2GW만 실제 가동. 갈림길은 연말 AWS re:Invent에서 공개할 트레이니엄3 벤치마크와 FTC 반독점 심사 결과입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">앤트로픽이 향후 10년간 AWS 기술에 1000억달러(약 147조원)를 투입한다고 발표했다. 아마존 자체 AI 칩 트레이니엄을 활용해 클로드 학습·배포용 최대 5GW 컴퓨팅 용량을 확보한다. 아마존도 기존 80억달러에 더해 최대 250억달러(약 36조원)를 추가 투자하기로 했다.</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209521" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209522" target="_blank" rel="noopener noreferrer">구글, 앤트로픽 추격 위해 &#39;코딩 특별팀&#39; 구성...세르게이 브린 직접 지휘</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.21 18:48</span><span class="dot">·</span>
-          <span class="score">점수 8.5/10</span>
-        </div>
-        <div class="tags">
-<span># 앤트로픽</span><span># 제미나이</span><span># AI</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>AI 자기개선 경쟁이 창업자급 인력까지 투입되는 국면에 진입<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 제미나이 코드 기능 업데이트 주기가 빨라지고 구글 클라우드 AI 개발자 유입이 늘어납니다. 며칠 뒤엔 앤트로픽의 클로드 코드, 커서·깃허브 코파일럿 요금·성능 경쟁이 격화됩니다. 몇 달 지나면 국내 SW개발 업계에서 &#39;주니어 개발자 2~3명 분량을 AI가 대체한다&#39;는 논의가 공식화될 가능성이 높습니다. 이건 특정 제품 싸움이 아니라 개발자 일자리 구조의 흐름입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2012년 구글이 딥마인드를 인수하며 &#39;특별팀&#39;을 꾸렸던 사례, 2017년 트랜스포머 논문을 발표한 브레인팀 재편이 비슷합니다. 두 경우 모두 2년 내 알파고·BERT 같은 획기적 성과를 냈습니다. 이번 코딩 특별팀도 유사한 궤적을 밟을 가능성이 높지만, 이번에는 앤트로픽·오픈AI와 동시에 경쟁해야 한다는 차이가 있습니다. 과거보다 시장 반응 속도가 3~4배 빠를 것으로 보입니다.</p>
-            </div>
-            <div class="insight" data-axis="scenario">
-              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
-              <p>가능성 높은 시나리오(중간): 2026년 말 제미나이 코딩 기능이 클로드 코드와 벤치마크 5~10%p 격차까지 좁히는 그림. 가능성 중간: 구글이 아예 코드 전용 모델을 분리 출시. 가능성 낮음: 브린이 은퇴 번복하고 복귀. 갈림길은 다음 분기 구글 I/O와 앤트로픽 클로드 4.5 출시 시점이며, 두 일정 사이 3개월이 시장 주도권을 결정할 것으로 보입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">구글이 AI 코딩 역량에서 앤트로픽에 뒤처진다고 판단, 연구진·엔지니어로 &#39;코딩 특별팀&#39;을 꾸렸다. 공동 창립자 세르게이 브린과 CTO까지 합류해 총력전을 펴는 것으로 알려졌다. 기능 개선을 넘어 AI가 스스로 코드를 작성하는 &#39;AI 자기개선&#39; 단계 도약이 목표다.</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209522" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260421000231" target="_blank" rel="noopener noreferrer">美 제재 속 中 장비 자립 가속…나우라, 1.6兆원 R&amp;D 투입</a></h3>
-        <div class="meta">
-          <span>전자신문</span><span class="dot">·</span>
-          <span>04.21 17:00</span><span class="dot">·</span>
-          <span class="score">점수 8.5/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>미중 반도체 패권전 속 중국 장비 자립 속도, 국내 장비사 경쟁구도 직결<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 나우라의 M&amp;A 타깃이 될 수 있는 중국 장비 스타트업 주가가 반등합니다. 며칠 뒤엔 국내 장비사 세메스·원익IPS·피에스케이의 중국 매출 전망이 하향 조정될 가능성이 높습니다. 몇 달 지나면 삼성·SK하이닉스 중국 공장(시안·우시)의 장비 유지보수 밸류체인이 재설계되고, 국내 부품사의 중국향 매출이 5~10% 줄어들 수 있습니다. 이는 반도체 공급망의 이중화 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2020년 미국 제재 후 화웨이가 자체 반도체 팹 계열사 SMIC와 엮은 사례, 2022년 YMTC가 3D 낸드 자립을 가속한 사례가 유사합니다. 두 경우 모두 2~3년 내 공정 수준이 글로벌과 2세대 격차로 좁혀졌습니다. 나우라의 1.6조원 R&amp;D는 TSMC의 장비 파트너 ASML 대비 1/5 수준이지만, 중국 내수 물량 전담이라는 변수가 있어 3~5년 내 28nm급 자립은 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="scenario">
-              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
-              <p>가능성 높은 시나리오(중간): 2027년까지 나우라가 중국 내 장비 국산화율 50%까지 끌어올리고 한국 중소 장비사 중국 매출은 30% 감소. 가능성 중간: 나우라가 유럽 이류 장비사 인수 시도. 가능성 낮음: 미중 관세 휴전으로 제재 완화. 갈림길은 내년 초 트럼프 2기의 대중 장비 제재 연장 여부와 ASML의 중국 DUV 판매 조건 재협상입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">미국의 대중 반도체 장비 수출 통제가 강화되는 가운데, 중국 장비 기업 나우라가 대규모 R&amp;D와 인수합병을 앞세워 장비 자립에 속도를 내고 있다. 1.6조원 규모 R&amp;D 투입이 확인됐고, 단순 국산화를 넘어 선단 공정 대응력과 전 공정 생태계 확장을 동시에 추진하고 있다.</div>
-        <a href="https://www.etnews.com/20260421000231" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209536" target="_blank" rel="noopener noreferrer">과기부-복지부, 노후화된 공공의료시스템 AI-SaaS로 전면 교체 나선다</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.21 15:03</span><span class="dot">·</span>
-          <span class="score">점수 8.5/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>전국 35개 공공병원 IT 인프라의 클라우드·AI 전면 전환 계획<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 국내 HIS 시장 1·2위인 이지케어텍·평화이즈 매출 구조가 흔들립니다. 며칠 뒤엔 AWS·네이버클라우드·KT클라우드의 공공 클라우드 입찰 경쟁이 공고화됩니다. 몇 달 지나면 지방의료원 의무기록 열람 속도가 빨라져 응급실 체류시간이 줄어들 가능성이 높고, 건강보험 청구 오류율도 감소합니다. 이건 IT 교체가 아니라 공공의료 접근성의 구조 개선입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2019년 행정안전부의 G-클라우드 전환 사업이 비슷한 사례입니다. 당시 850개 공공기관 중 3년 간 60%만 실제 전환돼 일정이 2년 지연됐습니다. 2022년 국방부 &#39;국방모바일수첩&#39; SaaS 전환도 개인정보 유출 이슈로 재설계됐습니다. 이번 HIS 전환은 대상이 35곳으로 작고 과기부·복지부 공동이라 속도가 빠를 가능성이 높지만, 과거 평균 20% 일정 지연을 감안하면 2028년 완료가 현실적입니다.</p>
-            </div>
-            <div class="insight" data-axis="perspective">
-              <h4>👥 입장이 다르면 어떻게 보일까?</h4>
-              <p>이해관계자 네 축이 부딪칩니다. 공공병원 원무팀은 교체 기간 중 일시 수작업 부담을 우려, 기존 SI 벤더는 유지보수 매출 감소에 반발, 클라우드 사업자는 시장 확대 기회로 환영, 환자는 서비스 일시 장애를 걱정합니다. 구조적 갈등은 &#39;현 시스템 유지 담당 직원 재배치&#39; 지점에 몰려 있습니다. 과거 사례처럼 전환 1~2년차가 가장 불만이 터지는 구간일 가능성이 높습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">과기정통부와 NIA가 보건복지부·국립중앙의료원·지방의료원과 함께 노후화된 공공 병원정보시스템(HIS)을 AI 기반 SaaS로 전면 교체하는 사업 공모를 연다. 2027년까지 국립중앙의료원·서울의료원 전환 완료 후 대구의료원 등 전국 35개 지방의료원까지 확대한다. 참여 기업 모집은 5월 22일까지다.</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209536" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209523" target="_blank" rel="noopener noreferrer">LG, &#39;암 치료&#39; 에이전트 연구 성과 공개…”글로벌 제약사 등과 협업 추진”</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.21 14:46</span><span class="dot">·</span>
-          <span class="score">점수 8.5/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span><span># 에이전트</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>암 진단·치료 설계를 하루로 단축하는 국산 의료 AI의 국제 무대 입증<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 AACR에 참가한 글로벌 제약사 20여 곳의 협업 제안 타진이 늘어납니다. 며칠 뒤엔 국내 상급종합병원(서울대·삼성·아산 등)이 유사한 원내 AI 도입을 공론화할 가능성이 높습니다. 몇 달 지나면 건강보험 수가에 &#39;AI 판독 항목&#39; 신설 논의가 본격화되고, 임상병리사·영상의학 전공자의 업무가 &#39;AI 검증 중심&#39;으로 재설계됩니다. 이건 1~2개 병원 이슈가 아니라 의료 체계의 구조 변화 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2016년 IBM 왓슨 포 온콜로지가 가천길병원에 도입됐을 때와 비교할 수 있습니다. 당시 한국·인도 9개 병원에서 쓰였지만 2020년대 초까지 실사용률이 10%대에 머물렀습니다. 실패 원인은 학습 데이터가 미국 케이스 중심이었다는 점이었습니다. LG 엑사원은 국내 병리 데이터를 반영한 점이 다르고, &#39;1분 판독&#39; 속도도 왓슨(수시간)보다 월등합니다. 과거 사례의 병목을 넘어섰을 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>가족 중 암 진단을 받은 분이 있다면 이번 분기 안에 두 가지를 확인해보세요. 첫째, 다니는 병원이 AI 보조 판독 파일럿에 참여 중인지. 둘째, 2차 소견 요청 시 영상·조직 슬라이드 디지털 사본 보관 여부. 다만 &#39;광고성 AI 검진&#39;을 민간에서 비싸게 받는 건 피하세요. 임상 검증이 끝나기 전엔 과잉 진단·과잉 치료로 이어질 위험이 크기 때문입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">LG AI연구원이 미국 밴더빌트대 메디컬센터와 함께 개발 중인 &#39;암 에이전틱 AI&#39;를 미국암연구학회(AACR) 2026에서 공개했다. 환자 조직 분석부터 치료 전략 설계까지 전 과정을 하루 안에 수행하도록 설계했다. 조직 병리 이미지 한 장으로 1분 내 암유전자 활성을 예측하는 &#39;엑사원 패스&#39;가 출발점이다.</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209523" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260421000278" target="_blank" rel="noopener noreferrer">애플, 존 터너스 새 CEO 선임…팀 쿡은 이사회 의장으로</a></h3>
-        <div class="meta">
-          <span>전자신문</span><span class="dot">·</span>
-          <span>04.21 14:31</span><span class="dot">·</span>
-          <span class="score">점수 8.5/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>AI 전환기 애플의 리더십 교체, 국내 부품사 영향 직결<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 애플 주가 변동성 확대와 삼성디스플레이·LG이노텍·SK하이닉스 등 국내 부품사의 발주 조건 재검토 조짐이 나옵니다. 며칠 뒤엔 애플카 부활·비전 프로 확장 같은 터너스 색채의 프로젝트 윤곽이 공개될 가능성이 높습니다. 몇 달 지나면 국내 카메라모듈·FC-BGA 업체들의 설계 협업 패턴이 &#39;하드웨어 중심&#39;으로 재편됩니다. 단순 인사가 아니라 글로벌 공급망 재설계 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2011년 잡스→쿡 교체 때 애플 주가는 6개월간 15% 조정받았지만 3년 뒤 2배가 됐습니다. 마이크로소프트의 2014년 발머→나델라 교체 때도 1년간 정체 후 클라우드 피벗으로 10년간 10배 성장했습니다. 기술 중심 후임자가 취임한 두 사례 모두 첫 12개월 실적은 둔화됐다는 공통점이 있습니다. 이번에도 2027년 중반까지는 실적보다 전략 전환 신호 위주의 흐름이 될 가능성이 높습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">애플이 이사회 만장일치로 하드웨어 엔지니어링 수석부사장 존 터너스를 차기 CEO로 선임했다. 팀 쿡은 올여름까지 CEO직을 유지한 뒤 이사회 의장으로 이동한다. 2011년 잡스 타계 후 15년간 이어진 쿡 체제의 공식 종료를 알리는 결정이다.</div>
-        <a href="https://www.etnews.com/20260421000278" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://zdnet.co.kr/view/?no=20260421182924" target="_blank" rel="noopener noreferrer">기후부, AI 시대 대응 위한 ‘민관 고위급 에너지 정책’ 대화</a></h3>
-        <div class="meta">
-          <span>ZDNet Korea</span><span class="dot">·</span>
-          <span>04.21 18:29</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span><span># 인공지능</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>AI 전력 수요와 RE100의 국내 제도화 논의가 본격화<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 한전 송전망 연결 대기 중인 재생에너지 프로젝트 300여 건의 우선순위 조정이 논의됩니다. 며칠 뒤엔 RE100 가입 국내 기업(삼성·SK·현대차 등)의 PPA 장기 계약 가격 협상에 영향이 옵니다. 몇 달 지나면 데이터센터 신규 허가 요건에 &#39;재생에너지 30% 이상&#39; 조항 신설 논의가 본격화되고, 수도권-비수도권 입지 격차가 확대됩니다. 이는 전력·부동산·산업정책의 교차점입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2020년 유럽연합의 그린딜 발표, 2022년 일본의 RE100 가속 정책이 비슷한 사례입니다. 유럽은 3년 만에 재생에너지 비중을 35%→42%로 끌어올렸고, 일본은 기업 PPA가 5배로 늘었습니다. 한국은 2024년 재생에너지 비중 9% 수준으로 OECD 평균 32%의 3분의 1 수준이어서, 이번 대화가 실질 진전을 만들지는 6~12개월 내 법·예산 조치 여부에 달렸을 가능성이 높습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">기후에너지환경부가 21일 여수에서 RE100 이니셔티브와 공동으로 &#39;AI 시대 에너지 전략대화&#39;를 열었다. 애플·구글·이케아 등이 동참하는 클라이밋 그룹과 유엔기후변화협약 부사무총장, GE 베르노바, 슈나이더 일렉트릭, 네이버 ESG 담당 등이 참석해 AI·데이터센터 전력수요 급증에 대응할 재생에너지 확충 방안을 논의했다.</div>
-        <a href="https://zdnet.co.kr/view/?no=20260421182924" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209540" target="_blank" rel="noopener noreferrer">오픈AI, 코덱스의 메모리 기능 &#39;크로니클&#39; 공개...&#34;리콜보다 위험&#34; 경고도</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.21 18:00</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>AI 업무자동화 확산과 화면 캡처형 기억의 프라이버시 긴장 부각<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 코덱스를 쓰는 개발자 수만 명의 작업 속도가 빨라집니다. 며칠 뒤엔 깃허브 코파일럿·커서·윈드서프 같은 경쟁 도구들이 유사 메모리 기능을 앞당겨 내놓을 가능성이 높습니다. 몇 달 지나면 기업용 IT 정책에 &#39;화면 캡처형 AI 차단&#39; 조항이 새로 들어오고, 금융·의료 업계는 온프레미스 배포로 방향을 틀 것으로 보입니다. 이는 단순 기능 추가가 아니라 AI-PC 보안 규범의 갈림길입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>비슷한 사례로 2024년 MS 윈도11의 &#39;리콜&#39; 기능이 있습니다. 당시 영국 ICO와 보안 커뮤니티의 반발로 출시가 약 6개월 지연됐고, E5 에디션에서 기본 비활성으로 바뀌었습니다. 2019년 애플 시리 녹취 논란도 유사했는데 6주 만에 옵트인으로 전환됐습니다. 이번 크로니클은 규제 당국 대응이 더 빠를 가능성이 높아, 정식 공개까지 3~6개월 더 걸릴 수 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>개발자·사무직 독자라면 이번 주 안에 두 가지를 점검해보세요. 첫째, 회사 DLP(정보유출방지) 정책이 AI 도구의 화면 캡처를 어떻게 다루는지 IT팀에 문의. 둘째, 개인적으로는 민감한 문서를 열 때 AI 에이전트를 잠시 꺼두는 습관. 반면 &#39;일단 베타부터 켜놓고 보자&#39;는 태도는 피하세요. 비밀번호·고객정보가 의도치 않게 모델 쪽으로 흘러갈 위험이 크기 때문입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">오픈AI가 20일 개발자 도구 코덱스의 실험적 메모리 기능 &#39;크로니클&#39;을 공개했다. 사용자의 최근 화면 맥락까지 자동 저장해 반복 설명 없이 업무를 이어가도록 돕는 구조다. 다만 기존 &#39;리콜&#39; 기능보다도 위험하다는 보안 우려가 곧바로 제기돼, 정식 출시는 지켜볼 필요가 있다.</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209540" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209553" target="_blank" rel="noopener noreferrer">샤오미, 3초짜리 녹음 파일로 600개 언어 복제하는 &#39;옴니보이스&#39; 오픈 출시</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.21 17:55</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>저자원 언어·방언까지 포괄하는 음성 AI 확산, 사기·딥보이스 우려 동반<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 국내 콘텐츠 더빙·오디오북 업계의 제작 단가가 성우 1명 기준 시간당 10만원에서 2~3만원 수준까지 내려갈 가능성이 높습니다. 며칠 뒤엔 보이스피싱 수법이 &#39;3초 통화 녹음→가족 음성 복제&#39; 방식으로 확산됩니다. 몇 달 지나면 금융감독원이 영상통화·생체인증 의무화 논의를 재개하고, 성우·낭독자 노조의 AI 학습 데이터 규제 요구가 커질 전망입니다. 음성 AI 시장의 구조 변화 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2023년 오픈AI의 보이스 엔진, 2024년 일레븐랩스의 다국어 음성복제가 비슷한 궤적을 밟았습니다. 두 경우 모두 6~9개월 만에 보이스피싱 신고 건수가 전년 대비 30~50% 증가했습니다. 옴니보이스는 &#39;오픈소스&#39;여서 확산 속도가 더 빠를 가능성이 높습니다. 2024년 딥페이크 영상 사건의 음성판이 올해 하반기 본격화될 위험이 큰 만큼 대응 정책도 급해집니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>가족 단위로 이번 주 안에 두 가지를 공유해보세요. 첫째, &#39;긴급 송금 요청&#39;은 반드시 영상통화 또는 약속된 암호문구로 재확인. 둘째, SNS·유튜브에 자신 목소리를 길게 올리는 빈도 점검. 반면 &#39;설마 우리 가족이 당할까&#39;라는 방심은 가장 위험합니다. 최근 경찰청 통계상 보이스피싱 평균 피해액이 2025년 1건당 2300만원 수준으로 높아진 만큼 가족 단위 약속 문구를 미리 정해두세요.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">샤오미가 온라인 아카이브를 통해 오픈소스 TTS 모델 &#39;옴니보이스&#39;를 공개했다. 3초 녹음 파일만으로 600개 이상 언어의 음성 복제가 가능하다. 기존 TTS 모델이 영어 등 고자원 언어에 집중됐던 한계를 넘어 언어 다양성과 접근성을 크게 확장했으며, 확산 언어 모델 개념을 음성에 적용한 비자기회귀 아키텍처가 핵심이다.</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209553" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209542" target="_blank" rel="noopener noreferrer">MS 깃허브, AI 코딩 사용량 제한...최고 요금제만 앤트로픽 모델 사용</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.21 17:33</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># 앤트로픽</span><span># AI</span><span># 에이전트</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>AI 코딩 서비스의 &#39;무제한&#39; 시대 종료를 알리는 상징적 조치<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 국내 프리랜서 개발자·스타트업 수천 명의 월정액 비용이 실질 인상됩니다. 며칠 뒤엔 커서·윈드서프·제미나이 코드 어시스트로의 이탈이 10~20% 수준 발생할 가능성이 높습니다. 몇 달 지나면 한국 SW 업계의 &#39;AI 도구 비용&#39;이 인건비 항목과 동급으로 다뤄지고, 대기업은 사내 코파일럿 유사 자체 도구 개발로 전환합니다. 단순 요금 정책이 아니라 개발자 생산성 경제의 변곡점입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2023년 오픈AI가 GPT-4 API 요금을 3배 올린 때, 2024년 미드저니가 무제한 플랜을 폐지한 때와 비슷합니다. 당시 1~3개월 내 라이벌 서비스로 유저의 15~25%가 이동했습니다. 이번 깃허브의 제한도 비슷한 이탈 패턴을 보일 가능성이 높지만, IDE 통합 깊이 때문에 이탈 속도는 다소 느릴 것으로 보입니다. 평균 6개월이 경쟁 판도의 갈림길이 될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>개발자 독자라면 이번 달 안에 두 가지를 검토해보세요. 첫째, 자신의 월평균 AI 코딩 호출량을 확인하고 프로 플랜 상한 초과 여부 추정. 둘째, 회사 상환 가능 여부 재협의. 무료 체험판 사이를 오가며 대체하는 &#39;떠돌이 전략&#39;은 집중력 분산·버전 호환 문제로 효율이 떨어지기 쉬우니 피하세요. 대안 도구 1~2개를 정해 2주간 A/B 비교하는 접근이 효율적입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">MS 깃허브가 AI 코딩 도구 &#39;코파일럿&#39;의 사용량 제한을 강화하고 신규 개인 가입을 일시 중단했다. 에이전트 기반 코딩 수요 급증으로 인프라 부담이 커지고 서비스 장애까지 발생하자 사실상 가격 인상에 해당하는 대응에 나선 것이다. 기존 프로·프로+·학생 요금제 신규 가입이 중단되고 헤비 유저는 상한에 부딪힌다.</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209542" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://zdnet.co.kr/view/?no=20260421172633" target="_blank" rel="noopener noreferrer">와이브레인 &#34;마인드스팀, 학계서 우울증 치료 효과 입증&#34;</a></h3>
-        <div class="meta">
-          <span>ZDNet Korea</span><span class="dot">·</span>
-          <span>04.21 17:26</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>비약물 우울증 치료의 국내 표준화 논의 가시화<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 와이브레인 주가와 정신건강의학과 학계의 장기처방 가이드 논의가 활성화됩니다. 며칠 뒤엔 국민건강보험 비급여 목록에 tDCS 재택치료 추가 논의가 제기될 가능성이 높습니다. 몇 달 지나면 원격진료·재택 의료기기 보험수가 체계 개편이 이어지고, 디지털 치료기기 업계 전반의 임상 속도가 빨라집니다. 우울증 환자 100만명 시대(건강보험공단 2024) 대응 체계의 전환점입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2020년 FDA 승인 디지털치료기 &#39;EndeavorRx&#39;(ADHD)가 글로벌 첫 사례였고, 2023년 에임메드 &#39;솜즈&#39;가 국내 1호 불면증 디지털치료기로 허가됐습니다. 두 사례 모두 허가 후 2년 내 건강보험 적용까지 논의됐으나 실제 수가 확정은 3~4년 걸렸습니다. tDCS는 이미 해외 레벨A 권고를 받은 만큼 &#39;솜즈&#39;보다 빠르게 수가 적용이 진행될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>본인 또는 가족이 우울증 치료 중이라면 이번 달 안에 주치의와 두 가지를 상의해보세요. 첫째, 현재 약물치료 반응성에 한계가 있다면 tDCS 병용이 가능한지 검토. 둘째, 재택 기반 프로토콜 참여 병원 정보 확인. 단, 온라인 쇼핑몰의 유사 &#39;뇌자극 기기&#39;를 자가 구매해 사용하는 건 피하세요. 의료용 tDCS와 전류·파형 기준이 달라 안전성이 검증되지 않았습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">와이브레인의 경두개직류자극(tDCS) 전자약 &#39;마인드스팀&#39;의 임상적 유효성이 &#39;2026 대한신경정신의학회 춘계학술대회&#39; 런천 심포지엄에서 확인됐다. 백지현 삼성서울병원 교수는 주요우울장애에서 tDCS가 국제 가이드라인 최고 레벨A 권고 치료법이라 설명했고, 박재섭 용인세브란스 교수는 재택 기반 병용치료 모델을 제시했다.</div>
-        <a href="https://zdnet.co.kr/view/?no=20260421172633" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://zdnet.co.kr/view/?no=20260421171051" target="_blank" rel="noopener noreferrer">김민석 총리 &#34;과학기술 5대 강국 목표로 과감한 투자하겠다&#34;</a></h3>
-        <div class="meta">
-          <span>ZDNet Korea</span><span class="dot">·</span>
-          <span>04.21 17:10</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>정부 AI 국정 기조의 공식 선언과 구체 지표(GPU 26만)<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 과기정통부 관련 예산안의 국회 심의에 힘이 실립니다. 며칠 뒤엔 국가 AI컴퓨팅센터 입지 경쟁에 뛰어든 지자체(부산·광주·대구 등)의 유치전이 가열됩니다. 몇 달 지나면 AI·반도체·양자 R&amp;D 예산이 2027년까지 GDP 5%까지 늘어난다는 구체 로드맵이 공개될 가능성이 높습니다. 이는 단순 기념사가 아니라 국가 과학기술 투자의 방향키입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2003년 노무현 정부의 &#39;과학기술 5대 강국&#39; 슬로건, 2013년 박근혜 정부의 &#39;창조경제&#39;가 비슷한 구호였습니다. 두 사례 모두 GDP 대비 R&amp;D 비중을 세계 최상위(4% 이상)로 끌어올렸지만, 5대 강국 지표(논문 인용·특허·기술무역수지)에서는 8~12위를 벗어나지 못했습니다. 실제 달성에는 이번 정부가 제시한 &#39;연구 자율성·장학금 확대&#39;가 변수가 될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="frame">
-              <h4>🧐 이 뉴스, 이렇게 읽어보세요</h4>
-              <p>&#39;과학기술 5대 강국&#39;은 여러 정부가 반복해온 프레임입니다. 출처는 총리 연설(단일 공식 발언)로 IMVAIN 기준 권위는 있지만 독립·다중 검증이 약합니다. 옆 매체 동아사이언스·과학기술일보는 구체 수치(GPU 26만 장) 외에는 대부분 인용 중심입니다. 이 질문을 던져보세요: ①5대 강국의 측정 지표가 무엇인가 ②예비타당성 폐지 후 실제 과제 선정 속도가 얼마나 빨라졌나 ③UN AI 허브는 어떤 법적 구속력인가.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">김민석 국무총리가 21일 &#39;2026 과학·정보통신의 날&#39; 기념식에서 &#39;과학기술 5대 강국&#39; 목표로 과감한 투자와 제도 혁신을 이어가겠다고 말했다. 지난해 GPU 26만 장을 확보하고 AI 컴퓨팅 센터 기반을 마련했다며, 올해는 세계 10위 안에 드는 독자 AI 모델을 개발 중이라고 덧붙였다. UN AI 허브 유치도 추진한다.</div>
-        <a href="https://zdnet.co.kr/view/?no=20260421171051" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260421000247" target="_blank" rel="noopener noreferrer">우리은행, &#39;AI 에이전트 전용 GPU 클러스터&#39; 구축…생성형 AI 내재화 본격화</a></h3>
-        <div class="meta">
-          <span>전자신문</span><span class="dot">·</span>
-          <span>04.21 17:00</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># 생성형 AI</span><span># AI</span><span># 에이전트</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>국내 4대 은행의 온프레미스 GPU 전환 흐름 시작 신호<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 국내 금융 IT 시장에서 엔비디아 H100·H200, AMD MI300 수요 확대가 가시화됩니다. 며칠 뒤엔 국민·신한·하나 등 경쟁 은행도 유사한 내재화 로드맵을 공개할 가능성이 높습니다. 몇 달 지나면 금융감독원의 &#39;AI 모델 감독규정&#39;이 온프레미스 배포를 전제로 재정비되고, 데이터 주권·설명가능성 요건이 강화됩니다. 이는 금융 AI의 구조 전환 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2018년 신한은행의 &#39;쏠&#39; 프로젝트 때 퍼블릭 클라우드 일부 도입 후 2022년 개인정보 이슈로 다시 전용선 기반으로 회귀한 선례가 있습니다. 해외에선 JP모건이 2023년부터 자체 LLM 스위트 &#39;LLM Suite&#39;를 구축하며 MS 애저 의존도를 줄였습니다. 이런 흐름은 평균 2~3년 내 업계 표준으로 굳습니다. 국내에서도 2027년경에는 &#39;주요 은행 온프레미스 AI&#39;가 기본이 될 가능성이 높습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">우리은행이 생성형 AI 기반 &#39;AI 에이전트&#39; 구축을 위해 자체 GPU 서버 인프라를 직접 도입한다. 외부 클라우드 의존 구조에서 벗어나 AI 전략을 내재화로 전환하는 움직임이다. 고성능 GPU 기반 서버 클러스터 구축이 이미 진행되고 있다고 전자신문이 취재했다.</div>
-        <a href="https://www.etnews.com/20260421000247" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260421000387" target="_blank" rel="noopener noreferrer">엔비디아 “한국 개발자 생태계 수용성 높아”…&#39;네모트론&#39; AI 거점으로 낙점</a></h3>
-        <div class="meta">
-          <span>전자신문</span><span class="dot">·</span>
-          <span>04.21 16:43</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># 딥러닝</span><span># 엔비디아</span><span># AI</span><span># 인공지능</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>글로벌 AI 생태계 거점 전략에서 한국이 선택된 의미<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 네모트론 해커톤·파트너십 발표로 국내 스타트업 수십 곳이 엔비디아 기술지원을 받게 됩니다. 며칠 뒤엔 네이버클라우드·SKT·KT의 자체 AI 모델들이 네모트론과 호환성을 맞추는 움직임이 가시화됩니다. 몇 달 지나면 국내 AI 인력 시장에서 &#39;CUDA·네모 스택&#39; 경력이 +20~30% 프리미엄 연봉으로 이어질 가능성이 높습니다. 이는 단순 마케팅이 아니라 국내 AI 노동시장 시그널입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2019년 구글이 네이버·카카오와 텐서플로 생태계 협업을 추진한 사례, 2014년 MS가 한국을 닷넷 개발자 거점으로 지정한 사례가 비슷합니다. 두 사례 모두 3~4년 내 관련 개발자 풀이 2배로 늘었지만, 핵심 IP는 본사에 남아 국내 모델 자립에는 한계가 있었습니다. 이번 네모트론 협력도 유사하게 &#39;활용 강국&#39;은 될 수 있으나 &#39;원천 기술 강국&#39;은 별개라는 구조가 재현될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="frame">
-              <h4>🧐 이 뉴스, 이렇게 읽어보세요</h4>
-              <p>발표 주체는 엔비디아 부사장 한 명이고 수치 근거는 &#39;수용성이 높다&#39;는 주관 평가가 중심입니다. 이는 IMVAIN 기준 &#39;단일 출처·명명되지 않은 지표&#39;로 평가 강도가 약합니다. 옆 매체 ZDNet·매일경제 보도도 엔비디아 보도자료에 기반해 비슷합니다. 이 질문을 던져보세요: ①거점 지정이 구체적으로 어떤 투자·인력·예산으로 현실화되는가 ②경쟁국(일본·대만) 대비 얼마나 우선순위인가 ③2027년 지표는 무엇인가.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">엔비디아가 자사 AI 플랫폼 &#39;네모트론(Nemotron)&#39; 생태계 확대 거점으로 한국을 낙점했다. 한국 개발자 커뮤니티가 기술 수용성이 높고 에이전틱 AI 관심도 크다는 점을 평가했다고 브라이언 카탄자로 엔비디아 부사장이 설명했다.</div>
-        <a href="https://www.etnews.com/20260421000387" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260421000334" target="_blank" rel="noopener noreferrer">스마트공장 재편… 로봇이 SI 삼킨다</a></h3>
-        <div class="meta">
-          <span>전자신문</span><span class="dot">·</span>
-          <span>04.21 16:00</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># 로봇</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>스마트팩토리 SI 시장 축소와 로봇·일자리 구조 변화 신호<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 국내 중견 SI 업체(제이엠건축기술·에이엠시스템 등)의 스마트팩토리 구축 수주 파이프라인이 축소됩니다. 며칠 뒤엔 뉴로메카·두산로보틱스·레인보우로보틱스의 휴머노이드 라인업이 중소제조 현장에 본격 시범 투입됩니다. 몇 달 지나면 중소기업 생산직 재교육 정책(고용노동부·중기부 공동)이 재설계되고, 협동로봇·휴머노이드 설치 인력 자격증이 신설될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2018년 협동로봇이 CNC 공작기계 투입됐을 때, 2022년 아마존 물류 로봇이 피커 일자리를 20% 감소시킨 사례가 유사합니다. 두 경우 모두 3년 내 현장 직무가 &#39;로봇 오퍼레이터·셀 관리자&#39;로 재편됐습니다. 이번 휴머노이드 전환은 속도가 더 빠를 가능성이 높습니다. 평균 2년 내 국내 중소 제조업의 SI 공정 비중이 20~30% 줄어들 전망입니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>제조업 근무 또는 취업 준비 중이라면 올 하반기 안에 두 가지를 알아보세요. 첫째, 현재 사업장이 휴머노이드·협동로봇 도입 계획이 있는지. 둘째, 폴리텍·한국산업인력공단의 로봇 설치·운영 재교육 과정. 반면 &#39;단기 자격증 3~4개 무턱대고 취득&#39;은 피하세요. 실제 현장에서는 PLC·비전 센서·ROS2 조합을 실제 다뤄본 경험이 더 중요하게 평가됩니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">로봇 자동화 기업 뉴로메카가 휴머노이드 &#39;에이르&#39;를 활용해 스마트팩토리 구축 시스템통합(SI) 비용을 줄여준다. 기존 자동화 라인은 로봇 도입 후 지그 설계·공정 연동·제어 최적화 등 SI 작업에 하드웨어 비용 못지않은 추가 비용이 드는 구조다. 로봇이 SI를 대체하는 재편 흐름이 확산된다.</div>
-        <a href="https://www.etnews.com/20260421000334" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209546" target="_blank" rel="noopener noreferrer">SK하이닉스, AI 서버 메모리 &#39;SOCAMM2 192GB&#39; 본격 양산</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.21 15:50</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>국내 메모리 기업의 AI 서버 특화 신제품 양산은 실적·주가 직결 사안<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 엔비디아 GB200·GB300 그레이스호퍼 서버 보드 BOM에 SOCAMM2 192GB가 공식 편입될 가능성이 높습니다. 며칠 뒤엔 삼성·마이크론이 유사 규격 양산 시점을 공개하며 가격 경쟁이 시작됩니다. 몇 달 지나면 국내 AI 서버 제조사(래블업·수퍼마이크로 한국 등)의 차세대 제품 BOM 단가가 10~15% 변동되고, HBM 외에도 LPDDR 기반 모듈 매출이 SK하이닉스 서버 매출의 20% 수준까지 올라올 가능성이 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2020년 DDR5 첫 양산, 2024년 HBM3E 12단 양산이 비슷한 이정표 사례입니다. DDR5는 양산 후 6개월 만에 서버 DRAM 매출 점유율 10%를 넘었고, HBM3E는 SK하이닉스 영업이익률을 2024년 30%대로 끌어올렸습니다. SOCAMM2도 유사한 6~12개월 램프업 패턴을 밟을 가능성이 높지만, 초기 인증 단계에서 메인보드 호환성 이슈가 변수입니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>국내 반도체 업종 투자자라면 이번 주 SK하이닉스 3분기 실적 가이던스와 SOCAMM2 고객사 공개 일정을 점검해보세요. 삼성전자·마이크론 대응 제품 출시 시점과 비교해보는 것도 유효합니다. 다만 반도체 업종이 고점 부근에 있다는 평이 있는 만큼, 뉴스 하나로 급하게 포지션을 키우는 건 피하세요. 분기 실적과 엔비디아 제품 로드맵을 함께 확인한 뒤 결정하는 접근이 안전합니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">SK하이닉스가 10나노급 6세대(1c) LPDDR5X 저전력 D램 기반 차세대 메모리 모듈 &#39;SOCAMM2 192GB&#39;를 본격 양산한다고 21일 밝혔다. 모바일용 저전력 메모리를 서버용으로 변형한 AI 서버 특화 모듈로, 얇은 두께와 확장성, 압착식 커넥터로 신호 무결성을 높였다. 기존 &#39;RDIMM&#39; 대비 2배 이상의 대역폭을 제공한다.</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209546" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260421000285" target="_blank" rel="noopener noreferrer">[뉴스 줌인] &#39;운영의 애플&#39; 이끈 팀 쿡…존 터너스 체제는 기술 중심 전환 가능성</a></h3>
-        <div class="meta">
-          <span>전자신문</span><span class="dot">·</span>
-          <span>04.21 14:36</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>애플의 운영-기술 축 이동이 한국 부품 생태계에 주는 의미 분석<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 애플 신제품 로드맵 해석을 둘러싼 외신·증권가 리서치가 쏟아집니다. 며칠 뒤엔 국내 FC-BGA·카메라모듈 업체의 &#39;중장기 수주 전략&#39;이 AI·증강현실 비중 확대 쪽으로 재편됩니다. 몇 달 지나면 애플 실리콘 M5·A19의 NPU 강화 방향이 공개되고, 국내 AP·NPU 설계 인력 수요가 늘어날 가능성이 높습니다. 이는 국내 반도체 설계 생태계 재편의 방아쇠입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2000년 IBM의 루 거스너→팔미사노 교체 때 하드웨어에서 서비스로, 2014년 MS 발머→나델라 교체 때 오피스에서 클라우드로 중심축이 옮겨졌습니다. 두 사례 모두 초기 1년은 주가가 횡보했지만 3년 뒤 시총이 각각 40%, 300% 늘었습니다. 터너스 체제도 유사한 &#39;기술축 전환&#39; 패턴일 가능성이 높지만, 애플의 하드웨어 순이익률(25% 이상)이 워낙 높아 전환 폭은 상대적으로 좁을 수 있습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">팀 쿡은 스티브 잡스 타계 이후 15년 가까이 애플을 이끌며 회사를 &#39;수익·운영 중심&#39;으로 바꿨다. 그가 다진 공급망 관리는 글로벌 제조 모범으로 꼽혔지만 AI 전환에선 뒤처졌다는 평이 함께한다. 신임 존 터너스 체제가 기술 혁신 중심으로 방향을 돌릴지 업계 관심이 쏠린다.</div>
-        <a href="https://www.etnews.com/20260421000285" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260421000198" target="_blank" rel="noopener noreferrer">&#39;AI B2B&#39; 승부수 띄운 SKT 정재헌…엔터프라이즈TF 신설</a></h3>
-        <div class="meta">
-          <span>전자신문</span><span class="dot">·</span>
-          <span>04.21 14:10</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span><span># 인공지능</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>국내 통신사 포트폴리오가 AI B2B로 재편되는 전환점<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 SKT 기업영업 조직의 채용·재배치가 가속화됩니다. 며칠 뒤엔 LG유플러스·KT가 각자 AI B2B 대응 조직 개편을 서두를 가능성이 높습니다. 몇 달 지나면 국내 중견기업의 &#39;AX(AI 전환) 예산&#39;이 통신요금 항목에 통합 청구되는 구조가 등장할 수 있습니다. 이는 단일 통신사 이슈가 아니라 B2B IT 서비스 시장의 5년 단위 개편 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2017년 KT가 기가지니 기반 B2B로 피벗했을 때, 2020년 SKT가 5G MEC 기업영업에 뛰어들 때와 비슷합니다. 두 사례 모두 2~3년차에 기대만큼 매출이 나오지 않아 조직이 재조정됐습니다. 원인은 &#39;통신사 DNA&#39;와 &#39;SI DNA&#39;의 미스매치였습니다. 이번에는 정재헌 대표가 SK C&amp;C 출신으로 SI 경험이 있다는 차이가 있어, 과거보다 성과가 빠르게 나올 가능성이 중간 정도입니다.</p>
-            </div>
-            <div class="insight" data-axis="scenario">
-              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
-              <p>가능성 높은 시나리오(중간): 2027년까지 AI B2B 매출 1조원대 진입, 기존 무선 매출의 7~8% 수준. 가능성 중간: 금융·제조 대기업 3~5곳과 대형 AX 계약을 공개하며 주가 반등. 가능성 낮음: 조직 마찰로 TF가 1년 내 재편. 갈림길은 다음 분기 실적 설명회에서 공개될 AI 매출 분리 공시 여부와 10대 레퍼런스 확보 속도입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">정재헌 SKT 대표가 취임 6개월 타운홀 미팅에서 &#39;AI B2B&#39;를 핵심 성장동력으로 선언했다. 내재화한 AI 풀스택 역량을 기업 시장으로 이식하기 위해 엔터프라이즈 전담 TF를 신설하고, 내부 직급·조직 체계를 손본다. 통신 중심 포트폴리오에서 기업향 AI 매출 비중 확대가 목표다.</div>
-        <a href="https://www.etnews.com/20260421000198" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209526" target="_blank" rel="noopener noreferrer">알리바바, 중국 모델 최고 성능 &#39;큐원3.6-맥스-프리뷰&#39; 출시</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.21 18:27</span><span class="dot">·</span>
-          <span class="score">점수 7.5/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span><span># 에이전트</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>중국 AI 모델의 에이전트 코딩 추격 속도, 글로벌 경쟁 지형 재편<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 알리클라우드 한국 파트너사의 영업 포인트가 &#39;가성비 모델&#39;로 강화됩니다. 며칠 뒤엔 국내 스타트업 중 클로드·GPT-4 비용 부담이 큰 곳이 큐원을 대안으로 테스트할 가능성이 높습니다. 몇 달 지나면 정부 망분리 환경의 온프레미스 배포 가능한 중국계 모델 수요가 10~20% 늘어날 수 있으나, 보안 심사가 관건입니다. 단순 신제품이 아니라 오픈웨이트 모델 시장의 판도 변화 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2024년 딥시크 R1이 공개된 뒤 3개월 만에 국내 스타트업 사용률이 10%를 넘었고, 2023년 메타 라마2도 6개월 만에 한국어 파인튜닝 파생 모델 50여 개를 만들었습니다. 큐원도 유사한 확산 패턴일 가능성이 높지만, 중국 모델이라는 점에서 공공·금융 도입은 제한적일 것으로 보입니다. 중소기업·연구 영역에서 6~12개월 내 점유율 5~10%를 차지할 가능성이 높습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">알리바바가 20일 차세대 모델 &#39;큐원3.6-맥스-프리뷰&#39;를 공개했다. 자체 벤치마크에서 중국 모델 중 최고 성능을 기록했고, 기존 큐원3.6-플러스 대비 코딩·지식이해·명령수행 전반에서 성능이 크게 향상됐다. 특히 에이전트형 코딩(agentic coding) 역량에서 눈에 띄는 발전을 이뤘다.</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209526" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.mk.co.kr/news/world/12023227" target="_blank" rel="noopener noreferrer">中화웨이 AI안경 출시…美에 도전장</a></h3>
-        <div class="meta">
-          <span>매일경제</span><span class="dot">·</span>
-          <span>04.21 18:05</span><span class="dot">·</span>
-          <span class="score">점수 7.5/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span><span># 인공지능</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>AI 웨어러블 시장의 미중 경쟁 구도 가시화<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 AI 안경 카메라모듈·마이크·디스플레이 부품 공급망에 국내 기업(LG이노텍·나무가·세코닉스)의 추가 수주 기대가 커집니다. 며칠 뒤엔 삼성·애플·메타가 차기 AI 안경 로드맵을 앞당겨 공개할 가능성이 높습니다. 몇 달 지나면 프라이버시 보호 규제(촬영 인지 표시 의무 등)가 국내외에서 정비되고, 안경 형태의 일상 촬영이 사회적 논쟁으로 부상할 전망입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2013년 구글 글래스가 유사한 기대 속에 나왔지만 프라이버시 반발로 2년 만에 소비자용 판매가 철회됐습니다. 2023년 메타-레이밴 스마트 안경은 1세대 판매 부진 후 2세대부터 연간 100만대 이상 팔리며 반등했습니다. 이번 화웨이 진입은 메타의 성공 공식(AI+패션 브랜드 협업)을 따라갈 가능성이 높습니다. 프라이버시 규제가 과거처럼 시장의 최대 변수가 될 것입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">중국 화웨이가 첫 번째 AI 안경을 공개했다. 21일 매일경제 보도에 따르면 메타·알리바바 등이 이미 뛰어든 AI 안경 시장에 화웨이까지 출사표를 던지면서 점유율 경쟁이 한층 거세질 전망이다. 미국 빅테크의 주도권에 중국 기업이 도전장을 내는 구도가 명확해지고 있다.</div>
-        <a href="https://www.mk.co.kr/news/world/12023227" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.aitimes.com/news/articleView.html?idxno=209518" target="_blank" rel="noopener noreferrer">중기부, 중소제조·스타트업에 GPU 264장 공급...&#34;AX 본격 지원&#34;</a></h3>
-        <div class="meta">
-          <span>AI타임스</span><span class="dot">·</span>
-          <span>04.21 14:30</span><span class="dot">·</span>
-          <span class="score">점수 7.5/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span><span># 에이전트</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>중소기업 AX(AI 전환) 인프라 지원의 구체적 물량 배분<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 B200 264장 수혜 스타트업 공모에 수백 곳이 몰리며 경쟁이 가열됩니다. 며칠 뒤엔 네이버클라우드·KT클라우드·NHN클라우드의 GPU 클라우드 가격 구조가 일부 조정될 가능성이 있습니다. 몇 달 지나면 중소제조 현장에 멀티 에이전트 기반 품질검사·재고관리 파일럿이 등장하고, 업력 10년 이하 제조 스타트업의 외주 AI 컨설팅 의존도가 줄어듭니다. GPU 접근권이 중소기업 경쟁력 변수가 되고 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2019년 과기부의 고성능컴퓨팅 자원 지원(HPC) 사업, 2021년 NIPA의 AI 바우처 사업이 유사합니다. 두 경우 모두 수혜 기업의 1년 후 매출 증가율이 평균 15~20% 수준이었으나, 지원 종료 후 자립에 실패한 기업도 30~40%에 달했습니다. 이번 GPU 지원도 유사한 패턴이 예상되며, &#39;지원 후 민간 전환 로드맵&#39; 설계가 실제 성과를 좌우할 가능성이 높습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">중소벤처기업부가 &#39;국가 AI 프로젝트&#39;를 통해 확보한 GPU B200 264장을 중소제조 현장과 창업기업 혁신에 활용한다고 21일 밝혔다. 앞서 과기정통부가 2025년 추경으로 확보한 GPU 1만장 중 3000여장을 부처별 사업에 배분하기로 확정했고, 중기부는 &#39;중소제조 특화 멀티 AI 에이전트&#39;와 &#39;혁신 AI 스타트업 상용화·AX 가속&#39; 2개 과제에 선정됐다.</div>
-        <a href="https://www.aitimes.com/news/articleView.html?idxno=209518" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.etnews.com/20260421000256" target="_blank" rel="noopener noreferrer">“빅테크 종속 아닌 &#39;개방형 AI 생태계&#39;로 AI강국 도전해야”</a></h3>
-        <div class="meta">
-          <span>전자신문</span><span class="dot">·</span>
-          <span>04.21 14:17</span><span class="dot">·</span>
-          <span class="score">점수 7.0/10</span>
-        </div>
-        <div class="tags">
-<span># AI</span><span># 인공지능</span>        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>AI 3강 도약 담론에 &#39;접근권·개방성&#39; 프레임 추가<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 AI 기본법 후속 시행령·하위법령 제정 일정에 &#39;개방성·접근권&#39; 조항 추가가 논의됩니다. 며칠 뒤엔 오픈소스 모델(네이버 하이퍼클로바X·카카오 카나나 등) 공개 범위 확대에 대한 업계 부담 논란이 제기될 가능성이 높습니다. 몇 달 지나면 정부의 AI 공공조달 기준에 &#39;오픈 가중치 모델 가점&#39;이 포함될 수 있습니다. 정책 프레임 자체가 이동하는 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2023년 EU AI Act의 &#39;기본 모델 투명성 의무&#39;, 2024년 미국 바이든 행정명령의 &#39;오픈웨이트 영향평가&#39;가 비슷한 논의였습니다. 두 경우 모두 업계 반발로 의무 조항이 권고 수준으로 후퇴한 적이 있습니다. 한국도 유사한 조정 과정을 거칠 가능성이 높지만, &#39;AI 3강&#39; 드라이브와 결합되면 과거보다 빠르게 법제화로 이어질 수 있습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">한국형 AI 세계 확산과 AI 3강 도약을 위해 &#39;개방형 AI 생태계&#39; 활성화가 필요하다는 제언이 나왔다. &#39;AI 기본권&#39; 보장으로 AI 접근성 강화와 산업 발전을 도모해야 한다는 주장도 제기됐다. 이해민 조국혁신당 의원과 한국인공지능법학회 등이 21일 서울 여의도 국회에서 관련 토론회를 열었다.</div>
-        <a href="https://www.etnews.com/20260421000256" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
+    <div class="axis-body">당장은 뉴욕·런던 유가 선물 시장이 압박 메시지에 반응해 배럴당 1~3달러 단위로 요동칩니다. 며칠 뒤엔 국내 정유사(SK이노베이션·GS칼텍스·현대오일뱅크)의 원유 도입 계약 조건 재협상이 이뤄지고, 휘발유 소매가가 리터당 50~100원 단위로 변동할 가능성이 높습니다. 몇 달 지나면 중동발 인플레 압력이 한국 소비자물가에 0.2~0.5%p 반영되고, 한국은행 금리 인하 속도가 지연될 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
     </div>
+    <div class="axis-body">2019년 미국이 이란 혁명수비대를 테러조직 지정했을 때, 2020년 솔레이마니 공습 직후 유가가 2주간 배럴당 20% 급등했지만 평균 3개월 안에 원상복귀했습니다. 2015년 이란 핵합의 타결 때는 유가가 6개월간 15% 하락했습니다. 이번 협상도 과거 사례의 중간 시나리오(타결)가 가능성 높음입니다. 평균 지정학 이벤트 3개월 지속 패턴에서 벗어나진 않을 전망입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">에너지·교통 지출이 큰 독자라면 이번 주 두 가지를 점검해보세요. 첫째, 주유소 앱 기준 지역 최저가 재확인. 둘째, 장거리 이동은 대중교통·카풀 비중을 일시 높이기. 반면 &#39;유가 급등에 놀라 서둘러 전기차 구매 결정&#39;은 피하세요. 폭락·폭등은 3~6개월 단위 롤러코스터라 장기 의사결정을 단기 쇼크로 하지 않는 게 안전합니다.</div>
+  </div>
+</details>
+    </article>
+
+    <div class="sec-divider"><h2>꼭 알아야 할 뉴스</h2></div>
+    <a class="story" href="https://www.hani.co.kr/arti/international/arabafrica/1255281.html" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">한겨레</span>
+        <span class="dot">·</span>
+        <span>04.21 22:29</span>
+      </div>
+      <h3>수년 걸릴 ‘미-이란 협상’ 난제…핵농축·제재 해제·호르무즈 통행료</h3>
+      <p class="lede">휴전 일정을 하루 연장하는 트럼프 대통령의 압박 속에 미국과 이란이 22일(현지시각) 파키스탄 이슬라마바드에서 만난다. 50일을 넘긴 전쟁의 출구를 찾기 위한 협상에서 풀어야 할 과제는 수개월에서 수년의 논의가 필요한 수준이다. 핵농축·제재 해제·호르무즈 통행료가 3대 난제로 꼽힌다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421172551009" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 22:20</span>
+      </div>
+      <h3>미군, 인도양서 이란연계 유조선 나포…협상 목전 봉쇄범위 확대(종합)</h3>
+      <p class="lede">미군이 이란과의 2차 종전협상을 앞두고 인도태평양 사령부 책임 구역 내에서 이란과 연계된 제재 대상 유조선을 나포했다. 해상 봉쇄 범위를 협상 직전에 넓히며 지렛대를 확보하려는 움직임이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/economy/12023259" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:54</span>
+      </div>
+      <h3>[단독] 미국·일본 “한국산 석유 없으면 큰일”…휘발유·항공유 요청 빗발쳐</h3>
+      <p class="lede">중동발 원유 공급 불안이 장기화하자 미국·일본·호주·뉴질랜드 등 주요국이 우리 정부에 한국산 석유제품 수출 요청을 빗발친 것으로 나타났다. 미국은 항공유, 호주·뉴질랜드는 휘발유 공급을 요청 중이며, 정부는 &#39;석유 제품 수출 통제&#39; 자문까지 받고 있는 상황이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421161300082" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:24</span>
+      </div>
+      <h3>젤렌스키 &#34;러, 발트3국 침공 준비&#34;…에스토니아 발끈</h3>
+      <p class="lede">러시아가 대규모 동원령을 내리고 에스토니아 등 발트해 연안국 침공을 준비 중이라고 볼로디미르 젤렌스키 우크라이나 대통령이 경고했다. 에스토니아는 강하게 반발했다고 베를린발 연합뉴스가 21일 전했다. 나토 동진 대응 국면에서 발트 위기설이 다시 부상했다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
   </section>
-  <section class="section" aria-label="종합 뉴스">
-    <div class="section-header">
-      <h2>종합 뉴스</h2>
-      <span class="count">22건</span>
-    </div>
-    <div class="section-body">
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421175251071" target="_blank" rel="noopener noreferrer">트럼프, 휴전만료 전날 &#34;훌륭한 합의할것…불발시 폭격예상&#34;(종합)</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 23:08</span><span class="dot">·</span>
-          <span class="score">점수 9.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>미-이란 종전협상 직전의 미국 최고위 발언, 국제유가·안보 직결<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 뉴욕·런던 유가 선물 시장이 압박 메시지에 반응해 배럴당 1~3달러 단위로 요동칩니다. 며칠 뒤엔 국내 정유사(SK이노베이션·GS칼텍스·현대오일뱅크)의 원유 도입 계약 조건 재협상이 이뤄지고, 휘발유 소매가가 리터당 50~100원 단위로 변동할 가능성이 높습니다. 몇 달 지나면 중동발 인플레 압력이 한국 소비자물가에 0.2~0.5%p 반영되고, 한국은행 금리 인하 속도가 지연될 수 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2019년 미국이 이란 혁명수비대를 테러조직 지정했을 때, 2020년 솔레이마니 공습 직후 유가가 2주간 배럴당 20% 급등했지만 평균 3개월 안에 원상복귀했습니다. 2015년 이란 핵합의 타결 때는 유가가 6개월간 15% 하락했습니다. 이번 협상도 과거 사례의 중간 시나리오(타결)가 가능성 높음입니다. 평균 지정학 이벤트 3개월 지속 패턴에서 벗어나진 않을 전망입니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>에너지·교통 지출이 큰 독자라면 이번 주 두 가지를 점검해보세요. 첫째, 주유소 앱 기준 지역 최저가 재확인. 둘째, 장거리 이동은 대중교통·카풀 비중을 일시 높이기. 반면 &#39;유가 급등에 놀라 서둘러 전기차 구매 결정&#39;은 피하세요. 폭락·폭등은 3~6개월 단위 롤러코스터라 장기 의사결정을 단기 쇼크로 하지 않는 게 안전합니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">트럼프 미국 대통령이 이란과의 2차 종전 협상을 앞두고 &#39;결국 훌륭한 합의를 하게 될 것&#39;이라며 불발 시 &#39;폭격 예상&#39;이라는 압박 메시지를 냈다. 휴전 만료 전날 워싱턴에서 나온 발언으로, 협상 지렛대를 강화하려는 의도로 읽힌다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421175251071" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.hani.co.kr/arti/international/arabafrica/1255281.html" target="_blank" rel="noopener noreferrer">수년 걸릴 ‘미-이란 협상’ 난제…핵농축·제재 해제·호르무즈 통행료</a></h3>
-        <div class="meta">
-          <span>한겨레</span><span class="dot">·</span>
-          <span>04.21 22:29</span><span class="dot">·</span>
-          <span class="score">점수 9.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>미-이란 협상의 구조적 난이도, 장기 긴장 지속 시사<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 유가·금·달러 인덱스의 시간외 변동성이 커지며 국내 금융시장 개장 초반부터 민감하게 반응합니다. 며칠 뒤엔 국내 기업들의 해외 프로젝트(사우디 네옴·이란 건설·중동 발전 EPC) 수주 전략이 재평가됩니다. 몇 달 지나면 장기 협상이라는 명제가 확정되며 한국의 에너지 수급·방산 수출이 중동 장기 긴장 시나리오 기반으로 재편됩니다. 한국 기업의 중동 리스크 관리가 일상화될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2013~2015년 이란 핵합의(JCPOA) 협상이 약 2년 걸린 사례, 2018년 미북 비핵화 협상이 3년간 지속됐다 중단된 사례가 비슷합니다. 두 경우 평균 2~3년 협상 기간이 소요됐고, 합의 이행률은 30~70%에 그쳤습니다. 이번 미-이란 협상도 유사한 장기·불완전 패턴 가능성 높음이며, 단기에 극적 합의를 기대하기보다는 &#39;분쟁 관리&#39; 시각으로 접근하는 것이 합리적입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">휴전 일정을 하루 연장하는 트럼프 대통령의 압박 속에 미국과 이란이 22일(현지시각) 파키스탄 이슬라마바드에서 만난다. 50일을 넘긴 전쟁의 출구를 찾기 위한 협상에서 풀어야 할 과제는 수개월에서 수년의 논의가 필요한 수준이다. 핵농축·제재 해제·호르무즈 통행료가 3대 난제로 꼽힌다.</div>
-        <a href="https://www.hani.co.kr/arti/international/arabafrica/1255281.html" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421172551009" target="_blank" rel="noopener noreferrer">미군, 인도양서 이란연계 유조선 나포…협상 목전 봉쇄범위 확대(종합)</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 22:20</span><span class="dot">·</span>
-          <span class="score">점수 9.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>종전 협상 직전 미국의 해상 봉쇄 강화, 호르무즈·말라카 항로 리스크<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 국내 HMM·팬오션 등 해운사의 항로 재조정과 전쟁보험료 인상이 협의됩니다. 며칠 뒤엔 수출기업들의 선박 확보 경쟁과 컨테이너 스팟운임 지수(SCFI)가 5~10% 상승할 가능성이 높습니다. 몇 달 지나면 반도체·전자·자동차 부품의 납기 지연이 평균 2~3주 늘어나고, 국내 제조업 재고 회전율 악화로 이어집니다. 이는 단순 군사작전이 아니라 공급망 위험의 실제 체감 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2019년 호르무즈 해협 유조선 피격, 2023년 홍해 후티 공격이 유사한 사례입니다. 당시 아시아-유럽 해상운임은 각각 30%·150% 뛰었고 평균 4~6개월 지속됐습니다. 이번 나포는 직접 공격이 아닌 제재 집행 성격이라 파급력은 그보다 작을 가능성이 높지만, 이란의 보복 대응 여부가 결정적입니다. 호르무즈 통행량의 20% 안팎 일시 감소 시 글로벌 유가가 10% 이상 움직일 수 있습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">미군이 이란과의 2차 종전협상을 앞두고 인도태평양 사령부 책임 구역 내에서 이란과 연계된 제재 대상 유조선을 나포했다. 해상 봉쇄 범위를 협상 직전에 넓히며 지렛대를 확보하려는 움직임이다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421172551009" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.mk.co.kr/news/economy/12023259" target="_blank" rel="noopener noreferrer">[단독] 미국·일본 “한국산 석유 없으면 큰일”…휘발유·항공유 요청 빗발쳐</a></h3>
-        <div class="meta">
-          <span>매일경제</span><span class="dot">·</span>
-          <span>04.21 18:54</span><span class="dot">·</span>
-          <span class="score">점수 9.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>한국 정유산업의 전략적 가치 급부상, 수출 통제 논의까지<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 SK이노베이션·GS칼텍스·S-OIL·HD현대오일뱅크의 정제마진 상승과 수출 확대 기대감이 주가에 반영됩니다. 며칠 뒤엔 정부의 국내 석유제품 공급 우선 원칙과 수출 통제 조치 검토가 구체화됩니다. 몇 달 지나면 국내 휘발유·항공유 가격에 수출 쏠림 영향이 반영돼 국내 소매가가 리터당 50~150원 추가 상승할 여지가 있고, 항공사들의 유류할증료 인상이 이어질 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>1973·1979년 오일쇼크 당시 한국 정유사 수출 호조, 2022년 러-우전쟁 발발 후 유럽 경유 수출 급증이 유사한 사례입니다. 두 경우 모두 국내 가격 상승과 업계 호황이 동시 진행됐습니다. 과거 평균 6~12개월 후 수급 안정화가 이뤄졌습니다. 이번에도 비슷한 패턴 가능성 높음이며, 정부의 수출 통제 여부가 단기 가격 완충 장치가 될 수 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>자차·항공 이용 빈도가 높은 독자라면 이번 주 두 가지를 점검해보세요. 첫째, 가까운 주유소 가격 비교 앱으로 지역 최저가 확인. 둘째, 여름 항공권 예약 시점을 앞당길지 검토(유류할증료 오를 가능성). 반면 &#39;수출 통제로 기름값이 금방 떨어질 것&#39; 같은 기대는 피하세요. 정책 결정에 1~2개월, 실제 소매가 반영에 2~3개월이 더 걸리는 것이 보통입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">중동발 원유 공급 불안이 장기화하자 미국·일본·호주·뉴질랜드 등 주요국이 우리 정부에 한국산 석유제품 수출 요청을 빗발친 것으로 나타났다. 미국은 항공유, 호주·뉴질랜드는 휘발유 공급을 요청 중이며, 정부는 &#39;석유 제품 수출 통제&#39; 자문까지 받고 있는 상황이다.</div>
-        <a href="https://www.mk.co.kr/news/economy/12023259" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421161300082" target="_blank" rel="noopener noreferrer">젤렌스키 &#34;러, 발트3국 침공 준비&#34;…에스토니아 발끈</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 18:24</span><span class="dot">·</span>
-          <span class="score">점수 9.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>나토 동부 전선 위기 재점화, 글로벌 안보·경제 파급<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 독일·폴란드·북유럽 국채 금리와 방산주가 동시에 움직이는 리스크오프 흐름이 나타날 수 있습니다. 며칠 뒤엔 국내 방산 수출 전략회의에서 폴란드·에스토니아·리투아니아와의 계약 확대 논의가 활성화됩니다. 몇 달 지나면 나토 동부 배치 강화로 미국의 인태 자산 재배치 여부가 한미 군사 협의 의제로 올라올 수 있고, 한국 방산 수출이 2027년까지 연 20조원 수준을 돌파할 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2014년 크림반도 병합 전 러시아의 군사 동원, 2022년 2월 우크라이나 침공 직전 경고가 비슷한 사례입니다. 두 경우 모두 실제 침공까지 짧게는 며칠~수주가 걸렸습니다. 이번 발트3국 경고는 2014·2022년과 달리 나토 상호방위 조항(5조) 영향권이라 실제 침공 가능성은 낮은 편입니다. 다만 하이브리드 공격(사이버·전력망)은 가능성 중간 정도로 평가됩니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">러시아가 대규모 동원령을 내리고 에스토니아 등 발트해 연안국 침공을 준비 중이라고 볼로디미르 젤렌스키 우크라이나 대통령이 경고했다. 에스토니아는 강하게 반발했다고 베를린발 연합뉴스가 21일 전했다. 나토 동진 대응 국면에서 발트 위기설이 다시 부상했다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421161300082" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.mk.co.kr/news/world/12023225" target="_blank" rel="noopener noreferrer">트럼프, 휴전 하루 연장 … 버티던 이란 &#34;협상단 곧 파견&#34;</a></h3>
-        <div class="meta">
-          <span>매일경제</span><span class="dot">·</span>
-          <span>04.21 18:05</span><span class="dot">·</span>
-          <span class="score">점수 9.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>중동 긴장 장기화 여부를 좌우할 협상 테이블 성사 국면<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 원화 대비 달러 환율이 단기 변동성을 줄이고 코스피가 저점 매수세로 돌아설 여지가 커집니다. 며칠 뒤엔 국내 해운·항공·정유·중동 건설 계약이 재개 기대감을 반영해 움직입니다. 몇 달 지나면 원유 수입 비용이 안정돼 경상수지와 한은 금리 결정의 불확실성이 줄어듭니다. 이는 단순 지정학 뉴스가 아니라 한국 거시경제 변곡점 가능성이 높은 이벤트입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2015년 이란 핵합의(JCPOA), 2018년 미북 싱가포르 회담, 2019년 하노이 회담이 비교 가능한 사례입니다. 세 경우 모두 첫 협상 후 수년간 재조정이 이어졌고, 실제 이행률은 30~70%로 편차가 컸습니다. 이번 이슬라마바드 협상도 단번에 합의가 도출될 가능성은 낮고, 휴전 연장과 결렬을 여러 차례 반복할 가능성이 높음입니다. 최종 합의까지 평균 12~24개월이 필요할 전망입니다.</p>
-            </div>
-            <div class="insight" data-axis="scenario">
-              <h4>🔮 앞으로 어떻게 될 수 있을까?</h4>
-              <p>가능성 높은 시나리오(중간): 휴전 연장이 4~6주 더 이어지며 단계적 합의가 논의되는 그림. 가능성 중간: 핵심 3대 쟁점(농축·제재·호르무즈)에서 부분 합의만 도출. 가능성 낮음: 회담 결렬과 미국의 군사행동 재개. 갈림길은 22일 이슬라마바드 첫 라운드에서 공개되는 의제와 이란 최고지도자의 트위터·연설 톤입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">이란이 파키스탄 이슬라마바드에서 열리는 미국과의 2차 평화회담에 협상단을 파견할 것이라고 중재자들에게 통보했다고 WSJ가 20일(현지시간) 보도했다. 트럼프 대통령이 휴전을 하루 연장한 직후 나온 전환 신호로, 버티던 이란의 입장 변화가 감지된다.</div>
-        <a href="https://www.mk.co.kr/news/world/12023225" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.mk.co.kr/news/society/12023412" target="_blank" rel="noopener noreferrer">중국의 20배 ‘대박’…충북 영동에 ‘세계 최대 규모’ 희귀 광물 매장</a></h3>
-        <div class="meta">
-          <span>매일경제</span><span class="dot">·</span>
-          <span>04.21 22:09</span><span class="dot">·</span>
-          <span class="score">점수 8.5/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>국내 희귀광물 자원 확보, 중국 의존도 감소 가능성<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 일라이트 관련 국내 소재·화장품·세라믹 업체 주가가 테마주로 묶여 단기 요동칠 가능성이 있습니다. 며칠 뒤엔 영동군의 채광권 경매와 환경영향평가 일정이 공개되며 지역 경제 효과가 구체화됩니다. 몇 달 지나면 중국산 일라이트 수입 비중(현재 90% 이상)이 줄며 한국 소재 자립도 지수가 한 단계 오를 수 있고, 희귀광물 공급망 정책에 영동이 거점으로 포함될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2011년 경북 울진 몰리브덴 매장 발견, 2015년 강원 텅스텐 재개발 논의가 유사 사례입니다. 두 경우 모두 &#39;세계 최대 규모&#39;라는 초기 발표 이후 실제 상업 채광까지 7~10년이 걸렸고, 매장량의 20~40%만 경제성 있는 것으로 확인됐습니다. 이번 1억450만톤도 실제 가행 가능 물량은 30~50% 수준일 가능성이 높습니다. 조급한 기대는 경계해야 합니다.</p>
-            </div>
-            <div class="insight" data-axis="frame">
-              <h4>🧐 이 뉴스, 이렇게 읽어보세요</h4>
-              <p>&#39;세계 최대·중국의 20배&#39;라는 프레임은 자원 민족주의와 지역 홍보 이익이 얽힌 표현입니다. IMVAIN 기준 지질자원연구원의 권위는 있으나, 단일 출처이며 경제성 판정 단계는 아직입니다. 옆 매체 동아·한국경제 등도 같은 보도자료에 기반했습니다. 질문: ①회수 가능 매장량(reserves)은 얼마인가 ②품위(순도)는 중국산 대비 얼마인가 ③환경·주민 동의 절차는 어디까지 진행됐나.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">충북 영동 지역에 세계 최대 규모인 약 1억450만 톤의 일라이트(illite)가 매장된 것으로 확인됐다. 영동군이 2024년부터 최근까지 한국지질자원연구원에 의뢰한 조사 결과로, 중국의 주요 매장량 대비 20배 규모다.</div>
-        <a href="https://www.mk.co.kr/news/society/12023412" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421172200108" target="_blank" rel="noopener noreferrer">프랑스·폴란드, 연합 핵훈련 검토…러시아 &#34;핵무장하나&#34; 반발</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 20:45</span><span class="dot">·</span>
-          <span class="score">점수 8.5/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>유럽 핵 억지 체계 재편 신호, 동북아 안보에도 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 국내 방산주(한화에어로스페이스·LIG넥스원·현대로템)의 K9·K2 등 폴란드 수출 연장 협상에 긍정적 신호가 전달됩니다. 며칠 뒤엔 국방부의 &#39;한국형 핵잠재력&#39; 담론 재부상과 한미 SCM 의제 조정이 예상됩니다. 몇 달 지나면 나토의 핵공유 체계 확대 논의가 공론화되고, 한국의 독자 핵 옵션 담론도 다시 불붙을 가능성이 높습니다. 동아시아 핵 질서의 구조 변화 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>1960년대 미국과 유럽 나토 핵공유 체계 출범, 2022년 폴란드가 미국의 핵공유 편입을 공식 요청한 사례가 유사합니다. 과거 사례 평균 6~12개월 이내 러시아의 군사훈련·미사일 배치 맞대응이 이어졌습니다. 이번에도 비슷한 반응 패턴이 가능성 높음입니다. 프랑스-폴란드 훈련이 실제로 실현되기까지는 1~2년의 정치·법적 조정이 필요할 것으로 보입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">EU 내 유일 핵무기 보유국인 프랑스가 폴란드와 핵 억지력을 위한 양국 간 연합훈련을 검토한다고 이스탄불발 연합뉴스가 21일 전했다. 러시아는 &#39;핵무장하나&#39;며 즉각 반발했다. 우크라이나 전선 인접국으로 확장되는 나토 핵 우산 논의의 전환점이다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421172200108" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.mk.co.kr/news/world/12023230" target="_blank" rel="noopener noreferrer">고유가에 비판 거세지자 … 전시 권한까지 동원한 美</a></h3>
-        <div class="meta">
-          <span>매일경제</span><span class="dot">·</span>
-          <span>04.21 18:05</span><span class="dot">·</span>
-          <span class="score">점수 8.5/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>미국의 전시권한 발동, 글로벌 에너지 통제 구조 변화<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 WTI 선물 가격이 DPA 발동 기대에 소폭 하락 압력을 받고, 국내 정유사의 대미 석유제품 수출 요청이 폭주합니다. 며칠 뒤엔 한미 에너지협력 채널에서 정부의 수급 조정 요구가 공식화됩니다. 몇 달 지나면 한국 정유·LNG 업계의 미국 내 생산 시설 투자 유인이 커지고, 한국의 대미 에너지 수출 비중이 향후 2년간 5~10%p 증가할 가능성이 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>1950년 미국 트루먼 행정부의 한국전 관련 DPA 원조 발동, 2020년 팬데믹 당시 DPA 발동(의료장비)이 유사 사례입니다. 두 경우 모두 발동 후 6~12개월 내 타깃 물자 공급이 20~50% 급증했습니다. 이번 석유 DPA도 유사 효과 가능성 높음이지만, 중동발 공급 차질이 주요 변수라 단기 효과가 기대만큼 크지 않을 수 있습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">이란 전쟁으로 인한 유가 급등에 비상이 걸린 미국이 한국전쟁 당시 전시 권한까지 동원해 대응에 나섰다. 트럼프 대통령이 20일(현지시간) 석유 관련 행정조치에 &#39;국방생산법(DPA)&#39; 같은 전시 권한을 활용하는 움직임이라고 블룸버그가 전했다.</div>
-        <a href="https://www.mk.co.kr/news/world/12023230" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421177900081" target="_blank" rel="noopener noreferrer">프랑스, 중동전쟁에 허리띠 졸라맨다…10조원 지출 보류</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 23:10</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>중동 전쟁이 유럽 재정·유럽 경제에 직접 영향을 준 첫 사례<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 유로화 환율 약세 압력과 유럽 방산주 강세가 동시에 나타납니다. 며칠 뒤엔 유럽 내 공공투자(인프라·교육·복지) 삭감 논의가 확산되며 유럽 소비 지표 둔화 우려가 제기됩니다. 몇 달 지나면 독일·이탈리아 등 다른 유로존 국가로 재정 조정이 도미노처럼 번질 가능성이 높고, 한국 수출의 EU 비중(약 8%)에도 완만한 둔화 압력이 옵니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>1990년 걸프전 당시 프랑스·영국이 전시 지출로 공공예산을 일부 전용한 사례, 2022년 우크라이나 전쟁 초기 EU가 에너지·국방 예산을 1년 만에 40% 늘린 사례가 있습니다. 두 경우 모두 초기 재정 조정 후 1~2년 내 유럽 경제가 0.3~0.8%p 성장률 하락을 기록했습니다. 이번 10조원 보류도 단발성으로 그치지 않을 가능성이 높음입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">프랑스가 중동 전쟁으로 인한 경제적 손실을 상쇄하기 위해 60억 유로(약 10조원) 규모의 지출을 보류하기로 했다고 파리발 연합뉴스가 21일 전했다. 전쟁이 유럽 재정에 주는 부담이 실제 예산 조정으로 이어진 첫 사례다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421177900081" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421169051030" target="_blank" rel="noopener noreferrer">하림그룹, 홈플러스 익스프레스 우선협상대상자로 선정(종합)</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 21:15</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>식품기업의 오프라인 유통 확장, 홈플러스 회생 전환점<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 하림·NS홈쇼핑 관련주와 홈플러스 납품 중소 협력사의 계약 조건이 재조정됩니다. 며칠 뒤엔 GS리테일·이마트24·세븐일레븐 등 경쟁 SSM·편의점의 대응 전략이 구체화됩니다. 몇 달 지나면 하림의 PB 식품 라인업이 홈플 익스프레스 매대 25~30%를 차지하며 소비자 선택지가 재편되고, 계열사 간 시너지 효과가 1~2년 내 매출에 반영될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2008년 롯데의 GS리테일 인수, 2018년 신세계의 이마트24 강화가 유사한 수직계열 확장 사례입니다. 두 경우 모두 인수 후 2~3년 내 영업이익률 1~3%p 개선 효과를 냈지만, 기존 납품업체와의 마찰과 노조 이슈가 병행됐습니다. 이번 하림 인수도 유사 궤적 가능성 높음이며, 축산·육가공 PB 비중 확대가 핵심 관전 포인트입니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>인근에 홈플러스 익스프레스 매장이 있는 독자라면 이번 분기 두 가지를 체크해보세요. 첫째, 자주 사는 생활용품·신선식품의 가격 변동 여부(매달 동일 품목 모니터링). 둘째, 매장 재오픈·리뉴얼 일정 확인해 상품 구성 변화 관찰. 반면 &#39;인수 뉴스 직후 관련주 급등 추격 매수&#39;는 피하세요. 인수 효과가 실적에 반영되기까지 통상 6~12개월이 필요합니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">홈플러스가 기업형 슈퍼마켓(SSM) &#39;홈플러스 익스프레스&#39; 매각 우선협상대상자로 하림그룹(136480)을 선정했다고 21일 밝혔다. 회생안 인가와 맞물려 하림이 오프라인 유통 채널 확보로 종합 유통 기업 도약을 노리는 구도다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421169051030" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.hani.co.kr/arti/society/society_general/1255268.html" target="_blank" rel="noopener noreferrer">대법 “장애인 고용부담금은 제재금 아닌 비용”…SK하이닉스 35억 환급</a></h3>
-        <div class="meta">
-          <span>한겨레</span><span class="dot">·</span>
-          <span>04.21 20:35</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>장애인 고용부담금의 성격을 가른 대법 판례, 기업 회계·정책 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 기존에 고용부담금을 손금 산입하지 않은 기업들이 유사한 세금 환급 청구를 검토합니다. 며칠 뒤엔 한국장애인고용공단의 의무고용 이행 압박 수단이 약화될 수 있다는 우려가 제기됩니다. 몇 달 지나면 장애인 의무고용제의 실효성 유지를 위해 부담금 요율 인상이나 제재 강화 논의가 국회에서 본격화될 가능성이 높고, 기업의 직접 고용 인센티브 확대 정책이 보완될 수 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2018년 최저임금 인상분에 대한 법인세 손금 산입 판례, 2020년 환경부담금의 비용성 인정 판례가 유사 사례입니다. 두 경우 모두 판결 후 2~3년 내 관련 법이 정부의 요구에 맞게 보완되는 흐름으로 이어졌습니다. 이번 장애인 고용부담금 판결도 유사 패턴 가능성 높음이며, 제재 강화 또는 인센티브 확대 방향으로 입법 논의가 이뤄질 전망입니다.</p>
-            </div>
-            <div class="insight" data-axis="perspective">
-              <h4>👥 입장이 다르면 어떻게 보일까?</h4>
-              <p>이해관계자 네 축이 부딪칩니다. 장애인 단체는 의무고용 제도의 실효성 약화를 우려, 기업은 세제 부담 감소로 환영, 정부는 제도 재설계 압박, 세무 당국은 판례 일관성 유지가 목표입니다. 구조적 갈등은 &#39;부담금의 성격 재정의&#39;에 있습니다. 과거 사례처럼 1~2년 내 법 개정과 함께 절충안이 도출될 가능성이 높으며, 부담금 구조 자체가 재설계될 수 있습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">장애인 의무고용률을 지키지 않은 기업에 부과되는 장애인 고용부담금은 &#39;제재금&#39;이 아닌 &#39;비용&#39;에 해당해 법인세 산정 시 손금(비용)에 산입할 수 있다는 대법원 판단이 나왔다. SK하이닉스는 35억원을 환급받게 됐다. 법인세는 수익에서 비용을 뺀 총액을 기준으로 계산된다.</div>
-        <a href="https://www.hani.co.kr/arti/society/society_general/1255268.html" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421095100001" target="_blank" rel="noopener noreferrer">李대통령, 하노이 도착…내일 韓-베트남 정상회담</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 20:30</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>한-베 정상회담 개최, 인프라·방산 협력 강화 전망<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 삼성전자·LG디스플레이·현대차 등 베트남 진출 주요 기업의 투자 인센티브 논의가 공식화됩니다. 며칠 뒤엔 K9 자주포·FA-50 등 한국 방산물자의 베트남 추가 계약 가능성이 구체화됩니다. 몇 달 지나면 베트남을 거점으로 한 아세안 공급망 재편과 중국+1 전략이 가속화되고, 한국 중견 제조업의 베트남 현지화 움직임이 5~10% 확대될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2014년 박근혜 대통령 하노이 방문 이후 한-베 FTA 발효로 10년간 교역액 3배, 2019년 문재인 대통령 방문 후 삼성 베트남 매출 130조원 돌파 사례가 있습니다. 두 정상회담 모두 3~5년 내 교역액 기준 30~50% 증가로 이어졌습니다. 이번에도 유사한 트렌드가 가능성 높음이며, 특히 방산 분야에서 신규 계약 체결 속도가 빨라질 것으로 보입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">인도 국빈 방문을 마친 이재명 대통령이 21일 오후(현지시간) 베트남 하노이에 도착해 3박 4일간의 국빈 방문 일정을 시작했다. 내일 열리는 한-베트남 정상회담에서 인프라·방산 협력 등 의제가 논의될 예정이다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421095100001" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421169900082" target="_blank" rel="noopener noreferrer">폭스바겐 CEO &#34;생산능력 100만대 추가 감축 추진&#34;</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 19:59</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>글로벌 완성차 생산능력 재조정, 한국 부품사 공급망 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 폭스바겐에 납품하는 국내 부품사(LG에너지솔루션·만도·에코프로비엠)의 중장기 수주 전망이 재평가됩니다. 며칠 뒤엔 현대차·기아의 유럽 시장 점유율 확대 기회 논의가 활발해집니다. 몇 달 지나면 유럽 자동차 부품단가 인상 압박이 확산돼 국내 2·3차 협력사 매출구조가 조정되고, 유럽향 수출 비중 높은 중소 부품사 구조조정이 가시화될 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2019년 포드가 유럽 생산능력 20% 축소, 2020년 르노가 15% 감축한 사례가 있습니다. 두 경우 모두 감축 발표 후 2~3년 안에 해당 지역 시장에서 경쟁사 점유율 2~5%p 재편이 일어났습니다. 이번 폭스바겐의 10% 추가 감축도 유사 패턴 가능성 높음이며, 현대차그룹의 유럽 점유율이 2027년까지 1~2%p 추가 상승할 여지가 있습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">유럽 최대 자동차업체 폭스바겐그룹이 생산능력을 연간 900만대 수준으로 줄일 계획이라고 21일(현지시간) 베를린발 연합뉴스가 전했다. 기존 대비 추가로 100만대 규모의 생산능력 감축을 추진한다는 CEO 발언이다. 전기차 전환 비용과 중동 에너지 쇼크가 복합 압박이다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421169900082" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421163251504" target="_blank" rel="noopener noreferrer">북러 잇는 두만강 자동차다리 연결식…&#34;6월 19일 완공예정&#34;(종합)</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 19:21</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>북러 밀착 심화, 동북아 공급망·제재 체계 변수<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 한미일 3국 정보공유 채널에서 북러 교류 모니터링이 강화됩니다. 며칠 뒤엔 UN 안보리 제재 이행 압박과 세컨더리 보이콧 논의가 재부상합니다. 몇 달 지나면 국방부의 DMZ·서해 대비태세 비용이 추가 반영되고, 한국의 동북아 공급망에 러시아-북한 경로가 새 변수로 편입될 가능성이 높습니다. 단순 토목 뉴스가 아니라 안보 지형의 구조적 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>1959년 북중 우의교, 2001년 북러 철도 현대화 사업이 비슷한 인프라 연결 사례입니다. 두 경우 모두 개통 후 3~5년 내 해당 국가 간 교역이 2~3배 증가했고 정치적 밀착도 강화됐습니다. 이번 자동차 교량도 과거 사례와 비슷한 경제·정치 효과를 낼 가능성 높음입니다. 한국의 대북 압박 외교 카드가 제한적일 수 있음을 시사합니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">북한과 러시아를 잇는 두만강 자동차 교량이 오는 6월 19일 완공될 예정이라고 러시아 측이 밝혔다. 서울·이스탄불발 연합뉴스가 21일 전한 내용으로, 북러 육상 물류 연결 강화의 구체 일정이 공식화된 것이다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421163251504" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421165000098" target="_blank" rel="noopener noreferrer">헝가리가 막은 EU 우크라 지원 임박…오르반 입장 변화 시사</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 18:58</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>EU 대우크라 지원 재개 임박, 전쟁·경제 회복 구도 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 유로·파운드화가 소폭 반등하고 우크라이나 재건 관련주가 반응합니다. 며칠 뒤엔 한국 건설·플랜트 기업(현대건설·대우건설·삼성E&amp;A)의 우크라 재건 프로젝트 수주 협상이 구체화됩니다. 몇 달 지나면 한국 기업의 우크라 참여 규모가 20조원대까지 확대될 가능성이 있고, 특히 인프라·에너지 분야에서 한국이 10~20% 참여 여지를 확보할 수 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2차 대전 후 마셜플랜(1948~1952, 약 173조원 현재가치), 1990년대 독일 통일 복구 사업이 비슷한 대규모 재건 사례입니다. 두 경우 모두 수여국 경제가 5~10년 내 정상화됐고, 참여 기업들은 장기 수익을 확보했습니다. 우크라 재건도 유사 패턴 가능성 높음이나, 전쟁 종료와 러시아의 위협 해소가 선결 조건이어서 본격 사업은 2027~2030년대에 이뤄질 전망입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">헝가리의 반대로 수개월째 가로막힌 우크라이나에 대한 EU의 대출 지원이 곧 실행될 수 있을 것이라고 브뤼셀발 연합뉴스가 21일 전했다. 오르반 총리의 입장 변화가 시사되고 있어 EU의 대우크라 재정 지원 정체가 풀릴 전망이다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421165000098" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.hani.co.kr/arti/politics/defense/1255254.html" target="_blank" rel="noopener noreferrer">정동영 ‘북 핵시설 발언’ 파장…전문가들 “안보, 초당적 협력해야”</a></h3>
-        <div class="meta">
-          <span>한겨레</span><span class="dot">·</span>
-          <span>04.21 18:45</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>대북 정책 공방과 초당적 안보협력 필요성 제기<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 국회 외통위·정보위 등에서 북 핵시설 관련 기밀 관리 시스템 점검이 이슈화됩니다. 며칠 뒤엔 한미 정보공유 체계와 외교안보 브리핑 프로토콜 재정비 논의가 공론화될 수 있습니다. 몇 달 지나면 외교안보 현안에 대한 여야정·외교부·통일부 간 소통 채널이 재설계되고, 대통령실의 정보 관리 지침이 강화될 가능성이 높습니다. 단순 정치 공방이 아닌 안보 거버넌스 재편 신호입니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2017년 사드 보고 누락 논란, 2023년 미국의 기밀 문서 유출 사건이 비슷한 안보·외교 정보 관리 이슈입니다. 두 경우 모두 후속 조치로 국가안보실과 관계 부처 간 정보 공유 프로토콜이 3~6개월 내 재정립됐습니다. 이번 건도 유사 패턴 가능성 높음이며, 초당적 안보 협력 필요성이 실제 여야 협의로 이어질 수 있을지는 대통령실의 추가 설명 여부가 관건입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">이재명 대통령이 지난 20일 밤 &#39;정동영 통일부 장관이 미국이 알려준 기밀을 누설했음을 전제한 모든 주장과 행동은 잘못&#39;이라는 엑스 글을 올린 이튿날인 21일에도 정 장관의 &#39;북한 구성 핵시설&#39; 발언을 두고 여야 논란이 이어졌다. 외교안보 전문가들은 급변하는 상황에서 안보에 초당적 협력이 필요하다고 강조했다.</div>
-        <a href="https://www.hani.co.kr/arti/politics/defense/1255254.html" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421163700084" target="_blank" rel="noopener noreferrer">인도네시아, 대규모 천연가스·초경질유 매장지 발견</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 18:42</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>아세안 에너지 공급 구도 변화, 한국 LNG 조달에 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 한국가스공사·포스코인터내셔널 등 LNG 도입·트레이딩 기업의 인도네시아 계약 협상 카드가 늘어납니다. 며칠 뒤엔 아세안 국가들의 LNG 수급 동향 재분석과 호주·카타르 의존도 조정 논의가 이어집니다. 몇 달 지나면 한국의 LNG 수입 평균 단가가 MMBtu당 1~2달러 하락 여지가 생기고, 가스요금 인상 압력 완화로 이어질 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2017년 모잠비크 LNG 매장 발견, 2019년 가이아나 석유 매장 발견이 유사 사례입니다. 두 경우 모두 발견 후 상업 생산까지 6~8년이 걸렸고 초기 매장량 추정이 40% 축소되는 경우도 있었습니다. 인도네시아의 이번 발견도 실제 한국향 도입이 이뤄지려면 통상 5년 이상 걸릴 가능성이 높음입니다. 단기 효과보다 중장기 공급망 다변화 신호로 해석해야 합니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">최근 이란 전쟁으로 석유 공급 차질을 겪는 인도네시아에서 대규모 천연가스·초경질유 매장지가 발견됐다. 에너지 대외 의존도 축소와 아세안 에너지 지형 변화가 예상되는 발견이다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421163700084" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421155500004" target="_blank" rel="noopener noreferrer">&#34;내란특검법 위헌&#34; 尹 헌법소원, 헌재 정식 심판 회부</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 18:26</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>내란 수사 법적 기반 정당성 판단, 향후 수사·재판 일정 영향<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 내란특검 수사 일정 일부 지연 요청과 피의자 측 방어 전략이 조정됩니다. 며칠 뒤엔 헌재 심판 일정에 따라 여야의 법안 제정·수정 논쟁이 재개됩니다. 몇 달 지나면 헌재 결정 내용에 따라 내란·반란 관련 특별법의 합헌성 판례가 재정립되고, 향후 정치적 쟁점이 될 사안에 대한 특검 남용 방지 장치 논의로 이어질 가능성이 높습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2016년 박근혜 국정농단 특검 위헌 심판, 2003년 대북송금 특검 헌법소원이 비슷한 사례입니다. 두 경우 모두 헌재는 특검법의 핵심 조항은 합헌으로 판단하되 절차적 일부를 보완 권고했습니다. 이번 내란특검법도 유사한 부분 합헌 판단 가능성 높음이며, 수사 자체가 위헌으로 중단될 가능성은 낮은 편입니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">윤석열 전 대통령 측이 내란특검법의 수사 대상과 특검 임명 절차 조항에 대해 낸 헌법소원이 헌법재판소 정식 심판에 회부됐다고 21일 연합뉴스가 전했다. 내란 수사의 법적 정당성을 둘러싼 정치·법률 공방이 헌재 판단대로 옮겨가는 국면이다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421155500004" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.mk.co.kr/news/business/12023237" target="_blank" rel="noopener noreferrer">&#34;반도체 투자 전쟁중…성과급잔치 벌일때 아냐&#34;</a></h3>
-        <div class="meta">
-          <span>매일경제</span><span class="dot">·</span>
-          <span>04.21 18:05</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>반도체 업계 임금·투자 갈등 구도, 삼성전자 노사 긴장 반영<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 삼성전자·SK하이닉스 노조의 임금 협상 요구와 경영진 입장 간 간극이 공론화됩니다. 며칠 뒤엔 관련 주주 활동과 이사회 결정 과정이 주목받고, 노동부의 임금·투자 균형 관련 가이드라인 논의가 제기될 수 있습니다. 몇 달 지나면 성과급 체계 전반이 &#39;중장기 재투자 연동&#39;으로 재설계될 가능성이 있고, 이는 국내 대기업 임금 체계의 새 기준이 될 수 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>1990년대 일본 반도체 산업의 성과급 논쟁 당시, 일본 기업들이 투자 여력 감소로 2000년대 글로벌 점유율 50%에서 10%대로 추락한 사례가 유사합니다. 인텔도 2010년대 R&amp;D 투자 삭감 결정이 2020년대 경쟁력 저하로 이어졌습니다. 과거 사례들은 단기 임금 경쟁이 장기 경쟁력 손상으로 이어질 수 있음을 보여주며, 이번 논의도 구조적 질문을 담고 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="perspective">
-              <h4>👥 입장이 다르면 어떻게 보일까?</h4>
-              <p>이해관계자 네 축이 부딪칩니다. 노조는 역대급 실적 대비 성과급이 부족하다며 공정 분배를 요구, 경영진은 경쟁사 재투자 규모 대비 부족함을 걱정, 주주는 배당·주가 상승을 기대, 정부는 일자리와 지역경제 안정을 중시합니다. 구조적 갈등은 &#39;단기 이익 분배 vs 장기 재투자 체력&#39; 사이에 있습니다. 과거 사례처럼 1~2년 내 절충안 마련이 관건일 가능성이 높습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">매일경제는 &#39;글로벌 반도체 시장은 매년 수십조 원을 재투자해야만 살아남을 수 있는 전쟁터&#39;이며 &#39;일시적으로 이익이 많이 났다고 임금을 과도하게 올리는 건 스스로 경쟁력을 갉아먹는 일&#39;이라는 업계 의견을 전했다. 반도체 성과급 경쟁 자제와 재투자 확대를 주문하는 목소리다.</div>
-        <a href="https://www.mk.co.kr/news/business/12023237" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.mk.co.kr/news/stock/12023235" target="_blank" rel="noopener noreferrer">전쟁공포 이겼다, 코스피 &#39;사상최고&#39;</a></h3>
-        <div class="meta">
-          <span>매일경제</span><span class="dot">·</span>
-          <span>04.21 18:05</span><span class="dot">·</span>
-          <span class="score">점수 8.0/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>코스피 사상최고 전환 + 신상 개별 종목 레버리지 ETF 출시<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 삼성전자·SK하이닉스 거래대금이 평소보다 10~20% 급등하며 양대 반도체주 중심 쏠림이 강화됩니다. 며칠 뒤엔 신규 단일종목 레버리지 ETF 상장으로 개인 투자자의 파생 연계 매매가 늘어납니다. 몇 달 지나면 변동성 확대로 청산 위험이 부각돼 금감원의 투자자 경보가 나올 가능성이 높고, 기초자산 종목의 주가 변동폭이 평소 대비 30~50% 커질 여지가 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>2022년 미국 테슬라 단일종목 레버리지 ETF 출시 후 주가 변동성이 35% 증가한 사례, 2015년 일본 닛케이 2x ETF가 급등락 반복 끝에 많은 개인 투자자 손실을 낸 사례가 있습니다. 두 경우 모두 출시 1~2년 내 일반 투자자 평균 수익률이 기초자산 대비 더 나빴습니다. 한국의 첫 단일종목 2x ETF도 유사 패턴 가능성 높음입니다.</p>
-            </div>
-            <div class="insight" data-axis="personal">
-              <h4>💡 나는 뭘 해야 할까?</h4>
-              <p>투자자라면 상품 출시일 전 두 가지를 확인해보세요. 첫째, 2x ETF의 운용보수와 양방향 변동성(매일 리셋) 구조를 정확히 이해. 둘째, 삼성전자·SK하이닉스 비중이 이미 높은 포트폴리오라면 과도한 중복 노출 경계. 반면 &#39;사상 최고 = 아직 상승 여지 있다&#39;는 추격 심리로 레버리지 투자에 뛰어드는 건 피하세요. 레버리지 상품은 장기 보유 시 음의 복리 효과로 손실이 확대될 수 있습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">코스피가 중동 전쟁 공포를 이겨내고 사상최고치를 기록한 가운데, 삼성전자와 SK하이닉스 주가 변동에 따른 이익을 2배로 누릴 수 있는 ETF가 다음달 22일 국내에 첫선을 보인다. 금융위원회는 21일 단일 종목을 기초자산으로 하는 상품 승인 방침을 밝혔다.</div>
-        <a href="https://www.mk.co.kr/news/stock/12023235" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-      <article class="article">
-        <h3><a href="https://www.yna.co.kr/view/AKR20260421160700003" target="_blank" rel="noopener noreferrer">최태원 &#34;우리 정부가 직접 게임 참여해 기업 지원해야&#34;</a></h3>
-        <div class="meta">
-          <span>연합뉴스</span><span class="dot">·</span>
-          <span>04.21 18:16</span><span class="dot">·</span>
-          <span class="score">점수 7.5/10</span>
-        </div>
-        <details class="why-insights">
-          <summary class="why"><strong>추출 이유</strong>재계 수장의 정부 산업정책 적극화 요구, 미중 경쟁 구도 반영<span class="expand-hint" aria-hidden="true">▾</span></summary>
-          <div class="insights-body">
-            <div class="insight" data-axis="ripple">
-              <h4>📡 이게 우리한테 어떻게 영향을 줄까?</h4>
-              <p>당장은 반도체·이차전지·바이오 등 주요 전략 산업 보조금 논의가 재활성화됩니다. 며칠 뒤엔 정부의 &#39;국가 AI 프로젝트&#39;·용인 반도체 클러스터 등 기존 대형 사업에 대한 세제 혜택 확대 논의가 이어집니다. 몇 달 지나면 국가재정운용계획에 산업정책 예산 비중이 현재 수준 대비 2~3%p 상승하고, 민관 공동 프로젝트 규모가 연 10~20조원대에 이를 가능성이 있습니다.</p>
-            </div>
-            <div class="insight" data-axis="history">
-              <h4>🗂 예전에도 이런 일이 있었을까?</h4>
-              <p>1970년대 중화학공업 육성, 2010년대 녹색성장 정책이 비슷한 정부 주도 산업정책 사례입니다. 두 경우 모두 10~20년 장기 효과는 긍정적이었으나 5년 이내엔 특정 기업 편중 지원 논란이 이어졌습니다. 이번 &#39;정부 직접 참여&#39;도 유사한 논쟁 가능성 높음이며, 미국 IRA(인플레 감축법)·중국 반도체 빅펀드 같은 대규모 산업정책과 비슷한 구도로 전개될 수 있습니다.</p>
-            </div>
-          </div>
-        </details>
-        <div class="summary">최태원 대한상공회의소 회장은 21일 &#39;현재 각국 정부가 직접 시장에 참여하는 상황에서 우리 정부가 직접 게임에 참여해 기업 지원에 나서야 한다&#39;고 말했다. 미중 주도의 산업정책 경쟁이 가열되는 상황에서 정부의 적극 역할을 주문한 발언이다.</div>
-        <a href="https://www.yna.co.kr/view/AKR20260421160700003" class="link" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
-      </article>
-    </div>
+
+  <section class="feed-sec" id="sec-ai">
+    <div class="sec-divider"><h2>AI 뉴스</h2></div>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209521" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 15:22</span>
+      </div>
+      <h3>앤트로픽, 아마존에 147조 투입해 5GW 컴퓨팅 구축...아마존은 36조 추가 투자</h3>
+      <p class="lede">앤트로픽이 향후 10년간 AWS 기술에 1000억달러(약 147조원)를 투입한다고 발표했다. 아마존 자체 AI 칩 트레이니엄을 활용해 클로드 학습·배포용 최대 5GW 컴퓨팅 용량을 확보한다. 아마존도 기존 80억달러에 더해 최대 250억달러(약 36조원)를 추가 투자하…</p>
+      <div class="keywords">
+<span># 앤트로픽</span><span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209522" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:48</span>
+      </div>
+      <h3>구글, 앤트로픽 추격 위해 &#39;코딩 특별팀&#39; 구성...세르게이 브린 직접 지휘</h3>
+      <p class="lede">구글이 AI 코딩 역량에서 앤트로픽에 뒤처진다고 판단, 연구진·엔지니어로 &#39;코딩 특별팀&#39;을 꾸렸다. 공동 창립자 세르게이 브린과 CTO까지 합류해 총력전을 펴는 것으로 알려졌다. 기능 개선을 넘어 AI가 스스로 코드를 작성하는 &#39;AI 자기개선&#39; 단계 도약이 목표다.</p>
+      <div class="keywords">
+<span># 앤트로픽</span><span># 제미나이</span><span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-superhigh">8.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000231" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 17:00</span>
+      </div>
+      <h3>美 제재 속 中 장비 자립 가속…나우라, 1.6兆원 R&amp;D 투입</h3>
+      <p class="lede">미국의 대중 반도체 장비 수출 통제가 강화되는 가운데, 중국 장비 기업 나우라가 대규모 R&amp;D와 인수합병을 앞세워 장비 자립에 속도를 내고 있다. 1.6조원 규모 R&amp;D 투입이 확인됐고, 단순 국산화를 넘어 선단 공정 대응력과 전 공정 생태계 확장을 동시에 추진하고 있…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-superhigh">8.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209536" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 15:03</span>
+      </div>
+      <h3>과기부-복지부, 노후화된 공공의료시스템 AI-SaaS로 전면 교체 나선다</h3>
+      <p class="lede">과기정통부와 NIA가 보건복지부·국립중앙의료원·지방의료원과 함께 노후화된 공공 병원정보시스템(HIS)을 AI 기반 SaaS로 전면 교체하는 사업 공모를 연다. 2027년까지 국립중앙의료원·서울의료원 전환 완료 후 대구의료원 등 전국 35개 지방의료원까지 확대한다. 참여…</p>
+      <div class="keywords">
+<span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-superhigh">8.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209523" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 14:46</span>
+      </div>
+      <h3>LG, &#39;암 치료&#39; 에이전트 연구 성과 공개…”글로벌 제약사 등과 협업 추진”</h3>
+      <p class="lede">LG AI연구원이 미국 밴더빌트대 메디컬센터와 함께 개발 중인 &#39;암 에이전틱 AI&#39;를 미국암연구학회(AACR) 2026에서 공개했다. 환자 조직 분석부터 치료 전략 설계까지 전 과정을 하루 안에 수행하도록 설계했다. 조직 병리 이미지 한 장으로 1분 내 암유전자 활성을…</p>
+      <div class="keywords">
+<span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-superhigh">8.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000278" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 14:31</span>
+      </div>
+      <h3>애플, 존 터너스 새 CEO 선임…팀 쿡은 이사회 의장으로</h3>
+      <p class="lede">애플이 이사회 만장일치로 하드웨어 엔지니어링 수석부사장 존 터너스를 차기 CEO로 선임했다. 팀 쿡은 올여름까지 CEO직을 유지한 뒤 이사회 의장으로 이동한다. 2011년 잡스 타계 후 15년간 이어진 쿡 체제의 공식 종료를 알리는 결정이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-superhigh">8.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421182924" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">ZDNet Korea</span>
+        <span class="dot">·</span>
+        <span>04.21 18:29</span>
+      </div>
+      <h3>기후부, AI 시대 대응 위한 ‘민관 고위급 에너지 정책’ 대화</h3>
+      <p class="lede">기후에너지환경부가 21일 여수에서 RE100 이니셔티브와 공동으로 &#39;AI 시대 에너지 전략대화&#39;를 열었다. 애플·구글·이케아 등이 동참하는 클라이밋 그룹과 유엔기후변화협약 부사무총장, GE 베르노바, 슈나이더 일렉트릭, 네이버 ESG 담당 등이 참석해 AI·데이터센터 …</p>
+      <div class="keywords">
+<span># AI</span><span># 인공지능</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209540" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:00</span>
+      </div>
+      <h3>오픈AI, 코덱스의 메모리 기능 &#39;크로니클&#39; 공개...&#34;리콜보다 위험&#34; 경고도</h3>
+      <p class="lede">오픈AI가 20일 개발자 도구 코덱스의 실험적 메모리 기능 &#39;크로니클&#39;을 공개했다. 사용자의 최근 화면 맥락까지 자동 저장해 반복 설명 없이 업무를 이어가도록 돕는 구조다. 다만 기존 &#39;리콜&#39; 기능보다도 위험하다는 보안 우려가 곧바로 제기돼, 정식 출시는 지켜볼 필요가…</p>
+      <div class="keywords">
+<span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209553" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 17:55</span>
+      </div>
+      <h3>샤오미, 3초짜리 녹음 파일로 600개 언어 복제하는 &#39;옴니보이스&#39; 오픈 출시</h3>
+      <p class="lede">샤오미가 온라인 아카이브를 통해 오픈소스 TTS 모델 &#39;옴니보이스&#39;를 공개했다. 3초 녹음 파일만으로 600개 이상 언어의 음성 복제가 가능하다. 기존 TTS 모델이 영어 등 고자원 언어에 집중됐던 한계를 넘어 언어 다양성과 접근성을 크게 확장했으며, 확산 언어 모델 …</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209542" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 17:33</span>
+      </div>
+      <h3>MS 깃허브, AI 코딩 사용량 제한...최고 요금제만 앤트로픽 모델 사용</h3>
+      <p class="lede">MS 깃허브가 AI 코딩 도구 &#39;코파일럿&#39;의 사용량 제한을 강화하고 신규 개인 가입을 일시 중단했다. 에이전트 기반 코딩 수요 급증으로 인프라 부담이 커지고 서비스 장애까지 발생하자 사실상 가격 인상에 해당하는 대응에 나선 것이다. 기존 프로·프로+·학생 요금제 신규 …</p>
+      <div class="keywords">
+<span># 앤트로픽</span><span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421172633" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">ZDNet Korea</span>
+        <span class="dot">·</span>
+        <span>04.21 17:26</span>
+      </div>
+      <h3>와이브레인 &#34;마인드스팀, 학계서 우울증 치료 효과 입증&#34;</h3>
+      <p class="lede">와이브레인의 경두개직류자극(tDCS) 전자약 &#39;마인드스팀&#39;의 임상적 유효성이 &#39;2026 대한신경정신의학회 춘계학술대회&#39; 런천 심포지엄에서 확인됐다. 백지현 삼성서울병원 교수는 주요우울장애에서 tDCS가 국제 가이드라인 최고 레벨A 권고 치료법이라 설명했고, 박재섭 용인…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://zdnet.co.kr/view/?no=20260421171051" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">ZDNet Korea</span>
+        <span class="dot">·</span>
+        <span>04.21 17:10</span>
+      </div>
+      <h3>김민석 총리 &#34;과학기술 5대 강국 목표로 과감한 투자하겠다&#34;</h3>
+      <p class="lede">김민석 국무총리가 21일 &#39;2026 과학·정보통신의 날&#39; 기념식에서 &#39;과학기술 5대 강국&#39; 목표로 과감한 투자와 제도 혁신을 이어가겠다고 말했다. 지난해 GPU 26만 장을 확보하고 AI 컴퓨팅 센터 기반을 마련했다며, 올해는 세계 10위 안에 드는 독자 AI 모델을 …</p>
+      <div class="keywords">
+<span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000247" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 17:00</span>
+      </div>
+      <h3>우리은행, &#39;AI 에이전트 전용 GPU 클러스터&#39; 구축…생성형 AI 내재화 본격화</h3>
+      <p class="lede">우리은행이 생성형 AI 기반 &#39;AI 에이전트&#39; 구축을 위해 자체 GPU 서버 인프라를 직접 도입한다. 외부 클라우드 의존 구조에서 벗어나 AI 전략을 내재화로 전환하는 움직임이다. 고성능 GPU 기반 서버 클러스터 구축이 이미 진행되고 있다고 전자신문이 취재했다.</p>
+      <div class="keywords">
+<span># 생성형 AI</span><span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000387" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 16:43</span>
+      </div>
+      <h3>엔비디아 “한국 개발자 생태계 수용성 높아”…&#39;네모트론&#39; AI 거점으로 낙점</h3>
+      <p class="lede">엔비디아가 자사 AI 플랫폼 &#39;네모트론(Nemotron)&#39; 생태계 확대 거점으로 한국을 낙점했다. 한국 개발자 커뮤니티가 기술 수용성이 높고 에이전틱 AI 관심도 크다는 점을 평가했다고 브라이언 카탄자로 엔비디아 부사장이 설명했다.</p>
+      <div class="keywords">
+<span># 딥러닝</span><span># 엔비디아</span><span># AI</span><span># 인공지능</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000334" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 16:00</span>
+      </div>
+      <h3>스마트공장 재편… 로봇이 SI 삼킨다</h3>
+      <p class="lede">로봇 자동화 기업 뉴로메카가 휴머노이드 &#39;에이르&#39;를 활용해 스마트팩토리 구축 시스템통합(SI) 비용을 줄여준다. 기존 자동화 라인은 로봇 도입 후 지그 설계·공정 연동·제어 최적화 등 SI 작업에 하드웨어 비용 못지않은 추가 비용이 드는 구조다. 로봇이 SI를 대체하는…</p>
+      <div class="keywords">
+<span># 로봇</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209546" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 15:50</span>
+      </div>
+      <h3>SK하이닉스, AI 서버 메모리 &#39;SOCAMM2 192GB&#39; 본격 양산</h3>
+      <p class="lede">SK하이닉스가 10나노급 6세대(1c) LPDDR5X 저전력 D램 기반 차세대 메모리 모듈 &#39;SOCAMM2 192GB&#39;를 본격 양산한다고 21일 밝혔다. 모바일용 저전력 메모리를 서버용으로 변형한 AI 서버 특화 모듈로, 얇은 두께와 확장성, 압착식 커넥터로 신호 무결…</p>
+      <div class="keywords">
+<span># AI</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000285" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 14:36</span>
+      </div>
+      <h3>[뉴스 줌인] &#39;운영의 애플&#39; 이끈 팀 쿡…존 터너스 체제는 기술 중심 전환 가능성</h3>
+      <p class="lede">팀 쿡은 스티브 잡스 타계 이후 15년 가까이 애플을 이끌며 회사를 &#39;수익·운영 중심&#39;으로 바꿨다. 그가 다진 공급망 관리는 글로벌 제조 모범으로 꼽혔지만 AI 전환에선 뒤처졌다는 평이 함께한다. 신임 존 터너스 체제가 기술 혁신 중심으로 방향을 돌릴지 업계 관심이 쏠…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000198" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 14:10</span>
+      </div>
+      <h3>&#39;AI B2B&#39; 승부수 띄운 SKT 정재헌…엔터프라이즈TF 신설</h3>
+      <p class="lede">정재헌 SKT 대표가 취임 6개월 타운홀 미팅에서 &#39;AI B2B&#39;를 핵심 성장동력으로 선언했다. 내재화한 AI 풀스택 역량을 기업 시장으로 이식하기 위해 엔터프라이즈 전담 TF를 신설하고, 내부 직급·조직 체계를 손본다. 통신 중심 포트폴리오에서 기업향 AI 매출 비중…</p>
+      <div class="keywords">
+<span># AI</span><span># 인공지능</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209526" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:27</span>
+      </div>
+      <h3>알리바바, 중국 모델 최고 성능 &#39;큐원3.6-맥스-프리뷰&#39; 출시</h3>
+      <p class="lede">알리바바가 20일 차세대 모델 &#39;큐원3.6-맥스-프리뷰&#39;를 공개했다. 자체 벤치마크에서 중국 모델 중 최고 성능을 기록했고, 기존 큐원3.6-플러스 대비 코딩·지식이해·명령수행 전반에서 성능이 크게 향상됐다. 특히 에이전트형 코딩(agentic coding) 역량에서 …</p>
+      <div class="keywords">
+<span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/world/12023227" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:05</span>
+      </div>
+      <h3>中화웨이 AI안경 출시…美에 도전장</h3>
+      <p class="lede">중국 화웨이가 첫 번째 AI 안경을 공개했다. 21일 매일경제 보도에 따르면 메타·알리바바 등이 이미 뛰어든 AI 안경 시장에 화웨이까지 출사표를 던지면서 점유율 경쟁이 한층 거세질 전망이다. 미국 빅테크의 주도권에 중국 기업이 도전장을 내는 구도가 명확해지고 있다.</p>
+      <div class="keywords">
+<span># AI</span><span># 인공지능</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.aitimes.com/news/articleView.html?idxno=209518" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">AI타임스</span>
+        <span class="dot">·</span>
+        <span>04.21 14:30</span>
+      </div>
+      <h3>중기부, 중소제조·스타트업에 GPU 264장 공급...&#34;AX 본격 지원&#34;</h3>
+      <p class="lede">중소벤처기업부가 &#39;국가 AI 프로젝트&#39;를 통해 확보한 GPU B200 264장을 중소제조 현장과 창업기업 혁신에 활용한다고 21일 밝혔다. 앞서 과기정통부가 2025년 추경으로 확보한 GPU 1만장 중 3000여장을 부처별 사업에 배분하기로 확정했고, 중기부는 &#39;중소제…</p>
+      <div class="keywords">
+<span># AI</span><span># 에이전트</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.etnews.com/20260421000256" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">전자신문</span>
+        <span class="dot">·</span>
+        <span>04.21 14:17</span>
+      </div>
+      <h3>“빅테크 종속 아닌 &#39;개방형 AI 생태계&#39;로 AI강국 도전해야”</h3>
+      <p class="lede">한국형 AI 세계 확산과 AI 3강 도약을 위해 &#39;개방형 AI 생태계&#39; 활성화가 필요하다는 제언이 나왔다. &#39;AI 기본권&#39; 보장으로 AI 접근성 강화와 산업 발전을 도모해야 한다는 주장도 제기됐다. 이해민 조국혁신당 의원과 한국인공지능법학회 등이 21일 서울 여의도 국…</p>
+      <div class="keywords">
+<span># AI</span><span># 인공지능</span>      </div>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.0</div>
+      </div>
+    </a>
+  </section>
+  <section class="feed-sec" id="sec-general">
+    <div class="sec-divider"><h2>종합 뉴스</h2></div>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421175251071" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 23:08</span>
+      </div>
+      <h3>트럼프, 휴전만료 전날 &#34;훌륭한 합의할것…불발시 폭격예상&#34;(종합)</h3>
+      <p class="lede">트럼프 미국 대통령이 이란과의 2차 종전 협상을 앞두고 &#39;결국 훌륭한 합의를 하게 될 것&#39;이라며 불발 시 &#39;폭격 예상&#39;이라는 압박 메시지를 냈다. 휴전 만료 전날 워싱턴에서 나온 발언으로, 협상 지렛대를 강화하려는 의도로 읽힌다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.hani.co.kr/arti/international/arabafrica/1255281.html" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">한겨레</span>
+        <span class="dot">·</span>
+        <span>04.21 22:29</span>
+      </div>
+      <h3>수년 걸릴 ‘미-이란 협상’ 난제…핵농축·제재 해제·호르무즈 통행료</h3>
+      <p class="lede">휴전 일정을 하루 연장하는 트럼프 대통령의 압박 속에 미국과 이란이 22일(현지시각) 파키스탄 이슬라마바드에서 만난다. 50일을 넘긴 전쟁의 출구를 찾기 위한 협상에서 풀어야 할 과제는 수개월에서 수년의 논의가 필요한 수준이다. 핵농축·제재 해제·호르무즈 통행료가 3대…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421172551009" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 22:20</span>
+      </div>
+      <h3>미군, 인도양서 이란연계 유조선 나포…협상 목전 봉쇄범위 확대(종합)</h3>
+      <p class="lede">미군이 이란과의 2차 종전협상을 앞두고 인도태평양 사령부 책임 구역 내에서 이란과 연계된 제재 대상 유조선을 나포했다. 해상 봉쇄 범위를 협상 직전에 넓히며 지렛대를 확보하려는 움직임이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/economy/12023259" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:54</span>
+      </div>
+      <h3>[단독] 미국·일본 “한국산 석유 없으면 큰일”…휘발유·항공유 요청 빗발쳐</h3>
+      <p class="lede">중동발 원유 공급 불안이 장기화하자 미국·일본·호주·뉴질랜드 등 주요국이 우리 정부에 한국산 석유제품 수출 요청을 빗발친 것으로 나타났다. 미국은 항공유, 호주·뉴질랜드는 휘발유 공급을 요청 중이며, 정부는 &#39;석유 제품 수출 통제&#39; 자문까지 받고 있는 상황이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421161300082" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:24</span>
+      </div>
+      <h3>젤렌스키 &#34;러, 발트3국 침공 준비&#34;…에스토니아 발끈</h3>
+      <p class="lede">러시아가 대규모 동원령을 내리고 에스토니아 등 발트해 연안국 침공을 준비 중이라고 볼로디미르 젤렌스키 우크라이나 대통령이 경고했다. 에스토니아는 강하게 반발했다고 베를린발 연합뉴스가 21일 전했다. 나토 동진 대응 국면에서 발트 위기설이 다시 부상했다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/world/12023225" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:05</span>
+      </div>
+      <h3>트럼프, 휴전 하루 연장 … 버티던 이란 &#34;협상단 곧 파견&#34;</h3>
+      <p class="lede">이란이 파키스탄 이슬라마바드에서 열리는 미국과의 2차 평화회담에 협상단을 파견할 것이라고 중재자들에게 통보했다고 WSJ가 20일(현지시간) 보도했다. 트럼프 대통령이 휴전을 하루 연장한 직후 나온 전환 신호로, 버티던 이란의 입장 변화가 감지된다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-vhigh">9.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/society/12023412" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 22:09</span>
+      </div>
+      <h3>중국의 20배 ‘대박’…충북 영동에 ‘세계 최대 규모’ 희귀 광물 매장</h3>
+      <p class="lede">충북 영동 지역에 세계 최대 규모인 약 1억450만 톤의 일라이트(illite)가 매장된 것으로 확인됐다. 영동군이 2024년부터 최근까지 한국지질자원연구원에 의뢰한 조사 결과로, 중국의 주요 매장량 대비 20배 규모다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-superhigh">8.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421172200108" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 20:45</span>
+      </div>
+      <h3>프랑스·폴란드, 연합 핵훈련 검토…러시아 &#34;핵무장하나&#34; 반발</h3>
+      <p class="lede">EU 내 유일 핵무기 보유국인 프랑스가 폴란드와 핵 억지력을 위한 양국 간 연합훈련을 검토한다고 이스탄불발 연합뉴스가 21일 전했다. 러시아는 &#39;핵무장하나&#39;며 즉각 반발했다. 우크라이나 전선 인접국으로 확장되는 나토 핵 우산 논의의 전환점이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-superhigh">8.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/world/12023230" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:05</span>
+      </div>
+      <h3>고유가에 비판 거세지자 … 전시 권한까지 동원한 美</h3>
+      <p class="lede">이란 전쟁으로 인한 유가 급등에 비상이 걸린 미국이 한국전쟁 당시 전시 권한까지 동원해 대응에 나섰다. 트럼프 대통령이 20일(현지시간) 석유 관련 행정조치에 &#39;국방생산법(DPA)&#39; 같은 전시 권한을 활용하는 움직임이라고 블룸버그가 전했다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-superhigh">8.5</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421177900081" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 23:10</span>
+      </div>
+      <h3>프랑스, 중동전쟁에 허리띠 졸라맨다…10조원 지출 보류</h3>
+      <p class="lede">프랑스가 중동 전쟁으로 인한 경제적 손실을 상쇄하기 위해 60억 유로(약 10조원) 규모의 지출을 보류하기로 했다고 파리발 연합뉴스가 21일 전했다. 전쟁이 유럽 재정에 주는 부담이 실제 예산 조정으로 이어진 첫 사례다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421169051030" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 21:15</span>
+      </div>
+      <h3>하림그룹, 홈플러스 익스프레스 우선협상대상자로 선정(종합)</h3>
+      <p class="lede">홈플러스가 기업형 슈퍼마켓(SSM) &#39;홈플러스 익스프레스&#39; 매각 우선협상대상자로 하림그룹(136480)을 선정했다고 21일 밝혔다. 회생안 인가와 맞물려 하림이 오프라인 유통 채널 확보로 종합 유통 기업 도약을 노리는 구도다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.hani.co.kr/arti/society/society_general/1255268.html" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">한겨레</span>
+        <span class="dot">·</span>
+        <span>04.21 20:35</span>
+      </div>
+      <h3>대법 “장애인 고용부담금은 제재금 아닌 비용”…SK하이닉스 35억 환급</h3>
+      <p class="lede">장애인 의무고용률을 지키지 않은 기업에 부과되는 장애인 고용부담금은 &#39;제재금&#39;이 아닌 &#39;비용&#39;에 해당해 법인세 산정 시 손금(비용)에 산입할 수 있다는 대법원 판단이 나왔다. SK하이닉스는 35억원을 환급받게 됐다. 법인세는 수익에서 비용을 뺀 총액을 기준으로 계산된다…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421095100001" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 20:30</span>
+      </div>
+      <h3>李대통령, 하노이 도착…내일 韓-베트남 정상회담</h3>
+      <p class="lede">인도 국빈 방문을 마친 이재명 대통령이 21일 오후(현지시간) 베트남 하노이에 도착해 3박 4일간의 국빈 방문 일정을 시작했다. 내일 열리는 한-베트남 정상회담에서 인프라·방산 협력 등 의제가 논의될 예정이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421169900082" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 19:59</span>
+      </div>
+      <h3>폭스바겐 CEO &#34;생산능력 100만대 추가 감축 추진&#34;</h3>
+      <p class="lede">유럽 최대 자동차업체 폭스바겐그룹이 생산능력을 연간 900만대 수준으로 줄일 계획이라고 21일(현지시간) 베를린발 연합뉴스가 전했다. 기존 대비 추가로 100만대 규모의 생산능력 감축을 추진한다는 CEO 발언이다. 전기차 전환 비용과 중동 에너지 쇼크가 복합 압박이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421163251504" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 19:21</span>
+      </div>
+      <h3>북러 잇는 두만강 자동차다리 연결식…&#34;6월 19일 완공예정&#34;(종합)</h3>
+      <p class="lede">북한과 러시아를 잇는 두만강 자동차 교량이 오는 6월 19일 완공될 예정이라고 러시아 측이 밝혔다. 서울·이스탄불발 연합뉴스가 21일 전한 내용으로, 북러 육상 물류 연결 강화의 구체 일정이 공식화된 것이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421165000098" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:58</span>
+      </div>
+      <h3>헝가리가 막은 EU 우크라 지원 임박…오르반 입장 변화 시사</h3>
+      <p class="lede">헝가리의 반대로 수개월째 가로막힌 우크라이나에 대한 EU의 대출 지원이 곧 실행될 수 있을 것이라고 브뤼셀발 연합뉴스가 21일 전했다. 오르반 총리의 입장 변화가 시사되고 있어 EU의 대우크라 재정 지원 정체가 풀릴 전망이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.hani.co.kr/arti/politics/defense/1255254.html" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">한겨레</span>
+        <span class="dot">·</span>
+        <span>04.21 18:45</span>
+      </div>
+      <h3>정동영 ‘북 핵시설 발언’ 파장…전문가들 “안보, 초당적 협력해야”</h3>
+      <p class="lede">이재명 대통령이 지난 20일 밤 &#39;정동영 통일부 장관이 미국이 알려준 기밀을 누설했음을 전제한 모든 주장과 행동은 잘못&#39;이라는 엑스 글을 올린 이튿날인 21일에도 정 장관의 &#39;북한 구성 핵시설&#39; 발언을 두고 여야 논란이 이어졌다. 외교안보 전문가들은 급변하는 상황에서 …</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421163700084" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:42</span>
+      </div>
+      <h3>인도네시아, 대규모 천연가스·초경질유 매장지 발견</h3>
+      <p class="lede">최근 이란 전쟁으로 석유 공급 차질을 겪는 인도네시아에서 대규모 천연가스·초경질유 매장지가 발견됐다. 에너지 대외 의존도 축소와 아세안 에너지 지형 변화가 예상되는 발견이다.</p>
+      <div class="foot">
+        <div class="read">1 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421155500004" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:26</span>
+      </div>
+      <h3>&#34;내란특검법 위헌&#34; 尹 헌법소원, 헌재 정식 심판 회부</h3>
+      <p class="lede">윤석열 전 대통령 측이 내란특검법의 수사 대상과 특검 임명 절차 조항에 대해 낸 헌법소원이 헌법재판소 정식 심판에 회부됐다고 21일 연합뉴스가 전했다. 내란 수사의 법적 정당성을 둘러싼 정치·법률 공방이 헌재 판단대로 옮겨가는 국면이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/business/12023237" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:05</span>
+      </div>
+      <h3>&#34;반도체 투자 전쟁중…성과급잔치 벌일때 아냐&#34;</h3>
+      <p class="lede">매일경제는 &#39;글로벌 반도체 시장은 매년 수십조 원을 재투자해야만 살아남을 수 있는 전쟁터&#39;이며 &#39;일시적으로 이익이 많이 났다고 임금을 과도하게 올리는 건 스스로 경쟁력을 갉아먹는 일&#39;이라는 업계 의견을 전했다. 반도체 성과급 경쟁 자제와 재투자 확대를 주문하는 목소리다…</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.mk.co.kr/news/stock/12023235" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">매일경제</span>
+        <span class="dot">·</span>
+        <span>04.21 18:05</span>
+      </div>
+      <h3>전쟁공포 이겼다, 코스피 &#39;사상최고&#39;</h3>
+      <p class="lede">코스피가 중동 전쟁 공포를 이겨내고 사상최고치를 기록한 가운데, 삼성전자와 SK하이닉스 주가 변동에 따른 이익을 2배로 누릴 수 있는 ETF가 다음달 22일 국내에 첫선을 보인다. 금융위원회는 21일 단일 종목을 기초자산으로 하는 상품 승인 방침을 밝혔다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-high">8.0</div>
+      </div>
+    </a>
+    <a class="story" href="https://www.yna.co.kr/view/AKR20260421160700003" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="src">연합뉴스</span>
+        <span class="dot">·</span>
+        <span>04.21 18:16</span>
+      </div>
+      <h3>최태원 &#34;우리 정부가 직접 게임 참여해 기업 지원해야&#34;</h3>
+      <p class="lede">최태원 대한상공회의소 회장은 21일 &#39;현재 각국 정부가 직접 시장에 참여하는 상황에서 우리 정부가 직접 게임에 참여해 기업 지원에 나서야 한다&#39;고 말했다. 미중 주도의 산업정책 경쟁이 가열되는 상황에서 정부의 적극 역할을 주문한 발언이다.</p>
+      <div class="foot">
+        <div class="read">2 min read</div>
+        <div class="score score-midhigh">7.5</div>
+      </div>
+    </a>
   </section>
 
   <footer>
-    <div class="footer-block">
-      <span class="footer-label">생성시각</span>2026.04.22 00:01 KST
-    </div>
-    <div class="footer-block sources">
-      <span class="footer-label">RSS 출처</span>AI타임스 · ZDNet Korea · 전자신문 · 연합뉴스 · 매일경제 · 한겨레 · OpenAI Blog · Google DeepMind · Simon Willison · Anthropic SDK Releases
-    </div>
-    <div class="footer-block disclosure">
-      본 리포트는 Claude Opus 4.7이 RSS 원문을 분석해 생성합니다. 사실관계는 각 원문에서 확인하세요.
-    </div>
-    <div class="footer-block footer-issue">
-      ISSUE #20
-    </div>
+    <div class="disclosure">본 리포트는 Claude Opus 4.7이 RSS 원문을 분석해 생성합니다. 사실관계는 각 원문에서 확인하세요.</div>
+    <div class="issue">ISSUE #20</div>
+    <div class="sources">
+AI타임스 · ZDNet Korea · 전자신문 · 연합뉴스 · 매일경제 · 한겨레 · OpenAI Blog · Google DeepMind · Simon Willison · Anthropic SDK Releases    </div>
   </footer>
 
-  <script>
-    (function () {
-      // Split header h1 into char spans (for FX D kinetic reveal)
-      let charCounter = 0;
-      document.querySelectorAll('header h1 .line').forEach((line) => {
-        const text = line.textContent;
-        line.innerHTML = Array.from(text).map((ch) => {
-          const idx = charCounter++;
-          const safe = ch === ' ' ? '&nbsp;' : ch;
-          return `<span class="char" style="--i:${idx}">${safe}</span>`;
-        }).join('');
+</div>
+
+<nav class="floating-nav" aria-label="섹션 이동">
+  <a href="#sec-mustknow" data-sec="sec-mustknow" class="active">
+    <span>⭐</span>
+    <span>꼭알아야</span>
+    <span class="cnt">5</span>
+  </a>
+  <a href="#sec-ai" data-sec="sec-ai">
+    <span>🤖</span>
+    <span>AI뉴스</span>
+    <span class="cnt">22</span>
+  </a>
+  <a href="#sec-general" data-sec="sec-general">
+    <span>📰</span>
+    <span>종합뉴스</span>
+    <span class="cnt">22</span>
+  </a>
+</nav>
+
+<script>
+(function(){
+  var navLinks = document.querySelectorAll('.floating-nav a');
+  var sections = Array.prototype.filter.call(
+    document.querySelectorAll('.feed-sec'),
+    function(s){ return s.id; }
+  );
+  if (!sections.length || !navLinks.length) return;
+
+  function setActive(id){
+    navLinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-sec') === id);
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if (!visible.length) return;
+      visible.sort(function(a,b){
+        return a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top;
       });
+      setActive(visible[0].target.id);
+    }, { rootMargin: '-25% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function(s){ io.observe(s); });
+  }
 
-      // IntersectionObserver adds .fx-in on scroll (needed by D slide/zoom)
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) e.target.classList.add('fx-in');
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-      document.querySelectorAll('.article, .section').forEach(el => observer.observe(el));
-
-      // 커서 잔상(cursor trail): 마우스 이동 경로마다 짧은 원형 glow 를 생성 후 자동 제거.
-      // 성능 가드: 20ms throttle + 최대 24개 노드 유지 + prefers-reduced-motion 자동 skip.
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const isTouch = window.matchMedia('(hover: none)').matches;
-      if (!reduceMotion && !isTouch) {
-        let lastTime = 0;
-        const THROTTLE_MS = 20;
-        const MAX_NODES = 24;
-        const trailNodes = [];
-        window.addEventListener('mousemove', (e) => {
-          const now = performance.now();
-          if (now - lastTime < THROTTLE_MS) return;
-          lastTime = now;
-          const dot = document.createElement('div');
-          dot.className = 'cursor-trail';
-          dot.style.left = e.clientX + 'px';
-          dot.style.top = e.clientY + 'px';
-          document.body.appendChild(dot);
-          trailNodes.push(dot);
-          if (trailNodes.length > MAX_NODES) {
-            const old = trailNodes.shift();
-            if (old && old.parentNode) old.parentNode.removeChild(old);
-          }
-          setTimeout(() => {
-            if (dot.parentNode) dot.parentNode.removeChild(dot);
-            const i = trailNodes.indexOf(dot);
-            if (i >= 0) trailNodes.splice(i, 1);
-          }, 900);
-        }, { passive: true });
-      }
-    })();
-  </script>
+  navLinks.forEach(function(a){
+    a.addEventListener('click', function(){
+      setActive(a.getAttribute('data-sec'));
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
