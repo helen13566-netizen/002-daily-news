@@ -188,3 +188,11 @@ def test_v16_polling_after_dispatch(prompt_text: str) -> None:
         "workflow_dispatch 트리거 후 git fetch/pull 로 폴링하는 절차가 "
         "명시돼야 합니다 (v16)"
     )
+
+
+def test_v20_official_ai_section_quota(prompt_text: str) -> None:
+    """공식 AI 업데이트 섹션 쿼터(3~5건) 지시 + official_ai 카테고리 명시."""
+    has_official_ai = "official_ai" in prompt_text or "공식 AI" in prompt_text
+    has_quota = any(kw in prompt_text for kw in ["3~5건", "3-5건", "3~5 건"])
+    assert has_official_ai, "agent-prompt.md 에 공식 AI 카테고리 언급이 있어야 합니다"
+    assert has_quota, "agent-prompt.md 에 공식 AI 3~5건 쿼터 지시가 있어야 합니다"
