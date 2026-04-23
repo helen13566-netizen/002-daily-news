@@ -196,3 +196,82 @@ def test_v20_official_ai_section_quota(prompt_text: str) -> None:
     has_quota = any(kw in prompt_text for kw in ["3~5건", "3-5건", "3~5 건"])
     assert has_official_ai, "agent-prompt.md 에 공식 AI 카테고리 언급이 있어야 합니다"
     assert has_quota, "agent-prompt.md 에 공식 AI 3~5건 쿼터 지시가 있어야 합니다"
+
+
+# v21 — official_ai pool 누락으로 AI 섹션에 합쳐지는 regression 방지
+
+
+def test_v21_pool_classification_includes_official_ai(prompt_text: str) -> None:
+    """분석 단계의 pool 분류 스크립트가 official_ai pool 을 별도로 만든다."""
+    has_official_pool = (
+        'category"]=="official_ai"' in prompt_text
+        or 'category"] == "official_ai"' in prompt_text
+        or "official_pool" in prompt_text
+    )
+    assert has_official_pool, (
+        "단계 D pool 분류에 official_ai 전용 pool 이 없으면 agent 가 공식 AI 기사를 "
+        "AI 섹션에 합쳐 저장합니다 (v21 regression)"
+    )
+
+
+def test_v21_output_schema_allows_official_ai(prompt_text: str) -> None:
+    """출력 schema 의 category 열거에 official_ai 가 포함돼야 한다."""
+    # 주변 문자열 변형을 허용하되 official_ai 가 ai_news/general_news 와 함께 열거되는지 확인
+    schema_keywords = [
+        "official_ai|ai_news|general_news",
+        "ai_news|general_news|official_ai",
+        "ai_news|official_ai|general_news",
+        '"ai_news"|"general_news"|"official_ai"',
+        '"official_ai"|"ai_news"|"general_news"',
+    ]
+    has_enum = any(kw in prompt_text for kw in schema_keywords)
+    assert has_enum, (
+        "출력 schema 의 category 열거에 official_ai 가 명시돼야 agent 가 "
+        "official_ai 카테고리를 보존합니다 (v21)"
+    )
+
+
+def test_v21_merge_glob_includes_official_chunk(prompt_text: str) -> None:
+    """병합 단계(glob) 에 official_chunk*.json 이 포함돼야 한다."""
+    has_official_glob = "official_chunk" in prompt_text
+    assert has_official_glob, (
+        "Phase 4 병합 glob 에 official_chunk*.json 이 없으면 공식 AI 분석 결과가 "
+        "analyzed.json 에 반영되지 않습니다 (v21)"
+    )
+
+
+def test_v21_polling_retry_extended(prompt_text: str) -> None:
+    """workflow_dispatch polling 반복 횟수가 10회(=5분) 를 넘어 확장돼야 한다."""
+    # `for i in 1 2 3 4 5 6 7 8 9 10;` 고정 루프는 v16 버전. v21 에서는 더 늘리거나
+    # `seq` 기반으로 10분 이상 보장해야 한다.
+    has_five_min_loop = "for i in 1 2 3 4 5 6 7 8 9 10;" in prompt_text
+    assert not has_five_min_loop, (
+        "v16 의 10회(5분) polling 루프는 GitHub Actions schedule jitter 대응에 "
+        "부족합니다 — 최소 20회(10분) 이상으로 확장해야 합니다 (v21)"
+    )
+
+
+def test_v21_polling_timeout_forbids_direct_collect(prompt_text: str) -> None:
+    """polling 실패 시 직접 collect 를 절대 시도하지 말고 실패 처리하라는 문구."""
+    # 단계 C 하단에서 polling 실패 시 FAILED_STAGE=collecting 로만 종료하고
+    # 절대 pipeline.collect 를 sandbox 에서 돌리지 말라는 명시가 필요.
+    has_explicit = (
+        ("polling" in prompt_text.lower() or "폴링" in prompt_text)
+        and (
+            "polling 실패" in prompt_text
+            or "폴링 실패" in prompt_text
+            or "폴링이 실패" in prompt_text
+            or "폴링 후에도" in prompt_text
+        )
+        and (
+            "직접 실행하지" in prompt_text
+            or "직접 호출하지" in prompt_text
+            or "대체 수집 금지" in prompt_text
+            or "즉시 실패 처리" in prompt_text
+        )
+    )
+    assert has_explicit, (
+        "polling 이 실패했을 때 sandbox 에서 pipeline.collect 를 절대 직접 실행하지 "
+        "말고 즉시 FAILED_STAGE=collecting 으로 종료하라는 명시 문구가 필요합니다 "
+        "(v21)"
+    )

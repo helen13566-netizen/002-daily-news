@@ -477,6 +477,75 @@ def test_run_validate_analyzed_fails_when_foreign_article(
     assert "xxx999" in (st.error_reason or "")
 
 
+def test_run_validate_analyzed_fails_when_category_downgraded(
+    tmp_path: Path, capsys: pytest.CaptureFixture
+) -> None:
+    """candidates 의 category=official_ai 인 기사를 analyzed 가 ai_news 로 바꾸면 실패한다.
+
+    이 버그는 2026-04-23 오후 브리핑에서 실제 발생: agent 가 OpenAI Blog /
+    Simon Willison 기사의 category 를 ai_news 로 덮어써 공식 AI 섹션이 사라졌다.
+    validate-analyzed 가 defense-in-depth 로 이 diff 를 잡아 실패 처리해야 한다.
+    """
+    state_path = _state_path(tmp_path)
+    _write_state(state_path, retry_count=0)
+
+    candidates = tmp_path / "candidates.json"
+    candidates.write_text(
+        json.dumps(
+            {
+                "collection_timestamp": "2026-04-23T17:30:00+09:00",
+                "articles": [
+                    {"article_id": "ai001", "title": "AI 뉴스", "category": "ai_news"},
+                    {
+                        "article_id": "off001",
+                        "title": "Scaling Codex to enterprises",
+                        "category": "official_ai",
+                    },
+                ],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    analyzed = tmp_path / "analyzed.json"
+    analyzed.write_text(
+        json.dumps(
+            {
+                "issue_number": 26,
+                "generation_timestamp": "2026-04-23T17:30:00+09:00",
+                "articles": [
+                    {"article_id": "ai001", "title": "AI 뉴스", "category": "ai_news"},
+                    # ↓ 원래 official_ai 였던 기사를 ai_news 로 다운그레이드
+                    {
+                        "article_id": "off001",
+                        "title": "Scaling Codex to enterprises",
+                        "category": "ai_news",
+                    },
+                ],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    rc = _call(
+        [
+            "--state-path",
+            str(state_path),
+            "validate-analyzed",
+            "--candidates-path",
+            str(candidates),
+            "--analyzed-path",
+            str(analyzed),
+        ]
+    )
+    assert rc == 1
+    st = load_state(str(state_path))
+    assert st.failed_stage == "analyzing"
+    assert st.pipeline_status == "failed"
+    assert "off001" in (st.error_reason or "") or "category" in (st.error_reason or "")
+
+
 def test_run_validate_analyzed_fails_when_file_missing(
     tmp_path: Path,
 ) -> None:

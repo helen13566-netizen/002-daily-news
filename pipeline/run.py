@@ -288,23 +288,34 @@ def cmd_validate_analyzed(args: argparse.Namespace) -> int:
         _log(f"ERROR: {reason}")
         return 1
 
-    cand_ids = {
-        a.get("article_id")
+    cand_by_id: dict[str, dict[str, Any]] = {
+        a["article_id"]: a
         for a in (candidates.get("articles") or [])
         if a.get("article_id")
     }
+    cand_ids = set(cand_by_id)
     ana_articles = analyzed.get("articles") or []
 
     foreign: list[str] = []
     missing_id: list[str] = []
+    category_mismatch: list[str] = []
     for art in ana_articles:
         aid = art.get("article_id")
         if not aid:
             missing_id.append(art.get("title") or "<no title>")
-        elif aid not in cand_ids:
+            continue
+        if aid not in cand_ids:
             foreign.append(f"{aid}:{art.get('title') or '<no title>'}")
+            continue
+        # v21: candidates 의 category 를 agent 가 덮어쓰는 것을 차단.
+        cand_cat = cand_by_id[aid].get("category")
+        ana_cat = art.get("category")
+        if cand_cat and ana_cat and cand_cat != ana_cat:
+            category_mismatch.append(
+                f"{aid}:{cand_cat}→{ana_cat}"
+            )
 
-    if foreign or missing_id:
+    if foreign or missing_id or category_mismatch:
         details = []
         if foreign:
             details.append(
@@ -313,6 +324,11 @@ def cmd_validate_analyzed(args: argparse.Namespace) -> int:
         if missing_id:
             details.append(
                 f"article_id 누락 기사 {len(missing_id)}건 (샘플: {missing_id[:3]})"
+            )
+        if category_mismatch:
+            details.append(
+                f"category 변경된 기사 {len(category_mismatch)}건 "
+                f"(샘플: {category_mismatch[:3]})"
             )
         reason = "validate-analyzed 실패 — " + " / ".join(details)
         state_mod.mark_failure(state, "analyzing", reason)
@@ -323,7 +339,9 @@ def cmd_validate_analyzed(args: argparse.Namespace) -> int:
                 "valid": False,
                 "foreign_count": len(foreign),
                 "missing_id_count": len(missing_id),
+                "category_mismatch_count": len(category_mismatch),
                 "foreign_samples": foreign[:5],
+                "category_mismatch_samples": category_mismatch[:5],
             }
         )
         return 1
