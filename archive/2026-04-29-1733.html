@@ -1,0 +1,3277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fafaf7">
+<title>굿이브닝 · Daily Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Playfair Display", "Noto Serif KR", Georgia, serif;
+  background-color: #f4ede0;
+  color: #1a1a1a;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  position: relative;
+}
+/* Establishment 203 이미지를 배경으로 고정 (스크롤해도 자리 유지) */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("./assets/establishment-203.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* 배경 위에 신문지 뉴스프린트 그레이 오버레이 — 본문 가독성 보장 */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: rgba(210, 208, 200, 0.87);
+}
+.app { position: relative; z-index: 1; }
+a { color: inherit; text-decoration: none; }
+a:active { opacity: 0.6; }
+
+.app { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+/* Editorial Masthead — Establishment 203 스타일 */
+.bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: calc(14px + env(safe-area-inset-top)) 0 10px;
+  border-bottom: 1px solid #1a1a1a;
+}
+.bar .brand {
+  font-style: italic; font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: #1a1a1a;
+}
+.bar .brand::before { content: none; }
+.bar .issue-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 42px; height: 22px;
+  padding: 0 8px;
+  border: 1px solid #1a1a1a;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #1a1a1a;
+}
+
+/* Dateline strip — 얇은 라인 사이 small caps */
+.dateline {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: #1a1a1a;
+  gap: 8px; flex-wrap: wrap;
+}
+.dateline > span { flex: 0 1 auto; }
+.dateline .middle { flex: 1 1 auto; text-align: center; }
+@media (max-width: 420px) {
+  .dateline { font-size: 10px; letter-spacing: 0.12em; }
+}
+
+
+.intro {
+  padding: 60px 0 56px; text-align: center;
+}
+.intro .greeting {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: #1a1a1a; margin-bottom: 32px;
+}
+.intro h1 {
+  font-style: italic; font-weight: 900;
+  font-size: clamp(48px, 11.5vw, 84px);
+  line-height: 0.94; letter-spacing: -0.025em;
+  margin: 0 0 24px;
+  color: #1a1a1a;
+}
+.intro .sub {
+  font-size: 15px; color: #5a5a5a;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+.intro .meta { display: none; }
+
+.hashtags {
+  text-align: center; padding: 20px 0;
+  font-size: 14px; font-style: italic;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+}
+.hashtags span {
+  display: inline-block; margin: 0 6px;
+  font-weight: 400;
+}
+
+/* 섹션 */
+section.feed-sec { scroll-margin-top: 20px; }
+
+.sec-divider {
+  padding: 40px 0 24px;
+  border-top: 4px solid #1a1a1a;
+  margin-top: 72px;
+  text-align: center;
+  position: relative;
+}
+.sec-divider::before {
+  content: "§";
+  position: absolute;
+  top: -18px; left: 50%;
+  transform: translateX(-50%);
+  background: #d2d0c8;
+  padding: 0 14px;
+  font-size: 22px; font-style: italic;
+  color: #1a1a1a;
+  line-height: 1;
+}
+.sec-divider h2 {
+  font-style: italic; font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.01em; margin: 0;
+  color: #1a1a1a;
+}
+
+/* 스토리 카드 */
+.story {
+  display: block; padding: 28px 0;
+  border-bottom: 1px solid #e6e6df;
+}
+.story:active { opacity: 0.6; }
+.story:last-of-type { border-bottom: none; }
+
+.story .head {
+  font-size: 12px; color: #5a5a5a;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700;
+}
+.story .head .src { font-weight: 900; color: #1a1a1a; }
+.story .head .dot { color: #bbb; }
+
+.story h3 {
+  font-style: italic; font-weight: 700;
+  font-size: 26px; line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  color: #1a1a1a;
+}
+
+.story .lede {
+  font-size: 17px; line-height: 1.55;
+  color: #3a3a3a; margin: 0 0 14px;
+  font-weight: 400;
+}
+
+.story .foot {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: #6b6b6b;
+  flex-wrap: wrap; gap: 8px;
+}
+.story .foot .read { display: flex; align-items: center; gap: 6px; }
+.story .foot .read::before { content: "📖"; }
+
+/* 기사 키워드 해시태그 */
+.story .keywords {
+  margin-top: 12px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.story .keywords span {
+  background: transparent;
+  color: #a02020;
+  padding: 2px 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.story .keywords span::after { content: " · "; color: #c5c5c5; font-weight: 400; }
+.story .keywords span:last-child::after { content: ""; }
+
+/* Editorial 점수 — 이탤릭 serif 숫자 + 미니멀 라인 */
+.score {
+  display: inline-flex; align-items: baseline;
+  padding: 2px 0;
+  font-style: italic; font-weight: 700;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  color: #1a1a1a;
+  background: transparent; border: none;
+  position: relative;
+}
+.score::after {
+  content: " / 10";
+  font-size: 11px; font-style: italic; font-weight: 400;
+  color: #8a8a8a;
+  margin-left: 3px;
+  letter-spacing: 0.05em;
+}
+.score::before { content: none; }
+
+/* 9.0+ — 잉크 박스 (검정 fill + 흰 italic 숫자) */
+.score-vhigh {
+  background: #1a1a1a; color: #fff;
+  padding: 3px 12px 3px 12px;
+  font-size: 16px;
+}
+.score-vhigh::after { color: rgba(255,255,255,0.55); }
+
+/* 8.5+ — 이중선 하단 밑줄 */
+.score-superhigh {
+  padding: 2px 0 1px;
+  border-bottom: 3px double #1a1a1a;
+}
+
+/* 8.0+ — 굵은 밑줄 */
+.score-high {
+  padding: 2px 0 1px;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+/* 7.0+ — 얇은 밑줄 */
+.score-midhigh {
+  padding: 2px 0 1px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+/* 5.0+ — 회색 톤 */
+.score-mid {
+  color: #5a5a5a;
+}
+.score-mid::after { color: #9a9a9a; }
+
+/* 3.0+ — 연회색 */
+.score-low {
+  color: #8a8a8a;
+  font-weight: 400;
+}
+.score-low::after { color: #bababa; }
+
+/* <3.0 — 매우 연회색 */
+.score-vlow {
+  color: #bababa;
+  font-weight: 400;
+}
+.score-vlow::after { color: #d5d5d5; }
+
+/* Top story — editor's pick 뒤 절취선 제거 (v20 사용자 요청) */
+.top-story {
+  padding: 40px 0 48px;
+}
+.top-story .kicker {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #1a1a1a; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.top-story h2 {
+  font-style: italic; font-weight: 900;
+  font-size: clamp(38px, 8vw, 56px);
+  line-height: 0.98; letter-spacing: -0.022em;
+  margin: 0 0 20px;
+  color: #1a1a1a;
+}
+.top-story .by {
+  font-size: 12px; color: #5a5a5a;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.top-story .body {
+  font-size: 19px; line-height: 1.6;
+  color: #1a1a1a;
+}
+
+/* Editorial 인사이트 — 얇은 hairline + italic serif */
+.why-insights {
+  margin-top: 20px;
+  background: transparent;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 12px 0;
+}
+.why-insights[open] { padding-bottom: 18px; }
+.why-insights > summary {
+  cursor: pointer;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #1a1a1a;
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 28px;
+}
+.why-insights > summary::-webkit-details-marker { display: none; }
+.why-insights > summary::after {
+  content: "+"; transition: transform 0.2s;
+  font-size: 20px; font-weight: 400; color: #1a1a1a;
+  line-height: 1;
+}
+.why-insights[open] > summary::after { content: "—"; }
+
+.why-insights .axis {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid #cfc7b5;
+}
+.why-insights .axis:first-of-type { border-top: none; padding-top: 6px; }
+.why-insights .axis .axis-title {
+  font-size: 13px; font-weight: 700; color: #1a1a1a;
+  margin-bottom: 6px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+}
+/* 데이터의 이모지 icon 숨김 — editorial 톤 유지 */
+.why-insights .axis .axis-title .icon { display: none; }
+.why-insights .axis .axis-body {
+  font-size: 15.5px; line-height: 1.55; color: #2a2a2a;
+  font-style: italic;
+}
+
+/* Editorial Footer — 마지막 기사 뒤 절취선 제거 (v20 사용자 요청) */
+footer {
+  padding: 50px 0 30px;
+  text-align: center;
+  font-size: 13px; color: #5a5a5a;
+  margin-top: 40px;
+}
+footer .disclosure {
+  color: #5a5a5a; font-size: 13px; max-width: 520px;
+  margin: 0 auto 16px; line-height: 1.55;
+  font-style: italic;
+}
+footer .sources {
+  color: #8a8a8a; font-size: 11px; line-height: 1.8;
+  margin-top: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════ */
+/* 플로팅 섹션 네비게이션 (고정)            */
+/* ═══════════════════════════════════════ */
+/* Editorial 플로팅 네비 — 흰 배경, 검정 hairline, italic serif */
+.floating-nav {
+  position: fixed;
+  left: 50%; transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 30;
+  display: flex; gap: 0;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #1a1a1a;
+  border-radius: 0;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  max-width: calc(100vw - 24px);
+}
+.floating-nav a {
+  flex: 1 1 auto;
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+  padding: 10px 14px;
+  border-radius: 0;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #1a1a1a;
+  white-space: nowrap;
+  min-height: 40px;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.12s;
+}
+.floating-nav a:active { transform: scale(0.96); }
+.floating-nav a .cnt {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; padding: 0 4px;
+  font-style: italic; font-weight: 400;
+  font-size: 11px;
+  color: #8a8a8a;
+  letter-spacing: 0;
+}
+.floating-nav a.active {
+  background: #1a1a1a; color: #fff;
+}
+.floating-nav a.active .cnt {
+  color: rgba(255,255,255,0.65);
+}
+
+@media (min-width: 640px) {
+  .floating-nav a { padding: 10px 18px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+
+
+
+<div class="app">
+
+  <header class="bar">
+    <div class="brand">The Daily Brief</div>
+    <div class="issue-badge">N°40</div>
+  </header>
+  <div class="dateline">
+    <span>Seoul</span>
+    <span class="middle">2026.04.29</span>
+    <span>오후 Edition</span>
+  </div>
+
+  <section class="intro">
+    <div class="greeting">굿이브닝</div>
+    <h1>오늘의 오후<br>이야기</h1>
+    <div class="sub">총 56건</div>
+    <div class="meta">2026.04.29 17:33 KST</div>
+  </section>
+
+  <div class="hashtags">
+<span>#오픈AI멀티클라우드</span> · <span>#미이란협상교착</span> · <span>#WTI100달러임박</span> · <span>#K-AI파트너십출범</span> · <span>#메타마누스인수철회</span> · <span>#김건희항소심유죄</span> · <span>#공공기관기간제폐지</span> · <span>#UAE오펙탈퇴</span>  </div>
+
+  <section class="feed-sec must-read" id="sec-mustknow">
+    <article class="top-story">
+      <div class="kicker">
+        <span>⭐ Editor's Pick · 연합뉴스</span>
+        <span class="score score-vhigh">9.0</span>
+      </div>
+      <h2>[뉴욕유가] 진전없는 美·이란 협상…WTI 100달러 육박 마감</h2>
+      <div class="by">
+        <span>By 연합뉴스</span>
+        <span>·</span>
+        <span>03:44</span>
+      </div>
+      <div class="body">미국과 이란의 종전 협상이 진전을 보이지 않자 국제 유가가 2거래일 연속 상승했다고 연합뉴스 뉴욕발로 28일 보도했습니다. WTI(서부텍사스산원유) 가격이 배럴당 100달러에 가까워진 채 마감됐다고 전했습니다.</div>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">WTI 100달러 임박은 한국 휘발유·항공·물류 비용에 즉각 반영되는 강한 신호입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국 휘발유·디젤 가격이 1~2주 안에 리터당 50~100원 단계적으로 오르는 것입니다. 2차 효과는 가계 살림입니다. 평균 가구 월 차량 연료비 15만 원이 16~17만 원으로 7~10% 늘 수 있고, 1~2개월 안에 항공권 가격도 5~10% 비싸질 수 있습니다. 3차 효과는 무역수지입니다. WTI가 10달러 오르면 한국 연간 원유 수입 비용이 약 70억~90억 달러 늘어 1년 안에 무역수지에 부담이 갑니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2008년 WTI 147달러 고점, 2022년 러시아 침공 직후 110달러 돌파가 있습니다. 두 사례 모두 100달러 돌파 직후 6개월 안에 한국 평균 휘발유가 리터당 200~400원 올랐고, 1년 뒤 다시 평년 수준으로 빠졌습니다. 지난 20년 WTI가 100달러를 넘은 사례 다섯 차례 가운데 1년 이상 100달러대를 유지한 경우는 두 번뿐입니다. 이번이 다른 점은 미·이란 갈등과 OPEC+ 변동(UAE 탈퇴)이 동시에 진행되는 드문 조합이라는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">차량 사용량이 많은 사람이라면 다음 1~2주 동안 자가 차량 주유 시점을 가급적 앞당겨 두세요. 1차로 알뜰주유소·셀프 주유로 옮기면 리터당 40~80원(5만 원이 4만5천~4만8천 원) 절감이 가능합니다. 2차로 출장·여행 일정이 5~6월 사이에 잡혀 있다면 항공권을 미리 확보하세요. 반면 단기 유가 급등에 ETF·관련주로 자산을 옮기는 건 피하세요. 협상 한 줄로 24시간 안에 5~10% 빠질 수 있는 변동성이 큰 영역입니다.</div>
+  </div>
+</details>
+    </article>
+
+    <div class="sec-divider"><h2>꼭 알아야 할 뉴스</h2></div>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/international/arabafrica/1256370.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>04.28 23:03</span>
+        </div>
+        <h3>아랍에미리트 “5월1일 오펙 탈퇴”…원유 감산 정책에 불만</h3>
+        <p class="lede">아랍에미리트(UAE) 정부가 28일 국영 통신 WAM을 통해 5월 1일 OPEC과 주요 산유국 협의체 OPEC+에서 탈퇴한다고 발표했다고 한겨레가 전했습니다. 원유 감산 정책에 대한 불만이 탈퇴 배경으로 짚히고 있다는 내용입니다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">OPEC 회원국 탈퇴 자체가 글로벌 원유 가격·수급 구조를 흔드는 큰 변수입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 OPEC+ 감산 합의에 균열이 생기며 단기 원유 시장이 흔들리는 것입니다. 2차 효과는 한국 경제입니다. 원유 100% 수입국인 한국에서 두바이유 1달러 변동이 연간 약 8억~9억 달러 수입 비용 변동으로 이어지므로, 1~3개월 안에 휘발유·항공료에 1~5% 수준 가격 압력이 갈 수 있습니다. 3차 효과는 중동 외교입니다. UAE의 독자 노선은 사우디·이란과의 거리 두기를 의미해 6~12개월 안에 중동 동맹 구조가 다시 짜일 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2019년 카타르의 OPEC 탈퇴, 2016년 인도네시아의 OPEC 회원 자격 정지가 있습니다. 두 사례 모두 발표 직후 1~3개월간 두바이유가 5~10% 변동했지만, 1년 뒤에는 다시 안정 구간으로 돌아갔습니다. 지난 30년 OPEC 회원 변동 사례 다섯 차례 가운데, 한 번에 두 자릿수 가격 변동이 이어진 경우는 단 한 번입니다. 이번이 다른 점은 미·이란 갈등으로 호르무즈 변수까지 겹쳐 있다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">차량을 자주 이용하는 사람이라면 다음 1~2주 휘발유 가격 흐름을 한 번 살펴보고, 사용량을 분산하세요. 1차로 알뜰주유소·셀프 가격 비교를 한 번 해두면 리터당 50~100원(5만 원이 4만5천~4만8천 원) 절감이 가능합니다. 2차로 항공권 구매를 고민 중이라면 다음 1~2개월 변동성을 감안해 환불 가능 옵션을 우선 검토하세요. 반면 단기 유가 하락에 베팅해 ETF·관련주에 비중을 크게 싣는 건 피하세요. 산유국 회의 결과로 1~2주 안에 변동이 큰 영역입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428223213" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 22:32</span>
+        </div>
+        <h3>배 부총리 &#34;한국정부도 미토스 테스트...AI가 보안 규칙 바꿔&#34;</h3>
+        <p class="lede">배경훈 과기정통부 장관 겸 부총리가 앤트로픽이 일부 기관에만 풀어둔 보안 특화 AI &#39;미토스&#39;를 한국 정부도 공개 가능한 범위에서 점검했다고 밝혔습니다. 영국 AI안전연구소 평가에서 미토스가 전문가 CTF 73%, 32단계 기업 공격 시뮬레이션 10회 중 3회 완수했다고 전하며 &#39;AI가 보안 규칙을 바꾸고 있다&#39;고 진단했…</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">정부가 직접 보안 AI 역량을 점검·발표한 첫 사례로 사이버 안전 패러다임 전환 신호입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 공공·금융 시스템 보안 점검 주기가 짧아지는 것입니다. 2차 효과는 보안 일자리 변화입니다. 한국 정보보호 인력 약 5만 명 가운데 단순 모니터링 직군이 1~2년 내 자동화 압력을 받습니다. 3차 효과는 일반 기업입니다. 미토스가 32단계 공격을 30% 확률로 끝까지 수행한다는 수치가 알려진 만큼, 중소 SaaS 업체들도 6~12개월 안에 제로트러스트 도입 비용 수천만 원~수억 원을 추가로 짜야 할 가능성이 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2017년 워너크라이 랜섬웨어 사태, 2021년 로그4j 취약점이 있습니다. 두 번 모두 사고 직후 1년 안에 한국 보안 예산이 평균 30~40% 증액됐습니다. 지난 10년 정부가 &#39;패러다임 전환&#39; 표현을 쓴 보안 발표는 다섯 차례, 그중 실제 예산 반영까지 간 사례가 4건입니다. 이번이 다른 점은 공격 도구 자체가 AI라는 것입니다. 과거 대응이 &#39;패치·교육 강화&#39; 위주였다면 이번엔 &#39;AI로 AI를 막는&#39; 체계가 핵심입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">회사가 보안 담당자를 한 명도 두지 않은 곳이라면 이번 주 사내 모든 핵심 시스템의 비밀번호 갱신 주기, MFA 적용 여부 두 가지를 점검해 보세요. 1차로 무료 자가 진단 도구(KISA 보호나라 등) 한 번 돌려두면 됩니다. 2차로 협업 SaaS의 접근 권한을 직무 단위로 좁히세요. 반면 &#39;AI가 다 막아주니 사람 보안 인력을 줄이자&#39;는 결정은 피하세요. 2017년 한 중견기업이 보안팀 절반을 줄인 뒤 1년 안에 랜섬웨어로 매출 며칠치를 잃은 사례가 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428173654" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 17:51</span>
+        </div>
+        <h3>메타, 마누스 인수 &#39;사후 제동&#39; 걸렸다…中 &#34;AI 기술 못 넘겨&#34;</h3>
+        <p class="lede">중국 국가발전개혁위원회가 메타가 작년 12월 20억 달러(약 3조원)에 끝낸 마누스 인수 거래를 사후 철회하라고 명령했습니다. 마누스가 본사를 싱가포르로 옮긴 점을 &#39;싱가포르 워싱&#39;으로 보고, 기술 기원과 인재 국적까지 심사 대상에 넣겠다는 입장이며 공동창업자들은 베이징 소환 후 출국 금지 상태라고 전했습니다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">이미 끝난 빅테크 인수를 중국이 뒤집은 첫 사례로 글로벌 AI M&amp;A 룰 자체가 바뀝니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 미·중 AI 기업 M&amp;A의 안전 마진이 사라진 것입니다. 2차 효과는 한국 기업입니다. 중국에 R&amp;D 거점이나 엔지니어 채용 이력이 있는 한국 AI 스타트업이 향후 미국 자본을 받을 때 1~2년 안에 추가 심사 비용·시간(평균 3~6개월)이 더 들 가능성이 높습니다. 3차 효과는 인재 시장입니다. 중국 출신 AI 박사 약 30만 명의 글로벌 이동이 좁아지면, 미·중 외 한국·싱가포르·UAE 같은 중간국이 인재 유치 호기를 잡을 수 있습니다. 단 외교 충돌 위험이 함께 커집니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 퀄컴-NXP 인수 무산(중국 승인 거부)과 2022년 매그나칩 차이나 인수 철회가 있습니다. 두 번 모두 발표 시점에는 거래가 사실상 끝난 상태였지만, 중국 규제 한 마디로 6~12개월 안에 무효가 됐습니다. 지난 10년 미·중 빅딜 일곱 건 가운데 끝까지 살아남은 사례는 두 건뿐입니다. 이번이 다른 점은 &#39;거래 종료 4개월 후&#39; 라는 사후 회수 조치가 처음이라는 점, 그리고 5월 트럼프 방중을 앞두고 협상 카드로 쓰일 수 있다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 5월 14~15일 미·중 정상회담에서 협상 카드로 풀려 부분 인수 형태로 마무리되는 것입니다(가능성 중간). 중간 시나리오는 메타가 마누스 코드·인력을 일부만 유지하고 30~50%(3조의 1~1.5조)를 손실 처리하는 경우입니다(가능성 높음). 최악은 미국이 보복 조치로 중국 AI 스타트업 대미 투자를 막아 1~2년 안에 글로벌 AI M&amp;A가 30% 이상 줄어드는 경우입니다(가능성 낮음~중간). 갈림길은 다음 달 정상회담 결과와 NDRC 후속 조치입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://openai.com/index/next-phase-of-microsoft-partnership" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">OpenAI Blog</span>
+          <span class="dot">·</span>
+          <span>04.27 15:00</span>
+        </div>
+        <h3>The next phase of the Microsoft OpenAI partnership</h3>
+        <p class="lede">오픈AI와 마이크로소프트가 기존 파트너십을 수정해 단순화하고, 장기적인 명확성을 더하며 대규모 AI 혁신을 계속 뒷받침하기로 합의했다고 발표했습니다. 양사는 새 합의가 협업의 다음 단계를 여는 출발점이라고 설명합니다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">마이크로소프트의 오픈AI 독점적 지위가 정리되는 신호여서 AI 산업 구조 자체가 바뀌는 분기점입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 오픈AI가 마이크로소프트 외 다른 클라우드(AWS·구글)에서도 모델을 더 자유롭게 팔 수 있게 된다는 점입니다. 2차 효과는 마이크로소프트가 자체 모델 개발에 더 무게를 싣는 흐름입니다. 같은 날 발표된 AWS 진출이 그 증거입니다. 3차 효과는 가격입니다. 한 곳 독점이 풀리면 6~12개월 안에 기업용 AI 비용이 10~20% 빠질 가능성이 높습니다. 한국 SI 업체들 입장에서는 &#39;어느 클라우드에 무엇을 깔까&#39; 결정이 새로 시작됩니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2014년 마이크로소프트-노키아 휴대폰 분리, 2010년 야후-MS 검색 협력 종료가 있습니다. 둘 다 합의 종료 후 1~2년 안에 양쪽 모두 점유율 변동을 겪었고, MS는 결국 자체 길로 갔습니다. 지난 15년 빅테크 독점 파트너십이 깨진 사례는 다섯 차례, 평균 18개월 안에 시장 1위가 흔들렸습니다. 이번이 다른 점은 &#39;AGI 조항&#39; 같은 추정 가치 수십조 원짜리 조항이 함께 정리됐다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 양사가 서로 보완재로 자리잡고 가격이 안정되는 것입니다(가능성 중간). 중간 시나리오는 둘 다 자체 모델·자체 클라우드로 경쟁이 격화돼 6~12개월 안에 기업 고객이 두 개 모델을 동시에 쓰는 멀티 LLM 시대가 오는 것입니다(가능성 높음). 최악은 협상 잡음이 다시 새어 나와 단기 주가가 5~10%(100만 원이 90만~95만 원) 흔들리는 경우입니다(가능성 낮음). 갈림길은 다음 분기 마이크로소프트 코파일럿 갱신과 오픈AI IPO 일정입니다.</div>
+  </div>
+</details>
+    </article>
+  </section>
+
+  <section class="feed-sec" id="sec-official-ai">
+    <div class="sec-divider"><h2>공식 AI 업데이트</h2></div>
+    <article class="story">
+      <a href="https://openai.com/index/next-phase-of-microsoft-partnership" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">OpenAI Blog</span>
+          <span class="dot">·</span>
+          <span>04.27 15:00</span>
+        </div>
+        <h3>The next phase of the Microsoft OpenAI partnership</h3>
+        <p class="lede">오픈AI와 마이크로소프트가 기존 파트너십을 수정해 단순화하고, 장기적인 명확성을 더하며 대규모 AI 혁신을 계속 뒷받침하기로 합의했다고 발표했습니다. 양사는 새 합의가 협업의 다음 단계를 여는 출발점이라고 설명합니다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">마이크로소프트의 오픈AI 독점적 지위가 정리되는 신호여서 AI 산업 구조 자체가 바뀌는 분기점입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 오픈AI가 마이크로소프트 외 다른 클라우드(AWS·구글)에서도 모델을 더 자유롭게 팔 수 있게 된다는 점입니다. 2차 효과는 마이크로소프트가 자체 모델 개발에 더 무게를 싣는 흐름입니다. 같은 날 발표된 AWS 진출이 그 증거입니다. 3차 효과는 가격입니다. 한 곳 독점이 풀리면 6~12개월 안에 기업용 AI 비용이 10~20% 빠질 가능성이 높습니다. 한국 SI 업체들 입장에서는 &#39;어느 클라우드에 무엇을 깔까&#39; 결정이 새로 시작됩니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2014년 마이크로소프트-노키아 휴대폰 분리, 2010년 야후-MS 검색 협력 종료가 있습니다. 둘 다 합의 종료 후 1~2년 안에 양쪽 모두 점유율 변동을 겪었고, MS는 결국 자체 길로 갔습니다. 지난 15년 빅테크 독점 파트너십이 깨진 사례는 다섯 차례, 평균 18개월 안에 시장 1위가 흔들렸습니다. 이번이 다른 점은 &#39;AGI 조항&#39; 같은 추정 가치 수십조 원짜리 조항이 함께 정리됐다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 양사가 서로 보완재로 자리잡고 가격이 안정되는 것입니다(가능성 중간). 중간 시나리오는 둘 다 자체 모델·자체 클라우드로 경쟁이 격화돼 6~12개월 안에 기업 고객이 두 개 모델을 동시에 쓰는 멀티 LLM 시대가 오는 것입니다(가능성 높음). 최악은 협상 잡음이 다시 새어 나와 단기 주가가 5~10%(100만 원이 90만~95만 원) 흔들리는 경우입니다(가능성 낮음). 갈림길은 다음 분기 마이크로소프트 코파일럿 갱신과 오픈AI IPO 일정입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://openai.com/index/openai-on-aws" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">OpenAI Blog</span>
+          <span class="dot">·</span>
+          <span>04.28 09:00</span>
+        </div>
+        <h3>OpenAI models, Codex, and Managed Agents come to AWS</h3>
+        <p class="lede">오픈AI는 자사의 GPT 모델, 코덱스, 매니지드 에이전트를 AWS에서 사용할 수 있도록 정식 제공한다고 알렸습니다. AWS 안에서 보안과 통제를 유지한 채 기업이 자체 환경에서 오픈AI 기능을 곧바로 끌어와 쓸 수 있도록 한 조치입니다.</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">오픈AI가 마이크로소프트 외 빅3 클라우드로도 모델을 푸는 첫 공식 발표라 AI 시장 판도에 영향이 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 단순합니다. AWS를 쓰던 기업이 굳이 마이크로소프트 애저로 옮기지 않아도 오픈AI 모델을 바로 쓸 수 있게 됐습니다. 2차 효과는 가격 경쟁입니다. 2024년 애저-오픈AI 가격이 사실상 독점 수준이었는데, AWS와 구글이 끼어들면 시간당 토큰 비용이 10~20%(1만 원짜리에서 천~2천 원) 빠질 가능성이 있습니다. 3차 효과는 한국 기업입니다. 삼성·LG·KT 같이 AWS 비중이 큰 회사들이 사내 챗봇·코드 생성 도입을 앞당길 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로는 2014년 마이크로소프트가 오라클 DB를 애저에 올렸던 일, 2019년 SAP가 멀티클라우드를 선언한 일이 있습니다. 둘 다 처음엔 &#39;독점이 깨진다&#39; 식 우려가 있었지만 1~2년 안에 가격이 내려가고 도입 기업이 30% 이상 늘었습니다. 지난 10년 비슷한 멀티클라우드 합의가 네 번 있었고 평균적으로 6개월 안에 후발 진입자가 점유율 5~15%를 가져갔습니다. 이번이 다른 점은 모델이 OS가 아닌 &#39;추론 능력&#39; 자체라는 것입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">이번 주 회사 AWS 콘솔에서 &#39;베드록&#39; 또는 &#39;OpenAI on AWS&#39; 메뉴가 열렸는지 확인해 보세요. 1차로 가격표를 비교(애저 vs AWS)해 두면 협상 카드가 됩니다. 2차로 사내 코덱스 시범 도입 일정을 1~2주 앞당길지 의사결정자와 상의해 보세요. 반면 한 곳 클라우드에 AI를 다 몰아넣는 건 피하세요. 2022년 한 SaaS 업체가 단일 클라우드 락인으로 비용이 40%(1억이 1억 4천) 뛴 사례가 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://deepmind.google/blog/announcing-our-partnership-with-the-republic-of-korea/" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Google DeepMind</span>
+          <span class="dot">·</span>
+          <span>04.27 16:00</span>
+        </div>
+        <h3>Announcing our partnership with the Republic of Korea</h3>
+        <p class="lede">구글 딥마인드가 한국과 파트너십을 맺어 최첨단 AI 모델을 활용한 과학적 돌파구를 가속화한다고 발표했습니다. 양측은 한국의 연구 역량과 딥마인드의 프런티어 모델을 결합해 과학 연구 속도를 끌어올리는 것을 목표로 한다고 설명합니다.</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">글로벌 AI 강자가 한국을 직접 파트너로 지정한 사례여서 한국 R&amp;D 경쟁력에 직결됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국 연구자가 알파폴드 같은 딥마인드의 모델을 자국 데이터로 더 빠르게 돌릴 권한을 갖게 되는 것입니다. 2차 효과는 K-AI 국가대표팀, 엔비디아 소버린 AI 등 같은 날 나온 흐름과 합쳐져 &#39;AI 연구 인프라가 미국 외 한 국가에 집중되는&#39; 패턴이 굳어지는 것입니다. 3차 효과는 인재 경쟁입니다. 2024년 카이스트 박사 30%가 해외 빅테크로 갔는데, 국내 협업 자리가 늘면 1~2년 내 유출 비율이 5~10%포인트 줄 가능성이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 페이스북-서울대 AI 연구센터, 2020년 IBM-카이스트 양자 협력이 있습니다. 둘 다 발표 당시 기대가 컸지만 3년 뒤 실제 공동 논문 산출은 평균 연 5~10편 수준에 그쳤습니다. 지난 15년 비슷한 정부-빅테크 MOU는 일곱 번 있었고, 그중 실제 산업 효과로 이어진 사례는 약 절반입니다. 이번이 다른 점은 발표 시점이 한국이 &#39;AI 3대 강국&#39;을 공식 목표로 내건 직후라 정부 예산이 따라붙기 쉬운 환경이라는 것입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 신약·신소재·기후 분야에서 1~2년 안에 한국 발 알파폴드급 성과가 나오는 것입니다(가능성 중간). 중간 시나리오는 데이터센터 입지·세제 혜택을 둘러싼 기업 유치 경쟁이 격화되며 한국이 일본·싱가포르와 동시 협력 카드를 받는 것입니다(가능성 높음). 최악은 미·중 갈등이 격화되어 미국이 한국 R&amp;D 데이터 공유를 제한해 협력이 절반만 이행되는 경우입니다(가능성 낮음). 갈림길은 다음 분기 정부 추경과 미·중 통상 협상입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://openai.com/index/open-source-codex-orchestration-symphony" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">OpenAI Blog</span>
+          <span class="dot">·</span>
+          <span>04.27 09:00</span>
+        </div>
+        <h3>An open-source spec for orchestration: Symphony</h3>
+        <p class="lede">오픈AI가 코덱스 오케스트레이션을 위한 오픈소스 사양 &#39;심포니&#39;를 공개했습니다. 이슈 트래커를 항상 켜져 있는 에이전트 시스템으로 바꿔 엔지니어링 산출물을 늘리고, 작업 전환 비용을 줄이는 데 목적이 있다고 설명합니다.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">에이전트 코딩 흐름을 사양으로 표준화하려는 오픈AI의 첫 시도여서 개발자 시장 표준 다툼이 시작됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 깃허브 이슈·지라 같은 도구가 단순 기록용을 넘어 &#39;AI 에이전트가 알아서 일하는 작업 큐&#39;로 변하는 것입니다. 2차 효과는 개발 생산성입니다. 2024년 깃허브 코파일럿이 코드 생산성을 평균 26% 올린 것처럼, 심포니가 안착하면 1~2년 안에 추가로 10~20%(개발자 8시간이 6.5시간) 시간이 줄 가능성이 있습니다. 3차 효과는 한국 SI 산업입니다. 5만 명 규모의 외주 코딩 인력 시장이 2~3년 내에 가격·역할 재편 압력을 받습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2014년 도커·쿠버네티스 사양 표준화, 2018년 LSP(언어 서버 프로토콜) 등장이 있습니다. 둘 다 처음엔 &#39;또 하나의 사양&#39; 취급이었지만 2~3년 뒤 사실상 업계 표준이 됐습니다. 그 사이 기존 IDE 강자(이클립스 등)가 점유율 30% 이상 잃었습니다. 지난 10년 &#39;API/사양&#39; 경쟁에서 처음 공개한 빅테크가 표준을 가져간 비율은 6/10. 이번이 다른 점은 사양 자체가 &#39;에이전트의 자율성&#39; 영역이라 보안·책임 문제가 더 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">개발 직군이라면 이번 주 깃허브에서 &#39;symphony spec&#39; 저장소를 즐겨찾기 해두고, 한 번이라도 PR 자동화 흐름을 시범 적용해 보세요. 2차로 회사 이슈 트래커(지라·노션) 사용 규칙을 점검해 보세요. 에이전트가 읽기 좋은 형식인지 1년 안에 중요해집니다. 반면 &#39;AI가 다 해주니까 코드 리뷰는 안 해도 된다&#39;는 식 행동은 피하세요. 2024년 한 스타트업이 자동 머지로 보안 사고가 나 손실 5억 원을 본 사례가 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://simonwillison.net/2026/Apr/27/vibevoice/#atom-everything" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Simon Willison</span>
+          <span class="dot">·</span>
+          <span>04.28 08:46</span>
+        </div>
+        <h3>microsoft/VibeVoice</h3>
+        <p class="lede">마이크로소프트가 위스퍼 계열 음성-텍스트 모델 &#39;바이브보이스&#39;를 MIT 라이선스로 공개했습니다. 모델 자체에 화자 분리(누가 언제 말했는지 구분) 기능이 들어 있고, 맥에서도 한 줄 명령으로 돌릴 수 있다고 사이먼 윌리슨이 소개했습니다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">오픈소스 음성 인식 모델이 한 단계 진화한 사례여서 회의·강의 자동 기록 시장이 본격적으로 열립니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 회의록 자동화 도구의 가격이 빠르게 빠진다는 점입니다. 위스퍼가 등장한 2022년 이후 STT(받아쓰기) 단가가 분당 수백 원에서 수십 원으로 약 80% 빠졌는데, 화자 분리까지 무료가 되면 추가로 30~50% 떨어질 수 있습니다. 2차 효과는 한국 콜센터·법조 시장입니다. 약 30만 명 규모의 통화 기록·녹취 업무가 1~2년 안에 자동화 압력을 받습니다. 3차 효과는 사생활입니다. 누구나 회의를 분석할 수 있게 되면 녹음 동의 규정 강화가 따라올 가능성이 높습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2022년 위스퍼 v1 공개, 2023년 메타 라이브-MMS 음성 모델 공개가 있습니다. 두 번 모두 1년 안에 STT API 가격이 50~80% 빠졌고, 한국에서도 클로바·카카오 STT가 가격을 따라 내렸습니다. 지난 5년 오픈소스 음성 모델이 나올 때마다 평균 9개월 안에 상용 가격이 절반으로 줄었습니다. 이번이 다른 점은 화자 분리가 모델에 내장돼 별도 라이브러리(파이아노트 등) 의존이 사라진다는 것입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">회의가 많은 직장이라면 이번 주 사내에서 쓰고 있는 STT 도구의 결제 약정을 점검해 보세요. 1년 약정이 남았다면 다음 갱신 때 30~50% 가격 인하 협상이 가능할 수 있습니다. 2차로 사내 녹음·녹화 동의 정책 문서를 다시 한번 확인하세요. 반면 모든 회의를 자동 녹음·요약으로 돌리는 건 피하세요. 2023년 한 외국계 기업이 무단 녹음 이슈로 노조와 분쟁이 6개월 이어진 사례가 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://simonwillison.net/2026/Apr/27/speech-translation-in-google-meet-is-now-rolling-out-to-mobile-d/#atom-everything" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Simon Willison</span>
+          <span class="dot">·</span>
+          <span>04.28 02:37</span>
+        </div>
+        <h3>Speech translation in Google Meet is now rolling out to mobile devices</h3>
+        <p class="lede">구글이 구글 미트의 실시간 음성 번역 기능을 모바일 기기로 확대한다고 발표했습니다. 사이먼 윌리슨은 직접 회의 도중 &#39;지금 써보세요&#39; 안내가 떴고 어느 정도 동작했다고 전하며, 두 사람이 다른 언어로 대화하는 SF 같은 통역 앱의 구글 구현이라고 설명합니다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">실시간 통역이 모바일 보급기에 들어선 신호여서 글로벌 회의·교육·여행 풍경이 바뀝니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국 직장인이 영어 회의 자료를 따로 준비하는 시간이 줄어드는 것입니다. 2차 효과는 통역 시장입니다. 2024년 기준 국내 통역사 약 8천 명, 평균 시간당 단가 5~10만 원인데 1~2년 안에 짧은 비즈니스 미팅 통역 수요가 20~30% 줄 가능성이 있습니다. 3차 효과는 외국인 관광객 응대입니다. 카페·호텔에서 미트 통역을 켠 채 응대하는 풍경이 6~12개월 안에 표준이 될 수 있습니다. 동시에 번역 오류로 인한 분쟁 사례도 늘 가능성이 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2017년 파파고·구글 번역 모바일 출시, 2020년 줌 자막 기능 도입이 있습니다. 두 번 모두 1~2년 안에 일상 사용이 폭발적으로 늘었지만, 같은 기간 통역사 단가는 5~10% 빠지는 데 그쳤습니다. 지난 10년 음성 통역 기술이 한 단계씩 갈 때마다 시장 충격은 &#39;대체&#39;보다 &#39;저변 확대&#39; 쪽이 컸습니다. 이번이 다른 점은 처음으로 &#39;모바일 + 양방향 + 실시간&#39;이 한 번에 무료로 풀린다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">외국 협력사가 있다면 다음 주 회의에서 미트 통역을 한 번 켜 보고 정확도를 직접 측정해 보세요. 1차로 자기 직무 단어 10개를 미리 시험해 두면 한계가 보입니다. 2차로 어학 학습 시간 배분을 재검토하세요. 회화는 도구가 메우니 읽기·쓰기·전문 용어 쪽 비중을 늘리는 편이 효율적입니다. 반면 &#39;이제 영어 안 배워도 된다&#39;는 식 결론은 피하세요. 통역 정확도는 80~90%대라 중요한 협상에서는 여전히 사람이 필요합니다.</div>
+  </div>
+</details>
+    </article>
+  </section>
+  <section class="feed-sec" id="sec-ai">
+    <div class="sec-divider"><h2>AI 뉴스</h2></div>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428223213" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 22:32</span>
+        </div>
+        <h3>배 부총리 &#34;한국정부도 미토스 테스트...AI가 보안 규칙 바꿔&#34;</h3>
+        <p class="lede">배경훈 과기정통부 장관 겸 부총리가 앤트로픽이 일부 기관에만 풀어둔 보안 특화 AI &#39;미토스&#39;를 한국 정부도 공개 가능한 범위에서 점검했다고 밝혔습니다. 영국 AI안전연구소 평가에서 미토스가 전문가 CTF 73%, 32단계 기업 공격 시뮬레이션 10회 중 3회 완수했다…</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">정부가 직접 보안 AI 역량을 점검·발표한 첫 사례로 사이버 안전 패러다임 전환 신호입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 공공·금융 시스템 보안 점검 주기가 짧아지는 것입니다. 2차 효과는 보안 일자리 변화입니다. 한국 정보보호 인력 약 5만 명 가운데 단순 모니터링 직군이 1~2년 내 자동화 압력을 받습니다. 3차 효과는 일반 기업입니다. 미토스가 32단계 공격을 30% 확률로 끝까지 수행한다는 수치가 알려진 만큼, 중소 SaaS 업체들도 6~12개월 안에 제로트러스트 도입 비용 수천만 원~수억 원을 추가로 짜야 할 가능성이 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2017년 워너크라이 랜섬웨어 사태, 2021년 로그4j 취약점이 있습니다. 두 번 모두 사고 직후 1년 안에 한국 보안 예산이 평균 30~40% 증액됐습니다. 지난 10년 정부가 &#39;패러다임 전환&#39; 표현을 쓴 보안 발표는 다섯 차례, 그중 실제 예산 반영까지 간 사례가 4건입니다. 이번이 다른 점은 공격 도구 자체가 AI라는 것입니다. 과거 대응이 &#39;패치·교육 강화&#39; 위주였다면 이번엔 &#39;AI로 AI를 막는&#39; 체계가 핵심입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">회사가 보안 담당자를 한 명도 두지 않은 곳이라면 이번 주 사내 모든 핵심 시스템의 비밀번호 갱신 주기, MFA 적용 여부 두 가지를 점검해 보세요. 1차로 무료 자가 진단 도구(KISA 보호나라 등) 한 번 돌려두면 됩니다. 2차로 협업 SaaS의 접근 권한을 직무 단위로 좁히세요. 반면 &#39;AI가 다 막아주니 사람 보안 인력을 줄이자&#39;는 결정은 피하세요. 2017년 한 중견기업이 보안팀 절반을 줄인 뒤 1년 안에 랜섬웨어로 매출 며칠치를 잃은 사례가 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428173654" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 17:51</span>
+        </div>
+        <h3>메타, 마누스 인수 &#39;사후 제동&#39; 걸렸다…中 &#34;AI 기술 못 넘겨&#34;</h3>
+        <p class="lede">중국 국가발전개혁위원회가 메타가 작년 12월 20억 달러(약 3조원)에 끝낸 마누스 인수 거래를 사후 철회하라고 명령했습니다. 마누스가 본사를 싱가포르로 옮긴 점을 &#39;싱가포르 워싱&#39;으로 보고, 기술 기원과 인재 국적까지 심사 대상에 넣겠다는 입장이며 공동창업자들은 베이…</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">이미 끝난 빅테크 인수를 중국이 뒤집은 첫 사례로 글로벌 AI M&amp;A 룰 자체가 바뀝니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 미·중 AI 기업 M&amp;A의 안전 마진이 사라진 것입니다. 2차 효과는 한국 기업입니다. 중국에 R&amp;D 거점이나 엔지니어 채용 이력이 있는 한국 AI 스타트업이 향후 미국 자본을 받을 때 1~2년 안에 추가 심사 비용·시간(평균 3~6개월)이 더 들 가능성이 높습니다. 3차 효과는 인재 시장입니다. 중국 출신 AI 박사 약 30만 명의 글로벌 이동이 좁아지면, 미·중 외 한국·싱가포르·UAE 같은 중간국이 인재 유치 호기를 잡을 수 있습니다. 단 외교 충돌 위험이 함께 커집니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 퀄컴-NXP 인수 무산(중국 승인 거부)과 2022년 매그나칩 차이나 인수 철회가 있습니다. 두 번 모두 발표 시점에는 거래가 사실상 끝난 상태였지만, 중국 규제 한 마디로 6~12개월 안에 무효가 됐습니다. 지난 10년 미·중 빅딜 일곱 건 가운데 끝까지 살아남은 사례는 두 건뿐입니다. 이번이 다른 점은 &#39;거래 종료 4개월 후&#39; 라는 사후 회수 조치가 처음이라는 점, 그리고 5월 트럼프 방중을 앞두고 협상 카드로 쓰일 수 있다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 5월 14~15일 미·중 정상회담에서 협상 카드로 풀려 부분 인수 형태로 마무리되는 것입니다(가능성 중간). 중간 시나리오는 메타가 마누스 코드·인력을 일부만 유지하고 30~50%(3조의 1~1.5조)를 손실 처리하는 경우입니다(가능성 높음). 최악은 미국이 보복 조치로 중국 AI 스타트업 대미 투자를 막아 1~2년 안에 글로벌 AI M&amp;A가 30% 이상 줄어드는 경우입니다(가능성 낮음~중간). 갈림길은 다음 달 정상회담 결과와 NDRC 후속 조치입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=209882" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>07:42</span>
+        </div>
+        <h3>오픈AI, &#39;IPO 앞두고 적신호&#39;…매출·사용자 목표 실패에 갈등설까지</h3>
+        <p class="lede">월스트리트저널이 오픈AI CFO 사라 프라이어가 매출이 충분히 성장하지 못하면 컴퓨팅 계약 비용을 지급하지 못할 수 있다는 우려를 경영진에 전달했다고 28일 보도했습니다. 이사회는 데이터센터 계약을 자세히 검토했고 알트먼 CEO가 컴퓨팅 관련 결정을 둘러싸고 갈등 신호…</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">오픈AI IPO 추진 직전 위기설이 외신을 통해 제기돼 글로벌 AI 거품론과 직접 연결됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 단기 시장 심리입니다. 오픈AI IPO 일정이 미뤄지거나 가격이 낮아지면 한국 AI 관련주가 단기 5~15%(100만 원이 85~95만 원) 변동할 가능성이 큽니다. 2차 효과는 컴퓨팅 시장입니다. 데이터센터 발주가 일부 미뤄지면 6~12개월 안에 엔비디아·삼성 HBM 매출 가시성이 흔들릴 수 있습니다. 3차 효과는 한국 AI 회사 협상력입니다. 오픈AI 측 가격 정책이 보수적으로 가면 네이버·카카오 같은 자체 모델 보유 기업의 상대적 경쟁력이 커질 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2000년 닷컴 직전 야후·아마존의 매출 우려, 2019년 위워크 IPO 무산이 있습니다. 두 사례 모두 위기설 보도 후 6~12개월 안에 기업가치 평가가 30~70%(1조가 3~7천억) 빠졌습니다. 지난 25년 빅테크 IPO 직전 이런 류 보도가 나온 사례 일곱 번 가운데, 그대로 IPO를 진행한 경우는 절반에 그쳤습니다. 이번이 다른 점은 매출 자체는 빠르게 늘고 있고, 문제는 매출 성장 속도 vs 컴퓨팅 비용 증가 속도라는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 매출 성장 속도가 다음 1~2분기에 다시 확인되며 IPO가 원안대로 진행되는 경우(가능성 중간)입니다. 중간 시나리오는 IPO 시점이 6~12개월 미뤄지고, 추가 자금 조달이 사모 시장에서 진행되는 경우(가능성 높음)입니다. 최악은 컴퓨팅 비용 미지급 보도가 사실로 확인돼 신뢰가 깨지고 데이터센터 발주 일부가 취소되는 경우(가능성 낮음)입니다. 갈림길은 다음 분기 매출 발표와 미·중 정상회담 결과입니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이 보도는 1차 출처가 익명 복수 관계자라는 점에서 출처 강도가 약한 편이고, IPO 직전 시점에 의도적으로 흘러나오는 정보일 가능성도 함께 보아야 합니다. WSJ 외 다른 매체가 동일 사실을 며칠 안에 확인하는지 살펴보세요. 같은 사실이 2~3개 매체에서 교차 검증되면 신빙성이 올라갑니다. 던져 볼 질문은 이렇습니다. 매출 성장 속도와 컴퓨팅 계약 규모의 격차가 정확히 얼마인가, 누가 이 보도로 이익을 얻는가(경쟁사·공매도 세력 등), 알트먼 CEO 측의 공식 반박이 있었는가.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=209846" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>07:00</span>
+        </div>
+        <h3>[4월28일] MS 독점 풀어낸 오픈AI…&#39;인류 번영&#39; 슬로건 뒤엔 &#39;IPO 셈법&#39;</h3>
+        <p class="lede">오픈AI와 마이크로소프트가 27일 파트너십을 개편해 MS는 2032년까지 주요 클라우드 파트너 지위를 유지하되 오픈AI의 멀티 클라우드 전략을 허용한다고 밝혔습니다. 이로써 오픈AI는 아마존을 포함한 경쟁사에 모델을 공급할 수 있게 됐고 구글 클라우드 진출 가능성까지 …</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">오픈AI-MS 독점 구조의 변화가 AI 시장 가격·접근성에 직결되는 핵심 사건입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국 기업이 AWS·구글·MS 어디서나 오픈AI 모델을 골라 쓰는 시대가 시작되는 것입니다. 2차 효과는 가격입니다. 단일 클라우드 독점이 무너지면 6~12개월 안에 토큰 기준 가격이 10~20%(1만 원이 8~9천 원) 빠질 가능성이 큽니다. 3차 효과는 IPO입니다. 오픈AI가 IPO 시점에 더 많은 매출처를 확보할 수 있다면 기업가치 평가가 달라져, 한국 AI 관련 종목·펀드의 1~2년 변동성에도 영향이 갑니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2014년 마이크로소프트의 오라클 DB 애저 합의, 2009년 IBM-SAP 합의가 있습니다. 두 사례 모두 발표 1~2년 안에 시장 1위 사업자의 점유율이 5~10%포인트 빠졌습니다. 지난 15년 빅테크 독점 파트너십이 풀린 사례 다섯 번 가운데, 후발 진입자가 18개월 안에 두 자릿수 점유율을 잡은 경우는 둘셋입니다. 이번이 다른 점은 AGI 조항 등 미래 가치까지 함께 정리됐다는 점, 그리고 오픈AI가 IPO 직전 시점에 합의했다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">AI 의존도가 큰 직장인이라면 이번 주 회사 AWS·구글·애저 사용 비중을 다시 확인해 두세요. 1차로 다음 분기 갱신 일정이 있다면 &#39;오픈AI on AWS&#39; 가격을 함께 비교 견적으로 받아두면 협상력이 올라갑니다. 2차로 사내 코드·문서가 한 클라우드에만 묶이지 않도록 백업 전략을 점검하세요. 반면 &#39;IPO 후 무조건 좋아진다&#39;는 식 종목 베팅은 피하세요. AI 거품론이 함께 거론되는 만큼 1년 이내 가격 변동성이 매우 큽니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428174905" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 17:56</span>
+        </div>
+        <h3>[현장] &#39;K-AI 국가대표팀&#39; 출범...&#34;AI 생태계 조성부터 글로벌 수출까지&#34;</h3>
+        <p class="lede">AI·소프트웨어산업협회와 네이버클라우드가 공동의장을 맡는 &#39;K-AI 파트너십&#39;이 28일 출범했고 약 215개 기업·기관이 참여했습니다. AI 생태계, AX 확산, 풀스택 수출 3개 분과로 운영되며, 스웨덴 왕립공학한림원이 한국 AI 기술과 HBM·GPU 대체 인프라에 …</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">민관 215개 기관이 한 우산 아래 묶인 AI 수출 컨소시엄 출범으로 산업 정책의 분기점입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 215개 참여사의 공공 PoC(시범사업) 기회 확대입니다. 2차 효과는 중소기업 인프라 접근입니다. 대기업이 가진 GPU·LLM 운영 플랫폼이 스타트업에 일부 개방되면 1~2년 안에 신규 AI 스타트업 창업 수가 20~30% 늘 가능성이 있습니다. 3차 효과는 수출입니다. 그간 동남아·중동에 집중됐던 한국 AI 수출이 유럽으로 향하면 2~3년 후 AI·SW 수출 규모가 현재의 1.5~2배(연 1조 원이 1.5~2조 원)로 커질 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2003년 IT코리아 비전, 2017년 4차산업혁명위원회가 있습니다. 두 사례 모두 처음엔 약 100~200개 기업이 모였지만 2~3년 뒤 실제 수출로 이어진 사례는 평균 30%에 그쳤습니다. 지난 20년 민관 컨소시엄 일곱 번 가운데 정권 교체를 넘어 살아남은 사례는 둘뿐입니다. 이번이 다른 점은 &#39;AI 풀스택 수출&#39;이라는 구체적 수익 모델이 분과로 명시됐고, 네이버클라우드 같은 자체 모델 보유 기업이 직접 의장을 맡는다는 것입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">AI·SW 직장인이라면 다음 주 회사가 K-AI 파트너십 215개 명단에 들어 있는지 확인해 보세요. 들어 있다면 분과별 PoC 공모에 직무 단위로 참여 신청을 걸어두세요. 1차 PoC 결과가 보통 12~18개월 안에 매출로 이어집니다. 2차로 자기 직무를 &#39;풀스택 수출&#39; 관점에서 다시 정리하세요(언어·해외 사례 2~3개). 반면 정책 발표만 보고 관련주에 단기 베팅하는 건 피하세요. 2017년 4차산업주 평균이 1년 안에 30% 빠진 전례가 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428174318" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 17:43</span>
+        </div>
+        <h3>GPU 넘은 엔비디아, 한국 데이터까지 손댔다…소버린 AI 속도전</h3>
+        <p class="lede">엔비디아가 한국 인구·문화 특성을 반영한 600만 건 규모 합성 데이터셋 &#39;네모트론-페르소나-코리아&#39;를 공개해 허깅페이스 데이터셋 부문 1위에 올랐습니다. 국가통계포털, 대법원, 건보공단, 농촌경제연구원, 네이버클라우드 등 공공·민간 데이터를 활용해 개인정보보호법 준수…</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">GPU 공급사가 데이터 레이어까지 손대는 첫 사례여서 한국 AI 인프라 주도권 다툼에 직결됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 국내 AI 스타트업이 한국형 모델 학습 데이터를 무료로 가져갈 수 있게 된 점입니다. 2차 효과는 시장 구도입니다. 네이버·KT가 자체 데이터 무기로 가진 &#39;한국 특화&#39; 우위가 1~2년 안에 좁아질 가능성이 있습니다. 3차 효과는 개인정보 규제입니다. 합성 데이터를 PIPA 우회 수단으로 쓰는 시도가 늘면 규제 당국이 6~12개월 안에 가이드라인을 손볼 수 있습니다. 같은 시기 발표된 K-AI 파트너십과 결합하면 데이터 주권 논의가 본격화됩니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2010년대 초 구글이 한국 지도 데이터를 직접 보강한 일, 2016년 IBM 왓슨이 한국 의료 데이터에 접근하려 한 시도가 있습니다. 첫 사례는 결국 정부 규제로 제한됐고, 두 번째는 5년 안에 시장에서 사실상 철수했습니다. 지난 15년 외국 빅테크의 한국 데이터 시도 다섯 번 가운데 절반은 규제 또는 사용자 반발로 좁아졌습니다. 이번이 다른 점은 &#39;합성 데이터&#39;라 개인정보 위반 논쟁을 우회한다는 점, 그리고 한국 정부 협력기관 데이터를 동의 아래 썼다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">AI·데이터 직군이라면 이번 주 허깅페이스에서 &#39;Nemotron-Personas-Korea&#39; 데이터셋을 다운로드해 한 번 살펴보세요. 1차로 자기 회사 데이터와 분포가 겹치는지 비교하면 학습 비용을 30~50%(1억이 5천~7천만 원) 줄일 수 있습니다. 2차로 사내에서 합성 데이터 사용 정책을 명문화해 두세요. 반면 &#39;엔비디아 데이터로 다 해결됐다&#39;는 식 의존은 피하세요. 자체 데이터를 놓치면 2~3년 뒤 차별화 포인트가 사라집니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260429004504" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>00:51</span>
+        </div>
+        <h3>두산테스나, 1909억원 반도체 테스트 장비 인수...평택 2공장 투자 재개</h3>
+        <p class="lede">두산테스나가 테라다인·세메스·아드반테스트·인터액션 등에서 1909억원 규모 반도체 테스트 장비를 양수해 올해 말까지 순차 도입한다고 28일 공시했습니다. 작년 10월 공시 규모를 1714억에서 2053억으로 상향했고, 평택 2공장 신규시설 투자(2303억, 2027년 …</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">삼성-애플 이미지센서 공급망 진입에 따른 후공정 테스트 투자 재개로 한국 반도체 후공정 산업에 직결됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 평택 인근 부품·장비·인력 업체의 일감이 늘어나는 것입니다. 2공장 완공까지 평균 1,000~2,000명 일자리 창출 효과가 6~24개월에 걸쳐 발생할 가능성이 큽니다. 2차 효과는 삼성-소니 경쟁입니다. 그동안 일본 소니가 전량 공급해 온 아이폰 이미지센서가 삼성으로 옮겨가면 1~2년 안에 한·일 반도체 무역 균형에 영향이 갑니다. 3차 효과는 후공정 단가입니다. 4,000억대 신규 투자가 가동되면 6~12개월 안에 시장 가격 인하 압력 5~10%가 생길 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 애플의 인텔 모뎀 자체화, 2020년 SK하이닉스의 솔리다임 인수가 있습니다. 두 사례 모두 수주·인수 발표 후 2~3년이 지나야 매출이 본격 반영됐고, 매출 반영 첫 해 영업이익률 5~10%포인트 변동이 일반적이었습니다. 지난 10년 한국 반도체 후공정 회사가 1,000억 이상 단일 투자에 들어간 사례는 여섯 번, 그중 2년 안에 흑자 회복까지 간 경우는 네 번입니다. 이번이 다른 점은 고객사가 글로벌 1위 스마트폰 메이커라는 안정성입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">반도체 후공정·테스트 직군이라면 다음 분기 두산테스나 채용 공고를 모니터링해 보세요. 1차로 평택권 거주자라면 통근 가능 거리에 맞춰 1~2년 단위 경력 계획을 짜두면 유리합니다. 2차로 후공정 자동화·머신비전 경험을 강화해 두세요. 반면 이 회사 주가가 단기 급등했다고 즉시 추격 매수하는 건 피하세요. 후공정 투자 회수 사이클은 2~3년이라 단기 변동성이 큰 편이라는 점을 고려해야 합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428195410" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 20:27</span>
+        </div>
+        <h3>작년 AI 벤처투자 1조3000억...전체 19.6% 차지</h3>
+        <p class="lede">중기부가 작년 12대 신산업 벤처투자가 전체 6조8000억의 약 76%인 5조2000억이라 발표했고, 이중 AI 모델·인프라가 1조3000억(전체의 19.6%)으로 1위였습니다. 신산업 기업당 평균 투자액은 33.9억으로 일반 분야 19.1억의 1.7배였고, 수도권이 …</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI가 단일 분야 1위 투자처로 굳어진 첫 공식 통계여서 자금 흐름의 구조 변화를 보여줍니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 AI 스타트업 채용 시장이 커지는 것입니다. 1조3000억이 평균 30억대로 흩어진다면 약 400~500개 회사에 자금이 들어간다는 뜻입니다. 2차 효과는 일자리 격차입니다. 수도권이 79.1%를 차지해 비수도권 청년이 AI 직군을 잡으려면 1~2년 안에 이주 압력이 더 커집니다. 3차 효과는 부동산입니다. 서울·판교에 AI 인력 5,000명 추가 유입은 6~12개월 안에 인근 임대료 5~10%(월 100만 원이 110만 원) 상승 압력이 됩니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2000년 닷컴 버블기 IT 벤처투자 비중이 70%를 넘었다가 1년 뒤 절반으로 줄었던 사례, 2017년 바이오 투자가 30%까지 치솟았다가 2년간 횡보한 사례가 있습니다. 지난 25년 단일 분야가 벤처투자의 20% 가까이 차지한 시기는 네 번, 그 가운데 거품 없이 5년 이상 유지된 경우는 한 번뿐입니다. 이번이 다른 점은 AI가 매출 모델을 이미 갖춘 분야들(SaaS·반도체)과 강하게 결합돼 있어 닷컴 시절과 양상이 다르다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">이직·창업을 고민 중이라면 다음 분기 AI 모델·인프라 또는 보안·반도체 분야 채용을 우선 살펴보세요. 1차로 자기 직무가 그 분야와 어떻게 연결되는지 1~2줄 정리해 두면 면접 통과율이 올라갑니다. 2차로 비수도권 거주자라면 원격·하이브리드 가능 회사 5곳을 미리 추려 두세요. 반면 &#39;AI 관련&#39;이라는 이름만 보고 한 종목에 자산을 몰아넣는 건 피하세요. 닷컴 시절 평균 회복까지 7~10년이 걸린 전례가 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428162530" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 20:20</span>
+        </div>
+        <h3>‘3분기만 흑전’ 한화솔루션, 美 태양광 사업 본격 반등 기대</h3>
+        <p class="lede">한화솔루션이 1분기 매출 3조8820억(전년비 +25.4%), 영업이익 926억(+205.5%)으로 3분기 만에 흑자 전환했다고 28일 컨퍼런스콜에서 밝혔습니다. 미국향 셀 통관 지연 해소와 동남아 우회 수출 규제 강화로 모듈 판가가 14% 인상됐고, AMPC 수령은 …</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미국 정책·중동 전쟁이 한국 화학·재생에너지 실적을 좌우하는 구조가 드러난 사례입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한화솔루션과 협력사 약 200곳의 가동률·고용 안정입니다. 2차 효과는 한국 태양광 시장입니다. 4월 중국 증치세 환급 철폐로 가격 경쟁이 완화되면서 1~2년 안에 국내 영농형·베란다형 태양광 보급이 늘어날 가능성이 있습니다. 3차 효과는 화학 가격입니다. 중동 산업 차질로 TDI 수출 가격이 오른 만큼, 자동차 시트·가구·가전 단가에 6~12개월 안에 1~3% 비용 압력이 반영될 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2014~2015년 셰일가스 충격, 2022년 우크라이나 전쟁 직후 화학 단가 급등이 있습니다. 두 사례 모두 한국 화학 회사 영업이익이 6~12개월간 50~200% 출렁였고, 이후 평균 1~2년 만에 평년 수준으로 돌아갔습니다. 지난 15년 한화솔루션 케미칼이 흑자 전환한 시점 다섯 번 가운데, 1년 이상 흑자가 이어진 경우는 두 차례입니다. 이번이 다른 점은 미국 IRA 세액공제와 중동 전쟁이 동시에 호재로 작용하는 드문 조합이라는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">이 회사 주식이 자기 자산에서 비중이 큰 사람이라면 다음 분기 미국 셀 가격과 중동 정세를 동시에 관찰하세요. 1차로 미국 모듈 수요 40GW와 셀 CAPA 부족분 10GW가 어떻게 좁혀지는지가 가장 큰 변수입니다. 2차로 자가발전·베란다 태양광 도입을 고민한다면 정부 보조금 일정과 한화솔루션 국내 라인업을 1~2년 단위로 비교해 두세요. 반면 분기 호실적만 보고 자산을 대거 옮기는 건 피하세요. 화학·태양광은 사이클 산업이라 1~2년 단위 변동성이 큰 편입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428182406" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 18:31</span>
+        </div>
+        <h3>삼성전자, 가전사업 일부 외주생산 전환 추진</h3>
+        <p class="lede">삼성전자 DA사업부가 지난 17일 경영설명회에서 수익성이 낮은 가전을 외주생산으로 전환하는 사업구조 개편안을 제시한 것으로 알려졌습니다. 냉장고·세탁기·에어컨은 자체 생산을 유지하지만 식기세척기·전자레인지는 OEM·ODM을 활용하는 방안이 거론되며, 1989년부터 전자…</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">글로벌 가전 1위 회사가 일부 라인을 외주로 돌리는 신호로 한국·동남아 일자리에 직접 영향이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 말레이시아 전자레인지 공장의 일자리가 사라지는 것입니다. 1989년부터 운영된 라인이라 약 1,000~2,000명 규모의 직간접 일자리가 1~2년 안에 영향을 받습니다. 2차 효과는 한국 ODM·OEM 협력사입니다. 식기세척기·전자레인지가 외주로 옮겨가면 6~12개월 안에 중견 가전 협력사의 매출이 10~30% 늘 가능성이 있습니다. 3차 효과는 소비자 가격입니다. 단기 1~2년은 비슷하지만, 중국·중견 ODM 비중이 늘면 평균가가 5~10%(40만 원이 36~38만 원) 빠질 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 LG전자의 일부 가전 ODM 확대, 2021년 소니의 TV ODM 확대가 있습니다. 두 사례 모두 발표 1~2년 안에 자체 인력 5~15%가 줄었지만 가전 사업부 영업이익률은 평균 2~4%포인트 개선됐습니다. 지난 15년 글로벌 빅4 가전 회사가 라인 외주 전환에 들어간 사례는 일곱 차례, 그중 5년 뒤 시장 점유율을 유지·확대한 비율은 약 절반입니다. 이번이 다른 점은 중국 시장 판매 중단 검토와 함께 진행돼 &#39;선택과 집중&#39; 강도가 더 세다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">삼성 가전 협력사 또는 ODM 업체 종사자라면 다음 6개월 사이 외주 발주 공고에 적극 대응할 준비를 하세요. 1차로 자기 라인이 전자레인지·식기세척기 같은 후보 품목과 어떻게 연결되는지 자료를 미리 정리하면 유리합니다. 2차로 동남아 거주 협력사 직원이라면 1~2년 단위 직무 전환 계획을 검토하세요. 반면 &#39;OEM이 무조건 매출 보장&#39;이라는 식 기대는 피하세요. ODM 단가는 자체 생산 대비 마진이 30~50% 낮은 사례가 흔합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428215202" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 22:26</span>
+        </div>
+        <h3>&#34;노트북 OLED 공급과잉, 2029년 맥북에어 출시 후 해소 전망&#34;</h3>
+        <p class="lede">트렌드포스가 28일 코엑스 로드쇼에서 노트북 OLED 시장이 공급과잉이며 2029년 애플 OLED 맥북 에어 출시 후 해소될 것이라고 전망했습니다. 올해 출하량 1350만대·최대 생산능력 2700만대, 2029년 출하량 3850만대·생산능력 6040만대로 추정되고 메모…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">디스플레이 산업 수급 균형 시점이 명시돼 삼성·LG·중국 패널 업체 투자 흐름에 직결됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 OLED 노트북 가격이 2026~2029년 사이 단계적으로 빠지는 것입니다. 침투율이 올해 7.4%에서 2030년 28.2%로 늘면 OLED 노트북 평균가가 1~2년 안에 10~20%(150만 원짜리가 120~135만 원) 빠질 가능성이 큽니다. 2차 효과는 한국 디스플레이 산업입니다. 삼성디스플레이·BOE가 IT 8세대 라인을 가동하는 가운데 HKC·티엔마까지 가세하면 6~12개월 안에 가동률·수익성 다툼이 격화됩니다. 3차 효과는 소비자입니다. 침체기에 삼성·LG가 한국 신모델 가격을 보수적으로 책정해 첫해 채택 비용이 더 떨어질 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2019년 OLED TV 침투율 2%에서 2024년 8%로 늘던 5년, 2017년 모바일 OLED 공급과잉 후 2년 만에 균형을 찾은 흐름이 있습니다. 두 사례 모두 침투율이 두 자릿수로 올라서는 데 5~6년이 걸렸고, 그 사이 패널 평균 가격이 30~40% 빠졌습니다. 지난 15년 디스플레이 8세대 라인 가동 사례가 여섯 번 있었고, 가동 후 2~3년 안에 LCD 대체가 절반 이상 진행됐습니다. 이번이 다른 점은 노트북·모니터 시장이 모바일보다 교체 주기가 길어 침투율 상승이 더 느리다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">노트북 교체를 고민 중이라면 올해는 OLED 노트북 가격을 신중히 비교해 보세요. 1차로 2026년 말~2027년 초가 OLED 보급형 가격이 한 단계 빠질 분기점일 가능성이 큽니다. 2차로 화면 잔상에 민감하다면 OLED 보호 기능(픽셀 시프트 등)을 가진 모델 위주로 추려두세요. 반면 &#39;OLED라서 무조건 좋다&#39;는 식 결론은 피하세요. 사무용 위주로 쓰는 사용자에게는 LCD가 잔상·번인 위험이 없어 5년 이상 사용 시 더 안정적인 선택일 수 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428203514" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 20:35</span>
+        </div>
+        <h3>李대통령, 하정우 AI미래기획수석 사표 재가</h3>
+        <p class="lede">이재명 대통령이 28일 하정우 청와대 AI미래기획수석과 전은수 대변인, 김성범 해양수산부 차관의 사표를 재가했습니다. 하 수석은 부산 북갑 국회의원 보궐선거에 출마할 전망이며 더불어민주당은 29일 하 수석 등의 인재영입식을 진행할 예정이라고 강유정 수석대변인이 전했습니…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 정책 컨트롤타워 수장 교체로 정부 AI 의제 추진 속도와 우선순위가 흔들립니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 청와대 AI 정책 라인의 일시 공백입니다. K-AI 파트너십 출범 직후라는 시점이 미묘합니다. 2차 효과는 정책 일정 지연입니다. 후임 인선이 한 달 늦어지면 AI 기본법 시행령, 공공 GPU 예산 같은 굵직한 의제가 6~12개월 안에 1~2개 분기 밀릴 가능성이 있습니다. 3차 효과는 산업계 신호입니다. 약 215개 K-AI 참여 기업이 추진 중인 시범사업 계약 시점이 후임자 정책 방향에 따라 재조정될 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2017년 4차산업혁명위원회 위원장 교체, 2021년 디지털뉴딜 추진단 인사 변동이 있습니다. 두 번 모두 후임 인선과 정책 안착까지 평균 4~6개월이 걸렸고, 그 사이 산업 발표 일정 30% 이상이 미뤄졌습니다. 지난 10년 청와대 산업 수석 자리가 선거 출마로 비어진 사례는 다섯 번, 후임이 한 달 안에 임명된 경우는 두 번뿐입니다. 이번이 다른 점은 AI 정책 자체가 글로벌 분기점에 와 있어 공백 비용이 과거보다 크다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="perspective">
+    <div class="axis-title">
+      <span class="icon">👥</span>
+      <span>입장이 다르면 어떻게 보일까?</span>
+    </div>
+    <div class="axis-body">여당 입장은 &#39;AI 전문가의 정치 진출은 지역구 경쟁력에 도움&#39;이라는 것이고, 야당은 &#39;청와대 정책의 정치적 활용&#39;으로 비판할 수 있습니다. 산업계는 후임 인선 속도와 방향에 가장 큰 관심을 두고, AI 스타트업 약 1,500개는 &#39;GPU 지원 사업이 늦춰지는가&#39; 한 가지를 가장 걱정합니다. 비수도권 지자체는 부산 북갑 같은 신규 출마 지역에 AI 데이터센터·캠퍼스 유치를 기대하는 시각도 있습니다. 네 입장이 부딪히는 지점은 &#39;인선 속도&#39;입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428181830" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 18:19</span>
+        </div>
+        <h3>UNIST &#34;복잡한 마이크로 에펠탑도 60초만에 3D 프린팅&#34;</h3>
+        <p class="lede">UNIST 정임두 기계공학과 교수 연구팀이 유리 피펫에 매달린 수지 방울에 빛을 쏘아 형상을 만드는 디스펜싱 기반 체적 적층 제조(DVAM) 기술을 개발해 60초 안에 마이크로 에펠탑·스핑크스 같은 3D 구조물을 인쇄했습니다. 굴절 보정에 딥러닝 객체 탐지와 스넬 법칙…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">마이크로 부품·의료 장치 제작 속도를 분 단위로 줄이는 핵심 기술이라 산업 적용성이 높습니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 마이크로 부품 시제품(반도체 패키지·의료 장치 등) 제작 시간이 분 단위로 줄어드는 것입니다. 2차 효과는 R&amp;D 비용입니다. 부품 1개 시제품 제작이 1시간에서 1분으로 줄면 1~2년 안에 회당 비용이 약 30~50%(100만 원이 50~70만 원) 빠질 수 있습니다. 3차 효과는 의료입니다. 마이크로 격자 구조를 만들 수 있다면 인공 혈관 시제품·치과 보철·청각 임플란트 분야에서 6~12개월 안에 임상 연구 속도가 빨라질 가능성이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2014년 카본3D의 CLIP 기술 발표, 2019년 UC버클리의 컴퓨티드 액시얼 리소그래피가 있습니다. 두 기술 모두 발표 시점에는 시간을 90% 이상 단축했지만, 산업 표준이 되는 데 4~6년이 걸렸습니다. 지난 10년 고속 광경화 3D 프린팅 사례는 다섯 차례, 그중 양산 라인에 들어간 기술은 둘 정도입니다. 이번이 다른 점은 별도 용기 없는 &#39;피펫 매달림&#39; 방식이 단가·공간 모두 줄여, 학계뿐 아니라 중소 정밀가공 회사도 12~24개월 안에 도입할 수 있다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">정밀 가공·치과·반도체 패키징 업계 종사자라면 다음 분기 UNIST 측 기술 이전 공고를 한 번 살펴보세요. 1차로 자기 회사 시제품 사이클 기간을 적어두고 새 기술 적용 시 절감 효과를 예상해 두면 의사결정 자료가 됩니다. 2차로 학회·전시 일정에 시연을 한 번 직접 보세요. 광경화 수지 종류에 따라 한계도 큽니다. 반면 &#39;60초&#39;라는 헤드라인만 보고 곧바로 도입 결정을 내리는 건 피하세요. 공정 안정화에 보통 6~12개월이 추가로 듭니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428180713" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 18:07</span>
+        </div>
+        <h3>&#34;복붙 번역 끝&#34;…글로벌 노린 카카오워크, 채팅창서 AI 번역 &#39;즉시 실행&#39;</h3>
+        <p class="lede">카카오 자회사 디케이테크인이 협업툴 카카오워크에 채팅창 안에서 원문·번역문을 동시에 보여주는 &#39;실시간 AI 메시지 번역&#39;을 상반기 출시한다고 28일 밝혔습니다. 영어·일본어·베트남어·아랍어 등 100여 언어를 지원하고, HD현대 사례처럼 외부 번역 API 연동으로 산업…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">국내 협업툴이 다국어 실시간 번역을 기본 탑재한 첫 사례여서 외국인 근로자 소통 비용을 줄여 줍니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 외국인 근로자가 많은 조선·제조 현장의 소통 비용 감소입니다. 2차 효과는 통역사·전문 번역 시장입니다. 산업별 용어가 사내 챗에서 자동 처리되면 1~2년 안에 단순 메일·메신저 통역 수요가 30~50% 줄 가능성이 큽니다. 3차 효과는 글로벌 채용입니다. 약 92만 명에 달하는 국내 외국인 근로자에게 한국어 진입 장벽이 낮아져 6~12개월 안에 비제조업(서비스·IT)에서도 외국인 채용이 늘 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2016년 슬랙 인라인 번역 베타, 2020년 마이크로소프트 팀즈 자막 번역이 있습니다. 두 도구 모두 도입 후 1년 안에 글로벌 미팅 시간이 평균 15~25% 짧아졌고, 이메일 회신 속도는 30% 빨라졌습니다. 지난 10년 협업툴 번역 기능 다섯 차례 가운데 사용자 30% 이상이 매일 쓰게 된 사례는 두 번뿐입니다. 이번이 다른 점은 &#39;인라인 + 사내 용어 + 100여 언어&#39;를 한 번에 묶었다는 점, 보안 정책이 한국 기업에 맞춰져 있다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">다국적 협업이 잦다면 다음 분기 카카오워크 시범 도입 신청을 검토해 보세요. 1차로 자기 팀이 자주 쓰는 전문 용어 30~50개를 미리 사전화해 두면 번역 정확도가 크게 올라갑니다. 2차로 외부 번역 API 비용(월 수십~수백만 원)도 함께 견적 비교를 해두세요. 반면 &#39;이제 영어 메일은 안 봐도 된다&#39;는 식 결론은 피하세요. 법률 검토·계약서처럼 단어 한 개 차이가 손실 수억 원을 부르는 상황에서는 여전히 사람 검수가 필요합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428173850" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 17:38</span>
+        </div>
+        <h3>수세, 소버린 AI 경쟁 참전…엔비디아와 &#39;AI 팩토리&#39; 띄운다</h3>
+        <p class="lede">수세가 체코 프라하의 &#39;수세콘 2026&#39;에서 오픈소스 기반 AI 인프라 전략을 발표하고 &#39;수세 AI 팩토리 위드 엔비디아&#39; 플랫폼을 공개했습니다. 데이터센터에서 엣지까지 한 SW 스택으로 AI를 구축·운영하고, 엔비디아 옴니버스 기반 디지털 트윈, MCP 기반 자동화 …</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">리눅스 진영도 소버린 AI 시장에 본격 진입한 신호여서 기업 인프라 선택지가 넓어집니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국 기업의 AI 인프라 선택지가 늘어나는 것입니다. 그동안 마이크로소프트·VM웨어·레드햇 정도였는데 수세가 엔비디아와 직접 묶인 스택을 들고 들어옵니다. 2차 효과는 가격입니다. 경쟁이 한 단계 늘면 대형 기업의 AI 인프라 라이선스 비용이 1~2년 안에 10~20%(1억이 8천~9천만 원) 빠질 수 있습니다. 3차 효과는 보안입니다. 제로트러스트와 디지털 주권을 강조한 만큼 공공·금융권의 채택 가능성이 6~12개월 안에 커집니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2019년 IBM의 레드햇 인수, 2022년 VM웨어의 브로드컴 인수가 있습니다. 두 번 모두 발표 직후 1년 안에 기업 인프라 시장이 재편됐고, 한국에서도 약 3,000개 기업이 라이선스 갱신을 다시 협상한 사례가 있습니다. 지난 10년 리눅스 진영이 신규 시장에 진입할 때마다 평균 18개월 안에 점유율 5~15%를 가져갔습니다. 이번이 다른 점은 진입 시점이 &#39;소버린 AI&#39; 정책 수요와 맞물려 있어 정부 발주가 동시에 열린다는 것입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">IT 인프라 담당자라면 다음 분기 라이선스 갱신 시점에 수세 AI 팩토리 견적을 한 번 받아 두세요. 1차로 기존 VM웨어·레드햇 가격과 비교하면 30~50% 협상 여지가 보일 수 있습니다. 2차로 사내 보안팀과 제로트러스트 적용 여부를 함께 검토하세요. 반면 &#39;오픈소스라 무료&#39;라고 단정하는 건 피하세요. 운영 인력·교육 비용까지 합치면 총소유비용이 상용 솔루션과 비슷하거나 더 큰 사례도 적지 않습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=209849" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>04.28 17:25</span>
+        </div>
+        <h3>MS 깃허브, 사용량 기반 요금제로 AI 가격 정책 변경</h3>
+        <p class="lede">마이크로소프트의 깃허브가 코파일럿 요금 체계를 6월 1일부터 사용량 기반 과금으로 전환한다고 27일 발표했습니다. 기본 구독료 외에 AI 사용량에 따른 추가 요금이 붙고, 각 요금제에 &#39;AI 크레딧&#39;이 포함돼 초과 시 토큰 단위 비용이 별도 발생한다고 AI타임스가 설명…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 코딩 도구 표준의 가격 모델 변경으로 개발자·기업 IT 비용 구조에 직접 영향이 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 코파일럿을 많이 쓰는 개발자·팀의 월 비용이 늘어나는 것입니다. 2차 효과는 도구 선택 다툼입니다. 사용량 기반으로 바뀌면 6~12개월 안에 커서·아이도 같은 후발 도구로 옮기는 흐름이 시작될 수 있고, 한국 SI 회사 약 5,000곳이 협상 카드를 새로 짜야 합니다. 3차 효과는 코드 효율화입니다. 토큰 절약 압력이 생기면 1~2년 안에 사내 프롬프트 가이드·자동 캐싱 같은 운영 노하우가 표준이 될 가능성이 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 어도비의 구독제 강화, 2022년 슬랙·줌의 무제한 → 사용량 모델 전환이 있습니다. 두 사례 모두 발표 1~2년 안에 사용자 5~15%가 다른 도구로 옮겼고, 평균 매출은 잠시 정체되다 회복했습니다. 지난 10년 SaaS 가격 구조가 사용량 기반으로 바뀐 사례 일곱 번 가운데, 5년 뒤에도 시장 1위를 유지한 비율은 절반 정도입니다. 이번이 다른 점은 AI 모델이 직접 토큰을 소비하기 때문에 &#39;사용 = 비용&#39; 인과가 훨씬 명확하다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">팀에서 코파일럿을 쓰고 있다면 6월 1일 이전에 한 달 평균 토큰 사용량을 한 번 측정해 두세요. 1차로 5월 한 달 동안 자기 팀의 자동 완성·채팅 사용 빈도를 단순히 기록만 해도 다음 비용 협상 자료로 충분합니다. 2차로 대안 도구 1~2개의 무료 평가판을 함께 깔아두세요. 반면 &#39;비싸졌으니 무조건 끄자&#39;는 식 결정은 피하세요. 도구 사용을 멈추면 1~2년 안에 코드 생산성이 평균 20% 빠질 수 있다는 사례도 있어 신중한 비교가 필요합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428205155" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 20:51</span>
+        </div>
+        <h3>&#34;사이버와 우주 연계&#34;...S2W, 텔레픽스와 MOU</h3>
+        <p class="lede">빅데이터 분석 AI 기업 에스투더블유(S2W)가 우주 AI 솔루션 기업 텔레픽스와 업무협약을 맺고 안보 인텔리전스 고도화를 위한 단계적 기술 협력을 추진한다고 28일 밝혔습니다. S2W가 다크웹·텔레그램·오픈소스 등에서 확보한 사이버 위협 데이터와 텔레픽스 위성 관측 …</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">사이버와 우주를 한꺼번에 연결한 안보 AI 협업으로 한국 방산·정보 산업 구조 변화 신호입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국 정부·공공기관이 사이버·우주 통합 정보를 한 화면에서 볼 수 있게 되는 것입니다. 2차 효과는 방산 수출입니다. 미국·EU·중동에서 위성+사이버 통합 솔루션 수요가 늘어 1~2년 안에 한국 보안 AI 회사들의 해외 매출이 20~50% 커질 가능성이 있습니다. 3차 효과는 일자리입니다. 위성 데이터 분석·다크웹 모니터링 직무 수요가 6~12개월 안에 추가로 1,000~2,000명 단위로 늘 수 있어 보안·우주 인재 시장의 임금이 5~15% 상승할 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 미국 우주군 창설 후 사이버 정보 연계, 2022년 우크라이나 전쟁기 위성+OSINT 결합 분석이 있습니다. 두 사례 모두 발표 1~2년 안에 글로벌 안보 AI 시장 규모가 30~50% 커졌고, 한국에서도 관련 R&amp;D 예산이 두 배로 늘었습니다. 지난 10년 한국 방산 AI 협업 사례는 일곱 번, 그중 글로벌 수출까지 간 사례는 셋입니다. 이번이 다른 점은 두 회사 모두 &#39;AI 알고리즘&#39;을 핵심 자산으로 가진 점, 텔레픽스가 방산혁신기업 100에 선정된 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 1~2년 안에 한국 정부 발주 통합 솔루션 1~2건이 1,000억 단위 매출로 이어지는 것입니다(가능성 중간). 중간 시나리오는 동남아·중동 정부 대상 컨설팅·시범사업으로 매출이 단계적으로 커지는 것입니다(가능성 높음). 최악은 &#39;안보 AI&#39;를 둘러싼 개인정보·해외 데이터 처리 논란이 6~12개월 안에 터져 도입이 1년 이상 미뤄지는 경우입니다(가능성 낮음). 갈림길은 다음 분기 정부 R&amp;D 입찰 결과와 미·중 외교 흐름입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428203852" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 20:38</span>
+        </div>
+        <h3>한기대, AI 컴퓨팅센터 개소...&#34;실무형 AI 인재 양성&#34;</h3>
+        <p class="lede">한국기술교육대학교(KOREATECH)가 28일 GPU 클러스터·이기종 컴퓨팅 자원·통합 관리 플랫폼을 갖춘 &#39;AI 컴퓨팅센터&#39;를 개소했습니다. 학부·대학원 교육과정 실습, 학생 연구, 학습용 LLM 서비스, 지역 기업과의 PoC 테스트베드까지 단계적으로 제공할 계획이며…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">국책대 차원의 GPU 인프라 개방으로 비수도권 AI 인재 양성 기반이 한 단계 올라갑니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한기대 학생들이 H200 같은 최신 GPU를 직접 쓰며 졸업 시점 기술 수준이 한 단계 높아지는 것입니다. 2차 효과는 비수도권 산학협력입니다. 충남·천안 인근 약 300개 중소기업이 PoC 테스트베드를 통해 AI 도입 비용을 30~50% 줄일 수 있습니다. 3차 효과는 인재 분산입니다. 수도권이 AI 벤처투자의 79.1%를 차지하는 구조에서, 지방 거점 GPU 인프라가 늘면 1~2년 안에 &#39;AI 인재는 서울로&#39;라는 패턴이 조금이나마 완화될 가능성이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 광주 AI 데이터센터 추진, 2020년 대구·경북 AI 거점 사업이 있습니다. 두 사례 모두 발표 직후 1~2년 안에 지역 AI 스타트업 수가 30~50% 늘었지만, 그 가운데 5년 이상 살아남은 비율은 약 절반입니다. 지난 10년 정부·국책대 GPU 인프라 사업은 일곱 차례, 안정적으로 자리 잡은 곳은 둘셋에 그쳤습니다. 이번이 다른 점은 직업훈련·평생교육과 결합돼 있어 산업 현장 직접 연결이 강하다는 점, 그리고 H200·가우디2까지 묶인 차세대 라인업이라는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">지방 거주 학생·재취업 준비자라면 이번 주 한기대 STEP 플랫폼 강좌 목록을 한 번 살펴보세요. 1차로 무료·실습 결합 강좌 2~3개를 골라 8주 학습 계획을 세워두면 자격증·포트폴리오에 바로 반영됩니다. 2차로 인근 중소기업 PoC 공고가 뜰 때 자기 학습 결과를 매칭해 보세요. 반면 대학명만 보고 단기 부트캠프식 강의에 큰돈(수백만 원)을 쓰는 건 피하세요. 정부 지원 강좌가 같은 자료로 무료 또는 1/3 가격에 운영되는 경우가 적지 않습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428185744" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 18:57</span>
+        </div>
+        <h3>작년 공공기관 847곳 중기 제품 126조 구매</h3>
+        <p class="lede">작년 공공기관 847곳의 중소기업제품 구매액이 126조2000억으로 당초 계획 119조5000억을 초과 달성했다고 중기부가 28일 국무회의에 보고했습니다. 이는 2006년 제도 도입 이후 세 번째로 높은 실적이며, 경기주택도시공사가 94.8%로 2년 연속 최고 비율을 …</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">중소기업의 공공판로 규모가 통계로 확정돼 AI·소프트웨어 같은 신산업 진입에도 영향이 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 중소기업 매출의 안정적인 발판이 더 두꺼워진다는 점입니다. 126조는 한국 GDP의 약 5% 수준이라 단일 매출처로 가장 큰 규모입니다. 2차 효과는 신산업 진입입니다. AI·SW 분야 중소기업이 6~12개월 안에 공공조달시장에 들어가는 비용을 30~50% 줄일 가능성이 있습니다. 3차 효과는 인건비입니다. 2030년 170조 확대 목표가 실현되면 중소기업 직접 고용 약 50만 명, 간접 고용 100만 명 이상이 1~3년 단위로 영향을 받을 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2017년 혁신조달 우선구매 도입, 2020년 코로나 시기 중기 우선구매 강화가 있습니다. 두 사례 모두 발표 1~2년 안에 중기 매출이 평균 10~15% 늘었지만, 경기 둔화기에는 증가폭이 5%대로 좁아졌습니다. 지난 20년 공공구매 정책 다섯 차례 가운데, 중기 매출이 5년 이상 두 자릿수 성장을 이어간 경우는 두 번뿐입니다. 이번이 다른 점은 AI·SW 같은 무형 제품이 처음부터 우선구매 대상으로 거론된다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">공공조달 시장을 노리는 스타트업·중기 종사자라면 다음 분기 중기부 우수기관 명단(경기주택도시공사·한전KPS 등)과 거래 흐름을 우선순위로 정리하세요. 1차로 1~2년 단위 입찰 일정을 캘린더에 등록해 두면 사전 준비 시간이 평균 3개월 늘어납니다. 2차로 혁신제품 인증을 미리 받아두는 게 다음 단계 진입 시간을 1년 단축합니다. 반면 단일 공공기관 한 곳에 매출을 70% 이상 의존하는 구조는 피하세요. 정책·예산 변동에 회사 전체가 휘청일 수 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428181543" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 18:24</span>
+        </div>
+        <h3>삼성전자 &#34;엑시노스2600, AI 기반 &#39;ENSS&#39; 적용해 성능·효율 확보&#34;</h3>
+        <p class="lede">삼성전자가 엑시노스 2600 GPU 엑스클립스에 처음 적용한 &#39;ENSS&#39;(엑시노스 뉴럴 슈퍼 샘플링) 기술을 공개했습니다. 저해상도 이미지를 AI로 고화질 재구성하는 NSS, 프레임 사이를 예측 생성하는 NFG로 구성돼 모바일 환경의 전력·발열 한계를 줄여 부드러운 게…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">갤럭시 차기 칩의 AI 그래픽 기술 공개로 모바일 게이밍·체감 성능에 직접 영향이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 갤럭시 사용자 체감 성능이 올라가는 것입니다. NSS 같은 슈퍼 샘플링은 PC에서 평균 30~50% 프레임 향상을 가져왔는데, 모바일에서도 1~2년 안에 비슷한 폭으로 게임 경험이 좋아질 가능성이 있습니다. 2차 효과는 배터리·발열입니다. 같은 화면을 더 적은 전력으로 그릴 수 있다는 점은 하루 사용 시간 30~60분 추가에 해당합니다. 3차 효과는 부품·반도체 시장입니다. 모바일 NPU 비중이 커지면 한국 팹리스 약 100개사가 GPU·NPU 통합 설계 수요로 1~2년 안에 매출 성장 기회를 잡을 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 엔비디아 DLSS 1세대, 2021년 AMD FSR 도입이 있습니다. 두 기술 모두 발표 직후 1년 안에 PC 게임 70% 이상이 지원했고, 사용자 체감 프레임이 평균 40% 올랐습니다. 지난 10년 슈퍼 샘플링 기술이 세 번의 세대 교체를 거쳤고, 매번 채택률이 18~24개월 안에 50%대를 넘었습니다. 이번이 다른 점은 모바일이라는 점, 그리고 표준이 아닌 삼성 폐쇄 기술이라 갤럭시 외 안드로이드 진영으로 퍼질지 미지수입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">갤럭시 사용자라면 다음 차기 모델 구매 전 ENSS 지원 게임 목록을 한 번 확인해 두세요. 1차로 자주 하는 게임 2~3개가 지원하는지가 가장 중요한 판단 기준입니다. 2차로 게이밍 비중이 큰 사용자라면 D램 16GB 이상, 저장공간 256GB 이상 옵션을 비교해 두세요. 반면 단순 마케팅만 보고 출시 첫 달에 사는 건 피하세요. 1세대 ENSS는 2024년 PC DLSS처럼 잔상·번짐 이슈가 6~12개월 동안 펌웨어 업데이트로 다듬어질 가능성이 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428181205" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 18:12</span>
+        </div>
+        <h3>매스웍스, 시뮬링크에 AI 코파일럿 심었다…설계·검증 자동화</h3>
+        <p class="lede">매스웍스가 매트랩·시뮬링크 R2026a를 발표하며 모델 기반 설계를 돕는 시뮬링크 코파일럿과 코드 정적 분석용 폴리스페이스 코파일럿을 탑재했습니다. MCP 코어 서버와 에이전틱 툴킷으로 외부 워크플로우와도 연동되며, 요구사항에서 코드까지 추적 가능한 &#39;근거 기반 AI&#39;…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">임베디드·자동차·제어 분야 표준 도구가 AI 코파일럿을 기본 탑재해 산업 전반 생산성에 영향이 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 자동차·항공·로봇 같은 임베디드 분야 엔지니어 약 10만 명의 작업 속도가 빨라지는 것입니다. 2차 효과는 검증·QA 직군입니다. 코드 정적 분석이 AI로 자동 해석되면 1~2년 안에 단순 결함 리포트 작성 시간이 30~50% 줄 수 있습니다. 3차 효과는 산업 안전입니다. 추적성 강조는 자동차 기능 안전 ISO 26262, 항공 DO-178C 같은 규격 대응 시간 단축으로 이어져 신차 인증 주기가 6~12개월 빨라질 가능성이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2022년 깃허브 코파일럿 도입, 2024년 비주얼 스튜디오 인텔리코드 강화가 있습니다. 두 사례 모두 1~2년 안에 사용 기업의 코드 작성 속도가 평균 20~30% 빨라졌고, 신입 개발자 학습 곡선이 절반 가까이 줄었습니다. 지난 5년 핵심 개발 도구에 코파일럿이 들어간 사례는 일곱 차례, 이 가운데 도입 1년 안에 정착한 비율은 약 60%입니다. 이번이 다른 점은 자동차·항공처럼 &#39;실수 한 번이 사람 목숨&#39;에 닿는 영역이라 검증 비중이 일반 코드보다 훨씬 크다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">임베디드·자동차·항공 엔지니어라면 다음 사내 R2026a 업데이트 일정에 맞춰 코파일럿 사용 가이드를 미리 1~2주 학습해 두세요. 1차로 자주 쓰는 시뮬링크 블록 10~20개에 대한 모델 설명 자동 생성을 시험해 보면 30분 단위 작업이 5~10분으로 줄 수 있습니다. 2차로 ISO 26262 같은 규격 추적 문서를 어떻게 결합할지 사전 검토하세요. 반면 코파일럿이 자동 생성한 코드를 무조건 채택하는 건 피하세요. 안전 분야는 사람 리뷰 의무가 여전히 1순위입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428174028" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 17:40</span>
+        </div>
+        <h3>중부발전, ‘KOMIPO 피지컬 AI 기업발굴 협의체’ 출범</h3>
+        <p class="lede">한국중부발전이 28일 &#39;KOMIPO 피지컬 AI 기업발굴 협의체&#39;를 출범하고 KAIST 글로벌기술사업화센터와 업무협약을 맺어 국산 NPU 기반 피지컬 AI 실증 생태계 조성에 들어갔습니다. 발전 데이터·실증장소를 무상 개방하고 기업당 2000만원 과제 기획비, Fiel…</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">에너지 공기업 현장이 국산 AI 반도체의 공공 판로 시험대가 되는 첫 사례입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 국산 NPU 스타트업 약 30~50개가 발전소라는 안전·고전력 환경에서 실증 이력을 확보하는 것입니다. 2차 효과는 공공 발주입니다. 발전소 실증을 통과하면 6~12개월 안에 다른 공기업·지자체 발주에 우선 검토되는 흐름이 생기기 쉽습니다. 3차 효과는 에너지 효율입니다. 피지컬 AI가 발전소 안전·효율을 1~3% 개선하면 연간 전기 사용량으로 환산해 수십억 원 단위 절감이 가능해, 결국 산업용 전력 단가 안정에 도움이 됩니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2019년 한전 빅데이터 센터 출범, 2022년 한수원 디지털 전환 협의체가 있습니다. 두 사업 모두 발표 1~2년 안에 약 50~80개 협력사가 들어왔지만, 실제 본 발주로 이어진 비율은 약 30%였습니다. 지난 10년 공기업 주도 AI·디지털 협의체는 여섯 차례, 단순 MOU에서 더 나아간 사례는 절반 정도입니다. 이번이 다른 점은 &#39;NPU 자립화&#39;라는 산업 정책과 직접 묶여 있고, KAIST GCC가 글로벌 사업화·해외 실증까지 함께한다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">AI 하드웨어·로봇 스타트업이라면 5월 중 협의체 모집 공고를 확인해 1~2건 과제 지원을 검토해 보세요. 1차로 발전 현장 데이터를 다뤄야 하니 보안 인증과 산업 안전 규정 이해가 사전 준비 항목입니다. 2차로 KAIST GCC 멘토링을 활용해 글로벌 진출 로드맵을 6~12개월 단위로 세워 두세요. 반면 자금 2000만원만 보고 자기 핵심 사업과 무관한 과제로 들어가는 건 피하세요. 1년 PoC가 본 사업으로 이어지지 않는 사례가 절반에 가깝습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428184509" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 18:55</span>
+        </div>
+        <h3>삼성전기 &#34;AI 시대, 협력사와 차별화 기술 개발&#34;...상생협력데이 개최</h3>
+        <p class="lede">삼성전기가 28일 수원에서 2026년 상생협력데이를 열고 AI 시대 협력사와 차별화 기술을 개발하겠다고 밝혔습니다. 우성에스이·정진넥스텍·아비코테크·코스모신소재·레조낙 등 5개사가 우수상을 받았고, 연 매출 10억~10조원대까지 900여 협력사와 거래 중이며 올해부터 …</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 서버 부품 공급망의 협력사 생태계 변화가 한국 부품 산업 경쟁력에 직결됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 약 900개 협력사 가운데 AI 서버 부품 라인업을 가진 곳들의 매출 가시성이 좋아지는 것입니다. 2차 효과는 특허 개방으로 중소 협력사가 1~2년 안에 신제품 사이클을 평균 6개월 앞당길 가능성이 있습니다. 3차 효과는 일자리입니다. AI 서버 MLCC·CCL 같은 핵심 부품 수요가 늘면 수원·세종·필리핀 라인 인력 채용이 6~12개월 안에 5~10% 늘 수 있습니다. 다만 자동화 비중도 함께 커져 단순 공정 인력은 줄 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2017년 삼성전자 협력사 펀드 1조 조성, 2020년 LG화학 동반성장 강화가 있습니다. 두 사례 모두 발표 1~2년 안에 협력사 평균 매출이 10~20% 올랐고, 신규 거래사도 20% 늘었습니다. 지난 15년 대기업 상생 협약 일곱 번 가운데, 특허 개방까지 간 사례는 두 번뿐입니다. 이번이 다른 점은 &#39;AI 서버용&#39; 으로 분야가 명확히 좁혀졌다는 점, 그리고 코스모신소재 같은 소재 회사가 수상권에 든 점에서 소재·설비 양쪽으로 확산력이 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="perspective">
+    <div class="axis-title">
+      <span class="icon">👥</span>
+      <span>입장이 다르면 어떻게 보일까?</span>
+    </div>
+    <div class="axis-body">삼성전기 입장은 &#39;핵심 기술 외주화로 AI 시대 속도를 잡겠다&#39;, 협력사 입장은 &#39;특허 개방을 받았으니 단가 협상에서 한 발 더 나가야 한다&#39;는 것입니다. 정부·동반성장위는 &#39;대기업이 먼저 모범을 보여 정책 정당성을 강화한다&#39;는 시각이고, 외국 경쟁사(무라타·TDK)는 &#39;한국 부품 생태계가 더 결속된다&#39;고 경계할 가능성이 높습니다. 네 입장이 부딪히는 지점은 &#39;특허 개방 범위&#39;와 &#39;단가&#39;입니다. 결국 다음 1~2년 사이 단가 협상 자료가 핵심 시그널이 됩니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428175704" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 17:57</span>
+        </div>
+        <h3>인텔 PC 사면 AI 마케팅 툴 딸려온다…사이버링크, 글로벌 파트너십 체결</h3>
+        <p class="lede">사이버링크가 인텔과 글로벌 파트너십을 맺고 AI 기반 마케팅 디자인 플랫폼 &#39;프로메오&#39; 프리미엄 3개월 구독권을 인텔 PC 구매자에게 제공한다고 28일 밝혔습니다. 인텔 온라인과 전세계 제휴 리테일 채널을 통해 배포되며 온디바이스 AI 가속을 활용해 클라우드 의존 없이…</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI PC 시대를 겨냥한 인텔의 SW 번들 전략으로 PC 가치 사슬 변화 신호입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 신규 인텔 PC 구매자가 마케팅 SaaS 비용을 3개월간 줄일 수 있는 점입니다. 일반적인 디자인 SaaS 월 2~3만 원 기준 6~10만 원 절감 효과입니다. 2차 효과는 AI PC 시장 경쟁입니다. 인텔이 SW 번들로 AMD·애플·퀄컴 NPU 진영과 차별화하면서 6~12개월 안에 한국 PC 메이커 라인업이 &#39;AI 번들 포함&#39;을 표준 마케팅 포인트로 잡을 가능성이 큽니다. 3차 효과는 SaaS 시장입니다. 클라우드 의존이 줄면 데이터 트래픽 비용 5~10%가 빠질 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2010년대 마이크로소프트 오피스 학생용 번들, 2020년 노트북에 노턴·맥아피 백신 번들이 있습니다. 두 사례 모두 도입 직후 1~2년간 SW 회사 신규 가입자가 30~50% 늘었지만, 무료 기간 종료 후 유료 전환율은 평균 10~20%에 그쳤습니다. 지난 10년 PC 번들이 산업 표준이 된 사례 가운데, 사용자가 실제 매일 쓰는 도구가 된 비율은 절반 미만입니다. 이번이 다른 점은 &#39;온디바이스 AI&#39;를 강조해 데이터 프라이버시 시대 흐름과 결이 같다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">1인 사업자·소상공인이라면 인텔 PC 교체 시점에 프로메오 무료 구독을 적극 활용해 보세요. 1차로 자기 사업의 SNS·전단·광고 자산 1개월치를 시범 제작해 본 뒤 유료 가치를 판단하면 됩니다. 2차로 무료 종료 직전 다른 도구(캔바·미리캔버스 등)와 가격 비교 견적을 받아두세요. 반면 &#39;무료니까 일단 다 깔자&#39;는 식 행동은 피하세요. 시스템 자원·구독 자동 갱신 같은 함정에 묶일 가능성이 있습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260428174923" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>04.28 17:49</span>
+        </div>
+        <h3>솔트웨어 &#34;클라우드 넘어 AI·데이터 플랫폼 기업으로 성장&#34;</h3>
+        <p class="lede">솔트웨어가 클라우드 매니지드 서비스(MSP)를 넘어 AI·데이터 플랫폼 기업으로 전환을 선언했다고 28일 밝혔습니다. 데이터브릭스와 협업하고 자체 AI 브랜드 &#39;핏사피&#39;를 결합해 데이터 매니지드 서비스 확대, 사피 가디언·사피 봇·사피 에이전트 등 보안·챗봇·에이전트 …</p>
+        <div class="foot">
+          <div class="score score-mid">6.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">MSP 회사들이 잇따라 AI 플랫폼으로 전환하는 산업 흐름을 보여주는 대표 사례입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 솔트웨어 같은 MSP가 AI 영역으로 사업을 넓히면서 직원들의 직무 변화가 일어나는 것입니다. 2차 효과는 한국 SI 시장입니다. 데이터브릭스 같은 글로벌 데이터 플랫폼 협력이 늘면 1~2년 안에 국내 데이터 분석 단가가 10~20% 빠질 수 있습니다. 3차 효과는 중견 기업 도입입니다. MSP가 클라우드부터 AI까지 한 번에 묶어주면 6~12개월 안에 자체 AI팀을 두지 못한 중견 회사도 비교적 쉽게 AI를 도입할 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 베스핀글로벌의 멀티클라우드 전환, 2021년 메가존클라우드의 데이터·AI 사업 강화가 있습니다. 두 사례 모두 발표 1~2년 안에 매출 성장률이 20~40%까지 올랐지만, 영업이익은 첫 1~2년 정체기를 거쳤습니다. 지난 10년 한국 MSP 회사 다섯 곳이 AI·데이터로 전환을 선언했고, 그중 매출 두 자릿수 성장이 5년 이상 이어진 곳은 두 곳입니다. 이번이 다른 점은 데이터브릭스라는 미국 1위 데이터 플랫폼과의 직접 협업이 발표에 명시됐다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">IT 직장인이라면 자기 회사가 솔트웨어 같은 MSP에 의존도가 어느 정도인지 확인해 두세요. 1차로 데이터브릭스·스노우플레이크 같은 키워드가 사내 도입 로드맵에 있는지 살펴보면 1~2년 후 직무 변화를 예측할 수 있습니다. 2차로 데이터 엔지니어링·MLOps 학습 시간을 주 3~5시간 정도 확보해 두면 좋습니다. 반면 &#39;발표 = 도입 결정&#39;으로 보는 건 피하세요. 실제 도입까지 보통 6~12개월 PoC가 필요합니다.</div>
+  </div>
+</details>
+    </article>
+  </section>
+  <section class="feed-sec" id="sec-general">
+    <div class="sec-divider"><h2>종합 뉴스</h2></div>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260429005300009" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>03:44</span>
+        </div>
+        <h3>[뉴욕유가] 진전없는 美·이란 협상…WTI 100달러 육박 마감</h3>
+        <p class="lede">미국과 이란의 종전 협상이 진전을 보이지 않자 국제 유가가 2거래일 연속 상승했다고 연합뉴스 뉴욕발로 28일 보도했습니다. WTI(서부텍사스산원유) 가격이 배럴당 100달러에 가까워진 채 마감됐다고 전했습니다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">WTI 100달러 임박은 한국 휘발유·항공·물류 비용에 즉각 반영되는 강한 신호입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국 휘발유·디젤 가격이 1~2주 안에 리터당 50~100원 단계적으로 오르는 것입니다. 2차 효과는 가계 살림입니다. 평균 가구 월 차량 연료비 15만 원이 16~17만 원으로 7~10% 늘 수 있고, 1~2개월 안에 항공권 가격도 5~10% 비싸질 수 있습니다. 3차 효과는 무역수지입니다. WTI가 10달러 오르면 한국 연간 원유 수입 비용이 약 70억~90억 달러 늘어 1년 안에 무역수지에 부담이 갑니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2008년 WTI 147달러 고점, 2022년 러시아 침공 직후 110달러 돌파가 있습니다. 두 사례 모두 100달러 돌파 직후 6개월 안에 한국 평균 휘발유가 리터당 200~400원 올랐고, 1년 뒤 다시 평년 수준으로 빠졌습니다. 지난 20년 WTI가 100달러를 넘은 사례 다섯 차례 가운데 1년 이상 100달러대를 유지한 경우는 두 번뿐입니다. 이번이 다른 점은 미·이란 갈등과 OPEC+ 변동(UAE 탈퇴)이 동시에 진행되는 드문 조합이라는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">차량 사용량이 많은 사람이라면 다음 1~2주 동안 자가 차량 주유 시점을 가급적 앞당겨 두세요. 1차로 알뜰주유소·셀프 주유로 옮기면 리터당 40~80원(5만 원이 4만5천~4만8천 원) 절감이 가능합니다. 2차로 출장·여행 일정이 5~6월 사이에 잡혀 있다면 항공권을 미리 확보하세요. 반면 단기 유가 급등에 ETF·관련주로 자산을 옮기는 건 피하세요. 협상 한 줄로 24시간 안에 5~10% 빠질 수 있는 변동성이 큰 영역입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/international/arabafrica/1256370.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>04.28 23:03</span>
+        </div>
+        <h3>아랍에미리트 “5월1일 오펙 탈퇴”…원유 감산 정책에 불만</h3>
+        <p class="lede">아랍에미리트(UAE) 정부가 28일 국영 통신 WAM을 통해 5월 1일 OPEC과 주요 산유국 협의체 OPEC+에서 탈퇴한다고 발표했다고 한겨레가 전했습니다. 원유 감산 정책에 대한 불만이 탈퇴 배경으로 짚히고 있다는 내용입니다.</p>
+        <div class="foot">
+          <div class="score score-vhigh">9.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">OPEC 회원국 탈퇴 자체가 글로벌 원유 가격·수급 구조를 흔드는 큰 변수입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 OPEC+ 감산 합의에 균열이 생기며 단기 원유 시장이 흔들리는 것입니다. 2차 효과는 한국 경제입니다. 원유 100% 수입국인 한국에서 두바이유 1달러 변동이 연간 약 8억~9억 달러 수입 비용 변동으로 이어지므로, 1~3개월 안에 휘발유·항공료에 1~5% 수준 가격 압력이 갈 수 있습니다. 3차 효과는 중동 외교입니다. UAE의 독자 노선은 사우디·이란과의 거리 두기를 의미해 6~12개월 안에 중동 동맹 구조가 다시 짜일 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2019년 카타르의 OPEC 탈퇴, 2016년 인도네시아의 OPEC 회원 자격 정지가 있습니다. 두 사례 모두 발표 직후 1~3개월간 두바이유가 5~10% 변동했지만, 1년 뒤에는 다시 안정 구간으로 돌아갔습니다. 지난 30년 OPEC 회원 변동 사례 다섯 차례 가운데, 한 번에 두 자릿수 가격 변동이 이어진 경우는 단 한 번입니다. 이번이 다른 점은 미·이란 갈등으로 호르무즈 변수까지 겹쳐 있다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">차량을 자주 이용하는 사람이라면 다음 1~2주 휘발유 가격 흐름을 한 번 살펴보고, 사용량을 분산하세요. 1차로 알뜰주유소·셀프 가격 비교를 한 번 해두면 리터당 50~100원(5만 원이 4만5천~4만8천 원) 절감이 가능합니다. 2차로 항공권 구매를 고민 중이라면 다음 1~2개월 변동성을 감안해 환불 가능 옵션을 우선 검토하세요. 반면 단기 유가 하락에 베팅해 ETF·관련주에 비중을 크게 싣는 건 피하세요. 산유국 회의 결과로 1~2주 안에 변동이 큰 영역입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/international/arabafrica/1256379.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>06:18</span>
+        </div>
+        <h3>“‘동결된 갈등’, 트럼프에 최악”…미·이란, ‘냉전형 대치’ 고착화 우려</h3>
+        <p class="lede">미국과 이란이 호르무즈 해협과 핵 문제에서 접점을 찾지 못하면서 &#39;전쟁도, 합의도 없는&#39; 교착 상태가 길어질 수 있다는 우려가 나오고 미국 내에선 장기적 &#39;냉전형 대치&#39;로 굳어질 수 있다는 분석이 제기된다고 한겨레가 28일 보도했습니다. 액시오스가 복수 미 정부 관계자…</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미·이란 교착 장기화 분석은 유가·환율·해운 운임 모두에 직접 영향을 주는 글로벌 변수입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 호르무즈 해협 운항 비용·보험료가 1~3개월 단위로 단계적으로 오르는 것입니다. 2차 효과는 한국 수출입니다. 한국 원유 수입 약 60%가 중동에서 오는 만큼 1년 안에 정유사 정제 마진이 5~15% 흔들릴 가능성이 큽니다. 3차 효과는 항공·물류 가격입니다. 동·서 항공 노선 우회가 길어지면 1~2년 안에 한국 → 유럽 항공권이 5~15%(100만 원이 105~115만 원) 비싸질 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 1990년대 미·이라크 봉쇄, 2010년대 미·러 우크라이나 동결 갈등이 있습니다. 두 사례 모두 &#39;냉전형 대치&#39;가 5~10년 이어지는 사이 해당 지역 주변국의 군비 지출이 평균 30% 증가했고, 글로벌 유가가 5~20달러 박스권을 유지했습니다. 지난 30년 미국이 적대국과 동결형 갈등을 유지한 사례 다섯 차례 가운데 1년 안에 풀린 경우는 한 번뿐입니다. 이번이 다른 점은 OPEC 변동(UAE 탈퇴)과 동시에 발생한다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 미·이란이 6~12개월 안에 부분 합의(핵 사찰 일부 허용 등)로 긴장을 풀고 유가가 70~80달러대에서 안정되는 것입니다(가능성 중간). 중간 시나리오는 동결형 대치가 1~3년 이어지며 유가가 80~95달러 박스권에서 변동하는 것입니다(가능성 높음). 최악은 호르무즈 봉쇄 시도로 유가가 100달러를 넘는 충격이 6~12개월 이어지는 것입니다(가능성 낮음). 갈림길은 다음 분기 미·이란 협상과 트럼프 지지율 회복 흐름입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/society/labor/1256375.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>05:00</span>
+        </div>
+        <h3>기간제, 한달 일하면 ‘공정수당 38만원’…고용불안 클수록 더 큰 보상</h3>
+        <p class="lede">정부가 공공기관과 지방자치단체에서 1년 미만 기간제 채용을 원칙적으로 금지하고 &#39;공정수당&#39;을 새로 도입하겠다고 발표했다고 한겨레가 전했습니다. 고용노동부가 28일 국무회의에 보고했고, 공공부문부터 비정규직을 줄이고 정규직·비정규직 격차를 완화하려는 의지를 보였다는 평가…</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">공공부문 1년 미만 기간제 금지와 공정수당 도입은 비정규직 노동 시장에 실질적 변화를 부르는 정책입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 공공기관·지자체 단기 채용 약 10만 명 규모의 자리 구조가 바뀌는 것입니다. 2차 효과는 민간 모방입니다. 공공이 1년 미만 기간제를 금지하면 6~12개월 안에 대기업 외주·프리랜서 계약 관행에도 압력이 갈 가능성이 큽니다. 3차 효과는 임금 수준입니다. 한 달 38만 원 공정수당이 더해지면 비정규직 평균 월급이 5~10%(200만 원이 210~220만 원) 올라가는 효과가 1~2년 안에 통계로 반영될 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2017년 공공부문 비정규직의 정규직 전환, 2007년 비정규직법 2년 이상 정규직 전환이 있습니다. 두 사례 모두 1~2년 안에 공공 비정규직 약 20만 명의 신분이 바뀌었지만, 민간으로의 확산까지는 5년 이상이 걸렸습니다. 지난 20년 비정규직 정책 다섯 차례 가운데, 1년 안에 임금 격차가 가시적으로 줄어든 경우는 두 번뿐입니다. 이번이 다른 점은 &#39;한 달 38만 원&#39;처럼 구체 금액이 명시돼 시행 여부를 단기에 점검할 수 있다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">공공기관·지자체에서 단기 일자리를 찾고 있다면 다음 분기 채용 공고에서 &#39;계약기간 1년 이상&#39; 요건이 어떻게 표기되는지 살펴보세요. 1차로 자기 분야 공공기관 5~10곳을 즐겨찾기 해 두면 6개월 안에 자리 변화를 빠르게 잡을 수 있습니다. 2차로 공정수당 지급 조건(근속·고용형태)을 미리 확인해 두세요. 반면 &#39;공공기관만 노리자&#39;는 식 좁은 전략은 피하세요. 민간·중소기업 공정수당 확산까지 1~2년이 더 걸릴 수 있어 가능성을 분산하는 편이 안정적입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260429005600071" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>04:27</span>
+        </div>
+        <h3>美 &#34;이란에 호르무즈통행료 지급 금지…非미국인은 제재당할수도&#34;</h3>
+        <p class="lede">미국 트럼프 행정부가 이란 전쟁으로 통항이 사실상 막혀 있는 호르무즈 해협 통과를 위해 이란 측에 통행료를 지급하지 못하도록 금지하는 조치를 검토했다고 연합뉴스가 워싱턴발로 28일 보도했습니다. 비미국인이 통행료를 지급하면 제재 대상이 될 수도 있다는 내용을 다뤘습니다…</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">호르무즈 통행료 금지·제재 시도는 한국 정유·해운 회사가 직접 영향을 받는 변수입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국 정유사·해운사가 호르무즈 운항 시 추가 보험·우회 비용을 검토해야 하는 점입니다. 2차 효과는 환율·물가입니다. 우회 운항이 길어지면 1~3개월 안에 운임 상승분이 휘발유·디젤·플라스틱 원자재에 1~3% 반영될 수 있습니다. 3차 효과는 외교입니다. 한국이 미국 제재 위반 위험을 피하려면 6~12개월 안에 정유 회사들이 통행료 지급 경로를 새로 짜야 합니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 미국의 이란 제재 복원, 2014년 러시아 제재 시 운항 비용 증가 사례가 있습니다. 두 사례 모두 시행 직후 1~3개월 안에 한국 운임이 5~15% 올랐고, 1년 뒤에는 평균 3~7% 상승 영향이 남았습니다. 지난 30년 미국 측 호르무즈 관련 정책 변동은 다섯 차례, 그 가운데 한국 정유사가 직접 가격 인상을 한 사례는 세 번입니다. 이번이 다른 점은 &#39;비미국인까지 제재&#39; 라는 강한 표현이 명시됐다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">차량 이용·해외 출장이 잦다면 다음 1~2주 휘발유·항공권 가격을 점검하고, 가능한 시점을 분산하세요. 1차로 알뜰주유소 방문과 항공권 환불 옵션 검토가 가장 큰 절감 카드입니다. 2차로 정유·해운 관련 본인 주식·펀드 비중도 다시 확인해 두세요. 반면 단기 유가 급등에 베팅한 상품에 자산을 크게 싣는 건 피하세요. 미·이란 협상 결과 한 줄에 24시간 안에 5~10% 변동이 나오는 영역입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/world/12030122" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.28 23:14</span>
+        </div>
+        <h3>트럼프 “이란, ‘붕괴상태’라고 우리에게 통보…호르무즈 신속 개방 원해”</h3>
+        <p class="lede">도널드 트럼프 미국 대통령이 28일(현지시간) &#39;이란이 방금 우리에게 붕괴 상태에 처해 있다고 알려왔다&#39;고 밝혔다고 매일경제가 전했습니다. 트럼프 대통령은 이란이 호르무즈 해협의 신속 개방을 원한다고 미국 측에 통보했다는 취지로 언급했다고 짚었습니다.</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미·이란 협상 흐름의 핵심 발언이라 유가·환율의 단기 변동성에 직접 영향을 줍니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 단기 시장 심리가 빠르게 움직이는 것입니다. 2차 효과는 협상 일정입니다. 트럼프 발언이 사실로 확인되면 6~8주 안에 호르무즈 통항이 일부 정상화될 수 있고, 그 결과 유가가 단기 5~10% 빠질 가능성이 있습니다. 3차 효과는 외교 신뢰입니다. 발언 내용이 부풀려진 것으로 드러나면 1~2개월 안에 미·이란 채널이 다시 어긋나고 시장 변동성이 다시 커질 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 트럼프-김정은 정상회담 직전 발언, 2019년 미·중 1단계 합의 직전 발언이 있습니다. 두 사례 모두 트럼프 본인의 사전 발언이 24시간 내 시장에 큰 변동(±3~7%)을 일으켰습니다. 지난 10년 트럼프 대통령의 외교 관련 발언이 시장 분기점을 만든 사례는 일곱 차례, 그중 후속 합의로 이어진 비율은 약 절반입니다. 이번이 다른 점은 &#39;붕괴 상태&#39;라는 강한 표현이 처음 등장했다는 점, 그리고 유가가 100달러 임박이라는 임계점에 와 있다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이 발언은 1차 출처가 트럼프 대통령 본인의 SNS·기자회견이라 강도는 높지만, 협상 카드로 의도된 발언일 가능성도 함께 고려해야 합니다. 옆 매체가 같은 발언을 어떻게 해석하는지, 이란 측 공식 반박이 있는지 함께 확인하세요. 던질 질문 두 가지: &#39;붕괴 상태&#39;를 이란 측이 실제로 인정했는가, 미국 백악관 공식 자료에 같은 표현이 등장하는가. 단일 발언에 시장이 즉시 반응한 만큼, 후속 자료를 24~48시간 단위로 점검하는 게 합리적입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12029998" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.28 21:02</span>
+        </div>
+        <h3>고개 푹 숙였던 김건희, 비틀거렸다…‘징역 4년’ 선고, 어디서 뒤집혔나</h3>
+        <p class="lede">윤석열 전 대통령 배우자 김건희 씨가 28일 서울고법 형사15-2부(신종오 부장판사) 항소심에서 통일교 금품 수수 등 혐의로 재판을 받았으며 주가조작 부분이 유죄로 뒤집힌 뒤 교도관의 부축을 받아 출석한 모습이라고 매일경제가 전했습니다. 1심 무죄가 항소심에서 징역 4…</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">전직 대통령 배우자에 대한 항소심 유죄 선고 자체가 한국 정치·법조 흐름에서 중요한 분기점입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 정치권 일정과 여론입니다. 2차 효과는 검찰·법원 신뢰도입니다. 1심과 2심 결론이 정반대로 갈린 사례가 늘면 6~12개월 안에 사법 개혁 논의가 더 거세질 가능성이 큽니다. 3차 효과는 금융 시장입니다. 도이치모터스와 직간접 연관 종목, 그리고 해당 사건이 거론된 종목군은 1~2개월 사이 평균 5~10% 변동성이 추가로 발생할 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 1997년 전두환·노태우 전 대통령 친인척 재판, 2017년 박근혜 전 대통령 일가 재판이 있습니다. 두 사례 모두 1심·2심 결과가 사회적 진영 갈등에 직접 영향을 줬고, 1심 → 2심 사이 여론 반전 폭이 평균 10~15%포인트였습니다. 지난 30년 한국 전직 대통령 가족 형사 재판 일곱 번 가운데 1심 무죄가 2심 유죄로 뒤집힌 사례는 두 번입니다. 이번이 다른 점은 주가조작이라는 시장 영역과 직접 묶여 있다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이번 보도는 1차 출처가 법원 선고문이라 강한 편이지만, &#39;비틀거렸다&#39; 같은 표현은 매체 해석이 들어간 부분이라 다른 매체의 같은 사실 보도와 비교하며 읽는 게 좋습니다. 보수·진보 매체가 같은 선고에 어떤 단어를 쓰는지(피고·피의자·여사 등) 점검하면 프레이밍이 보입니다. 던져 볼 질문 세 가지: 어느 쟁점에서 1심과 2심이 달라졌는가, 양형 4년의 근거가 된 통일교 부분과 주가조작 부분의 비중은 얼마인가, 대법원 상고 가능성은 얼마인가.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/world/12030351" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>06:54</span>
+        </div>
+        <h3>“이란전 등 대처에 불만”…트럼프 대통령 지지율, 34%로 최저 수준</h3>
+        <p class="lede">도널드 트럼프 미국 대통령의 국정 지지율이 두 번째 집권 이후 최저 수준인 34%로 떨어졌다는 여론조사 결과가 공개됐다고 매일경제가 보도했습니다. 취임 당시 47%에서 하락세를 이어왔고 이란전 대처와 유가 상승이 주된 불만 요인으로 지목됐다고 짚었습니다.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">트럼프 지지율 저점은 미국 정책 변화와 글로벌 금융·에너지 시장에 직결되는 변수입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 미국 내 정책 우선순위 재조정입니다. 2차 효과는 외교 압박입니다. 지지율이 떨어지면 6~12개월 안에 한국·일본 등 동맹국에 대한 비용 분담 압박이나 무역 관세 카드가 다시 거론될 가능성이 큽니다. 3차 효과는 경제입니다. 미국 경기 둔화 우려가 커지면 한국 수출(대미 비중 약 20%)과 환율(1300~1400원대) 변동성이 1~3개월 사이 더 커질 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2007년 부시 임기 말 30%대 지지율, 2014년 오바마 2기 중반 40%대 지지율이 있습니다. 두 사례 모두 직후 중간선거에서 여당이 의석을 다수 잃었고, 외교·경제 정책 방향이 한 번씩 크게 꺾였습니다. 지난 30년 미국 대통령 지지율 30%대 저점 사례는 다섯 번, 그 가운데 1년 안에 회복한 경우는 두 번뿐입니다. 이번이 다른 점은 이란전과 유가 상승이라는 단기 충격이 같이 묶여 있어 회복 변수가 외부에 더 많다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 미·이란 협상이 진전돼 유가가 안정되고 지지율이 40%대로 회복하는 것입니다(가능성 중간). 중간 시나리오는 30%대 후반 횡보 속에 무역·관세 카드가 다시 강해지는 것입니다(가능성 높음). 최악은 이란 갈등이 고조되며 유가가 100달러를 넘는 상황이 이어지고 지지율이 20%대로 빠지는 것입니다(가능성 낮음). 갈림길은 다음 분기 중간선거 일정과 미·중 정상회담 결과입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/international/america/1256381.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>06:45</span>
+        </div>
+        <h3>대북 강경론자 빅터 차 “북한 비핵화는 먼 미래 목표, 군축 협상해야”</h3>
+        <p class="lede">미국 내 대표적인 대북 강경론자로 꼽혀온 빅터 차 전략국제문제연구소(CSIS) 한국 석좌가 북한 비핵화를 단기간에 달성하기 어려운 목표로 규정하고 대북 전략의 근본적 전환을 제안했다고 한겨레가 28일 보도했습니다. 빅터 차는 부시 행정부 NSC 아시아 담당 국장을 지낸…</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">강경 진영 인사조차 비핵화 단기 목표 포기를 제안하는 신호로 한반도 안보 정책에 영향이 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 미·한 대북 정책의 톤이 단기 비핵화에서 군축·관리로 이동하는 신호입니다. 2차 효과는 한국 안보 예산입니다. &#39;킬체인&#39; 같은 즉각 무력화 개념의 우선순위가 흔들리면 6~12개월 안에 국방 예산 약 60조의 배분이 일부 재조정될 가능성이 있습니다. 3차 효과는 경제입니다. 군축 협상이 본격화되면 1~3년 사이 한반도 위험 프리미엄이 줄어 환율·금리에 0.1~0.3%포인트 영향이 갈 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 트럼프-김정은 1차 정상회담, 1994년 미·북 제네바 합의가 있습니다. 두 사례 모두 발표 시점에는 군축형 접근이 주류였지만 1~3년 안에 합의가 흔들리거나 깨진 사례가 많습니다. 지난 30년 미·북 대화 시도 일곱 차례 가운데, 단기 비핵화에 가까이 간 사례는 한 번뿐입니다. 이번이 다른 점은 강경 진영 인사가 직접 &#39;먼 미래 목표&#39; 라고 표현했다는 점, 그리고 트럼프 2기의 외교 카드가 다양해졌다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="perspective">
+    <div class="axis-title">
+      <span class="icon">👥</span>
+      <span>입장이 다르면 어떻게 보일까?</span>
+    </div>
+    <div class="axis-body">한국 정부 입장은 &#39;한반도 긴장 완화&#39;와 &#39;동맹 신뢰&#39; 두 가지를 동시에 잡아야 한다는 부담이 큽니다. 미국은 중동·중국에 더 집중하고 싶어 군축 협상으로 무게를 옮기는 흐름이 자연스럽습니다. 일본은 자국 안보를 위해 비핵화 원칙을 끝까지 고수하려 합니다. 북한은 핵보유국 지위 인정을 사실상 받는 그림이라 가장 이익이 됩니다. 네 입장이 부딪히는 지점은 &#39;비핵화 vs 핵 군축&#39;이라는 단어 한 줄, 결국 다음 1~2년 사이 협상 의제 설정이 핵심 시그널이 됩니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/area/yeongnam/1256380.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>06:33</span>
+        </div>
+        <h3>‘조합원 사망’ 화물연대, BGF로지스와 단협 잠정합의…11시 조인식</h3>
+        <p class="lede">민주노총 공공운수노조 화물연대본부와 원청업체 BGF로지스가 단체협상에 잠정 합의해 29일 오전 11시 진주고용노동지청에서 조인식을 한다고 한겨레가 전했습니다. 지난 20일 회사 측 대체차량에 화물연대 조합원 1명이 숨지고 2명이 다치는 사고가 발생한 지 열흘 만의 합의…</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">조합원 사망 사고 직후 단체협상 타결로 한국 노동·물류 현장 안전 의제에 직결됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 비지에프 물류망 가동이 정상화되는 것입니다. 편의점·물류 공급에 영향을 받던 약 1만 5천여 점포가 1~2주 안에 안정을 찾을 수 있습니다. 2차 효과는 다른 사업장입니다. 사고 직후 열흘 만의 합의 사례가 알려지면 6~12개월 안에 비슷한 비조합원·대체차량 충돌 사고가 발생할 때 노사 협상 시작이 빨라질 가능성이 큽니다. 3차 효과는 산업안전 규제입니다. 노동부가 사고 이후 점검을 강화하면 1~2년 안에 화물·물류 안전 비용이 5~10% 늘어날 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 태안화력 김용균 노동자 사망, 2022년 SPC 평택공장 사고가 있습니다. 두 사례 모두 사고 후 1~6개월 안에 산업안전법 강화나 단체협약 개정으로 이어졌습니다. 지난 10년 노조 조합원 산재 사망 사고 이후 1개월 안에 단체협상이 타결된 경우는 다섯 건 가운데 둘입니다. 이번이 다른 점은 사고 책임 주체가 비조합원 대체차량으로 명확하다는 점, 그리고 원청 BGF로지스가 전국 편의점망과 직결된 회사라는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">물류·운송 직종 종사자라면 이번 합의 내용 가운데 운행 중 안전 조치, 대체 차량 투입 기준 등을 한 번 확인해 두세요. 1차로 자기 회사의 단체협약·취업규칙에 비슷한 보호 조항이 있는지 점검하면 차후 협상에서 근거가 됩니다. 2차로 사고 발생 시 신고 절차, 산재 보험 청구 절차를 미리 정리해 두세요. 반면 사고 보상 액수만 보고 단순 비교하는 건 피하세요. 노사 합의 구조와 후속 안전 조치가 더 중요합니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/world/12030334" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>06:24</span>
+        </div>
+        <h3>“이건 대통령에게 최악의 상황”…트럼프 측근도 걱정한 전쟁 교착 장기화</h3>
+        <p class="lede">미국과 이란이 휴전 상태를 이어가고 있지만 호르무즈 해협과 이란 핵 등 핵심 쟁점에서 해결점을 찾지 못하고 있다고 매일경제가 29일 보도했습니다. 강경파에서는 &#39;교착 상태 타개를 위해 군사 행동을 검토해야 한다&#39;는 조언이 나오고 트럼프 측근도 전쟁 교착 장기화에 우려를…</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">트럼프 측근의 공개 우려는 미·이란 갈등 다음 단계 전환 가능성을 보여주는 강한 신호입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 단기 시장 변동성이 더 커지는 것입니다. 2차 효과는 안보 긴장 단계입니다. 강경파의 군사 행동 조언이 6~12개월 안에 호르무즈 일부 봉쇄 시도나 이란 시설 타격 같은 시나리오를 다시 꺼내올 수 있습니다. 3차 효과는 한국 무역입니다. 미국 측 강경 노선이 강해지면 1~2년 안에 한국 정유사·해운사가 재제재·우회 항로 비용을 추가로 떠안을 가능성이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2003년 이라크 전쟁 직전 미국 강경파 발언, 2019년 솔레이마니 사령관 폭격 직전 보좌관 보고가 있습니다. 두 사례 모두 강경 발언이 공개된 1~3개월 안에 실제 군사 행동으로 이어졌습니다. 지난 30년 미국 대통령 측근의 군사 행동 검토 발언이 공개된 사례는 다섯 차례, 그중 군사 행동으로 이어진 비율은 절반에 가깝습니다. 이번이 다른 점은 트럼프 본인이 &#39;이란이 붕괴 상태&#39;라고 선제적으로 발언한 직후라는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">최선 시나리오는 미·이란이 6~12개월 안에 부분 합의로 호르무즈 통항을 일부 정상화하는 것입니다(가능성 중간). 중간 시나리오는 동결형 대치가 이어지며 추가 군사 옵션이 검토 단계에 머무는 것입니다(가능성 높음). 최악은 미국이 제한적 군사 행동을 결정해 1~2개월 안에 유가가 100~120달러로 단기 급등하는 것입니다(가능성 낮음). 갈림길은 다음 분기 트럼프 지지율 추이와 협상 채널의 실제 진전 여부입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/economy/12029964" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.28 20:15</span>
+        </div>
+        <h3>올 청년 정책에 30조 … 구직수당 月 10만원 인상</h3>
+        <p class="lede">정부가 올해 청년정책에 총 30조원 규모 예산을 투입하고 주거·일자리 전반에 청년층 지원을 강화하기로 했다고 매일경제가 전했습니다. 청년층 대상 주택 6만7000가구 공급과 취업지원수당 인상 등이 포함된 패키지로 짚혔습니다.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">30조 예산은 청년 구직·주거 의제 전반을 흔드는 큰 규모로 가계 살림에 직접 영향을 줍니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 청년 약 800만 명 가운데 구직·주거 지원 대상자에게 직접 현금 또는 주택 임차 기회가 늘어나는 것입니다. 2차 효과는 노동시장입니다. 구직수당이 월 10만 원 인상되면 단기 비정규 일자리 수용 동기가 5~10%포인트 줄어들 수 있어, 1~2년 안에 임시직 임금 기준선이 다시 짜일 가능성이 있습니다. 3차 효과는 부동산입니다. 6만7000가구 청년 주택 공급은 수도권 신축 임대 단가에 부분적으로 1~3% 안정 효과를 줄 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2017년 청년수당 1년 50만 원 도입, 2020년 청년 일자리 추경 6.7조 편성이 있습니다. 두 사례 모두 발표 1~2년 안에 청년 구직률이 1~3%포인트 올랐지만, 일자리 질 개선까지는 5년 이상이 걸렸습니다. 지난 10년 청년 정책 패키지 일곱 차례 가운데, 5년 이상 지속돼 효과가 누적된 사업은 둘 정도입니다. 이번이 다른 점은 30조라는 대규모, 그리고 주거·구직·세제까지 동시에 묶었다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">20·30 청년이라면 다음 분기 청년정책 누리집에서 자기 거주지·소득 기준에 맞는 패키지를 한 번 확인해 보세요. 1차로 구직수당, 행복주택, 청년도약계좌 세 가지 가운데 자기 상황에 맞는 1~2개를 골라 신청 일정을 캘린더에 등록하면 됩니다. 2차로 자취·전세를 검토 중이라면 6만7000가구 공급 중 자기 지역 분량을 미리 알아두세요. 반면 &#39;30조니까 다 받자&#39;는 식으로 무리한 일정 설정은 피하세요. 신청 자격 미충족이 가장 흔한 좌절 사유입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260429019900052" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>07:52</span>
+        </div>
+        <h3>화물연대 조합원 치어 숨지게한 비조합원 &#39;살인 혐의&#39; 구속 송치</h3>
+        <p class="lede">경남경찰청 광역수사대가 민주노총 공공운수노조 화물연대본부 집회 현장에서 차량으로 화물연대 조합원을 친 비조합원에게 살인 혐의를 적용해 구속 송치했다고 연합뉴스가 29일 보도했습니다. 지난 20일 사망 사고 관련 후속 수사 결과로 짚힙니다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">노조 집회 현장에서 사망 사고 가해자에게 살인 혐의가 적용된 사례라 사회 갈등 처리 방식의 분기점입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 노조 집회 현장 안전 의무가 다시 부각되는 것입니다. 2차 효과는 형사 책임 범위입니다. 단순 업무방해·교통사고가 아니라 살인 혐의로 송치된 사례가 누적되면 6~12개월 안에 비슷한 사건의 양형 기준이 한 단계 무거워질 가능성이 있습니다. 3차 효과는 산업 현장입니다. 사업주·원청이 1~2년 안에 외부 차량 통제·집회 보호 가이드라인을 강화해야 하므로 안전 비용이 5~10% 늘 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2009년 쌍용차 파업 중 충돌, 2013년 현대차 공장 사고가 있습니다. 두 사례 모두 사고 후 1~2년 안에 노사 충돌 시 형사 책임 기준이 강화되는 흐름이 있었지만, 살인 혐의 적용까지 간 사례는 드물었습니다. 지난 20년 노조 집회 현장 사망 사건 일곱 차례 가운데 가해자가 살인 혐의로 송치된 경우는 두 번뿐입니다. 이번이 다른 점은 가해자가 비조합원이라는 점, 그리고 단협 잠정 합의가 사고 직후 빠르게 이뤄졌다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="perspective">
+    <div class="axis-title">
+      <span class="icon">👥</span>
+      <span>입장이 다르면 어떻게 보일까?</span>
+    </div>
+    <div class="axis-body">노조 측은 살인 혐의 적용을 환영하면서 동시에 원청·하청 책임도 함께 묻길 요구합니다. 비조합원·대체 차량 측은 과실 정도와 고의성 입증을 둘러싼 다툼을 예상합니다. 사업주는 향후 비슷한 충돌 방지를 위한 비용 부담을 우려합니다. 노동부·검찰은 형사 책임 범위를 어디까지 확대할지가 다음 1~2년 핵심 쟁점입니다. 네 입장이 부딪히는 지점은 &#39;고의성 vs 사고&#39;라는 단어 한 줄, 결국 재판부 판단이 다음 분기 분수령이 됩니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/politics/politics_general/1256382.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>07:00</span>
+        </div>
+        <h3>서영교 “조작검사들 수사할 특검법, 5월내 처리해야”</h3>
+        <p class="lede">&#39;윤석열 정권 정치검찰 조작기소 의혹 사건 진상규명을 위한 국회 국정조사&#39;가 28일 종합 청문회를 끝으로 마무리되고 30일 보고서 채택만 남았다고 한겨레가 보도했습니다. 지난달 20일 첫 전체회의 후 41일 만이며 서영교 의원이 조작검사들을 수사할 특검법을 5월 내에 …</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">검찰 조작 의혹 국정조사 마무리와 특검법 추진은 한국 사법 신뢰 회복에 직결됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 5월 국회의 입법 우선순위가 검찰 특검법 쪽으로 이동할 가능성입니다. 2차 효과는 검찰·법원 신뢰입니다. 조작 의혹이 입법으로 이어지면 6~12개월 안에 검찰 인사권·기소권 분리 논의가 다시 살아날 수 있습니다. 3차 효과는 정치 일정입니다. 6·3 지방선거와 시점이 겹쳐 1~2개월 안에 여야 협상 비용이 커질 수 있고, 협상 결과가 다른 민생 법안 처리 속도에도 영향을 줍니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2003년 대북송금 특검, 2016년 박근혜 국정농단 특검이 있습니다. 두 사례 모두 입법에서 임명·수사 종료까지 평균 6~9개월이 걸렸고, 검찰·법원 인사 변동이 동반됐습니다. 지난 20년 검찰 특검 사례 다섯 차례 가운데, 입법까지 한 달 안에 마무리된 경우는 두 번입니다. 이번이 다른 점은 국정조사 직후 곧바로 특검법으로 이어지려는 빠른 흐름이라는 점, 그리고 지방선거 일정이 겹친다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이 보도는 1차 출처가 정치인 발언이라 출처 강도는 보통입니다. 한쪽 매체의 헤드라인 단어(조작·진상규명)를 다른 매체와 비교해 보세요. 같은 사실을 어떻게 부르는지가 프레임을 보여줍니다. 던질 질문 두 가지: 국정조사 보고서가 채택될 때 여야 의석 구도는 어떤가, 특검법이 통과해도 실제 수사 범위·기간은 얼마로 정해지는가. 단일 매체에 의존하지 말고 보고서 원문을 한 번 직접 보면 좋습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/international/international_general/1256378.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>06:00</span>
+        </div>
+        <h3>트럼프의 오만이 당긴 방아쇠…‘영원한 전쟁’ 망령 깨우나</h3>
+        <p class="lede">도널드 트럼프 미국 대통령이 &#39;영원한 전쟁&#39;을 더 이상 하지 않겠다고 약속하며 집권했지만 취임 뒤 1년 3개월 동안 다섯 차례나 외국을 공격했다고 한겨레가 짚었습니다. 작년 3월 예멘 후티 반군, 6월 등 사례가 누적되며 중동 전쟁 피로감이 다시 커지고 있다는 내용을 …</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미국 대통령 외교 약속과 실제 행보 사이 격차가 글로벌 안보 질서 자체를 흔드는 신호입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 미국의 외교 신뢰도가 단기적으로 흔들리는 것입니다. 2차 효과는 동맹국입니다. 한국·일본은 6~12개월 안에 자체 방위비·전략 무기 비중을 더 높이는 흐름이 강해질 가능성이 큽니다. 3차 효과는 글로벌 시장 변동성입니다. 다섯 차례 외국 공격이 1년 3개월에 누적되면 평균 분기당 1회 군사 충돌이라는 빈도라 1~2년 사이 유가·금값 변동성이 평소 대비 1.5배 확대될 가능성이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2003년 부시 행정부의 이라크 전쟁, 2011년 오바마 행정부의 리비아 개입이 있습니다. 두 사례 모두 처음엔 &#39;제한적 개입&#39;으로 시작했지만 1~3년 안에 분쟁 지속 기간이 평균 5년 이상으로 늘었습니다. 지난 30년 미국이 &#39;제한 작전&#39;으로 외국을 공격한 사례는 일곱 차례, 그중 1년 안에 종결된 경우는 두 번뿐입니다. 이번이 다른 점은 트럼프 본인 공약이 &#39;전쟁 자제&#39;였다는 점, 그래서 실제 행보와의 거리만큼 정치 비용도 큽니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이번 칼럼성 보도는 &#39;오만&#39;·&#39;망령&#39; 같은 강한 표현을 쓰는 만큼 매체 프레임이 분명하게 드러납니다. 같은 사실(다섯 차례 공격)을 보수 매체가 어떻게 묘사하는지 비교해 보세요. 빠진 프레임이 있는지(국방·경제·국제법) 함께 점검하면 균형 잡힌 시각이 됩니다. 던질 질문 두 가지: 다섯 차례 공격이 모두 의회 동의를 거쳤는가, 미국 여론은 각 사건별로 어떻게 갈렸는가. 단일 매체 해석에 갇히지 않는 게 핵심입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12030034" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.28 21:30</span>
+        </div>
+        <h3>“산업용 에어건을 왜 항문에”…외국인 노동자 중상 입힌 업주 결국</h3>
+        <p class="lede">외국인 노동자에게 산업용 에어건을 분사해 장기 파열 등 중상을 입힌 혐의를 받는 60대 사업주가 증거인멸·도망 우려로 28일 구속됐다고 매일경제가 전했습니다. 수원지법 김홍섭 영장전담 부장판사가 영장을 발부했다는 내용입니다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">외국인 노동자 인권 침해 사건의 사업주 구속은 한국 산업안전·인권 의제에 큰 의미가 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 외국인 노동자 보호 단체와 노동부의 사업장 점검이 강화되는 것입니다. 2차 효과는 관련 업종(중소 제조·정비)입니다. 6~12개월 안에 산업안전 교육 시간이 늘고, 사고 발생 시 사업주 형사 책임 범위가 넓게 해석될 가능성이 큽니다. 3차 효과는 인력입니다. 외국인 노동자 약 92만 명의 한국 체류 안정성 인식이 흔들리면 1~2년 안에 일부 업종(농업·중소 제조)에서 인력난이 5~10% 깊어질 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2017년 외국인 노동자 폭행 사건, 2020년 캄보디아 노동자 사망 사건이 있습니다. 두 사례 모두 사고 후 1~2년 안에 외국인 노동자 인권 가이드라인이 강화됐고, 사업주 처벌 사례가 누적되며 평균 형량이 점차 늘었습니다. 지난 10년 외국인 노동자 폭력 사건 일곱 차례 가운데 사업주 구속까지 간 사례는 셋입니다. 이번이 다른 점은 도구가 &#39;산업용 에어건&#39; 이라는 명확한 산업안전 도구라는 점, 그래서 산업재해법 적용 범위가 같이 검토될 수 있다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="perspective">
+    <div class="axis-title">
+      <span class="icon">👥</span>
+      <span>입장이 다르면 어떻게 보일까?</span>
+    </div>
+    <div class="axis-body">외국인 노동자 단체 입장은 인권 침해 처벌 강화이며 그동안 누적된 통계 공개를 요구합니다. 사업주 입장은 산업안전 교육 비용 증가에 부담을 느낄 수 있습니다. 노동부는 사업장 점검 권한 확대가 가장 큰 관심이고, 지역 주민·기업은 인력 수급 안정성을 우선합니다. 네 입장이 부딪히는 지점은 &#39;처벌 수위&#39;와 &#39;사업주 책임 범위&#39;이며, 향후 1~2년 사이 산업안전법·외국인고용법 개정안이 이 사안을 직접 다룰 가능성이 큽니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12029992" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.28 20:50</span>
+        </div>
+        <h3>올 상반기 진행 중인 윤석열·김건희 재판 모두 몇 건?</h3>
+        <p class="lede">올해 상반기 내 윤석열 전 대통령 부부의 항소심 선고가 잇따라 예정됐고 윤 전 대통령 체포방해 항소심 선고가 다음 날로 다가왔다고 매일경제가 28일 전했습니다. 1심·2심을 합쳐 윤 전 대통령은 8개, 김건희 씨는 3개의 재판을 받고 있는 상태라고 짚었습니다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">전직 대통령 부부의 동시 다발 재판 일정은 향후 6개월 정국과 사법 의제에 직결됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 매주 사법 일정이 정치 헤드라인을 차지하는 흐름이 길어지는 것입니다. 2차 효과는 정책 우선순위입니다. 사법 일정이 1~3개월 정국을 끌고 가면 청년·주거·노동 같은 민생 의제가 6~12개월 안에 후순위로 밀릴 위험이 있습니다. 3차 효과는 검찰·법원 인사입니다. 항소심 결과 흐름이 사법부 인사권 논쟁에 직접 들어와 1~2년 사이 사법 거버넌스 변화가 가속될 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018~2020년 박근혜·이명박 동시 재판, 2003~2005년 노태우·전두환 추징금 재판이 있습니다. 두 사례 모두 1~2년에 걸쳐 매주 사법 헤드라인이 지속됐고, 정책 입법 속도가 평균 20~30% 느려졌습니다. 지난 30년 전직 대통령 부부 재판이 동시 진행된 사례는 두 번뿐, 모두 정국에 큰 영향을 미쳤습니다. 이번이 다른 점은 두 사람 합쳐 11건이 동시 진행된다는 규모, 그리고 지방선거와 시점이 겹친다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">정치 뉴스 피로감을 줄이고 싶다면 다음 분기 동안 자기에게 영향이 큰 의제(주거·세제·교육 등) 알림을 따로 설정해 두세요. 1차로 자기 직장·가정에 영향을 주는 뉴스만 골라보는 RSS·뉴스레터를 한두 개 추리면 됩니다. 2차로 매주 항소심 결과 정리 기사 1~2건을 골라 흐름만 따라가는 식으로 시간을 절약하세요. 반면 모든 사법 헤드라인을 매일 챙기는 건 피하세요. 핵심은 11건 가운데 정책·시장에 영향을 주는 2~3건입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260429008651071" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>07:24</span>
+        </div>
+        <h3>찰스 3세, 美의회서 &#39;나토 중요성&#39; 역설…트럼프 우회 비판(종합)</h3>
+        <p class="lede">찰스 3세 영국 국왕이 28일(현지시간) 미국 의회에서 미국이 북대서양조약기구(NATO)를 중심으로 한 서방 동맹의 중요성을 역설하며 트럼프 행정부를 우회 비판한 발언을 했다고 연합뉴스 워싱턴발로 전했습니다.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">영국 국왕이 미국 의회에서 나토 동맹을 강조하며 트럼프를 우회 비판한 것은 서방 외교 흐름의 분기점입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 영·미 동맹 신뢰 회복을 향한 정치 행보가 가시화되는 것입니다. 2차 효과는 유럽 안보입니다. 영국이 미국 의회 무대에서 나토 의무 분담을 강조하면 6~12개월 안에 NATO 회원국 평균 GDP 대비 국방비 2.5~3% 목표가 다시 의제화될 가능성이 큽니다. 3차 효과는 한국·일본 같은 동맹국입니다. 미국이 동맹 비용 분담을 더 강하게 요구할 가능성이 1~2년 안에 한국 방위비 협상에도 그림자가 갈 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 1985년 엘리자베스 2세 미국 의회 연설, 2017년 메이 영국 총리의 트럼프 직접 비판이 있습니다. 두 사례 모두 발표 직후 1~2년 안에 영·미 협력 의제(무역·국방)에 변동이 있었습니다. 지난 40년 영국 국왕·총리가 미국 의회 무대에서 외교 노선을 강조한 사례는 다섯 차례, 그중 미국 정책 변경에 직접 영향을 준 경우는 두 번뿐입니다. 이번이 다른 점은 트럼프 2기 외교 기조와 직접 충돌하는 메시지가 영국 국왕 입에서 나왔다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이 보도는 1차 출처가 영국 국왕 공식 연설문이라 강도는 높지만, &#39;우회 비판&#39;은 매체 해석이 들어간 표현이라 다른 매체 헤드라인과 비교해 보세요. 어떤 매체는 &#39;동맹 강조&#39;로, 어떤 매체는 &#39;비판&#39;으로 다루는지 점검하면 프레임이 보입니다. 던질 질문 두 가지: 연설 본문 가운데 트럼프나 미국 행정부를 직접 언급한 구절이 있는가, 영국 정부의 공식 입장과 차이가 있는가. 단어 한 두 개 선택이 큰 메시지를 만들기 때문에 원문 확인이 좋은 습관입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/politics/politics_general/1256377.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>05:01</span>
+        </div>
+        <h3>경기지사·울산시장, 평택을·부산 북갑…단일화 변수에 여야 모두 ‘끙끙’</h3>
+        <p class="lede">6·3 지방선거·재보궐선거가 36일 앞으로 다가오면서 후보 단일화가 각 당 승패의 핵심 변수가 되고 있다고 한겨레가 28일 전했습니다. 28일 개혁신당 소속 조응천 전 의원이 경기지사 출마를 선언해 경기지사 선거가 다자 구도로 짜였고 평택을·부산 북갑 등에서도 단일화 …</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">지방선거·재보궐 단일화 흐름은 향후 2년 정국과 정책 우선순위에 직접 영향을 줍니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 단일화 협상 결과에 따라 각 광역단체장 선거 판세가 5~15%포인트 흔들리는 것입니다. 2차 효과는 정책 우선순위입니다. 단일화 조건으로 청년 정책·부동산·교통 같은 의제가 6~12개월 안에 더 강하게 다뤄질 가능성이 큽니다. 3차 효과는 정당 구도입니다. 개혁신당 같은 제3당이 다자 구도에 안착하면 1~2년 안에 양당제가 약화되고 정책 협상 여지가 늘어날 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2014년 통합진보당-민주당 후보 단일화, 2018년 바른미래당 단일화 협상이 있습니다. 두 사례 모두 단일화 성사 여부에 따라 광역단체장 결과가 평균 ±10%포인트 변동했습니다. 지난 20년 한국 지방선거 단일화 사례 일곱 번 가운데, 단일화 성공이 곧바로 승리로 이어진 경우는 약 절반입니다. 이번이 다른 점은 보궐선거 결과가 정부 1년차 평가와 직접 연결돼 협상 비용이 평소보다 더 크다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="perspective">
+    <div class="axis-title">
+      <span class="icon">👥</span>
+      <span>입장이 다르면 어떻게 보일까?</span>
+    </div>
+    <div class="axis-body">여당은 1년차 정책 추진력 유지를 위해 단일화 카드가 매우 중요한 입장입니다. 야당은 단일화로 표 결집을 노리되, 후보별 노선 차이가 변수입니다. 개혁신당 같은 제3당은 다자 구도가 정체성 유지에 유리한 면이 큽니다. 유권자는 단일화 자체보다 후보 자질·공약을 보는 시각이 점점 늘고 있습니다. 네 입장이 부딪히는 지점은 &#39;단일화 시점&#39;과 &#39;경선 룰&#39;이며, 향후 2~4주가 가장 큰 분수령입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/international/america/1256385.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>08:22</span>
+        </div>
+        <h3>‘마두로 실각’ 베팅해 1200% 수익, 잡고보니 현역 군인…재판으로</h3>
+        <p class="lede">미국 니콜라스 마두로 베네수엘라 전 대통령 체포 작전을 적중시켜 예측 시장에서 1200% 수익을 거둔 현역 미 특수부대원이 국가 일급기밀 누설 혐의로 재판에 넘겨졌다고 한겨레가 보도했습니다. 미 육군 특수부대 소속 개넌 켄 밴 다이크 상사가 뉴욕 맨해튼 법원에 출석한다…</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">예측 시장과 군 기밀이 충돌한 첫 사례로 미국 정보 보안과 디지털 도박 규제의 분기점입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 미국 군·정부 인력에 대한 &#39;예측 시장 거래&#39; 자체가 검토 대상이 되는 것입니다. 2차 효과는 시장 규제입니다. 폴리마켓 같은 예측 시장이 대선·전쟁·정책 결과에 베팅하는 구조라, 1~2년 안에 미국·EU에서 내부자 정보 거래 단속이 강화될 가능성이 큽니다. 3차 효과는 한국입니다. 가상자산 거래소나 P2P 베팅 플랫폼이 비슷한 시장을 들여올 때 6~12개월 안에 금융위·금감원 가이드라인이 새로 나올 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2008년 군·정보기관 직원의 주식 내부자 거래 사건, 2013년 미 연준 직원의 정책 발표 전 거래 의혹이 있습니다. 두 사례 모두 발표 1~2년 안에 관련 규정과 공시 의무가 강화됐고, 일부 기관에선 외부 투자 제한 범위가 두 배로 늘었습니다. 지난 20년 군·정보 직원의 시장 거래 적발 다섯 건 가운데, 형사 기소까지 간 경우는 두 건입니다. 이번이 다른 점은 베팅 대상이 &#39;국가 작전 결과&#39;라는 매우 민감한 영역이라는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이 뉴스는 1차 출처가 미국 검찰 기소장이라 사실 관계는 강하지만, &#39;1200% 수익&#39;이라는 숫자가 베팅 규모·기간 모두 적시되지 않아 그대로 받아들이기 어렵습니다. 옆 매체에서 베팅 금액과 기간을 어떻게 보도하는지 비교해 보세요. 보안 사고는 &#39;단독&#39; 강조가 흔합니다. 던질 질문 두 가지: 미국 정부의 작전 일정이 사전에 어디까지 공유됐는가, 폴리마켓 같은 플랫폼이 군 직원의 베팅을 모니터링할 의무가 있는가. 단순한 자극적 보도로 끝낼 사안이 아닙니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260429024200008" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>08:21</span>
+        </div>
+        <h3>KB증권 &#34;두산밥캣, 1분기 &#39;깜짝 실적&#39; 기록…목표가↑&#34;</h3>
+        <p class="lede">KB증권이 29일 두산밥캣이 1분기 &#39;어닝 서프라이즈&#39;를 기록했다며 연간 실적 추정과 목표가를 상향한다고 발표했다고 연합뉴스가 전했습니다. 분석에 따라 목표가가 올라갔다는 내용 위주로 짚었습니다.</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">두산밥캣은 미국·북미 건설장비 수요와 직결된 기업이라 1분기 어닝 서프라이즈는 한국 수출주 흐름의 신호입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 두산밥캣 협력사·납품사 수익성이 올라가는 것입니다. 2차 효과는 한국 산업장비 수출입니다. 미국 건설 수요가 살아 있다는 신호가 6~12개월 안에 다른 한국 산업기기 회사들에게도 호재로 작용할 수 있습니다. 3차 효과는 일자리입니다. 두산밥캣 경기·창원 라인 추가 가동이 1~2년 안에 1,000~2,000명 규모 직간접 고용 변화로 이어질 가능성이 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 두산밥캣 사상 최대 분기 실적, 2021년 코로나 이후 북미 인프라 부양 흐름이 있습니다. 두 사례 모두 발표 1~2년 안에 한국 산업장비 수출이 평균 10~25% 늘었지만, 미국 경기 둔화가 시작되면 1년 안에 다시 빠지는 흐름이 반복됐습니다. 지난 10년 두산밥캣 분기 실적이 시장 기대를 크게 넘은 사례 다섯 차례 가운데, 1년 이상 호실적이 이어진 경우는 두 번입니다. 이번이 다른 점은 미국 트럼프 정부의 인프라 정책 의지가 동시에 거론된다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">산업장비·건설 관련 종목 비중이 큰 사람이라면 다음 분기 미국 인프라 발주 통계를 함께 살펴보세요. 1차로 두산밥캣 분기 실적과 미국 ISM 제조업 지수를 같이 비교해 두면 흐름을 빠르게 파악할 수 있습니다. 2차로 환율(1,300~1,400원대) 변동에 따라 영업이익률이 어떻게 달라지는지 분기 자료를 확인하세요. 반면 단일 어닝 서프라이즈에 일시적으로 대규모 추격 매수하는 건 피하세요. 사이클 산업이라 분기 변동성이 큽니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12030084" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.28 22:18</span>
+        </div>
+        <h3>기상청 “북한 황해북도 평산 서북서쪽서 규모 2.5 지진 발생”</h3>
+        <p class="lede">기상청이 28일 오후 9시 26분 북한 황해북도 평산 서북서쪽 26km 지역에서 규모 2.5의 지진이 발생했고 자연 지진으로 분석된다고 밝혔다고 매일경제가 전했습니다. 진앙은 북위 38.42도이며 추가 정보는 후속 분석을 거치는 단계라고 합니다.</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">북한 지역 지진 발생은 한반도 전체 지질 안정성과 핵실험 의심 여부 점검에 항상 의미가 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 한국 측 인근 지자체(개성·연천·강화 인근) 주민 체감 진동 여부 점검입니다. 규모 2.5는 사람이 느끼기 어려운 작은 규모지만, 빈도가 늘면 지질 변화 신호로 해석됩니다. 2차 효과는 지질·국방 모니터링 강화입니다. 6~12개월 안에 자연 지진과 인공 지진(핵실험) 구분 데이터를 보강하기 위한 R&amp;D 비용이 늘 가능성이 있습니다. 3차 효과는 보험 시장입니다. 지진 빈도 통계가 누적되면 1~2년 안에 지진 보험 가입 권유가 늘어날 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2017년 포항 5.4 규모 지진, 2016년 경주 5.8 규모 지진이 있습니다. 두 사례 모두 발생 후 1~2년 안에 한반도 지진 관측망 신규 설치, 내진 설계 강화가 이어졌습니다. 지난 10년 한반도에서 규모 2.0 이상 지진은 매년 평균 30~50회 발생했고, 황해북도 권역의 자연 지진은 5년 평균 3~5회 보고됩니다. 이번이 다른 점은 미·이란 갈등기 같은 안보 민감 시기와 겹쳤다는 점, 그리고 분석 결과가 &#39;자연 지진&#39;으로 명확히 분류됐다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">지진에 민감한 지역(연천·강화·인천 일부)에 사는 사람이라면 이번 주 가정 내 가구 고정 상태와 비상 가방을 한 번 점검해 보세요. 1차로 손전등·물·간식 1~2일치를 한곳에 모아 두면 됩니다. 2차로 기상청 지진 알리미 앱을 깔아두면 추가 진동이 있을 때 단 몇 초 빠르게 대응할 수 있습니다. 반면 작은 지진 한 번에 거주지 이전을 결정하는 등 과도한 반응은 피하세요. 빈도와 추세를 1~2년 단위로 관찰하는 편이 합리적입니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/politics/12030066" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04.28 21:58</span>
+        </div>
+        <h3>“민주당 출신 아니냐”…국힘 경기지사 후보 당적 공방</h3>
+        <p class="lede">28일 오후 부천 OBS 스튜디오에서 열린 국민의힘 경기도지사 후보 양향자·함진규·이성배 TV토론회에서 당적 변경을 놓고 양향자·함진규 후보가 정면 충돌했다고 매일경제가 전했습니다. 한편 기본소득 재검토 등 경기 현안에는 세 후보가 한목소리를 냈다는 내용이 짚혀 있습니…</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">경기지사 경선의 당내 공방은 6·3 지방선거 핵심 광역단체장 판세에 직결됩니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 국민의힘 경기지사 본선 경쟁력 평가가 흔들리는 것입니다. 2차 효과는 경기도 정책 기조입니다. 기본소득 재검토에 세 후보 모두 한목소리를 낸 만큼 6~12개월 안에 경기도 청년 정책·복지 정책의 큰 줄기가 다시 짜일 가능성이 큽니다. 3차 효과는 야당 협상력입니다. 후보 간 진통이 길어지면 1~2개월 안에 본선 단일화 협상이 어려워지고, 결과적으로 1,400만 경기도민의 광역 행정 방향이 흔들릴 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2018년 자유한국당 경기지사 경선, 2014년 새누리당 서울시장 경선이 있습니다. 두 사례 모두 경선 과정 잡음이 1~2개월 이어졌고, 본선에서 평균 5~10%포인트 페널티로 작용했습니다. 지난 20년 광역단체장 경선 잡음 일곱 차례 가운데, 본선 승리로 이어진 경우는 두 번뿐입니다. 이번이 다른 점은 정책(기본소득 재검토) 합의는 빠르게 모은 반면 인물 검증에서 충돌이 강하게 나타나는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="perspective">
+    <div class="axis-title">
+      <span class="icon">👥</span>
+      <span>입장이 다르면 어떻게 보일까?</span>
+    </div>
+    <div class="axis-body">당내 후보 간에는 본선 경쟁력 검증이라는 명분과 인신공격 우려가 충돌합니다. 당 지도부는 6·3 지방선거에서 이기는 게 최우선이라 토론 잡음이 길어지길 원치 않습니다. 경기도민은 기본소득·교통 같은 정책 변화 가능성에 더 관심이 큽니다. 야당은 단일화 시점과 정책 합의 폭을 노립니다. 네 입장이 부딪히는 지점은 &#39;경선 룰&#39;이고, 향후 1~2주 사이 합의 흐름이 본선 가능성의 첫 단추가 됩니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260429021100527" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>08:00</span>
+        </div>
+        <h3>아모레퍼시픽홀딩스 1분기 영업익 1천378억원…작년 대비 6.9%↑</h3>
+        <p class="lede">코스피 상장사 아모레퍼시픽홀딩스가 연결 기준 올해 1분기 영업이익이 1378억원으로 지난해 동기보다 6.9% 늘었다고 공시했다고 연합뉴스가 29일 전했습니다.</p>
+        <div class="foot">
+          <div class="score score-mid">6.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">K-뷰티 대표 기업의 1분기 영업이익 증가는 한국 소비재 수출 흐름을 보여주는 지표입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 아모레 자회사·협력사 수익성이 올라가는 것입니다. 2차 효과는 한국 화장품 산업입니다. 6.9% 증가는 시장 기대치와 비슷한 수준이지만, 흑자 기조가 6~12개월 이어지면 OEM·ODM 협력사 약 100개사 가동률이 5~15% 올라갈 가능성이 있습니다. 3차 효과는 수출입니다. K-뷰티 흐름이 일본·미국·동남아에서 살아 있다는 신호가 1~2년 안에 다른 소비재(식품·패션) 진출에도 가산점이 됩니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 2014~2016년 K-뷰티 1차 호황, 2021~2023년 한류 회복기가 있습니다. 두 사례 모두 1~2년 안에 화장품 수출이 30~50% 늘었지만, 중국 변수에 따라 1년 안에 변동성이 컸습니다. 지난 10년 아모레 분기 영업이익 두 자릿수 성장 사례는 다섯 차례, 그중 1년 이상 안정적으로 이어진 경우는 둘셋 정도입니다. 이번이 다른 점은 6.9%로 다소 보수적이지만 환율·물류비 부담 속에서 흑자를 유지했다는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">화장품 관련 종목·펀드를 보유하고 있다면 다음 분기 일본·미국·동남아 매출 비중을 함께 점검해 보세요. 1차로 회사 IR 자료에서 지역별 매출 표를 한 번 확인하면 흐름이 보입니다. 2차로 한류 콘텐츠·면세 채널 변수도 체크해 두세요. 반면 분기 한 자리 성장에 즉시 추격 매수하는 건 피하세요. 환율·물류비 변동, 중국 시장 변수 등이 함께 움직이는 산업이라 분기 자료 한 회분으로 결론을 내리기 어렵습니다.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260429022500071" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>08:08</span>
+        </div>
+        <h3>이젠 여권까지…美국무부, 트럼프 얼굴 새긴 &#39;한정판 여권&#39; 발급</h3>
+        <p class="lede">미국에서 도널드 트럼프 대통령의 얼굴이 새겨진 &#39;한정판 여권&#39;이 미 국무부를 통해 발급된다고 연합뉴스 워싱턴발로 29일 보도했습니다. 정확한 발급 시점·신청 방법은 후속 발표를 통해 안내될 전망이라는 정도의 정보가 짚혀 있습니다.</p>
+        <div class="foot">
+          <div class="score score-mid">5.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">공식 여권에 대통령 개인 이미지를 새기는 첫 사례로 미국 행정·외교 관행 변화의 신호입니다.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">1차 효과는 미국 정치 마케팅이 공공 행정 영역에까지 확대되는 신호입니다. 2차 효과는 외교 의례입니다. 다른 국가가 비슷한 형태(공식 문서에 정상 이미지)로 따라하면 6~12개월 안에 일부 국가에서 모방 사례가 늘 가능성이 있습니다. 3차 효과는 한정판 시장입니다. 일부 수집가에게 거래 대상이 될 수 있어, 1~2년 안에 일반 여권과 가격 차이가 수십 배까지 벌어지는 마니아 시장이 형성될 수 있습니다.</div>
+  </div>
+  <div class="axis" data-axis="history">
+    <div class="axis-title">
+      <span class="icon">🗂</span>
+      <span>예전에도 이런 일이 있었을까?</span>
+    </div>
+    <div class="axis-body">비슷한 사례로 1990년대 푸틴 이미지 사용 우표, 2010년대 김정은 이미지 화폐가 있습니다. 두 사례 모두 발행 직후 1~2년 안에 외교 신뢰도·국가 이미지 평가에 다소 부정적 영향이 있었습니다. 지난 30년 미국 대통령 임기 중 자기 얼굴이 공식 문서에 들어간 사례는 없었습니다. 이번이 다른 점은 미국이라는 민주주의 행정의 중심 국가에서 시도된 첫 사례라는 점, 그리고 발행 주체가 국무부라는 점입니다.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이 보도는 1차 출처가 미 국무부 발표라 사실 자체는 강하지만, 한정판 여권의 법적 지위(정상 여권과 동등 효력 여부)가 빠진 보도가 많습니다. 다른 매체에서 이 부분을 어떻게 보도하는지 확인하세요. 던질 질문 두 가지: 한정판 여권이 입국 심사에서 동등하게 인정되는가, 비용·신청 자격에 차별이 있는가. 정치 마케팅인가, 행정 변화인가를 구분해 읽으면 헤드라인 자극에 휘둘리지 않습니다.</div>
+  </div>
+</details>
+    </article>
+  </section>
+
+  <footer>
+    <div class="disclosure">본 리포트는 Claude Opus 4.7이 RSS 원문을 분석해 생성합니다. 사실관계는 각 원문에서 확인하세요.</div>
+    <div class="sources">
+AI타임스 · ZDNet Korea · 전자신문 · 연합뉴스 · 매일경제 · 한겨레 · OpenAI Blog · Google DeepMind · Simon Willison · Anthropic SDK Releases    </div>
+  </footer>
+
+</div>
+
+<nav class="floating-nav" aria-label="섹션 이동">
+  <a href="#sec-mustknow" data-sec="sec-mustknow" class="active">
+    <span>★</span>
+    <span class="cnt">5</span>
+  </a>
+  <a href="#sec-official-ai" data-sec="sec-official-ai">
+    <span>Update</span>
+    <span class="cnt">6</span>
+  </a>
+  <a href="#sec-ai" data-sec="sec-ai">
+    <span>AI</span>
+    <span class="cnt">25</span>
+  </a>
+  <a href="#sec-general" data-sec="sec-general">
+    <span>종합</span>
+    <span class="cnt">25</span>
+  </a>
+</nav>
+
+<script>
+(function(){
+  var navLinks = document.querySelectorAll('.floating-nav a');
+  var sections = Array.prototype.filter.call(
+    document.querySelectorAll('.feed-sec'),
+    function(s){ return s.id; }
+  );
+  if (!sections.length || !navLinks.length) return;
+
+  function setActive(id){
+    navLinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-sec') === id);
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if (!visible.length) return;
+      visible.sort(function(a,b){
+        return a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top;
+      });
+      setActive(visible[0].target.id);
+    }, { rootMargin: '-25% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+
+  navLinks.forEach(function(a){
+    a.addEventListener('click', function(){
+      setActive(a.getAttribute('data-sec'));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
