@@ -1,16 +1,16 @@
 {
-  "issue_number": 50,
-  "generation_timestamp": "2026-05-03T15:31:50+09:00",
+  "issue_number": 51,
+  "generation_timestamp": "2026-05-03T16:21:16+09:00",
   "period": "오후",
   "trend_hashtags": [
-    "#호르무즈긴장",
-    "#휴머노이드대전",
-    "#AI주권_업스테이지",
-    "#트럼프관세",
-    "#개헌_운명의한주",
-    "#어린이날안전",
-    "#반도체수출호조",
-    "#AI고용충격"
+    "AI주권",
+    "휴머노이드",
+    "한미관세",
+    "중동전쟁",
+    "상속세개편",
+    "장특공제",
+    "강남반등",
+    "코스피어닝서프"
   ],
   "articles": [
     {
@@ -24,87 +24,24 @@
       "keywords": [
         "AI"
       ],
-      "ai_summary": "구글 딥마인드가 AI 보조 진료(co-clinician) 모델 연구를 공개했습니다. 의료 현장에서 임상의를 보조해 진단·치료 결정의 정확성과 효율성을 높이려는 시도이며, 향후 AI 기반 의료 서비스의 가능성을 탐색하는 단계라고 설명했습니다.",
-      "extraction_reason": "구글 딥마인드 공식 발표로 AI 의료 보조 모델 방향성을 보여주는 핵심 신호입니다.",
-      "relevance_score": 8.2,
+      "ai_summary": "구글 딥마인드가 헬스케어 분야에서 의료진을 보조하는 'AI 공동 임상의(co-clinician)' 모델 개발 경로를 연구 중이라고 밝혔다. AI를 활용해 의사 의사결정을 보조·증강하는 새로운 모델로, 의료 진단·치료 흐름에 AI를 본격 통합하는 단계로 나아가는 시도다.",
+      "extraction_reason": "글로벌 빅테크가 의료 핵심 영역에 AI 공동 임상의를 들이는 신호 — 의료 일자리·환자 안전 모두 직격.",
+      "relevance_score": 8.5,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 구글 딥마인드의 연구 단계 발표지만, 6개월~1년 안에 시범 병원에서 임상 보조 도구로 등장할 가능성이 있습니다. 더 길게 보면 X-ray·혈액검사 1차 판독을 AI가 거들어 의사가 어려운 케이스에 집중하는 흐름이 자리잡을 수 있고, 같은 시간에 더 많은 환자를 보게 되어 진료 대기시간 단축으로 이어질 가능성도 있습니다. 다만 오진 책임 소재, 의료 데이터 보호 규정 같은 구조적 장벽이 동시에 떠오릅니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "딥마인드는 이미 2020년 단백질 구조 예측 AI 알파폴드, 2018년 안과 진단 AI 연구, 2024년 Med-PaLM 2 등을 차례로 내놓았습니다. 비슷한 사례 3건의 흐름을 보면 처음엔 정확도 발표 → 임상 시범 → 일부 병원 도입까지 평균 3~4년이 걸렸습니다. 이번 co-clinician도 비슷한 궤적을 따를 가능성이 높지만, 생성형 AI 발전 속도 때문에 도입 속도가 더 빠를 가능성도 있습니다."
+          "text": "당장은 영어권 대형병원 일부에서 보조 진단 도구로 시범 도입되는 정도지만, 1~2년 안에 한국 빅5 병원과 보험사 진단 알고리즘에 비슷한 기술이 들어올 가능성이 높습니다. 몇 년 더 지나면 일반 동네 병원의 1차 판독, 처방 검토, 보험 심사까지 AI가 끼어드는 흐름이 자리잡을 겁니다. 환자 입장에선 진단 정확도가 올라갈 가능성과 동시에, 의사 면담 시간이 줄고 'AI가 그렇다는데요' 라는 답을 듣는 일이 늘어납니다. 결국 의료 데이터(내 진료기록)가 누구에게 어떻게 학습되는지가 다음 1~2년 핵심 쟁점이 됩니다."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "당장 진료 방식이 바뀌는 건 아니지만, 다니는 병원이 영상의학·진단검사에 AI 보조 도구를 도입하는지 한 번씩 살펴볼 만합니다. 검진 결과지에 'AI 1차 판독' 표시가 늘어날 가능성이 있어 본인도 결과를 한 번 더 읽고, 이상 소견이 있으면 다른 의사에게 2차 의견을 받아보는 습관이 도움이 됩니다. 반면 'AI 진단' 같은 광고만 보고 검증되지 않은 사설 서비스에 비용을 지불하는 일은 피하는 게 좋습니다."
+            "text": "환자 입장에서 이번 주에 검토해 볼 것은 두 가지입니다. 본인이 가입한 실손보험 약관에 'AI 판독 결과에 근거한 보장 거절' 조항이 들어있는지 한 번 확인해 보세요. 또 자녀·부모님 진료 기록이 어떤 동의서를 통해 외부 학습에 제공되는지도 살펴볼 필요가 있습니다. 반대로 'AI 진단이 더 정확하다더라' 같은 단일 기사 한 줄에 휘둘려 평소 다니던 의사 소견을 무시하고 자가 진단으로 직행하는 행동은 가장 피해야 합니다."
           }
         ]
-      }
-    },
-    {
-      "article_id": "9f6be5fe45a75135",
-      "title": "Sightings",
-      "source": "Simon Willison",
-      "published_at": "2026-05-03T02:26:40+09:00",
-      "original_url": "https://simonwillison.net/2026/May/2/sightings/#atom-everything",
-      "content_text": "/elsewhere/sightings/ I have a new camera (a Canon R6 Mark II) so I'm taking a lot more photos of birds. I share my best wildlife photos on iNaturalist , and based on yesterday's successful prototype I decided to add those to my blog. I built this feature on my phone using Claude Code for web, as an extension of my beats system for syndicating external content. Here's the PR and prompt. As with my other forms of incoming syndicated content sightings show up on the homepage, the date archive pages, and in site search results. I back-populated over a decade of iNaturalist sightings, which means you that if you search for lemur you'll see my lemur photos from Madagascar in 2019! Tags: blogging , photography , wildlife , ai , inaturalist , generative-ai , llms , ai-assisted-programming , claude-code",
-      "category": "official_ai",
-      "keywords": [
-        "Claude",
-        "AI"
-      ],
-      "ai_summary": "사이먼 윌리슨이 캐논 R6 Mark II 카메라로 찍은 야생동물 사진을 iNaturalist 데이터와 묶어 자기 블로그 사이트로 자동 동기화하는 기능을 만들었습니다. 이 기능을 휴대폰에서 Claude Code for web을 활용해 직접 코드로 구현했고, 10여년치 관찰 기록까지 소급해 검색에 노출시켰습니다.",
-      "extraction_reason": "AI 코딩 도구가 일반 블로그 운영자에게도 실제 도구가 되는 사례입니다.",
-      "relevance_score": 6.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 개발자의 취미 사이트 사례지만, 며칠 단위로 비슷한 'AI 코딩으로 1인 운영자가 직접 만든 도구'가 늘어날 가능성이 있습니다. 몇 달 안에 스몰 비즈니스 웹사이트, 동호회 카페, 학교 행사 페이지 같은 영역에서 외주 개발 의존이 줄어들 것으로 보입니다. 다만 코드 품질·보안 검토 없이 양산되는 페이지가 늘면 보안 사고 위험도 함께 커질 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2005년 워드프레스 같은 블로그 플랫폼이 보급되면서 비개발자도 개인 사이트를 운영하게 됐고, 2010년대 위시(Wix)·티스토리가 그 흐름을 이어받았습니다. 이번 사례는 그 다음 단계로, 템플릿이 아닌 '내 요구에 맞춘 코드'를 1시간 이내에 직접 만드는 단계입니다. 과거 두 번의 변화 모두 5년 안에 수백만 명이 따라온 만큼 이번에도 비슷한 채택 곡선이 나타날 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "3dcb9f3ea362b75b",
-      "title": "iNaturalist Sightings",
-      "source": "Simon Willison",
-      "published_at": "2026-05-02T04:35:41+09:00",
-      "original_url": "https://simonwillison.net/2026/May/1/inat-sightings/#atom-everything",
-      "content_text": "Tool: iNaturalist Sightings I wanted to see my iNaturalist observations - across two separate accounts - grouped by when they occurred. I'm camping this weekend so I built this entirely on my phone using Claude Code for web. I started by building an inaturalist-clumper Python CLI for fetching and \"clumping\" observations - by default clumps use observations within 2 hours and 5km of each other. Then I setup simonw/inaturalist-clumps as a Git scraping repository to run that tool and record the result to clumps.json . That JSON file is hosted on GitHub, which means it can be fetched by JavaScript using CORS. Finally I ran this prompt against my simonw/tools repo: Build inat-sightings.html - an app that does a fetch() against https://raw.githubusercontent.com/simonw/inaturalist-clumps/refs/heads/main/clumps.json and then displays all of the observations on one page using the https://static.inaturalist.org/photos/538073008/small.jpg small.jpg URLs for the thumbnails - with loading=lazy - but when a thumbnail is clicked showing the large.jpg in an HTML modal. Both small and large should include the common species names if available Tags: tools , claude-code , inaturalist , generative-ai , ai , llms",
-      "category": "official_ai",
-      "keywords": [
-        "Claude",
-        "AI"
-      ],
-      "ai_summary": "사이먼 윌리슨이 두 개의 iNaturalist 계정에 흩어진 관찰 기록을 시간(2시간)·거리(5km) 단위로 묶어 한 페이지에 보여주는 도구를 캠핑 중 휴대폰만 가지고 만들었습니다. inaturalist-clumper Python CLI를 짜고, 결과 JSON을 깃허브에서 호스팅하며, 썸네일 클릭 시 큰 사진 모달이 뜨는 웹앱까지 한 번의 프롬프트로 완성했습니다.",
-      "extraction_reason": "AI 코딩 에이전트로 어디서든 도구를 만들 수 있게 된 흐름의 단면입니다.",
-      "relevance_score": 6.0,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 취미 도구지만 같은 패턴이 회사 업무에 들어오면, 6개월 안에 부서별 'CSV→대시보드' 같은 1회성 도구를 IT부서 거치지 않고 직원이 직접 만드는 사례가 늘어날 가능성이 있습니다. 1년 뒤에는 외부 SaaS 결제를 줄이고 작은 도구는 자체 제작하는 흐름이 자리잡을 가능성이 있고, 그 결과 SaaS 시장이 전체 매출 5~10% 위축될 시나리오도 거론됩니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1990년대 엑셀 매크로, 2000년대 구글 시트 + 앱스 스크립트, 2010년대 노코드 도구(Zapier·Notion) 가 비슷한 길을 걸었습니다. 세 번 모두 처음엔 'IT 부서 일을 줄인다'는 환영을 받았지만 1~2년 뒤 데이터 보안·중복 코드 문제가 터졌습니다. 이번 AI 코딩도 비슷한 사이클을 1~2년 안에 한 번 겪을 가능성이 높습니다."
-        }
       }
     },
     {
@@ -119,27 +56,22 @@
         "OpenAI",
         "AI"
       ],
-      "ai_summary": "오픈AI의 코딩 에이전트 Codex CLI 0.128.0 버전이 /goal 명령을 새로 추가했습니다. 이용자가 목표를 설정하면 Codex가 그 목표가 달성됐다고 평가하거나 토큰 예산이 소진될 때까지 자동으로 반복 실행합니다. goals/continuation.md, goals/budget_limit.md 프롬프트가 매 턴 끝에 자동 주입되는 구조로 구현됐습니다.",
-      "extraction_reason": "오픈AI 공식 코딩 에이전트의 자동 반복 모드 도입은 개발 워크플로 변화 신호입니다.",
-      "relevance_score": 7.5,
-      "is_must_know": false,
+      "ai_summary": "오픈AI의 코드 에이전트 'Codex CLI' 0.128.0 버전이 새 슬래시 명령 '/goal' 을 도입했다. 사용자가 작업의 최종 목표를 명시하면 에이전트가 그 목표를 기준으로 행동을 조정하는 기능으로, 코딩 에이전트가 단순 명령 실행을 넘어 목표 정합성(goal alignment) 을 추적하는 방향으로 진화하는 흐름을 보여준다.",
+      "extraction_reason": "AI 코딩 에이전트가 '시킨 일' 에서 '목표 정합' 으로 옮겨가는 변곡점 — 개발 일자리 구조에 직접 영향.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 코드 사용자에 한정된 변화지만, 며칠 안에 GitHub·Cursor·Claude Code 등 경쟁 에이전트도 비슷한 '목표 도달까지 반복' 모드를 따라붙일 가능성이 있습니다. 몇 달 뒤 신입 개발자 단순 작업의 30~50%를 자동 루프가 처리하는 구조로 굳어질 수 있고, 1년 뒤 '몇 토큰을 소진했나'가 새로운 작업량 지표로 등장할 가능성이 있습니다. 동시에 무한 루프로 인한 비용 폭증 사고도 함께 늘어날 위험이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2023년 Auto-GPT, 2024년 Devin, 2025년 Claude Code의 자동 루프 등이 비슷한 길을 시도했습니다. 세 사례 모두 초반 1~3개월은 데모 위주로 화제가 됐지만, 실제 생산성 향상은 평균 15~25% 수준에 머물렀고 토큰 비용 폭증으로 회사가 한도를 막아버린 경우가 많았습니다. /goal도 같은 함정에 빠질 가능성이 중간 정도이며, OpenAI가 예산 한도 기능을 함께 넣은 이유로 보입니다."
+          "text": "당장은 오픈AI 코덱스를 쓰는 일부 개발자만 영향을 받지만, 몇 달 안에 다른 코딩 에이전트(클로드 코드, 깃허브 코파일럿 등)도 비슷한 '목표 정렬' 기능을 따라할 가능성이 높습니다. 1~2년 지나면 신입 개발자가 하던 단순 코드 작성 업무는 더 빠르게 줄고, 대신 '무엇을 만들 것인가' 를 명확히 정의하는 PM·시니어 개발자의 가치가 더 커지는 패턴이 자리잡습니다. 결과적으로 코딩 학원·부트캠프 시장도 '문법 강의' 에서 '요구사항 분석' 강의로 무게중심이 옮겨갈 겁니다."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "개발자라면 /goal을 작은 작업(테스트 통과·리팩토링) 부터 시도해보고 토큰 예산을 평소의 절반으로 잡아 비용 감각을 키우는 게 도움이 됩니다. 비개발자라면 지금 당장 영향은 없지만, 회사가 'AI 코딩 자동화로 인력 N명을 줄였다'는 발표를 하면 그게 이번 흐름의 연장선임을 알아두면 좋습니다. 반대로, 검증 없이 /goal 결과물을 그대로 운영 서버에 적용하는 일은 피하는 게 안전합니다."
+            "text": "개발자라면 이번 한 주 안에 본인이 쓰는 AI 코딩 도구의 '목표 명세' 기능을 한 번 켜보고, 두 시간짜리 기능 하나를 평소 방식과 비교해 보세요. 학생·취준생이라면 단순 코딩 강의 하나 더 듣기보다 PM·QA 관점의 요구사항 정의 연습 1~2개를 포트폴리오에 넣는 편이 더 효과적일 가능성이 높습니다. 반대로 '곧 개발자 다 사라진다' 식의 자극적 헤드라인을 보고 진로 전체를 바꾸는 결정은 지금 시점에서 가장 피해야 할 행동입니다."
           }
         ]
       }
@@ -159,30 +91,57 @@
         "OpenAI",
         "AI"
       ],
-      "ai_summary": "영국 AI 보안연구소(AISI)가 오픈AI의 GPT-5.5 모델을 사이버 보안 능력 측면에서 평가한 결과, 앤트로픽 Claude Mythos와 비슷한 수준의 취약점 탐지 역량을 가졌다고 발표했습니다. 다만 GPT-5.5는 Mythos와 달리 현재 일반 사용자도 바로 접근할 수 있어 영향력이 더 크다는 점이 강조됐습니다.",
-      "extraction_reason": "최신 AI 모델의 사이버 능력 평가는 보안·정책 양쪽에 영향을 줍니다.",
+      "ai_summary": "영국 AI 보안연구소(UK AI Security Institute) 가 오픈AI 'GPT-5.5' 의 사이버보안 능력을 평가한 결과, 앤트로픽의 'Claude Mythos' 와 비슷한 수준의 보안 취약점 발견 능력을 보였다. 단 차이점은 GPT-5.5 가 현재 일반 이용자에게 공개돼 있다는 점으로, 사이버 공격·방어 양면에서 즉시 활용 가능한 도구가 됐다는 의미다.",
+      "extraction_reason": "최상급 LLM 의 보안 취약점 발견 능력이 일반 공개 — 공격·방어 양면에서 즉시 영향 발생.",
       "relevance_score": 8.5,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 보고서일 뿐이지만 며칠 안에 보안업계가 'GPT-5.5로 모의해킹 실험을 해봤다'는 후속 글을 쏟아낼 가능성이 큽니다. 몇 주 뒤엔 일반 사용자가 GPT-5.5에 'A 회사 사이트 취약점 찾아줘'라고 물어보면서 자잘한 보안 사고가 늘어날 시나리오도 가능성이 높습니다. 1년 뒤엔 영국·EU에서 모델 출시 전 사이버 능력 평가를 의무화하는 규정으로 이어질 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2023년 GPT-4 출시 직후, 2024년 Claude 3 Opus, 그리고 같은 AISI의 Claude Mythos 평가까지 세 차례 비슷한 보고서가 나왔습니다. 그 결과 1년 안에 OpenAI·앤트로픽이 안전 가드레일을 5~10회씩 추가 패치했고, 평균 6개월 안에 '직접적 해킹 거부' 기능이 강화됐습니다. 이번 GPT-5.5도 비슷한 후속 패치 사이클을 따를 가능성이 높습니다."
+          "text": "당장은 보안 연구자·기업 보안팀이 GPT-5.5 를 자체 코드 점검에 쓰기 시작하지만, 몇 주 안에 같은 도구가 공격자 손에도 동일하게 들어갑니다. 1~2분기 안에 중소기업·개인 웹사이트 대상 자동화된 취약점 스캔이 눈에 띄게 늘어날 가능성이 높고, 결과적으로 2026년 하반기 보험·헬스케어·공공기관에서 'AI 가 발견한' 신종 취약점 보안사고 보도가 늘어나는 패턴이 예상됩니다. Claude Mythos 와 비슷한 수준이라는 평가는 곧 '동급 수준의 두 모델이 동시에 시장에 풀린' 환경 자체가 새 변수입니다."
         },
         "bonus": [
           {
-            "type": "frame",
-            "title": "이 뉴스, 이렇게 읽어보세요",
-            "icon": "🧐",
-            "text": "단일 기관(AISI) 평가라는 점, 비교 대상이 같은 연구소가 평가한 Claude Mythos 한 모델뿐이라는 점은 출처 측면에서 약합니다. 평가 방법론·테스트셋이 공개되지 않으면 'comparable' 이라는 말이 어떤 기준인지 알기 어렵습니다. 이 질문을 던져보세요: 어떤 카테고리(취약점 탐지·악성코드 작성·소셜엔지니어링)에서 비슷한가? 일반인이 직접 만들어낼 수 있는 위험인가, 전문 보안연구자만 가능한 영역인가?"
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "개인 입장에선 이번 주 안에 ① 자주 쓰는 메일·은행·쇼핑 계정 2단계 인증을 점검하고, ② 안 쓰는 오래된 사이트 계정을 정리하는 게 가장 현실적인 대응입니다. 회사에 IT 담당이 있다면 GPT-5.5 같은 도구로 본사 도메인 한 번 자체 점검을 제안해볼 만합니다. 반대로 '내 정보는 어차피 다 털렸으니 신경 안 써도 된다' 는 식의 체념은 가장 피해야 할 행동입니다 — 자동화된 공격은 '귀찮은 사람' 부터 거르고 갑니다."
           }
         ]
       }
+    },
+    {
+      "article_id": "3dcb9f3ea362b75b",
+      "title": "iNaturalist Sightings",
+      "source": "Simon Willison",
+      "published_at": "2026-05-02T04:35:41+09:00",
+      "original_url": "https://simonwillison.net/2026/May/1/inat-sightings/#atom-everything",
+      "content_text": "Tool: iNaturalist Sightings I wanted to see my iNaturalist observations - across two separate accounts - grouped by when they occurred. I'm camping this weekend so I built this entirely on my phone using Claude Code for web. I started by building an inaturalist-clumper Python CLI for fetching and \"clumping\" observations - by default clumps use observations within 2 hours and 5km of each other. Then I setup simonw/inaturalist-clumps as a Git scraping repository to run that tool and record the result to clumps.json . That JSON file is hosted on GitHub, which means it can be fetched by JavaScript using CORS. Finally I ran this prompt against my simonw/tools repo: Build inat-sightings.html - an app that does a fetch() against https://raw.githubusercontent.com/simonw/inaturalist-clumps/refs/heads/main/clumps.json and then displays all of the observations on one page using the https://static.inaturalist.org/photos/538073008/small.jpg small.jpg URLs for the thumbnails - with loading=lazy - but when a thumbnail is clicked showing the large.jpg in an HTML modal. Both small and large should include the common species names if available Tags: tools , claude-code , inaturalist , generative-ai , ai , llms",
+      "category": "official_ai",
+      "keywords": [
+        "Claude",
+        "AI"
+      ],
+      "ai_summary": "사이먼 윌리슨이 자신의 iNaturalist 관측 기록을 시간·장소 기준으로 묶어주는 'inaturalist-clumper' 파이썬 CLI 도구를 클로드 코드(Claude Code) 로 모바일에서 직접 만든 사례를 공개했다. 기본 설정은 2시간·5km 이내 관측을 한 묶음으로 처리하며, 결과물은 깃허브에 JSON 으로 호스팅된다.",
+      "relevance_score": 5.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "9f6be5fe45a75135",
+      "title": "Sightings",
+      "source": "Simon Willison",
+      "published_at": "2026-05-03T02:26:40+09:00",
+      "original_url": "https://simonwillison.net/2026/May/2/sightings/#atom-everything",
+      "content_text": "/elsewhere/sightings/ I have a new camera (a Canon R6 Mark II) so I'm taking a lot more photos of birds. I share my best wildlife photos on iNaturalist , and based on yesterday's successful prototype I decided to add those to my blog. I built this feature on my phone using Claude Code for web, as an extension of my beats system for syndicating external content. Here's the PR and prompt. As with my other forms of incoming syndicated content sightings show up on the homepage, the date archive pages, and in site search results. I back-populated over a decade of iNaturalist sightings, which means you that if you search for lemur you'll see my lemur photos from Madagascar in 2019! Tags: blogging , photography , wildlife , ai , inaturalist , generative-ai , llms , ai-assisted-programming , claude-code",
+      "category": "official_ai",
+      "keywords": [
+        "Claude",
+        "AI"
+      ],
+      "ai_summary": "사이먼 윌리슨이 캐논 R6 Mark II 카메라로 찍은 야생 사진을 iNaturalist 에 공유한 뒤, 모바일에서 Claude Code 를 이용해 자기 블로그에도 'sightings' 항목으로 자동 동기화하는 기능을 직접 만들었다고 공개했다. 10여 년치 과거 관측 기록까지 일괄 추가했다.",
+      "relevance_score": 4.5,
+      "is_must_know": false
     },
     {
       "article_id": "1e6dded24f248602",
@@ -196,22 +155,9 @@
         "LLM",
         "AI"
       ],
-      "ai_summary": "지그(Zig) 언어 창시자 앤드류 켈리가 'LLM이 만든 코드 PR과 사람이 짠 코드는 구분된다'고 단언했습니다. 사람의 실수와 LLM의 환각은 본질적으로 달라 쉽게 알아챌 수 있고, 에이전틱 코딩에 익숙한 사람은 비흡연자가 흡연자를 알아채듯 디지털 냄새가 난다고 비유하며 자기 프로젝트에서는 LLM 코딩을 받지 않겠다고 밝혔습니다.",
-      "extraction_reason": "오픈소스 메인테이너의 LLM 코드 거부는 개발 문화 분기점을 보여줍니다.",
-      "relevance_score": 7.0,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 명의 메인테이너 발언이지만, 며칠 안에 비슷한 'LLM PR 거부' 정책을 도입하는 오픈소스 프로젝트가 늘어날 가능성이 있습니다. 몇 달 뒤엔 큐레이션이 강한 프로젝트(보안·시스템 라이브러리)와 '일단 다 받는' 프로젝트로 이극화될 가능성이 높고, 1년 뒤엔 'AI-friendly' '인간만 받음' 같은 라벨이 코드 저장소 메타데이터에 등장할 시나리오도 가능합니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2009년 위키피디아 영문판이 봇 편집 정책을 강화한 일, 2017년 스택오버플로가 GPT-3 답변 금지 정책을 도입한 일이 비슷한 사례입니다. 두 사례 모두 '먼저 강하게 막은 뒤 일부 허용'으로 절충되며 평균 1~2년이 걸렸습니다. 지그 같은 시스템 언어는 코드 결함이 치명적이라 흡연자 비유처럼 더 강한 정책으로 굳어질 가능성이 높지만, 다른 응용 분야는 다른 길을 갈 가능성도 있습니다."
-        }
-      }
+      "ai_summary": "오픈소스 프로젝트 메인테이너 앤드류 켈리가 'LLM 사용자를 못 구분한다는 통념은 틀렸다' 며, LLM이 만드는 환각(hallucination) 실수 패턴이 사람의 실수와 본질적으로 달라 식별이 가능하다고 지적했다. 사이먼 윌리슨이 이를 인용하며 에이전틱 코딩 출신자에겐 특유의 '디지털 냄새' 가 묻어난다는 비유로 소개했다.",
+      "relevance_score": 6.0,
+      "is_must_know": false
     },
     {
       "article_id": "140263adf1211b03",
@@ -225,21 +171,40 @@
         "Claude",
         "AI"
       ],
-      "ai_summary": "사이먼 윌리슨이 매트 웹의 '바이브 코딩으로 만든 도구·앱을 RSS 웹피드로 공유하자'는 아이디어에 호응해, Claude를 시켜 자기 도구 모음 페이지(/elsewhere/tools/)에 Atom 피드와 아이콘을 추가했다고 밝혔습니다. AI 코딩이 앱 개발을 가속하면서 도구 출시가 블로그 포스팅처럼 잦아진다는 관찰이 핵심입니다.",
-      "extraction_reason": "AI 코딩 시대의 앱 유통 방식 변화를 보여주는 구체적 시도입니다.",
+      "ai_summary": "사이먼 윌리슨이 매트 웹의 제안을 인용해 '바이브 코딩(vibe-coding) 으로 빠르게 양산되는 개인용 마이크로 앱' 을 공유하기 위한 RSS 피드 표준이 필요하다고 주장했다. 본인 블로그 /elsewhere/tools/ 페이지에 Atom 피드를 직접 추가했으며, 앱 출시가 '웹사이트 런칭' 보다 '블로그 글 발행' 에 가까워지는 흐름을 짚었다.",
       "relevance_score": 6.0,
-      "is_must_know": false,
+      "is_must_know": false
+    },
+    {
+      "article_id": "a333ab55cc847a78",
+      "title": "국민성장펀드, 소버린AI 업스테이지에 5천600억원…2호 직접투자",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T12:00:04+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260502045100002",
+      "content_text": "(서울=연합뉴스) 강수련 기자 = 소버린 인공지능(AI) 기업 업스테이지가 국민성장펀드 직접투자 2호 기업으로 선정됐다.",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "소버린(주권형) AI 기업 업스테이지가 국민성장펀드 직접투자 2호 기업으로 선정돼 5,600억원 규모 자금을 받게 됐다. 한국 정부가 자체 AI 기반 기술 확보를 위해 토종 AI 기업에 직접 자금을 투입하는 흐름의 핵심 사례로 부각된다.",
+      "extraction_reason": "정부 직접투자 5천600억원 — 한국 'AI 주권' 정책의 향방을 가르는 신호탄.",
+      "relevance_score": 8.5,
+      "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 1인 블로그의 실험이지만, 몇 달 뒤엔 '내가 어제 만든 도구' 식의 마이크로 앱 공유 사이트가 RSS 기반으로 등장할 가능성이 있습니다. 1년 뒤엔 검색 엔진보다 RSS 리더가 다시 부상할 시나리오도 거론되고, 앱스토어 중심 유통 구조에 균열이 생길 가능성이 있습니다. 다만 보안 검증을 거치지 않은 마이크로 앱이 무차별 배포되면서 사용자 피해가 늘어날 위험도 함께 커집니다."
+          "text": "당장은 업스테이지 한 곳의 자금 조달 이슈처럼 보이지만, 5,600억원 규모는 국내 AI 스타트업 단일 투자로는 손에 꼽히는 액수입니다. 몇 달 안에 다른 토종 AI 기업(코난, 솔트룩스, 셀렉트스타 등) 들도 정부 자금이나 대기업 매칭 투자를 끌어내려 움직일 가능성이 높고, 1~2년 지나면 정부 발주 행정·국방 AI 사업에서 'K-LLM 의무 사용' 같은 정책이 현실화될 수 있습니다. 결과적으로 본인이 일하는 회사가 외산 챗GPT 위주에서 국산 모델 병행 사용으로 옮겨가는 흐름을 5천600억원이 만들어 낸다고 보면 됩니다."
         },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2004년 RSS 도입 초기 블로그 폭발기, 2008년 페이스북 앱 플랫폼 개방기, 2014년 크롬 익스텐션 마켓 개방기까지 세 사례에서 '장벽이 낮아지면 앱 수가 10~100배 늘지만 평균 품질은 하락' 패턴이 나타났습니다. 이번 바이브 코딩 + RSS 흐름도 같은 곡선을 따를 가능성이 높지만, AI가 코드 보안 점검까지 자동화한다면 과거보다 품질 저하는 약할 가능성도 있습니다."
-        }
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "관련 종사자라면 이번 분기 안에 ① 본인 회사가 쓰는 AI 모델 라인업에 국산이 포함돼 있는지, ② 정부 발주 프로젝트 RFP 에서 '국산 AI 우선' 조항이 들어오기 시작했는지를 점검해 보세요. 일반 직장인 입장에선 본인 분야 문서 작성·요약을 국산 모델로 한 번 비교 평가해 보면 향후 직장에서 쓸 도구의 감을 잡을 수 있습니다. 반대로 '한국형 AI 떴다' 는 한 줄 보도만 보고 관련주를 충동 매수하거나, 반대로 '어차피 외산이 이긴다' 며 국산 도구 시도 자체를 포기하는 양극단 모두 피해야 합니다."
+          }
+        ]
       }
     },
     {
@@ -253,211 +218,220 @@
       "keywords": [
         "로봇"
       ],
-      "ai_summary": "노르웨이 휴머노이드 로봇 스타트업 1X 테크놀로지가 미국 캘리포니아 헤이워드에 5만8천 제곱피트 규모 신규 공장을 가동해 올해 가정용 휴머노이드 로봇 최대 1만 대를 생산할 계획입니다. 2027년부터는 연 10만 대 생산이 목표며, 추가로 캘리포니아 샌카를로스에 더 큰 공장을 짓는다는 계획을 발표하며 중국 업체에 맞서는 서구 대표주자로 자리잡으려 합니다.",
-      "extraction_reason": "가정용 휴머노이드 양산이 본격화되는 신호로 일자리·생활 변화에 영향을 줍니다.",
-      "relevance_score": 8.3,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 미국 캘리포니아 한 공장 가동 소식이지만, 몇 달 안에 1만 대 출하 목표가 어느 정도 달성되는지가 지표가 됩니다. 2027년 연 10만 대 생산 계획이 현실화되면 청소·간병 일부 가사노동에 휴머노이드 사용이 늘면서 가사대행 서비스 시장과 요양보호 인력 수요가 함께 흔들릴 가능성이 있습니다. 길게 보면 한국 가전·로봇 부품사들에 '서구향 OEM' 새 시장이 열리는 시나리오도 함께 가능합니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2000년대 룸바 진공청소기 양산, 2010년대 보스턴다이내믹스 시연, 2024년 테슬라 옵티머스 발표가 비슷한 사례입니다. 룸바는 출시 후 5년 안에 글로벌 1천만 대를 넘긴 반면, 옵티머스는 시연 1년 후에도 양산 일정이 미뤄졌습니다. 이번 1X 1만 대 목표는 두 사례 사이 어디쯤 위치할 가능성이 있고, 실제 인도 대수가 목표의 50% 이상 달성되면 시장 신뢰가 한 계단 올라갈 가능성이 높습니다."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "당장 가정용 휴머노이드를 살 단계는 아니지만, 본인 직무가 단순 반복 가사·정리 기반이라면 향후 1~2년 안의 시장 변화를 관찰해두면 좋습니다. 가전·로봇 부품 관련 종목을 가진 투자자라면 1X 양산 일정 충족 여부, 추가 공장 착공 일정을 분기별로 점검할 만합니다. 반대로, '내년에 우리 집에도 휴머노이드 한 대'라는 광고를 보고 선결제·예약을 서두르는 행동은 피하는 게 안전합니다."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "e52eba79bf8b39d4",
-      "title": "중국 전기차 시장, 가격 경쟁 넘어 ‘AI 경쟁’으로 확대",
-      "source": "AI타임스",
-      "published_at": "2026-05-03T12:08:43+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210036",
-      "content_text": "세계 최대 전기차 시장인 중국에서 완성차 업체들이 치열한 가격 경쟁을 넘어 차량 내 AI 기능 경쟁으로 무게 중심을 옮기고 있다. CNBC에 따르면, 1일 열린 베이징 모터쇼에서는 이러한 변화가 뚜렷하게 드러났다.바이트댄스의 AI 비서 ‘더우바오(Doubao)’는 이미 50개 이상의 자동차 브랜드, 145개 차종, 700만대 이상의 차량에 탑재된 것으로 나타났다. 더우바오는 차량 내 다양한 서비스와 연결되며 사실상 표준 플랫폼으로 자리 잡고 있다는 평이다.AI 기능 확대는 외국 브랜드에도 영향을 미치고 있다. 메르세데스-벤츠, 아우",
-      "category": "ai_news",
-      "keywords": [
-        "AI"
-      ],
-      "ai_summary": "세계 최대 전기차 시장 중국에서 완성차 업체들의 경쟁 축이 가격에서 차량 내 AI 기능으로 이동하고 있습니다. 베이징 모터쇼에서 바이트댄스 AI 비서 ‘더우바오’가 50개 이상 브랜드, 145개 차종, 700만 대 이상 차량에 탑재돼 사실상 표준 플랫폼으로 자리잡았다는 점이 부각됐고, 메르세데스-벤츠·아우디 등 외국 브랜드도 더우바오 도입에 영향을 받고 있습니다.",
-      "extraction_reason": "차량 내 AI 표준화는 한국 자동차·반도체 산업에 직접 영향을 주는 흐름입니다.",
+      "ai_summary": "노르웨이 로봇 스타트업 1X 테크놀로지가 미국 캘리포니아 헤이워드에 약 1만7700㎡ 규모 공장을 새로 구축하고 올해 안에 가정용 휴머노이드 로봇 최대 1만대를 생산하기로 했다. 2027년부터는 연간 10만대 생산이 목표이며, 캘리포니아 샌카를로스에 추가 대형 공장도 계획 중이다. 중국 휴머노이드 기업에 맞서는 서구 대표 주자로 자리잡으려는 행보다.",
+      "extraction_reason": "가정용 휴머노이드 연 1만대 → 10만대 — 가전·돌봄 노동시장 구조에 직격.",
       "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 중국 모터쇼 한 장면이지만, 몇 달 안에 한국·일본 완성차도 차내 AI 비서 채택 압박을 받을 가능성이 큽니다. 1년 뒤엔 차량용 반도체·소프트웨어 표준이 중국발 더우바오 생태계와 서구 안드로이드 오토 진영으로 양분될 시나리오가 가능하고, 한국 자동차 부품사·SDV 관련 기업이 어느 진영을 지원할지 선택을 강요받게 됩니다. 동시에 차량 데이터의 해외 이전 우려도 같이 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2010년 스마트폰 OS 경쟁 초기 안드로이드 vs iOS 양분, 2015년 차량 인포테인먼트의 카플레이 vs 안드로이드 오토 경쟁이 비슷한 reference class입니다. 두 사례 모두 표준 자리를 차지한 진영이 5년 뒤 시장 70% 이상을 가져갔습니다. 이번 더우바오의 700만 대 탑재는 카플레이 초창기와 비슷한 위치이며, 외국 브랜드까지 도입하기 시작한 점은 표준화 곡선이 빨라질 가능성을 보여줍니다."
-        }
-      }
-    },
-    {
-      "article_id": "45c9a29c84a46a7e",
-      "title": "메타, 휴머노이드 로봇 키운다···스타트업 ‘ARI’ 인수",
-      "source": "매일경제",
-      "published_at": "2026-05-03T10:55:26+09:00",
-      "original_url": "https://www.mk.co.kr/news/it/12034373",
-      "content_text": "어슈어드 로봇 인텔리전스(ARI) 인수 모든 육체 노동 가능한 모델 개발 중 주요 인력 메타초지능연구소에 합류 로봇 및 AGI 개발 본격화 추진할 듯메타가 휴머노이드 로봇 스타트업..",
-      "category": "ai_news",
-      "keywords": [
-        "로봇"
-      ],
-      "ai_summary": "메타가 휴머노이드 로봇 스타트업 어슈어드 로봇 인텔리전스(ARI)를 인수해 모든 육체 노동을 수행할 수 있는 모델 개발에 본격 착수합니다. 주요 인력은 메타초지능연구소에 합류하며, 이는 메타가 로봇 및 AGI 개발을 추진하기 위한 행보로 해석됩니다.",
-      "extraction_reason": "빅테크 휴머노이드 경쟁이 한층 격화되는 신호입니다.",
-      "relevance_score": 8.2,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 메타의 인수 발표지만, 몇 달 안에 구글·애플·아마존도 비슷한 휴머노이드 인수·합작을 발표할 가능성이 큽니다. 1년 안에 빅테크 5곳이 모두 휴머노이드 라인을 가진 시나리오가 가능하고, 한국 부품·구동 모듈 기업에 OEM 수주가 분산되는 효과가 생길 가능성이 있습니다. 동시에 ‘노동을 대체하는 로봇’에 대한 규제 논의가 글로벌 의제로 떠오를 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2013년 구글의 보스턴다이내믹스 인수, 2017년 소프트뱅크의 보스턴다이내믹스 인수, 2023년 마이크로소프트의 휴머노이드 스타트업 투자가 비슷한 reference class입니다. 구글은 인수 4년 만에 매각했고, 소프트뱅크도 일부 지분을 정리했습니다. 즉 인수 자체보다 양산 능력 확보까지 평균 5~7년이 걸리는 흐름이며, 메타도 비슷한 시간이 필요할 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "4805732a0b9cd727",
-      "title": "국민성장펀드, 토종 AI 기업 ‘업스테이지’에 5600억 투자",
-      "source": "한겨레",
-      "published_at": "2026-05-03T13:36:00+09:00",
-      "original_url": "https://www.hani.co.kr/arti/economy/finance/1256931.html",
-      "content_text": "국민성장펀드가 국내 기술 기반의 독자적인 인공지능 모델 경쟁력 강화를 위해 토종 인공지능 기업 ‘업스테이지’에 5600억원을 직접 투자한다. 금융위원회는 지난달 30일 열린 기금운용심의위원회에서 업스테이지에 대한 5600억원 규모의 직접 지분투자를 승인했다고 3일 밝혔",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "국민성장펀드가 국내 기술 기반의 독자적인 인공지능 모델 경쟁력 강화를 위해 토종 인공지능 기업 ‘업스테이지’에 5,600억원을 직접 투자한다고 한겨레가 보도했습니다. 금융위원회는 지난달 30일 기금운용심의위원회에서 업스테이지에 대한 5,600억원 규모 직접 지분투자를 승인했다고 3일 밝혔습니다.",
-      "extraction_reason": "한국 AI 주권 정책의 두 번째 직접투자로 산업 구조에 영향이 큽니다.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 정부의 결정이지만, 며칠 안에 다른 토종 AI 스타트업이 ‘우리도 후보’라며 후속 투자 유치 행보를 강화할 가능성이 큽니다. 1년 안에 한국 공공기관·금융권 챗봇이 글로벌 모델에서 토종 모델로 일부 옮겨가는 시나리오가 가능하고, 데이터 보안·국내 호스팅을 강조하는 분야부터 변화가 가속될 가능성이 있습니다. 동시에 ‘세금이 한 회사에 쏠린다’는 비판도 함께 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2002년 한국 IT 정책 자금의 NHN 투자, 2018년 정책 자금의 카카오뱅크 지분 참여, 2022년 모태펀드의 토스뱅크 투자가 비슷한 reference class입니다. 세 사례 모두 5년 뒤 시장 점유율은 평균 2~3배 늘었지만, 정책 의존 비판도 동반됐습니다. 이번 업스테이지 투자도 비슷한 곡선을 따를 가능성이 높고, 글로벌 모델과의 격차가 좁혀지는지가 변수입니다."
-        }
-      }
-    },
-    {
-      "article_id": "ea394e4d68131e0e",
-      "title": "오픈AI, 코덱스에 ‘AI 펫’ 깜짝 도입...“코딩에 감성 UX 입힌다”",
-      "source": "AI타임스",
-      "published_at": "2026-05-03T11:59:42+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210034",
-      "content_text": "오픈AI가 코딩 AI 도구인 코덱스(Codex)에 ‘펫(Pets)’ 기능을 도입하며 개발자 인터페이스에 색다른 변화를 시도했다. 작은 애니메이션 캐릭터를 통해 작업 상태를 직관적으로 전달하는 이번 기능은 생산성과 감성적 요소를 결합한 새로운 UX 실험으로 주목받고 있다. 오픈AI는 1일(현지시간) 코덱스에 ‘펫’ 기능을 추가했다. 이번에 도입된 펫 기능은 간단한 명령어 입력만으로 활성화할 수 있다.사용자는 입력창에 ‘/pet’을 입력하면 작은 애니메이션 형태의 캐릭터가 화면에 등장하며, 필요할 경우 다시 입력해 숨길 수도 있다.기본",
-      "category": "ai_news",
-      "keywords": [
-        "AI"
-      ],
-      "ai_summary": "오픈AI가 코딩 AI 도구 코덱스에 ‘펫(Pets)’ 기능을 도입했습니다. 사용자가 입력창에 ‘/pet’을 입력하면 작은 애니메이션 캐릭터가 나타나 작업 상태를 직관적으로 알려주는 방식으로, 다시 입력해 숨길 수도 있어 생산성과 감성적 UX를 결합한 실험으로 평가됩니다.",
-      "extraction_reason": "AI 개발 도구가 감성·유희 요소까지 끌어들이는 흐름의 단면입니다.",
-      "relevance_score": 5.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 코덱스 사용자만 보는 작은 변화지만, 며칠 안에 깃허브·Cursor·Claude Code 등에서도 비슷한 캐릭터 UX 실험이 따라붙을 가능성이 있습니다. 몇 달 뒤엔 회사용 IDE에 작업 상태를 알리는 마스코트가 표준이 될 시나리오가 가능하지만, 산만함 논란도 함께 커질 수 있습니다. 1년 뒤 ‘업무 도구의 감성 UX’가 채용 만족도 지표 한 줄을 차지할 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1997년 마이크로소프트 오피스의 ‘클리피’ 도우미, 2010년대 슬랙 봇·이모지 반응이 비슷한 사례입니다. 클리피는 5년 뒤 폐기됐지만 이모지·봇은 살아남아 표준이 됐습니다. 이번 ‘펫’도 두 갈래 중 하나로 갈 가능성이 비슷하며, 사용자가 직접 켜고 끌 수 있다는 점에서 클리피보다 살아남을 가능성이 다소 높아 보입니다."
-        }
-      }
-    },
-    {
-      "article_id": "2f90da09cdd51180",
-      "title": "컴퓨팅 확보 비상 걸린 앤트로픽, 영국 칩 신예와 파트너십 검토",
-      "source": "AI타임스",
-      "published_at": "2026-05-03T11:42:16+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210033",
-      "content_text": "AI 수요 급증으로 서버 부담이 커지는 앤트로픽이 기존 공급망을 넘어 새로운 AI 칩 확보에 나섰다. 추론(inference) 비용 절감과 공급망 다변화를 위해 영국 칩 스타트업과의 협력을 적극 검토하고 있다.1일(현지시간) 디 인포메이션에 따르면, 앤트로픽은 최근 영국 스타트업 프랙타일(Fractile)과 차세대 추론용 칩 도입을 논의 중인 것으로 전해졌다. 다만 구체적인 계약 규모는 알려지지 않았다.프랙타일은 2022년 설립돼 2024년 중반에야 스텔스 모드에서 벗어난, 칩 업계에서는 아직 미검증된 신예에 가깝다. 대규모 서버를",
-      "category": "ai_news",
-      "keywords": [
-        "앤트로픽",
-        "AI"
-      ],
-      "ai_summary": "AI 수요 증가로 컴퓨팅 부담이 커진 앤트로픽이 영국 칩 스타트업 프랙타일(Fractile)과 차세대 추론용 칩 도입을 협의 중이라고 디 인포메이션이 보도했습니다. 프랙타일은 2022년 설립돼 2024년 중반에야 스텔스 모드를 벗어난 신예지만, 앤트로픽은 추론 비용 절감과 공급망 다변화를 위해 적극 검토 중인 것으로 전해졌습니다.",
-      "extraction_reason": "AI 추론 칩 공급망 다변화는 엔비디아 의존도 변화 신호입니다.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 검토 단계 보도지만, 몇 달 안에 다른 AI 회사들도 비슷한 ‘엔비디아 외 옵션’ 협상 소식을 흘릴 가능성이 큽니다. 1년 뒤 추론용 칩 시장에서 엔비디아 점유율이 70% 아래로 내려갈 시나리오가 가능하고, 그러면 한국 SK하이닉스·삼성전자가 공급하는 HBM 의존 구조도 일부 흔들릴 가능성이 있습니다. 동시에 영국·EU AI 칩 스타트업의 가치 평가가 한 차례 점프할 위험·기회가 함께 생깁니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2017년 구글 TPU 자체 도입, 2022년 메타의 MTIA 칩 발표, 2024년 아마존 트레이니움 2세대 출시가 비슷한 패턴입니다. 세 사례 모두 ‘엔비디아 의존 줄이기’를 표방했지만 5년 뒤에도 엔비디아 점유율은 80% 이상을 유지했습니다. 이번 앤트로픽 시도도 단기간에 큰 점유율 변화를 만들 가능성은 낮지만, 추론 영역만 보면 5~15% 범위 변동이 가능합니다."
+          "text": "당장 1만대는 미국 일부 가정·기업 시범 도입 수준이지만, 2027년 10만대로 10배 늘어나는 계획은 가격이 빠르게 떨어지는 신호입니다. 1~2년 안에 일본·미국 노년층 돌봄, 호텔·물류 청소 같은 영역에서 휴머노이드 채택이 본격화될 가능성이 높습니다. 한국에선 인구 고령화·돌봄 인력 부족 때문에 2027~2028년경 요양시설·병원에 비슷한 로봇이 시범 도입되는 흐름이 예상되고, 이는 단순 청소·운반·돌봄 보조 일자리 구조를 바꿉니다."
         },
         "bonus": [
           {
             "type": "scenario",
             "title": "앞으로 어떻게 될 수 있을까?",
             "icon": "🔮",
-            "text": "최선 시나리오는 프랙타일이 추론 비용을 30~50% 줄여 앤트로픽이 모델 가격 인하 여력을 갖는 경우(가능성 중간)입니다. 중간 시나리오(가능성 높음)는 검토만 진행되고 본 계약은 2027년 이후로 미뤄지는 것이며, 최악은 검증 부족으로 안정성 문제가 터져 다시 엔비디아로 회귀하는 경우(가능성 낮음)입니다. 갈림길은 프랙타일의 첫 양산 칩 발표 시점입니다."
+            "text": "최선 시나리오(가능성 중간) 는 1X 가 2027년 10만대를 실제 양산해 가격이 경차 수준으로 떨어지고, 노년층 돌봄 부담이 줄어드는 흐름입니다. 중간 시나리오(가능성 높음) 는 1만대 양산은 성공하되 10만대 목표는 1~2년 지연되고 가격이 여전히 1억원 이상에 머무르는 그림입니다. 최악(가능성 낮음) 은 안전사고 한두 건이 터지며 규제 강화로 보급이 멈추는 경우입니다. 갈림길은 향후 6~12개월 사이 미국 가정 시범 사용 데이터 공개와 첫 대형 안전사고 발생 여부입니다."
           }
         ]
       }
     },
     {
-      "article_id": "7d5352c8d2376250",
-      "title": "\"비전은 알트먼, 질서는 프라이어\"...IPO 앞둔 오픈AI CFO가 부각되는 이유",
-      "source": "AI타임스",
-      "published_at": "2026-05-03T11:02:31+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210035",
-      "content_text": "사라 프라이어 최고 재무책임자(CFO)가 오픈AI 기업공개(IPO)의 열쇠를 쥔 핵심 인물로 주목받고 있다. 샘 알트먼 CEO의 속도전을 억제하고 내실을 다지는 데 성공할지가 회사의 미래를 결정지을 것이라는 평이다.월스트리트 저널(WSJ)은 1일(현지시간) '오픈AI가 IPO를 원한다면 먼저 CFO를 설득해야 한다'라며, 프라이어가 직면한 도전과 알트먼과의 이견, 그리고 IPO를 둘러싼 상황 등을 전했다.가장 눈에 띄는 대목은 컴퓨팅 용량 확보를 위해 수조달러 규모의 투자를 외치는 알트먼과 이를 감당 가능한 수준으로 조정하려는 프라",
+      "article_id": "7c4884a846584a9c",
+      "title": "삼성전자, SiC 파운드리 다시 불 지폈다…“2028년 양산 목표”",
+      "source": "전자신문",
+      "published_at": "2026-05-03T16:02:00+09:00",
+      "original_url": "https://www.etnews.com/20260430000157",
+      "content_text": "삼성전자가 실리콘 카바이드(SiC) 반도체 위탁생산(파운드리) 사업에 다시 시동을 걸었다. 차세대 전력반도체 소재로 각광 받는 SiC 시장에 뛰어들어 주도권을 확보하고, 기존 8인치 파운드리 라인 활용도도 높이는 전략이다. 업계에서는 삼성전자가 2028년 SiC 양산에",
       "category": "ai_news",
       "keywords": [],
-      "ai_summary": "월스트리트저널이 오픈AI IPO를 결정짓는 핵심 인물로 사라 프라이어 CFO를 지목했습니다. 컴퓨팅 용량 확보를 위해 수조 달러 규모의 투자를 외치는 샘 알트먼 CEO와 이를 감당 가능한 수준으로 조정하려는 프라이어 CFO 사이의 이견이 IPO 성패를 좌우할 변수로 떠오르고 있다는 분석입니다.",
-      "extraction_reason": "오픈AI IPO 행보는 글로벌 AI 자금흐름과 한국 기관투자도 흔듭니다.",
-      "relevance_score": 8.2,
+      "ai_summary": "삼성전자가 실리콘 카바이드(SiC) 반도체 위탁생산(파운드리) 사업에 다시 시동을 걸어 2028년 양산을 목표로 하는 것으로 확인됐다. 차세대 전력반도체 소재로 각광받는 SiC 시장에서 주도권을 확보하고, 기존 8인치 파운드리 라인 활용도도 높이려는 전략으로 풀이된다.",
+      "relevance_score": 7.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "90b715cfcdae277d",
+      "title": "차세대 통신 시장 선점 위한 '부총리급' 전략위 6월 가동",
+      "source": "전자신문",
+      "published_at": "2026-05-03T16:00:00+09:00",
+      "original_url": "https://www.etnews.com/20260430000304",
+      "content_text": "글로벌 차세대 네트워크 시장 선점을 위한 부총리급 민관 합동 전략위원회가 다음달 출범한다. 6세대(6G) 이동통신, 인공지능 무선접속망(AI-RAN) 등 차세대 네트워크 기술 개발부터 상용화, 생태계 조성 등 산업 경쟁력 확보를 위한 컨트롤타워 역할이 기대된다. 3일",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "글로벌 차세대 네트워크 시장 선점을 위해 부총리급 민관 합동 전략위원회가 6월 출범한다. 6세대(6G) 이동통신, 인공지능 무선접속망(AI-RAN) 등 차세대 네트워크 기술 개발부터 상용화, 생태계 조성까지 아우르는 산업 경쟁력 컨트롤타워 역할이 기대된다.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "94069031b2e9deae",
+      "title": "[뉴스줌인] 정책금융 축, '자금 공급'서 '전략 투자'로…AI·공급망 주권 겨냥",
+      "source": "전자신문",
+      "published_at": "2026-05-03T12:00:00+09:00",
+      "original_url": "https://www.etnews.com/20260503000058",
+      "content_text": "국민성장펀드의 이번 승인안은 정책금융의 무게중심이 단순 기업 지원에서 국가 전략산업 투자로 이동하고 있음을 보여준다. 지원 대상은 인공지능(AI) 파운데이션 모델, AI컴퓨팅 인프라, 이차전지 소재, 바이오시밀러(복제약) 생산설비, 반도체 핵심 소재다. 민간 투자만으로",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "국민성장펀드 이번 승인안이 정책금융의 무게중심을 단순 기업 지원에서 국가 전략산업 투자로 이동시키고 있다고 전자신문이 분석했다. 지원 대상은 AI 파운데이션 모델, AI 컴퓨팅 인프라, 이차전지 소재, 바이오시밀러 생산설비, 반도체 핵심 소재 등이다. 민간 투자만으로는 확보가 어려운 영역에 정부가 직접 들어가는 구조다.",
+      "extraction_reason": "정부 자금 운용 패러다임이 'AI·공급망 주권' 으로 이동 — 산업·일자리 지형 변동.",
+      "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 보도 한 건이지만, 몇 주 안에 ‘CFO가 알트먼을 견제한다’는 후속 기사가 이어지며 오픈AI 가치 평가가 출렁일 가능성이 있습니다. 1년 안에 IPO가 실제로 진행되면 글로벌 AI 자금이 오픈AI 한 종목에 쏠리면서 다른 AI 스타트업·국내 기관 포트폴리오에도 자금 재배분이 발생할 가능성이 높습니다. 동시에 한국 거래소·금감원도 ‘AI 회사 상장 심사 기준’을 정비할 압박을 받게 됩니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2014년 알리바바 상장 직전 마윈-차이충신 견제 구도, 2019년 우버 상장 직전 다라 코스로샤히 CEO와 CFO 마찰, 2020년 에어비앤비 IPO가 비슷한 reference class입니다. 세 사례 모두 CFO가 비용 통제를 강조하면서 상장 후 12개월 내 안정적 흐름을 이끌었습니다. 오픈AI도 비슷한 전개를 따를 가능성이 중간이며, 알트먼의 빠른 투자 본능이 변수로 남습니다."
+          "text": "당장은 5,600억원 업스테이지 투자처럼 단일 사례로 보이지만, 이번 승인안은 향후 수십조원 정책금융이 어디로 흐를지 정하는 첫 가이드 역할을 합니다. 1~2년 안에 AI 파운데이션 모델·반도체 소재·이차전지 소재 분야 한국 토종 기업의 자금 조달 환경이 빠르게 좋아지고, 결과적으로 본인이 다니는 회사가 이 5개 영역 협력사라면 매출·연봉 협상력이 함께 올라갑니다. 동시에 5개 영역 밖 산업(전통 제조·서비스) 의 정책금융 지원은 상대적으로 줄어드는 기회비용이 발생합니다."
         },
         "bonus": [
           {
             "type": "perspective",
             "title": "입장이 다르면 어떻게 보일까?",
             "icon": "👥",
-            "text": "알트먼 입장: AGI 경쟁에서 뒤처지지 않으려면 인프라 투자 속도가 생명. CFO 프라이어 입장: 상장 후 분기 실적 변동성을 줄여야 주가가 안정. 마이크로소프트 입장: 자사 클라우드 매출과 직결돼 알트먼 쪽 편을 들 수 있음. 일반 투자자 입장: 누구 손이 올라가느냐에 따라 IPO 가격이 좌우됨. 갈등 지점은 ‘얼마까지 컴퓨팅에 태우느냐’이고, 이는 IPO 직전 한 분기 실적이 결정 변수가 될 가능성이 높습니다."
+            "text": "이 정책 전환을 두고 네 입장이 부딪힙니다. ① 5대 전략산업 종사자(AI·반도체·이차전지·바이오·소재) 는 자금 유입과 채용 확대를 환영합니다. ② 전통 제조·중소기업·서비스업은 '정부가 일부 산업만 챙긴다' 는 박탈감을 느낍니다. ③ 재정 건전성을 강조하는 학계는 '단기 성과에 정책금융이 올인된다' 는 우려를 제기합니다. ④ 글로벌 경쟁국(미국·중국·EU) 은 한국 정부 직접 투자를 보조금 시비 대상으로 볼 수 있습니다. 구조적 갈등 지점은 '국가 전략산업' 의 범위를 누가 어떤 기준으로 정하느냐입니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "c256517354d4682c",
+      "title": "충남도 \"인공지능으로 모기 감시해 감염병 대응\"",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T11:52:01+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503023400063",
+      "content_text": "(홍성=연합뉴스) 박주영 기자 = 충남도 보건환경연구원은 기후변화에 따른 모기 매개 감염병 증가에 선제 대응하기 위해 '인공지능(AI) 기반 실...",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "충남도 보건환경연구원이 기후변화에 따른 모기 매개 감염병 증가에 선제 대응하기 위해 'AI 기반 실시간 모기 감시' 사업에 나선다고 밝혔다. AI 가 모기 종류·개체 수를 자동 식별해 감염병 위험을 조기에 탐지하는 인프라를 지자체 차원에서 도입하는 사례다.",
+      "relevance_score": 6.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "8ef3141b6138fcfa",
+      "title": "[SW키트] 스포츠 중계도 'AI 시대'...\"맞춤 서비스로 수익 창출 시동\"",
+      "source": "ZDNet Korea",
+      "published_at": "2026-05-03T10:02:32+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260502223943",
+      "content_text": "[지디넷코리아]인공지능(AI) 기술과 스포츠 팬 데이터를 결합한 개인화 콘텐츠 서비스가 핵심 사업 모델로 떠오르고 있다. 맞춤형 팬 경험 차원을 넘어 새 비즈니스로 자리 잡았다는 분석이 나오고 있다.3일 IT 업계에 따르면 스포츠 팬 서비스도 전통적인 일방향적인 시청 중심에서 참여형으로 전환하고 있는 것으로 나타났다. AI 기술과 개인 데이터를 결합해 비즈니스 한 축으로 자리잡았다는 설명이다. 이런 추세는 글로벌 단위 조사에서도 보이고 있다. PwC가 발표한 ‘2026 북미 스포츠 산업 전망’ 리포트에 따르면 스트리밍 서비스 확산과 모바일 시청 증가로 팬들의 스포츠 소비는 전통적인 TV 중심에서 디지털 플랫폼으로 이동하고 있는 것으로 전해졌다. 보고서는 팬 데이터를 활용한 개인화 서비스와 디지털 콘텐츠 수익화 역량이 핵심 경쟁 요소로 떠오르고 있다고 봤다.IBM의 2025년 스포츠 팬 연구 보고서에서도 설문 응답자 85%가 스포츠 경험에 AI 기술이 통합되는 것에 대해 긍정적으로 평가했으며, 80%는 2027년까지 AI가 스포츠 관람 방식에 가장 큰 영향을 미칠 기술로 꼽았다. 팬 경험 전반에서 AI 기술에 대한 기대와 수용도가 높아지면서 실제 산업 적용은 글로벌 IT 기업들의 ‘자율형 AI 에이전트’ 기술 중심으로 구체화되고 있다.세일즈포스는 자율형 AI 에이전트 기반으로 스포츠 산업 내 팬 경험 혁신을 추진하고 있다는 평을 받고 있다. 세일즈포스는 골프 중계에 에이전트를 도입해 해설위원 업무를 돕고 있다. LIV 골프와 파트너십을 맺고 폭스스포츠 중계와 LIV 골프 앱에 AI 기반 해설 솔루션 '에이전트 캐디(Agent Caddie)'를 제공하고 있다. 에이전트 캐디는 선수의 과거 퍼포먼스, 코스 조건, 실시간 경기 데이터를 종합적으로 분석해 샷 선택 확률 등 예측 정보를 생성해 방송 그래픽으로 제공한다. 해설위원은 해당 데이터를 활용해 보다 정밀한 해설을 제공할 수 있고, 시청자 역시 선수의 판단 과정을 데이터 기반으로 직관적으로 이해할 수 있다.이런 시스템 중심에는 세일즈포스의 자율형 AI 에이전트 '에이전트포스'의 예측 인사이트(Predictive Insight) 기능이 있다. 기존에는 해설위원이 개별적으로 통계를 확인하고 경험에 의존해 해설을 제공했다면, 에이전트포스는 실시간으로 수집되는 코스 안팎의 데이터를 분석해 예상 결과를 도출할 수 있는 이유에서다. 이에 시청자 경기 이해도를 높이고 한 차원 높은 수준의 경기 관람 경험을 제공한다.또 선수 퍼포먼스와 경기 데이터, 관중 행동·소비 패턴 등 다양한 데이터가 실시간으로 통합되면서, AI 에이전트는 팬 경험 개선과 함께 새로운 수익 기회 발굴에도 활용되고 있다는 평도 받고 있다. 특히 LIV 골프 앱에 탑재된 AI 에이전트 '팬 캐디(Fan Caddie)'는 팬을 비롯한 후원사, 경기장 운영 데이터를 하나로 통합한 세일즈포스의 '데이터 360(Data 360)' 아키텍처 기반으로 작동한다. 팬 캐디는 팬들이 골프 경기를 시청하면서 스마트폰을 통해 AI 에이전트와 실시간으로 상호작용하는 '세컨드 스크린(Second Screen)' 경험을 제공한다. 또 경기 하이라이트 다시보기 영상, 티켓 업그레이드, 굿즈 쇼핑, 토너먼트 인사이트 등 팬이 필요로 하는 기능을 통합 제공한다.이 서비스는 데이터 360을 통한 데이터 통합과 에이전트포스의 분석 기능으로 작동한다. 티켓 스캔부터 VIP 라운지 이용, 굿즈 구매, 앱 내 시청 기록 등 팬 행동 데이터는 하나의 프로필로 통합되며, 72홀 방식으로 전환된다. 이를 통해 한층 풍부해진 선수의 샷, 스윙, 클럽 정보 등 경기 데이터까지 결합되어 맞춤형 팬 서비스 정확도를 높인다.실제 에이전트포스는 실시간 경기 상황에 맞춰 팬들에게 가장 필요한 정보와 혜택을 선제적으로 제안할 수 있다. 예를 들어 갤러리가 특정 홀에 머무는 시간을 분석해 \"곧 해당 선수 티샷이 예정돼 있습니다. VIP 라운지로 업그레이드하시겠습니까?\"고 안내하거나 중계 화면에 잡힌 브라이슨 디섐보(Bryson DeChambeau)의 모자 정보가 궁금한…",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "인공지능",
+        "에이전트"
+      ],
+      "ai_summary": "AI 기술과 스포츠 팬 데이터를 결합한 개인화 콘텐츠 서비스가 새 비즈니스 모델로 부상하고 있다고 지디넷이 보도했다. PwC '2026 북미 스포츠 산업 전망' 리포트는 팬 데이터 활용 개인화 서비스와 디지털 콘텐츠 수익화 역량이 핵심 경쟁 요소가 됐다고 평가했고, IBM 2025 보고서는 응답자 85% 가 스포츠 경험에 AI 통합을 긍정 평가했고 80% 는 2027년까지 AI 가 가장 큰 영향을 미칠 기술로 꼽았다.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "21879baabb630b6e",
+      "title": "\"너는 OO 전문가야\"...AI 페르소나 프롬프팅, 효과 있을까",
+      "source": "ZDNet Korea",
+      "published_at": "2026-05-03T09:58:38+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260503095322",
+      "content_text": "[지디넷코리아]인공지능(AI)에게 특정 분야의 전문가라는 역할을 부여하는 '페르소나 프롬프팅'이 실제로는 코딩이나 수학처럼 정밀한 지식이 필요한 작업에서 오히려 AI의 정확도를 떨어뜨린다는 연구 결과가 나왔다.최근 AI 사용자들 사이에서는 지시어(프롬프트)를 입력할 때 \"당신은 이 분야의 숙련된 전문가입니다\"라는 문구를 추가하면 성능이 향상된다는 설이 상식처럼 통용돼 왔다. 하지만 남가주 대학교(USC) 지자오 후 연구팀이 최근 프리프린트 서버 'arXiv'에 게재한 논문에 따르면, 이런 방식은 분야에 따라 득보다 실이 많을 수 있는 것으로 나타났다. 이 내용은 레지스터닷컴·기가진 등 외신을 통해 보도됐다.외신에 따르면, 연구팀은 'Llama-3.1-8B'와 'Qwen 2.5-7B' 등 6종의 AI 모델을 대상으로 실험을 진행했다. AI에게 단순히 \"당신은 소프트웨어 엔지니어입니다\"라고 짧게 지시하거나, 혹은 전문 지식과 경험이 풍부하다는 식의 복잡한 페르소나를 부여한 뒤 성능을 측정했다.실험 결과, 여러 차례의 대화를 통해 품질을 평가하는 'MT-Bench' 테스트에서는 글쓰기나 추론 분야의 출력 품질이 향상되는 긍정적인 효과가 나타났다. 특히 AI가 인간의 윤리관에 어긋나는 답변을 하지 않도록 하는 'AI 얼라인먼트(정렬)' 측면과 보안 취약점을 이용한 공격(Jailbreak) 방어력은 크게 개선됐다.반면, 실제 정답률이 중요한 코딩·수학·인문과학 분야에서는 오히려 품질이 하락했다. 광범위한 지식 측정 지표인 'MMLU' 벤치마크에서도 \"당신은 전문가입니다\"라고 지시했을 때 전체적인 정확도가 눈에 띄게 떨어졌다.연구팀은 이러한 현상의 원인을 AI의 자원 배분 문제로 분석했다. AI에게 전문가 역할을 부여한다고 해서 없던 전문 지식이 실제로 생겨나는 것은 아니다. 오히려 AI가 '전문가처럼 보이게 답변하는 것(지시 추종)'에 능력을 집중하느라, 정작 사실을 기억해내고 계산하는 데 써야 할 능력을 소진하게 된다는 설명이다.연구를 주도한 후 씨는 \"AI에게 '당신은 숙련된 프로그래머'라고 말하는 것은 코드의 품질을 높이는 데 도움이 되지 않는다\"며 \"오히려 프로젝트 요건과 요구사항을 상세하게 전달하는 것이 사용자가 원하는 결과물을 얻는 데 훨씬 효과적\"이라고 조언했다.",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "AI 에 '당신은 이 분야 숙련된 전문가입니다' 처럼 역할을 부여하는 '페르소나 프롬프팅' 이 코딩·수학처럼 정밀 지식이 필요한 작업에선 오히려 정확도를 떨어뜨릴 수 있다는 연구 결과가 나왔다고 지디넷이 보도했다. 남가주대(USC) 지자오 후 연구팀이 'Llama-3.1-8B' 'Qwen 2.5-7B' 등 6종 AI 모델로 실험한 결과로, 글쓰기·추론 같은 영역에선 효과가 있지만 전 분야에 통하는 만능 전략은 아니라는 결론이다.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "78c1604bb9946263",
+      "title": "중국 통신사, 자율주행 로봇 개 내놨다",
+      "source": "ZDNet Korea",
+      "published_at": "2026-05-03T15:33:14+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260503153314",
+      "content_text": "[지디넷코리아]중국 이동통신사 차이나모바일이 자체 개발한 로봇 개를 판매한다는 소식이다. 이는 글로벌 통신업계 최초 사례다.라이트리딩닷컴에 따르면 차이나모바일은 어린이 놀이 친구와 노인 돌봄을 위한 ‘링시(Lingxi)’라는 이름의 로봇 개를 내놨다.링시는 인간과 상호작용을 통한 상황 기반 서비스를 결합한 점을 주요 특징으로 삼았고 검강 관리와 감정 피드백, 인터랙티브 교육 등의 기능을 제공할 수 있다.차이나모바일은 올해 초 일반 가정에서 고객 테스트를 마친 뒤 주인을 인식하고 외출하면 주인을 따라다닐 수 있는 기능을 더해서 상용화됐다. 실시간 위치 측위와 라이다센서, 광각카메라 등을 통해 자율 주행과 장애물 회피도 가능하다.링시는 베이징에서만 판매되며 가격은 3만 5000 위안(한화 약 760만원)으로 매우 비싸다. 중국의 유명 휴머노이드 제조사인 유니트리의 Go2 로봇보다 3배 이상 높은 가격이다.외신은 이를 두고 대중 시장을 겨냥한 제품이 아니라 차이나모바일의 피지컬AI와 자율주행 AI 분야 전략을 위한 기술적 기반을 위한 제품이라고 평가했다.링시 개발 자체가 하나의 기술적 이정표이며 경쟁 통신사와 차별화하고 빠르게 성장하는 중국의 로봇 산업으로 진출하기 위한 행보라는 뜻이다.차이나모바일의 장동 부사장은 지난 3월 MWC26에서 로보틱스 전략을 설명하며 네트워크 기반의 신규 서비스 창출 외에도 다양한 제조사의 로봇을 관리하는 통합 플랫폼 구축 목표를 제시했다.",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "자율주행",
+        "로봇"
+      ],
+      "ai_summary": "중국 이동통신사 차이나모바일이 자체 개발한 로봇 개 '링시(Lingxi)' 를 판매한다고 발표했다. 글로벌 통신업계 최초 사례로, 어린이 놀이 친구와 노인 돌봄용으로 설계됐고 건강관리·감정 피드백·인터랙티브 교육 기능을 제공한다. 베이징에서만 판매되며 가격은 3만 5,000위안(한화 약 760만원) 으로 유니트리 Go2 보다 3배 이상 높다. 대중 시장보다는 피지컬AI·자율주행 AI 기술 기반 확보용 제품으로 평가된다.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "025d1c9749dbed4e",
+      "title": "“챗GPT 대화도 증거 된다”…AI 대화, 법정 증거로 직행",
+      "source": "매일경제",
+      "published_at": "2026-05-03T11:33:52+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12034391",
+      "content_text": "AI 채팅 기록 수사 활용 사례 증가 전문가 상담과 달리 비밀 적용 안돼 ”개인정보 보호 새 위험 요인“ 경고생성형 인공지능(AI) 서비스와 나눈 대화가 범죄 수사의 핵심 증거로 ..",
+      "category": "ai_news",
+      "keywords": [
+        "챗GPT",
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "생성형 AI 서비스와 나눈 대화 기록이 범죄 수사의 핵심 증거로 활용되는 사례가 늘고 있다고 보도됐다. 변호사·의사 같은 전문가 상담은 비밀유지권이 적용되지만 AI 채팅에는 그 보호가 적용되지 않아, 개인정보 보호의 새로운 위험 요인으로 떠올랐다는 전문가 경고가 함께 소개됐다.",
+      "extraction_reason": "내 챗GPT 대화가 곧장 증거 — 직장인·자영업자 모두에게 직접 영향 가는 변화.",
+      "relevance_score": 8.5,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 형사사건 일부에서 챗GPT 기록이 증거로 채택되는 정도지만, 1년 안에 민사 분쟁(이혼·횡령·해고소송) 에서도 'AI 대화 기록 제출 명령' 이 일상화될 가능성이 높습니다. 결과적으로 회사 영업비밀이나 개인 의료·법률 고민을 외부 챗봇에 입력해온 관행이 그대로 법적 리스크가 됩니다. 몇 분기 안에 기업 보안팀이 직원의 외부 LLM 사용을 차단하거나 사내 전용 AI 로 강제 전환시키는 흐름이 본격화될 것이고, 이는 외산 LLM 대신 사내 RAG·국산 sLLM 도입 수요로 이어집니다."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "이번 주 안에 ① 본인이 쓰는 챗GPT·제미나이 계정의 '대화 저장 끄기' 설정을 한 번 확인하고, ② 회사 업무·민감한 가정사·의료 상담을 외부 챗봇에 그대로 붙여넣은 적이 있다면 어떤 정보까지 적었는지 한 번 점검해 두세요. 반대로 '나는 잘못한 게 없으니 상관없다' 는 식의 안일함은 가장 피해야 합니다 — 이혼·산재·계약 분쟁에서 무심코 적은 한 줄이 상대측 변호사가 법원에 제출하는 핵심 증거가 되는 패턴이 이미 등장하고 있기 때문입니다."
+          },
+          {
+            "type": "frame",
+            "title": "이 뉴스, 이렇게 읽어보세요",
+            "icon": "🧐",
+            "text": "이 기사는 '수사 활용 사례 증가' 라는 흐름을 말하지만 구체적 통계 출처는 본문에서 명시되지 않습니다. 옆 매체에서 같은 통계를 다루는지, 그리고 '비밀유지권 미적용' 이 한국 형사소송법에서 어느 조항으로 다루어지는지 함께 확인해 보세요. 던질 질문 두 가지: ① 이 우려를 가장 크게 제기하는 사람이 누구인가(보안업계인지, 시민단체인지), ② '개인정보 보호 새 위험' 프레임 외에 'AI 가 수사 효율을 높여 무고한 사람의 누명을 빨리 풀 수 있다' 같은 반대 프레임은 왜 빠졌는가."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "d73e4a704de29d80",
+      "title": "직장인 52％ \"일터에 AI 도입 후 채용 줄어\"",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T12:00:03+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503014800004",
+      "content_text": "(서울=연합뉴스) 조현영 기자 = 직장인의 절반 이상이 회사에 인공지능(AI) 기술이 도입된 후 채용이 줄었다고 인식하는 것으로 나타났다.",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "직장인의 절반 이상(52%) 이 회사에 AI 기술이 도입된 뒤 채용 규모가 줄었다고 인식한다는 설문 결과가 나왔다. 직장 현장에서 AI 도입이 신규 인력 충원을 대체하는 흐름이 체감 단계로 들어섰다는 신호로 해석된다.",
+      "extraction_reason": "현장 직장인 절반이 'AI 가 채용을 대체한다' 고 체감 — 일자리 구조 변곡점.",
+      "relevance_score": 8.5,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 사무·콜센터·단순 분석 직무에서 신입 채용이 가장 먼저 줄고, 6~12개월 안에 인턴·계약직 자리부터 사라지는 패턴이 확산될 가능성이 높습니다. 1~2년 지나면 30~40대 중간관리자가 본인 밑 신입을 못 받고 'AI 도구를 직접 운영하는 1인 멀티플레이어' 로 재정의되는 흐름이 자리잡습니다. 결과적으로 청년 실업·신입 일자리 감소 통계가 2026년 하반기부터 더 가파르게 움직일 가능성이 높고, 정부의 청년 직접일자리 정책도 기존 단순 인턴 형태에서 'AI 활용 직무 전환' 쪽으로 이동할 겁니다."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "직장인이라면 이번 분기 안에 본인 업무 중 'AI 가 80% 대체할 수 있는 작업' 과 '사람 판단이 결정적인 작업' 을 각각 3개씩만 적어 보세요. 이 비율이 7:3 이상이면 1~2년 안에 직무 재편 가능성이 높다는 신호입니다. 취준생이라면 채용 공고에서 'AI 도구 활용 경험' 항목 빈도를 한 달 단위로 추적하면 시장 변화가 보입니다. 반대로 '내 직무는 안전하다' 며 본인 업무 자동화 가능성 점검 자체를 미루는 행동이 가장 위험합니다."
           }
         ]
       }
@@ -474,94 +448,132 @@
         "LLM",
         "AI"
       ],
-      "ai_summary": "중국 저장성 항저우 중급인민법원이 AI 도입을 이유로 직원을 해고한 동부 지역 한 기술 기업에 대해 위법이라는 판결을 4월 28일 확정했습니다. 해고된 직원 저우는 대형언어모델 출력 정확성을 검증하는 품질관리 업무를 담당했으나, 회사가 AI로 대체하면서 약 40% 급여 삭감을 동반한 낮은 직급 전환을 제시한 끝에 분쟁으로 이어진 사건입니다.",
-      "extraction_reason": "AI 대체 해고가 위법으로 판결된 첫 사례로 노동·인사 정책 기준이 됩니다.",
-      "relevance_score": 8.7,
+      "ai_summary": "중국 저장성 항저우 중급인민법원이 4월 28일, 한 기술 기업이 LLM 출력 품질관리 직원 저우를 'AI 시스템으로 업무를 대체했다' 는 이유로 해고한 것은 부당해고라며 회사 패소 판결을 확정했다. 회사는 직무 강등과 약 40% 급여 삭감안을 제시했으나 법원은 받아들이지 않았다. 기술 경쟁 속에서도 고용 안정을 우선시하는 중국 정책 기조가 드러난 사례다.",
+      "extraction_reason": "AI 대체를 이유로 한 해고를 법이 막은 첫 명시 판결 — 한국 노동법 논의 직접 영향.",
+      "relevance_score": 8.5,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 중국 한 지역 판결이지만, 몇 주 안에 비슷한 사건이 다른 지역에서 인용되면서 AI 도입 기업의 인사 의사결정이 신중해질 가능성이 큽니다. 1년 안에 한국 법원에도 비슷한 사건이 들어올 가능성이 높고, 노동위원회가 ‘AI 대체로 인한 실질 해고’ 가이드라인을 만들 시나리오가 가능합니다. 길게 보면 기업이 AI 도입 시 직무 전환·재교육 비용을 미리 책정하는 흐름으로 굳어질 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1990년대 키오스크 도입에 따른 은행 텔러 정리해고 분쟁, 2010년대 자동화 공정 도입에 따른 제조 인력 감축 분쟁이 비슷한 reference class입니다. 두 시기 모두 초기에 위법 판결이 몇 차례 나왔고, 5년 뒤 ‘직무 전환 의무’가 노동법 가이드라인에 반영됐습니다. 이번 AI 사례도 같은 곡선을 따를 가능성이 높습니다."
+          "text": "중국이라는 단일 판결로 끝나지 않을 가능성이 높습니다. 1~2개월 안에 한국 노동계도 이 판례를 들고 나와 'AI 도입을 이유로 한 해고·직무 강등 금지' 입법 논의에 불을 붙일 수 있습니다. 6~12개월 지나면 정부·공공기관 단체협약에 'AI 도입 시 사전 합의' 조항이 들어가는 패턴이 자리잡고, 1~2년 안에 민간 기업 인사규정도 영향을 받습니다. 결과적으로 사용자 입장에선 AI 도입 속도가 살짝 늦어지지만, 근로자 입장에선 갑작스러운 해고 대신 직무 전환 교육 기회가 늘어날 가능성이 높습니다."
         },
         "bonus": [
           {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "회사가 AI 도구를 도입하면서 본인 직무가 바뀌고 있다면, 변경 내용을 문서·이메일로 남기고 직무 변경 동의서·연봉 변경 안내문을 정리해두는 게 좋습니다. ‘낮은 직급 전환 + 급여 삭감’ 제안을 받았다면 즉답하지 말고 노무사·고용노동청 상담을 먼저 해볼 것을 권합니다. 반대로, 회사 발표만 듣고 ‘어차피 AI에 밀린다’며 사직서를 미리 내는 행동은 피하는 게 안전합니다."
+            "type": "perspective",
+            "title": "입장이 다르면 어떻게 보일까?",
+            "icon": "👥",
+            "text": "이 판결을 두고 네 입장이 부딪힙니다. ① 기업 경영진은 'AI 효율화로 비용 줄이려는데 또 노동 규제냐' 며 부담을 호소합니다. ② 노동조합·해고 근로자는 '기술이 핑계가 된 부당해고를 막은 첫 사례' 로 환영합니다. ③ 정부는 일자리 감소와 산업 경쟁력 사이에서 균형을 잡아야 하는 위치고, ④ AI 도구 공급사·솔루션 업체는 'AI 도입 = 해고' 프레임이 굳어지면 자기네 시장이 위축될 수 있어 신중합니다. 구조적 갈등 지점은 'AI 가 만든 잉여 인력의 비용을 누가 부담하는가' — 회사인지, 정부 재교육인지, 본인인지입니다."
           }
         ]
       }
     },
     {
-      "article_id": "8ef3141b6138fcfa",
-      "title": "[SW키트] 스포츠 중계도 'AI 시대'...\"맞춤 서비스로 수익 창출 시동\"",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-03T10:02:32+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260502223943",
-      "content_text": "[지디넷코리아]인공지능(AI) 기술과 스포츠 팬 데이터를 결합한 개인화 콘텐츠 서비스가 핵심 사업 모델로 떠오르고 있다. 맞춤형 팬 경험 차원을 넘어 새 비즈니스로 자리 잡았다는 분석이 나오고 있다.3일 IT 업계에 따르면 스포츠 팬 서비스도 전통적인 일방향적인 시청 중심에서 참여형으로 전환하고 있는 것으로 나타났다. AI 기술과 개인 데이터를 결합해 비즈니스 한 축으로 자리잡았다는 설명이다. 이런 추세는 글로벌 단위 조사에서도 보이고 있다. PwC가 발표한 ‘2026 북미 스포츠 산업 전망’ 리포트에 따르면 스트리밍 서비스 확산과 모바일 시청 증가로 팬들의 스포츠 소비는 전통적인 TV 중심에서 디지털 플랫폼으로 이동하고 있는 것으로 전해졌다. 보고서는 팬 데이터를 활용한 개인화 서비스와 디지털 콘텐츠 수익화 역량이 핵심 경쟁 요소로 떠오르고 있다고 봤다.IBM의 2025년 스포츠 팬 연구 보고서에서도 설문 응답자 85%가 스포츠 경험에 AI 기술이 통합되는 것에 대해 긍정적으로 평가했으며, 80%는 2027년까지 AI가 스포츠 관람 방식에 가장 큰 영향을 미칠 기술로 꼽았다. 팬 경험 전반에서 AI 기술에 대한 기대와 수용도가 높아지면서 실제 산업 적용은 글로벌 IT 기업들의 ‘자율형 AI 에이전트’ 기술 중심으로 구체화되고 있다.세일즈포스는 자율형 AI 에이전트 기반으로 스포츠 산업 내 팬 경험 혁신을 추진하고 있다는 평을 받고 있다. 세일즈포스는 골프 중계에 에이전트를 도입해 해설위원 업무를 돕고 있다. LIV 골프와 파트너십을 맺고 폭스스포츠 중계와 LIV 골프 앱에 AI 기반 해설 솔루션 '에이전트 캐디(Agent Caddie)'를 제공하고 있다. 에이전트 캐디는 선수의 과거 퍼포먼스, 코스 조건, 실시간 경기 데이터를 종합적으로 분석해 샷 선택 확률 등 예측 정보를 생성해 방송 그래픽으로 제공한다. 해설위원은 해당 데이터를 활용해 보다 정밀한 해설을 제공할 수 있고, 시청자 역시 선수의 판단 과정을 데이터 기반으로 직관적으로 이해할 수 있다.이런 시스템 중심에는 세일즈포스의 자율형 AI 에이전트 '에이전트포스'의 예측 인사이트(Predictive Insight) 기능이 있다. 기존에는 해설위원이 개별적으로 통계를 확인하고 경험에 의존해 해설을 제공했다면, 에이전트포스는 실시간으로 수집되는 코스 안팎의 데이터를 분석해 예상 결과를 도출할 수 있는 이유에서다. 이에 시청자 경기 이해도를 높이고 한 차원 높은 수준의 경기 관람 경험을 제공한다.또 선수 퍼포먼스와 경기 데이터, 관중 행동·소비 패턴 등 다양한 데이터가 실시간으로 통합되면서, AI 에이전트는 팬 경험 개선과 함께 새로운 수익 기회 발굴에도 활용되고 있다는 평도 받고 있다. 특히 LIV 골프 앱에 탑재된 AI 에이전트 '팬 캐디(Fan Caddie)'는 팬을 비롯한 후원사, 경기장 운영 데이터를 하나로 통합한 세일즈포스의 '데이터 360(Data 360)' 아키텍처 기반으로 작동한다. 팬 캐디는 팬들이 골프 경기를 시청하면서 스마트폰을 통해 AI 에이전트와 실시간으로 상호작용하는 '세컨드 스크린(Second Screen)' 경험을 제공한다. 또 경기 하이라이트 다시보기 영상, 티켓 업그레이드, 굿즈 쇼핑, 토너먼트 인사이트 등 팬이 필요로 하는 기능을 통합 제공한다.이 서비스는 데이터 360을 통한 데이터 통합과 에이전트포스의 분석 기능으로 작동한다. 티켓 스캔부터 VIP 라운지 이용, 굿즈 구매, 앱 내 시청 기록 등 팬 행동 데이터는 하나의 프로필로 통합되며, 72홀 방식으로 전환된다. 이를 통해 한층 풍부해진 선수의 샷, 스윙, 클럽 정보 등 경기 데이터까지 결합되어 맞춤형 팬 서비스 정확도를 높인다.실제 에이전트포스는 실시간 경기 상황에 맞춰 팬들에게 가장 필요한 정보와 혜택을 선제적으로 제안할 수 있다. 예를 들어 갤러리가 특정 홀에 머무는 시간을 분석해 \"곧 해당 선수 티샷이 예정돼 있습니다. VIP 라운지로 업그레이드하시겠습니까?\"고 안내하거나 중계 화면에 잡힌 브라이슨 디섐보(Bryson DeChambeau)의 모자 정보가 궁금한…",
+      "article_id": "7d5352c8d2376250",
+      "title": "\"비전은 알트먼, 질서는 프라이어\"...IPO 앞둔 오픈AI CFO가 부각되는 이유",
+      "source": "AI타임스",
+      "published_at": "2026-05-03T11:02:31+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210035",
+      "content_text": "사라 프라이어 최고 재무책임자(CFO)가 오픈AI 기업공개(IPO)의 열쇠를 쥔 핵심 인물로 주목받고 있다. 샘 알트먼 CEO의 속도전을 억제하고 내실을 다지는 데 성공할지가 회사의 미래를 결정지을 것이라는 평이다.월스트리트 저널(WSJ)은 1일(현지시간) '오픈AI가 IPO를 원한다면 먼저 CFO를 설득해야 한다'라며, 프라이어가 직면한 도전과 알트먼과의 이견, 그리고 IPO를 둘러싼 상황 등을 전했다.가장 눈에 띄는 대목은 컴퓨팅 용량 확보를 위해 수조달러 규모의 투자를 외치는 알트먼과 이를 감당 가능한 수준으로 조정하려는 프라",
       "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능",
-        "에이전트"
-      ],
-      "ai_summary": "AI 기술과 스포츠 팬 데이터를 결합한 개인화 콘텐츠가 새 비즈니스로 떠오르고 있다고 PwC ‘2026 북미 스포츠 산업 전망’이 진단했습니다. IBM 2025년 연구에서 응답자 85%가 스포츠 경험에 AI가 통합되는 것을 긍정 평가했고, 세일즈포스는 LIV 골프와 폭스스포츠 중계에 AI 해설 솔루션 ‘에이전트 캐디’를 제공해 선수 데이터·코스 조건을 분석한 예측을 그래픽으로 띄워주고 있습니다.",
-      "extraction_reason": "AI 스포츠 중계는 미디어·광고·스포츠 시청 습관을 동시에 바꿉니다.",
-      "relevance_score": 6.5,
-      "is_must_know": false,
+      "keywords": [],
+      "ai_summary": "오픈AI 의 사라 프라이어 최고재무책임자(CFO) 가 IPO 추진의 핵심 인물로 부각된다고 월스트리트 저널이 1일(현지시간) 보도했다. 컴퓨팅 용량 확보를 위해 수조 달러 규모 투자를 추진하려는 샘 알트먼 CEO 의 속도전을 프라이어가 감당 가능한 수준으로 조정하는 역할을 맡았으며, 둘의 이견 조율이 IPO 성패를 가를 것이라는 평가다.",
+      "extraction_reason": "수조달러 투자 vs 재무 건전성 — 오픈AI IPO 의 향방이 글로벌 AI 시장 자금흐름 좌우.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 미국 골프 중계의 한 사례지만, 몇 달 안에 한국 야구·축구 중계에도 비슷한 ‘AI 해설 도우미’가 도입될 가능성이 큽니다. 1년 뒤엔 시청자가 자기 좋아하는 선수만 따라가는 맞춤형 화면이 디지털 채널 표준이 될 시나리오가 가능하고, 광고 단가 체계가 일괄 30초 광고에서 ‘개인화 짧은 광고 묶음’으로 옮겨갈 가능성이 있습니다. 동시에 해설위원·캐스터 인력 구성에도 변화가 생깁니다."
+          "text": "오픈AI IPO 가 성공하면 단기적으로 글로벌 AI 인프라(반도체·데이터센터·전력) 종목 전반에 자금이 몰리고, 한국 SK하이닉스·삼성전자 HBM 라인 매출 가시성도 1~2년 더 길어질 가능성이 높습니다. 반면 프라이어 CFO 가 알트먼 CEO 의 수조달러 투자안을 깎는 시나리오면 데이터센터 공급사 매출 전망이 한 단계 낮아집니다. 1~2년 안에 한국 개인투자자가 ETF·주식 포트폴리오에서 가장 자주 마주칠 변수 중 하나가 바로 'AI 인프라 대 효율' 의 줄다리기입니다."
         },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2010년 NBA의 시퀀스 분석 SportVU 도입, 2018년 IBM 왓슨의 마스터스 골프 해설 데이터 제공, 2022년 NFL의 AWS Next Gen Stats가 비슷한 reference class입니다. 세 사례 모두 도입 후 3~5년 뒤 시청 만족도가 평균 10~20% 올랐다는 자체 보고가 나왔지만, 해설위원 만족도는 엇갈렸습니다. 이번 AI 에이전트 흐름도 비슷한 곡선을 따를 가능성이 높습니다."
-        }
+        "bonus": [
+          {
+            "type": "scenario",
+            "title": "앞으로 어떻게 될 수 있을까?",
+            "icon": "🔮",
+            "text": "최선 시나리오(가능성 중간) 는 프라이어가 투자 규모를 절반 수준으로 다듬고 2026년 하반기 IPO 가 시장 기대치를 뛰어넘는 그림입니다. 중간 시나리오(가능성 높음) 는 IPO 가 2027년으로 미뤄지고 그동안 사모 자금 조달이 이어지는 형태입니다. 최악(가능성 낮음) 은 컴퓨팅 비용 부담 누적과 매출 성장 둔화가 겹쳐 IPO 자체가 무산되는 경우로, 이때는 글로벌 AI 인프라 투자 사이클 전체가 한 박자 식습니다. 갈림길은 향후 분기 실적 발표와 마이크로소프트와의 자본 구조 재조정 합의입니다."
+          }
+        ]
       }
     },
     {
-      "article_id": "21879baabb630b6e",
-      "title": "\"너는 OO 전문가야\"...AI 페르소나 프롬프팅, 효과 있을까",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-03T09:58:38+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260503095322",
-      "content_text": "[지디넷코리아]인공지능(AI)에게 특정 분야의 전문가라는 역할을 부여하는 '페르소나 프롬프팅'이 실제로는 코딩이나 수학처럼 정밀한 지식이 필요한 작업에서 오히려 AI의 정확도를 떨어뜨린다는 연구 결과가 나왔다.최근 AI 사용자들 사이에서는 지시어(프롬프트)를 입력할 때 \"당신은 이 분야의 숙련된 전문가입니다\"라는 문구를 추가하면 성능이 향상된다는 설이 상식처럼 통용돼 왔다. 하지만 남가주 대학교(USC) 지자오 후 연구팀이 최근 프리프린트 서버 'arXiv'에 게재한 논문에 따르면, 이런 방식은 분야에 따라 득보다 실이 많을 수 있는 것으로 나타났다. 이 내용은 레지스터닷컴·기가진 등 외신을 통해 보도됐다.외신에 따르면, 연구팀은 'Llama-3.1-8B'와 'Qwen 2.5-7B' 등 6종의 AI 모델을 대상으로 실험을 진행했다. AI에게 단순히 \"당신은 소프트웨어 엔지니어입니다\"라고 짧게 지시하거나, 혹은 전문 지식과 경험이 풍부하다는 식의 복잡한 페르소나를 부여한 뒤 성능을 측정했다.실험 결과, 여러 차례의 대화를 통해 품질을 평가하는 'MT-Bench' 테스트에서는 글쓰기나 추론 분야의 출력 품질이 향상되는 긍정적인 효과가 나타났다. 특히 AI가 인간의 윤리관에 어긋나는 답변을 하지 않도록 하는 'AI 얼라인먼트(정렬)' 측면과 보안 취약점을 이용한 공격(Jailbreak) 방어력은 크게 개선됐다.반면, 실제 정답률이 중요한 코딩·수학·인문과학 분야에서는 오히려 품질이 하락했다. 광범위한 지식 측정 지표인 'MMLU' 벤치마크에서도 \"당신은 전문가입니다\"라고 지시했을 때 전체적인 정확도가 눈에 띄게 떨어졌다.연구팀은 이러한 현상의 원인을 AI의 자원 배분 문제로 분석했다. AI에게 전문가 역할을 부여한다고 해서 없던 전문 지식이 실제로 생겨나는 것은 아니다. 오히려 AI가 '전문가처럼 보이게 답변하는 것(지시 추종)'에 능력을 집중하느라, 정작 사실을 기억해내고 계산하는 데 써야 할 능력을 소진하게 된다는 설명이다.연구를 주도한 후 씨는 \"AI에게 '당신은 숙련된 프로그래머'라고 말하는 것은 코드의 품질을 높이는 데 도움이 되지 않는다\"며 \"오히려 프로젝트 요건과 요구사항을 상세하게 전달하는 것이 사용자가 원하는 결과물을 얻는 데 훨씬 효과적\"이라고 조언했다.",
+      "article_id": "2f90da09cdd51180",
+      "title": "컴퓨팅 확보 비상 걸린 앤트로픽, 영국 칩 신예와 파트너십 검토",
+      "source": "AI타임스",
+      "published_at": "2026-05-03T11:42:16+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210033",
+      "content_text": "AI 수요 급증으로 서버 부담이 커지는 앤트로픽이 기존 공급망을 넘어 새로운 AI 칩 확보에 나섰다. 추론(inference) 비용 절감과 공급망 다변화를 위해 영국 칩 스타트업과의 협력을 적극 검토하고 있다.1일(현지시간) 디 인포메이션에 따르면, 앤트로픽은 최근 영국 스타트업 프랙타일(Fractile)과 차세대 추론용 칩 도입을 논의 중인 것으로 전해졌다. 다만 구체적인 계약 규모는 알려지지 않았다.프랙타일은 2022년 설립돼 2024년 중반에야 스텔스 모드에서 벗어난, 칩 업계에서는 아직 미검증된 신예에 가깝다. 대규모 서버를",
       "category": "ai_news",
       "keywords": [
+        "앤트로픽",
+        "AI"
+      ],
+      "ai_summary": "AI 수요 급증으로 서버 부담이 커진 앤트로픽이 추론(inference) 비용 절감과 공급망 다변화를 위해 영국 칩 스타트업 '프랙타일(Fractile)' 과 차세대 추론용 칩 도입을 논의 중이라고 디인포메이션이 1일(현지시간) 전했다. 프랙타일은 2022년 설립돼 2024년 중반에야 스텔스 모드를 벗은 미검증 신예다. 계약 규모는 공개되지 않았다.",
+      "extraction_reason": "엔비디아 의존 탈피 시도 — 글로벌 AI 칩 공급망 재편의 신호.",
+      "relevance_score": 7.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "b888c67bd632d91d",
+      "title": "삼성 파운드리 4나노 내년까지 '풀부킹'…하반기 흑자전환 시동",
+      "source": "ZDNet Korea",
+      "published_at": "2026-05-03T09:00:03+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260502005138",
+      "content_text": "[지디넷코리아]삼성전자 파운드리(반도체 위탁생산) 주력 공정인 4nm(나노미터, 10억분의 1m) 라인이 내년까지 '풀부킹' 상태에 진입했다. 차세대 메모리인 HBM4(6세대 고대역폭메모리) 양산 본격화와 글로벌 빅테크의 주문이 겹친 결과다. 업계에서는 만성 적자에 시달리던 파운드리 사업부가 이르면 올해 하반기 반등 신호탄을 쏠 것이란 전망이 나온다.3일 반도체 업계에 따르면 삼성전자 파운드리 4나노 공정은 최근 내년 생산 물량까지 수주 물량을 확보한 것으로 확인됐다. 익명을 요구한 한 반도체 업계 관계자는 \"최근 4나노 공정이 글로벌 고객사들 사이에서 기대 이상 안정성을 보여주며 수요가 폭발하고 있다\"며 \"사실상 내년까지 추가 주문을 받기 어려울 정도로 라인이 빽빽하게 돌아가는 상황\"이라고 전했다.수주 핵심 동력은 HBM4다. 삼성전자는 자사 HBM4에 탑재된 베이스 다이를 파운드리 4나노 공정에서 생산하고 있다. 현재 엔비디아와 AMD 등 인공지능(AI) 가속기 업체들에 HBM4 공급을 본격화하면서, 이를 뒷받침하는 4나노 파운드리 라인 가동률도 한계치에 다다른 셈이다. 4나노 공정을 찾는 곳은 메모리 분야에 그치지 않는다. 그동안 TSMC에 의존했던 글로벌 팹리스들이 공급망 다변화와 가성비를 고려해 삼성의 문을 두드리고 있다. 현재 삼성 4나노의 주요 고객사 명단에는 엔비디아, 구글 등이 이름을 올렸다. 고도화된 수율과 전성비(전력 대비 성능)가 검증되면서 빅테크들의 '러브콜'이 이어지는 형국이다.고부가가치 제품 HBM4와 글로벌 빅테크 물량이 4나노 라인을 가득 채우면서, 실적 개선 기대감도 높다. 4나노 공정은 이미 대규모 투자가 완료돼 감가상각 부담이 줄어든 상태다. 가동률이 극대화될수록 수익성이 가파르게 오르는 구조인 것이다.삼성 파운드리 협력사 한 관계자는 \"4나노 공정 안정화와 HBM4라는 강력한 수요처 확보 덕분에 빠르면 올해 하반기, 늦어도 내년 상반기에는 삼성 파운드리가 흑자로 돌아설 것으로 보인다\"며 \"오랜 침체기를 지나 확실한 반등 시기를 맞았다\"고 진단했다.다만, 업계에서는 미국 텍사스주 테일러에 건설 중인 신규 공장을 향후 실적의 최대 변수로 꼽는다. 공장 완공 및 가동 준비 과정에서 투입되는 막대한 초기 운영비와 인건비가 장부상 어떻게 처리되느냐에 따라 실적이 달라질 수 있기 때문이다.또 다른 반도체 업계 관계자는 \"현재 구축 중인 테일러 공장이 미국 현지에 위치한 만큼, 관련 실적이 미국 법인(DSA)으로 잡힐지 혹은 국내 파운드리 실적으로 합산될 지는 지켜봐야 한다\"고 말했다.",
+      "category": "ai_news",
+      "keywords": [
+        "엔비디아",
         "AI",
         "인공지능"
       ],
-      "ai_summary": "USC 지자오 후 연구팀이 ‘당신은 전문가입니다’ 식 페르소나 프롬프팅이 코딩·수학·인문 같은 정밀 작업에서는 AI 정확도를 떨어뜨린다는 결과를 arXiv에 발표했습니다. Llama-3.1-8B, Qwen 2.5-7B 등 6개 모델로 실험한 결과, MT-Bench 글쓰기·추론과 얼라인먼트·탈옥 방어는 개선됐지만 MMLU 같은 지식 정확도 지표는 ‘전문가 페르소나’ 부여 시 눈에 띄게 떨어졌습니다.",
-      "extraction_reason": "AI 사용법에 대한 통념이 깨지는 결과로 일반 사용자 행동을 바꿉니다.",
-      "relevance_score": 7.2,
-      "is_must_know": false,
+      "ai_summary": "삼성전자 파운드리 주력 4나노 공정이 내년까지 수주 물량을 확보해 '풀부킹' 상태에 들어갔다. HBM4 6세대 고대역폭메모리 베이스 다이 생산과 엔비디아·AMD 등 AI 가속기 업체 주문이 동시에 몰린 결과로, 만성 적자 파운드리 사업부가 올해 하반기 흑자 전환 신호탄을 쏠 가능성이 거론된다.",
+      "extraction_reason": "HBM4·AI 가속기 발 4나노 풀부킹 — 한국 반도체 흑자전환의 결정적 분기점.",
+      "relevance_score": 8.5,
+      "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 한 논문이지만, 며칠 안에 ‘페르소나 프롬프팅 줄이세요’ 식 소셜 콘텐츠가 늘어날 가능성이 큽니다. 몇 달 뒤엔 사내 AI 가이드라인이 ‘분야별 페르소나 사용 여부 차등화’로 업데이트될 시나리오가 가능하고, 1년 뒤엔 챗봇 UI 자체가 페르소나를 자동으로 끄고 켜는 토글 형태로 바뀔 가능성이 있습니다. 사용자 학습 비용이 잠깐 늘어나는 단점도 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2023년 ‘체인오브쏘트(CoT)’ 프롬프팅 효과가 일부 모델에선 역효과를 낸다는 논문, 2024년 ‘few-shot’ 예시 추가가 오히려 정확도를 깎는다는 보고가 비슷한 사례입니다. 두 사례 모두 1~2년 안에 ‘작업 유형별 가이드’로 정리됐고 사용자가 적응한 결과 평균 15% 성능 향상으로 이어졌습니다. 이번 USC 결과도 비슷한 정착 경로를 따를 가능성이 높습니다."
+          "text": "당장은 삼성전자 파운드리 사업부 한 곳의 수주 호조처럼 보이지만, 4나노 라인 풀부킹은 협력사 1,000곳 이상으로 매출이 흘러가는 구조라 1~2분기 안에 반도체 소부장(소재·부품·장비) 기업 실적이 뒤따라 개선될 가능성이 높습니다. 1~2년 지나면 한국 무역수지 흑자에서 반도체 비중이 다시 30% 안팎으로 올라가는 흐름이 자리잡고, 이는 원화 환율·정부 세수에까지 파급됩니다. 결과적으로 본인이 다니는 회사가 IT 수출 기업이라면 보너스·연봉 동결이 풀릴 가능성이 높아지는 구조적 호재입니다."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "코딩·수학 문제를 AI에 물어볼 땐 ‘너는 전문가야’ 같은 페르소나 문구를 빼고 ‘프로젝트 요건과 제약을 상세히’ 적어보는 걸 추천합니다. 반면 글쓰기·아이디어 브레인스토밍은 페르소나가 도움이 될 가능성이 있어 분야별로 다르게 시도해보세요. 반대로, ‘이 한 줄 추가하면 무조건 똑똑해진다’ 식 SNS 팁을 그대로 따라 모든 작업에 페르소나를 박는 행동은 피하는 게 좋습니다."
+            "text": "투자자라면 이번 주 안에 본인 포트폴리오에서 반도체 비중이 어느 정도인지, 특히 파운드리 협력사·HBM 후공정 종목 보유 비중을 한 번 점검해 보세요. 직장인이라면 본인 회사 실적이 반도체 사이클과 얼마나 묶여 있는지(완성차·디스플레이·통신 등) 1~2 분기 단위로 확인해 두면 인사·연봉 협상 타이밍 잡는 데 도움이 됩니다. 반대로 '풀부킹 = 무조건 주가 급등' 으로 단정하고 한두 종목에 몰빵 매수하는 건 가장 위험한 행동입니다 — 풀부킹은 이미 주가에 상당 부분 반영돼 있을 수 있습니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "317b9314f9119e16",
+      "title": "소프트뱅크-인텔, HBM 대체할 '9층 HB3DM' 기술 공개",
+      "source": "전자신문",
+      "published_at": "2026-05-03T12:00:00+09:00",
+      "original_url": "https://www.etnews.com/20260430000229",
+      "content_text": "소프트뱅크의 AI 메모리 전문 자회사 사이메모리(SAIMEMORY)가 인텔과 공동 개발한 차세대 3차원(3D) 메모리 기술을 공개했다. 극도로 얇은 3마이크로미터 두께 칩을 9층으로 적층하고 완전 접합하는 방식으로 고대역폭메모리(HBM)의 한계를 극복한 기술이다. 3일",
+      "category": "ai_news",
+      "keywords": [
+        "AI"
+      ],
+      "ai_summary": "소프트뱅크의 AI 메모리 자회사 사이메모리(SAIMEMORY) 가 인텔과 공동 개발한 차세대 3차원 메모리 기술 'HB3DM' 을 공개했다. 두께 3마이크로미터의 극박 칩을 9층으로 적층하고 완전 접합하는 방식으로 기존 HBM 의 한계를 극복하려는 기술이다.",
+      "extraction_reason": "HBM 자체를 대체할 새 메모리 — 한국 HBM 우위에 직격 변수.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 시제품·기술 공개 단계이지만, 1~2년 안에 본격 양산이 가시화되면 SK하이닉스·삼성전자가 90% 가까이 잡고 있는 HBM 시장 구도에 균열이 갈 가능성이 있습니다. 결과적으로 한국 반도체 흑자전환 속도가 한 박자 둔화되고, 정부·기업의 차세대 적층·접합 기술 R&D 투자 압박이 커집니다. 본인이 반도체 협력사·소부장 종목에 노출돼 있다면 'HBM4 다음' 의 기술 표준이 누구 손에 들어가는가가 향후 12~24개월 핵심 변수로 작용합니다."
+        },
+        "bonus": [
+          {
+            "type": "scenario",
+            "title": "앞으로 어떻게 될 수 있을까?",
+            "icon": "🔮",
+            "text": "최선 시나리오(가능성 낮음) 는 인텔-소프트뱅크 동맹이 양산성을 빠르게 입증해 한국이 차세대 표준에서 밀리는 그림입니다. 중간 시나리오(가능성 높음) 는 사이메모리가 일부 틈새 AI 가속기 시장을 가져가지만 양산 비용·수율 문제로 메인스트림 진입은 2027년 이후로 밀리는 형태입니다. 최악(가능성 중간) 은 한국 메모리 3사가 9층 적층·완전 접합 기술을 빠르게 따라잡아 HBM 우위를 유지하는 경우입니다. 갈림길은 향후 6~12개월 사이 사이메모리 첫 양산 라인 가동 여부와 실제 수율 데이터입니다."
           }
         ]
       }
@@ -579,115 +591,72 @@
         "AI",
         "인공지능"
       ],
-      "ai_summary": "올해 3월 출시된 AI 미팅 솔루션 ‘비즈크러시’를 데미스 하사비스 구글딥마인드 CEO 방한 현장에서 사용한 체험기로, 자체 개발 ‘딥필터’ 엔진이 잡음을 걸러내고 40개 이상 언어 실시간 번역과 발표 화면 위 자막 오버레이를 제공합니다. 노션·허브스팟 CRM과 연동되며 입력 언어를 한국어로 자동 전환하지만, 고유명사·발화자 인식 정확도는 아쉬움이 있다는 평가입니다.",
-      "extraction_reason": "오프라인 회의 AI 도구의 실사용 체감을 보여주는 사례입니다.",
-      "relevance_score": 6.0,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 기자의 체험기지만, 몇 달 안에 회사 회의실에 비슷한 AI 녹음·번역 솔루션이 표준 도구로 자리잡을 가능성이 있습니다. 1년 뒤엔 회의록 작성 업무가 거의 사라지고 동시통역 인력 시장이 축소될 시나리오가 가능하지만, 발화자 식별·고유명사 오류로 잘못된 의사록이 분쟁의 원인이 되는 사례도 함께 늘 위험이 있습니다. 동시에 데이터 보안·외부 클라우드 저장 이슈가 사내 정책 화두가 됩니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2010년 구글 보이스 음성검색, 2017년 마이크로소프트 트랜슬레이터 라이브, 2023년 줌 AI 컴패니언이 비슷한 reference class입니다. 세 사례 모두 도입 초기 5~15% 오류율을 기록했지만 2년 안에 절반 이하로 떨어졌습니다. 이번 비즈크러시도 비슷한 개선 곡선을 따를 가능성이 높지만, 한국어 고유명사 정확도가 변수로 남습니다."
-        }
-      }
+      "ai_summary": "지디넷이 데미스 하사비스 구글딥마인드 CEO 방한 현장에서 'AI 미팅 솔루션 비즈크러시' 를 직접 사용한 후기를 공개했다. 자체 '딥필터' 엔진으로 잡음을 걸러내며 40개 이상 언어 실시간 번역, 음성-음성 통역, 자동 요약·액션 체크리스트, 노션·허브스팟 연동까지 제공한다. 다만 고유명사·발화자 인식 정확도는 아쉬웠다는 평가다.",
+      "relevance_score": 7.0,
+      "is_must_know": false
     },
     {
-      "article_id": "94069031b2e9deae",
-      "title": "[뉴스줌인] 정책금융 축, '자금 공급'서 '전략 투자'로…AI·공급망 주권 겨냥",
-      "source": "전자신문",
-      "published_at": "2026-05-03T12:00:00+09:00",
-      "original_url": "https://www.etnews.com/20260503000058",
-      "content_text": "국민성장펀드의 이번 승인안은 정책금융의 무게중심이 단순 기업 지원에서 국가 전략산업 투자로 이동하고 있음을 보여준다. 지원 대상은 인공지능(AI) 파운데이션 모델, AI컴퓨팅 인프라, 이차전지 소재, 바이오시밀러(복제약) 생산설비, 반도체 핵심 소재다. 민간 투자만으로",
+      "article_id": "e52eba79bf8b39d4",
+      "title": "중국 전기차 시장, 가격 경쟁 넘어 ‘AI 경쟁’으로 확대",
+      "source": "AI타임스",
+      "published_at": "2026-05-03T12:08:43+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210036",
+      "content_text": "세계 최대 전기차 시장인 중국에서 완성차 업체들이 치열한 가격 경쟁을 넘어 차량 내 AI 기능 경쟁으로 무게 중심을 옮기고 있다. CNBC에 따르면, 1일 열린 베이징 모터쇼에서는 이러한 변화가 뚜렷하게 드러났다.바이트댄스의 AI 비서 ‘더우바오(Doubao)’는 이미 50개 이상의 자동차 브랜드, 145개 차종, 700만대 이상의 차량에 탑재된 것으로 나타났다. 더우바오는 차량 내 다양한 서비스와 연결되며 사실상 표준 플랫폼으로 자리 잡고 있다는 평이다.AI 기능 확대는 외국 브랜드에도 영향을 미치고 있다. 메르세데스-벤츠, 아우",
       "category": "ai_news",
       "keywords": [
-        "AI",
-        "인공지능"
+        "AI"
       ],
-      "ai_summary": "국민성장펀드의 이번 승인안은 정책금융이 단순 기업 지원에서 국가 전략산업 투자로 무게중심을 이동했다는 점을 보여줍니다. 지원 대상은 AI 파운데이션 모델, AI 컴퓨팅 인프라, 이차전지 소재, 바이오시밀러 생산설비, 반도체 핵심 소재로 명시됐고, 민간 투자만으로 닿기 어려운 영역에 정부 자금을 집중 배치하는 구조라고 전자신문이 정리했습니다.",
-      "extraction_reason": "한국 정책금융이 AI·반도체 주권으로 방향을 튼 핵심 신호입니다.",
-      "relevance_score": 8.5,
+      "ai_summary": "중국 베이징 모터쇼에서 완성차 업체들이 가격 경쟁을 넘어 차량 내 AI 기능 경쟁으로 무게 중심을 옮긴 흐름이 확인됐다고 CNBC 가 보도했다. 바이트댄스의 AI 비서 '더우바오(Doubao)' 는 이미 50개 이상 브랜드·145개 차종·700만대 이상 차량에 탑재돼 사실상 표준 플랫폼으로 자리 잡고 있고, 메르세데스-벤츠·아우디 등 외국 브랜드에까지 영향이 미친다.",
+      "extraction_reason": "차 안 AI 가 중국 표준화 — 한국 자동차·반도체 산업 직격 변수.",
+      "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 펀드 운영 방향 변화지만, 몇 달 안에 AI 파운데이션 모델·AI 컴퓨팅 인프라 분야 한국 스타트업 가치 평가가 한 단계 점프할 가능성이 큽니다. 1년 안에 이차전지 소재·반도체 핵심 소재 분야의 강소기업이 정책 자금 유치 경쟁에 합류할 시나리오가 가능하고, 일반 직장인은 관련 업종 채용·이직 시장이 활발해지는 효과를 체감할 가능성이 있습니다. 동시에 정책 자금 배분의 공정성 논란이 함께 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1999년 중소기업청 IT 펀드, 2017년 한국판 뉴딜 자금, 2020년 디지털 뉴딜이 비슷한 reference class입니다. 세 사례 모두 5년 뒤 일부 산업의 글로벌 점유율을 끌어올렸지만 동시에 ‘좀비 기업’ 양산 부작용도 동반했습니다. 이번 펀드도 비슷한 효과 분포를 보일 가능성이 높고, 직접투자 방식이라는 점이 과거와 다른 변수입니다."
+          "text": "당장은 중국 시장 안 이야기처럼 보이지만, 700만대 차량에 탑재된 더우바오는 중국 외 신흥국 시장(동남아·중동·중남미) 에서도 표준이 될 가능성이 높습니다. 1~2년 안에 현대차·기아가 같은 신흥국에서 차량 내 AI 비서 호환 압박을 받을 것이고, 결과적으로 한국 자동차 인포테인먼트 OS 와 한국형 LLM(클로바·하이퍼클로바·솔라) 의 차량 탑재 경쟁이 시급해집니다. 운전자 입장에선 향후 2~3년 사이 새 차를 사면 기본으로 들어가는 음성비서 품질이 차 선택의 핵심 비교 포인트가 됩니다."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "이번 정책 방향에 맞는 AI 파운데이션 모델·반도체 소재·이차전지 소재 관련 한국 상장사·ETF를 주기적으로 점검해볼 만합니다. 본인이 해당 산업에서 일한다면 채용 시장이 활발해질 가능성이 있어 자기 직무가 ‘전략산업 키워드’와 어떻게 연결되는지 정리해두면 도움이 됩니다. 반대로, 정책 자금이 들어간다는 이유만으로 단기 테마주에 집중 투자하는 행동은 피하는 게 안전합니다."
+            "text": "차량 구매를 1~2년 안에 계획 중이라면 이번 분기 안에 ① 후보 차종의 차량 내 AI 비서가 어떤 LLM 기반인지, ② 음성으로 결제·주차장 예약·주유까지 끊김 없이 되는지를 시승 때 직접 확인해 두세요. 자동차 산업 종사자라면 본인 회사가 OS·AI 비서 자체 개발인지 외부 파트너 의존인지를 점검하면 향후 1~2년 인사 흐름이 보입니다. 반대로 '내 차에 굳이 AI 가 필요할까' 라며 비교 평가 자체를 미뤄두면 5년 뒤 중고 가치까지 영향을 받을 수 있습니다."
           }
         ]
       }
     },
     {
-      "article_id": "317b9314f9119e16",
-      "title": "소프트뱅크-인텔, HBM 대체할 '9층 HB3DM' 기술 공개",
-      "source": "전자신문",
-      "published_at": "2026-05-03T12:00:00+09:00",
-      "original_url": "https://www.etnews.com/20260430000229",
-      "content_text": "소프트뱅크의 AI 메모리 전문 자회사 사이메모리(SAIMEMORY)가 인텔과 공동 개발한 차세대 3차원(3D) 메모리 기술을 공개했다. 극도로 얇은 3마이크로미터 두께 칩을 9층으로 적층하고 완전 접합하는 방식으로 고대역폭메모리(HBM)의 한계를 극복한 기술이다. 3일",
+      "article_id": "5914cb66b8bb88e2",
+      "title": "AI가 쇼핑해주는 시대 온다…금결원, AI 결제 기술검증 나서",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T16:00:00+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503004200002",
+      "content_text": "(사마르칸트[우즈베키스탄]=연합뉴스) 임지우 기자 = 금융결제원은 실행형 인공지능(AI), 이른바 'AI 에이전트'가 소비자 대신 직접 물건을 ...",
       "category": "ai_news",
       "keywords": [
-        "AI"
+        "AI",
+        "인공지능",
+        "에이전트"
       ],
-      "ai_summary": "소프트뱅크의 AI 메모리 자회사 사이메모리(SAIMEMORY)가 인텔과 공동 개발한 차세대 3D 메모리 ‘9층 HB3DM’ 기술을 공개했습니다. 두께 3마이크로미터의 극박 칩을 9층으로 적층하고 완전 접합하는 방식으로, 기존 HBM의 대역폭·발열 한계를 넘어서기 위한 시도라는 평가가 나옵니다.",
-      "extraction_reason": "한국 HBM 주도권에 도전하는 일·미 동맹 메모리 기술 신호입니다.",
-      "relevance_score": 8.4,
+      "ai_summary": "금융결제원이 실행형 AI, 이른바 'AI 에이전트' 가 소비자를 대신해 직접 물건을 사는 결제 시나리오에 대비해 관련 기술 검증에 나선다고 밝혔다. 우즈베키스탄 사마르칸트 발 보도로, AI 가 자율적으로 결제·구매를 수행하는 환경을 한국 금융 인프라가 받아들일 준비를 시작했다는 의미다.",
+      "extraction_reason": "AI 에이전트가 내 카드로 직접 결제하는 시대 — 결제·소비자 보호 패러다임 변동.",
+      "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 기술 발표지만, 몇 달 안에 SK하이닉스·삼성전자가 대응 로드맵을 공개적으로 압박받을 가능성이 큽니다. 1년 뒤 양산 일정이 가시화되면 AI 서버용 메모리 시장 점유율이 한국 양강 구도에서 미·일 진영이 일부를 가져가는 시나리오가 가능하고, 한국 반도체 수출액에 1~3%포인트 영향이 갈 가능성이 있습니다. 동시에 한국 정부의 ‘메모리 주권’ 정책 강도가 한 단계 올라갈 가능성이 있습니다."
+          "text": "당장은 금결원 기술 검증 단계지만, 1~2년 안에 'AI 에이전트가 잡은 항공권·구독·생필품 자동 구매' 가 실제 결제 라인업에 들어갈 가능성이 높습니다. 결과적으로 카드사·간편결제사가 'AI 결제 한도' 라는 새 상품을 내놓고, 동시에 'AI 가 잘못 산 물건의 책임' 분쟁이 늘어나는 패턴이 시작됩니다. 본인 입장에선 편의성은 올라가지만, 잘못된 결제·구독 자동 갱신·사기 결제 같은 분쟁 책임 소재가 모호해지는 위험이 함께 따라옵니다."
         },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2013년 마이크론의 HMC 기술, 2018년 GDDR6 등장, 2022년 SK하이닉스 HBM3 양산이 비슷한 reference class입니다. 세 사례 모두 첫 발표에서 양산까지 평균 18~30개월이 걸렸고, 발표 시점 점유율 변화는 미미했지만 양산 시점에 큰 변화가 있었습니다. 이번 9층 HB3DM도 발표-양산 간 격차가 비슷할 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "769054386ca83e2b",
-      "title": "日 최고재판소장 \"재판관 판단에 AI 활용 고려 안 해\"",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T13:39:37+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503028200073",
-      "content_text": "(도쿄=연합뉴스) 조성미 특파원 = 한국 대법원 격인 일본 최고재판소 이마사키 유키히코 소장(장관)이 인공지능(AI)을 재판관 판단에 활용하는 ...",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "일본 최고재판소 이마사키 유키히코 소장(장관)이 인공지능을 재판관 판단에 활용하는 방안에 대해 ‘고려하고 있지 않다’는 입장을 밝혔다고 도쿄발 연합뉴스가 보도했습니다. 한국 대법원에 해당하는 일본 최고재판소가 AI의 사법 판단 활용에 선을 그은 사례입니다.",
-      "extraction_reason": "사법부의 AI 활용 한계선이 어디까지인가에 대한 첫 가이드라인입니다.",
-      "relevance_score": 7.8,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 일본 최고재판소장의 발언이지만, 며칠 안에 한국 대법원·법무부도 비슷한 입장을 정리해야 한다는 압박을 받을 가능성이 있습니다. 몇 달 안에 ‘AI는 보조 도구로 한정, 최종 판단은 인간 재판관’이라는 가이드라인이 동아시아 표준이 될 시나리오가 가능하고, 1년 뒤엔 변호사·로펌의 리서치·서면작성 단계에만 AI가 폭넓게 쓰이는 형태로 굳어질 가능성이 높습니다. 동시에 미국·EU의 다른 접근과 차이가 부각될 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2017년 미국 위스콘신주의 재범 위험 평가 알고리즘 ‘COMPAS’ 사용 논란, 2018년 에스토니아의 소액 분쟁 AI 판사 시범, 2024년 중국 일부 법원의 AI 보조 시스템 도입이 비슷한 reference class입니다. 세 사례 모두 도입 후 2~3년 안에 편향·투명성 문제로 사용 범위가 좁혀졌습니다. 일본의 신중 입장은 이런 학습의 결과로 보이며, 한국도 비슷한 곡선을 따를 가능성이 높습니다."
-        }
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "이번 한 분기 안에 ① 본인이 쓰는 카드사·페이의 'AI 자동결제 한도' 설정 메뉴가 생겼는지 한 번 확인하고, ② 자주 안 쓰는 정기결제·구독 서비스를 이번 기회에 정리해 두세요. AI 가 결제를 대행하기 시작하면 정기결제 누수 금액이 더 커집니다. 반대로 'AI 에이전트가 알아서 잘 사주겠지' 하며 결제 알림·문자를 꺼두는 행동은 가장 위험합니다 — 잘못된 결제 분쟁 방어의 첫 자료가 바로 본인이 받은 알림 기록이기 때문입니다."
+          }
+        ]
       }
     },
     {
@@ -702,124 +671,40 @@
         "AI",
         "인공지능"
       ],
-      "ai_summary": "금융감독원이 3일 인공지능을 접목한 가상자산 조사 인프라를 자체 개발해 불공정거래 포착 기능을 강화했다고 밝혔습니다. AI가 혐의군을 자동 식별하는 방식으로, 투자자 보호와 시장 건전성 확보를 위한 조사 인력 한계를 보완하는 시도로 풀이됩니다.",
-      "extraction_reason": "가상자산 시장 감독 강화는 일반 투자자 안전·세금 환경에 영향을 줍니다.",
+      "ai_summary": "금융감독원이 인공지능(AI) 을 접목한 가상자산 조사 인프라를 자체 개발해 불공정거래 혐의군 자동 식별 기능을 강화했다고 3일 밝혔다. 가상자산 시장의 시세조작·거래 패턴 이상을 AI 가 사전 포착해 조사 효율을 높이는 체계를 구축한 것이다.",
+      "relevance_score": 7.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "c8f1c78cb4c86010",
+      "title": "“해킹기업 3%도 신고 안해…처벌만능론으론 AI시대 해킹 못막아”",
+      "source": "매일경제",
+      "published_at": "2026-05-03T15:44:59+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12034442",
+      "content_text": "세종 ICT그룹 강신욱·윤호상 변호사 인터뷰 “과정 따지는 면책 조항과 민관 공조 절실”“현재도 보안사고를 당한 기업 중 3%만이 신고한다는 분석이 있습니다. 인공지능(AI) 해킹..",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "세종 ICT그룹 강신욱·윤호상 변호사가 매일경제 인터뷰에서 '현재도 보안사고를 당한 기업 중 3% 만이 신고한다는 분석이 있다' 며 처벌 위주 정책으로는 AI 시대 해킹을 막을 수 없다고 지적했다. 사고 발생 과정을 따져 면책 여지를 주는 조항과 민관 공조 체계가 필요하다는 주장이다.",
+      "extraction_reason": "97% 가 신고 안 하는 사이버보안 — AI 해킹 시대 정책 프레임 전환 압박.",
       "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 감독 도구 도입 발표지만, 몇 주 안에 거래소들이 자체 모니터링을 강화하면서 일부 코인 가격 변동성이 줄어들 가능성이 있습니다. 1년 안에 ‘AI 모니터링이 잡아낸 시세조종’ 적발 사례가 누적되면서 처벌·과징금이 일반 투자자 신뢰 회복에 기여할 시나리오가 가능합니다. 다만 정상 거래까지 잘못 잡아내는 false-positive 분쟁이 함께 늘어날 가능성이 있어 항변권 절차도 시험대에 오릅니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2010년대 미국 SEC의 ARTEMIS 시세조종 탐지 시스템, 2018년 한국거래소의 KRX-AI 이상거래 탐지, 2023년 영국 FCA의 시장감시 알고리즘이 비슷한 reference class입니다. 세 사례 모두 도입 1~2년 안에 적발 건수가 평균 30~50% 늘었지만, 실제 처벌까지 가는 비율은 10% 안팎이었습니다. 가상자산 영역은 익명성 때문에 처벌까지 가는 비율이 더 낮을 가능성도 있습니다."
-        }
-      }
-    },
-    {
-      "article_id": "a333ab55cc847a78",
-      "title": "국민성장펀드, 소버린AI 업스테이지에 5천600억원…2호 직접투자",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T12:00:04+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260502045100002",
-      "content_text": "(서울=연합뉴스) 강수련 기자 = 소버린 인공지능(AI) 기업 업스테이지가 국민성장펀드 직접투자 2호 기업으로 선정됐다.",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "소버린 인공지능(AI) 기업 업스테이지가 국민성장펀드 직접투자 2호 기업으로 선정돼 5천600억원 규모의 직접 지분투자를 받게 됐다고 연합뉴스가 보도했습니다. 한국 자체 AI 모델 경쟁력 강화를 위한 정책 자금이 본격 투입되는 신호입니다.",
-      "extraction_reason": "한국 AI 주권 강화의 대표 투자로 일자리·경제에 직접 영향이 큽니다.",
-      "relevance_score": 8.6,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 회사에 대한 정책 자금 투자지만, 몇 주 안에 다른 토종 AI 스타트업도 후속 라운드를 끌어올릴 가능성이 큽니다. 1년 안에 한국어·산업 특화 LLM이 정부·금융·의료 분야에 본격 도입되는 시나리오가 가능하고, 직장인은 사내 AI 챗봇이 GPT 대신 토종 모델로 바뀌는 변화를 체감할 가능성이 있습니다. 동시에 데이터 보호·국내 호스팅 의무화 같은 구조적 정책 변화도 따라올 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2010년 카카오·네이버에 대한 정책 펀드 지분투자, 2018년 토스·뱅크샐러드 핀테크 정책투자, 2022년 케이뱅크 모태펀드 참여가 비슷한 reference class입니다. 세 사례 모두 5년 뒤 해당 기업의 시장점유율이 평균 2~3배 늘었지만, 동시에 ‘정부 의존’ 비판이 따라붙었습니다. 이번 업스테이지 투자도 비슷한 곡선을 따를 가능성이 높고, 글로벌 모델과의 격차 좁힘 여부가 변수입니다."
+          "text": "당장은 변호사 인터뷰 한 건이지만, '신고율 3%' 라는 숫자가 정책 토론에서 인용되기 시작하면 정부가 사고 신고 기업에 면책·세제 혜택을 주는 인센티브 구조 도입을 검토할 가능성이 높습니다. 1~2년 안에 한국 사이버보안 신고제도가 처벌 중심에서 면책+의무 신고 형태로 바뀌는 흐름이 가시화될 수 있고, 결과적으로 본인이 다니는 회사가 보안사고를 빠르게 공시·복구하는 비율이 높아져 개인정보 유출 알림이 더 빨리 도달하는 효과가 생깁니다."
         },
         "bonus": [
           {
-            "type": "perspective",
-            "title": "입장이 다르면 어떻게 보일까?",
-            "icon": "👥",
-            "text": "정부 입장: AI 주권 확보로 안보·산업 양 측면에 의미. 업스테이지·임직원 입장: 자금·인력 확보로 글로벌 경쟁력 도전 가능. 다른 AI 스타트업 입장: 한 곳에 자금이 쏠리는 ‘승자독식’ 우려. 일반 시민 입장: 세금이 한 회사에 가는 데 대한 의구심과 ‘우리 회사 챗봇이 곧 바뀌나’ 기대. 갈등 지점은 ‘공정한 자금 배분 vs 선택과 집중’이며, 향후 3호·4호 직접투자 기준이 결정 변수가 될 가능성이 높습니다."
+            "type": "frame",
+            "title": "이 뉴스, 이렇게 읽어보세요",
+            "icon": "🧐",
+            "text": "이 인터뷰는 '3% 만 신고' 라는 강한 숫자를 핵심에 두지만 본문에서 출처와 조사 방법은 명확히 밝히지 않습니다. 특정 사이버보안 협회·로펌 자료인지, 한국인터넷진흥원 통계인지 함께 확인해 보세요. 또 인터뷰이가 ICT 전문 변호사라는 입장 — 즉 면책 조항 도입이 본인 고객사(기업) 에 유리하다는 이해관계 — 도 함께 읽어야 합니다. 던질 질문 두 가지: ① 3% 라는 수치가 다른 매체에서도 동일하게 인용되는가, ② 면책을 주면 피해자(이용자) 보호는 어떻게 강화하는가."
           }
         ]
-      }
-    },
-    {
-      "article_id": "d73e4a704de29d80",
-      "title": "직장인 52％ \"일터에 AI 도입 후 채용 줄어\"",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T12:00:03+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503014800004",
-      "content_text": "(서울=연합뉴스) 조현영 기자 = 직장인의 절반 이상이 회사에 인공지능(AI) 기술이 도입된 후 채용이 줄었다고 인식하는 것으로 나타났다.",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "직장인의 절반 이상인 52%가 회사에 인공지능 기술이 도입된 후 채용이 줄었다고 인식하는 것으로 나타났다고 연합뉴스가 보도했습니다. 일터에서 AI 도입과 인력 운용 변화 사이의 연결이 직장인 체감 차원에서 확인된 결과입니다.",
-      "extraction_reason": "AI가 일자리 시장에 미치는 영향을 직장인이 직접 체감한 첫 데이터입니다.",
-      "relevance_score": 8.6,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 인식 조사지만, 몇 달 안에 ‘AI 도입과 채용 둔화의 직접 인과’를 묻는 후속 통계가 발표될 가능성이 큽니다. 1년 뒤엔 신입 채용보다 경력·재교육 채용으로 무게가 옮겨가는 시나리오가 가능하고, 정부의 AI 전환 지원 예산이 ‘재교육·전직 지원’ 쪽으로 재편될 가능성이 있습니다. 동시에 청년층 첫 일자리 진입이 늦춰지는 부작용도 함께 커질 수 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1990년대 사무 자동화로 인한 비서·문서 직무 감소, 2010년대 ATM·인터넷뱅킹 보급에 따른 텔러 감축이 비슷한 reference class입니다. 두 시기 모두 5~10년 뒤 채용은 줄었지만 새 직무가 생겨 총 고용은 비슷하거나 늘어난 사례가 많았습니다. 이번 AI 사이클도 비슷한 곡선을 따를 가능성이 있지만 변화 속도가 더 빠를 가능성이 있습니다."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "본인 직무에서 AI 도구가 어떤 작업 30~50%를 대체할 수 있는지 분기별로 점검하는 게 좋습니다. 이력서·포트폴리오에 ‘AI 도구를 활용해 산출물을 N배 늘렸다’ 같은 구체 지표를 더하면 채용 시장에서 유리해질 가능성이 높습니다. 반대로, ‘우리 회사는 AI 도입 안 해서 괜찮다’고 안주하거나 단순 반복 업무에만 의존하는 행동은 피하는 게 안전합니다."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "c256517354d4682c",
-      "title": "충남도 \"인공지능으로 모기 감시해 감염병 대응\"",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T11:52:01+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503023400063",
-      "content_text": "(홍성=연합뉴스) 박주영 기자 = 충남도 보건환경연구원은 기후변화에 따른 모기 매개 감염병 증가에 선제 대응하기 위해 '인공지능(AI) 기반 실...",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "충남도 보건환경연구원이 기후변화에 따른 모기 매개 감염병 증가에 선제 대응하기 위해 ‘인공지능(AI) 기반 실(시간) 모기 감시 체계’를 도입한다고 연합뉴스가 보도했습니다. 모기 발생 데이터를 AI로 분석해 감염병 대응에 활용하는 지방정부 차원의 시도입니다.",
-      "extraction_reason": "지자체의 AI 활용 보건정책으로 일상 건강·안전과 직접 연결됩니다.",
-      "relevance_score": 7.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 충남 한 지역 사업이지만, 몇 달 안에 다른 광역지자체로 비슷한 AI 기반 모기·감염병 감시 시스템이 확산될 가능성이 큽니다. 1년 안에 일본뇌염·뎅기열 위험 예보가 일기예보처럼 일상화될 시나리오가 가능하고, 어린이날·여름휴가 시즌 야외 활동 시 ‘오늘 우리 지역 모기 위험’ 알림이 표준이 될 가능성이 있습니다. 동시에 환경 모니터링 인력이 데이터 분석 인력으로 재편될 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2015년 메르스 이후 질병관리본부의 발열 환자 패턴 분석, 2020년 코로나 자가진단 앱·QR 동선 추적, 2023년 세계보건기구의 AI 기반 뎅기열 예측 모델 시범이 비슷한 reference class입니다. 세 사례 모두 도입 1~2년 안에 인지도와 활용도가 함께 올라갔지만, 데이터 표준화·개인정보 갈등이 동반됐습니다."
-        }
       }
     },
     {
@@ -833,99 +718,86 @@
       "keywords": [
         "AI"
       ],
-      "ai_summary": "유튜브와 틱톡 등 동영상 플랫폼에서 실제 강력 범죄자를 기반으로 만든 ‘AI 범죄자’ 콘텐츠가 빠르게 확산되며 논란이 커지고 있습니다. 흉악범들이 교도소에서 생활하는 모습 등을 AI로 재현한 영상이 유포돼 ‘2차 가해’ 우려가 나오고 있다고 매일경제가 전했습니다.",
-      "extraction_reason": "생성형 AI의 가짜 영상이 피해자 2차 가해로 이어지는 첫 사회 이슈입니다.",
+      "ai_summary": "유튜브·틱톡 등 동영상 플랫폼에서 실제 강력 범죄자를 기반으로 만든 'AI 범죄자' 콘텐츠가 빠르게 확산되며 논란이 커지고 있다고 매일경제가 전했다. 흉악범이 교도소에서 웃고 춤추는 모습 같은 AI 생성 영상이 피해자 유족에 대한 2차 가해라는 비판이 제기된다.",
+      "extraction_reason": "AI 합성 영상이 피해자 가족 2차 가해로 — 콘텐츠 규제·플랫폼 책임 전환 신호.",
       "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 일부 영상 사례지만, 며칠 안에 피해자 가족이 플랫폼에 삭제 요청을 집중적으로 보내면서 유튜브·틱톡의 정책 강화가 이어질 가능성이 큽니다. 몇 달 안에 ‘실명·실제 사건 기반 AI 콘텐츠’ 금지 가이드라인이 표준이 될 시나리오가 가능하고, 1년 뒤엔 한국에서도 AI 콘텐츠에 대한 ‘피해자 동의 의무화’ 입법이 추진될 가능성이 있습니다. 동시에 AI 콘텐츠 식별 워터마크가 정책 화두가 됩니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2010년 ‘리벤지 포르노’ 입법 흐름, 2018년 딥페이크 음란물 처벌 강화, 2023년 N번방 후속 입법이 비슷한 reference class입니다. 세 사례 모두 사회적 공론화-입법까지 평균 1~3년이 걸렸고, 입법 후에도 플랫폼 자정 작용이 함께 필요했습니다. 이번 AI 범죄자 콘텐츠도 비슷한 경로를 따를 가능성이 높습니다."
-        },
-        "bonus": [
-          {
-            "type": "frame",
-            "title": "이 뉴스, 이렇게 읽어보세요",
-            "icon": "🧐",
-            "text": "이 보도는 ‘논란이 커지고 있다’ 정도로 정성 평가에 머물고, 영상 수·조회수 같은 정량 데이터가 빠진 점은 출처 측면에서 약합니다. 또 어떤 플랫폼·국가에서 시작됐는지, 가해자 수익화 경로가 어떻게 되는지가 빠져 있습니다. 이 질문을 던져보세요: 영상 수는 얼마인지, 피해자 측이 직접 입장을 낸 사례가 있는지, 한국·해외 모두에서 보이는 현상인지를 다른 매체 보도로 교차 확인해보세요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "025d1c9749dbed4e",
-      "title": "“챗GPT 대화도 증거 된다”…AI 대화, 법정 증거로 직행",
-      "source": "매일경제",
-      "published_at": "2026-05-03T11:33:52+09:00",
-      "original_url": "https://www.mk.co.kr/news/world/12034391",
-      "content_text": "AI 채팅 기록 수사 활용 사례 증가 전문가 상담과 달리 비밀 적용 안돼 ”개인정보 보호 새 위험 요인“ 경고생성형 인공지능(AI) 서비스와 나눈 대화가 범죄 수사의 핵심 증거로 ..",
-      "category": "ai_news",
-      "keywords": [
-        "챗GPT",
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "생성형 인공지능 서비스와 나눈 대화가 범죄 수사의 핵심 증거로 활용되는 사례가 늘고 있다고 매일경제가 보도했습니다. 변호사·의사 등 전문가 상담과 달리 AI 채팅 기록에는 비밀 보호가 적용되지 않아 개인정보 보호의 새로운 위험 요인이 될 수 있다는 경고가 나옵니다.",
-      "extraction_reason": "AI 대화의 법적 지위는 일반 사용자 일상에 직접 위험을 줍니다.",
-      "relevance_score": 8.4,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 보도 한 건이지만, 몇 주 안에 챗봇 사용자들이 자신의 과거 채팅 기록 삭제·다운로드를 요청하는 흐름이 늘어날 가능성이 큽니다. 1년 안에 챗GPT·클로바·코파일럿 같은 서비스가 ‘민감 모드’ 또는 ‘비공개 채팅’ 기능을 표준으로 도입할 시나리오가 가능합니다. 동시에 수사기관의 영장 청구·기록 보존 의무 규정이 정비될 가능성이 있어, 사용자 입장에선 무엇을 어디까지 적어도 되는지 인식이 바뀌어야 합니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2010년대 카카오톡 대화 압수수색 논란, 2014년 메신저 ‘텔레그램 망명’, 2018년 구글 검색 기록 압수 논란이 비슷한 reference class입니다. 세 사례 모두 1~2년 안에 ‘메시지 보존 정책’과 ‘유저 동의’ 규정이 강화됐습니다. AI 채팅 영역도 비슷한 곡선을 따를 가능성이 높지만, 학습 데이터로 활용되는 점이 추가 변수입니다."
+          "text": "당장은 흉악범 AI 영상 한두 건이 도마 위에 오른 정도지만, 1~2개월 안에 정치권에서 'AI 합성 영상 라벨링 의무화' 법안 발의가 가속화될 가능성이 높습니다. 6~12개월 지나면 유튜브·틱톡 같은 플랫폼이 한국 사용자에게 별도 'AI 생성' 표시를 의무 부착하는 흐름이 본격화될 수 있고, 결과적으로 본인이 보는 영상 콘텐츠 환경 자체가 'AI 라벨' 표시로 한 번 걸러지는 형태로 바뀝니다. 더 멀리 보면 일반인 대상 딥페이크 영상 피해 신고도 이 시기에 함께 폭증할 가능성이 큽니다."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "AI 챗봇에 입력하는 내용에 주민등록번호·계좌번호·진료 정보·법적 분쟁 세부사항 같은 민감 정보를 적지 않는 습관을 들이는 게 좋습니다. 본인이 사용하는 서비스의 ‘대화 저장·학습 사용 여부’ 설정을 한 번 점검하고, 필요하면 ‘기록 안 함’ 옵션을 켜두세요. 반대로, ‘AI에 비밀 상담을 했으니 기록도 보호된다’고 가정하는 행동은 피하는 게 안전합니다."
+            "text": "보호자 입장에서 이번 주 안에 ① 자녀가 자주 보는 채널에 'AI 합성 콘텐츠' 가 어느 정도 섞여 있는지 한 번 함께 보면서 라벨을 확인해 보고, ② 본인 SNS 프로필 사진·영상이 외부 학습 자료로 쓰이지 않도록 공개 범위를 점검해 두세요. 반대로 'AI 가 만든 자극적 영상은 어차피 한때 유행' 이라며 신경 쓰지 않다가 본인·가족 얼굴이 합성된 영상을 발견하는 식의 사후 대응이 가장 피해야 할 행동입니다."
           }
         ]
       }
     },
     {
-      "article_id": "ade714f4507f52d2",
-      "title": "주독미군 감축, 美해외기지 조정 신호탄?…주한미군 여파 주목",
+      "article_id": "769054386ca83e2b",
+      "title": "日 최고재판소장 \"재판관 판단에 AI 활용 고려 안 해\"",
       "source": "연합뉴스",
-      "published_at": "2026-05-03T14:34:05+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503029900504",
-      "content_text": "(서울=연합뉴스) 김철선 기자 = 미국이 유럽 최대 미군기지인 주독미군 감축을 전격으로 발표하면서 이를 신호탄으로 주한미군 등 해외 미군기지에 ...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "미국이 유럽 최대 미군기지인 주독미군 감축을 전격 발표하면서 이를 신호탄으로 주한미군 등 다른 해외 미군기지 조정으로 이어질지 주목된다고 연합뉴스가 보도했습니다. 트럼프 행정부의 해외 미군기지 재배치 흐름이 동북아 안보 환경에도 영향을 줄 수 있다는 관측이 부각되고 있습니다.",
-      "extraction_reason": "주한미군 변동은 한국 안보·외교에 직결되는 핵심 변수입니다.",
-      "relevance_score": 9.0,
+      "published_at": "2026-05-03T13:39:37+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503028200073",
+      "content_text": "(도쿄=연합뉴스) 조성미 특파원 = 한국 대법원 격인 일본 최고재판소 이마사키 유키히코 소장(장관)이 인공지능(AI)을 재판관 판단에 활용하는 ...",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "일본 최고재판소(한국 대법원 격) 이마사키 유키히코 소장(장관) 이 재판관의 판단에 AI 를 활용하는 방안을 고려하지 않고 있다고 밝혔다고 연합뉴스가 도쿄발로 전했다. 사법부 판단의 책임 주체가 사람이어야 한다는 일본 최고 사법기관의 명시적 선 긋기다.",
+      "relevance_score": 7.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "ea394e4d68131e0e",
+      "title": "오픈AI, 코덱스에 ‘AI 펫’ 깜짝 도입...“코딩에 감성 UX 입힌다”",
+      "source": "AI타임스",
+      "published_at": "2026-05-03T11:59:42+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210034",
+      "content_text": "오픈AI가 코딩 AI 도구인 코덱스(Codex)에 ‘펫(Pets)’ 기능을 도입하며 개발자 인터페이스에 색다른 변화를 시도했다. 작은 애니메이션 캐릭터를 통해 작업 상태를 직관적으로 전달하는 이번 기능은 생산성과 감성적 요소를 결합한 새로운 UX 실험으로 주목받고 있다. 오픈AI는 1일(현지시간) 코덱스에 ‘펫’ 기능을 추가했다. 이번에 도입된 펫 기능은 간단한 명령어 입력만으로 활성화할 수 있다.사용자는 입력창에 ‘/pet’을 입력하면 작은 애니메이션 형태의 캐릭터가 화면에 등장하며, 필요할 경우 다시 입력해 숨길 수도 있다.기본",
+      "category": "ai_news",
+      "keywords": [
+        "AI"
+      ],
+      "ai_summary": "오픈AI 가 코딩 AI 도구 '코덱스(Codex)' 에 '펫(Pets)' 기능을 1일(현지시간) 도입했다. 사용자가 '/pet' 명령어를 입력하면 작은 애니메이션 캐릭터가 화면에 등장해 작업 상태를 직관적으로 전달한다. 코딩 도구에 감성 UX 를 결합한 실험적 시도로 주목받는다.",
+      "relevance_score": 6.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "52c551762afdacda",
+      "title": "\"피지컬AI로 연간 업링크 트래픽 20~25% 증가”",
+      "source": "ZDNet Korea",
+      "published_at": "2026-05-03T15:20:33+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260503152033",
+      "content_text": "[지디넷코리아]피지컬AI 확산으로 이동통신 업링크 데이터 트래픽 수요가 2029년에 네트워크 용량을 초과할 수 있다는 전망이 나와 이목을 끈다.시장조사기관 모바일엑스퍼츠가 최근 내놓은 ‘AI가 모바일 통신에 미치는 영향’ 보고서에서는 업링크 트래픽이 연간 20~25% 증가할 것으로 예측했다.보고서는 현재 AI 모델은 대규모 데이터센터와 스마트폰 정도에서 실행되고 있지만 피지컬AI 부상으로 트래픽 이동 경로는 더욱 복잡해질 것으로 내다봤다.이를테면 음식 배달이나 자동차 조립, 세탁물 정리 등을 수행하는 각각의 로봇은 빠른 의사결정을 요구하기 때문에 새로운 지역 기반의 AI 컴퓨팅 자원이 필요하고 여러 곳에서 AI 모델이 실행되어야 한다는 설명이다.AI를 네트워크 기반에서 실행하기 위해 서비스 품질도 중요하게 여길 부분이다. 피지컬AI는 단순한 안정성을 넘어 최소 성능을 보장하는 통신이 이뤄져야 한다는 뜻이다.이런 점으로 통신사에는 피지컬AI가 새로운 수익 기회가 될 수 있을 것이란 예측으로 이어졌다.예컨대 미국 T모바일이 엔비디아, 노키아와 함께 분산형 엣지 네트워크에서 피지컬AI 애플리케이션을 구축하고 있는데 피지컬AI를 지원하기 위한 움직임이다. 대형 기업 고객은 이미 5G 특화망에 온프레미스 엣지 컴퓨팅 구축에 나서기도 한다.다만 모바일엑스퍼츠는 피지컬AI에 따른 통신사의 수익성 확보는 여전히 불확실성이 있다는 점을 지적했다.과거 모바일 엣지 컴퓨팅(MEC) 논의와 유사한 흐름이 피지컬AI에서 다시 시잣됐는데 MEC에서도 통신사가 큰 수익을 올리지 못했기 때문이다.아울러 무선접속망(EAN)에서 AI가 본격화되더라도 기업들이 통신사를 통해 AI 서비스를 구매하게 될지, 하이퍼스케일의 데이터센터를 지금처럼 이용할지 또는 자체적인 AI 컴퓨팅을 이용하게 될지 모른다는 이유를 들었다.",
+      "category": "ai_news",
+      "keywords": [
+        "엔비디아",
+        "AI",
+        "로봇"
+      ],
+      "ai_summary": "시장조사기관 모바일엑스퍼츠 'AI 가 모바일 통신에 미치는 영향' 보고서가 피지컬AI 확산으로 이동통신 업링크 데이터 트래픽이 연간 20~25% 증가하고, 2029년에는 네트워크 용량을 초과할 수 있다고 전망했다. 미국 T모바일이 엔비디아·노키아와 분산형 엣지 네트워크에서 피지컬AI 애플리케이션을 구축 중인 사례도 함께 소개됐다.",
+      "extraction_reason": "2029년 통신 용량 초과 경고 — 5G·6G 투자, 통신요금까지 직격 변수.",
+      "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 주독미군 발표지만, 며칠 안에 미 국방부의 ‘해외기지 재검토’ 보고서가 한 단계 더 구체화될 가능성이 큽니다. 몇 달 안에 주한미군 일부 부대 재배치 시나리오가 협상 테이블에 오를 수 있고, 1년 안에 한미 방위비 분담 협상에서 한국 측 부담이 다시 한 번 상향될 가능성이 높습니다. 동시에 한국 정부의 자체 방위 역량·국방예산 확대 압박이 커질 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1990년 미·소 데탕트 후 주한미군 7천명 감축, 2004년 부시 행정부의 주한미군 1만2천 감축, 2018~2020년 트럼프 1기의 방위비 5배 인상 요구가 비슷한 reference class입니다. 세 사례 모두 발표-실행까지 평균 1~2년이 걸렸고, 한국 정부는 ‘안보 보장’ 약속을 반대급부로 받았습니다. 이번에도 비슷한 협상 구조가 반복될 가능성이 높습니다."
+          "text": "당장은 시장조사 보고서 한 건이지만, 업링크 트래픽 연 20~25% 증가는 통신사 자본지출(CAPEX) 의 30~40% 를 매년 추가로 끌어올리는 압박입니다. 1~2년 안에 SKT·KT·LGU+ 가 6G 조기 투자와 분산형 엣지 데이터센터 구축에 뛰어들 가능성이 높고, 결과적으로 본인이 내는 5G·6G 요금제 단가가 향후 2~3년 사이 한 단계 높아지는 흐름이 자리잡습니다. 동시에 자율주행·로봇·드론 같은 피지컬AI 기반 서비스가 실제로 안정적으로 돌아갈 인프라 기반이 마련되는 양면 효과가 함께 옵니다."
         },
         "bonus": [
           {
-            "type": "scenario",
-            "title": "앞으로 어떻게 될 수 있을까?",
-            "icon": "🔮",
-            "text": "최선 시나리오는 주독미군 감축이 유럽 한정으로 끝나고 주한미군은 현 수준 유지(가능성 중간), 중간은 일부 부대 재배치와 방위비 추가 인상으로 절충(가능성 높음), 최악은 주한미군 규모 축소와 함께 한미 동맹 신뢰도 약화(가능성 낮음)입니다. 갈림길은 다음 주 미 국방부 해외기지 보고서 공개 여부와 한미 외교장관 회담 결과입니다."
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "이번 분기 안에 ① 본인 통신요금이 5G 무제한 요금제 위주인지 점검하고, ② 데이터 사용 패턴이 동영상 다운로드 위주인지 영상 업로드·라이브 송출 위주인지 확인해 두세요. 업링크 트래픽이 폭증하는 시대에는 업로드를 자주 하는 사용자(콘텐츠 크리에이터·자영업자 라이브 커머스) 가 가장 먼저 요금 인상 영향을 받습니다. 반대로 '나는 데이터 별로 안 쓰니 상관없다' 며 요금제 비교 자체를 미루는 행동은 가장 피해야 합니다 — 통신요금 구조 변화는 알뜰폰·번호이동 시점 결정에 직접 영향을 줍니다."
           }
         ]
       }
@@ -939,311 +811,51 @@
       "content_text": "(서울=연합뉴스) 강태우 기자 = 삼성가(家)가 고(故) 이건희 선대회장의 유산에 대한 상속세 12조원을 5년에 걸쳐 완납했다.",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "삼성가가 고 이건희 선대회장 유산에 대한 상속세 12조원을 5년에 걸쳐 완납했다고 연합뉴스가 보도했습니다. 한국 역대 최대 규모 상속세 납부 사례로, 노블레스 오블리주 실천이라는 평가와 함께 한국 상속세 체계 논의에 영향을 줄 가능성이 큽니다.",
-      "extraction_reason": "역대 최대 상속세 완납은 정책·세제 논의에 큰 신호를 줍니다.",
-      "relevance_score": 7.8,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 가문의 납부 완료 발표지만, 며칠 안에 ‘대한민국 상속세 최고세율(50%)이 합리적인가’ 논쟁이 다시 불붙을 가능성이 큽니다. 1년 안에 가업상속·비상장주식 평가 방식 개편안이 국회에 상정될 시나리오가 가능하고, 일반 가족도 부동산 증여·가업 승계 절차에서 세제 변화의 영향을 체감할 가능성이 있습니다. 동시에 사회 분위기상 ‘부 재분배’ 논의도 다시 활발해질 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2003년 SK 최태원 회장의 상속세 정리, 2014년 한진그룹의 상속세 분납, 2020~2025년 LG·현대 등 주요 그룹의 상속세 부담이 비슷한 reference class입니다. 네 사례 모두 완납 후 1~2년 안에 ‘상속세 개편’ 입법 논의가 이어졌고, 일부는 가업승계 공제 확대로 이어졌습니다. 이번 삼성가 완납도 비슷한 입법 사이클을 자극할 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "a3a51849e34dedaa",
-      "title": "중동전쟁 여파…수출기업 30% “조업중단·계약파기 위기”",
-      "source": "한겨레",
-      "published_at": "2026-05-03T11:52:00+09:00",
-      "original_url": "https://www.hani.co.kr/arti/economy/finance/1256925.html",
-      "content_text": "국내 수출기업의 30%가 미국·이스라엘-이란 전쟁의 여파로 조업중단 위기에 몰리거나 계약 파기를 겪는 등 심각한 피해를 겪은 것으로 나타났다. 특히 중소기업의 피해 수준이 더 심각한 것으로 조사됐다. 한국수출입은행은 수출기업 505곳(대기업 51곳, 중소기업 454곳)",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "한국수출입은행이 수출기업 505곳(대기업 51곳, 중소기업 454곳)을 조사한 결과 미국·이스라엘-이란 전쟁 여파로 30%가 조업중단 위기에 몰리거나 계약파기를 겪는 등 심각한 피해를 입은 것으로 나타났다고 한겨레가 보도했습니다. 특히 중소기업의 피해가 더 심한 것으로 조사됐습니다.",
-      "extraction_reason": "수출기업 30%의 직접 피해는 한국 거시 경기 흐름의 핵심 변수입니다.",
-      "relevance_score": 8.6,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 수출입은행 조사 발표지만, 며칠 안에 정부의 긴급 보증·금리 우대 프로그램 추가 발표 가능성이 큽니다. 몇 주 안에 환위험·결제지연 보험 가입 문의가 폭주할 시나리오가 가능하고, 1년 안에 중동 의존 수출 비중을 줄이려는 다변화 정책이 본격화될 가능성이 있습니다. 동시에 중소기업의 자금난·고용 위축이 동반될 위험이 함께 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2003년 이라크 전쟁 직후 수출 차질, 2014년 우크라이나 사태로 동유럽 수출 감소, 2022년 러시아 침공으로 한국 수출 충격이 비슷한 reference class입니다. 세 사례 모두 6~12개월 안에 정부가 무역금융·보증 프로그램을 확대했고, 수출 회복까지 평균 1~2년이 걸렸습니다. 이번도 비슷한 곡선을 따를 가능성이 높습니다."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "본인이 중소 수출기업 종사자라면 무역보험공사·신보 보증, 수출입은행 위기대응 자금 메뉴를 한 번 정리해두면 도움이 됩니다. 거래처 결제일·환율 시나리오를 분기별로 점검하고, 동남아·EU 등 대체 거래처 발굴을 동시에 시도해보세요. 반대로, ‘조금 버티면 끝나겠지’라며 기존 거래처 한 곳에만 의존을 유지하는 행동은 피하는 게 안전합니다."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "935b1575b0b8cdd4",
-      "title": "낮잠, 보약 아닌 사약이었다…아침에·자주·길게 자면 사망위험 높아",
-      "source": "매일경제",
-      "published_at": "2026-05-03T13:27:03+09:00",
-      "original_url": "https://www.mk.co.kr/news/it/12034412",
-      "content_text": "56세 이상 성인 19년간 추적 관찰 오전 낮잠·불규칙하면 사망위험 커 낮잠 패턴 변화땐 만성질환 의심을낮 시간에 잠깐 눈을 붙이는 습관이 단순한 피로 해소를 넘어 건강 상태를 보..",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "56세 이상 성인을 19년간 추적 관찰한 연구를 인용해, 낮 시간 잠깐 눈을 붙이는 습관이 단순 피로 해소를 넘어 건강 상태를 보여주는 지표라고 매일경제가 보도했습니다. 오전에 자거나 자주·길게 자는 등 불규칙한 낮잠 패턴은 사망 위험을 높일 수 있어 패턴 변화 시 만성질환을 의심해보라는 조언입니다.",
-      "extraction_reason": "낮잠 패턴-사망위험 연결은 일상 건강 관리에 직접 영향을 줍니다.",
-      "relevance_score": 7.8,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 의학 연구 보도지만, 며칠 안에 SNS·건강 콘텐츠에서 ‘낮잠 줄이세요’ 식 짧은 영상이 확산될 가능성이 큽니다. 몇 달 안에 직장 점심시간 운영이나 시니어 돌봄 프로그램에 ‘낮잠 패턴 점검’이 추가될 시나리오가 가능하고, 1년 안에 수면 추적 웨어러블이 ‘낮잠 위험 알림’ 기능을 추가할 가능성이 있습니다. 다만 단일 연구 결과가 과대 해석돼 정상 낮잠까지 두려워지는 부작용도 함께 우려됩니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2015년 ‘과도한 낮잠은 당뇨 위험’ 연구, 2019년 ‘1시간 이상 낮잠은 심장질환 위험’ 연구가 비슷한 reference class입니다. 두 사례 모두 발표 직후 1~2개월간 미디어 노출이 폭주했지만, 1년 뒤 후속 연구로 ‘기저질환이 낮잠 패턴을 바꾸는 것’이라는 역인과 해석이 강해졌습니다. 이번 연구도 비슷한 후속 논쟁이 따라올 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "abda7a72e9839fee",
-      "title": "“강남 집값 반등 준비됐나”…송파 이어 서초 아파트도 상승 전환",
-      "source": "매일경제",
-      "published_at": "2026-05-03T12:58:05+09:00",
-      "original_url": "https://www.mk.co.kr/news/realestate/12034399",
-      "content_text": "4월 넷째 주 전국 아파트값 동향 서초구 10주만에 상승세 전환 급매물 소진되며 매도 호가 상승 서울 비강남권 상승폭은 둔화서울 아파트 매매가격 상승 폭이 보합권을 보이고 있는 가..",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "4월 넷째 주 전국 아파트값 동향에서 서초구가 10주 만에 상승 전환된 것으로 매일경제가 전했습니다. 송파구에 이어 서초구도 상승세로 돌아섰고 급매물 소진과 매도 호가 상승이 확인됐지만, 서울 비강남권 상승폭은 둔화돼 ‘강남 재반등’이라는 양극화 신호가 부각되고 있습니다.",
-      "extraction_reason": "강남 아파트값 반등 신호는 가계 자산·정책 흐름의 중요 변수입니다.",
+      "ai_summary": "삼성가(家) 가 고 이건희 선대회장 유산에 대한 상속세 12조원을 5년에 걸쳐 완납했다고 연합뉴스가 전했다. 세계적으로 유례 없는 규모의 상속세를 분할 납부 후 마무리한 사례로, '노블레스 오블리주 실현' 이라는 평가가 함께 따라붙었다.",
+      "extraction_reason": "12조원 상속세 5년 완납 — 한국 상속세제·기업 지배구조 논의 핵심 변수.",
       "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 한 주 통계지만, 몇 주 안에 강남 3구의 호가 상승이 전체 시장 심리를 끌어올릴 가능성이 큽니다. 몇 달 안에 정부가 ‘갭투자 차단’ ‘토지거래허가구역 재지정’ 같은 핀셋 규제를 검토할 시나리오가 가능하고, 1년 안에 비강남권은 둔화·강남권은 회복이라는 양극화가 굳어질 가능성이 있습니다. 동시에 30~40대의 ‘영끌 추격매수’ 위험도 함께 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2019년 송파-서초 동시 반등 후 2020년 전국 확산, 2022년 일부 회복 후 2023년 재하락, 2024년 강남 우선 회복이 비슷한 reference class입니다. 세 사례 모두 강남이 6~12개월 먼저 움직이고 비강남권이 따라가는 패턴을 보였습니다. 이번도 비슷한 시간 차로 확산될 가능성이 중간이며, 금리·정책이 변수입니다."
-        }
-      }
-    },
-    {
-      "article_id": "ef9473a8e5aed7a0",
-      "title": "차세대중형위성 2호 오늘 오후 발사…우크라 전쟁으로 4년 만에",
-      "source": "한겨레",
-      "published_at": "2026-05-03T10:41:00+09:00",
-      "original_url": "https://www.hani.co.kr/arti/science/science_general/1256914.html",
-      "content_text": "우리나라 ‘차세대중형위성 2호’가 오늘 오후 발사된다. 우주항공청과 국토교통부는 지구관측 위성인 차세대중형위성 2호를 3일 오후 3시59분(한국시각) 미국 캘리포니아주 밴덴버그 우주군기지에서 발사한다고 밝혔다. 차세대중형위성은 한국항공우주연(항우연)이 개발해 운용 중인",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "‘차세대중형위성 2호’가 3일 오후 3시59분(한국시각) 미국 캘리포니아 밴덴버그 우주군기지에서 발사된다고 우주항공청과 국토교통부가 밝혔다고 한겨레가 보도했습니다. 항우연 개발 지구관측 위성으로, 우크라이나 전쟁 영향으로 발사가 4년 만에 이뤄지게 된 사례입니다.",
-      "extraction_reason": "지구관측 위성 발사는 한국 우주산업과 국토 정책 인프라 강화입니다.",
-      "relevance_score": 7.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 발사 일정이지만, 몇 주 안에 위성에서 보내는 고해상도 지구관측 데이터가 정부 부처와 지자체 운영에 활용되기 시작할 가능성이 큽니다. 1년 안에 도심 변화·재해 모니터링·SOC 관리 자동화에 활용 폭이 늘어날 시나리오가 가능하고, 우주항공청 출범 이후 첫 가시 성과로 자리잡을 가능성이 있습니다. 동시에 한국 우주 발사 외주 의존을 줄이는 기술 자립 논의도 다시 부상할 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2018년 차세대중형위성 1호 발사, 2022년 누리호 1차 발사 실패-3차 성공, 2023년 다누리 달 탐사선 운용이 비슷한 reference class입니다. 세 사례 모두 발사 후 1~2년 안에 부처 활용 범위가 확장됐고, 일부는 민간 데이터 사업으로 연결됐습니다. 이번 2호도 비슷한 활용 곡선을 따를 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "5257df6d99db2dc6",
-      "title": "호르무즈 봉쇄 후 두 번째 한국 유조선 홍해 통과(종합)",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T13:58:14+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503020251051",
-      "content_text": "(부산=연합뉴스) 이영재 기자 = 호르무즈 해협 봉쇄 이후 또 한 척의 한국 선박이 우회로인 홍해를 통과해 국내로 원유를 운송하게 됐다. 지난달...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "호르무즈 해협 봉쇄 이후 또 한 척의 한국 선박이 우회로인 홍해를 통과해 국내로 원유를 운송하게 됐다고 부산발 연합뉴스가 보도했습니다. 미국·이스라엘-이란 충돌로 핵심 원유 통로가 막힌 상황에서 한국이 두 번째 우회 선박을 띄운 사례로, 에너지 수급 불안의 단면을 보여줍니다.",
-      "extraction_reason": "원유 우회 수송은 휘발유·전기 가격까지 직결되는 생계 변수입니다.",
-      "relevance_score": 8.7,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 척의 우회 운항이지만, 몇 주 안에 우회 비용·보험료 상승이 정유사 마진과 휘발유 도매가에 반영될 가능성이 큽니다. 몇 달 뒤 사태 장기화 시 도시가스·전기요금 인상 압박이 가시화될 시나리오가 가능하고, 1년 안에 한국 정부가 전략비축유·LNG 비축을 늘리는 정책으로 대응할 가능성이 있습니다. 동시에 항공·해운주의 변동성이 커지는 효과가 함께 따라옵니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1973년 1차 오일쇼크, 1990년 걸프전 호르무즈 긴장, 2019년 호르무즈 유조선 피격이 비슷한 reference class입니다. 세 사례 모두 1~6개월 안에 국제유가가 30~150% 변동했고, 한국은 평균 6~12개월 뒤 휘발유·전기료 인상으로 이어졌습니다. 이번 사태도 비슷한 곡선을 따를 가능성이 중간 이상입니다."
+          "text": "당장은 삼성가 한 집안 일이지만, 12조원이라는 규모는 한국 상속세제 논의 전체를 끌어가는 상징입니다. 1~2년 안에 정부·국회에서 '대기업 오너 상속세 부담을 줄여 가업 승계를 돕자' vs '편법 우회 막아 형평을 지키자' 논쟁이 다시 뜨거워질 가능성이 높습니다. 결과적으로 본인이 부모님 자산 증여·상속을 고민 중이라면, 향후 1~2년 사이 장기보유공제·증여세 한도 같은 핵심 조항이 손질되는 흐름을 따라가야 합니다. 일반 직장인 입장에선 '재벌 상속세 완납' 보도가 부동산·주식 양도세 논의에까지 번지는 패턴이 따라옵니다."
         },
         "bonus": [
           {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "당분간 휘발유·경유 가격 변동이 클 가능성이 높아, 장거리 출장·여행이 잡혀 있다면 주유 일정과 카드사 주유 할인 혜택을 한 번 정리해두면 도움이 됩니다. 가정에선 도시가스 검침일·전기요금 누진 구간을 점검해 5~10% 절감 여지를 확보하세요. 반대로, ‘유가가 더 오를 것’이라는 단정만 보고 정유주 단기 매수에 몰빵하는 행동은 피하는 게 안전합니다."
+            "type": "perspective",
+            "title": "입장이 다르면 어떻게 보일까?",
+            "icon": "👥",
+            "text": "이 뉴스를 두고 네 입장이 부딪힙니다. ① 삼성 측은 '세계 최대 규모 상속세를 정직하게 완납했다' 며 노블레스 오블리주 프레임을 강조합니다. ② 시민단체·진보 측은 '주식 처분·승계 과정에서 그룹 지배력 유지 효과가 더 컸다' 고 비판합니다. ③ 중소·중견 가업 승계자들은 '재벌도 12조 다 냈는데 우리만 가혹한 세제로 지친다' 고 호소하며 세제 완화 압박을 키웁니다. ④ 일반 납세자는 '세금이 정상 부과·완납됐는가' 자체가 핵심 관심입니다. 구조적 갈등 지점은 '상속세 부담' 과 '경영권 지속성' 사이의 균형입니다."
           }
         ]
       }
     },
     {
-      "article_id": "710bf124f0ed2317",
-      "title": "제주, 강한 비바람…한라산 94㎜ 호우·우도 초속 17ｍ 강풍",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T13:18:03+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503027300056",
-      "content_text": "(제주=연합뉴스) 고성식 기자 = 3일 제주 대부분 지역에 강한 바람과 함께 많은 비가 내렸다.",
+      "article_id": "b0f0ae26b31824fa",
+      "title": "“한국 올해 성장률 2.7%로 0.8%p 상향”…현대硏 “반도체 수출 호조”",
+      "source": "매일경제",
+      "published_at": "2026-05-03T11:29:57+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12034389",
+      "content_text": "“불확실성 극복이 가장 중요한 현안” “변화 대응 유연한 성장 전략 필요”현대경제연구원은 올해 한국 경제 성장률 전망치를 2.7%로 0.8%포인트 상향한다고 3일 밝혔다. 연구원은..",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "3일 제주 대부분 지역에 한라산 94㎜ 호우, 우도 초속 17m 강풍 등 강한 바람과 많은 비가 동반된 기상악화가 발생했다고 제주발 연합뉴스가 보도했습니다. 어린이날 연휴와 맞물린 시점이라 야외 활동·항공·여객선 운항에 영향이 우려됩니다.",
-      "extraction_reason": "어린이날 연휴 호우·강풍은 안전·여행 일정에 직접 영향을 줍니다.",
-      "relevance_score": 7.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 제주 한 지역의 호우지만, 며칠 안에 어린이날 연휴 동안 항공편 결항·여객선 통제로 여행객 일정이 흔들릴 가능성이 큽니다. 몇 주 안에 농작물 침수·연안 시설물 피해 통계가 추가될 가능성이 있고, 길게 보면 봄철 강풍·호우 빈도 증가가 기후 패턴 변화의 한 단면으로 해석될 가능성이 있습니다. 동시에 지자체의 재난 예보 시스템 강화 요구가 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2018년 5월 제주 봄철 강풍, 2020년 어린이날 호우, 2024년 제주 강풍 결항 사태가 비슷한 reference class입니다. 세 사례 모두 항공·여객선이 24~72시간 부분 통제됐고, 평균 5~10% 일정 변경이 있었습니다. 이번에도 비슷한 일정 차질 가능성이 있고, 여행자 보험·항공사 환불 정책이 활용될 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "e11e4d31992886cd",
-      "title": "이스라엘, 레바논 맹폭…두달새 2천600명 사망·100만명 피란",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T13:05:24+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503026600009",
-      "content_text": "(서울=연합뉴스) 김승욱 기자 = 이스라엘이 레바논과의 휴전 합의에도 대규모 공습을 단행하며 레바논 친이란 무장정파 헤즈볼라의 거점 100여 곳...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "이스라엘이 레바논과의 휴전 합의에도 대규모 공습을 단행해 친이란 무장정파 헤즈볼라의 거점 100여 곳을 타격했고, 두 달 사이 2,600명 사망과 100만 명 피란이 발생했다고 연합뉴스가 보도했습니다. 중동 분쟁이 국지전 단계를 넘어 인도주의적 위기로 확산되는 중대한 국면입니다.",
-      "extraction_reason": "이스라엘-레바논 격화는 국제 유가·해상 운송에 직접 영향을 줍니다.",
-      "relevance_score": 8.8,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 인도주의적 위기지만, 며칠 안에 국제 유가가 추가로 5~10% 상승할 가능성이 있습니다. 몇 주 안에 이스라엘-이란 직접 충돌 시나리오가 다시 거론되며 항공·해운 보험료가 인상될 가능성이 큽니다. 1년 안에 EU·유엔의 인도주의 지원 의무화 흐름이 한국 정부에도 분담금 요청으로 이어질 가능성이 있고, 동시에 한국의 중동 의존 에너지 구조 재검토 논의가 다시 부상할 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1982년 이스라엘의 레바논 침공, 2006년 이스라엘-헤즈볼라 33일 전쟁, 2024년 가자 사태가 비슷한 reference class입니다. 세 사례 모두 1~3개월 안에 휴전 협상이 시작됐지만 정착까지 평균 1~2년이 걸렸습니다. 이번 사태도 비슷한 시간이 필요할 가능성이 있고, 사망자 2,600명·피란민 100만 명 규모는 2006년에 비해 큰 편입니다."
-        }
-      }
-    },
-    {
-      "article_id": "bc03d3ec2fd8b354",
-      "title": "여야 광역단체 대진표 완성…\"尹키즈 퇴출\"·\"공소취소 심판\" 격돌",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T13:00:24+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503025100001",
-      "content_text": "(서울=연합뉴스) 이정현 최평천 기자 = 지방선거를 한달 앞둔 3일 여야는 광역단체장 16곳의 후보 대진표를 완성함에 따라 주요 격전지를 비롯한...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "지방선거를 한 달 앞둔 3일 여야가 광역단체장 16곳의 후보 대진표를 완성하면서 ‘윤키즈 퇴출’과 ‘공소취소 심판’이라는 양 진영의 슬로건이 충돌하고 있다고 연합뉴스가 보도했습니다. 주요 격전지를 중심으로 한 정치 구도가 윤곽을 드러낸 단계입니다.",
-      "extraction_reason": "지방선거 구도는 향후 정책·예산 집행에 직접 영향을 줍니다.",
-      "relevance_score": 7.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 후보 확정 발표지만, 며칠 안에 격전지 여론조사가 쏟아지며 부동층의 표심 변동이 잇따를 가능성이 큽니다. 한 달 뒤 결과는 다음 1~2년의 지방 예산 우선순위(돌봄·주거·교통)에 직접 영향을 줄 가능성이 높고, 1년 안에 차기 총선·대선 흐름의 ‘바로미터’로 해석될 가능성이 있습니다. 동시에 정책 마케팅 광고비가 단기적으로 늘어 미디어 시장에 활기가 도는 효과가 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2010년·2014년·2018년·2022년 지방선거가 비슷한 reference class입니다. 네 사례 모두 선거 1년 뒤 광역 단위 예산 배분에서 평균 5~10% 우선순위 이동이 있었습니다. ‘윤키즈 퇴출’ 같은 강한 슬로건은 2010년 ‘MB 심판’ 구도와 닮은 면이 있어 표결집 효과가 비슷하게 나올 가능성이 있습니다."
-        },
-        "bonus": [
-          {
-            "type": "frame",
-            "title": "이 뉴스, 이렇게 읽어보세요",
-            "icon": "🧐",
-            "text": "기사가 ‘윤키즈 퇴출 vs 공소취소 심판’이라는 양극 슬로건만 인용해 양당의 프레이밍을 그대로 옮기는 점은 출처 측면에서 약합니다. 부동층·무당층의 실제 관심사(생활물가·주거·청년 일자리)가 어떻게 분포하는지 빠져 있습니다. 이 질문을 던져보세요: 각 후보의 5대 공약은 무엇인지, 광역단체장 직책으로 실제 집행 가능한 범위는 어디까지인지, 다른 매체의 여론조사·이슈 분석과 어떻게 다른지를 교차 확인해보세요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "752be84fd3abb9cb",
-      "title": "39년만의 개헌 추진, '운명의 한주'…국힘 반대에 법안처리 불투명",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T12:17:03+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503024000001",
-      "content_text": "(서울=연합뉴스) 김남권 노선웅 기자 = 우원식 국회의장과 범여권 정당을 중심으로 추진하는 '단계적 개헌안'이 이번 주에 운명의 한 주를 맞는다...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "우원식 국회의장과 범여권 정당이 추진하는 ‘단계적 개헌안’이 이번 주 운명의 한 주를 맞는다고 연합뉴스가 전했습니다. 39년 만의 개헌 시도지만 국민의힘 반대로 법안 처리 자체가 불투명한 상황으로, 헌정 구조의 분기점이 될 수 있는 정치 일정입니다.",
-      "extraction_reason": "39년 만의 개헌 추진은 국가 운영 구조 자체를 좌우합니다.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 법안 처리 일정이지만, 며칠 안에 표결 결과에 따라 다음 대선·지방선거의 룰 자체가 달라질 가능성이 있습니다. 1년 안에 단계적 개헌이 통과되면 분권형·내각제 도입 논의로 이어질 시나리오가 가능하고, 부결되면 ‘개헌 무력화’ 학습효과로 5년 이상 동력 회복이 어려운 상태가 될 가능성이 있습니다. 동시에 정치권 외 시민사회의 ‘직접민주주의’ 요구가 강해질 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1987년 6월항쟁에 따른 9차 개헌, 2007년 노무현 정부의 4년 중임제 추진, 2018년 문재인 정부 개헌안 발의가 비슷한 reference class입니다. 세 사례 중 성공은 1987년뿐이고 나머지는 부결·폐기됐습니다. 이번도 ‘단계적’이라는 절충안이지만 야당 협조 없이는 통과 가능성이 낮은 패턴이며, 가능성 등급은 중간 이하입니다."
-        }
-      }
-    },
-    {
-      "article_id": "4505190a68ba6081",
-      "title": "'청년내일저축계좌' 신규 모집…3년간 정부가 월 30만원 지원",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T12:00:11+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260501034100530",
-      "content_text": "(서울=연합뉴스) 김영신 기자 = 보건복지부는 저소득층 청년 자산형성 지원사업인 '청년내일저축계좌' 신규 가입자를 모집한다고 3일 밝혔다.",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "보건복지부가 저소득층 청년 자산형성 지원사업 ‘청년내일저축계좌’ 신규 가입자를 모집한다고 3일 밝혔다고 연합뉴스가 보도했습니다. 청년 본인이 월 10만 원을 저축하면 정부가 3년간 월 30만 원을 추가 지원해 자산 형성을 돕는 구조로, 5월 20일까지 모집이 진행됩니다.",
-      "extraction_reason": "청년 자산형성 지원금은 또래 생활·경제에 직접 영향을 주는 정책입니다.",
+      "ai_summary": "현대경제연구원이 올해 한국 경제 성장률 전망치를 기존 대비 0.8%포인트 상향한 2.7% 로 조정했다고 3일 밝혔다. 반도체 수출 호조가 주된 동력이며, 동시에 '불확실성 극복' 과 '변화 대응에 유연한 성장 전략 필요' 도 함께 강조됐다.",
+      "extraction_reason": "성장률 0.8%p 상향 — 가계·기업 모두 직접 체감할 큰 지표 변화.",
       "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 모집 공지지만, 몇 주 안에 청년층 SNS·커뮤니티에서 가입 후기·정보가 폭발적으로 공유될 가능성이 큽니다. 3년간 1,440만 원 자산 형성 효과가 누적되면 청년 주거 보증금·결혼·창업 자금에 일부 보탬이 되는 시나리오가 가능하고, 1년 뒤 정부의 ‘청년 자산 정책’ 평가에서 가입률·수령률 통계가 다음 정책 설계의 기준이 될 가능성이 있습니다. 동시에 사각지대 청년에 대한 형평성 논쟁도 함께 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2017년 청년희망키움통장, 2020년 청년내일채움공제, 2023년 청년도약계좌가 비슷한 reference class입니다. 세 사례 모두 모집 초기 1~3개월 폭주 후 가입률이 80% 이상 채워졌고, 평균 30~40%는 중도 해지됐습니다. 이번 청년내일저축도 비슷한 곡선을 따를 가능성이 높습니다."
+          "text": "당장은 민간 연구원 한 곳의 전망 조정이지만, 0.8%p 상향은 IMF·한국은행 등 다른 기관 전망치도 따라 움직이게 만드는 강한 신호입니다. 1~2분기 안에 한국은행 기준금리 동결 또는 인하 시점이 늦어질 가능성이 높아지고, 결과적으로 본인이 받는 변동금리 대출 이자가 예상보다 더 오래 높은 수준에 머무를 수 있습니다. 동시에 반도체 호조에 묶이지 않은 내수·서비스 업종은 '성장은 했는데 우리는 체감 안 된다' 는 양극화가 더 두드러집니다."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "본인이 만 19~34세 저소득 근로 청년이라면 5월 20일 마감 전에 복지로·주민센터에서 자격을 점검해보세요. 가입 가능하면 월 10만 원 납입 부담을 미리 가계부에 반영해 3년간 유지 가능한지 시뮬레이션하는 게 좋습니다. 반대로, ‘일단 신청부터 하고 나중에 끊자’라며 자격 요건·해지 패널티를 확인하지 않고 가입하는 행동은 피하는 게 안전합니다."
+            "text": "이번 분기 안에 ① 본인 대출(주담대·신용대출) 의 변동금리·고정금리 비중을 점검하고, ② 일하는 업종이 반도체·수출 사이클에 묶여 있는지 내수 중심인지를 따로 정리해 두세요. 성장률 상향은 '모두에게 좋은 뉴스' 가 아니라 '반도체·IT 직군에 특히 유리하고 내수·자영업엔 체감이 작은' 비대칭 호재일 가능성이 큽니다. 반대로 '경기 좋아진다니까 무리한 대출 늘려 부동산 매수' 식의 단순 반응은 가장 피해야 할 행동입니다 — 0.8%p 상향이 곧 부동산 상승으로 직결되는 게 아닙니다."
           }
         ]
       }
@@ -1257,27 +869,22 @@
       "content_text": "(서울=연합뉴스) 배영경 기자 = 지난해 어린이날(5월 5일) 발생한 어린이 교통사고 피해자 수가 평소의 2.4배 수준이었던 것으로 집계됐다.",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "지난해 어린이날(5월 5일) 발생한 어린이 교통사고 피해자 수가 평소의 2.4배 수준이었던 것으로 집계됐다고 연합뉴스가 보도했습니다. 어린이날 외출이 집중되면서 사고 위험도 함께 급증한다는 점을 보여주는 통계로, 이번 연휴 안전 운전 경각심을 높일 필요가 있습니다.",
-      "extraction_reason": "어린이날 사고 위험 2.4배 통계는 가족 안전과 직결됩니다.",
+      "ai_summary": "지난해 어린이날(5월 5일) 발생한 어린이 교통사고 피해자 수가 평소의 2.4배 수준이었던 것으로 집계됐다고 연합뉴스가 전했다. 어린이날 가족 외출이 몰리는 시간대에 사고가 집중된다는 의미로, 올해 연휴를 앞둔 가정에 직접 경각심을 주는 통계다.",
+      "extraction_reason": "어린이날 사고 평소의 2.4배 — 이번 주말 가정 안전 직접 영향.",
       "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 통계 발표지만, 며칠 안에 경찰·지자체가 어린이 보호구역 단속을 강화할 가능성이 큽니다. 1주일 동안 가정의 외출 동선·교통수단 선택에 직접 영향이 가고, 1년 뒤엔 어린이 보호구역 안전운전 의무 강화·과태료 인상 입법으로 이어질 시나리오가 가능합니다. 동시에 차량용 첨단운전보조시스템(ADAS)·내비 어린이 보호구역 알림이 표준 기능이 될 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2013년 ‘민식이법’ 입법 직전 통계, 2019년 어린이 보호구역 사망 사고 후 사회적 공론화, 2020년 민식이법 시행 후 사망자 감소 추이가 비슷한 reference class입니다. 세 사례 모두 통계 발표 후 1~2년 안에 입법·인프라(과속방지턱·신호기) 강화로 이어졌습니다. 이번 2.4배 통계도 비슷한 경로를 자극할 가능성이 높습니다."
+          "text": "당장은 작년 어린이날 한 날 통계지만, 2.4배라는 수치는 단순 평균이 아닌 명확한 패턴 신호입니다. 1~2일 안에 본인 가족의 어린이날 일정에서 가장 위험한 시간대(나들이 출발·점심 외출·귀가 시간대) 를 짚어 둘 필요가 있습니다. 결과적으로 경찰청·지자체가 어린이날 주말 어린이보호구역 단속과 안전캠페인을 강화할 가능성이 높고, 본인 가족이 그 안전망의 직접 수혜자가 됩니다. 1~2년 지나면 어린이날 인근 사고 다발 시간대에 대중교통·돌봄서비스 무료 운영 같은 정책이 단계적으로 도입될 가능성이 있습니다."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "어린이날 외출 시 카시트·뒷자리 안전벨트 착용을 다시 점검하고, 학교·놀이시설 주변에서 시속 30km 이하로 주행하는 습관을 의식적으로 들이는 게 좋습니다. 자녀가 자전거·킥보드를 탈 계획이라면 헬멧·보호대 착용을 강제하고 사람 많은 길은 피하세요. 반대로, ‘평소 잘 다니던 길’이라며 어린이 보호구역에서 속도를 평소대로 유지하는 행동은 피하는 게 안전합니다."
+            "text": "이번 주말 어린이날을 앞두고 ① 자녀와 함께 다닐 동선의 어린이보호구역·신호등 위치를 미리 확인하고, ② 카시트·안전벨트 점검을 한 번 해두세요. 자전거·킥보드 헬멧도 잊지 말고 점검할 시점입니다. 외식·나들이 시간대를 가능하면 사고 다발 시간(귀가 직전 어스름) 앞뒤로 살짝 비켜 잡는 것도 효과적입니다. 반대로 '어린이날 한 번뿐인 행사인데 다 돌고 늦게 들어오자' 며 무리한 야간 운전·이동을 강행하는 행동이 통계적으로 가장 위험한 패턴입니다."
           }
         ]
       }
@@ -1291,139 +898,161 @@
       "content_text": "(서울=연합뉴스) 강류나 기자 = 보이스피싱 범죄 등에 이용돼 억울하게 계좌가 동결된 경우 해제 절차가 간소해지고 빨라진다.",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "보이스피싱 범죄 등에 이용돼 억울하게 계좌가 동결된 경우 해제 절차가 간소해지고 빨라진다고 연합뉴스가 보도했습니다. 정부가 피해 구제 절차의 속도와 편의성을 개선하는 방향으로 제도를 정비해 평범한 시민의 일상 금융 이용 부담을 줄이려는 시도입니다.",
-      "extraction_reason": "동결 계좌 해제 간소화는 보이스피싱 부수 피해자 일상에 직결됩니다.",
-      "relevance_score": 7.7,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 절차 개선 발표지만, 몇 주 안에 금융권에 동결-해제 시스템 일괄 업데이트가 적용되며 평균 처리기간이 줄어들 가능성이 큽니다. 1년 안에 ‘1원 송금 통장묶기’ 같은 새 수법에 대한 가이드라인이 추가될 시나리오가 가능하고, 보이스피싱 무력화 효과뿐 아니라 일반 거래 편의성까지 개선될 가능성이 있습니다. 동시에 동결 남용을 막는 제도 보완 요구도 함께 커질 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2015년 보이스피싱 통신사기특별법, 2020년 통신사 본인인증 강화, 2023년 금감원의 ‘즉시 차단’ 시스템 도입이 비슷한 reference class입니다. 세 사례 모두 1~2년 안에 피해 신고 처리속도가 평균 30~50% 빨라졌고, 부수적으로 정상 거래자 불편 민원도 같이 증가했습니다. 이번 개선책도 비슷한 양면 효과가 예상됩니다."
-        }
-      }
-    },
-    {
-      "article_id": "d1a8cc5092e28b65",
-      "title": "자녀 이름에 쓸 수 있는 한자 제한한 가족관계법…헌재 \"합헌\"",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T12:00:02+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503020100004",
-      "content_text": "(서울=연합뉴스) 이영섭 기자 = 자녀 이름에 사용할 수 있는 한자를 '통상 사용되는 한자'로 제한한 가족관계등록법 조항은 합헌이라는 헌재 결정...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "자녀 이름에 사용할 수 있는 한자를 ‘통상 사용되는 한자’로 제한한 가족관계등록법 조항이 합헌이라는 헌재 결정이 내려졌다고 연합뉴스가 보도했습니다. 부모의 작명권과 행정 효율 사이에서 헌재가 행정 측 손을 들어준 셈으로, 이름 표기 가능 범위 논의의 한 매듭이 지어졌습니다.",
-      "extraction_reason": "이름 한자 제한 합헌은 가족 작명·행정 실무에 영향을 줍니다.",
-      "relevance_score": 7.0,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 헌재 결정이지만, 며칠 안에 ‘인명용 한자’ 9,389자 안에 어떤 글자가 포함됐는지 관심이 쏠리며 작명소·법무 상담이 늘어날 가능성이 큽니다. 1년 안에 인명용 한자 추가·갱신 주기가 빨라질 시나리오가 가능하고, 일부 가족은 한글 이름 또는 다른 표기로 우회할 가능성이 있습니다. 동시에 외국인 다문화 가정의 한국식 이름 등록 절차에도 영향이 갈 수 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1990년대 한자명 제한 도입, 2005년·2014년 인명용 한자 확대, 2020년 한자 추가 신청 절차 개선이 비슷한 reference class입니다. 네 사례 모두 한자 추가 주기는 점진적으로 짧아져 왔고, 평균 5~7년에 한 번 대규모 확대가 있었습니다. 이번 합헌 결정 이후 다음 확대까지의 간격이 단축될 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "c72680db5d6676f1",
-      "title": "범정부대응반, 도박수익 송금 등 6천억원대 불법외환거래 적발",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T12:00:00+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503022500002",
-      "content_text": "(세종=연합뉴스) 이세원 기자 = 재정경제부는 관계 기관이 합동으로 구성한 '범정부 불법 외환거래 대응반'이 약 6천억원 규모의 불법 외환거래를...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "재정경제부 주관 ‘범정부 불법 외환거래 대응반’이 약 6,000억 원 규모의 도박수익 송금 등 불법 외환거래를 적발했다고 세종발 연합뉴스가 보도했습니다. 관계 기관 합동 단속이 적발 규모를 키우는 첫 사례로, 자금세탁·해외 도박 사이트 차단에 영향을 줄 것으로 보입니다.",
-      "extraction_reason": "6천억 원대 불법외환 적발은 자금세탁·도박 환경 단속 강화 신호입니다.",
+      "ai_summary": "보이스피싱 범죄 등에 이용돼 억울하게 계좌가 동결된 경우 해제 절차가 간소해지고 빨라진다고 연합뉴스가 전했다. 의도와 무관하게 계좌가 묶여 임금·생활비 사용이 막히던 피해자들의 구제 시간이 단축되는 행정 절차 개선 사례다.",
       "relevance_score": 7.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 적발 발표지만, 몇 주 안에 해외송금 이상거래 모니터링이 한층 강화돼 일반인 정상거래에도 추가 확인 절차가 생길 가능성이 있습니다. 몇 달 안에 가상자산·도박 사이트 결제 통로 차단으로 우회 수단이 다양해질 시나리오가 가능하고, 1년 안에 자금세탁방지(AML) 가이드라인이 한 단계 강화될 가능성이 큽니다. 동시에 정상 거래의 처리지연 민원도 같이 늘어납니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2018년 가상자산 거래소 자금세탁 단속, 2021년 해외 도박 송금 6,000억 적발, 2023년 페이팔·해외 결제 모니터링 강화가 비슷한 reference class입니다. 세 사례 모두 단속 후 1~2년 안에 우회 수법이 등장했고, 정상거래자의 본인확인 절차가 평균 1~2단계 추가됐습니다. 이번 단속도 비슷한 후속 흐름이 예상됩니다."
-        }
-      }
+      "is_must_know": false
     },
     {
-      "article_id": "2d1f06b8d3d72e44",
-      "title": "현대硏, 올해 성장률 2.7%로 0.8%p 상향…\"반도체 수출 호조\"",
+      "article_id": "40ab24e05fa25f3e",
+      "title": "'中企 기술탈취 신문고' 한달여간 20건 접수…\"법률도움 무료로\"",
       "source": "연합뉴스",
-      "published_at": "2026-05-03T11:00:00+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260502037000002",
-      "content_text": "(서울=연합뉴스) 이도흔 기자 = 현대경제연구원은 3일 올해 한국 경제 성장률 전망치를 2.7%로 0.8%포인트 높인다고 밝혔다.",
+      "published_at": "2026-05-03T12:00:09+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260501037800030",
+      "content_text": "(서울=연합뉴스) 이상서 기자 = 중소벤처기업부는 '중소기업 기술탈취 근절 신문고'를 운영한 지 한 달여 만에 기술분쟁 신고가 20건 접수됐다고...",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "현대경제연구원이 3일 올해 한국 경제 성장률 전망치를 2.7%로 0.8%포인트 높였다고 연합뉴스가 보도했습니다. 반도체 수출 호조가 상향 조정의 핵심 근거로, 글로벌 AI 인프라 투자에 따른 메모리 반도체 수요 확대가 한국 거시 지표를 끌어올리는 흐름입니다.",
-      "extraction_reason": "민간 연구기관의 성장률 큰폭 상향은 가계·기업 의사결정에 영향을 줍니다.",
+      "ai_summary": "중소벤처기업부가 '중소기업 기술탈취 근절 신문고' 를 운영한 지 한 달여 만에 기술분쟁 신고 20건이 접수됐다고 밝혔다. 무료 법률 도움이 함께 제공되며, 그동안 입증 부담 때문에 신고를 망설였던 중소기업의 기술 보호 통로가 본격 가동됐다는 의미가 담겼다.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "59066b710d3ea51b",
+      "title": "장특공제→장거공제 될까…보유공제 폐지 내지 축소 검토",
+      "source": "매일경제",
+      "published_at": "2026-05-03T13:09:28+09:00",
+      "original_url": "https://www.mk.co.kr/news/realestate/12034401",
+      "content_text": "이재명 대통령이 1주택자 장기보유특별공제에 대한 손질을 주문하고 나선 가운데 보유에 따른 공제가 완전히 폐지되고 거주에 따른 공제만 남을 가능성이 제기된다. 3일 국회에 따르면 최..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "이재명 대통령이 1주택자 장기보유특별공제 손질을 주문한 가운데, 보유에 따른 공제는 완전히 폐지되고 거주에 따른 공제만 남을 가능성이 제기된다고 매일경제가 전했다. 국회 차원에서도 1주택 실거주자에게는 혜택을 주되 단순 보유자에게는 공제 폭을 줄이는 방향이 검토되는 흐름이다.",
+      "extraction_reason": "장특공제 → 장거공제 전환 — 1주택자 양도세 부담·실거주 정책 직격.",
       "relevance_score": 8.5,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 연구기관 한 곳의 상향이지만, 며칠 안에 KDI·LG경영연구원·한은 등 다른 기관도 비슷한 상향을 내놓을 가능성이 큽니다. 1년 안에 정부의 세입 추계가 다시 올라가고 추경 논의 강도가 약해질 시나리오가 가능하고, 일반 가계는 임금 협상·기업 채용에 긍정적 효과를 체감할 가능성이 있습니다. 동시에 ‘반도체 의존 심화’에 따른 산업 구조 편중 우려도 함께 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2017년 반도체 슈퍼사이클로 성장률 상향, 2020년 코로나 후 IT 수요 폭증으로 상향, 2024년 AI 반도체 호황 상향이 비슷한 reference class입니다. 세 사례 모두 상향 발표 후 6~12개월 안에 반도체 수출 둔화로 일부 되돌아온 사례가 많습니다. 이번도 동일 사이클 안에 있어 6개월 후 재점검이 필요할 가능성이 높습니다."
+          "text": "당장은 검토 단계이지만, 보유 공제를 없애고 거주 공제만 남기는 방향은 1주택 보유자 중에서도 '실거주' 와 '단순 보유(전세 임대 포함)' 의 세 부담을 크게 갈라놓는 변화입니다. 1~2개월 안에 양도세 절감 계획을 세웠던 1주택자들이 매도·증여 타이밍을 다시 짤 가능성이 높고, 결과적으로 본인이 1주택 매도·교체 매수를 1~2년 안에 계획 중이라면 거주기간 산정 기준이 핵심 변수가 됩니다. 1~2년 지나면 '거주 의무' 를 지킨 가구와 그렇지 않은 가구 사이의 양도세 격차가 명확해집니다."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "본인이 반도체·IT 관련 업계에 있다면 채용·이직 환경이 한 분기 정도 더 좋을 가능성이 있어 협상 카드를 다시 점검해보면 좋습니다. 가계 자산 측면에선 지수형 ETF·환헤지 종목 비중을 점검하고, 환율 변동성에 대비해 외화 예금 비중을 5~10% 수준으로 정리해두는 것도 도움이 됩니다. 반대로, ‘성장률 상향’ 헤드라인만 보고 단일 종목 단기 매수에 몰리는 행동은 피하는 게 안전합니다."
+            "text": "본인이 1주택자라면 이번 분기 안에 ① 현재까지의 보유기간·거주기간을 각각 정확히 정리하고, ② 향후 매도 시점이 1~2년 안인지 5년 이후인지에 따라 시나리오를 두 갈래로 짜 두세요. 거주공제 중심으로 개편되면 임차 거주 중인 1주택자가 가장 큰 영향을 받습니다. 반대로 '아직 법안 통과도 안 됐는데 미리 움직일 필요 없다' 며 점검 자체를 미루는 행동은 가장 비싼 선택이 될 수 있습니다 — 세제 변경은 시행일 기준 적용이 많아 사전 준비 여부가 수천만원 차이를 만듭니다."
           }
         ]
       }
     },
     {
-      "article_id": "e32f5c87d9364425",
-      "title": "李대통령 \"법정 허용치 초과 불법대부는 무효…안 갚아도 무방\"",
-      "source": "연합뉴스",
-      "published_at": "2026-05-03T10:26:50+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503018300001",
-      "content_text": "(서울=연합뉴스) 설승은 기자 = 이재명 대통령은 3일 \"법정 허용치를 초과하는 불법 대부는 무효다. 즉 갚지 않아도 무방하다\"라고 밝히며 불법...",
+      "article_id": "abda7a72e9839fee",
+      "title": "“강남 집값 반등 준비됐나”…송파 이어 서초 아파트도 상승 전환",
+      "source": "매일경제",
+      "published_at": "2026-05-03T12:58:05+09:00",
+      "original_url": "https://www.mk.co.kr/news/realestate/12034399",
+      "content_text": "4월 넷째 주 전국 아파트값 동향 서초구 10주만에 상승세 전환 급매물 소진되며 매도 호가 상승 서울 비강남권 상승폭은 둔화서울 아파트 매매가격 상승 폭이 보합권을 보이고 있는 가..",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "이재명 대통령이 3일 ‘법정 허용치를 초과하는 불법 대부는 무효이며, 갚지 않아도 무방하다’고 밝혔다고 연합뉴스가 보도했습니다. 대통령이 직접 불법 대부 무효성을 강조하며 서민 금융 피해 구제를 강하게 시사한 발언으로, 향후 채권 추심·법 해석 실무에 파급력이 클 수 있습니다.",
-      "extraction_reason": "대통령의 불법대부 무효 발언은 채권추심 관행에 직접 영향을 줍니다.",
-      "relevance_score": 8.4,
+      "ai_summary": "4월 넷째 주 전국 아파트값 동향에서 서초구 아파트 가격이 10주 만에 상승세로 전환됐다고 매일경제가 전했다. 급매물이 소진되며 매도 호가가 오르고, 송파에 이어 서초까지 상승 전환되며 강남 집값 반등 가능성에 관심이 쏠린다. 다만 서울 비강남권 상승폭은 둔화돼 양극화 흐름이 함께 두드러진다.",
+      "extraction_reason": "강남 핵심 단지 상승 전환 — 부동산·세제·지역 양극화 직접 영향.",
+      "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 대통령 발언이지만, 몇 주 안에 금융위·법무부가 불법대부 무효 가이드라인과 피해자 구제 안내를 강화할 가능성이 큽니다. 몇 달 안에 채권추심업체의 불법 행태에 대한 단속이 한 단계 올라가고 1년 안에 ‘불법 대부 자동 무효’ 명문화 입법이 추진될 시나리오가 가능합니다. 동시에 ‘안 갚아도 된다’는 메시지가 정상 대부거래 도덕적 해이로 이어질 위험도 함께 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2018년 대부업법 개정, 2020년 불법사금융 피해센터 강화, 2023년 채권추심법 손질이 비슷한 reference class입니다. 세 사례 모두 정책 발표 후 1~2년 안에 신고 건수가 평균 30~70% 늘었지만, 일부 채무자가 정상 채무까지 ‘무효’로 오해해 분쟁이 늘어난 사례도 있었습니다. 이번 발언도 비슷한 양면 효과가 예상됩니다."
+          "text": "당장은 서초 한 자치구의 단주 통계지만, 송파에 이어 서초까지 상승 전환된 흐름은 강남 핵심권의 추세적 회복 가능성을 시사합니다. 1~2개월 안에 강남 매매가가 비강남권보다 빠르게 오르면 서울 안에서도 지역 양극화가 더 두드러지고, 결과적으로 본인이 강남 외 지역 1주택 보유자라면 자산 격차 체감이 커집니다. 1~2년 지나면 정부의 보유세·양도세 손질 논의가 강남 반등 흐름과 맞물려 다시 쟁점이 될 수 있습니다. 전세 시장에선 강남 신축 입주 시기와 맞물려 비강남권으로의 이주 수요가 변동성을 키울 가능성이 있습니다."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "현재 대출 이자가 법정 최고이자율(연 20%)을 넘는지, 등록 대부업체인지를 ‘서민금융진흥원’ 사이트나 1397 금융민원센터에서 확인해보면 좋습니다. 부당한 추심 전화·문자에는 통화 녹음·문자 캡처를 남기고 경찰·금감원에 신고하세요. 반대로, 대통령 발언 한 줄만 보고 등록된 정상 대부거래까지 ‘무효’라며 임의로 상환을 멈추는 행동은 법적 분쟁을 키울 수 있어 피하는 게 안전합니다."
+            "text": "이번 한 분기 안에 ① 본인 거주 지역(또는 관심 지역) 의 4월 이후 매매가·전세가 흐름을 단독으로 비교 정리해 두고, ② 강남·송파·서초 흐름이 본인 지역으로 전이되는 시차가 평균 어느 정도였는지 과거 사이클을 한 번 짚어 보세요. 매수·매도 시점은 단주 단위가 아닌 분기 단위 패턴을 보고 결정하는 게 안전합니다. 반대로 '강남 올라가니 추격해서 매수' 또는 '비강남은 끝났다며 급매도' 같은 양극단 행동은 둘 다 위험합니다 — 한두 주의 통계로 다년간 사이클을 단정짓는 패턴이 가장 큰 손실로 이어집니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "4dce79941ccfe1ac",
+      "title": "다카이치, '단계적 개헌' 카드…\"참의원서도 개헌 발의 가능\"(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T15:25:19+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503015951073",
+      "content_text": "(도쿄=연합뉴스) 조성미 특파원 = 다카이치 사나에 일본 총리가 자민당이 추진 중인 헌법 개정 사항 가운데 긴급사태조항 신설, 선거구 합구(合區...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "다카이치 사나에 일본 총리가 자민당이 추진 중인 헌법 개정 사항 중 긴급사태조항 신설, 선거구 합구(合區) 해소 등을 단계적으로 처리하는 카드를 꺼냈다고 연합뉴스가 도쿄발로 전했다. 참의원에서도 개헌 발의가 가능한 의석 구도라는 점이 함께 거론되며 일본 정치권이 헌법 개정을 본격 의제로 끌어올리는 흐름이다.",
+      "relevance_score": 7.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "dc3b98efaa544d27",
+      "title": "그린수소 상용화 걸림돌 '이리듐' 사용량 10분의 1로 줄인다",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T12:00:11+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260430160300017",
+      "content_text": "(서울=연합뉴스) 조승한 기자 = 그린수소 상용화에 걸림돌이던 귀금속 이리듐의 사용량을 10분의 1 이하로 줄이는 기술이 개발됐다.",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "그린수소 상용화의 걸림돌이던 귀금속 이리듐 사용량을 10분의 1 이하로 줄이는 기술이 개발됐다고 연합뉴스가 전했다. 수전해 전극 핵심 소재의 비용 부담을 크게 낮춰 그린수소 보급 속도를 끌어올릴 수 있는 기술 진전으로, 한국 에너지 전환 정책에 직접 영향을 줄 수 있는 결과다.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "2f7b8d65fd6344bb",
+      "title": "국민연금 200만원 이상 수급자 12만명 육박(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T15:38:08+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260501052451530",
+      "content_text": "(서울=연합뉴스) 서한기 기자 = 국민연금으로 매달 200만원 이상을 받아 노후에 상대적으로 여유 있게 생활하는 사람이 12만명에 육박하는 것으...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "국민연금으로 매달 200만원 이상을 받아 노후에 상대적으로 여유 있게 생활하는 수급자가 12만명에 육박하는 것으로 나타났다고 연합뉴스가 전했다. 노후 소득 보장 수단으로 국민연금이 자리를 잡았다는 신호와 동시에, 같은 제도 안에서도 수급액 격차가 더 벌어지는 흐름을 함께 보여준다.",
+      "extraction_reason": "월 200만원 이상 수급자 급증 — 한국 노후 격차·연금 정책 논의 핵심 지표.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 12만명이라는 통계 한 줄이지만, 이 숫자는 '국민연금만으로 노후가 일정 부분 가능하다' 는 여론을 만들어 1~2년 안에 연금 개혁 논의 방향을 바꿉니다. 결과적으로 보험료율 인상·소득대체율 조정 같은 근본 개혁이 더 미뤄질 가능성도, 반대로 '여유로운 12만명 vs 못 받는 다수' 격차를 부각해 가속화될 가능성도 동시에 있습니다. 본인이 30~40대라면 본인 예상 수급액이 200만원과 비교해 어디쯤인지 점검하는 일이 노후 설계의 첫 단추가 됩니다."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "이번 달 안에 국민연금공단 '내 연금 알아보기' 서비스로 본인 예상 월 수령액을 한 번 확인해 보세요. 200만원에 못 미친다면 ① 추납·임의가입을 통한 가입 기간 확장, ② 개인연금·퇴직연금 비중 점검 두 가지를 함께 검토할 시점입니다. 자영업자·프리랜서라면 임의가입 한도와 보험료 부담을 같이 따져봐야 합니다. 반대로 '12만명이 받는다니 나도 자동으로 비슷하게 받겠지' 라는 막연한 안도가 가장 위험합니다 — 평균 수급액과 본인 예상액 차이를 모르고 노후 계획을 세우는 패턴입니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "e11e4d31992886cd",
+      "title": "이스라엘, 레바논 맹폭…두달새 2천600명 사망·100만명 피란",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T13:05:24+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503026600009",
+      "content_text": "(서울=연합뉴스) 김승욱 기자 = 이스라엘이 레바논과의 휴전 합의에도 대규모 공습을 단행하며 레바논 친이란 무장정파 헤즈볼라의 거점 100여 곳...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "이스라엘이 레바논과의 휴전 합의에도 대규모 공습을 단행해 친이란 무장정파 헤즈볼라 거점 100여 곳을 겨냥했다고 연합뉴스가 전했다. 두 달 사이 레바논에서 2,600명이 사망하고 100만명이 피란길에 오른 것으로 집계됐다. 휴전이 무색해진 중동 정세 악화 신호다.",
+      "extraction_reason": "두 달 새 2,600명 사망·100만 피란 — 중동 정세 악화가 유가·환율로 전이.",
+      "relevance_score": 8.5,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 레바논·이스라엘 현지 인도적 위기지만, 헤즈볼라 거점 100여 곳을 동시 타격한 사건은 이란까지 확전될 도화선이 될 수 있습니다. 1~2개월 안에 호르무즈 해협·홍해 항로 위험도가 다시 올라가고, 결과적으로 한국 휘발유·경유값과 항공권·해운료가 단계적으로 오르는 흐름이 가능합니다. 1~2분기 지나면 한국 수출기업 일부의 납기 지연·계약 차질이 실제 실적에 반영되고, 본인의 가계 에너지·식료품비도 함께 영향을 받습니다."
+        },
+        "bonus": [
+          {
+            "type": "scenario",
+            "title": "앞으로 어떻게 될 수 있을까?",
+            "icon": "🔮",
+            "text": "최선 시나리오(가능성 낮음) 는 미국·UN 의 압력으로 휴전이 다시 복원돼 사망자 증가가 멈추는 그림입니다. 중간 시나리오(가능성 높음) 는 산발적 공습이 수개월 더 이어지며 레바논 피란민 100만명 규모가 더 커지고, 호르무즈 정세까지 출렁이는 형태입니다. 최악(가능성 중간) 은 이란이 직접 개입해 미국·이스라엘과 충돌하는 광역 전쟁입니다. 갈림길은 향후 4~8주 사이 헤즈볼라 핵심 지휘부 추가 표적 작전 여부와 이란 14개항 종전안에 대한 트럼프 행정부 반응입니다."
           }
         ]
       }
@@ -1437,142 +1066,396 @@
       "content_text": "EU 자동차관세 25% 복원엄포에 청와대, 말 아끼면서도 영향 분석 靑 “한미 관세 후속 조치 논의 중”도널드 트럼프 미국 대통령이 유럽연합(EU) 승용차·트럭에 관세 25%를 부..",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "도널드 트럼프 미국 대통령이 EU 승용차·트럭에 25% 관세를 부과하기로 한 가운데, 청와대는 ‘한미 관세 후속 조치 논의 중’이라며 한국 적용 여부를 두고 영향을 분석하고 있다고 매일경제가 보도했습니다. EU 자동차 관세 25% 복원 엄포가 한국까지 번질지가 통상의 핵심 변수로 부상했습니다.",
-      "extraction_reason": "EU 자동차 관세가 한국으로 번지면 산업·수출에 큰 충격이 됩니다.",
-      "relevance_score": 8.7,
+      "ai_summary": "도널드 트럼프 미국 대통령이 EU 산 승용차·트럭에 관세 25% 복원을 예고하면서 한국 자동차 업계에 불똥이 튈 가능성에 대해 청와대가 '통상관계 관리 노력' 입장을 내놨다. 청와대는 '한미 관세 후속 조치 논의 중' 이라고 밝히며 말을 아끼면서도 영향 분석에 들어갔다.",
+      "extraction_reason": "EU 자동차 관세 25% 복원 → 한국 자동차 다음 차례 우려 — 수출·일자리 직격.",
+      "relevance_score": 8.5,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 EU 대상 발표지만, 며칠 안에 한미 통상장관 회담 일정이 앞당겨질 가능성이 큽니다. 몇 달 안에 한국 자동차 관세 25% 적용 위협이 협상 카드로 다시 등장할 시나리오가 가능하고, 1년 안에 현대차·기아·부품사들의 미국 현지 생산 비중을 더 늘리는 결정이 잇따를 가능성이 높습니다. 동시에 한국 부품사·중소기업의 환위험·재고 관리 부담이 함께 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2018년 232조 자동차 관세 협상, 2020년 트럼프 1기의 한미 FTA 재협상, 2024년 IRA 보조금 설계가 비슷한 reference class입니다. 세 사례 모두 발표-실행 사이 평균 6~18개월 협상 기간이 있었고, 한국은 부분 면제·할당 절충안으로 마무리한 경험이 있습니다. 이번에도 비슷한 절충 가능성이 중간 정도이며, 트럼프 발언 강도가 변수입니다."
-        }
-      }
-    },
-    {
-      "article_id": "db7ba641619e0d7a",
-      "title": "“세금지옥 일주일 남았다”…서울 아파트등 ‘막판증여’ 2000건 육박",
-      "source": "매일경제",
-      "published_at": "2026-05-03T13:09:40+09:00",
-      "original_url": "https://www.mk.co.kr/news/realestate/12034402",
-      "content_text": "지난달 증여건수 3년4개월만에 최다 송파구 가장 많아…3월 대비 2배로 직거래도 급증…가족 저가양도 풀이다주택자 양도세 중과 유예 종료가 일주일도 남지 않은 가운데 지난달 서울 아..",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "다주택자 양도세 중과 유예 종료가 일주일도 남지 않은 가운데 지난달 서울 아파트 증여 건수가 3년 4개월 만에 최다를 기록했다고 매일경제가 보도했습니다. 송파구가 가장 많고 3월 대비 2배 수준이며, 가족 간 저가양도로 풀이되는 직거래도 급증한 것으로 나타났습니다.",
-      "extraction_reason": "양도세 중과 유예 종료 직전 막판 증여는 주택 정책의 풍선효과입니다.",
-      "relevance_score": 8.2,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 4월 통계지만, 일주일 안에 추가 증여가 더 몰리며 5월 첫째 주 신고 건수가 사상 최다를 갱신할 가능성이 큽니다. 몇 달 안에 다주택자 매물 잠김으로 거래량 감소와 호가 정체가 동반될 시나리오가 가능하고, 1년 안에 정부가 추가 매물 유도 정책(보유세·취득세 손질)을 검토할 가능성이 있습니다. 동시에 가족 저가양도에 대한 국세청 사후 조사 강도도 한 단계 올라갈 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2020년 다주택자 양도세 중과 시행 직전 증여 폭증, 2022년 일시적 유예 종료 직전 매도·증여 급증이 비슷한 reference class입니다. 두 사례 모두 종료 시점 직후 거래량은 30~50% 줄어들었고, 6~12개월 뒤 다시 평균치로 복귀하는 패턴이 확인됐습니다. 이번도 비슷한 곡선을 따를 가능성이 높습니다."
+          "text": "당장은 EU 대상 관세지만, 트럼프식 무역 압박은 다음 타깃을 한국으로 옮기기 쉬운 패턴입니다. 1~2개월 안에 한미 관세 협상 카드에 자동차·반도체·철강이 함께 묶일 가능성이 높고, 결과적으로 현대차·기아 미국 판매가격이 단계적으로 오를 수 있습니다. 1~2년 지나면 미국 시장에서의 점유율 방어를 위해 한국 기업이 미국 현지 공장 추가 증설을 가속화하면서, 반대로 국내 공장 신규 채용 속도는 둔화될 가능성이 있습니다. 본인이 자동차 협력사 종사자라면 이 변수를 최우선으로 추적해야 합니다."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "다주택을 보유한 가족이라면 세무사 상담을 받아 증여 vs 매도 vs 보유 시뮬레이션을 해보고, 절차상 등기·취득세 일정에 무리가 없는지 점검하세요. 1주택자라면 단기 호가 변동에 휘둘리지 말고 본인 재무계획에 맞춰 의사결정 시기를 정리하는 게 좋습니다. 반대로, 세 종료 직전 ‘남들이 다 하니까’라며 충분한 검토 없이 가족 저가양도를 강행하는 행동은 사후 추징 위험을 키울 수 있어 피하는 게 안전합니다."
+            "text": "투자자라면 이번 달 안에 본인 포트폴리오에서 자동차·완성차 부품·철강 비중을 점검하고, 미국 노출 정도가 어느 정도인지 확인해 두세요. 자동차 업계 종사자라면 미국 현지화율(부품 조달, 인력) 변화 흐름을 분기마다 추적하면 인사·연봉 협상 타이밍 잡기에 도움이 됩니다. 반대로 '관세는 어차피 협상으로 풀린다' 며 단일 헤드라인에만 의존해 매수·매도 결정을 내리는 행동은 가장 위험합니다 — EU 사례에서 보듯 관세는 수개월 단위로 켜고 꺼지는 변수입니다."
           }
         ]
       }
     },
     {
-      "article_id": "99681f25fd4574e6",
-      "title": "워런 버핏 “요즘 초단기 투자, 투기도 아닌 도박”…“주식판 카지노 됐다” 지적",
-      "source": "매일경제",
-      "published_at": "2026-05-03T11:00:04+09:00",
-      "original_url": "https://www.mk.co.kr/news/stock/12034377",
-      "content_text": "‘투자의 구루(스승)’로 불리는 워런 버핏(95) 버크셔 해서웨이 회장이 최근의 금융투자 흐름에 대해 “도박 열풍이 정점에 달했다”고 비판했다. 2일(현지시간) 버핏은 미국 네브래..",
+      "article_id": "fc92852267ac6b43",
+      "title": "트럼프 “주독 미군 철수 5천명보다 클 것…EU 자동차 관세 25%로 인상”",
+      "source": "한겨레",
+      "published_at": "2026-05-03T15:20:00+09:00",
+      "original_url": "https://www.hani.co.kr/arti/international/america/1256942.html",
+      "content_text": "도널드 트럼프 미국 대통령이 대이란 전쟁과 관련한 요구에 소극적으로 대응해온 유럽을 상대로 안보·무역 압박을 동시에 강화하고 있다. 트럼프 대통령은 독일 주둔 미군 감축 규모가 국방부가 밝힌 5000명보다 더 커질 것이라고 예고했고, 유럽연합(EU)산 자동차·트럭에 대",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "‘투자의 구루’로 불리는 워런 버핏(95) 버크셔 해서웨이 회장이 2일 미국 네브래스카 연례 주주총회에서 최근 금융투자 흐름에 대해 ‘도박 열풍이 정점에 달했다’며 ‘투기도 아닌 도박’ ‘주식판이 카지노가 됐다’고 강하게 비판했다고 매일경제가 보도했습니다.",
-      "extraction_reason": "버핏의 ‘카지노’ 진단은 글로벌 단기투자 과열 점검 신호입니다.",
-      "relevance_score": 7.8,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 인물의 비판이지만, 며칠 안에 글로벌 미디어와 한국 증권사 리포트가 ‘과열 점검’ 코멘트를 잇따라 낼 가능성이 큽니다. 몇 주 안에 단기 옵션·테마주 자금 일부가 인덱스 펀드·우량주로 이동하는 시나리오가 가능하고, 1년 안에 한국 금융당국도 0DTE 옵션 같은 초단기 상품 모니터링을 강화할 가능성이 있습니다. 동시에 ‘주주총회 시즌의 발언이 과도하게 해석된다’는 반론도 함께 나올 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "1999년 닷컴버블 직전 버핏의 비판, 2007년 금융위기 직전 ‘대량살상무기’ 파생상품 경고, 2021년 게임스톱 사태 직후 ‘카지노 자본주의’ 발언이 비슷한 reference class입니다. 세 사례 모두 1~2년 안에 시장 조정이 따라왔지만 정확한 시점은 매번 빗나갔습니다. 이번 발언도 ‘조정 시점 예측’보다는 ‘리스크 점검 신호’ 정도로 해석되는 게 적절합니다."
-        }
-      }
-    },
-    {
-      "article_id": "c7d4b78576ca2913",
-      "title": "이란 “배상금 내놓고 호르무즈 통제권도”…트럼프는 “수용 불가능”",
-      "source": "매일경제",
-      "published_at": "2026-05-03T10:06:26+09:00",
-      "original_url": "https://www.mk.co.kr/news/world/12034357",
-      "content_text": "이란, 14개항 수정 협상안 美 전달 철군·배상금·호르무즈 통제권 등 트럼프 수용 어려운 제안들 담긴듯 “이란 잘못 행동할 경우 공격 재개”도널드 트럼프 미국 대통령이 2일(현지시..",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "이란이 14개항으로 구성된 종전 협상 수정안을 미국에 전달했고, 여기에는 미군 철군·전쟁 배상금·호르무즈 통제권 등이 포함된 것으로 알려졌다고 매일경제가 보도했습니다. 트럼프 대통령은 ‘수용 불가능’이라며 ‘이란이 잘못 행동할 경우 공격 재개’도 시사해 협상이 다시 한 번 분기점을 맞고 있습니다.",
-      "extraction_reason": "이란-미 협상 분기점은 유가·해상물류·한국 수출에 직접 충격이 됩니다.",
-      "relevance_score": 9.0,
+      "ai_summary": "도널드 트럼프 미국 대통령이 유럽을 상대로 안보·무역 압박을 동시에 강화한다고 한겨레가 전했다. 독일 주둔 미군 감축 규모가 국방부가 밝힌 5,000명보다 더 커질 것이라고 예고했고, EU 산 자동차·트럭에 25% 관세를 매긴다고 발표했다. 대이란 전쟁 관련 요구에 소극적인 유럽을 압박하는 카드라는 분석이다.",
+      "extraction_reason": "안보·무역 동시 압박 — 한미 동맹 관리·통상 협상에 직접 파급.",
+      "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 협상 카드 공방이지만, 며칠 안에 ‘공격 재개’ 발언이 유가·해운주에 단기 변동을 일으킬 가능성이 큽니다. 몇 주 안에 호르무즈 통제권을 둘러싼 무력 충돌 우려가 다시 부각될 시나리오가 가능하고, 1년 뒤엔 한국·일본 등 에너지 수입국이 비축유·LNG 비중을 재조정하는 흐름이 가속될 가능성이 있습니다. 동시에 이란-이스라엘 직접 충돌 위험도 비례해 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2015년 JCPOA 협상, 2018년 트럼프의 일방 탈퇴, 2020년 솔레이마니 사령관 사살 직후 협상 결렬이 비슷한 reference class입니다. 세 사례 모두 결렬 후 6~18개월 안에 유가가 평균 30~80% 변동했습니다. 이번 14개항 거부 흐름도 단기 변동성 확대 가능성이 높지만, 양측이 ‘협상 채널을 닫지는 않는’ 패턴이 반복되고 있어 전면전 가능성은 낮은 편입니다."
+          "text": "당장은 미국-유럽 사이 충돌처럼 보이지만, 트럼프식 동시 압박은 한국에도 동일한 패턴(주한미군 분담금·무역 관세 동시 인상) 으로 옮겨올 가능성이 큽니다. 1~2개월 안에 한미 방위비 협상에서 추가 분담금 요구가 다시 떠오를 수 있고, 결과적으로 정부 재정에서 국방비·미국산 무기 구매 비중이 한 단계 올라갑니다. 1~2년 지나면 본인 세금에서 국방·외교 비중이 늘고 사회복지·교육 예산이 상대적으로 압박받는 구도가 자리잡을 가능성이 있습니다."
         },
         "bonus": [
           {
             "type": "scenario",
             "title": "앞으로 어떻게 될 수 있을까?",
             "icon": "🔮",
-            "text": "최선 시나리오는 14개항 중 일부 조항(미군 철군 강도)만 절충돼 ‘제한적 합의’가 이뤄지는 경우(가능성 중간), 중간은 협상 결렬과 부분 공습 재개로 유가 단기 급등(가능성 높음), 최악은 호르무즈 봉쇄 장기화와 한국 에너지·물류 직격(가능성 낮음)입니다. 갈림길은 다음 주 미·이란 외교 채널이 살아 있는지, 트럼프 측의 ‘공격 재개’ 발언이 구체화되는지에 있습니다."
+            "text": "최선 시나리오(가능성 중간) 는 한국이 EU 사례를 분석해 선제적으로 협상안을 제시하고, 자동차 관세를 10% 안팎에서 묶고 주한미군은 현 수준 유지로 마무리되는 그림입니다. 중간 시나리오(가능성 높음) 는 자동차 관세가 일부 인상되고 방위비 분담금이 상승해 한국 재정·기업 모두 부담을 나눠 지는 형태입니다. 최악(가능성 낮음) 은 한미 동맹 신뢰가 흔들리며 주한미군 일부 감축까지 거론되는 상황입니다. 갈림길은 향후 6~8주 사이 한미 정상회담 일정과 의제 구성입니다."
           }
         ]
       }
     },
     {
-      "article_id": "4677037794a4bd91",
-      "title": "춘향선발대회 입상자들, 남원시 홍보대사 위촉",
-      "source": "연합뉴스 연예",
-      "published_at": "2026-05-03T09:49:17+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503016100055",
-      "content_text": "(남원=연합뉴스) 백도인 기자 = 전북 남원시는 제96회 춘향제의 '글로벌 춘향선발대회' 입상자들을 홍보대사로 위촉했다고 3일 밝혔다.",
-      "category": "entertainment_news",
+      "article_id": "458963fbe486466a",
+      "title": "이란, ‘종전 14개항’ 수정 제안…트럼프는 “수용 상상 못해”",
+      "source": "한겨레",
+      "published_at": "2026-05-03T11:47:00+09:00",
+      "original_url": "https://www.hani.co.kr/arti/international/international_general/1256923.html",
+      "content_text": "이란이 전쟁 배상금 지급, 미군의 호르무즈해협 역봉쇄 해제 조건 등을 담은 14개 항의 수정 협상안을 미국에 제시했다고 2일(현지시각) 이란 매체가 보도했다. 이란의 ‘선 종전, 후 핵협상’ 제안을 미국이 거부하자 수정 제안을 한 것으로 보인다. 이란 반관영 타스님 통",
+      "category": "general_news",
       "keywords": [],
-      "ai_summary": "전북 남원시가 제96회 춘향제의 ‘글로벌 춘향선발대회’ 입상자들을 홍보대사로 위촉했다고 3일 밝혔다고 남원발 연합뉴스가 보도했습니다. 한국 전통 콘텐츠를 글로벌 무대로 확장하려는 지자체 차원의 홍보 시도로, 춘향제 IP를 활용한 관광·문화 마케팅 흐름의 한 사례입니다.",
-      "extraction_reason": "전통 IP 글로벌 홍보는 지역 관광·문화 마케팅 동향을 보여줍니다.",
-      "relevance_score": 5.0,
-      "is_must_know": false,
+      "ai_summary": "이란이 전쟁 배상금 지급, 미군의 호르무즈해협 역봉쇄 해제 조건 등을 담은 14개 항의 수정 협상안을 미국에 제시했다고 2일(현지시각) 이란 반관영 타스님 통신이 보도했다. 이란의 '선 종전, 후 핵협상' 제안을 미국이 거부하자 수정안을 다시 낸 것으로, 트럼프 대통령은 '수용 상상조차 못 한다' 고 일축했다.",
+      "extraction_reason": "이란 14개항 협상안 거부 — 호르무즈 봉쇄·유가 변동성이 다음 단계로.",
+      "relevance_score": 8.5,
+      "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "당장은 한 지자체 행사지만, 몇 달 안에 다른 지역도 비슷하게 자체 IP를 ‘글로벌’ 키워드로 묶는 마케팅을 따라할 가능성이 큽니다. 1년 안에 K-컬처와 결합한 지역 축제 모델이 표준화될 시나리오가 가능하고, 외국인 방문객 비중이 5~15% 늘어날 가능성이 있습니다. 동시에 콘텐츠 깊이 없이 외형만 따라가는 행사 양산 우려도 함께 커집니다."
+          "text": "당장은 협상 시도 한 차례지만, 트럼프 대통령의 '수용 상상 못해' 발언은 향후 수 주간 협상이 더 길어진다는 신호입니다. 1~2개월 안에 호르무즈 해협 통항 위험이 다시 출렁이고 한국 유조선이 홍해로 우회하는 횟수가 늘어날 가능성이 높습니다. 결과적으로 한국 휘발유·경유 가격이 단계적으로 올라가고, 항공·해운 운임이 함께 영향을 받습니다. 1~2년 지나면 한국 정부의 전략 비축유 활용 빈도와 LNG·원유 수입 다변화 정책 강도가 더 강해지는 흐름이 예상됩니다."
         },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2010년대 강릉 단오제 글로벌화 시도, 2018년 안동 하회마을 외국인 홍보대사 제도, 2023년 K-콘 행사 글로벌 셀럽 연계가 비슷한 reference class입니다. 세 사례 모두 첫해 효과는 평이했지만 3~5년 누적 시 외국인 방문 비율이 평균 10~20% 늘었습니다. 이번도 비슷한 곡선을 따를 가능성이 높습니다."
-        }
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "이번 분기 안에 ① 본인 차량 연료비 부담이 월 가계비에서 차지하는 비중을 점검하고, ② 출퇴근 거리가 멀다면 대중교통·카풀 옵션을 한 번 비교해 보는 게 의미가 있습니다. 자영업자라면 배달·물류 단가가 유가에 묶인 구조이므로 향후 2~3개월 단가 인상 협상안을 미리 준비해 두세요. 반대로 '유가는 어차피 출렁이는 거니까 신경 안 쓴다' 며 단가·요금 점검 자체를 미루는 행동이 가장 비용을 키우는 패턴입니다."
+          }
+        ]
       }
+    },
+    {
+      "article_id": "5257df6d99db2dc6",
+      "title": "호르무즈 봉쇄 후 두 번째 한국 유조선 홍해 통과(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T13:58:14+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503020251051",
+      "content_text": "(부산=연합뉴스) 이영재 기자 = 호르무즈 해협 봉쇄 이후 또 한 척의 한국 선박이 우회로인 홍해를 통과해 국내로 원유를 운송하게 됐다. 지난달...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "호르무즈 해협 봉쇄 이후 두 번째 한국 선박이 우회로인 홍해를 통과해 국내로 원유를 운송하게 됐다고 연합뉴스가 부산발로 전했다. 지난달에 이어 두 번째 사례로, 한국 정유·에너지 업계가 호르무즈 우회 운송을 일상적인 옵션으로 운영하기 시작했다는 의미가 담겼다.",
+      "extraction_reason": "한국 원유 수송이 호르무즈 → 홍해 우회로 정착 — 에너지 안보 직접 영향.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 한 척의 우회 운송이지만, '두 번째' 라는 단어는 이 패턴이 일회성이 아니라 구조화되고 있다는 신호입니다. 1~2개월 안에 한국 정유사 4사 모두가 홍해 우회 운송을 정례 옵션으로 도입하면서 운임 부담이 1배럴당 1~3달러 수준 더 얹힐 가능성이 높습니다. 결과적으로 SK이노베이션·GS칼텍스·현대오일뱅크·에쓰오일 정제 마진이 단기적으로 압박을 받고, 그 부담은 휘발유·경유·LPG 소매 가격으로 단계적으로 옮겨올 수 있습니다. 1~2년 지나면 한국이 미국·아프리카·캐나다산 원유 비중을 늘려 중동 의존도를 낮추는 구조개편이 가속화될 가능성이 있습니다."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "이번 주 안에 ① 본인 차량 주유 패턴을 한 번 점검하고, 출퇴근 외 비주력 운행을 줄일 여지가 있는지 확인하면 향후 2~3개월 단가 인상에 대비할 수 있습니다. ② 가정 도시가스·등유 사용 비중이 큰 가구라면 향후 6개월 사용량 가시화를 위해 보일러 점검·단열 보완을 분기마다 챙기는 게 도움이 됩니다. 반대로 '한 척 우회로 큰 변화 없겠지' 라며 에너지 가격 추적 자체를 안 하는 행동은 가장 위험한 패턴입니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "b0d8bde7e57335d9",
+      "title": "특검법안 명시 李대통령 사건 8건은 무엇…대장동·대북송금 등",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T16:00:31+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503032700004",
+      "content_text": "(서울=연합뉴스) 이영섭 기자 = 더불어민주당이 특별검사에게 사실상 공소 취소 권한을 부여한 '검찰 조작기소 특검법안'을 발의하면서 그 영향권 ...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "더불어민주당이 특별검사에게 사실상 공소 취소 권한을 부여하는 '검찰 조작기소 특검법안' 을 발의하면서, 영향권에 들어가는 이재명 대통령 관련 사건 8건이 무엇인지 정리한 보도다. 대장동·대북송금 등 주요 사건이 포함된 것으로 알려졌다.",
+      "extraction_reason": "특검법 8건 적시 — 한국 정치 지형·검찰 권한 구조 핵심 변동 포인트.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 정치권의 법안 발의 단계지만, '특검에 공소 취소 권한 부여' 는 검찰 조직 권한 구조 자체를 바꾸는 변화입니다. 1~2개월 안에 본회의 통과 여부를 두고 여야가 충돌하면서 추경·민생법안 처리 일정 전체가 영향을 받을 가능성이 높습니다. 결과적으로 본인이 기다리는 정책(주거·청년 지원·세제) 의 처리 속도가 늦어질 수 있습니다. 1~2년 지나면 검찰 권한 재편 결과가 일반 형사사건 처리 속도와 기소 기준에까지 파급될 수 있는 구조 변화입니다."
+        },
+        "bonus": [
+          {
+            "type": "frame",
+            "title": "이 뉴스, 이렇게 읽어보세요",
+            "icon": "🧐",
+            "text": "이 기사는 '8건이 무엇인가' 라는 사실 정리에 가깝지만, 핵심 프레임은 '특검에 공소 취소 권한을 주는 게 정당한가' 입니다. 여당 측은 '조작기소 시정' 으로 정의하고, 야당과 일부 검찰 측은 '대통령 관련 사건 면책' 프레임으로 봅니다. 옆 매체에서 같은 8건 목록이 동일하게 정리됐는지 교차 확인해 보세요. 던질 질문 두 가지: ① 8건의 기소 단계·증거 강도는 각기 어떤가, ② 만약 정권이 바뀌었을 때 같은 권한이 반대 방향으로 쓰일 가능성에 대해 두 진영은 어떻게 답하는가."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "ade714f4507f52d2",
+      "title": "주독미군 감축, 美해외기지 조정 신호탄?…주한미군 여파 주목",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T14:34:05+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503029900504",
+      "content_text": "(서울=연합뉴스) 김철선 기자 = 미국이 유럽 최대 미군기지인 주독미군 감축을 전격으로 발표하면서 이를 신호탄으로 주한미군 등 해외 미군기지에 ...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "미국이 유럽 최대 미군기지인 주독미군 감축을 전격 발표하면서 이를 신호탄으로 주한미군 등 해외 미군기지 조정 가능성에 관심이 쏠린다고 연합뉴스가 전했다. 트럼프 행정부의 해외 미군 재배치 흐름이 한국 안보 환경에 어떻게 번질지가 다음 주요 쟁점으로 떠올랐다.",
+      "extraction_reason": "주독미군 감축이 주한미군 여파로 — 한반도 안보·재정 직격.",
+      "relevance_score": 8.5,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 독일 사례 한 건이지만, 트럼프 행정부의 해외 기지 조정 패턴이 본격화되면 1~2개월 안에 주한미군 분담금·배치 인원에 대한 추가 협상 카드가 등장할 가능성이 높습니다. 1~2년 지나면 한국의 자주국방 부담이 단계적으로 커지고, 정부 재정에서 국방·미국산 무기 구매 비중이 사회복지·교육 예산을 일부 잠식할 수 있습니다. 결과적으로 본인이 내는 세금 중 안보 지출 몫이 늘고, 동시에 한미 동맹의 자동성에 대한 가정 자체를 다시 점검해야 하는 시기로 들어갑니다."
+        },
+        "bonus": [
+          {
+            "type": "scenario",
+            "title": "앞으로 어떻게 될 수 있을까?",
+            "icon": "🔮",
+            "text": "최선 시나리오(가능성 중간) 는 한미 협상이 분담금 일부 인상 선에서 마무리되고 주한미군 규모는 유지되는 그림입니다. 중간 시나리오(가능성 높음) 는 분담금이 큰 폭으로 오르고 일부 부대 재배치가 이뤄지는 형태로, 한국 국방예산이 1~2년에 걸쳐 단계적으로 확대됩니다. 최악(가능성 낮음) 은 일부 주한미군 감축이 실제로 단행되고 한국이 미사일·정찰 자산을 자체 확충하는 상황입니다. 갈림길은 향후 6~10주 사이 한미 정상회담 결과와 트럼프 행정부의 인도·태평양 전략 발표입니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "752be84fd3abb9cb",
+      "title": "39년만의 개헌 추진, '운명의 한주'…국힘 반대에 법안처리 불투명",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T12:17:03+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503024000001",
+      "content_text": "(서울=연합뉴스) 김남권 노선웅 기자 = 우원식 국회의장과 범여권 정당을 중심으로 추진하는 '단계적 개헌안'이 이번 주에 운명의 한 주를 맞는다...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "우원식 국회의장과 범여권 정당을 중심으로 추진하는 '단계적 개헌안' 이 이번 주 운명의 한 주를 맞는다고 연합뉴스가 전했다. 39년 만의 개헌 추진이지만 국민의힘 반대로 본회의 처리는 여전히 불투명한 상태다.",
+      "extraction_reason": "39년 만 개헌 추진의 분기점 — 정치 구조·세제·복지 전 영역 영향.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 본회의 통과 여부 자체가 불확실하지만, '단계적' 이라는 표현은 권력구조 한 번에 다 바꾸는 대신 임기·국민투표 절차 같은 부분 개정부터 시도한다는 신호입니다. 1~2개월 안에 어디서부터 개정할지를 놓고 여야가 충돌하면서 다른 민생 법안 일정이 영향을 받습니다. 결과적으로 본인이 기다리는 세제·연금·노동 개편 일정이 미뤄질 가능성이 있고, 1~2년 지나면 결과적으로 1987년 체제 이후 첫 헌법 손질이 시작될 경우 선거 주기·대통령 권한·국민투표 절차 같은 핵심 규칙 자체가 바뀝니다."
+        },
+        "bonus": [
+          {
+            "type": "frame",
+            "title": "이 뉴스, 이렇게 읽어보세요",
+            "icon": "🧐",
+            "text": "이 기사는 '운명의 한 주' 라는 강한 프레임을 씁니다. 그러나 발의·국회 통과·국민투표라는 헌법 개정의 3단계 중 첫 단계 직전이라는 사실 관계도 같이 짚고 봐야 합니다. 옆 매체에서 같은 일정·법안 표결 가능성을 어떻게 다루는지 교차 확인해 보세요. 던질 질문 두 가지: ① 개헌안의 구체적 조항이 무엇인지(권력구조·기본권·재정 등 어디에 무게가 실렸는가), ② '국힘 반대' 외에 본회의 통과를 막거나 늦출 절차적 변수(필리버스터·재의결 요건) 는 어떤 것이 남아 있는가."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "4a6aea8b1580b00c",
+      "title": "李 대통령 “법정 허용치 초과 불법대부는 무효…안 갚아도 무방”",
+      "source": "매일경제",
+      "published_at": "2026-05-03T11:23:29+09:00",
+      "original_url": "https://www.mk.co.kr/news/politics/12034385",
+      "content_text": "이억원 금융위원장의 글 공유하며 대부업법 시행령 개정안 의결 강조이재명 대통령이 3일 “법정 허용치를 초과하는 불법 대부는 무효”라고 말했다. 지난달 28일 국무회의에서 대부업법 ..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "이재명 대통령이 3일 '법정 허용치를 초과하는 불법 대부는 무효' 라고 말했다고 매일경제가 전했다. 이억원 금융위원장의 글을 공유하며 대부업법 시행령 개정안 의결을 강조한 발언으로, 정부 차원의 불법 사금융 차단 의지를 직접 언급한 사례다.",
+      "extraction_reason": "대통령이 직접 '불법 대부 무효, 안 갚아도 무방' 메시지 — 채무자·서민금융 직격.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 시행령 개정 단계지만, 대통령이 직접 '불법 대부 무효' 를 선언한 것은 일선 경찰·검찰의 단속 체감 강도를 단숨에 끌어올립니다. 1~2개월 안에 불법 사금융 신고·구제 신청이 늘고, 결과적으로 법정 최고금리(연 20%) 를 넘긴 사채 빚으로 시달리던 채무자들의 채무 무효 다툼이 본격화될 가능성이 높습니다. 1~2년 지나면 합법 대부업체의 영업 환경이 더 깐깐해지고, 일부 저신용층이 합법 대출 시장에서 밀려나는 부작용도 함께 발생할 수 있습니다."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "본인이나 가족이 사채·불법 대부 빚으로 고민 중이라면 이번 달 안에 ① 금융감독원 '불법 사금융 신고센터(1332)' 와 ② 대한법률구조공단·서민금융진흥원 상담을 우선 활용해 보세요. 차용증·송금내역·문자 기록을 미리 모아두면 무효 다툼에서 결정적 자료가 됩니다. 반대로 '대통령이 무효라고 했으니 그냥 안 갚으면 끝' 으로 단정해 협박·추심에 그대로 노출되는 행동은 가장 위험합니다 — 절차적 무효 확인 없이 임의로 상환을 끊는 건 또 다른 분쟁을 부릅니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "d12dee133ac1af98",
+      "title": "전기 공급 끊긴 세종시 아파트 주민 5천여명 사흘째 불편",
+      "source": "연합뉴스",
+      "published_at": "2026-05-03T11:23:48+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503021500063",
+      "content_text": "(세종=연합뉴스) 박주영 기자 = \"내일 당장 출근해야 하는데…전기가 끊겨서 아무것도 할 수가 없네요.\"",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "세종시의 한 아파트 주민 5천여명이 사흘째 전기 공급이 끊긴 상황에서 불편을 겪고 있다고 연합뉴스가 전했다. '내일 당장 출근해야 하는데 전기가 끊겨서 아무것도 할 수가 없다' 는 주민 호소가 함께 소개됐다. 도시 인프라 사고가 일상에 직격하는 사례다.",
+      "extraction_reason": "수천 가구 사흘 단전 — 도시 인프라·관리주체 책임 구조 점검 사례.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 세종시 한 단지 사건이지만, 5천여명 사흘 단전은 단순 사고를 넘어 관리주체·시공사·한전 책임 분담 구조 자체를 시험하는 사례입니다. 1~2개월 안에 입주민 손해배상 청구·국토부 감독 강화·아파트 변전 설비 점검 의무 강화 같은 후속 조치가 따라올 가능성이 높습니다. 1~2년 지나면 비슷한 사고가 다른 신도시 단지에서도 잠재해 있을 수 있어, 본인이 신축·연식이 오래된 단지 어느 쪽에 살든 단지 내 변전·자가발전·UPS 시설 점검 빈도를 한 단계 올려야 하는 흐름이 됩니다."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "본인 거주 단지에서 이번 한 달 안에 ① 관리사무소에 변전·예비전원 점검 일정과 최근 점검 결과를 한 번 문의해 보고, ② 가정 안에 휴대용 보조배터리·랜턴·물 비상 비축이 어느 정도 되어 있는지 점검해 두세요. 단전 사고는 미리 준비된 가구와 안 된 가구의 체감 격차가 큽니다. 반대로 '아파트인데 설마 사흘이나 끊기겠어' 라며 비상 대비를 미루는 행동이 가장 위험합니다 — 이번 세종시 사례가 바로 그 가정이 깨진 사례입니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "935b1575b0b8cdd4",
+      "title": "낮잠, 보약 아닌 사약이었다…아침에·자주·길게 자면 사망위험 높아",
+      "source": "매일경제",
+      "published_at": "2026-05-03T13:27:03+09:00",
+      "original_url": "https://www.mk.co.kr/news/it/12034412",
+      "content_text": "56세 이상 성인 19년간 추적 관찰 오전 낮잠·불규칙하면 사망위험 커 낮잠 패턴 변화땐 만성질환 의심을낮 시간에 잠깐 눈을 붙이는 습관이 단순한 피로 해소를 넘어 건강 상태를 보..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "56세 이상 성인을 19년간 추적 관찰한 결과, 오전 낮잠을 자거나 낮잠 패턴이 불규칙한 사람의 사망위험이 더 컸다는 연구가 매일경제를 통해 보도됐다. 낮잠은 단순 피로 해소를 넘어 건강 상태를 보여주는 신호일 수 있으며, 낮잠 패턴이 갑자기 바뀌면 만성질환을 의심해 볼 필요가 있다는 분석이다.",
+      "extraction_reason": "낮잠 패턴이 사망위험 신호 — 중장년·노년 가족 건강 관리 직접 영향.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 연구 한 건이지만, 19년간 추적이라는 긴 관찰 기간은 단순 단발성 통계보다 신뢰도가 높은 자료입니다. 1~2년 안에 건강검진 문진표에 '낮잠 패턴' 항목이 추가되거나, 보건소·요양시설에서 낮잠 변화를 만성질환 조기 신호로 활용하는 흐름이 강화될 가능성이 있습니다. 결과적으로 본인이 부모님·조부모님의 갑작스러운 낮잠 증가나 시간 변화를 알아채면 그 자체가 의료 상담의 근거가 됩니다. 본인이 50대 이상이라면 식습관·운동 외에 '낮잠 시간 패턴' 도 건강관리의 한 축으로 의식해야 한다는 의미입니다."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "이번 주 안에 ① 본인 또는 부모님의 평소 낮잠 시간(오전·오후·저녁) 과 길이를 1주일 단위로 메모해 보고, ② 패턴이 갑자기 바뀐 시점이 있다면 그 직전·후 건강 변화(혈압·수면·체중) 도 함께 기록해 두세요. 다음 정기검진 때 의사에게 보여주면 단순 '피곤해서 그렇다' 가 아닌 만성질환 조기 검토의 근거가 됩니다. 반대로 '낮잠은 보약이니 무조건 좋다' 며 패턴 변화를 무시하는 가족 분위기가 가장 위험합니다 — 이번 연구는 정확히 그 통념을 흔드는 결과입니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "49c60e549eb5672b",
+      "title": "대출 막히자…5대 은행 예대율 2년 만에 최저 수준 ‘뚝’",
+      "source": "매일경제",
+      "published_at": "2026-05-03T13:16:58+09:00",
+      "original_url": "https://www.mk.co.kr/news/economy/12034407",
+      "content_text": "예대율, 2024년 1분기 말 이후 처저 안전자산 선호에 대기성 자금 유입 가계대출 둔화…기업대출 증가 역부족올해 1분기 주요 시중은행의 ‘예금 대비 대출 비율’(예대율)이 2년 ..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "올해 1분기 5대 시중은행의 예금 대비 대출 비율(예대율) 이 2년 만에 최저 수준으로 떨어졌다고 매일경제가 전했다. 안전자산 선호로 대기성 자금 유입은 늘었지만 가계대출이 둔화되고 기업대출 증가만으로는 이를 상쇄하지 못한 결과로, 시중 자금이 은행에 들어와 멈춰선 흐름이 드러난다.",
+      "relevance_score": 7.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "a3a51849e34dedaa",
+      "title": "중동전쟁 여파…수출기업 30% “조업중단·계약파기 위기”",
+      "source": "한겨레",
+      "published_at": "2026-05-03T11:52:00+09:00",
+      "original_url": "https://www.hani.co.kr/arti/economy/finance/1256925.html",
+      "content_text": "국내 수출기업의 30%가 미국·이스라엘-이란 전쟁의 여파로 조업중단 위기에 몰리거나 계약 파기를 겪는 등 심각한 피해를 겪은 것으로 나타났다. 특히 중소기업의 피해 수준이 더 심각한 것으로 조사됐다. 한국수출입은행은 수출기업 505곳(대기업 51곳, 중소기업 454곳)",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "한국수출입은행이 수출기업 505곳(대기업 51곳·중소기업 454곳) 을 조사한 결과, 국내 수출기업의 30% 가 미국·이스라엘-이란 전쟁 여파로 조업중단 위기에 몰리거나 계약 파기를 겪는 등 심각한 피해를 봤다고 한겨레가 전했다. 특히 중소기업 피해 수준이 더 심각한 것으로 조사됐다.",
+      "extraction_reason": "수출기업 30% 가 조업중단·계약파기 — 중소기업·고용 직격.",
+      "relevance_score": 8.5,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 수출입은행 조사 한 건이지만, 505곳 중 30% 라는 비율은 단순 평균을 넘어 산업 전반에서 동시다발 충격이 일어났다는 신호입니다. 1~2개월 안에 중소기업 운전자금 부족으로 임금 체불·납품 지연이 늘어날 가능성이 높고, 결과적으로 본인이 다니는 회사가 1~2차 협력사라면 미수금·납기 압박이 함께 옵니다. 1~2년 지나면 정부가 무역금융·수출보험 한도를 추가로 풀고 수출 다변화 보조금을 늘리는 흐름이 자리잡을 것으로 보입니다. 가계 입장에선 수출기업 일자리 충격이 임금·고용 통계에 시차를 두고 반영됩니다."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "이번 분기 안에 ① 본인 회사가 중동·중남미·아프리카 항로에 의존하는 비중이 어느 정도인지 한 번 점검하고, ② 수출입은행·신용보증기금·중기부의 비상 자금·수출보험 지원 프로그램 안내문을 받아두세요. 자영업자라도 수입 원자재 단가가 영향을 받을 수 있으니 주력 거래처의 환·운임 리스크 헤지 여부를 확인해 두는 게 의미가 있습니다. 반대로 '큰 기업 일이라 나와는 거리가 멀다' 며 본인 임금·납품 일정 영향 점검을 미루는 행동이 가장 위험합니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "de32056b9e3c9b1d",
+      "title": "“5살에 총기난사 대피훈련, 이게 사는거냐”…미국인들이 내린 결론",
+      "source": "매일경제",
+      "published_at": "2026-05-03T13:09:50+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12034403",
+      "content_text": "총기 공포·살인 물가에 ‘탈미국’ 택해 2008년 침체때보다 이주희망 더 늘어 생활비 저렴한 알바니아·멕시코 등지 공교육 환경 우수한 유럽에 영구 이주미국에서 대공황 이후 처음으로..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "미국에서 대공황 이후 처음으로 총기 공포·살인 물가를 이유로 '탈미국' 을 택하는 흐름이 두드러진다고 매일경제가 보도했다. 2008년 침체 때보다 해외 이주 희망자가 더 늘었으며, 생활비가 저렴한 알바니아·멕시코, 공교육 환경이 우수한 유럽으로 영구 이주를 시도하는 사례가 늘었다는 분석이다.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "e840e4a046c51ade",
+      "title": "“1분기 대박났다”…코스피 상장사 3곳 중 1곳 ‘어닝 서프라이즈’",
+      "source": "매일경제",
+      "published_at": "2026-05-03T11:19:27+09:00",
+      "original_url": "https://www.mk.co.kr/news/stock/12034383",
+      "content_text": "코스피 상장사 절반 이상 전망치 상회 반도체·건설 업종 주축 ‘깜짝 실적’ 견인 1Q 이익 16조 초과 달성…“추가 기록 기대”올 1분기 실적을 발표한 코스피 상장사 중 영업이익이..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "올 1분기 실적을 발표한 코스피 상장사 중 영업이익이 시장 전망치를 웃돈 어닝 서프라이즈 기업이 절반을 넘었다고 매일경제가 전했다. 반도체·건설 업종이 깜짝 실적을 견인했으며, 1분기 이익이 16조원을 초과 달성하며 추가 기록 가능성도 거론된다.",
+      "extraction_reason": "1분기 16조 초과 어닝 서프라이즈 — 가계 자산·고용 반등 핵심 지표.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "당장은 1분기 실적 한 차례지만, 16조원 초과 달성과 '3곳 중 1곳' 어닝 서프라이즈는 한국 증시 평균 PER·ROE 흐름을 한 단계 위로 옮기는 신호입니다. 1~2개월 안에 외국인 자금 유입이 다시 강해질 가능성이 높고, 결과적으로 본인 보유 ETF·국민연금 수익률 표시 숫자가 단기적으로 좋아질 수 있습니다. 1~2년 지나면 반도체·건설에 편중된 이익 구조에 대한 우려도 함께 떠오를 것이고, 이는 정부의 산업 다변화 정책과 세제 조정 논의로 옮겨갈 가능성이 있습니다."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "투자자라면 이번 주 안에 본인 포트폴리오에서 어닝 서프라이즈 업종(반도체·건설) 비중과 그 외 업종 비중을 한 번 비교해 보세요. 한쪽으로 너무 쏠려 있다면 다음 분기 실적 발표 전에 분산을 검토할 시점입니다. 직장인이라면 본인 회사 IR 자료에서 1분기 실적과 가이던스를 한 번 읽어 두면 인사·채용·연봉 협상 시그널을 빨리 잡을 수 있습니다. 반대로 '어닝 서프라이즈 = 무조건 추가 상승' 으로 단정해 추격 매수에 들어가는 행동이 가장 위험합니다 — 이미 시장 전망치를 넘었다는 사실은 가격에 상당 부분 반영됐을 수 있습니다."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "52d77f0fef87fd08",
+      "title": "유승준 “‘군대 왜 안 갔냐’는 질문도 괜찮아”…‘병역 기피’ 정면 돌파",
+      "source": "매일경제 연예",
+      "published_at": "2026-05-03T10:02:22+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12034355",
+      "content_text": "병역 기피 논란으로 한국 입국이 제한된 가수 유승준(50·미국명 스티브 유)이 유튜브 채널을 통해 소통에 나선다. 지난 2일 유튜브 채널 ‘유승준’에는 ‘저 그때 진짜 무너졌었습니..",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "병역 기피 논란으로 한국 입국이 제한된 가수 유승준(50·미국명 스티브 유) 이 유튜브 채널 '유승준' 을 통해 직접 소통에 나섰다. 그는 '그때 진짜 무너졌었다' 고 회고하면서 ''군대 왜 안 갔냐' 는 질문도 괜찮다' 며 병역 기피 논란을 정면으로 다루는 모습을 보였다.",
+      "relevance_score": 5.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "acd92e67645546de",
+      "title": "윤복희 “낙태만 4번” 충격 고백…계약서에 ‘출산 금지’ 조항 있었다",
+      "source": "매일경제 연예",
+      "published_at": "2026-05-03T08:35:25+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12034326",
+      "content_text": "가수 윤복희(80)가 과거 불공정 계약 탓에 4번의 임신중절수술을 받았다고 고백했다. 지난 2일 방송된 MBN 예능프로그램 ‘김주하의 데이앤나잇’에는 75년간 무대를 지킨 ‘살아있..",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "가수 윤복희(80) 가 MBN 예능프로그램 '김주하의 데이앤나잇' 에서 과거 불공정 계약 때문에 4번의 임신중절수술을 받았다고 고백했다. 75년간 무대를 지킨 가수의 회고 속에서 당시 계약서에 '출산 금지' 조항이 있었다는 사실이 함께 알려졌다. 한국 연예계의 과거 계약 관행을 돌아보게 하는 발언이다.",
+      "relevance_score": 5.5,
+      "is_must_know": false
     },
     {
       "article_id": "93b7a93c87378169",
@@ -1583,74 +1466,9 @@
       "content_text": "(서울=연합뉴스) 장진리 기자 = 귀신을 보는 변호사의 활약을 그린 드라마 '신이랑 법률사무소'가 7%대 시청률로 종영했다.",
       "category": "entertainment_news",
       "keywords": [],
-      "ai_summary": "귀신을 보는 변호사의 활약을 그린 드라마 ‘신이랑 법률사무소’가 7%대 시청률로 종영했다고 연합뉴스가 보도했습니다. 주연 유연석이 ‘아버지 누명 벗긴 변호사’ 서사로 마무리한 이번 작품은 판타지·법정 융합 드라마 흐름을 잇는 사례입니다.",
-      "extraction_reason": "장르 융합 드라마의 종영 시청률은 한국 드라마 시장 흐름의 단면입니다.",
-      "relevance_score": 4.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 작품의 종영 소식이지만, 며칠 안에 OTT 플랫폼이 ‘판타지+법정’ 장르 후속작 라인업을 강화할 가능성이 있습니다. 몇 달 안에 비슷한 콘셉트의 신규 드라마 편성이 늘어날 시나리오가 가능하고, 1년 안에 한국 드라마 장르 다양성 지표가 한 단계 올라갈 가능성이 있습니다. 동시에 시청률 7%대가 ‘성공 기준’으로 굳어지는 흐름도 함께 보입니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2017년 ‘쌈, 마이웨이’, 2019년 ‘호텔 델루나’, 2022년 ‘이상한 변호사 우영우’ 같은 장르 융합 드라마들이 비슷한 reference class입니다. 세 사례 모두 후속작·스핀오프가 1~2년 안에 등장했고, 시청률 7~10%대 작품이 OTT에서는 글로벌 1~2위에 오른 사례가 많았습니다. 이번 작품도 글로벌 시장에서 추가 성과가 나올 가능성이 있습니다."
-        }
-      }
-    },
-    {
-      "article_id": "e55214478f9d6ebf",
-      "title": "GS25, '슈퍼 마리오' 입은 도시락·햄버거 출시…특별 굿즈 동봉",
-      "source": "연합뉴스 연예",
-      "published_at": "2026-05-03T09:21:00+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260503014000030",
-      "content_text": "(서울=연합뉴스) 김세린 기자 = GS리테일[007070]이 운영하는 편의점 GS25는 '슈퍼 마리오 갤럭시'의 지식재산권(IP)을 활용한 협업...",
-      "category": "entertainment_news",
-      "keywords": [],
-      "ai_summary": "GS리테일이 운영하는 편의점 GS25가 ‘슈퍼 마리오 갤럭시’ 지식재산권을 활용한 협업 도시락·햄버거를 출시하고 특별 굿즈를 동봉한다고 연합뉴스가 보도했습니다. 게임 IP와 편의점 식품을 결합해 어린이날·연휴 시즌 매출을 끌어올리려는 콜라보 마케팅 사례입니다.",
-      "extraction_reason": "게임 IP×편의점 콜라보는 어린이날 소비 트렌드를 보여줍니다.",
-      "relevance_score": 5.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 편의점 캠페인이지만, 며칠 안에 CU·세븐일레븐도 비슷한 IP 협업으로 맞불을 놓을 가능성이 큽니다. 몇 주 안에 굿즈 리셀 시장에 한정판 패키지가 등장하고, 1년 안에 게임 IP를 활용한 식품·생활용품 협업이 표준 마케팅으로 자리잡을 시나리오가 가능합니다. 동시에 ‘과대 굿즈 마케팅’에 대한 부모·소비자 단체의 비판도 함께 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2019년 마블·디즈니 IP 편의점 협업, 2021년 포켓몬빵 광풍, 2024년 짱구·산리오 한정판 콜라보가 비슷한 reference class입니다. 세 사례 모두 출시 첫주 매출이 평균 2~5배 뛰었지만, 1~2개월 뒤 효과는 정상화됐습니다. 이번 슈퍼 마리오 협업도 비슷한 곡선을 따를 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "094dd2a543261bc1",
-      "title": "“올해 어린이날이 마지막”…2만4천명이 12억 플렉스 ‘잠실 더비’",
-      "source": "매일경제 연예",
-      "published_at": "2026-05-03T09:36:59+09:00",
-      "original_url": "https://www.mk.co.kr/news/society/12034347",
-      "content_text": "잠실구장 한지붕 두가족 두산·LG 어린이날 맞대결은 올해로 마지막 돔구장 건설 위해서 대체구장 이사“오늘은 어린이날 우리들 세상.” 매년 5월 5일 서울종합운동장 야구장(잠실구장)..",
-      "category": "entertainment_news",
-      "keywords": [],
-      "ai_summary": "잠실구장 한 지붕 두 가족인 두산·LG의 어린이날 맞대결이 올해를 마지막으로 막을 내린다고 매일경제가 보도했습니다. 돔구장 건설을 위한 대체구장 이사가 예정돼 있어 5월 5일 ‘잠실 더비’가 마지막 무대가 되며, 어린이날 2만4천 명·12억 원 ‘플렉스’ 분위기까지 보도됐습니다.",
-      "extraction_reason": "전통 어린이날 잠실 더비의 마지막은 가족 외출·관람 트렌드 지표입니다.",
-      "relevance_score": 6.0,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 경기 이슈지만, 며칠 안에 어린이날 야구장 입장권·굿즈 가격이 평소 1.5~2배로 뛰는 흐름이 굳어질 가능성이 큽니다. 몇 달 안에 잠실 돔구장 건설 일정·예산이 정치 의제로 부상할 시나리오가 가능하고, 1년 뒤엔 임시 대체구장 시즌 동안 관객 수가 일시 감소했다가 신구장 개장 시점에 V자 반등할 가능성이 있습니다. 동시에 가족 단위 야구 관람 문화의 변곡점이 됩니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2014년 광주 KIA 신구장 개장 직전·직후, 2018년 고척 돔 개장 후 키움 관중 변화, 2024년 NC 창원 신구장 흐름이 비슷한 reference class입니다. 세 사례 모두 임시 대체구장 시즌엔 관중이 평균 10~25% 줄었다가 신구장 개장 후 30~50% 늘었습니다. 잠실 더비도 비슷한 곡선이 가능하며, 어린이날 같은 시그니처 경기 자체는 새 구장에서도 재현될 가능성이 높습니다."
-        }
-      }
+      "ai_summary": "귀신을 보는 변호사의 활약을 그린 드라마 '신이랑 법률사무소' 가 7% 대 시청률로 종영했다고 연합뉴스가 전했다. 변호사 신이랑(유연석 분) 이 아버지 누명을 벗겨내는 마지막 회로 마무리되며, 변호사·오컬트·미스터리 결합 장르 드라마의 시청률 흐름을 보여주는 사례로 기록된다.",
+      "relevance_score": 5.0,
+      "is_must_know": false
     },
     {
       "article_id": "2dcafcd1b18957e1",
@@ -1661,22 +1479,35 @@
       "content_text": "아이돌 그룹 데뷔를 앞두고 일본인 멤버가 잠적하는 사건이 발생해 경찰이 수사에 나섰다. 3일 연합뉴스에 따르면 서울 영등포경찰서는 해당 아이돌 그룹 소속사의 고소를 접수해 본인 연..",
       "category": "entertainment_news",
       "keywords": [],
-      "ai_summary": "데뷔 2달 전 잠적한 일본인 아이돌 그룹 연습생에 대해 서울 영등포경찰서가 소속사 고소를 접수해 본인 연락처 등을 통해 수사에 나섰다고 매일경제가 연합뉴스 보도를 인용해 전했습니다. K팝 데뷔 직전 외국인 멤버 잠적 사례로 출국금지 등 수사 대응이 이뤄지고 있다는 내용입니다.",
-      "extraction_reason": "K팝 외국인 멤버 잠적 이슈는 K팝 산업 글로벌 운영 리스크의 단면입니다.",
-      "relevance_score": 5.0,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 사건이지만, 며칠 안에 K팝 기획사들이 외국인 연습생 계약·비자·교육 시스템을 점검할 가능성이 큽니다. 몇 달 안에 ‘잠적 시 손해배상’ 조항을 강화한 표준계약서 개편 논의가 일 시나리오가 가능하고, 1년 안에 외국인 연습생 정신건강·법률 지원 인프라가 한 단계 보강될 가능성이 있습니다. 동시에 한국 입국 외국인 연예 지망생에 대한 출입국 행정의 검증이 강화될 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2015년 외국인 멤버 계약 분쟁(엑소·트와이스 일부), 2019년 일본 멤버 활동 중단 사례, 2023년 외국인 연습생 권익 보호 가이드 도입이 비슷한 reference class입니다. 세 사례 모두 사건 후 1~2년 안에 표준계약·체류 관리 절차가 한 단계씩 정비됐습니다. 이번 사건도 비슷한 후속 정비를 자극할 가능성이 높습니다."
-        }
-      }
+      "ai_summary": "아이돌 그룹 데뷔를 앞두고 일본인 멤버가 잠적하는 사건이 발생해 경찰이 수사에 나섰다고 매일경제가 전했다. 3일 연합뉴스에 따르면 서울 영등포경찰서는 해당 아이돌 그룹 소속사의 고소를 접수해 본인 연습생에 대한 출국금지 조치 등을 검토 중이다. 데뷔 2달 전 잠적이라는 점에서 K팝 연습생 시스템과 계약 관행이 다시 도마에 오를 가능성이 높다.",
+      "relevance_score": 5.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "fcfbf0a8c6161d5d",
+      "title": "“뮤비 촬영, 얼굴 공개도 했는데”…아이돌 연습생, 데뷔 직전 돌연 잠적",
+      "source": "매일경제 연예",
+      "published_at": "2026-05-03T10:20:12+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12034363",
+      "content_text": "다른 기획사와 이중계약 의혹아이돌 그룹 데뷔를 앞두고 외국인 멤버 1명이 돌연 잠적하는 사건이 발생해 경찰이 수사에 나섰다. 3일 연합뉴스에 따르면 서울 영등포경찰서는 이 아이돌 ..",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "아이돌 그룹 데뷔를 앞두고 외국인 멤버 1명이 돌연 잠적하는 사건이 발생해 경찰이 수사에 나섰다고 매일경제가 전했다. 다른 기획사와의 이중계약 의혹이 함께 거론되며, 서울 영등포경찰서가 사건을 수사 중이다. 뮤직비디오 촬영과 얼굴 공개까지 진행된 시점의 잠적이라는 점에서 데뷔 직전 K팝 연습생 계약 분쟁이 주목 대상이 됐다.",
+      "relevance_score": 5.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "946cdf586455e3f3",
+      "title": "퇴근시간 꽉 막힌 도로서 ‘모세의 기적’ 봤다…고열 아기 살린 경찰",
+      "source": "매일경제 연예",
+      "published_at": "2026-05-03T09:45:55+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12034351",
+      "content_text": "신호 15개 6㎞ 거리 5분 만에 이동고열과 구토에 시달리던 영아가 경찰의 신속한 에스코트로 골든타임 내 병원에 도착해 목숨을 지켰다. 3일 경기 일산동부경찰서에 따르면 지난달 1..",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "경기 일산동부경찰서에 따르면 지난달 고열·구토에 시달리던 영아가 경찰의 신속한 에스코트로 골든타임 내 병원에 도착해 목숨을 지킨 사례가 알려졌다. 신호 15개·6㎞ 거리를 5분 만에 이동한 '모세의 기적' 사례로, 퇴근시간 꽉 막힌 도로 위에서 시민들의 협조와 경찰 에스코트가 어떻게 영아 응급 대응을 가능하게 했는지를 보여준다.",
+      "relevance_score": 5.5,
+      "is_must_know": false
     },
     {
       "article_id": "ec3e4d469f9badf0",
@@ -1687,22 +1518,22 @@
       "content_text": "소비트렌드 떠오른 ‘힙불’ 배경은최근 MZ세대 사이에서 불교를 ‘힙한 콘텐츠’로 즐기는 흐름이 확산되고 있어요. 불교 메시지를 담은 굿즈와 밈이 인기를 끌면서 이른바 ‘힙불(힙한 ..",
       "category": "entertainment_news",
       "keywords": [],
-      "ai_summary": "MZ세대 사이에서 불교를 ‘힙한 콘텐츠’로 즐기는 흐름이 확산돼 ‘힙불’이라는 신조어와 부처님 굿즈, 예수님 생일카드 같은 종교 굿즈가 인기를 끌고 있다고 매일경제가 보도했습니다. 전통 종교 콘텐츠가 일상 소비재·SNS 밈으로 재해석되며 새로운 라이프스타일 트렌드로 부상한 사례입니다.",
-      "extraction_reason": "MZ 종교 굿즈 트렌드는 라이프스타일·소비 패턴 변화 신호입니다.",
-      "relevance_score": 5.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 SNS·커머스의 한 트렌드지만, 며칠 안에 사찰·교회의 공식 굿즈샵이 줄줄이 등장할 가능성이 있습니다. 몇 달 안에 종교 콘텐츠를 활용한 카페·플리마켓·전시가 늘어날 시나리오가 가능하고, 1년 안에 종교계가 청년 신도 유입에 굿즈·SNS를 본격 활용하는 흐름이 자리잡을 가능성이 있습니다. 동시에 ‘성스러움 vs 상품화’ 사이 갈등도 함께 커집니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2010년 ‘템플스테이’ 대중화, 2015년 한복 데이·천주교 굿즈 인기, 2020년 ‘성당 카페’ 유행이 비슷한 reference class입니다. 세 사례 모두 트렌드 시작 후 3~5년 안에 종교 단체와 상업 영역의 협업 모델이 정착했고, 청년 인구의 종교 접점 빈도가 2배 가까이 늘었습니다. 이번 ‘힙불’ 흐름도 비슷한 곡선을 따를 가능성이 높습니다."
-        }
-      }
+      "ai_summary": "MZ세대 사이에서 불교를 '힙한 콘텐츠' 로 즐기는 흐름이 확산되고 있다고 매일경제가 전했다. 불교 메시지를 담은 굿즈와 밈이 인기를 끌면서 이른바 '힙불(힙한 불교)' 이 새로운 소비 트렌드로 부상하고 있고, 교회·성당에 다니지 않는 청년 세대가 종교 콘텐츠를 라이프스타일로 받아들이는 현상이 함께 다뤄졌다.",
+      "relevance_score": 5.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "ffe5799f29c2794c",
+      "title": "“호적 정리 안하면 같이 죽자”…내연남 질투에 전남편 유골함 폐기했더니",
+      "source": "매일경제 연예",
+      "published_at": "2026-05-03T10:49:36+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12034371",
+      "content_text": "전남편의 유골함을 훔쳐 폐기한 여성과 내연남이 징역형에 처해졌다. 3일 법조계에 따르면 서울중앙지법 형사항소4-2부(부장판사 엄철·윤원묵·송중호)는 지난달 16일 유골영득 및 특수..",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "전남편의 유골함을 훔쳐 폐기한 여성과 내연남이 징역형에 처해졌다고 매일경제가 전했다. 서울중앙지법 형사항소4-2부(부장판사 엄철·윤원묵·송중호) 가 지난달 16일 유골영득 및 특수손괴 등 혐의로 기소된 두 사람의 항소심 판결을 내린 사례로, '호적 정리 안 하면 같이 죽자' 는 내연남의 질투가 사건의 발단이었다.",
+      "relevance_score": 4.5,
+      "is_must_know": false
     },
     {
       "article_id": "84714a60ca0ae420",
@@ -1715,100 +1546,22 @@
       "keywords": [
         "로봇"
       ],
-      "ai_summary": "중국 산시성 시안 한 대학 운동회에서 사람과 군무를 추던 휴머노이드 로봇이 갑자기 한 학생에게 돌진해 포옹하는 영상이 화제가 됐다고 매일경제가 보도했습니다. 명령어 입력 또는 시스템 오류 가능성이 거론되며 안전·UX 측면에서 휴머노이드 행사 활용에 대한 논쟁이 일고 있습니다.",
-      "extraction_reason": "행사용 휴머노이드의 돌발 행동은 일반 안전·로봇 정책 화두입니다.",
-      "relevance_score": 6.5,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 캠퍼스 영상이지만, 며칠 안에 비슷한 ‘로봇 돌발 행동’ 영상이 잇따라 SNS에 올라올 가능성이 큽니다. 몇 달 안에 행사 운영자가 휴머노이드와 관객 간 거리 제한·비상정지 버튼 의무화를 도입할 시나리오가 가능하고, 1년 안에 한국·중국 모두 휴머노이드 공연·행사 가이드라인이 마련될 가능성이 있습니다. 동시에 ‘로봇은 안전하다’는 일반 인식이 흔들리는 효과도 함께 나타납니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2015년 폭스콘 공장 로봇 사고, 2018년 보스턴다이내믹스 시연 중 넘어진 사례, 2023년 중국 박람회 휴머노이드 충돌이 비슷한 reference class입니다. 세 사례 모두 1~2년 안에 안전 거리·비상정지·인증 절차가 강화됐고, 행사용 로봇 보험 시장이 함께 커졌습니다. 이번 사례도 비슷한 후속 흐름을 자극할 가능성이 높습니다."
-        }
-      }
+      "ai_summary": "중국에서 사람과 함께 군무를 추던 휴머노이드 로봇이 갑자기 학생에게 돌진하는 영상이 화제가 됐다고 매일경제가 전했다. 중화망·신쾌보 등 중국 매체에 따르면 지난달 23일 산시성 시안의 한 대학 운동회 무대에서 발생한 사건으로, '어떤 명령어를 입력했길래' 라는 의문이 함께 제기됐다. 휴머노이드 로봇과 사람이 같은 공간에 설 때 안전 설계가 얼마나 중요한지를 보여준 사례다.",
+      "relevance_score": 5.5,
+      "is_must_know": false
     },
     {
-      "article_id": "18371d9ee473065a",
-      "title": "중국발 미세먼지에 입원·사망까지…어르신 무조건 ‘이 주사’ 맞으세요",
-      "source": "매일경제 연예",
-      "published_at": "2026-05-03T09:16:28+09:00",
-      "original_url": "https://www.mk.co.kr/news/it/12034337",
-      "content_text": "미세먼지농도와 폐렴 입원 비례해 고령층에선 사망원인 2위 ‘치명적’ 65세 이상에 다당질백신 무료접종 단백접합백신, 다당질比 효과 3배매년 봄철 기승을 부리는 미세먼지와 황사가 성..",
+      "article_id": "e55214478f9d6ebf",
+      "title": "GS25, '슈퍼 마리오' 입은 도시락·햄버거 출시…특별 굿즈 동봉",
+      "source": "연합뉴스 연예",
+      "published_at": "2026-05-03T09:21:00+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260503014000030",
+      "content_text": "(서울=연합뉴스) 김세린 기자 = GS리테일[007070]이 운영하는 편의점 GS25는 '슈퍼 마리오 갤럭시'의 지식재산권(IP)을 활용한 협업...",
       "category": "entertainment_news",
       "keywords": [],
-      "ai_summary": "매년 봄철 기승을 부리는 미세먼지·황사가 65세 이상 고령층 폐렴 입원·사망 위험의 주요 원인이 된다며 다당질 폐렴구균 백신 무료 접종 권고가 강조됐다고 매일경제가 보도했습니다. 단백접합백신은 다당질 대비 효과가 약 3배라는 점과 미세먼지 농도와 입원 사이 비례 관계가 함께 거론됐습니다.",
-      "extraction_reason": "고령층 폐렴 백신·미세먼지 정보는 가족 건강관리에 직접 영향이 큽니다.",
-      "relevance_score": 7.7,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 정보 콘텐츠지만, 며칠 안에 보건소·의원에 폐렴구균 백신 문의가 늘어날 가능성이 큽니다. 몇 달 안에 65세 이상 무료 접종률이 2~5%포인트 오를 시나리오가 가능하고, 1년 안에 단백접합백신 본인부담 비용 인하 또는 무료 확대 정책 논의가 부상할 가능성이 있습니다. 동시에 미세먼지 ‘나쁨’ 일 외출 자제·마스크 착용 같은 일상 행동 변화도 함께 강화됩니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2014년 65세 이상 폐렴구균 백신 무료화, 2019년 인플루엔자 무료 접종 확대, 2023년 단백접합백신 본인부담 일부 인하 시도가 비슷한 reference class입니다. 세 사례 모두 정책 발표 후 1~2년 안에 접종률이 평균 5~15%포인트 올랐습니다. 이번 미세먼지 연계 캠페인도 비슷한 효과 곡선을 만들 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "f1608fd2335e6624",
-      "title": "“할머니, 나 바빠서 통화 못해”...아동 10명 중 4명은 “놀 시간 부족”",
-      "source": "매일경제 연예",
-      "published_at": "2026-05-03T08:45:02+09:00",
-      "original_url": "https://www.mk.co.kr/news/society/12034329",
-      "content_text": "아동은 유엔아동권리협약 31조에 따라 ‘놀 권리’를 인정받는다. 그러나 정작 국내 아동 10명 중 4명은 ‘놀 시간’이 부족하다고 토로하고 있다. 3일 아동권리보장원에 따르면 초등..",
-      "category": "entertainment_news",
-      "keywords": [],
-      "ai_summary": "유엔아동권리협약 31조에 따라 아동은 ‘놀 권리’를 인정받지만, 국내 아동 10명 중 4명이 ‘놀 시간이 부족하다’고 토로하고 있다고 매일경제가 아동권리보장원 자료를 인용해 보도했습니다. 어린이날을 앞두고 한국 사회의 아동 일상·여가 실태를 다시 돌아보게 하는 통계입니다.",
-      "extraction_reason": "아동의 놀 시간 부족 통계는 어린이날 의제와 가족 정책의 핵심입니다.",
-      "relevance_score": 7.0,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 통계 발표지만, 며칠 안에 어린이날 사설·SNS에서 ‘아동 놀 권리’ 콘텐츠가 폭증할 가능성이 큽니다. 1년 안에 학교 정규 교육과정에 ‘쉬는 시간 보호’ 가이드라인이 추가될 시나리오가 가능하고, 지자체의 어린이 공원·놀이터 예산이 5~10% 늘어날 가능성이 있습니다. 동시에 사교육 의존 구조 자체에 대한 비판도 함께 커질 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2013년 학교 쉬는 시간 보장 캠페인, 2018년 ‘놀이혁명’ 정책, 2022년 어린이 권리 헌장 5주년 보고서가 비슷한 reference class입니다. 세 사례 모두 통계 발표-정책 연계까지 평균 1~2년이 걸렸고, 일부는 예산 증액으로 이어졌지만 일부는 1~2년 안에 흐지부지됐습니다. 이번도 비슷한 갈림길에 있을 가능성이 높습니다."
-        }
-      }
-    },
-    {
-      "article_id": "acd92e67645546de",
-      "title": "윤복희 “낙태만 4번” 충격 고백…계약서에 ‘출산 금지’ 조항 있었다",
-      "source": "매일경제 연예",
-      "published_at": "2026-05-03T08:35:25+09:00",
-      "original_url": "https://www.mk.co.kr/news/society/12034326",
-      "content_text": "가수 윤복희(80)가 과거 불공정 계약 탓에 4번의 임신중절수술을 받았다고 고백했다. 지난 2일 방송된 MBN 예능프로그램 ‘김주하의 데이앤나잇’에는 75년간 무대를 지킨 ‘살아있..",
-      "category": "entertainment_news",
-      "keywords": [],
-      "ai_summary": "가수 윤복희(80)가 MBN 예능 ‘김주하의 데이앤나잇’에서 과거 불공정 계약 탓에 임신중절 수술을 4번 받았으며 계약서에 ‘출산 금지’ 조항이 있었다고 고백했다고 매일경제가 전했습니다. 한국 가요계 1세대의 노동·인권 환경 문제를 드러낸 충격 발언으로 받아들여집니다.",
-      "extraction_reason": "원로 가수의 노동인권 고백은 연예계 표준계약 논의에 영향을 줍니다.",
-      "relevance_score": 6.0,
-      "is_must_know": false,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "당장은 한 인터뷰지만, 며칠 안에 SNS·여성단체가 과거 연예 산업의 인권 침해를 재조명하며 의제로 키울 가능성이 큽니다. 몇 달 안에 표준 전속계약·연예인 노동권 가이드라인 점검이 다시 거론될 시나리오가 가능하고, 1년 안에 신인 데뷔·청소년 보호 조항이 추가 보강될 가능성이 있습니다. 동시에 원로 연예인들의 비슷한 고백이 잇따르며 사회적 공감대가 확장될 가능성이 있습니다."
-        },
-        "history": {
-          "title": "예전에도 이런 일이 있었을까?",
-          "icon": "🗂",
-          "text": "2009년 故 장자연 사건 후 표준계약서 도입, 2014년 SM 계약 분쟁 후 청소년 활동 보호조항 강화, 2019년 한 아이돌 그룹의 인권 폭로가 비슷한 reference class입니다. 세 사례 모두 1~3년 안에 연예 산업 표준계약·노동기준이 한 단계 정비됐습니다. 이번 고백도 비슷한 후속 정비를 자극할 가능성이 있습니다."
-        }
-      }
+      "ai_summary": "GS리테일이 운영하는 편의점 GS25 가 '슈퍼 마리오 갤럭시' 지식재산권(IP) 을 활용한 협업 도시락·햄버거 등을 출시하고 특별 굿즈를 동봉하는 행사를 시작했다. 게임 IP 와 편의점 식품을 결합해 어린이날 가족 단위 소비 수요를 겨냥한 한정판 마케팅 사례다.",
+      "relevance_score": 4.5,
+      "is_must_know": false
     }
   ]
 }
