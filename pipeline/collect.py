@@ -492,7 +492,13 @@ def process_feed(
 
         published_dt = parse_published(entry, now_utc, default_tz=feed_default_tz)
 
-        # RSS item 에 본문/시각 정보가 부족하면 기사 페이지 og:meta 로 enrich 시도.
+        # 시각이 RSS 에서 이미 확보됐고 윈도우 밖이면 enrich 시도조차 하지 않고 드롭.
+        # (윈도우 밖 옛날 기사 수백 건에 대한 5초짜리 HTTP enrich 가 누적되어
+        # worker timeout 을 넘기던 버그를 막기 위함.)
+        if published_dt is not None and published_dt < window_start:
+            continue
+
+        # 시각/본문이 부족하면 기사 페이지 og:meta 로 enrich 시도.
         # (한겨레 등 시각 태그 없는 RSS 를 위한 fallback.)
         if not content_text or published_dt is None:
             meta = _fetch_article_meta(link)
@@ -517,7 +523,7 @@ def process_feed(
             result.parse_failed += 1
             continue
 
-        # 시간 윈도우 밖 기사는 이번 brief 대상이 아니므로 드롭.
+        # enrich 로 시각이 채워진 경우의 윈도우 필터.
         if published_dt < window_start:
             continue
 

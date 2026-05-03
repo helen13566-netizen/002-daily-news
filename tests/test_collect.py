@@ -703,6 +703,66 @@ def test_process_feed_drops_article_when_enrich_also_fails(
     assert result.fetched == 1
 
 
+def test_process_feed_skips_enrich_for_articles_outside_window(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """윈도우 밖 기사에 대해선 _fetch_article_meta 호출하지 않아야 한다.
+
+    버그: 윈도우 필터 적용 전에 enrich 가 호출되어, 옛날 기사 수백 건
+    각각이 외부 사이트로 5초 timeout HTTP 요청을 누적시킴. 결과적으로
+    피드 단위 처리가 worker timeout(55s) 을 초과해 collect 워크플로가
+    매번 TimeoutError 로 실패. → candidates.json stale → 옛 기사 브리핑.
+    """
+    feed = RSSFeed("test", "https://t.example/rss", "ai_news")
+    # 수집 시각: 2026-04-20 17:15 KST → 윈도우 = [당일 08:25, 17:25] KST
+    fixed_now = KST.localize(datetime(2026, 4, 20, 17, 15, 0))
+
+    # 윈도우 안 1건 (UTC 04:00 = KST 13:00)
+    inside_entry = {
+        "title": "AI 윈도우 안 기사",
+        "link": "https://t.example/inside",
+        "summary": "본문 있음.",
+        "published": "Mon, 20 Apr 2026 04:00:00 +0000",
+        "published_parsed": time.strptime(
+            "2026-04-20 04:00:00", "%Y-%m-%d %H:%M:%S"
+        ),
+    }
+    # 윈도우 밖 5건 (3일 전, summary 비어있어 enrich 트리거 가능)
+    outside_entries = [
+        {
+            "title": f"AI 옛 기사 {i}",
+            "link": f"https://t.example/old{i}",
+            "summary": "",
+            "published": "Fri, 17 Apr 2026 03:00:00 +0000",
+            "published_parsed": time.strptime(
+                "2026-04-17 03:00:00", "%Y-%m-%d %H:%M:%S"
+            ),
+        }
+        for i in range(5)
+    ]
+    entries = [inside_entry] + outside_entries
+
+    enrich_calls: list[str] = []
+
+    def fake_enrich(url: str, timeout: float = 5.0) -> dict[str, str]:
+        enrich_calls.append(url)
+        return {}
+
+    monkeypatch.setattr(
+        collect_mod, "_fetch_feed_once", lambda _f: _make_parsed(entries)
+    )
+    monkeypatch.setattr(collect_mod, "_fetch_article_meta", fake_enrich)
+
+    result = collect_mod.process_feed(feed, now_kst=fixed_now)
+
+    # 윈도우 안 1건만 살아남음.
+    assert [a.title for a in result.articles] == ["AI 윈도우 안 기사"]
+    # 윈도우 밖 옛 기사 5건에 대해선 enrich 가 일어나선 안 된다.
+    assert enrich_calls == [], (
+        f"윈도우 밖 기사에 enrich 호출됨: {enrich_calls}"
+    )
+
+
 def test_feed_category_ai_news_forces_ai_classification_regardless_of_keywords(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
