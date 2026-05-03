@@ -46,6 +46,19 @@ RSS_FEEDS: tuple[RSSFeed, ...] = (
         "https://github.com/anthropics/anthropic-sdk-python/releases.atom",
         "official_ai", default_tz="UTC", window_hours=72,
     ),
+    # 연예 소스 (2026-05) — category=entertainment_news, 한국 KST 기본
+    RSSFeed(
+        "연합뉴스 연예", "https://www.yna.co.kr/rss/entertainment.xml",
+        "entertainment_news",
+    ),
+    RSSFeed(
+        "매일경제 연예", "https://www.mk.co.kr/rss/50400012/",
+        "entertainment_news",
+    ),
+    RSSFeed(
+        "한국경제 연예", "https://www.hankyung.com/feed/entertainment",
+        "entertainment_news",
+    ),
 )
 
 # AI 키워드 확장 목록 — 매치 시 해당 기사는 category="ai_news" 로 재분류

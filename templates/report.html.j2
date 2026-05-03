@@ -433,16 +433,18 @@ footer .sources {
 {%- endmacro %}
 
 {# 섹션 카운트 사전 계산 #}
-{% set ns = namespace(official_count=0, ai_count=0, gen_count=0, all_count=0) %}
+{% set ns = namespace(official_count=0, ai_count=0, gen_count=0, ent_count=0, all_count=0) %}
 {% for sec in sections %}
   {% set ns.all_count = ns.all_count + sec.articles|length %}
   {% if '공식' in sec.title %}{% set ns.official_count = sec.articles|length %}
   {% elif sec.title == 'AI 뉴스' %}{% set ns.ai_count = sec.articles|length %}
-  {% elif '종합' in sec.title %}{% set ns.gen_count = sec.articles|length %}{% endif %}
+  {% elif '종합' in sec.title %}{% set ns.gen_count = sec.articles|length %}
+  {% elif '연예' in sec.title %}{% set ns.ent_count = sec.articles|length %}{% endif %}
 {% endfor %}
 {% set official_count = ns.official_count %}
 {% set ai_count = ns.ai_count %}
 {% set gen_count = ns.gen_count %}
+{% set ent_count = ns.ent_count %}
 {% set all_count = ns.all_count %}
 
 {# 인사이트 블록 매크로 — article 전체를 받아 extraction_reason 을 첫 축으로 #}
@@ -561,10 +563,10 @@ footer .sources {
   </section>
   {% endif %}
 
-  {# ══ 카테고리별 섹션 — AI 뉴스 / 종합 뉴스 ══ #}
+  {# ══ 카테고리별 섹션 — 공식 AI / AI 뉴스 / 종합 뉴스 / 연예 뉴스 ══ #}
   {% for sec in sections %}
   {% if sec.articles %}
-  {% set sid = 'sec-official-ai' if '공식' in sec.title else ('sec-ai' if sec.title == 'AI 뉴스' else 'sec-general') %}
+  {% set sid = 'sec-official-ai' if '공식' in sec.title else ('sec-ai' if sec.title == 'AI 뉴스' else ('sec-entertainment' if '연예' in sec.title else 'sec-general')) %}
   <section class="feed-sec" id="{{ sid }}">
     <div class="sec-divider"><h2>{{ sec.title }}</h2></div>
     {% for art in sec.articles %}

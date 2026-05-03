@@ -540,11 +540,11 @@ def process_feed(
         if matched_keywords:
             result.ai_matched += 1
 
-        # 분류 규칙 (v20):
-        # - 피드의 category 가 "ai_news" 또는 "official_ai" 면 그대로 존중
-        #   (공식 AI 소스는 항상 official_ai 로 분류됨).
+        # 분류 규칙:
+        # - 피드의 category 가 "ai_news" / "official_ai" / "entertainment_news"
+        #   이면 그대로 존중 (공식 AI 소스, 연예 전용 피드는 항상 그 카테고리).
         # - "general_news" 피드는 키워드 매칭으로 ai_news 로 승격 가능.
-        if feed.category in ("ai_news", "official_ai"):
+        if feed.category in ("ai_news", "official_ai", "entertainment_news"):
             category = feed.category
         else:
             category = "ai_news" if matched_keywords else "general_news"

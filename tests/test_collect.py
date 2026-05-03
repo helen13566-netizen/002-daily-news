@@ -797,6 +797,50 @@ def test_feed_category_ai_news_forces_ai_classification_regardless_of_keywords(
     assert result.articles[0].category == "ai_news"
 
 
+def test_feed_category_entertainment_news_is_preserved(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """피드의 category='entertainment_news' 면 AI 키워드가 매치돼도 그대로 보존.
+
+    공식 AI / AI 뉴스 피드와 동일한 동작 — 피드 카테고리 선언 우선.
+    """
+    from pipeline.config import RSSFeed
+
+    feed = RSSFeed(
+        name="연합뉴스 연예",
+        url="https://www.yna.co.kr/rss/entertainment.xml",
+        category="entertainment_news",
+    )
+    fixed_now = KST.localize(datetime(2026, 4, 21, 20, 0, 0))
+
+    entries = [
+        # AI 키워드("AI") 가 본문에 있음에도 entertainment_news 가 보존돼야 함.
+        {
+            "title": "K-POP 그룹 신곡 발표",
+            "link": "https://example/a",
+            "summary": "이번 신곡은 AI 작곡 기법을 활용한 첫 실험작.",
+            "published": "Tue, 21 Apr 2026 09:00:00 +0900",
+        },
+        # AI 키워드 없는 일반 연예 기사.
+        {
+            "title": "배우 ○○○ 새 드라마 캐스팅",
+            "link": "https://example/b",
+            "summary": "○○○ 배우가 새 드라마 주연으로 확정됐다.",
+            "published": "Tue, 21 Apr 2026 10:00:00 +0900",
+        },
+    ]
+
+    monkeypatch.setattr(
+        collect_mod, "_fetch_feed_once", lambda _f: _make_parsed(entries)
+    )
+    result = collect_mod.process_feed(feed, now_kst=fixed_now)
+
+    assert len(result.articles) == 2
+    # AI 키워드 매치 여부와 무관하게 entertainment_news 보존.
+    for art in result.articles:
+        assert art.category == "entertainment_news"
+
+
 def test_parse_published_naive_string_uses_default_tz() -> None:
     """tz 없는 pubDate 문자열은 default_tz 로 localize 해야 한다 (v19).
 

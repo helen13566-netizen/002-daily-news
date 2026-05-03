@@ -98,10 +98,13 @@ _CATEGORY_TITLES: dict[str, str] = {
     "official_ai": "공식 AI 업데이트",
     "ai_news": "AI 뉴스",
     "general_news": "종합 뉴스",
+    "entertainment_news": "연예 뉴스",
 }
 
-# 섹션 순서: 공식 AI → AI 뉴스 → 종합 뉴스.
-_CATEGORY_ORDER: tuple[str, ...] = ("official_ai", "ai_news", "general_news")
+# 섹션 순서: 공식 AI → AI 뉴스 → 종합 뉴스 → 연예 뉴스 (v22).
+_CATEGORY_ORDER: tuple[str, ...] = (
+    "official_ai", "ai_news", "general_news", "entertainment_news",
+)
 
 
 def _article_sort_key(article: dict[str, Any]) -> tuple[float, float]:

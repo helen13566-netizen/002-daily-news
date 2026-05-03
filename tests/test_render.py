@@ -202,9 +202,9 @@ def test_section_grouping_unit():
         make_article(idx=3, category="ai_news", score=9.5),
     ]
     sections = build_sections(articles)
-    # v20: 3 섹션 순서 — 공식 AI → AI 뉴스 → 종합 뉴스
+    # v22: 4 섹션 순서 — 공식 AI → AI 뉴스 → 종합 뉴스 → 연예 뉴스
     assert [s["title"] for s in sections] == [
-        "공식 AI 업데이트", "AI 뉴스", "종합 뉴스",
+        "공식 AI 업데이트", "AI 뉴스", "종합 뉴스", "연예 뉴스",
     ]
     # 공식 AI 섹션은 fixture 에 없음 → 빈 articles
     assert sections[0]["articles"] == []
@@ -212,6 +212,25 @@ def test_section_grouping_unit():
     assert sections[1]["articles"][0]["article_id"] == "art-0003"
     assert sections[1]["articles"][1]["article_id"] == "art-0001"
     assert sections[2]["articles"][0]["article_id"] == "art-0002"
+    # 연예 섹션도 fixture 에 없음 → 빈 articles
+    assert sections[3]["articles"] == []
+
+
+def test_section_grouping_includes_entertainment(tmp_path):
+    """entertainment_news 카테고리 기사는 '연예 뉴스' 섹션으로 그룹핑된다 (v22)."""
+    articles = [
+        make_article(idx=1, category="ai_news", score=8.0),
+        make_article(idx=2, category="entertainment_news", score=6.0),
+        make_article(idx=3, category="entertainment_news", score=7.5),
+    ]
+    sections = build_sections(articles)
+    titles = [s["title"] for s in sections]
+    assert "연예 뉴스" in titles
+    ent_section = next(s for s in sections if s["title"] == "연예 뉴스")
+    # score desc: 7.5 먼저.
+    assert [a["article_id"] for a in ent_section["articles"]] == [
+        "art-0003", "art-0002",
+    ]
 
 
 # ---------------------------------------------------------------------------
