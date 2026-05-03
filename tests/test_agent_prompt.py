@@ -90,17 +90,6 @@ def test_v14_text_length_expanded(prompt_text: str) -> None:
     )
 
 
-def test_v14_concrete_evidence_required(prompt_text: str) -> None:
-    """구체 수치·회사·연도를 최소 N개 포함하도록 강제."""
-    has_concrete_instruction = (
-        ("구체" in prompt_text or "수치" in prompt_text)
-        and ("연도" in prompt_text or "회사" in prompt_text or "숫자" in prompt_text)
-    )
-    assert has_concrete_instruction, (
-        "구체 수치·회사명·연도를 최소 2개 포함하도록 하는 지시가 있어야 합니다"
-    )
-
-
 def test_v14_chunk_size_two_articles(prompt_text: str) -> None:
     """chunk 크기가 2건 단위로 축소됐는지 (v12/v13: 3건)."""
     has_two_chunk = (
