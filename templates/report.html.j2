@@ -387,11 +387,11 @@ footer .sources {
 }
 .floating-nav a {
   flex: 1 1 auto;
-  display: inline-flex; align-items: center; justify-content: center; gap: 4px;
-  padding: 10px 14px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 3px;
+  padding: 10px 8px;
   border-radius: 0;
-  font-size: 13px; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
   color: #1a1a1a;
   white-space: nowrap;
   min-height: 40px;
@@ -400,9 +400,9 @@ footer .sources {
 .floating-nav a:active { transform: scale(0.96); }
 .floating-nav a .cnt {
   display: inline-flex; align-items: center; justify-content: center;
-  min-width: 20px; padding: 0 4px;
+  min-width: 16px; padding: 0 2px;
   font-style: italic; font-weight: 400;
-  font-size: 11px;
+  font-size: 10px;
   color: #8a8a8a;
   letter-spacing: 0;
 }
@@ -414,7 +414,8 @@ footer .sources {
 }
 
 @media (min-width: 640px) {
-  .floating-nav a { padding: 10px 18px; font-size: 14px; }
+  .floating-nav a { padding: 10px 14px; font-size: 13px; letter-spacing: 0.08em; }
+  .floating-nav a .cnt { font-size: 11px; min-width: 18px; padding: 0 3px; }
 }
 </style>
 </head>
@@ -447,11 +448,11 @@ footer .sources {
 {% set ent_count = ns.ent_count %}
 {% set all_count = ns.all_count %}
 
-{# 인사이트 블록 매크로 — article 전체를 받아 extraction_reason 을 첫 축으로 #}
+{# 인사이트 블록 매크로 — must_know=true 기사만 Reader's Note 출력. #}
 {% macro render_insights(article) -%}
 {%- set ins = article.insights -%}
 {%- set reason = article.extraction_reason -%}
-{%- if ins or reason -%}
+{%- if article.is_must_know and (ins or reason) -%}
 <details class="why-insights">
   <summary>Reader's Note</summary>
   {% if reason %}
@@ -470,15 +471,6 @@ footer .sources {
       <span>{{ ins.ripple.title }}</span>
     </div>
     <div class="axis-body">{{ ins.ripple.text }}</div>
-  </div>
-  {% endif %}
-  {% if ins and ins.history and ins.history.text %}
-  <div class="axis" data-axis="history">
-    <div class="axis-title">
-      <span class="icon">{{ ins.history.icon or "🗂" }}</span>
-      <span>{{ ins.history.title }}</span>
-    </div>
-    <div class="axis-body">{{ ins.history.text }}</div>
   </div>
   {% endif %}
   {% if ins and ins.bonus %}

@@ -263,6 +263,66 @@ def test_floating_nav_has_entertainment_link_when_section_present(tmp_path):
     assert 'data-sec="sec-entertainment"' in html
 
 
+def test_readers_note_only_for_must_know_articles(tmp_path):
+    """READER'S NOTE 는 is_must_know=true (score>=8.0) 기사에만 표시 (v22.3)."""
+    must_know_art = make_article(
+        idx=1, category="ai_news", score=9.0, is_must_know=True,
+        title="중요 기사 (must_know)",
+    )
+    must_know_art["insights"] = {
+        "ripple": {"title": "이게 우리한테 어떻게 영향을 줄까?", "icon": "📡",
+                   "text": "ripple text"}
+    }
+    not_must_know_art = make_article(
+        idx=2, category="ai_news", score=6.0, is_must_know=False,
+        title="평범 기사",
+    )
+    # 평범 기사도 reason 은 있을 수 있음 — 하지만 Reader's Note 자체가 안 나와야 함.
+    not_must_know_art["extraction_reason"] = "이 reason 은 화면에 안 나와야 함"
+
+    analyzed = make_analyzed(articles=[must_know_art, not_must_know_art])
+    analyzed_path = _write_analyzed(tmp_path, analyzed)
+    out_html = tmp_path / "index.html"
+    render(
+        analyzed_path=str(analyzed_path),
+        template_path=TEMPLATE_PATH,
+        output_path=str(out_html),
+        archive_dir=str(tmp_path / "archive"),
+    )
+    html = out_html.read_text(encoding="utf-8")
+    # must_know 기사의 Reader's Note 는 표시.
+    assert "ripple text" in html
+    # 평범 기사의 reason 은 표시 X (Reader's Note 블록 자체가 안 나옴).
+    assert "이 reason 은 화면에 안 나와야 함" not in html
+
+
+def test_readers_note_omits_history_axis(tmp_path):
+    """READER'S NOTE 에서 history 축('예전에도 이런 일이 있었을까?') 제거 (v22.3).
+
+    LLM 이 잔여 데이터로 insights.history 를 보내더라도 template 이 출력 X.
+    """
+    art = make_article(idx=1, category="ai_news", score=9.0, is_must_know=True)
+    art["insights"] = {
+        "ripple": {"title": "이게 우리한테 어떻게 영향을 줄까?", "icon": "📡",
+                   "text": "ripple text only"},
+        "history": {"title": "예전에도 이런 일이 있었을까?", "icon": "🗂",
+                    "text": "이 history text 는 절대 표시되면 안 됨"},
+    }
+    analyzed = make_analyzed(articles=[art])
+    analyzed_path = _write_analyzed(tmp_path, analyzed)
+    out_html = tmp_path / "index.html"
+    render(
+        analyzed_path=str(analyzed_path),
+        template_path=TEMPLATE_PATH,
+        output_path=str(out_html),
+        archive_dir=str(tmp_path / "archive"),
+    )
+    html = out_html.read_text(encoding="utf-8")
+    assert "ripple text only" in html
+    assert "예전에도 이런 일이 있었을까" not in html
+    assert "이 history text 는 절대 표시되면 안 됨" not in html
+
+
 def test_floating_nav_omits_entertainment_link_when_no_articles(tmp_path):
     """연예 기사가 0건이면 floating nav 에 연예 링크가 들어가선 안 된다.
 
@@ -641,26 +701,19 @@ def _render_to_html(tmp_path: Path, analyzed: dict[str, Any]) -> str:
 
 
 def test_insights_block_rendered_when_present(tmp_path: Path) -> None:
-    """insights 필드가 있으면 details 토글 블록이 렌더된다."""
+    """insights 필드가 있으면 details 토글 블록이 렌더된다 (must_know 기사만)."""
     art = _minimal_article(insights={
         "ripple": {
             "title": "이게 우리한테 어떻게 영향을 줄까?",
             "icon": "📡",
             "text": "파급 효과 설명 문단입니다.",
         },
-        "history": {
-            "title": "예전에도 이런 일이 있었을까?",
-            "icon": "🗂",
-            "text": "역사 비교 설명 문단입니다.",
-        },
         "bonus": [],
     })
     html = _render_to_html(tmp_path, _wrap_analyzed(art))
     assert '<details class="why-insights"' in html
     assert "이게 우리한테 어떻게 영향을 줄까?" in html
-    assert "예전에도 이런 일이 있었을까?" in html
     assert "파급 효과 설명 문단입니다." in html
-    assert "역사 비교 설명 문단입니다." in html
 
 
 def test_insights_absent_omits_details_block(tmp_path: Path) -> None:
