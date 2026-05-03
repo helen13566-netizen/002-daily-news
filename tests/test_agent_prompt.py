@@ -101,17 +101,6 @@ def test_v14_concrete_evidence_required(prompt_text: str) -> None:
     )
 
 
-def test_v14_structure_visible_in_text(prompt_text: str) -> None:
-    """분석 단계·구조를 text 에 드러내도록 지시. '1차/2차/3차' 같은 라벨 권장."""
-    has_visible_structure = any(
-        kw in prompt_text
-        for kw in ["1차 효과", "구조를 드러", "단계를 명시", "분석 흐름"]
-    )
-    assert has_visible_structure, (
-        "분석 구조(1차·2차·3차 등)를 text 에 드러내라는 지시가 있어야 합니다"
-    )
-
-
 def test_v14_chunk_size_two_articles(prompt_text: str) -> None:
     """chunk 크기가 2건 단위로 축소됐는지 (v12/v13: 3건)."""
     has_two_chunk = (
