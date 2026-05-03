@@ -233,6 +233,59 @@ def test_section_grouping_includes_entertainment(tmp_path):
     ]
 
 
+def test_floating_nav_has_entertainment_link_when_section_present(tmp_path):
+    """floating nav 에 연예 섹션 점프 링크가 있어야 한다 (v22.1).
+
+    버그: v22 에서 sec-entertainment 섹션 ID 는 추가했지만 floating nav 마크업
+    (template line 603-626) 에는 연예 링크 <a href="#sec-entertainment"> 가
+    빠져있어 모바일 floating bar 에 별표/UPDATE/AI/종합 만 보임.
+    """
+    articles = [
+        make_article(idx=1, category="ai_news", score=8.0, is_must_know=True),
+        make_article(idx=2, category="general_news", score=7.0),
+        make_article(idx=3, category="entertainment_news", score=6.5),
+    ]
+    analyzed = make_analyzed(articles=articles)
+    analyzed_path = _write_analyzed(tmp_path, analyzed)
+    out_html = tmp_path / "index.html"
+    render(
+        analyzed_path=str(analyzed_path),
+        template_path=TEMPLATE_PATH,
+        output_path=str(out_html),
+        archive_dir=str(tmp_path / "archive"),
+    )
+    html = out_html.read_text(encoding="utf-8")
+    # floating nav 안에 sec-entertainment 점프 링크가 있어야 한다.
+    assert 'href="#sec-entertainment"' in html, (
+        "floating nav 에 연예 섹션 점프 링크가 누락됨"
+    )
+    # data-sec 속성도 같이 있어야 IntersectionObserver active 처리가 동작.
+    assert 'data-sec="sec-entertainment"' in html
+
+
+def test_floating_nav_omits_entertainment_link_when_no_articles(tmp_path):
+    """연예 기사가 0건이면 floating nav 에 연예 링크가 들어가선 안 된다.
+
+    기존 official/AI/general 섹션과 동일 — 빈 섹션은 nav 칩도 숨긴다.
+    """
+    articles = [
+        make_article(idx=1, category="ai_news", score=8.0, is_must_know=True),
+        make_article(idx=2, category="general_news", score=7.0),
+    ]
+    analyzed = make_analyzed(articles=articles)
+    analyzed_path = _write_analyzed(tmp_path, analyzed)
+    out_html = tmp_path / "index.html"
+    render(
+        analyzed_path=str(analyzed_path),
+        template_path=TEMPLATE_PATH,
+        output_path=str(out_html),
+        archive_dir=str(tmp_path / "archive"),
+    )
+    html = out_html.read_text(encoding="utf-8")
+    assert 'href="#sec-entertainment"' not in html
+    assert 'data-sec="sec-entertainment"' not in html
+
+
 # ---------------------------------------------------------------------------
 # 4. must_know top5
 # ---------------------------------------------------------------------------
