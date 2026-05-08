@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fafaf7">
+<title>굿이브닝 · Daily Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Playfair Display", "Noto Serif KR", Georgia, serif;
+  background-color: #f4ede0;
+  color: #1a1a1a;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  position: relative;
+}
+/* Establishment 203 이미지를 배경으로 고정 (스크롤해도 자리 유지) */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("./assets/establishment-203.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* 배경 위에 신문지 뉴스프린트 그레이 오버레이 — 본문 가독성 보장 */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: rgba(210, 208, 200, 0.87);
+}
+.app { position: relative; z-index: 1; }
+a { color: inherit; text-decoration: none; }
+a:active { opacity: 0.6; }
+
+.app { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+/* Editorial Masthead — Establishment 203 스타일 */
+.bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: calc(14px + env(safe-area-inset-top)) 0 10px;
+  border-bottom: 1px solid #1a1a1a;
+}
+.bar .brand {
+  font-style: italic; font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: #1a1a1a;
+}
+.bar .brand::before { content: none; }
+.bar .issue-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 42px; height: 22px;
+  padding: 0 8px;
+  border: 1px solid #1a1a1a;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #1a1a1a;
+}
+
+/* Dateline strip — 얇은 라인 사이 small caps */
+.dateline {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: #1a1a1a;
+  gap: 8px; flex-wrap: wrap;
+}
+.dateline > span { flex: 0 1 auto; }
+.dateline .middle { flex: 1 1 auto; text-align: center; }
+@media (max-width: 420px) {
+  .dateline { font-size: 10px; letter-spacing: 0.12em; }
+}
+
+
+.intro {
+  padding: 60px 0 56px; text-align: center;
+}
+.intro .greeting {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: #1a1a1a; margin-bottom: 32px;
+}
+.intro h1 {
+  font-style: italic; font-weight: 900;
+  font-size: clamp(48px, 11.5vw, 84px);
+  line-height: 0.94; letter-spacing: -0.025em;
+  margin: 0 0 24px;
+  color: #1a1a1a;
+}
+.intro .sub {
+  font-size: 15px; color: #5a5a5a;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+.intro .meta { display: none; }
+
+.hashtags {
+  text-align: center; padding: 20px 0;
+  font-size: 14px; font-style: italic;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+}
+.hashtags span {
+  display: inline-block; margin: 0 6px;
+  font-weight: 400;
+}
+
+/* 섹션 */
+section.feed-sec { scroll-margin-top: 20px; }
+
+.sec-divider {
+  padding: 40px 0 24px;
+  border-top: 4px solid #1a1a1a;
+  margin-top: 72px;
+  text-align: center;
+  position: relative;
+}
+.sec-divider::before {
+  content: "§";
+  position: absolute;
+  top: -18px; left: 50%;
+  transform: translateX(-50%);
+  background: #d2d0c8;
+  padding: 0 14px;
+  font-size: 22px; font-style: italic;
+  color: #1a1a1a;
+  line-height: 1;
+}
+.sec-divider h2 {
+  font-style: italic; font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.01em; margin: 0;
+  color: #1a1a1a;
+}
+
+/* 스토리 카드 */
+.story {
+  display: block; padding: 28px 0;
+  border-bottom: 1px solid #e6e6df;
+}
+.story:active { opacity: 0.6; }
+.story:last-of-type { border-bottom: none; }
+
+.story .head {
+  font-size: 12px; color: #5a5a5a;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700;
+}
+.story .head .src { font-weight: 900; color: #1a1a1a; }
+.story .head .dot { color: #bbb; }
+
+.story h3 {
+  font-style: italic; font-weight: 700;
+  font-size: 26px; line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  color: #1a1a1a;
+}
+
+.story .lede {
+  font-size: 17px; line-height: 1.55;
+  color: #3a3a3a; margin: 0 0 14px;
+  font-weight: 400;
+}
+
+.story .foot {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: #6b6b6b;
+  flex-wrap: wrap; gap: 8px;
+}
+.story .foot .read { display: flex; align-items: center; gap: 6px; }
+.story .foot .read::before { content: "📖"; }
+
+/* 기사 키워드 해시태그 */
+.story .keywords {
+  margin-top: 12px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.story .keywords span {
+  background: transparent;
+  color: #a02020;
+  padding: 2px 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.story .keywords span::after { content: " · "; color: #c5c5c5; font-weight: 400; }
+.story .keywords span:last-child::after { content: ""; }
+
+/* Editorial 점수 — 이탤릭 serif 숫자 + 미니멀 라인 */
+.score {
+  display: inline-flex; align-items: baseline;
+  padding: 2px 0;
+  font-style: italic; font-weight: 700;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  color: #1a1a1a;
+  background: transparent; border: none;
+  position: relative;
+}
+.score::after {
+  content: " / 10";
+  font-size: 11px; font-style: italic; font-weight: 400;
+  color: #8a8a8a;
+  margin-left: 3px;
+  letter-spacing: 0.05em;
+}
+.score::before { content: none; }
+
+/* 9.0+ — 잉크 박스 (검정 fill + 흰 italic 숫자) */
+.score-vhigh {
+  background: #1a1a1a; color: #fff;
+  padding: 3px 12px 3px 12px;
+  font-size: 16px;
+}
+.score-vhigh::after { color: rgba(255,255,255,0.55); }
+
+/* 8.5+ — 이중선 하단 밑줄 */
+.score-superhigh {
+  padding: 2px 0 1px;
+  border-bottom: 3px double #1a1a1a;
+}
+
+/* 8.0+ — 굵은 밑줄 */
+.score-high {
+  padding: 2px 0 1px;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+/* 7.0+ — 얇은 밑줄 */
+.score-midhigh {
+  padding: 2px 0 1px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+/* 5.0+ — 회색 톤 */
+.score-mid {
+  color: #5a5a5a;
+}
+.score-mid::after { color: #9a9a9a; }
+
+/* 3.0+ — 연회색 */
+.score-low {
+  color: #8a8a8a;
+  font-weight: 400;
+}
+.score-low::after { color: #bababa; }
+
+/* <3.0 — 매우 연회색 */
+.score-vlow {
+  color: #bababa;
+  font-weight: 400;
+}
+.score-vlow::after { color: #d5d5d5; }
+
+/* Top story — editor's pick 뒤 절취선 제거 (v20 사용자 요청) */
+.top-story {
+  padding: 40px 0 48px;
+}
+.top-story .kicker {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #1a1a1a; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.top-story h2 {
+  font-style: italic; font-weight: 900;
+  font-size: clamp(38px, 8vw, 56px);
+  line-height: 0.98; letter-spacing: -0.022em;
+  margin: 0 0 20px;
+  color: #1a1a1a;
+}
+.top-story .by {
+  font-size: 12px; color: #5a5a5a;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.top-story .body {
+  font-size: 19px; line-height: 1.6;
+  color: #1a1a1a;
+}
+
+/* Editorial 인사이트 — 얇은 hairline + italic serif */
+.why-insights {
+  margin-top: 20px;
+  background: transparent;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 12px 0;
+}
+.why-insights[open] { padding-bottom: 18px; }
+.why-insights > summary {
+  cursor: pointer;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #1a1a1a;
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 28px;
+}
+.why-insights > summary::-webkit-details-marker { display: none; }
+.why-insights > summary::after {
+  content: "+"; transition: transform 0.2s;
+  font-size: 20px; font-weight: 400; color: #1a1a1a;
+  line-height: 1;
+}
+.why-insights[open] > summary::after { content: "—"; }
+
+.why-insights .axis {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid #cfc7b5;
+}
+.why-insights .axis:first-of-type { border-top: none; padding-top: 6px; }
+.why-insights .axis .axis-title {
+  font-size: 13px; font-weight: 700; color: #1a1a1a;
+  margin-bottom: 6px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+}
+/* 데이터의 이모지 icon 숨김 — editorial 톤 유지 */
+.why-insights .axis .axis-title .icon { display: none; }
+.why-insights .axis .axis-body {
+  font-size: 15.5px; line-height: 1.55; color: #2a2a2a;
+  font-style: italic;
+}
+
+/* Editorial Footer — 마지막 기사 뒤 절취선 제거 (v20 사용자 요청) */
+footer {
+  padding: 50px 0 30px;
+  text-align: center;
+  font-size: 13px; color: #5a5a5a;
+  margin-top: 40px;
+}
+footer .disclosure {
+  color: #5a5a5a; font-size: 13px; max-width: 520px;
+  margin: 0 auto 16px; line-height: 1.55;
+  font-style: italic;
+}
+footer .sources {
+  color: #8a8a8a; font-size: 11px; line-height: 1.8;
+  margin-top: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════ */
+/* 플로팅 섹션 네비게이션 (고정)            */
+/* ═══════════════════════════════════════ */
+/* Editorial 플로팅 네비 — 흰 배경, 검정 hairline, italic serif */
+.floating-nav {
+  position: fixed;
+  left: 50%; transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 30;
+  display: flex; gap: 0;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #1a1a1a;
+  border-radius: 0;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  max-width: calc(100vw - 24px);
+}
+.floating-nav a {
+  flex: 1 1 auto;
+  display: inline-flex; align-items: center; justify-content: center; gap: 3px;
+  padding: 10px 8px;
+  border-radius: 0;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: #1a1a1a;
+  white-space: nowrap;
+  min-height: 40px;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.12s;
+}
+.floating-nav a:active { transform: scale(0.96); }
+.floating-nav a .cnt {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 16px; padding: 0 2px;
+  font-style: italic; font-weight: 400;
+  font-size: 10px;
+  color: #8a8a8a;
+  letter-spacing: 0;
+}
+.floating-nav a.active {
+  background: #1a1a1a; color: #fff;
+}
+.floating-nav a.active .cnt {
+  color: rgba(255,255,255,0.65);
+}
+
+@media (min-width: 640px) {
+  .floating-nav a { padding: 10px 14px; font-size: 13px; letter-spacing: 0.08em; }
+  .floating-nav a .cnt { font-size: 11px; min-width: 18px; padding: 0 3px; }
+}
+</style>
+</head>
+<body>
+
+
+
+
+<div class="app">
+
+  <header class="bar">
+    <div class="brand">The Daily Brief</div>
+    <div class="issue-badge">N°65</div>
+  </header>
+  <div class="dateline">
+    <span>Seoul</span>
+    <span class="middle">2026.05.08</span>
+    <span>오후 Edition</span>
+  </div>
+
+  <section class="intro">
+    <div class="greeting">굿이브닝</div>
+    <h1>오늘의 오후<br>이야기</h1>
+    <div class="sub">총 67건</div>
+    <div class="meta">2026.05.08 17:27 KST</div>
+  </section>
+
+  <div class="hashtags">
+<span>##AI규제와안전</span> · <span>##호르무즈긴장</span> · <span>##반도체경상수지</span> · <span>##AIDC특별법</span> · <span>##양도세중과</span> · <span>##휴머노이드</span> · <span>##한타바이러스경계</span> · <span>##연차시간단위</span>  </div>
+
+  <section class="feed-sec must-read" id="sec-mustknow">
+    <article class="top-story">
+      <div class="kicker">
+        <span>⭐ Editor's Pick · 매일경제</span>
+        <span class="score score-superhigh">8.6</span>
+      </div>
+      <h2>“여보세요” 한마디에 털린다?…AI 음성복제 신종 사기 주의보</h2>
+      <div class="by">
+        <span>By 매일경제</span>
+        <span>·</span>
+        <span>05.07 22:21</span>
+      </div>
+      <div class="body">모르는 번호 전화에 무심코 &#39;여보세요&#39;라고 답했다가 음성 정보가 탈취될 수 있다는 경고가 나왔어요. AI 음성 복제 기술을 활용한 신종 사기가 확산할 가능성이 제기됐어요.</div>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">전화 한 통의 짧은 답으로도 AI 사기에 노출될 수 있는 안전 위협이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">AI 음성 복제는 단 몇 초 분량의 목소리만 있으면 그 사람 말투를 따라 만들 수 있어요. 사기범이 그 목소리로 자녀·배우자·상사를 흉내 내 가족에게 &#39;급히 돈 보내달라&#39;고 전화하는 일이 늘 수 있어요. 노년층, 외국에 자녀가 있는 가정이 가장 위험해요. 이런 사기가 퍼지면 전화 자체를 안 받는 문화가 생겨, 정작 중요한 전화도 놓치는 부작용이 따라올 수 있어요.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">가족끼리 &#39;돈을 부탁할 때 쓰는 우리만의 암호&#39;를 한 단어 정해두세요. 가족 음성으로 급한 송금 요청이 오면 반드시 그 암호를 물어보세요. 모르는 번호 전화는 &#39;여보세요&#39; 대신 잠깐 듣고 끊는 습관이 도움이 돼요. 다만 모든 전화를 무조건 차단하면 택배·병원·학교 같은 중요한 연락도 놓칠 수 있으니, 자주 오는 곳은 미리 연락처 저장을 해두는 게 좋아요.</div>
+  </div>
+</details>
+    </article>
+
+    <div class="sec-divider"><h2>꼭 알아야 할 뉴스</h2></div>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260508013451504" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>07:29</span>
+        </div>
+        <h3>北, &#39;서울 사정권&#39; 신형 155㎜ 곡사포 &#34;연내 남부국경 배치&#34;(종합)</h3>
+        <p class="lede">북한이 서울을 사정권에 둘 수 있는 &#39;신형 155㎜ 자행 평곡사포&#39; 무기체계를 연내 &#39;남부 국경&#39;에 배치하겠다고 밝혔어요. 기존 무기보다 사거리·기동성을 강화한 신형으로 평가돼요.</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">수도권 직접 위협 무기의 전진 배치 예고로 안보 환경에 직결돼요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">곡사포는 산이나 건물 뒤로 포탄을 쏘아 보내는 무기예요. 신형 155mm가 서울을 사정권에 두고 남부 국경(휴전선)에 배치된다는 건, 수도권 시민이 직접 위협 범위에 들어간다는 뜻이에요. 정부는 군 대비태세를 더 강화할 가능성이 크고, 방산주(국방 관련 기업 주식) 관심도 다시 커질 수 있어요. 다만 북한 발표와 실제 배치 사이엔 차이가 있을 수 있어 군 발표를 기다려볼 필요가 있어요.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">가장 가능성이 큰 모습은 군이 추가 미사일 방어 체계 배치와 한미 합동 훈련 강화로 대응하는 거예요. 잘 풀리면 외교 채널을 통해 긴장이 일정 수준에서 관리돼요. 반대로 안 좋은 경우는 북한이 실제 배치 후 시험 사격을 해 분위기가 급격히 악화되는 거예요. 다음 한미 정상 회담과 8월 한미 연합훈련 시점이 갈림길이 될 가능성이 커요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=210221" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>05.07 18:35</span>
+        </div>
+        <h3>“인허가 한 곳에서 한 번에”... AIDC 특별법 통과, ‘타임아웃제’로 구축 속도 낸다</h3>
+        <p class="lede">과기정통부가 AI 데이터센터 산업 진흥 특별법(AIDC 특별법) 제정안이 국회 본회의를 통과했다고 밝혔어요. 인허가가 여러 기관에 흩어져 있던 문제를 풀고, 국가AI전략위 심의로 인허가 속도를 높이는 &#39;타임아웃제&#39;가 핵심이에요.</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">한국 AI 인프라 정책 핵심 법률이 통과돼 산업·고용 영향이 직접적이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">AI 데이터센터(AI 학습·서비스용 큰 서버 건물)는 지을 때 환경·전기·소방 등 서로 다른 부처 허가를 받아야 해서 그동안 시간이 오래 걸렸어요. 이번 법은 한 곳에서 묶어 처리하고, 정해진 기간 안에 답이 없으면 자동 통과로 보는 &#39;타임아웃제&#39;를 도입했어요. 그 결과 지방에 데이터센터가 빨리 지어져 일자리·세수가 늘 수 있지만, 동시에 전기 수요·소음·발열로 주민 갈등도 같이 늘어날 가능성이 있어요.</div>
+  </div>
+  <div class="axis" data-axis="perspective">
+    <div class="axis-title">
+      <span class="icon">👥</span>
+      <span>입장이 다르면 어떻게 보일까?</span>
+    </div>
+    <div class="axis-body">정부와 IT 회사는 빠른 인허가로 한국이 글로벌 경쟁에 뒤처지지 않게 됐다고 환영해요. 비수도권 지자체는 투자 유치 기회로 보고 적극 받아들이는 분위기예요. 반대로 인근 주민은 전기·소음·발열 걱정이 커지고, 환경 단체는 전력 수요 폭증과 탄소 배출 문제를 지적해요. 정부가 이 갈등을 어떻게 조정하느냐가 법의 진짜 성공을 가를 거예요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260508012552071" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>08:02</span>
+        </div>
+        <h3>美무역법원 &#34;10% 글로벌관세 무효&#34;…트럼프 &#39;대체관세&#39;도 1심 패소(종합)</h3>
+        <p class="lede">미국 무역법원이 트럼프 대통령이 위법 판결을 받은 상호관세를 대체하기 위해 동원한 &#39;글로벌 10% 관세&#39;도 무효라고 1심 판결했어요. 이전 상호관세 패소에 이은 두 번째 패소예요.</p>
+        <div class="foot">
+          <div class="score score-high">8.4</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미국 핵심 무역정책이 잇따라 법원에서 막힌 사례라 대미 수출 영향이 커요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">트럼프 대통령은 다른 나라에 더 많은 관세(외국 물건에 매기는 세금)를 매기겠다고 했는데, 미국 법원이 잇따라 &#39;안 된다&#39;고 막은 거예요. 한국은 미국에 자동차·반도체·배터리를 많이 수출하는데, 관세가 진짜 부과되면 가격이 올라 미국 사람들이 한국 제품을 덜 사게 돼요. 법원이 막아주면 한국 기업들에 좋은 소식이지만, 트럼프가 다른 방법(행정명령, 새 법안)을 또 시도할 가능성이 높아 안심하기는 일러요.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">가장 가능성이 큰 모습은 미국 정부가 항소해서 대법원까지 가는 거예요. 그동안은 관세가 묶여 있어 한국 수출 기업이 한숨 돌릴 수 있어요. 잘 풀리면 대법원도 위법으로 판단해 글로벌 관세 정책 자체가 무산돼요. 반대로 안 좋은 경우는 트럼프가 의회를 설득해 법을 새로 만들거나 다른 명분으로 관세를 부활시키는 거예요. 6월 항소심 결정이 갈림길이 돼요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507163700004" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:00</span>
+        </div>
+        <h3>&#39;채상병 순직&#39; 임성근 오늘 1심 선고…해병특검 본류 첫 결론</h3>
+        <p class="lede">채수근 상병(당시 일병) 순직 사고의 책임자로 지목된 임성근 전 해병대 1사단장에 대한 1심 선고가 오늘 진행돼요. 해병대 채상병 특검이 본류 사건에서 처음 내놓는 결론이라 큰 의미가 있어요.</p>
+        <div class="foot">
+          <div class="score score-high">8.4</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">해병대 채상병 특검 본류 사건의 첫 사법 결론이라 정치·군 책임 논의에 결정적이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">젊은 해병이 수해 실종자 수색 중 숨진 사건이 발단이 된 재판이에요. 결과에 따라 군 지휘부의 명령 책임 범위가 정해져, 앞으로 군 수색·구조 작전에서 안전 우선순위가 어떻게 바뀔지가 정해져요. 1심 결과는 정치권·여야 공방에도 직접 영향을 줘서 다음 정기국회 쟁점이 될 가능성이 커요. 군 가족·청년·예비군 모두에게 &#39;안전 명령 체계&#39;가 어떻게 작동하느냐의 시험대예요.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이 사건은 &#39;군 책임자 처벌이냐 무리한 정치 수사냐&#39;로 시각이 갈려요. 1심 결과가 어떻게 나오든 양쪽 다 항소할 가능성이 높아 최종 결론은 한참 더 걸려요. 단일 보도만 보고 결론 내리지 말고, 판결문 요지가 공개된 뒤 여러 매체의 분석을 비교해보세요. 특히 &#39;왜 그 명령이 내려졌는가&#39;, &#39;안전 절차가 왜 무시됐는가&#39; 같은 구조적 질문이 빠지지 않았는지 살피는 게 중요해요.</div>
+  </div>
+</details>
+    </article>
+  </section>
+
+  <section class="feed-sec" id="sec-official-ai">
+    <div class="sec-divider"><h2>공식 AI 업데이트</h2></div>
+    <article class="story">
+      <a href="https://openai.com/index/gpt-5-5-instant" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">OpenAI Blog</span>
+          <span class="dot">·</span>
+          <span>05.05 19:00</span>
+        </div>
+        <h3>GPT-5.5 Instant: smarter, clearer, and more personalized</h3>
+        <p class="lede">오픈AI가 챗GPT의 기본 모델을 GPT-5.5 인스턴트로 업데이트했어요. 답변이 더 정확해지고, 환각 현상은 줄었으며, 사용자 맞춤 설정도 강화됐대요. 누구나 이용하는 기본 모델이라 일상 사용 경험에 바로 영향을 줘요.</p>
+        <div class="foot">
+          <div class="score score-high">8.4</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">전 세계 수억 명이 쓰는 챗GPT 기본 모델 업그레이드라 사용자 경험 변화가 즉각적이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">챗GPT(오픈AI 인공지능 채팅) 기본 모델이 좋아지면 학생 숙제, 회사 보고서, 번역까지 매일 쓰는 도구의 답이 더 똑똑해져요. 환각(거짓말처럼 사실 아닌 정보를 만드는 일)이 줄면 의료·법률·시험 정보 검색에 좀 더 안심하고 쓸 수 있어요. 다만 무료 사용자도 같은 모델이라, 경쟁 회사인 구글·메타도 자기 챗봇 성능을 더 빨리 올릴 거예요. 결국 우리는 더 좋은 무료 도구를 받게 될 가능성이 커요.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">이번 주 평소에 쓰던 질문을 다시 한번 챗GPT에 물어보고 답이 어떻게 달라졌는지 비교해보세요. 맞춤 설정(말투, 답 길이) 메뉴가 어디 있는지 한 번 살펴두면 좋아요. 단, 새 모델이라고 해서 의료·법률·세금 같은 중요한 결정을 통째로 맡기는 건 피하세요. 환각이 줄었다는 건 0이 됐다는 뜻이 아니에요. 중요한 정보는 여전히 사람 전문가 한 번은 확인해야 안전해요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://simonwillison.net/2026/May/7/xai-anthropic/#atom-everything" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Simon Willison</span>
+          <span class="dot">·</span>
+          <span>02:09</span>
+        </div>
+        <h3>Notes on the xAI/Anthropic data center deal</h3>
+        <p class="lede">사이먼 윌리슨이 앤트로픽-스페이스X/xAI 간 데이터센터 계약을 정리했어요. &#39;Code w/ Claude&#39; 발표 가운데 가장 큰 소식으로, xAI &#39;콜로서스&#39; 데이터센터 용량 전체를 앤트로픽이 쓴다는 내용이에요. 이 시설은 가스 터빈을 써 환경 평판이 좋지 않다고 짚었…</p>
+        <div class="foot">
+          <div class="score score-high">8.2</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 회사 간 컴퓨팅 자원 거래와 환경 영향이 동시에 걸린 큰 거래예요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">AI 회사들이 모델을 더 키우려면 거대한 데이터센터(서버 수만 대 모은 큰 건물)가 필요한데, 이미 지어둔 시설을 빌리는 거래가 늘고 있어요. 일론 머스크 회사(xAI) 시설을 경쟁자인 앤트로픽이 쓰는 건 사이가 나빠도 컴퓨터가 부족하면 협력한다는 신호예요. 다만 이 시설은 가스 터빈으로 전기를 만들어 공기 오염 논란이 컸어요. AI가 좋아질수록 전기와 환경 비용이 커진다는 문제가 우리한테도 전기료·기후 변화 형태로 돌아올 수 있어요.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이건 1차 정보가 아니라 한 명의 블로거(사이먼 윌리슨)가 행사 발표를 정리한 글이에요. 큰 그림은 맞을 가능성이 높지만, 계약 금액·기간·환경 영향 수치는 앤트로픽·xAI 공식 발표나 큰 매체 보도와 한 번 더 비교해보는 게 좋아요. &#39;AI 회사가 환경에 나쁜 시설을 쓴다&#39;는 큰 비판 프레임과, &#39;컴퓨팅 자원이 부족해 어쩔 수 없는 거래&#39;라는 산업 프레임 두 가지를 모두 살펴봐야 균형 잡힌 판단이 돼요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://openai.com/index/introducing-trusted-contact-in-chatgpt" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">OpenAI Blog</span>
+          <span class="dot">·</span>
+          <span>05.07 09:00</span>
+        </div>
+        <h3>Introducing Trusted Contact in ChatGPT</h3>
+        <p class="lede">오픈AI가 챗GPT에 신뢰 연락처(Trusted Contact) 기능을 도입했어요. 사용자가 심각한 자해 위험 신호를 보일 때, 미리 등록한 가까운 사람에게 자동으로 알려주는 선택 기능이에요.</p>
+        <div class="foot">
+          <div class="score score-high">8.1</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 챗봇과 정신 건강 안전망을 연결하는 첫 사례라 정책·윤리 영향이 커요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">그동안 챗봇이 자해·자살 신호를 감지해도 가족에게 알릴 길이 없었어요. 이번 기능은 사용자가 미리 동의한 사람에게만 신호를 보내는 방식이라, 사생활을 지키면서도 위험할 때 도움받을 수 있게 만든 거예요. 학교 상담실, 청소년 보호 단체에서도 비슷한 방식으로 부모·교사 알림을 설계하는 흐름이 생길 가능성이 높아요. 다른 챗봇 회사들도 비슷한 안전망을 따라 만들지 안 만들지가 앞으로 큰 차이를 낳을 거예요.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">가족이나 친한 친구가 챗GPT를 자주 쓴다면, 신뢰 연락처 기능을 함께 살펴보고 등록할지 같이 이야기해보세요. 본인이 등록되는 입장이면, 만약 알림이 왔을 때 어떻게 반응할지 마음의 준비를 미리 해두는 게 좋아요. 다만 이 기능 하나로 모든 위험을 막을 수 있다고 안심하는 건 피하세요. 진짜 위급할 땐 1393(자살예방상담전화) 같은 전문 기관 도움이 가장 빠르고 안전해요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">OpenAI Blog</span>
+          <span class="dot">·</span>
+          <span>05.07 22:00</span>
+        </div>
+        <h3>Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber</h3>
+        <p class="lede">오픈AI가 사이버 보안 전용 모델 GPT-5.5-Cyber와 신뢰 접근(Trusted Access) 프로그램을 확대한대요. 인증된 보안 연구자와 방어자가 취약점 분석을 빠르게 하고, 핵심 인프라를 지키도록 돕는 게 목표예요.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI를 사이버 공격에 쓰는 시대에 방어 쪽 도구를 강화하는 정책이라 안전과 직결돼요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">사이버 공격용 AI 도구가 점점 강해지는데, 방어용 AI도 같이 발전하지 않으면 우리가 쓰는 은행·병원·전기 시스템이 위험해져요. 오픈AI가 인증된 보안 연구자에게만 강력한 모델을 주는 방식이라, 아무나 악용하기는 어렵게 막은 점이 중요해요. 앞으로 다른 회사들도 비슷한 인증·심사 제도를 따라 만들 가능성이 높아요. 우리 일상에서는 카드사·통신사·병원 보안이 조금씩 더 단단해지는 효과가 나타날 거예요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://deepmind.google/blog/alphaevolve-impact/" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Google DeepMind</span>
+          <span class="dot">·</span>
+          <span>05.06 19:43</span>
+        </div>
+        <h3>AlphaEvolve: How our Gemini-powered coding agent is scaling impact across fields</h3>
+        <p class="lede">구글 딥마인드가 제미나이(구글 인공지능 모델) 기반 코딩 에이전트 &#39;알파이볼브&#39;의 활용 사례를 공개했어요. 비즈니스, 기반 시설, 과학 분야 알고리즘에 적용되며 실제로 영향을 만들고 있다고 해요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.8</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">OpenAI Blog</span>
+          <span class="dot">·</span>
+          <span>05.07 19:00</span>
+        </div>
+        <h3>Advancing voice intelligence with new models in the API</h3>
+        <p class="lede">오픈AI가 음성을 알아듣고 추론하며 번역까지 가능한 새로운 실시간 음성 모델을 API로 공개했어요. 자연스럽고 똑똑한 음성 대화 서비스를 개발자가 만들 수 있게 됐어요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://simonwillison.net/2026/May/6/code-w-claude-2026/#atom-everything" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Simon Willison</span>
+          <span class="dot">·</span>
+          <span>05.07 00:58</span>
+        </div>
+        <h3>Live blog: Code w/ Claude 2026</h3>
+        <p class="lede">사이먼 윌리슨이 앤트로픽(클로드를 만든 회사)의 &#39;Code w/ Claude 2026&#39; 행사 키노트를 실시간으로 정리했어요. 클로드(앤트로픽 인공지능)와 Claude Code 도구의 새 발표를 빠르게 따라잡을 수 있는 1차 기록이에요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.4</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.100.0" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">Anthropic SDK Releases</span>
+          <span class="dot">·</span>
+          <span>05.07 00:07</span>
+        </div>
+        <h3>v0.100.0</h3>
+        <p class="lede">앤트로픽 파이썬 SDK가 0.100.0 버전을 공개했어요. 매니지드 에이전트 멀티에이전트와 결과 추적, 웹훅, 볼트 검증 같은 새 API를 추가했고, 웹훅 설정 관련 버그도 고쳤다고 해요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.0</div>
+        </div>
+      </a>
+      
+    </article>
+  </section>
+  <section class="feed-sec" id="sec-ai">
+    <div class="sec-divider"><h2>AI 뉴스</h2></div>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12040000" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>05.07 22:21</span>
+        </div>
+        <h3>“여보세요” 한마디에 털린다?…AI 음성복제 신종 사기 주의보</h3>
+        <p class="lede">모르는 번호 전화에 무심코 &#39;여보세요&#39;라고 답했다가 음성 정보가 탈취될 수 있다는 경고가 나왔어요. AI 음성 복제 기술을 활용한 신종 사기가 확산할 가능성이 제기됐어요.</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.6</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">전화 한 통의 짧은 답으로도 AI 사기에 노출될 수 있는 안전 위협이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">AI 음성 복제는 단 몇 초 분량의 목소리만 있으면 그 사람 말투를 따라 만들 수 있어요. 사기범이 그 목소리로 자녀·배우자·상사를 흉내 내 가족에게 &#39;급히 돈 보내달라&#39;고 전화하는 일이 늘 수 있어요. 노년층, 외국에 자녀가 있는 가정이 가장 위험해요. 이런 사기가 퍼지면 전화 자체를 안 받는 문화가 생겨, 정작 중요한 전화도 놓치는 부작용이 따라올 수 있어요.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">가족끼리 &#39;돈을 부탁할 때 쓰는 우리만의 암호&#39;를 한 단어 정해두세요. 가족 음성으로 급한 송금 요청이 오면 반드시 그 암호를 물어보세요. 모르는 번호 전화는 &#39;여보세요&#39; 대신 잠깐 듣고 끊는 습관이 도움이 돼요. 다만 모든 전화를 무조건 차단하면 택배·병원·학교 같은 중요한 연락도 놓칠 수 있으니, 자주 오는 곳은 미리 연락처 저장을 해두는 게 좋아요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=210221" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>05.07 18:35</span>
+        </div>
+        <h3>“인허가 한 곳에서 한 번에”... AIDC 특별법 통과, ‘타임아웃제’로 구축 속도 낸다</h3>
+        <p class="lede">과기정통부가 AI 데이터센터 산업 진흥 특별법(AIDC 특별법) 제정안이 국회 본회의를 통과했다고 밝혔어요. 인허가가 여러 기관에 흩어져 있던 문제를 풀고, 국가AI전략위 심의로 인허가 속도를 높이는 &#39;타임아웃제&#39;가 핵심이에요.</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">한국 AI 인프라 정책 핵심 법률이 통과돼 산업·고용 영향이 직접적이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">AI 데이터센터(AI 학습·서비스용 큰 서버 건물)는 지을 때 환경·전기·소방 등 서로 다른 부처 허가를 받아야 해서 그동안 시간이 오래 걸렸어요. 이번 법은 한 곳에서 묶어 처리하고, 정해진 기간 안에 답이 없으면 자동 통과로 보는 &#39;타임아웃제&#39;를 도입했어요. 그 결과 지방에 데이터센터가 빨리 지어져 일자리·세수가 늘 수 있지만, 동시에 전기 수요·소음·발열로 주민 갈등도 같이 늘어날 가능성이 있어요.</div>
+  </div>
+  <div class="axis" data-axis="perspective">
+    <div class="axis-title">
+      <span class="icon">👥</span>
+      <span>입장이 다르면 어떻게 보일까?</span>
+    </div>
+    <div class="axis-body">정부와 IT 회사는 빠른 인허가로 한국이 글로벌 경쟁에 뒤처지지 않게 됐다고 환영해요. 비수도권 지자체는 투자 유치 기회로 보고 적극 받아들이는 분위기예요. 반대로 인근 주민은 전기·소음·발열 걱정이 커지고, 환경 단체는 전력 수요 폭증과 탄소 배출 문제를 지적해요. 정부가 이 갈등을 어떻게 조정하느냐가 법의 진짜 성공을 가를 거예요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=210184" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>05.07 18:53</span>
+        </div>
+        <h3>아모데이 &#34;앤트로픽 1분기 매출 80배 성장...컴퓨팅 부족으로 어려움&#34;</h3>
+        <p class="lede">다리오 아모데이 앤트로픽 CEO가 1분기 매출과 사용량이 연 환산 80배 늘었다고 밝혔어요. 원래 10배 성장을 예상했는데 그보다 훨씬 빠르게 성장 중이고, 컴퓨팅 자원 부족으로 서비스 지연·성능 저하가 반복됐다고 토로했대요.</p>
+        <div class="foot">
+          <div class="score score-high">8.4</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 산업의 폭발적 수요와 컴퓨팅 인프라 병목을 동시에 보여주는 신호예요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">AI 회사가 1년에 80배 커지는 건 일반 회사로는 상상 못 할 속도예요. 이런 수요를 따라가려면 데이터센터(서버 모은 큰 건물)와 GPU(인공지능 학습용 부품) 가 더 많이 필요해서, 엔비디아·삼성·SK하이닉스 같은 부품 회사들 매출도 같이 늘어나요. 동시에 전기 사용량도 폭발적으로 늘어 전기료와 환경 부담이 우리 일상에도 돌아올 수 있어요. 클로드 같은 서비스가 자주 느려진 이유가 인기 때문이라는 점도 함께 알아두면 좋아요.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">가장 가능성이 큰 모습은 앞으로 1~2년간 AI 회사들이 계속 컴퓨터 자원 부족에 시달리며 가격을 올리거나 사용량을 제한하는 거예요. 잘 풀리면 새 데이터센터가 빨리 지어져 서비스 품질이 회복될 수 있어요. 반대로 안 좋은 경우는 한두 회사만 자원을 독점해 다른 스타트업이 밀려나는 거예요. 다음 달 발표될 미국·한국 데이터센터 신규 계획이 이 방향을 가르는 갈림길이 될 거예요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507155100009" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:15</span>
+        </div>
+        <h3>트럼프·시진핑, 미중 전략경쟁 속 &#39;AI보안 위협&#39; 대응엔 손잡나</h3>
+        <p class="lede">AI 패권을 두고 전략 경쟁을 벌이는 미국과 중국의 정상이 다음 주 베이징 회담에서 AI 보안 위협 대응에 손을 잡을 가능성이 거론됐어요. 양국 모두 AI 안전·악용 차단을 공통 과제로 보는 흐름이에요.</p>
+        <div class="foot">
+          <div class="score score-high">8.3</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미·중 AI 안보 협력 가능성은 글로벌 공급망과 한국 외교에 직접 영향을 줘요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">미·중은 AI 칩·기술 수출을 두고 부딪히고 있는데, 동시에 AI를 이용한 사이버 공격·딥페이크 같은 위협은 두 나라 모두에 위험해요. 그래서 큰 그림으로는 싸우면서도 안전 분야는 함께 일하는 &#39;경쟁 속 협력&#39; 모습이 나올 가능성이 있어요. 한국은 미국 동맹이지만 중국과도 무역 관계가 깊어서, 두 나라가 AI 안전 규칙을 만들면 우리 기업도 그 기준을 따라야 해요. 외교적으로는 어느 한쪽 편에 너무 가깝게 서지 않는 균형이 더 중요해져요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=210194" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>05.07 18:46</span>
+        </div>
+        <h3>“자고 깨면 더 똑똑해져”...앤트로픽, AI 자기 개선 기능 ‘드리밍’ 공개</h3>
+        <p class="lede">앤트로픽이 AI 에이전트가 사람의 개입 없이 스스로 개선하는 &#39;드리밍(Dreaming)&#39; 기능을 공개했어요. 세션 사이 평가 과정으로 과거 행동을 분석하고 반복 패턴을 찾아내 더 나은 작업 방식을 만든다고 해요.</p>
+        <div class="foot">
+          <div class="score score-high">8.3</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI가 스스로 학습·반성하는 구조라 일자리·자동화 영향이 큰 신기술이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">지금까지 AI는 사람이 새 데이터를 줘야 똑똑해졌는데, 드리밍은 AI가 스스로 자기 일을 돌아보고 고치는 방식이에요. 회사가 AI에게 일을 맡겼을 때 시간이 갈수록 점점 잘하게 된다는 뜻이라, 단순 사무 업무·고객 응대·데이터 정리 같은 일은 사람 대신 AI가 더 빨리 자리잡을 수 있어요. 다만 AI가 잘못된 패턴을 스스로 굳히면 누가 책임을 질지 새 문제가 생길 수 있어요.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">내 일이 &#39;반복되는 패턴&#39;으로 정리되는 부분이 얼마나 되는지 한번 적어보세요. 그 부분일수록 AI가 빨리 학습할 가능성이 커요. 반대로 사람과의 관계, 판단, 새로운 상황 대응 같은 영역은 더 오래 사람이 할 일로 남아요. 단, &#39;나는 AI가 못 하는 일을 한다&#39;고 안심하고 멈추는 건 피하세요. 어떤 도구가 새로 나오는지 한 달에 한 번이라도 짧게 살펴보는 습관이 가장 안전한 대비예요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=210199" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>05.07 17:54</span>
+        </div>
+        <h3>크롬, 사용자 동의 없이 4GB &#39;제미나이 나노&#39; 무단 설치 논란</h3>
+        <p class="lede">구글 크롬이 사용자 동의 없이 약 4GB짜리 제미나이 나노 AI 모델을 자동 설치한다는 분석이 나왔어요. 보안 연구원 알렉산더 한프는 삭제해도 다시 다운로드된다며 GDPR과 ePrivacy Directive 위반 가능성을 제기했어요.</p>
+        <div class="foot">
+          <div class="score score-high">8.2</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">전 세계 수십억 사용자의 PC·통신 자원을 동의 없이 쓴다는 개인정보 쟁점이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">크롬은 전 세계에서 가장 많이 쓰는 인터넷 브라우저예요. 동의 없이 4GB짜리 파일이 깔리면 통신비·디스크 용량을 빼앗기는 셈이고, 인터넷 속도가 느린 가정·학교·회사도 영향을 받아요. 유럽은 개인정보 보호법(GDPR)이 강해서 큰 벌금이 나올 가능성이 있어요. 한국도 비슷한 문제가 제기되면 다른 빅테크 기업들도 &#39;AI 모델을 깔기 전 동의 받기&#39; 절차를 의무로 만들어야 할 수 있어요.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">크롬 설정에서 디스크 용량을 한 번 살펴보고, AI 관련 항목이 있다면 어떤 옵션이 켜져 있는지 확인해보세요. 데이터 사용량이 적은 통신 요금제를 쓴다면 와이파이 환경에서만 크롬을 쓰는 것도 방법이에요. 다만 구글 공식 발표 없이 한 연구원의 분석만 보고 크롬을 완전히 지우는 건 너무 성급한 결정이 될 수 있어요. 며칠 안에 구글이 답을 내놓을 가능성이 높으니 그때 다시 판단해도 늦지 않아요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=210186" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>07:00</span>
+        </div>
+        <h3>[5월7일] &#34;분당 제작비 30달러&#34;...하루 500편씩 쏟아내는 중국의 AI 드라마 공장</h3>
+        <p class="lede">중국이 AI를 활용해 분당 30달러대 제작비로 하루 500편가량을 쏟아내는 &#39;마이크로 드라마&#39; 산업이 빠르게 성장 중이에요. AI로 배우 얼굴·배경을 자연스럽게 수정하고, 1~2분짜리 짧은 에피소드로 시청자 시간을 사로잡는 구조예요.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">AI 콘텐츠 양산이 영상 산업 일자리·문화 소비 패턴을 바꾸는 흐름이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">AI가 짧은 영상을 거의 공장처럼 찍어내면, 한국 드라마·웹툰·웹소설 작가들도 비슷한 방식과 경쟁하게 돼요. 기존 배우·감독·편집자 일자리는 줄어들 위험이 있고, 반대로 &#39;AI를 잘 다루는 1인 제작자&#39;에게는 새로운 기회가 열려요. 시청자 입장에서는 더 많은 선택지가 생기지만 깊이 있는 작품은 묻히기 쉬워져요. 어린이·청소년이 AI로 만들어진 영상을 사실로 믿을 위험도 같이 커지니, 미디어 교육이 더 중요해져요.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">가장 가능성이 큰 모습은 1~2년 안에 이런 AI 마이크로 드라마가 한국 OTT(인터넷 영상 서비스)와 유튜브에도 본격 진출하는 거예요. 잘 풀리면 한국 K콘텐츠가 AI 도구를 이용해 제작 속도를 따라잡고 글로벌 시장에서 더 많은 작품을 낼 수 있어요. 반대로 안 좋은 경우는 저가 양산형 콘텐츠가 시장을 채워 작가·배우 수입이 줄어드는 상황이에요. 정부가 &#39;AI 표시 의무화&#39;와 저작권 규칙을 빨리 만드느냐가 갈림길이에요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260508013800009" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:49</span>
+        </div>
+        <h3>엔비디아, 데이터센터기업 IREN에 2조9천억원 투자</h3>
+        <p class="lede">엔비디아가 데이터센터 개발사 IREN에 최대 21억 달러(약 2조9천억원)를 투자하기로 했어요. 블룸버그가 보도한 내용으로, AI 컴퓨팅 인프라 확장에 본격적으로 자본을 투입하는 흐름이에요.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">엔비디아의 데이터센터 직접 투자는 AI 인프라 공급 구조를 바꾸는 신호예요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">엔비디아는 AI 칩만 만드는 회사였는데, 이제는 데이터센터 회사에 직접 돈을 투자해요. 자기 칩을 더 많이 쓰게 만드는 전략이라, 다른 칩 회사(AMD·인텔)는 자리를 잃기 더 어려워져요. 한국 SK하이닉스·삼성전자도 엔비디아에 들어가는 메모리 부품 매출이 더 늘어날 가능성이 있어요. 다만 한 회사가 칩·소프트·인프라를 다 차지하는 흐름은 장기적으로 시장 독점 우려를 키울 수 있어요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260507174112" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>05.07 17:41</span>
+        </div>
+        <h3>LNG 직거래 빠진 AI데이터센터 특별법 국회 본회의 통과</h3>
+        <p class="lede">AIDC 특별법이 7일 국회 본회의를 통과했어요. 인허가 간소화, 비수도권 전력계통영향평가 면제, 타임아웃제가 담겼지만, 핵심 쟁점이던 LNG 직거래는 결국 제외됐어요. 전력 조달 부담은 한전 체계 안에서 해결해야 하는 셈이에요.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">LNG 직거래 제외로 데이터센터 전력·비용 구조에 직접 영향을 주는 정책이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">LNG(천연가스) 직거래는 데이터센터가 한전을 거치지 않고 가스 발전소에서 직접 전기를 사오는 방식이었어요. 이 조항이 빠지면서 모든 전기는 한전이라는 기존 체계 안에서 사야 해요. 결과적으로 한전의 적자 부담이 커질 수 있고, 그 부담은 국민 전기료 인상이나 세금으로 돌아올 가능성이 있어요. 데이터센터 회사들도 비용을 줄이려고 비수도권으로 빠르게 분산할 가능성이 커요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=210210" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>05.07 17:40</span>
+        </div>
+        <h3>보스턴 다이내믹스, &#39;양산형 아틀라스&#39; 공개…&#39;L-시트&#39;로 압도적 균형감 입증</h3>
+        <p class="lede">현대차 자회사 보스턴 다이내믹스가 차세대 휴머노이드 로봇 &#39;아틀라스&#39; 양산형 시연 영상을 공개했어요. 물구나무 자세에서 &#39;L-시트(L-sit)&#39; 같은 고난도 동작을 선보이며 균형 제어 능력을 입증했어요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.7</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.etnews.com/20260508000002" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">전자신문</span>
+          <span class="dot">·</span>
+          <span>07:30</span>
+        </div>
+        <h3>오픈AI, 실시간 음성 AI모델 공개…“자연스러운 대화 행태 반영”</h3>
+        <p class="lede">오픈AI가 GPT-5급 추론 능력을 갖춘 실시간 음성 AI 모델 &#39;GPT-리얼타임-2&#39;를 공개했어요. 사람의 자연스러운 대화 행태를 반영해 사용자와 AI가 끊김 없이 번갈아 말할 수 있는 구조라고 해요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.6</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/business/12039475" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04:00</span>
+        </div>
+        <h3>샤킬 오닐에 1조 안겨준 그 주식…AI 반도체 ‘놈놈놈’ 정체</h3>
+        <p class="lede">매일경제가 AI 반도체 시장을 영화 &#39;좋은 놈, 나쁜 놈, 이상한 놈&#39;에 빗대어 엔비디아·인텔·구글로 정리했어요. 엔비디아는 AI 투자자 사이에서 사실상 핵심 종목으로, 샤킬 오닐도 약 1조원 평가이익을 거둔 사례로 소개됐어요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.6</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507158300003" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:05</span>
+        </div>
+        <h3>삼성 미래로봇추진단, 인력 &#39;수혈&#39;…제조 로봇 상용화 속도</h3>
+        <p class="lede">삼성전자가 로봇 사업 핵심 조직 &#39;미래로봇추진단&#39; 인력을 확충하며 휴머노이드 등 로봇 사업에 속도를 내고 있어요. 제조 로봇 상용화에 무게를 두는 흐름이라고 해요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=210203" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>05.07 18:27</span>
+        </div>
+        <h3>“피아노 연주까지 1시간이면 끝”...제네시스 AI, 인간 손 능가하는 로봇 모델 공개</h3>
+        <p class="lede">프랑스 스타트업 제네시스 AI가 사람처럼 정교한 손동작이 가능한 로봇 손과 범용 로봇용 AI 모델 &#39;제네-26.5&#39;를 공개했어요. 특정 제조사 하드웨어에 묶이지 않고 다양한 로봇 플랫폼에서 쓸 수 있게 설계됐다고 해요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260507200636" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>05.07 20:06</span>
+        </div>
+        <h3>리얼월드, 독자 로보틱스 파운데이션 모델 &#39;RLDX-1&#39; 공개...&#34;로봇손 중 최고&#34;</h3>
+        <p class="lede">리얼월드(대표 류중희)가 독자 로보틱스 파운데이션 모델 &#39;RLDX-1&#39;을 공개했어요. 5지 로봇 손에 정교한 조작 능력을 부여하는 &#39;Dexterity-First&#39; 모델로, 시각·언어뿐 아니라 손에 가해지는 힘·촉각·작업 기억까지 단일 모델에서 함께 처리한다고 해요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.4</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260507175728" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>05.07 18:09</span>
+        </div>
+        <h3>[현장] &#34;안전사고 직전 SOS&#34;…씨이랩, AI 영상분석 솔루션 시선</h3>
+        <p class="lede">영상AI 전문 기업 씨이랩이 &#39;2026 국제인공지능대전&#39;에서 지능형 CCTV로 산업 현장 안전사고를 사전에 잡아내는 AI 솔루션을 소개했어요. 지게차와 작업자 충돌 직전 화면에 &#39;SOS&#39; 표시를 띄워 위험을 알리는 방식이에요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.4</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.aitimes.com/news/articleView.html?idxno=210217" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">AI타임스</span>
+          <span class="dot">·</span>
+          <span>05.07 18:12</span>
+        </div>
+        <h3>&#34;감정·말투까지 이해&#34;...인월드 AI, 차세대 음성 모델 ‘리얼타임 TTS-2’ 출시</h3>
+        <p class="lede">음성 AI 스타트업 인월드 AI가 사람의 감정과 말투를 실시간으로 이해하는 음성 모델 &#39;리얼타임 TTS-2&#39;를 연구 프리뷰로 공개했어요. 기존 텍스트 입력 방식과 달리 실제 음성 자체를 입력으로 받아들여 반응한다는 점이 핵심이에요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.3</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/stock/12039953" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>05.07 21:43</span>
+        </div>
+        <h3>PwC컨설팅 “K배터리, 전고체로 피지컬 AI 분야 주도권 확보를”</h3>
+        <p class="lede">PwC컨설팅이 K배터리가 전고체 배터리로 피지컬 AI 분야 주도권을 확보해야 한다고 제언했어요. 로봇·드론 등 피지컬 AI가 본격 상용화되는 과정에서 배터리 작동 시간이 성패를 좌우하고, 기술 초기 단계에서 국제 표준 경쟁이 중요하다는 분석이에요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.2</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260507190231" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>05.07 19:02</span>
+        </div>
+        <h3>[현장] 디에스앤지 &#34;AI인프라, 구매하는 게 아니라 설계하는 것&#34;</h3>
+        <p class="lede">디에스앤지(DS&amp;G) 최효진 CTO가 &#39;2026 AI엑스포&#39;에서 GPU 가동률 문제를 짚었어요. 미국 보고서에서 GPU 가동률 70% 미만인 곳이 75%, MS 리서치는 실제 사용률이 10~40%에 그친다고 지적하며 &#39;AI 인프라는 사는 게 아니라 설계하는 것&#39;이라고 …</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.2</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507169800004" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:15</span>
+        </div>
+        <h3>&#34;내 자식이나 다름없지&#34;…어버이날 독거노인 곁 채우는 AI 로봇</h3>
+        <p class="lede">어버이날을 맞아 독거노인 곁을 채우는 AI 로봇 사례가 소개됐어요. &#39;할머니 다녀오셨어요? 보고 싶었어요!&#39; 같은 인사말로 정서적 동반자 역할을 하며 &#39;자식 같다&#39;는 반응을 받고 있다고 해요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.1</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260508025400008" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>08:18</span>
+        </div>
+        <h3>한투증권 &#34;카카오, 본실적 안정 확인…AI 수익화시 주가 우상향&#34;</h3>
+        <p class="lede">한국투자증권은 8일 카카오에 대해 본 실적 안정성을 확인했다고 평가하면서, 향후 AI 수익화에 따라 주가가 우상향 흐름을 보일 것이라는 전망을 내놨어요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.8</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260507201516" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>05.07 20:43</span>
+        </div>
+        <h3>[현장] 페르소나AI &#34;옵티멀AI로 피지컬AI 시장 선도&#34;</h3>
+        <p class="lede">유승재 페르소나AI 대표가 7일 코엑스 &#39;2026 AI엑스포&#39;에서 피지컬 AI 시장을 위한 &#39;옵티멀 AI&#39; 비전을 발표했어요. 물리 법칙을 이해하는 가상 세계 데이터 수집이 필수이며, 이를 통해 소버린 AI(국가 주권 AI) 달성으로 연결된다고 강조했어요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.8</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260507171204" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>05.07 17:50</span>
+        </div>
+        <h3>&#34;AI 시대일수록 소수 핵심인재가 회사 경쟁력 좌우&#34;</h3>
+        <p class="lede">이성파 링글 공동대표가 &#39;HR테크 리더스 데이 시즌5&#39;에서 AI 시대일수록 소수 핵심인재에게 일이 몰린다고 강조했어요. 회사 경쟁력은 결국 사람과 그 사람을 어떻게 조직화하느냐에서 결정된다는 메시지예요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://zdnet.co.kr/view/?no=20260507171036" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">ZDNet Korea</span>
+          <span class="dot">·</span>
+          <span>05.07 17:46</span>
+        </div>
+        <h3>&#34;AI 교육, 일괄 도입 아닌 맞춤형으로 설계돼야&#34;</h3>
+        <p class="lede">박영진 팀스파르타 AX본부장이 &#39;HR테크 리더스 데이 시즌5&#39;에서 &#39;AI 교육의 성패는 기술이 아닌 순서의 문제&#39;라고 강조했어요. 진단 없이 시작하지 말고 개인별 역량에 맞춘 설계가 필요하다는 게 핵심이에요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.3</div>
+        </div>
+      </a>
+      
+    </article>
+  </section>
+  <section class="feed-sec" id="sec-general">
+    <div class="sec-divider"><h2>종합 뉴스</h2></div>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260508013451504" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>07:29</span>
+        </div>
+        <h3>北, &#39;서울 사정권&#39; 신형 155㎜ 곡사포 &#34;연내 남부국경 배치&#34;(종합)</h3>
+        <p class="lede">북한이 서울을 사정권에 둘 수 있는 &#39;신형 155㎜ 자행 평곡사포&#39; 무기체계를 연내 &#39;남부 국경&#39;에 배치하겠다고 밝혔어요. 기존 무기보다 사거리·기동성을 강화한 신형으로 평가돼요.</p>
+        <div class="foot">
+          <div class="score score-superhigh">8.5</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">수도권 직접 위협 무기의 전진 배치 예고로 안보 환경에 직결돼요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">곡사포는 산이나 건물 뒤로 포탄을 쏘아 보내는 무기예요. 신형 155mm가 서울을 사정권에 두고 남부 국경(휴전선)에 배치된다는 건, 수도권 시민이 직접 위협 범위에 들어간다는 뜻이에요. 정부는 군 대비태세를 더 강화할 가능성이 크고, 방산주(국방 관련 기업 주식) 관심도 다시 커질 수 있어요. 다만 북한 발표와 실제 배치 사이엔 차이가 있을 수 있어 군 발표를 기다려볼 필요가 있어요.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">가장 가능성이 큰 모습은 군이 추가 미사일 방어 체계 배치와 한미 합동 훈련 강화로 대응하는 거예요. 잘 풀리면 외교 채널을 통해 긴장이 일정 수준에서 관리돼요. 반대로 안 좋은 경우는 북한이 실제 배치 후 시험 사격을 해 분위기가 급격히 악화되는 거예요. 다음 한미 정상 회담과 8월 한미 연합훈련 시점이 갈림길이 될 가능성이 커요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260508012552071" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>08:02</span>
+        </div>
+        <h3>美무역법원 &#34;10% 글로벌관세 무효&#34;…트럼프 &#39;대체관세&#39;도 1심 패소(종합)</h3>
+        <p class="lede">미국 무역법원이 트럼프 대통령이 위법 판결을 받은 상호관세를 대체하기 위해 동원한 &#39;글로벌 10% 관세&#39;도 무효라고 1심 판결했어요. 이전 상호관세 패소에 이은 두 번째 패소예요.</p>
+        <div class="foot">
+          <div class="score score-high">8.4</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미국 핵심 무역정책이 잇따라 법원에서 막힌 사례라 대미 수출 영향이 커요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">트럼프 대통령은 다른 나라에 더 많은 관세(외국 물건에 매기는 세금)를 매기겠다고 했는데, 미국 법원이 잇따라 &#39;안 된다&#39;고 막은 거예요. 한국은 미국에 자동차·반도체·배터리를 많이 수출하는데, 관세가 진짜 부과되면 가격이 올라 미국 사람들이 한국 제품을 덜 사게 돼요. 법원이 막아주면 한국 기업들에 좋은 소식이지만, 트럼프가 다른 방법(행정명령, 새 법안)을 또 시도할 가능성이 높아 안심하기는 일러요.</div>
+  </div>
+  <div class="axis" data-axis="scenario">
+    <div class="axis-title">
+      <span class="icon">🔮</span>
+      <span>앞으로 어떻게 될 수 있을까?</span>
+    </div>
+    <div class="axis-body">가장 가능성이 큰 모습은 미국 정부가 항소해서 대법원까지 가는 거예요. 그동안은 관세가 묶여 있어 한국 수출 기업이 한숨 돌릴 수 있어요. 잘 풀리면 대법원도 위법으로 판단해 글로벌 관세 정책 자체가 무산돼요. 반대로 안 좋은 경우는 트럼프가 의회를 설득해 법을 새로 만들거나 다른 명분으로 관세를 부활시키는 거예요. 6월 항소심 결정이 갈림길이 돼요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507163700004" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:00</span>
+        </div>
+        <h3>&#39;채상병 순직&#39; 임성근 오늘 1심 선고…해병특검 본류 첫 결론</h3>
+        <p class="lede">채수근 상병(당시 일병) 순직 사고의 책임자로 지목된 임성근 전 해병대 1사단장에 대한 1심 선고가 오늘 진행돼요. 해병대 채상병 특검이 본류 사건에서 처음 내놓는 결론이라 큰 의미가 있어요.</p>
+        <div class="foot">
+          <div class="score score-high">8.4</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">해병대 채상병 특검 본류 사건의 첫 사법 결론이라 정치·군 책임 논의에 결정적이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">젊은 해병이 수해 실종자 수색 중 숨진 사건이 발단이 된 재판이에요. 결과에 따라 군 지휘부의 명령 책임 범위가 정해져, 앞으로 군 수색·구조 작전에서 안전 우선순위가 어떻게 바뀔지가 정해져요. 1심 결과는 정치권·여야 공방에도 직접 영향을 줘서 다음 정기국회 쟁점이 될 가능성이 커요. 군 가족·청년·예비군 모두에게 &#39;안전 명령 체계&#39;가 어떻게 작동하느냐의 시험대예요.</div>
+  </div>
+  <div class="axis" data-axis="frame">
+    <div class="axis-title">
+      <span class="icon">🧐</span>
+      <span>이 뉴스, 이렇게 읽어보세요</span>
+    </div>
+    <div class="axis-body">이 사건은 &#39;군 책임자 처벌이냐 무리한 정치 수사냐&#39;로 시각이 갈려요. 1심 결과가 어떻게 나오든 양쪽 다 항소할 가능성이 높아 최종 결론은 한참 더 걸려요. 단일 보도만 보고 결론 내리지 말고, 판결문 요지가 공개된 뒤 여러 매체의 분석을 비교해보세요. 특히 &#39;왜 그 명령이 내려졌는가&#39;, &#39;안전 절차가 왜 무시됐는가&#39; 같은 구조적 질문이 빠지지 않았는지 살피는 게 중요해요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/society/rights/1257680.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>05:00</span>
+        </div>
+        <h3>위기의 고위험 산모…‘응급분만센터’ 20곳 중 11곳, 산과 전문의 미달</h3>
+        <p class="lede">정부가 지정한 전국 권역모자의료센터 20곳 가운데 11곳이 산과 전문의 필수인력 기준을 충족하지 못한 것으로 확인됐어요. 지난 2월에 이어 1일에도 &#39;분만실 뺑뺑이&#39;로 태아가 숨지는 비극이 재발했다고 한겨레가 보도했어요.</p>
+        <div class="foot">
+          <div class="score score-high">8.4</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">응급분만 인프라 붕괴는 임산부·신생아 안전과 직결되는 보건 위기예요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">응급분만센터는 위급한 산모와 신생아를 24시간 받아주는 마지막 보루예요. 절반 이상이 산과 전문의 부족으로 제 기능을 못 한다는 건, 지방에 사는 임산부일수록 위급할 때 도움 받기 어렵다는 뜻이에요. &#39;분만실 뺑뺑이&#39;(받아줄 병원을 찾아 헤매다 시간을 놓치는 일)로 아이가 숨지는 일이 반복되는 건 시스템 문제예요. 이대로 두면 출생 위험이 높아져 출산을 망설이는 가정이 더 늘 수 있어요.</div>
+  </div>
+  <div class="axis" data-axis="perspective">
+    <div class="axis-title">
+      <span class="icon">👥</span>
+      <span>입장이 다르면 어떻게 보일까?</span>
+    </div>
+    <div class="axis-body">임산부·가족은 가까운 곳에서 안전하게 출산하고 싶어 해요. 산과 의사들은 야간·주말 응급분만의 책임 부담과 의료 분쟁 위험에 비해 보상이 부족하다고 호소해요. 정부는 의대 정원 확대를 추진하고 있지만, 실제 분만 현장 인력이 채워지기까지는 5~10년이 걸려요. 환자단체는 단기 대책으로 응급분만 수가 인상과 분만 사고 책임 보험제 도입을 요구하고 있어요. 네 입장이 부딪히는 지점에서 정책 우선순위가 정해져요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/world/12040680" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>07:28</span>
+        </div>
+        <h3>트럼프 합의 가능성 크다더니…이란 항구 공습한 미군, 호르무즈 긴장 고조</h3>
+        <p class="lede">미군이 7일(현지시간) 이란의 케슘 항구와 반다르아바스를 공습했다고 미국 매체 기자가 전했어요. 트럼프 합의 가능성이 거론되던 와중에 호르무즈 긴장이 다시 고조됐다고 해요.</p>
+        <div class="foot">
+          <div class="score score-high">8.3</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">글로벌 원유 수송로 호르무즈 긴장 재격화는 유가·물가에 직격탄이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">호르무즈 해협(중동에서 원유가 빠져나오는 좁은 바닷길)에서 충돌이 일어나면 국제 유가가 곧바로 흔들려요. 휘발유·경유 가격이 오르면 운송·식품·전기료까지 줄줄이 영향을 받아 가계 부담이 커져요. 한국 화물선·석유 수입 항로도 위험에 노출돼서 보험료가 올라갈 수 있어요. 정부는 이미 5차 유류 최고가 동결을 발표했는데, 사태가 길어지면 동결 약속을 지키기 점점 어려워질 거예요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507171900003" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:01</span>
+        </div>
+        <h3>양도세 중과 D-2…내일까지 토지거래허가 신청시 중과 면제</h3>
+        <p class="lede">2022년부터 4년간 유예돼 온 다주택자 양도소득세 중과 제도가 이틀 뒤 시행돼요. 내일까지 토지거래허가를 신청하면 중과를 면제받을 수 있어 마지막 신청 러시가 예상돼요.</p>
+        <div class="foot">
+          <div class="score score-high">8.2</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">수도권 다주택자 세금 부담 변동의 디데이라 부동산 시장 직접 영향이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">양도소득세 중과(여러 채를 가진 사람이 집을 팔 때 세금을 더 많이 매기는 제도)가 다시 시작돼요. 내일까지 토지거래허가를 신청하면 면제 혜택을 받을 수 있어, 다주택자 매물이 한꺼번에 시장에 풀릴 가능성이 있어요. 단기적으로 가격이 잠시 흔들릴 수 있고, 무주택·1주택자에게는 매물이 늘어나는 기회가 될 수 있어요. 다만 모든 지역 가격이 비슷하게 움직이지는 않으니 지역별로 따로 봐야 해요.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">집을 사거나 팔 계획이라면 이번 주 매물 변화를 자세히 살펴보세요. 다주택자 매물이 일시적으로 늘어 가격이 흔들릴 수 있어요. 다만 단 며칠 사이의 가격 움직임만 보고 큰 결정을 내리는 건 피하세요. 적어도 한 달간의 거래량과 가격 흐름을 본 뒤 판단하는 게 안전해요. 본인 상황(자금 여력, 주거 지역)에 맞는 전문가 상담도 한 번은 받아보세요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/world/12039905" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>05.07 21:21</span>
+        </div>
+        <h3>“세계 곳곳으로 흩어졌다”…크루즈선 한타바이러스 집단감염 비상</h3>
+        <p class="lede">대서양을 항해하던 크루즈선에서 한타바이러스 집단 감염이 발생했어요. 가디언·텔레그래프 보도에 따르면 승객들이 이미 세계 곳곳으로 흩어졌을 가능성에 각국 보건당국이 긴장하고 있다고 해요.</p>
+        <div class="foot">
+          <div class="score score-high">8.2</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">고치사율 바이러스의 국제 확산 가능성이라 공중보건 영향이 커요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">한타바이러스는 들쥐 등에 의해 전파되는 감염병으로 폐렴·신부전을 일으킬 수 있어 위험해요. 크루즈선처럼 좁은 공간에 모여 지내는 환경은 집단 감염이 쉽고, 승객이 흩어지면 추적이 어려워져요. 한국 입국자 가운데 의심 사례가 나오면 공항 검역과 의료기관 부담이 커질 수 있어요. 코로나19 때 배운 검역 시스템이 빠르게 가동되어야 큰 확산을 막을 수 있어요.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">최근 해외 크루즈 여행을 다녀온 가족·지인이 있다면, 발열·근육통·호흡 곤란 증상이 있는지 며칠 살펴보세요. 의심 증상이 있으면 1339(질병관리청 콜센터)에 먼저 전화해 안내받는 게 안전해요. 일반인은 평소처럼 손씻기·환기를 충실히 하면 됩니다. 다만 SNS에서 떠도는 미확인 감염 정보를 그대로 공유해 불안감을 키우는 건 피하세요. 보건당국 공식 발표를 우선 확인해보세요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/economy/12040691" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>08:00</span>
+        </div>
+        <h3>[속보] 반도체 호조…3월 경상수지 역대 최대 흑자 373억3000만달러</h3>
+        <p class="lede">한국은행 발표에 따르면 우리나라 3월 경상수지가 반도체 등 IT 품목 수출 호조로 역대 최대 흑자인 373억3000만 달러를 기록했어요. 35개월 연속 흑자라고 해요.</p>
+        <div class="foot">
+          <div class="score score-high">8.1</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">반도체 호황 효과가 거시 지표로 확인된 결정적 신호예요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">경상수지(나라 전체 무역·소득 거래의 흑자·적자)가 역대 최대 흑자라는 건 우리나라가 외국에 그만큼 많이 팔았다는 뜻이에요. 반도체가 끌었다는 점에서 삼성전자·SK하이닉스 직원·하청업체에 일감이 몰려요. 환율도 상대적으로 안정될 가능성이 커서 해외여행·직구 부담이 좀 줄어요. 다만 한 산업이 지표를 끌어가는 구조라, 반도체 경기가 꺾이면 다음 분기에 갑자기 흑자가 줄 수 있어요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260508013551071" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>07:34</span>
+        </div>
+        <h3>커트 캠벨 &#34;트럼프, 시진핑에 &#39;김정은 접촉&#39; 조언 구할수도&#34;(종합)</h3>
+        <p class="lede">커트 캠벨 전 미 국무부 부장관이 7일(현지시간) 14~15일 중국을 방문하는 트럼프 미국 대통령이 시진핑 중국 국가주석에게 김정은 북한 국무위원장 접촉에 관한 조언을 구할 가능성을 거론했어요.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">미·중 정상 회담에서 북한 변수가 다뤄질 수 있어 한반도 정세와 직결돼요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">트럼프 대통령은 김정은 위원장과 직접 대화하기를 좋아해요. 시진핑 주석에게 &#39;어떻게 만나야 좋을지&#39; 조언을 구하면 미·중·북 3자 사이의 새로운 외교 흐름이 시작될 가능성이 있어요. 한국 정부는 &#39;한반도 문제는 한국이 주연이어야 한다&#39;는 입장을 지키려 노력해야 해요. 협상이 잘 되면 군사 긴장이 줄지만, 한국이 빠진 거래가 되면 한국 외교의 발언권이 약해질 수 있어요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507094500530" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:11</span>
+        </div>
+        <h3>국가가 잘못 지급한 국민연금 5년까지 환수</h3>
+        <p class="lede">국가가 국민에게 잘못 지급한 국민연금을 다시 돌려받을 수 있는 환수 기간이 기존 3년에서 5년으로 길어진다고 해요. 잘못 지급된 연금 회수 기준이 바뀌는 제도 개정이에요.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">전 국민 가입 연금의 환수 기간 변경이라 수급자 모두에게 직접 영향이에요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">국민연금은 우리 부모님·우리 자신이 노후에 받는 큰 돈이에요. 그동안 행정 실수로 더 많이 지급된 경우 3년이 지나면 돌려받을 수 없었는데, 이제 5년까지 추적해 환수할 수 있게 돼요. 국가 재정에는 좋은 변화지만, 본인 잘못 없이 더 받았다가 갑자기 환수 통보를 받는 노년층 입장에선 부담이 커져요. 가족 중 연금 수급자가 있다면 매년 안내문을 잘 읽어두는 게 좋아요.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">부모님이나 본인이 국민연금을 받고 있다면, 매월 입금되는 금액이 안내된 금액과 같은지 한 번 확인해보세요. 특히 갑자기 평소보다 많이 들어왔다면 곧바로 국민연금공단에 문의하는 게 안전해요. 5년 뒤 한꺼번에 환수 통보를 받으면 부담이 훨씬 커요. 단, 안내 없이 가족 통장 임의 정리는 피하세요. 본인 동의 없이 처리하면 분쟁이 생길 수 있어요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507169600002" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>05:51</span>
+        </div>
+        <h3>해외 IB, 올해 韓 경제성장률 2.4% 전망…0.3%p 올려</h3>
+        <p class="lede">1분기 한국 경제가 예상보다 큰 폭으로 성장하면서 해외 주요 투자은행(IB)들이 올해 한국 경제성장률 전망치를 평균 2.4%로 0.3%포인트 상향 조정했어요.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">글로벌 IB의 성장률 상향은 환율·금리·기업 신용도에 영향을 줘요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">해외 큰 은행들이 한국 경제를 좋게 본다는 건 외국인 투자자가 한국 주식·채권을 더 사들일 가능성이 크다는 뜻이에요. 환율이 안정되면 휘발유·식료품 같은 수입 물가 부담이 줄어들어요. 다만 성장은 반도체 한 분야에 집중되어 있어 다른 산업·자영업자가 체감하는 경기는 여전히 어려울 수 있어요. 통화 정책(금리)을 정하는 한국은행도 이 지표를 참고해 다음 결정을 내리게 돼요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12039947" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>05.07 21:40</span>
+        </div>
+        <h3>“1시간 쉬고 올게요”…연차 ‘시간 단위’ 사용 가능해진다</h3>
+        <p class="lede">고용노동부가 7일 발표한 내용에 따르면 앞으로 연차휴가를 하루가 아닌 1시간 단위로 쪼개 사용할 수 있게 돼요. 또 4시간 근무한 노동자는 별도 휴게시간 없이 바로 퇴근할 수 있게 한다고 해요.</p>
+        <div class="foot">
+          <div class="score score-high">8.0</div>
+        </div>
+      </a>
+      <details class="why-insights">
+  <summary>Reader's Note</summary>
+  <div class="axis" data-axis="why">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>왜 중요한가</span>
+    </div>
+    <div class="axis-body">근로기준법 운영 변화라 모든 직장인의 근무 방식과 직결돼요.</div>
+  </div>
+  <div class="axis" data-axis="ripple">
+    <div class="axis-title">
+      <span class="icon">📡</span>
+      <span>이게 우리한테 어떻게 영향을 줄까?</span>
+    </div>
+    <div class="axis-body">지금까지 연차는 &#39;하루 단위&#39;로 써야 해서 병원·은행·자녀 학교 행사를 위해 잠깐 빠지기 어려웠어요. 앞으로 1시간 단위로 쓸 수 있으면 직장인의 시간 활용이 훨씬 유연해져요. 회사 입장에서는 시간 관리가 복잡해질 수 있고, 일부 회사가 &#39;눈치 주기&#39;로 사용을 막을 가능성도 있어요. 4시간 근무자가 휴게 없이 바로 퇴근할 수 있게 된 점은 단시간 노동자의 일상 회복에 큰 도움이 돼요.</div>
+  </div>
+  <div class="axis" data-axis="personal">
+    <div class="axis-title">
+      <span class="icon">💡</span>
+      <span>나는 뭘 해야 할까?</span>
+    </div>
+    <div class="axis-body">회사 인사팀이나 근로계약서에서 연차 사용 규정이 어떻게 바뀌는지 확인해보세요. 시간 단위 신청 시스템이 마련됐는지, 어떻게 쓰면 되는지 미리 알아두면 응급 상황에 도움이 돼요. 다만 &#39;눈치껏 못 쓰는 분위기&#39;가 생기지 않도록 동료와 팀장이 함께 이야기를 나눠두는 게 좋아요. 반대로 &#39;하루 다 쓰기 부담돼서 안 쉬던 부분&#39;을 1시간 단위로라도 챙겨 쓰는 습관을 시작해보세요.</div>
+  </div>
+</details>
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507159200530" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:00</span>
+        </div>
+        <h3>가습기살균제 피해 미인정자, 10월 8일부터 손해배상 신청 가능</h3>
+        <p class="lede">가습기살균제로 건강 등에 피해를 봤지만 가습기살균제 피해구제법으로 피해자 인정을 받지 못한 사람들이 10월 8일부터 손해배상 청구를 신청할 수 있게 돼요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.8</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/world/12039501" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>04:00</span>
+        </div>
+        <h3>“나눠 담은 계란 다 같이 깨졌다”…호르무즈가 무너뜨린 투자 공식</h3>
+        <p class="lede">산유국이 원유를 더 팔겠다고 하면 보통 유가가 떨어지는데, 5월 이후 호르무즈 지정학적 충돌이 이 공식을 흔들었어요. &#39;나눠 담은 계란이 다 같이 깨졌다&#39;는 비유처럼 분산 투자 효과까지 무력화됐다는 분석이에요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.7</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12039788" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>05.07 20:36</span>
+        </div>
+        <h3>구글코리아, 1500억 법인세 소송 2심도 승소…‘글로벌 빅테크’ 줄줄이 승소</h3>
+        <p class="lede">구글코리아가 역삼세무서장 등을 상대로 제기한 1500억원 규모 법인세 소송 2심에서도 승소했어요. 넷플릭스·메타에 이어 구글까지 글로벌 빅테크가 국내 과세당국과의 소송에서 잇따라 이기는 흐름이라고 해요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.7</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/economy/12039727" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>05.07 20:18</span>
+        </div>
+        <h3>“휘발유·경유값 안 올린다”…정부, 5차 석유 최고가격도 동결</h3>
+        <p class="lede">정부가 고물가 상황 속 민생 부담을 고려해 유류 최고가격을 또다시 동결했어요. 산업통상자원부는 국제유가 하락에도 휘발유·경유 가격 인상을 미루며 물가 안정에 무게를 두는 5차 동결 결정을 내렸어요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.6</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/realestate/12039858" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>05.07 20:55</span>
+        </div>
+        <h3>강북 ‘300만원 월세’ 급증…강남의 2배 속도로 많아져</h3>
+        <p class="lede">서울 아파트 주간 전세가격 상승률이 10여 년 만에 최고치를 찍은 가운데, 강북지역의 300만원 이상 고액 월세 거래가 1분기 53% 늘었어요. 강남보다 2배 빠른 속도로 동대문·성북·은평으로 확산되는 흐름이에요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/realestate/12039741" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>05.07 20:23</span>
+        </div>
+        <h3>강남구만 제외하고…서초·송파·용산 집값 모두 올라</h3>
+        <p class="lede">부동산원 5월 첫째 주 통계에 따르면 강남구를 제외하고 서초·송파·용산구 집값이 모두 올랐어요. 용산은 일주일 새 상승 전환됐고, 양도세 중과를 앞두고 토요일에도 토지거래허가 신청을 받기로 했어요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507146200061" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>07:00</span>
+        </div>
+        <h3>1기 신도시, 재건축이 표심 가르나…&#39;이행 속도&#39; 관건</h3>
+        <p class="lede">경기지역 1기 신도시(분당·일산·평촌·산본·중동) 재건축 정비사업의 이행 속도와 이주 대책 마련 여부가 다가오는 6·3 기초단체장 선거의 표심을 가를 변수로 떠올랐어요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.4</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260508020800075" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>07:44</span>
+        </div>
+        <h3>테슬라 모델Y, 미국 신규 첨단 운전자지원 시스템 시험 첫 통과</h3>
+        <p class="lede">테슬라의 대표 SUV 모델Y가 미국 교통 당국이 새롭게 도입한 첨단 운전자지원 시스템 시험을 처음으로 통과했어요. 미국 자율·반자율 주행 평가 체계 변화에 첫 데이터를 만든 셈이에요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.8</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507119200001" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:00</span>
+        </div>
+        <h3>[인터뷰] 김태년 &#34;AI대전환 시대 국회도 유능해야…일 잘하는 국회로&#34;</h3>
+        <p class="lede">더불어민주당 국회의장 선거에 출마한 김태년 후보가 &#39;AI 대전환 시대 국회도 유능해야 한다&#39;며 &#39;일 잘하는 국회&#39;를 약속했어요. 의장 취임 시 과제로 국회가 멈춰 서지 않도록 운영하겠다는 점을 강조했어요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507149200003" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스</span>
+          <span class="dot">·</span>
+          <span>06:00</span>
+        </div>
+        <h3>부동산 서비스산업 부진 속 2분기 기업경기 소폭 개선</h3>
+        <p class="lede">부동산 서비스산업 경기가 전반적으로 부진한 가운데 2분기에는 전체 기업경기가 소폭 개선될 것이라는 전망이 나왔어요. 부동산은 약세지만 다른 산업이 회복세를 보이는 것으로 분석됐어요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.4</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12039946" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>05.07 21:39</span>
+        </div>
+        <h3>광주 도심 여고생 ‘묻지마 살해’ 20대, 범행 수일 전 스토킹 가해자 신고 당해</h3>
+        <p class="lede">광주 도심에서 일면식도 없는 여고생을 흉기로 살해한 혐의로 구속된 20대가 범행 며칠 전 스토킹 가해자로 경찰 신고를 당한 것으로 알려졌어요. 광주경찰이 살인·스토킹 혐의로 수사 중이에요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.0</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.hani.co.kr/arti/society/women/1257693.html" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">한겨레</span>
+          <span class="dot">·</span>
+          <span>05:01</span>
+        </div>
+        <h3>집 밖으로 나온 ‘오빠’ 호칭, 실언 아니다…정치권에 내재한 성차별</h3>
+        <p class="lede">한겨레가 정청래 더불어민주당 대표의 부산 선거운동 중 초등학생에게 한 &#39;오빠 해봐요&#39; 발언과 지난 대선 유세 사례를 묶어, 정치권에 내재한 성차별 논란을 짚었어요. 이재명 캠프와 야권 양쪽 모두에서 비슷한 호칭 사용이 도마에 올랐다고 전했어요.</p>
+        <div class="foot">
+          <div class="score score-mid">5.8</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12040043" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제</span>
+          <span class="dot">·</span>
+          <span>05.07 23:00</span>
+        </div>
+        <h3>“술에 약 타 남편 살해 모의”…태권도장 관장·직원 검거</h3>
+        <p class="lede">경기 부천시의 한 태권도장 관장과 직원이 남편 살해를 모의한 혐의로 경찰에 붙잡혔어요. 부천 원미경찰서는 피해자의 부인인 태권도장 직원 40대 여성과 관장을 살인예비 혐의로 조사하고 있다고 해요.</p>
+        <div class="foot">
+          <div class="score score-low">4.5</div>
+        </div>
+      </a>
+      
+    </article>
+  </section>
+  <section class="feed-sec" id="sec-entertainment">
+    <div class="sec-divider"><h2>연예 뉴스</h2></div>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507176751004" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스 연예</span>
+          <span class="dot">·</span>
+          <span>05.07 19:50</span>
+        </div>
+        <h3>검찰, 방시혁 구속영장 또 반려…&#34;경찰, 보완수사 이행 안했다&#34;(종합)</h3>
+        <p class="lede">검찰이 IPO를 앞두고 투자자들을 속여 지분을 팔게 한 혐의를 받는 방시혁 하이브 의장의 구속영장을 또다시 반려했어요. 사유는 &#39;경찰이 보완수사를 이행하지 않았다&#39;는 것이라고 검찰이 설명했어요.</p>
+        <div class="foot">
+          <div class="score score-midhigh">7.4</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12039456" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제 연예</span>
+          <span class="dot">·</span>
+          <span>05.07 18:06</span>
+        </div>
+        <h3>세계 첫 24시간 뉴스 서비스 CNN 창립자 테드 터너 별세</h3>
+        <p class="lede">세계 최초 24시간 뉴스 전문채널 CNN을 만든 테드 터너 창립자가 87세를 일기로 세상을 떠났어요. CNN은 6일(현지시간) 미디어 사업가 터너가 가족들이 지켜보는 가운데 별세했다고 알렸어요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507160300005" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스 연예</span>
+          <span class="dot">·</span>
+          <span>05.07 17:37</span>
+        </div>
+        <h3>싸이, CNN 인터내셔널 다큐 &#39;K-에브리싱&#39; 출연…K팝 대담</h3>
+        <p class="lede">가수 싸이가 9일 방송되는 CNN 인터내셔널 신규 다큐멘터리 &#39;K-에브리싱&#39;(K-Everything)에 출연해 K팝을 주제로 대담을 나눠요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.2</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260508005400072" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스 연예</span>
+          <span class="dot">·</span>
+          <span>03:38</span>
+        </div>
+        <h3>뉴욕서 70년대 韓영화 재조명 특별전…화녀·바보들의 행진 등</h3>
+        <p class="lede">뉴욕한국문화원이 &#39;필름 엣 링컨센터&#39;와 &#39;서브웨이 시네마&#39;와 함께 15~26일 뉴욕 링컨센터 월터리드 극장에서 1970년대 한국영화 특별전을 연다고 해요. &#39;화녀&#39;, &#39;바보들의 행진&#39; 등이 상영 목록에 포함돼 있어요.</p>
+        <div class="foot">
+          <div class="score score-mid">6.0</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507165000005" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스 연예</span>
+          <span class="dot">·</span>
+          <span>05.07 17:45</span>
+        </div>
+        <h3>[가요소식] 르세라핌, 신곡 &#39;셀레브레이션&#39;으로 구글과 협업</h3>
+        <p class="lede">걸그룹 르세라핌이 신곡 &#39;셀레브레이션&#39;(CELEBRATION)으로 구글과 협업해 구글 메인 화면에 노출되는 가요 소식이 전해졌어요.</p>
+        <div class="foot">
+          <div class="score score-mid">5.6</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507170500005" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스 연예</span>
+          <span class="dot">·</span>
+          <span>05.07 18:22</span>
+        </div>
+        <h3>&#39;사랑&#39; 197편에…한국영화 100년史 제목 최다 단어는</h3>
+        <p class="lede">한국영상자료원이 한국 영화 100년 역사를 제목 텍스트·타이포그래피·무빙 이미지로 풀어낸 기획전 &#39;제목전&#39;을 열어요. 가장 많이 쓰인 단어는 &#39;사랑&#39;으로, 197편 작품에 등장했어요.</p>
+        <div class="foot">
+          <div class="score score-mid">5.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.yna.co.kr/view/AKR20260507111700005" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">연합뉴스 연예</span>
+          <span class="dot">·</span>
+          <span>05.07 18:04</span>
+        </div>
+        <h3>지드래곤, 에스파 신곡 &#39;WDA&#39; 피처링…2집 선공개 싱글</h3>
+        <p class="lede">가수 지드래곤이 그룹 에스파의 신곡 &#39;WDA&#39;에 피처링으로 참여했어요. 에스파 2집 선공개 싱글 형태로 발표되는 곡이라고 해요.</p>
+        <div class="foot">
+          <div class="score score-mid">5.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12039337" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제 연예</span>
+          <span class="dot">·</span>
+          <span>05.07 17:29</span>
+        </div>
+        <h3>여고생 동선 앞질러 으슥한 샛길 선택…소름돋게 치밀했던 살해범</h3>
+        <p class="lede">광주 도심에서 일면식 없는 고교생들에게 흉기를 휘두른 장모(24) 씨가 피해자의 예상 동선을 앞질러 으슥한 길목을 범행 장소로 골랐다는 정황이 드러났어요. 치밀한 사전 준비가 확인됐다고 해요.</p>
+        <div class="foot">
+          <div class="score score-mid">5.5</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12039619" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제 연예</span>
+          <span class="dot">·</span>
+          <span>05.07 19:26</span>
+        </div>
+        <h3>비틀대는 남성 끌고 가는 김소영…‘강북 모텔 연쇄살인’ CCTV 첫 공개</h3>
+        <p class="lede">&#39;강북 모텔 연쇄살인&#39; 사건으로 재판에 넘겨진 김소영(20)의 범행 당시 모습이 담긴 CCTV 영상이 법정에서 처음 공개됐어요. 약물에 취한 듯 비틀거리는 남성을 끌고 가는 장면이 담겼다고 해요.</p>
+        <div class="foot">
+          <div class="score score-mid">5.0</div>
+        </div>
+      </a>
+      
+    </article>
+    <article class="story">
+      <a href="https://www.mk.co.kr/news/society/12039336" target="_blank" rel="noopener" style="display:block;">
+        <div class="head">
+          <span class="src">매일경제 연예</span>
+          <span class="dot">·</span>
+          <span>05.07 17:29</span>
+        </div>
+        <h3>“유명인 특권 의식이냐”…기은세, 평창동 주택 ‘민폐 공사’ 논란</h3>
+        <p class="lede">배우 기은세가 평창동 주택 리모델링 공사 과정에서 인근 주민들에게 민폐를 끼쳤다는 논란에 휩싸였어요. 온라인 커뮤니티에 평창동 주민 가족이라고 밝힌 누리꾼이 글을 올리며 시작된 사안이라고 해요.</p>
+        <div class="foot">
+          <div class="score score-low">4.5</div>
+        </div>
+      </a>
+      
+    </article>
+  </section>
+
+  <footer>
+    <div class="disclosure">본 리포트는 Claude Opus 4.7이 RSS 원문을 분석해 생성합니다. 사실관계는 각 원문에서 확인하세요.</div>
+    <div class="sources">
+AI타임스 · ZDNet Korea · 전자신문 · 연합뉴스 · 매일경제 · 한겨레 · OpenAI Blog · Google DeepMind · Simon Willison · Anthropic SDK Releases · 연합뉴스 연예 · 매일경제 연예 · 한국경제 연예    </div>
+  </footer>
+
+</div>
+
+<nav class="floating-nav" aria-label="섹션 이동">
+  <a href="#sec-mustknow" data-sec="sec-mustknow" class="active">
+    <span>★</span>
+    <span class="cnt">5</span>
+  </a>
+  <a href="#sec-official-ai" data-sec="sec-official-ai">
+    <span>Update</span>
+    <span class="cnt">8</span>
+  </a>
+  <a href="#sec-ai" data-sec="sec-ai">
+    <span>AI</span>
+    <span class="cnt">24</span>
+  </a>
+  <a href="#sec-general" data-sec="sec-general">
+    <span>종합</span>
+    <span class="cnt">25</span>
+  </a>
+  <a href="#sec-entertainment" data-sec="sec-entertainment">
+    <span>연예</span>
+    <span class="cnt">10</span>
+  </a>
+</nav>
+
+<script>
+(function(){
+  var navLinks = document.querySelectorAll('.floating-nav a');
+  var sections = Array.prototype.filter.call(
+    document.querySelectorAll('.feed-sec'),
+    function(s){ return s.id; }
+  );
+  if (!sections.length || !navLinks.length) return;
+
+  function setActive(id){
+    navLinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-sec') === id);
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if (!visible.length) return;
+      visible.sort(function(a,b){
+        return a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top;
+      });
+      setActive(visible[0].target.id);
+    }, { rootMargin: '-25% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+
+  navLinks.forEach(function(a){
+    a.addEventListener('click', function(){
+      setActive(a.getAttribute('data-sec'));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
