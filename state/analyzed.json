@@ -1,46 +1,45 @@
 {
-  "issue_number": 77,
-  "generation_timestamp": "2026-05-14T17:26:42+09:00",
-  "period": "오후",
+  "issue_number": 78,
+  "generation_timestamp": "2026-05-15T08:26:34+09:00",
+  "period": "오전",
   "trend_hashtags": [
-    "AI도입가속화",
-    "미중정상회담",
-    "워시연준출범",
-    "중동전쟁장기화",
-    "반도체호황",
-    "AI사이버위협",
-    "주택연금해지",
-    "삼성노사갈등"
+    "#미중정상회담",
+    "#AI국방",
+    "#삼성전자파업",
+    "#AI공급망보안",
+    "#청년미래적금",
+    "#서울집값",
+    "#K콘텐츠",
+    "#BTS월드컵"
   ],
   "articles": [
     {
-      "article_id": "160c7c25f50af502",
-      "title": "OpenAI launches DeployCo to help businesses build around intelligence",
+      "article_id": "aa4a25bbe94d94f4",
+      "title": "Our response to the TanStack npm supply chain attack",
       "source": "OpenAI Blog",
-      "published_at": "2026-05-11T15:00:00+09:00",
-      "original_url": "https://openai.com/index/openai-launches-the-deployment-company",
-      "content_text": "OpenAI launches DeployCo, a new enterprise deployment company built to help organizations bring frontier AI into production and turn it into measurable business impact.",
+      "published_at": "2026-05-13T09:00:00+09:00",
+      "original_url": "https://openai.com/index/our-response-to-the-tanstack-npm-supply-chain-attack",
+      "content_text": "OpenAI details its response to the TanStack “Mini Shai-Hulud” supply chain attack, outlines protections taken to secure systems and signing certificates, and explains why macOS users must update OpenAI apps by June 12, 2026. Learn what happened, what was affected, and how OpenAI is strengthening defenses against evolving software supply chain threats.",
       "category": "official_ai",
       "keywords": [
-        "OpenAI",
-        "AI"
+        "OpenAI"
       ],
-      "ai_summary": "오픈AI가 기업 전용 AI 도입을 돕는 새 회사 '디플로이코(DeployCo)'를 출범시켰어요. 기업들이 최신 AI를 실제 업무에 적용해 측정 가능한 성과로 바꿀 수 있도록 돕는 게 목표라고 발표했어요.",
-      "extraction_reason": "AI 기술이 시범 단계에서 실제 매출·운영으로 넘어가는 흐름을 보여주는 신호예요.",
+      "ai_summary": "OpenAI는 TanStack npm 공급망 공격(코드명 Mini Shai-Hulud)에 대한 자사의 대응을 공개했어요. 시스템과 서명 인증서를 보호하는 조치를 적용했고, macOS 사용자는 6월 12일까지 OpenAI 앱을 반드시 업데이트해야 한대요.",
+      "extraction_reason": "개발자 도구 공급망 공격이 글로벌 AI 회사까지 번진 사례로 모두의 보안에 중요해요.",
       "relevance_score": 8.2,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "지금까지는 챗GPT 같은 AI를 회사가 어떻게 써야 할지 잘 몰랐어요. 그런데 오픈AI가 직접 '도입 도우미 회사'를 차렸다는 건, 앞으로 보험·은행·병원처럼 큰 회사들이 AI를 본격적으로 일에 끼워 넣기 시작한다는 뜻이에요. 이러면 단순 반복 사무직이 가장 먼저 영향을 받아요. 컨설팅 회사들도 새로운 일감이 생기는 동시에, 오픈AI 같은 곳과 부딪힐 가능성이 있어요."
+          "text": "공급망 공격은 한 곳이 뚫리면 그걸 쓰는 수많은 회사가 한꺼번에 위험해져요. npm(개발자들이 코드를 가져다 쓰는 큰 창고)에 나쁜 코드가 섞이면 우리가 쓰는 앱도 위험해질 수 있어요. 그래서 OpenAI처럼 큰 회사도 서명 인증서(앱이 진짜인지 확인하는 도장)를 새로 발급받아야 해요. 우리도 OpenAI 앱을 6월 12일까지 꼭 업데이트해야 안전해요."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "내 일에서 챗GPT나 다른 AI 도구를 한 번이라도 써 볼 시간을 이번 주에 잡아보세요. 보고서 초안 잡기·이메일 다듬기·자료 요약 같은 작은 일부터 시작하면 좋아요. 반대로 '나는 절대 안 써'라며 멀리하는 건 위험해요. 회사가 AI를 본격 도입하기 시작하면, AI를 잘 다루는 사람과 못 다루는 사람의 차이가 점점 벌어질 가능성이 커요."
+            "text": "스마트폰과 컴퓨터의 OpenAI(챗GPT) 앱을 한 번 열어 업데이트가 있는지 확인해보세요. macOS를 쓴다면 6월 12일 전에 꼭 업데이트해야 해요. 또 이참에 자주 쓰는 다른 앱들도 한꺼번에 업데이트하면 좋아요. 반대로 출처가 분명하지 않은 새 확장 프로그램이나 가짜 업데이트 알림은 누르지 마세요."
           }
         ]
       }
@@ -57,22 +56,82 @@
         "ChatGPT",
         "AI"
       ],
-      "ai_summary": "2026년 1분기에 챗GPT 이용자가 크게 늘었는데, 특히 35세 이상 사용자가 가장 빠르게 증가했어요. 남녀 사용 비중도 비슷해져서 AI가 특정 세대·성별을 넘어 폭넓게 일상으로 들어오고 있다는 신호라고 오픈AI가 밝혔어요.",
-      "extraction_reason": "AI가 '젊은 남자의 도구'에서 '모두의 도구'로 넘어가는 변곡점을 보여줘요.",
+      "ai_summary": "2026년 1분기 챗GPT 사용자가 빠르게 늘었는데, 특히 35세 이상 사용자에서 증가 속도가 가장 빨랐다고 해요. 남녀 사용 비율도 더 균형 잡혔다고 OpenAI가 직접 발표했어요. AI 사용이 일부 젊은 층을 넘어 대중적으로 퍼지고 있다는 신호예요.",
+      "extraction_reason": "AI가 더 이상 IT 업계만의 도구가 아니라 일반 가정·직장으로 들어오고 있어요.",
       "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "35세 이상이 가장 빠르게 늘었다는 건, 직장에서 보고서를 쓰고 결정을 내리는 어른들이 본격적으로 AI를 손에 잡았다는 뜻이에요. 이러면 회사 안에서 'AI 잘 쓰는 사람'이 빨리 일을 끝내고, 나머지는 야근이 늘어날 수 있어요. 학교 숙제나 학원 자료도 AI로 만들고 검사하는 시대가 가까워졌어요. 광고·번역·고객센터 같은 일들이 가장 먼저 모양이 바뀔 가능성이 높아요."
+          "text": "AI를 쓰는 사람이 모든 연령으로 넓어지면, 가게·병원·학교에서도 AI 답변을 내미는 경우가 늘어나요. 부모님 세대도 챗GPT로 정보를 찾는 일이 많아지니, 잘못된 답을 그대로 믿는 일이 생길 수 있어요. 회사들도 'AI를 쓸 줄 아는 사람'을 기본으로 뽑게 되고요. 디지털 격차가 잘 쓰는 사람과 못 쓰는 사람으로 새로 갈릴 수 있어요."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "AI는 어렵고 무서운 게 아니에요. 평소 자주 하는 일 한 가지를 정해서 챗GPT한테 시켜보고, 결과가 맞는지 내가 한 번 더 확인하는 습관을 들이세요. 잘 모르는 분야 정보는 AI 답을 그대로 믿지 말고 다른 출처와 꼭 비교해야 해요. 반대로 '나는 안 써'라며 멀리하기만 하는 건 위험해요. 직장이나 모임에서 빨리 익히는 사람과 차이가 점점 벌어져요."
+            "text": "주변 가족 중 AI를 안 써본 분에게 '내일 약 먹는 시간 알려줘' 같은 쉬운 질문을 같이 해보세요. 'AI가 한 말'이 사실인지 다른 사이트와 한 번 더 비교하는 습관도 같이 알려주면 좋아요. 반대로 AI 답을 그대로 복사해 SNS에 올리는 건 피하세요. 잘못된 정보를 퍼뜨릴 수 있어요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "4260d45cbd277de8",
+      "title": "How enterprises are scaling AI",
+      "source": "OpenAI Blog",
+      "published_at": "2026-05-11T19:00:00+09:00",
+      "original_url": "https://openai.com/business/guides-and-resources/how-enterprises-are-scaling-ai",
+      "content_text": "How enterprises scale AI: from early experiments to compounding impact through trust, governance, workflow design, and quality at scale.",
+      "category": "official_ai",
+      "keywords": [
+        "AI"
+      ],
+      "ai_summary": "OpenAI는 기업들이 AI를 어떻게 키워 쓰는지 정리해 발표했어요. 단순한 시범 사용을 넘어 신뢰·관리·업무 흐름·품질 관리를 통해 효과가 점점 커지는 단계로 들어가고 있다고 해요.",
+      "extraction_reason": "회사가 AI를 본격적으로 쓰기 시작하면 일하는 방식도 함께 바뀌어요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "회사들이 AI를 단순 체험에서 진짜 업무로 옮겨 쓰면, 정해진 결재 단계나 보고서 작성 같은 반복 업무가 줄어요. 그러면 사람의 시간은 판단이 필요한 일에 더 쏠려요. 일자리 자체가 사라지기보단, 같은 자리에서 해야 하는 일이 바뀔 가능성이 높아요. 우리 부모님이 다니는 회사도 곧 AI 사용 규칙을 새로 만들 거예요."
+        },
+        "bonus": [
+          {
+            "type": "scenario",
+            "title": "앞으로 어떻게 될 수 있을까?",
+            "icon": "🔮",
+            "text": "가장 가능성이 큰 모습은, 1~2년 안에 회사들이 'AI 쓰는 법'을 사내 교육 필수로 넣는 거예요. 잘 풀리면 사람과 AI가 짝을 이뤄 일하면서 시간이 짧아지고 더 정확해져요. 반대로 안 좋은 경우는 회사가 효과를 잘 못 내고 비싼 비용만 들 수 있어요. 앞으로 몇 달 안에 어떤 회사가 AI로 매출 결과를 내는지가 갈림길이에요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "69a3446117079a09",
+      "title": "Thoughts on GitLab's workforce reduction\" and \"structural and strategic decisions\"",
+      "source": "Simon Willison",
+      "published_at": "2026-05-12T08:58:55+09:00",
+      "original_url": "https://simonwillison.net/2026/May/11/gitlab-act-2/#atom-everything",
+      "content_text": "GitLab Act 2 There's a lot going on in this announcement from GitLab about the \"workforce reduction\" and \"structural and strategic decisions\" they are making with respect to the agentic era. They're \"planning to reduce the number of countries by up to 30% where we have small teams\". One of the most interesting things about GitLab is that they have employees spread across a large number of countries - 18 are listed in their public employee handbook but this post says they are \"operating in nearly 60 countries\". That handbook used to document their payroll workflows for those countries too - they stopped publishing that in 2023 but the last public version (hooray for version control) remains a fascinating read. Since we don't know which of those 60 countries have small teams, we can't calculate how many countries that 30% applies to. \"We're planning to flatten the organization, removing up to three layers of management in some functions so leaders are closer to the work.\" - this isn't the first announcement of this type I've seen that's trimming management. Coinbase recently announced a much more aggressive version of this: they were \"flattening our org structure to 5 layers max below\" and \"No pure managers: Every leader at Coinbase must also be a strong and active individual contributor. Managers should be like player-coaches\". In terms of team structure: \"We're re-organizing R&D to create roughly 60 smaller, more empowered teams with end-to-end ownership, nearly doubling the number of independent teams.\" I've always loved the idea of individual teams that can ship features unblocked by other teams, and it makes sense to me that agentic engineering can increase the capability of such teams. The 37signals public employee handbook used to have a section on working In self-sufficient, independent teams which perfectly captured this for me, I'm sad to see they removed that detail in January 2024! Tucked away towards the bottom: \" We will be retiring CREDIT as our values…",
+      "category": "official_ai",
+      "keywords": [],
+      "ai_summary": "GitLab(개발자들이 코드를 함께 관리하는 큰 플랫폼)이 약 60개 나라 중 작은 팀이 있는 나라를 최대 30% 줄이고, 관리자 직급 3단계까지 없애 조직을 평평하게 만들겠다고 발표했어요. AI 에이전트 시대에 맞춰 60개 작은 팀으로 R&D를 다시 짠다고 해요.",
+      "extraction_reason": "AI가 본격 도입되면서 글로벌 IT 회사가 사람과 조직을 함께 줄이는 흐름이에요.",
+      "relevance_score": 8.5,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "큰 IT 회사가 AI 에이전트(혼자 일하는 AI 도우미)를 도입하면서 관리자 자리부터 줄이고 있어요. 같은 흐름이 한국 IT 회사로도 번질 가능성이 높아요. 특히 중간 관리자 일자리가 영향을 받기 쉬워요. 반대로 작은 팀에서 직접 만드는 일을 잘하는 사람의 가치는 더 높아질 수 있어요. 일하는 모양이 크게 바뀌는 신호예요."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "지금 다니는 회사나 앞으로 가고 싶은 직장이 어떤 일을 사람이 직접 만들고 있는지 살펴보세요. 만든 결과가 눈에 보이는 일을 잘하는 능력이 점점 중요해져요. 가족 중 IT 회사 다니는 분이 있다면 'AI 에이전트 도입 계획' 이야기를 같이 들어보세요. 반대로 '내 자리는 안전하니까 신경 안 써도 돼' 하고 멈추는 건 피해야 해요."
           }
         ]
       }
@@ -88,1377 +147,1209 @@
       "keywords": [
         "AI"
       ],
-      "ai_summary": "기자 제이슨 코블러가 '좀비 인터넷'이라는 말을 꺼냈어요. AI가 쓴 글이 사람 글과 섞이고, 광고용 가짜 인플루언서·자동 채널·AI 요약 책이 진짜처럼 유통되면서 진짜 사람 글까지 점점 AI 말투를 닮아간다는 비판이에요. 사이먼 윌리슨이 이를 공유했어요.",
-      "extraction_reason": "온라인에서 정보가 진짜인지 가짜인지 가려내는 일이 점점 어려워지고 있어요.",
+      "ai_summary": "사이먼 윌리슨이 제이슨 코블러의 글을 소개했어요. AI가 만든 글이 인터넷을 채우면서 사람의 글과 구별이 어려워지고, 진짜 사람의 글쓰기까지 비슷하게 변하고 있다고 지적해요. '좀비 인터넷'이라는 말로 사람과 AI가 뒤섞여 가짜와 진짜를 가리기 힘든 모습을 표현했어요.",
+      "extraction_reason": "우리가 매일 보는 인터넷 글의 진짜·가짜를 판단하는 안목이 더 중요해져요.",
       "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
-        "frame": {
-          "title": "이 뉴스, 이렇게 읽어보세요",
-          "icon": "🧐",
-          "text": "이건 사실 보도가 아니라 한 기자의 의견 글이에요. 그래도 '뭔가 이상하다'고 느낀 많은 사람의 직감을 정리해 줬다는 가치가 있어요. 다른 매체 두세 곳이 어떻게 보도하는지 같이 살펴보고 받아들이세요. 우리가 던질 질문은 이거예요. 인스타·유튜브 댓글이 진짜 사람 말일까? 베스트셀러 요약본은 정말 책 내용일까? 자주 보는 인플루언서는 사람일까, 자동 계정일까?"
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "검색 결과나 블로그 글에 AI가 자동으로 만든 내용이 점점 늘어나고 있어요. 그러면 '진짜 경험한 사람의 후기'를 찾기가 어려워져요. 광고 회사들도 AI 후기와 자동 댓글로 사람을 속이는 일이 늘 수 있어요. 학생들이 숙제할 때 참고하는 자료도 사실인지 한 번 더 확인하는 습관이 꼭 필요해요. 글의 신뢰가 통째로 떨어지는 신호예요."
         },
         "bonus": [
           {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "온라인에서 '너무 그럴듯한 글·후기·요약'을 보면 한 번 의심하는 습관을 들이세요. 같은 주제를 다른 매체 두 곳에서 확인하고 받아들이는 게 좋아요. 반대로 '다 가짜야'라며 모든 정보를 무시하는 건 피하세요. 진짜 좋은 글까지 못 알아보게 되거든요. 책은 가능하면 요약본이 아니라 원래 책을, 후기는 오래 활동한 실명 계정 위주로 참고하세요."
+            "type": "frame",
+            "title": "이 뉴스, 이렇게 읽어보세요",
+            "icon": "🧐",
+            "text": "어떤 글을 볼 때 '누가 썼는지', '진짜 경험한 일인지', '다른 곳에도 같은 이야기가 있는지' 세 가지를 한 번씩 점검해 보세요. 댓글이 너무 비슷한 말투로 모여 있으면 자동 댓글일 수 있어요. 또 추천 상품 후기는 영상으로 직접 쓰는 모습이 보이는 글을 더 믿을 수 있어요. 반대로 별점만 만점인 후기들은 한 번 의심해 보세요."
           }
         ]
       }
     },
     {
-      "article_id": "c95c8d87745f1a71",
-      "title": "v0.102.0",
-      "source": "Anthropic SDK Releases",
-      "published_at": "2026-05-14T03:12:29+09:00",
-      "original_url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.102.0",
-      "content_text": "0.102.0 (2026-05-13) Full Changelog: v0.101.0...v0.102.0 Features api: Add BetaManagedAgentsSearchResultBlock types ( 3681f10 ) api: Add support for cache diagnostics beta ( db51c6c ) internal/types: support eagerly validating pydantic iterators ( 68dabb0 ) Chores api: spec updates ( d579133 )",
+      "article_id": "3e88cbfea1e982d6",
+      "title": "Learning on the Shop floor",
+      "source": "Simon Willison",
+      "published_at": "2026-05-12T00:46:36+09:00",
+      "original_url": "https://simonwillison.net/2026/May/11/learning-on-the-shop-floor/#atom-everything",
+      "content_text": "Learning on the Shop floor Tobias Lütke describes Shopify's internal coding agent tool, River, which operates entirely in public on their Slack: River does not respond to direct messages. She politely declines and suggests to create a public channel for you and her to start working in. I myself work with river in #tobi_river channel and many followed this pattern. Every conversation is therefore searchable. Anyone at Shopify can jump in. In my own channel, there are over 100 people who, react to threads, add color and add context, pick up the torch, help with the reviews, remind me how rusty I am, and importantly, learn from watching. [...] As so often with German, there is a word for the kind of environment: Lehrwerkstatt . Literally: A teaching workshop . The whole shop floor is the classroom. You learn by being near the work. Being a constant learner is one of the core values of the firm. Shopify wants to be a Lehrwerkstatt at scale and River has now gotten us closer to this ideal than ever. It’s osmosis learning , because it does not require a curriculum, a training plan, or a manager. It just requires everyone's work to be visible to the maximum extent possible. Everyone learns from each other. I'm reminded of how Midjourney spent its first few years with the primary interface being public Discord channels, forcing users to share their prompts and learn from each other's experiments. I continue to believe that the early success of Midjourney was tied to this mechanism, helping to compensate for how weird and finicky text-to-image prompting is. Tags: ai , slack , generative-ai , llms , midjourney , coding-agents , tobias-lutke",
       "category": "official_ai",
-      "keywords": [],
-      "ai_summary": "앤트로픽이 파이썬용 클로드 SDK 0.102.0 버전을 공개했어요. '관리형 에이전트 검색결과' 새 기능과 캐시 진단 베타가 추가됐고, 내부 타입 검증도 개선됐어요. 개발자가 클로드를 더 다양하고 깊이 있게 활용할 수 있게 도와주는 업데이트예요.",
-      "relevance_score": 6.0,
+      "keywords": [
+        "AI"
+      ],
+      "ai_summary": "쇼피파이의 토비 뤼트케 대표가 회사 내부 코딩 도우미 'River'를 어떻게 쓰는지 공개했어요. River는 1대1 메시지에 답하지 않고 모든 작업을 회사 슬랙의 공개 채널에서 진행해요. 그래서 100명이 넘는 동료들이 함께 보고 배우는 '독일어 Lehrwerkstatt(가르치는 작업장)' 같은 환경이 됐다고 해요.",
+      "relevance_score": 7.0,
       "is_must_know": false
     },
     {
-      "article_id": "2a03c08a4c0ab4a7",
-      "title": "llm 0.32a2",
-      "source": "Simon Willison",
-      "published_at": "2026-05-13T02:45:07+09:00",
-      "original_url": "https://simonwillison.net/2026/May/12/llm/#atom-everything",
-      "content_text": "Release: llm 0.32a2 A bunch of useful stuff in this LLM alpha, but the most important detail is this one: Most reasoning-capable OpenAI models now use the /v1/responses endpoint instead of /v1/chat/completions . This enables interleaved reasoning across tool calls for GPT-5 class models. #1435 This means you can now see the summarized reasoning tokens when you run prompts against an OpenAI model, displayed in a different color to standard error. Use the -R or --hide-reasoning flags if you don't want to see that. Tags: llm , projects , openai , generative-ai , annotated-release-notes , ai , llms",
-      "category": "official_ai",
+      "article_id": "d31e5d3f1b8c7a4f",
+      "title": "엔비디아, '알파고' 주역과 협업...스스로 발전하는 차세대 강화학습 설계",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T17:46:06+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210528",
+      "content_text": "엔비디아가 구글 딥마인드 핵심 연구진 출신이 설립한 신생 AI 스타트업과 전략적 협력에 나서며 차세대 AI 패러다임 경쟁에 본격 뛰어들었다.엔비디아는 13일(현지시간) 영국 런던 기반 AI 스타트업 이네퍼블 인텔리전스(ineffable intelligence)와 대규모 강화학습(RL) 인프라 공동 개발을 위한 엔지니어링 협력을 체결했다고 발표했다.이네퍼블은 2025년 말 설립된 스타트업으로, 데이비드 실버 전 딥마인드 강화학습 연구 책임자가 창업했다. 현재 유니버시티 칼리지 런던 교수도 겸임하고 있다.실버 창립자는 '알파고'와 '알",
+      "category": "ai_news",
       "keywords": [
-        "GPT",
+        "엔비디아",
+        "AI"
+      ],
+      "ai_summary": "엔비디아가 영국 런던에 있는 신생 AI 스타트업 '이네퍼블 인텔리전스'와 차세대 강화학습 인프라 공동 개발 협력을 맺었어요. 이 회사는 알파고를 만든 데이비드 실버 전 딥마인드 강화학습 책임자가 2025년 말에 세웠어요. 엔비디아는 차세대 AI 학습 방식 경쟁에 본격 뛰어들었어요.",
+      "extraction_reason": "AI가 스스로 더 똑똑해지는 새 학습법으로 가는 신호라 산업 흐름이 바뀔 수 있어요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "지금까지 AI는 사람이 모은 글과 그림으로 배웠어요. 그런데 강화학습은 AI가 스스로 시도하고 잘하면 점수를 받아 점점 똑똑해지는 방법이에요. 알파고를 만든 사람이 다시 이 길을 파면, 게임뿐 아니라 자율주행·로봇·신약 개발도 빨라질 가능성이 높아요. 엔비디아 그래픽카드(GPU) 수요도 더 늘어나서 관련 회사 전반이 영향을 받을 수 있어요."
+        }
+      }
+    },
+    {
+      "article_id": "0d6e6f51894d8ae8",
+      "title": "'몸값 84조' 세레브라스, IPO 돌풍…우버 이후 최대 규모 기록",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T17:14:30+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210525",
+      "content_text": "세레브라스가 AI 반도체 열풍 속에서 기업공개(IPO)를 성공적으로 마무리하며 단숨에 글로벌 AI 칩 업계 핵심 기업 반열에 올랐다.CNBC는 13일(현지시간) 세레브라스가 주당 185달러(약 27만원)에 IPO 가격을 확정했다고 보도했다.이는 당초 제시했던 희망 공모가 범위를 크게 웃도는 수준이다. 세레브라스는 이번 상장을 통해 최소 55억5000만달러(약 8조원)를 조달하게 됐으며, 기업가치는 약 564억달러(약 84조원)에 달한다.이번 IPO는 최근 수년간 미국 기술 기업 상장 가운데 최대 규모 중 하나로 평가된다. 2019년",
+      "category": "ai_news",
+      "keywords": [
+        "AI"
+      ],
+      "ai_summary": "AI 칩을 만드는 미국 회사 세레브라스가 상장(IPO)을 성공시켰어요. 한 주당 27만원에 가격이 확정되며 약 8조원을 모았고, 회사 가치는 약 84조원이 됐어요. 우버 이후 미국 기술 기업 중 가장 큰 규모의 상장이에요.",
+      "extraction_reason": "엔비디아 외에 AI 칩 회사가 거대 기업으로 떠오르며 시장 판이 흔들려요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "지금까지 AI 칩 시장은 엔비디아가 거의 혼자 차지했어요. 세레브라스가 큰 돈을 모아 본격 경쟁에 뛰어들면, AI 학습 칩 가격이 내려갈 가능성이 있어요. 그러면 챗GPT 같은 서비스 비용도 점점 싸질 수 있어요. 한국 SK하이닉스·삼성전자가 만드는 메모리 반도체 수요도 함께 늘어날 가능성이 높아요. AI 회사들이 칩 선택지가 늘어 협상력도 커져요."
+        }
+      }
+    },
+    {
+      "article_id": "a83fc685ac6441ec",
+      "title": "\"데이터센터 발열 잡는 수랭식 전면 배치\"…삼성전자, 액체·액침냉각 사업 가속화",
+      "source": "ZDNet Korea",
+      "published_at": "2026-05-14T16:21:47+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260514152442",
+      "content_text": "[지디넷코리아]삼성전자가 지난해 인수를 마친 유럽 최대 냉난방공조(HVAC) 기업인 플랙트그룹(FläktGroup)을 앞세워 데이터센터 공조 시장 공략에 본격 나섰다. 공랭식, 액체냉각은 물론 차세대 기술로 주목받고 있는 액침냉각 개발에도 박차를 가한다는 계획이다.방일재 삼성전자 DSS선행영업그룹 파트장은 14일 코엑스에서 개최된 HVAC 코리아 데이터센터 컨퍼런스에서 자회사 플랙트그룹 첨단 냉각 솔루션 라인업과 미래 사업 전략을 공개했다.삼성전자는 폭증하는 AI 데이터센터의 열 부하를 해결할 근본적인 해법으로 수랭식을 낙점하고, 액침냉각 기술을 개발하고 있다. 액침냉각은 전기가 통하지 않는 비전도성 액체에 서버를 직접 담가 냉각하는 방식으로, 기존 공랭식 대비 냉각 효율이 압도적으로 높다.방 파트장은 \"액침냉각은 현재 한 기업과 검증을 진행하고 있는 단계\"라고 말했다.해당 기업은 델, HP, 슈퍼마이크로 등으로 추정된다.액침냉각의 냉매 상태에 대해서는 답변하지 않았다. 액침냉각은 냉매의 상태 변화 여부에 따라 1상과 2상으로 나뉜다. 1상은 액체 상태를 유지하며 순환해 구조가 단순하고 안정적이며, 2상은 냉매가 끓어 기화하며 잠열을 활용해 냉각 효율이 높다.아울러 삼성전자는 CDU(액체 냉각 분배 장치) 사업화에도 집중하고 있다. 플랙트그룹의 CDU 솔루션인 ‘리퀴드-덴코(Liquid-DENCO)’는 최대 1.6MW의 대용량 냉각 능력을 갖추고 칩에 직접 냉각수를 공급함으로써 에너지 효율을 극대화하는 것이 특징이다.이러한 첨단 액체냉각 솔루션은 향후 삼성전자의 차세대 반도체 팹(Fab)에 적극 도입될 가능성이 매우 높은 것으로 점쳐진다. 이는 이미 플랙트그룹의 공조 시스템이 삼성전자의 주요 생산 기지에서 신뢰성을 입증하며 안정적으로 운영되고 있기 때문이다. 이날 발표에 따르면 현재 플랙트그룹은 삼성전자 평택 캠퍼스 P1 팹과 화성 DSR(부품연구동) 등에 고효율 공조 시스템을 공급하고 있다.삼성전자는 플랙트그룹이 보유한 100년의 하드웨어 노하우와 자사의 혁신적인 AI 및 IoT 제어 기술을 결합해 글로벌 HVAC 시장의 판도를 바꾼다는 구상이다.방일재 파트장은 이날 발표에서 플랙트그룹의 핵심 비전으로 ‘스마트(Smart)·그린(Green)·글로벌(Global)’ 전략을 강조하며 향후 비전을 제시했다.방 파트장은 “삼성전자의 강점인 AI·IoT 기반 통합 제어 기술과 플랙트의 첨단 제품군을 결합해 데이터센터 공조의 새로운 패러다임을 열어갈 것”이라며 “전 세계 65개국 네트워크를 기반으로 각 지역 환경에 최적화된 맞춤형 솔루션을 적기에 공급해 글로벌 HVAC 시장 영향력을 압도적으로 확대하겠다”고 말했다.",
+      "category": "ai_news",
+      "keywords": [
+        "AI"
+      ],
+      "ai_summary": "삼성전자가 지난해 인수한 유럽 최대 냉난방공조 회사 플랙트그룹을 앞세워 AI 데이터센터의 발열을 잡는 액침냉각 기술 개발에 속도를 내고 있어요. 액침냉각은 전기가 통하지 않는 액체에 서버를 직접 담가 식히는 방식이에요. 현재 한 글로벌 기업과 검증을 진행 중이며, 1.6MW 대용량 냉각 솔루션 '리퀴드-덴코'도 함께 공개했어요.",
+      "extraction_reason": "AI 시대에 데이터센터 발열은 핵심 병목이고, 한국 회사가 그 해법을 들고 나왔어요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "AI를 돌릴수록 데이터센터가 엄청나게 뜨거워져요. 그래서 식히는 기술이 새 큰 사업이 되고 있어요. 삼성이 잘 자리 잡으면 반도체 외에 새 매출 기둥이 생겨요. 한국 데이터센터 산업 전체가 함께 커질 가능성이 높아요. 또 냉각이 잘되면 전기 사용량도 줄어 환경에도 좋아요. 반대로 글로벌 경쟁사들이 더 빨리 움직이면 기회를 놓칠 수 있어요."
+        }
+      }
+    },
+    {
+      "article_id": "f687c354ac612cc5",
+      "title": "\"AI 챗봇이 실제 내 전화번호를 유출한다\"… 제미나이에서 잇따라 노출",
+      "source": "ZDNet Korea",
+      "published_at": "2026-05-14T16:21:14+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260514162114",
+      "content_text": "[지디넷코리아]MIT 테크놀로지 리뷰(MIT Technology Review)가 5월 13일(현지 시간) AI 챗봇이 실제 사용자의 전화번호를 무단으로 유출하고 있는 사례를 단독 보도했다. 사용자들은 자신의 개인 연락처 정보가 구글(Google) AI(특히 제미나이 어시스턴트 응답)에 의해 제3자에게 노출되고 있다고 보고하고 있으며, 이를 막을 쉬운 방법이 사실상 없다는 것이 핵심이다. 한 레딧(Reddit) 사용자는 \"제발 도와달라\"며 절박한 심정을 토로했다.MIT 테크놀로지 리뷰는 \"이 사건은 LLM 학습 데이터 안에 개인정보가 잔류한 결과로 보인다\"고 분석했다. 사용자가 직접 자기 번호를 챗봇에 입력하지 않아도, 과거 어딘가에 노출된 번호가 모델 학습 코퍼스에 흘러들어가면 이후 누가 어떤 질문을 던지든 모델이 그 번호를 '관련 정보'로 인식해 답으로 뱉어낸다는 것이다. 익명화·필터링 절차가 작동했음에도 일부 케이스가 빠져나갔다.더 심각한 점은 사용자가 자기 번호를 '학습 데이터에서 빼 달라'고 요청할 수 있는 명확한 절차가 LLM 제공자 측에 없다는 것이다. GDPR과 한국 개인정보보호법은 '잊혀질 권리'를 보장하지만, 이미 학습된 모델 가중치에서 특정 사람의 정보를 정확히 지우는 기술적 방법은 사실상 존재하지 않는다.한국 사용자 입장에서도 결코 무관한 사건이 아니다. 네이버·카카오·SKT 등 국내 AI 사업자들도 외부 LLM을 활용한 서비스를 늘리고 있고, 챗GPT(ChatGPT)·제미나이(Gemini)·클로드(Claude)는 한국어 데이터로도 학습돼 있다. 이번 보도가 던지는 진짜 질문은 \"우리는 우리의 데이터를 LLM 학습 코퍼스에서 빼낼 권리가 있는가\"라는 정책적 과제다.자세한 내용은 MIT Technology Review에서 확인할 수 있다.이미지 출처: 이디오그램 생성■ 이 기사는 AI 전문 매체 ‘AI 매터스’와 제휴를 통해 제공됩니다. 기사는 클로드 3.5 소네트와 챗GPT를 활용해 작성되었습니다. (☞ 기사 원문 바로가기)",
+      "category": "ai_news",
+      "keywords": [
         "LLM",
-        "OpenAI",
-        "AI"
-      ],
-      "ai_summary": "사이먼 윌리슨이 만든 llm 0.32a2가 공개됐어요. 오픈AI의 새 응답(responses) 엔드포인트를 기본으로 쓰게 바꿔서 GPT-5 같은 추론형 모델이 도구를 사이사이 활용하며 생각하는 과정을 따라갈 수 있게 됐어요. 추론 토큰도 색깔로 구분해 보여줘요.",
-      "relevance_score": 6.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "696f90ec041fee7b",
-      "title": "datasette 1.0a29",
-      "source": "Simon Willison",
-      "published_at": "2026-05-13T08:41:06+09:00",
-      "original_url": "https://simonwillison.net/2026/May/12/datasette/#atom-everything",
-      "content_text": "Release: datasette 1.0a29 New TokenRestrictions.abbreviated(datasette) utility method for creating \"_r\" dictionaries. #2695 Table headers and column options are now visible even if a table contains zero rows. #2701 Fixed bug with display of column actions dialog on Mobile Safari. #2708 Fixed bug where tests could crash with a segfault due to a race condition between Datasette.close() and Database.close() . #2709 That segfault bug was gnarly . I added a mechanism to Datasette recently that would automatically close connections at the end of each test, but it turned out that introduced a race condition where an in-flight query could sometimes be executing in a thread against a connection while it was being closed. I ended up solving that by having Codex CLI (with GPT-5.5 xhigh) create a minimal Dockerfile that recreated the bug. Tags: projects , datasette",
-      "category": "official_ai",
-      "keywords": [
-        "GPT"
-      ],
-      "ai_summary": "데이터셋 공개 도구 datasette 1.0a29가 나왔어요. 토큰 권한 축약 유틸이 추가됐고, 빈 테이블의 컬럼 옵션 표시가 가능해졌으며, 모바일 사파리 표시 버그와 테스트 도중 발생한 세그폴트 경쟁 조건도 잡혔어요. 코덱스 CLI로 도커파일을 만들어 버그를 재현했다고 해요.",
-      "relevance_score": 5.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "38d78cde5ece2d50",
-      "title": "[5월13일] 머스크는 '그록'을 버렸나...'모델'에서 '인프라'로 바뀌는 AI 경쟁의 중심",
-      "source": "AI타임스",
-      "published_at": "2026-05-14T07:00:00+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210448",
-      "content_text": "일론 머스크 CEO의 xAI와 '그록'이 사람들의 관심에서 멀어지고 있습니다. \"세계에서 가장 똑똑한 모델\"이라고 열을 올리던 모습은 사라지고, 이제는 주요 업데이트조차 사람들의 관심을 끄는 데 실패하고 있습니다. 오픈AI와 앤트로픽, 구글 등이 최근 모델로 성능 경쟁을 치열하게 펼치는 것을 그냥 넋 놓고 지켜보는 듯한 분위기입니다.특히 지난 1일 출시된 '그록 4.3'은 사용자들의 관심을 거의 끌지 못했습니다. 그럴만한 것이 벤치마크 성적이 시원치 않았기 때문입니다. 아티피셜 애널리시스의 지능 순위에서는 '키미 2.6'이나 '미모",
-      "category": "ai_news",
-      "keywords": [
-        "앤트로픽",
-        "AI"
-      ],
-      "ai_summary": "일론 머스크의 xAI와 챗봇 '그록'에 대한 관심이 빠르게 식고 있어요. 새로 나온 그록 4.3은 성능 평가에서 다른 모델들보다 뒤처졌고, AI 경쟁의 중심이 '더 똑똑한 모델' 자랑에서 '기업 현장에 잘 도입하기'로 옮겨가는 흐름을 보여줘요.",
-      "extraction_reason": "AI 산업 경쟁 축이 모델 성능에서 현장 도입력으로 옮겨가는 흐름을 보여줘요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "지금까지 AI 회사들은 '내 모델이 점수가 더 높다'고 자랑하기 바빴어요. 그런데 이제는 회사·병원·은행에 진짜로 잘 끼워 넣는 게 더 중요해졌어요. 그러면 우리 회사에 AI를 깔아주는 컨설팅·시스템 회사들의 일이 늘어나요. 반대로 그록처럼 도입 도움이 약한 모델은 점점 뒤로 밀려요. 평소 우리가 어떤 챗봇을 더 자주 만나게 될지가 이 흐름에 따라 정해질 가능성이 높아요."
-        }
-      }
-    },
-    {
-      "article_id": "a46810dd776d3351",
-      "title": "'메타 AI' 1년 만에 국내 출시...'뮤즈 스파크' 기반",
-      "source": "AI타임스",
-      "published_at": "2026-05-14T06:00:00+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210484",
-      "content_text": "'메타 AI(Meta AI)'가 국내 출시됐다. 21025년 4월 미국에서 출시된 뒤 약 1년여 만이다.메타는 13일부터 국내 이용자들이 메타 AI 앱과 웹사이트에서 메타 AI를 이용할 수 있다고 밝혔다. 앱은 구글 플레이스토어와 애플 앱스토어에서 내려받을 수 있다.메타 AI는 메타 슈퍼인텔리전스 랩스(MSL)가 개발한 첫번째 모델인 '뮤즈 스파크'를 기반으로 구동된다.빠른 답변을 제공하는 '인스턴트 모드'와 더 깊이 있는 추론을 지원하는 '깊이 생각하기 모드'를 제공한다. 이를 통해 간단한 질문에 대한 빠른 답변부터 복잡한 문제",
-      "category": "ai_news",
-      "keywords": [
-        "AI"
-      ],
-      "ai_summary": "메타가 자체 AI 앱·웹 서비스 '메타 AI'를 13일부터 한국에서도 쓸 수 있게 했어요. 미국 출시 1년여 만이에요. 자사 모델 '뮤즈 스파크'를 기반으로, 빠른 답변을 주는 '인스턴트 모드'와 깊이 생각해 답하는 '깊이 생각하기 모드'를 함께 제공해요.",
-      "extraction_reason": "챗GPT 외에 한국에서 정식으로 쓸 수 있는 글로벌 AI 챗봇이 하나 더 늘었어요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "한국 사용자 입장에선 챗GPT, 클로드에 이어 또 다른 AI를 비교해서 쓸 수 있는 선택지가 생겼어요. 무료로 쓸 수 있는 범위가 넓으면 학생·자영업자에게 큰 도움이 돼요. 반대로 토종 한국 AI 서비스에는 부담이 커지고, 인스타그램·페이스북 안에서 메타 AI가 점점 더 끼어드는 모습이 빠르게 늘 가능성이 높아요. 우리 개인 정보가 어떻게 쓰이는지도 잘 살펴봐야 해요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "같은 질문 하나를 챗GPT·클로드·메타 AI에 똑같이 던져보고 어떤 답이 더 도움이 되는지 비교해 보세요. 평소 자주 묻는 분야(요리·공부·업무) 위주로 테스트하면 차이를 가장 잘 느낄 수 있어요. 반대로 한 가지 서비스만 맹신하는 건 피하세요. 답이 다를 수 있고, 개인정보 동의 항목은 회사마다 달라서 가입 전에 무엇을 학습용으로 가져가는지 꼭 확인해야 해요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "a1482814ff735213",
-      "title": "구글도 FDE 수백명 채용...AI 경쟁, '모델'에서 '현장 도입'으로",
-      "source": "AI타임스",
-      "published_at": "2026-05-13T18:59:07+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210447",
-      "content_text": "구글이 기업 고객들의 AI 도입을 지원하기 위해 수백명 규모의 엔지니어 채용에 나선다. AI 경쟁이 단순 모델 성능을 넘어 실제 기업 현장 적용 능력으로 확대되면서, 주요 AI 기업들이 대규모 기술 지원 조직 구축 경쟁에 돌입하는 모습이다.디 인포메이션은 12일(현지시간) 구글이 기업용 AI 제품 도입을 지원하는 ‘전진 배치 엔지니어(FDE·Forward Deployed Engineers)’ 조직을 새롭게 구성할 계획이라고 보도했다. 이 조직은 구글 클라우드 내부의 신규 팀으로 운영된다.토마스 쿠리안 구글 클라우드 CEO는 링크드인",
-      "category": "ai_news",
-      "keywords": [
-        "AI"
-      ],
-      "ai_summary": "구글이 기업 고객의 AI 도입을 직접 돕는 '전진 배치 엔지니어(FDE)' 수백 명을 새로 뽑아요. 디 인포메이션 보도에 따르면 구글 클라우드 안에 별도 팀이 꾸려질 예정이에요. AI 경쟁이 모델 성능만이 아닌 실제 도입력으로 옮겨가는 흐름을 보여줘요.",
-      "extraction_reason": "AI 일자리가 연구·개발에서 '현장 도입 엔지니어'로 넓어지는 신호예요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "AI 회사가 직접 회사 안에 들어가 일을 도와주는 엔지니어를 대규모로 뽑는다는 건, 곧 우리가 다니는 회사에도 '바깥에서 온 AI 전문가'들이 들이닥칠 가능성이 크다는 뜻이에요. 이들이 어떤 업무를 자동화할지 정하는 과정에서 기존 직원의 일이 바뀌거나 줄어들 수 있어요. 반대로 AI를 옆에서 잘 배우는 사람에겐 새 기회예요. 컨설팅·시스템 회사들도 일감이 늘어날 가능성이 있어요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "내가 매일 하는 일 중 자료 정리·문서 작성·이메일·요약 같은 부분을 한 가지 골라서 AI로 처리해 보세요. 결과는 꼭 사람이 한 번 더 검증해야 해요. 반대로 'AI 같은 건 회사가 알아서 깔겠지'라며 손 놓고 있으면 위험해요. 어떤 도구가 들어올지 모르니, 무료 도구라도 미리 만져 보고 내 일에 어떤 부분을 맡길 수 있는지 감을 잡아두세요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "6f4b789d5827721e",
-      "title": "'시리'의 대변신... 애플, iOS 27서 'AI 에이전트'로 전면 재설계",
-      "source": "AI타임스",
-      "published_at": "2026-05-13T18:45:20+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210464",
-      "content_text": "애플이 차세대 모바일 운영체제인 iOS 27에서 '시리'와 카메라 앱을 중심으로 한 대규모 사용자 인터페이스 개편을 준비 중인 것으로 전해졌다. 이는 최근 안드로이드 기기를 중심으로 AI 기능을 확대하고 있는 구글과의 경쟁에 대응하기 위한 움직임으로 해석된다.블룸버그에 따르면, 애플은 6월8일 열리는 세계 개발자 컨퍼런스(WWDC)에서 새로운 iOS와 개편된 시리를 공개할 예정이다.시리는 이번 업데이트에서 사실상 완전히 새롭게 재설계된다. 기존의 단순 음성 비서를 넘어, 사용자 데이터를 이해하고 앱 전반에서 작업을 수행하는 ‘항상",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "에이전트"
-      ],
-      "ai_summary": "애플이 6월 8일 개발자 행사 WWDC에서 새 운영체제 iOS 27을 공개할 예정이에요. 음성 비서 '시리'가 단순 명령 처리를 넘어 사용자 데이터를 이해하고 앱 전반에서 작업까지 대신 해주는 AI 에이전트로 전면 재설계된다고 블룸버그가 전했어요.",
-      "extraction_reason": "내 아이폰이 AI 비서로 바뀌는 큰 변화의 시작점이 될 발표예요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "시리가 진짜로 똑똑해진다면 아이폰을 쓰는 사람들의 하루가 크게 바뀌어요. 메시지 답장, 일정 잡기, 가게 예약 같은 일을 시리가 알아서 해줄 수 있어요. 그러면 우리 사진·메시지 같은 개인 정보를 시리가 본다는 뜻이라, 개인정보 보호가 큰 이슈가 돼요. 카카오·네이버 같은 한국 앱들도 시리와 잘 연결되도록 새로 개발해야 할 가능성이 커요."
-        },
-        "bonus": [
-          {
-            "type": "scenario",
-            "title": "앞으로 어떻게 될 수 있을까?",
-            "icon": "🔮",
-            "text": "가장 가능성이 큰 모습은 6월 발표는 멋지지만 실제 한국에선 한국어가 약해 처음 몇 달은 좀 불편한 거예요. 잘 풀리면 한국어 시리가 빠르게 좋아져서 카카오톡·배달앱과 함께 일상 도우미로 자리잡을 수 있어요. 반대로 안 좋은 경우는 개인정보 유출 사고가 터지거나 한국 앱과 호환이 잘 안 되어 발표 때만 떠들썩하고 실제로는 잘 안 쓰게 될 가능성도 있어요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "f2fa876b1d45e54a",
-      "title": "앤트로픽, 연봉 4.7억 '클로드 전도사' 채용 중...\"AI 생태계 장악 나선다\"",
-      "source": "AI타임스",
-      "published_at": "2026-05-13T18:20:16+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210467",
-      "content_text": "앤트로픽이 ‘클로드(Claude)’ 확산을 위한 이색 직군 채용에 나섰다. 앤트로픽은 12일(현지시간) 단순한 기술 지원을 넘어 스타트업과 개발자 커뮤니티에서 클로드 생태계를 적극 전파할 ‘응용 AI 클로드 전도사(Applied AI Claude Evangelist)’를 모집한다고 밝혔다.이번 채용은 AI 업계 전반에서 ‘전방 배치 엔지니어(FDE)’와 같은 고객 밀착형 기술 인력 수요가 급증하는 흐름과 맞물린다. AI 기업들이 단순히 모델 성능 경쟁을 넘어 실제 기업과 개발자들이 AI를 업무에 통합하도록 돕는 현장 지원 체계를 강",
-      "category": "ai_news",
-      "keywords": [
         "Claude",
-        "앤트로픽",
-        "AI"
-      ],
-      "ai_summary": "앤트로픽이 자사 AI '클로드'를 스타트업·개발자 사이에 적극 알릴 '응용 AI 클로드 전도사' 직군을 모집해요. 연봉이 약 4.7억 원에 이르는 자리로, AI 회사들이 모델 자랑을 넘어 현장 도입까지 챙기는 흐름 속에서 나온 채용이에요.",
-      "extraction_reason": "AI 인재 시장에서 '코드 잘 짜는 사람'이 아닌 '잘 전파하는 사람'에게 큰 연봉이 붙는 흐름이에요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "코딩만 잘하는 사람 시대에서, 'AI를 잘 설명하고 회사에 잘 녹여 넣는 사람'에게 큰 연봉이 붙는 시대로 넘어가고 있어요. 이러면 영업·교육·기획 분야에서 AI를 잘 다루는 사람의 몸값이 빠르게 올라가요. 우리 동네 학원·교육 업계에도 'AI 활용 강사' 같은 새 일자리가 생길 가능성이 있어요. 반대로 단순 반복 사무직은 점점 자리가 좁아질 수 있어요."
-        }
-      }
-    },
-    {
-      "article_id": "2fee76ca24e16c56",
-      "title": "앤트로픽, 법률 AI 생태계 점령하나... '클로드' 전용 플러그인 12종 출시",
-      "source": "AI타임스",
-      "published_at": "2026-05-13T17:55:00+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210449",
-      "content_text": "앤트로픽이 법률 업계를 겨냥한 대규모 기능 확장에 나섰다. 단순 문서 작성 보조 수준을 넘어, 계약 관리·판례 조사·소송 대응·기업 법무까지 아우르는 전문 법률 플랫폼으로 ‘클로드(Claude)’를 진화시키겠다는 전략이다.앤트로픽은 12일(현지시간) 20개 이상의 MCP(Model Context Protocol) 커넥터와 12개의 법률 특화 플러그인을 새롭게 공개했다고 밝혔다.이번 업데이트를 통해 클로드는 로펌과 기업 법무팀이 실제 사용하는 각종 소프트웨어와 직접 연결되며, 대규모 법률 업무를 자동화할 수 있게 됐다.이번 발표는 지",
-      "category": "ai_news",
-      "keywords": [
-        "Claude",
-        "앤트로픽",
-        "AI"
-      ],
-      "ai_summary": "앤트로픽이 법률 분야 전용 플러그인 12종과 MCP 커넥터 20여 종을 새로 공개했어요. 계약 관리·판례 조사·소송 대응·기업 법무까지 클로드가 직접 연결돼 자동화할 수 있게 됐어요. 단순 문서 보조를 넘어 전문 법률 플랫폼으로 진화시키겠다는 전략이에요.",
-      "extraction_reason": "AI가 변호사·법무팀 영역까지 본격적으로 들어오기 시작했어요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "법률 업무 중에서도 단순 자료 정리, 판례 조사처럼 시간이 많이 걸리던 일이 AI로 빠르게 줄어들 가능성이 커요. 그러면 변호사 사무실에서 신입을 덜 뽑거나 일이 다르게 짜일 수 있어요. 대신 같은 비용으로 더 많은 사람이 법률 상담을 받을 수 있게 된다는 좋은 면도 있어요. 다만 AI가 잘못된 판례를 '진짜처럼' 만들어내는 사고가 외국에선 이미 있었기 때문에 사람의 확인이 꼭 필요해요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "전세 계약서, 임대차 계약서 같은 흔한 문서는 AI에 사진을 올려서 '이상한 조항 없는지' 점검받는 정도로 활용할 수 있어요. 큰 분쟁이 있을 때는 반드시 진짜 변호사 상담을 함께 받아야 해요. 반대로 'AI가 다 알려줄 거야'라며 변호사 없이 중요한 계약·소송을 결정하는 건 위험해요. AI는 옛 판례를 잘못 만들어낼 수도 있어서 마지막 결정은 사람이 해야 안전해요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "9d5c4950d6cd6c72",
-      "title": "오픈AI, 챗GPT의 '치명적 투약 권고'로 소송 휩싸여...19세 청년 사망",
-      "source": "AI타임스",
-      "published_at": "2026-05-13T17:50:51+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210473",
-      "content_text": "약물 과다 복용으로 숨진 19세 청년의 부모가 오픈AI와 샘 알트먼 CEO를 상대로 소송을 제기했다. 유가족은 '챗GPT'가 아들에게 위험한 약물 조합과 복용 방법을 안내했으며, 결국 이로 인해 사망에 이르렀다고 주장하고 있다.로이터에 따르면, 레일라 터너-스콧과 앵거스 스콧은 12일(현지시간) 미국 캘리포니아 샌프란시스코 주 법원에 소장을 제출했다.대상은 오픈AI와 알트먼 CEO이며, 이들은 지난해 5월 숨진 아들 샘 넬슨이 챗GPT의 조언을 받아 약물을 복용했다고 주장했다.소장에 따르면, 넬슨은 챗봇을 통해 다양한 약물 조합에",
-      "category": "ai_news",
-      "keywords": [
         "챗GPT",
-        "챗봇"
-      ],
-      "ai_summary": "19세 청년의 부모가 오픈AI와 알트먼 CEO를 상대로 캘리포니아 법원에 소송을 제기했어요. 아들이 챗GPT에서 위험한 약물 조합·복용법 안내를 받고 그대로 따랐다가 숨졌다는 주장이에요. 회사 책임 범위와 AI 안전장치를 둘러싼 큰 논쟁이 예상돼요.",
-      "extraction_reason": "AI 답변을 그대로 따랐을 때 생긴 사고에 회사 책임을 묻는 첫 큰 소송이에요.",
-      "relevance_score": 9.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "이 소송 결과는 앞으로 AI 회사들이 약·치료·진단처럼 위험할 수 있는 질문에 얼마나 단단한 안전장치를 둬야 하는지 정하는 기준이 될 수 있어요. 책임이 인정되면 챗봇이 의료 관련 답변을 더 조심스럽게 하거나 거절하는 일이 늘어나고, 사람들은 약 정보를 다른 곳에서 찾아야 해요. 반대로 책임이 안 인정되면 'AI 답을 그대로 믿었다 사고가 나도 본인 책임'이라는 분위기가 굳을 가능성이 있어요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "약, 영양제, 치료법은 챗봇 답을 절대 그대로 따르지 마세요. 챗봇은 '일반적 설명' 정도로만 참고하고 실제 결정은 약사·의사에게 확인받아야 안전해요. 가족 중 청소년이 챗봇과 깊은 대화를 자주 한다면 어떤 이야기를 주고받는지 한 번 살펴보세요. 반대로 '챗봇이 잘 알려줬는데 굳이 병원 가?'라며 실제 진료를 미루는 건 절대 피해야 할 행동이에요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "85249a8b1fccc1b4",
-      "title": "메타, 직원들의 '마우스 추적' 반대 시위에 직면...\"나를 대체할 AI를 내가 훈련\"",
-      "source": "AI타임스",
-      "published_at": "2026-05-13T17:42:38+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210475",
-      "content_text": "메타 직원들이 사내 컴퓨터의 마우스 움직임 추적 소프트웨어 설치에 반발하며 미국 내 여러 사무실에서 항의 전단을 배포한 것으로 전해졌다. AI 중심 구조조정과 대규모 감원 계획이 이어지는 가운데, 내부 노동 조직화 움직임까지 나타나고 있다.12일(현지시간) 로이터에 따르면, 메타 직원들은 최근 미국 내 사무실 회의실과 자판기, 화장실 휴지 디스펜서 위 등에 전단을 비치하며 직원들에게 온라인 청원 참여를 독려했다. 전단에는 “직원 데이터 추출 공장(Employee Data Extraction Factory)에서 일하고 싶은가”라는 문",
-      "category": "ai_news",
-      "keywords": [
-        "AI"
-      ],
-      "ai_summary": "메타 직원들이 사내 컴퓨터에 깔리는 마우스 움직임 추적 소프트웨어 설치에 반대하며 전단을 돌리고 청원 운동을 벌여요. AI 중심 구조조정과 감원 분위기 속에서 '나를 대체할 AI를 내가 훈련시키는 셈'이라는 불만이 직원들 사이에 번지고 있어요.",
-      "extraction_reason": "AI 시대 직장 감시·노동권 갈등이 어떻게 드러나는지 보여주는 사례예요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "perspective": {
-          "title": "입장이 다르면 어떻게 보일까?",
-          "icon": "👥",
-          "text": "회사 입장에선 '얼마나 일하는지 측정해 보안과 효율을 챙기겠다'는 거예요. 직원들은 '내 일상이 감시되고 그 데이터로 나를 대체할 AI가 만들어진다'는 두려움이에요. 노동조합은 이런 흐름을 단체교섭 카드로 쓰고 싶어 해요. 정부·정책 입장에선 노동자 감시와 개인정보 보호가 어디까지 허용되는지 새 규칙이 필요해 보여요. 결국 회사 효율과 노동자 보호 두 가치가 부딪히는 자리예요."
-        },
-        "bonus": [
-          {
-            "type": "ripple",
-            "title": "이게 우리한테 어떻게 영향을 줄까?",
-            "icon": "📡",
-            "text": "이번 일이 알려지면 다른 회사들도 비슷한 감시 소프트웨어를 깔거나 거꾸로 직원 반발을 의식해 조심하게 될 수 있어요. 우리 회사 컴퓨터에도 비슷한 프로그램이 깔려 있을 가능성이 있는데, 어떤 데이터가 모이는지는 잘 알기 어려워요. 한국에도 노동조합·근로감독 기관이 비슷한 문제를 들여다보기 시작할 가능성이 있고, 재택근무 모니터링 도구 도입 흐름에도 영향을 줄 수 있어요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "156eb92de2f5c353",
-      "title": "KAIST, AI 기후 연구 프레임워크·모델 공개…”빠른 정책 수립에 도움”",
-      "source": "AI타임스",
-      "published_at": "2026-05-13T17:30:00+09:00",
-      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210478",
-      "content_text": "한국과학기술원(KAIST, 총장 이광형)은 13일 전해원 녹색성장지속가능대학원 교수, 카르틱 무카빌리 겸직교수, 오혜연 전산학부 교수 연구팀이 국제 공동 연구를 통해 ‘AI 기후 연구 통합 프레임워크’를 개발했다고 밝혔다. 연구팀은 중국 북경대학교, 영국 임페리얼 칼리지 런던, 이탈리아 밀라노 폴리테크닉대학교, 미국 메릴랜드대학교, 오스트리아 국제응용시스템분석연구소(IIASA) 등과 공동 연구를 진행했다. 기존의 기후 변화 연구가 분야별로 분리돼서 수행, 이를 종합적으로 연결해 정책 결정에 활용하는 데 시간이 오래 걸린다는 한계를",
-      "category": "ai_news",
-      "keywords": [
-        "AI"
-      ],
-      "ai_summary": "카이스트 연구팀이 영국·미국·이탈리아·중국·오스트리아 대학들과 함께 'AI 기후 연구 통합 프레임워크'를 공개했어요. 그동안 분야별로 따로 진행되던 기후 변화 연구를 하나로 묶어 정책 결정에 빠르게 활용할 수 있게 돕는 도구라고 발표했어요.",
-      "relevance_score": 6.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "c35acccc832872ed",
-      "title": "SAP, '아르테미스 2'로 99.999% 신뢰성 입증…비즈니스 혁신으로 연결",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-14T05:53:04+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260514055249",
-      "content_text": "[지디넷코리아][올랜도(미국)=남혁우 기자] SAP가 달 탐사 프로젝트 '아르테미스 II(Artemis II)' 지원을 통해 기술 신뢰성을 입증하며 인공지능(AI)기반 '자율형 기업(Autonomous Enterprise)' 비전을 본격화했다.AI가 단순한 업무 지원 도구를 넘어 복잡한 비즈니스 맥락을 이해하고 스스로 의사결정하며 실행까지 완료하는 지능형 운영 시대를 연다는 구상이다.SAP는 12일(현지시간) 미국 올랜도에서 열린 'SAP 사파이어 2026'에서 록히드마틴, 엑슨모빌 등 주요 글로벌 기업과 함께 비즈니스 AI 기반 운영 혁신 사례를 공개하고 기업 운영 전반을 AI가 실시간으로 분석·최적화하는 미래 청사진을 제시했다.토마스 사워레식 SAP 최고 고객 책임자(CCO)는 현대 사회가 문제 없이 운영되는 배경에는 보이지 않는 기업 운영 시스템이 존재한다고 강조했다.그는 \"많은 사람이 아침에 일어나 전등 스위치를 켜면 당연히 불이 들어오고 비행기가 정상적으로 이착륙하며 공급망과 금융 시스템이 지연 없이 움직일 것이라고 믿는다\"며 \"이처럼 일상 속에서 당연하게 여겨지는 수많은 서비스 뒤에는 복잡한 데이터와 프로세스를 실시간으로 연결하고 운영하는 기업 시스템이 존재한다\"고 말했다.커피 한 잔이 소비자에게 전달되기까지 수십개 기업이 연결된 글로벌 공급망이 작동하고 있으며 항공, 물류, 금융, 제조 산업 역시 실시간 데이터와 운영 시스템을 기반으로 돌아가고 있다고 설명했다. 그는 \"세상이 멈추지 않고 안정적으로 움직이는 것은 단순한 우연이 아니라, 보이지 않는 곳에서 운영 시스템이 지속적으로 작동하고 있기 때문\"이라고 강조했다.특히 SAP는 최근 진행된 달 탐사 프로젝트 '아르테미스 II' 사례를 통해 자사 기술의 안정성과 신뢰성을 부각했다. SAP에 따르면 아르테미스 II 프로젝트에 참여한 주요 계약 기업들이 모두 SAP 기반 시스템을 활용해 운영되고 있으며, 실패가 허용되지 않는 우주 산업 환경에서도 안정적인 데이터 처리와 운영 체계를 지원하고 있다.SAP는 우주항공과 같은 초고신뢰 산업에서는 단 몇 초의 시스템 장애나 데이터 오류도 대규모 리스크로 이어질 수 있다고 설명했다. 이에 따라 SAP는 99.999% 수준의 서비스 가용성과 보안성, 컴플라이언스 체계를 기반으로 고객 시스템을 운영하고 있으며, 평균 탐지 시간 단축 등 보안 대응 역량도 지속적으로 강화하고 있다고 밝혔다.토마스 사워레식 총괄은 \"아르테미스 II와 같은 프로젝트는 잠시 멈추거나 오류를 허용할 수 있는 시스템이 아니다\"라며 \"SAP는 이러한 환경에서도 기업 운영을 안정적으로 지원하며, AI 시대에도 가장 중요한 것은 결국 신뢰와 운영 안정성이라는 점을 보여주고 있다\"고 말했다.이어 주요 글로벌 기업이 SAP 기반 비즈니스 AI와 클라우드 전환을 통해 운영 혁신을 추진하고 있는 사례를 소개했다.록히드마틴은 현재 진행 중인 대규모 디지털 전환 프로젝트 '원엘엠엑스(1LMX)'를 소개하며 SAP 기반 통합 운영 체계를 구축하고 있다고 밝혔다. 설계·제조·공급망·유지보수 데이터를 하나의 디지털 체계로 연결해 운영 대응 속도를 높이고 있으며, AI를 활용해 엔드투엔드 프로세스를 재설계하고 있다는 설명이다.마리아 데마리 록히드마틴 디지털 전환 총괄은 \"트랜스포메이션의 목표는 단순한 기술 도입이 아니라 준비태세\"라며 \"국방 산업에서는 고객이 필요한 시점에 필요한 역량을 제공할 수 있어야 하며, 이를 위해서는 데이터와 프로세스, 운영 체계가 유기적으로 연결돼야 한다\"고 강조했다.특히 록히드마틴은 100년 이상 축적된 복잡한 시스템 환경과 엄격한 보안·규제 요구사항 속에서도 SAP 플랫폼 기반으로 운영 구조를 표준화하고 있다고 설명했다. 회사는 AI를 별도 기능처럼 추가하는 것이 아니라 운영 프로세스 자체에 내재화하는 방향으로 접근하고 있다고 밝혔다.엑슨모빌은 150년 이상 축적된 맞춤형 시스템 환경을 클린코어 기반으로 재정비하는 사례를 공개했다. 기존 온프레미스 데이터센터 중심 환경을 클라우드 기반으로 전환하고 있으며, SAP 표준 프로세스를 중심으로…",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "SAP가 NASA 달 탐사 '아르테미스 II' 프로젝트에서 99.999% 신뢰성을 입증하며 'AI 자율형 기업' 비전을 강조했어요. 록히드마틴·엑슨모빌 등과 협력 사례를 공개하고, 기업 운영 전반을 AI가 실시간으로 분석·실행까지 하는 모습을 미래상으로 제시했어요.",
-      "relevance_score": 6.0,
-      "is_must_know": false
-    },
-    {
-      "article_id": "0f3803dc4c951035",
-      "title": "\"보안 침투 시간, AI가 2.3년서 20시간으로 단축\"",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-13T22:43:00+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260513215051",
-      "content_text": "[지디넷코리아]\"인공지능(AI)이 취약점 침투까지 걸리는 시간을 5년 만에 2.3년에서 20시간 정도로 크게 단축시켰습니다. 더욱 무서운 것은 수시간 내로 이뤄지는 공격이 '제로데이' 공격으로, 알려지지 않은 취약점으로 우리 보안 체제를 공격합니다. 대응책이 없는 상황에서 국내 기업들은 공격을 당하고 있습니다.\"한근희 코어시큐리티 부사장은 9일 개최된 2026년 한국IT전문가협회(IPAK) 5월 석찬 세미나 특별 강연에서 이같이 밝혔다. IPAK에 따르면 이번 행사는 최신 IT 업계 동황과 다양한 분야의 정보를 제공하고 회원사 간 협업 시너지를 창출하기 위해 각 사 서비스를 공유하는 자리로 기획됐다.한 부사장은 이날 고도화되는 AI발 사이버 위협과 더불어 피지컬AI 시대를 대비한 보안 대응책에 대해 강연했다.그는 \"포티넷에 따르면 지난해 한 번이라도 침해사고를 당한 기업은 86%에 달한다\"며 \"이런 가운데 공격자가 루트(최고 관리자) 권한을 획득해서 기업 시스템을 붕괴시키는 데까지 1시간이면 충분한 시대가 됐다\"고 경고했다.이에 한 부사장은 \"침해가 이미 이뤄졌다는 전체로 해킹을 어떻게 복구할 것인지에 초점을 맞춘 레질리언스(복원력)의 중요성이 부각되고 있다\"면서 \"이와 더불어 보안을 기본값(Default)으로 하는 인식이 자리잡아야 한다. 실제 유럽은 사이버 레질리언스 액트(CRA)에서 '어떤 제품이든 디지털 요소가 적용돼 있는 하드웨어 소프트웨어는 사이버보안을 제어시스템 보안으로 적용하라'고 명시하고 있다. 이를 어기면 최대 매출액의 2%에 달하는 과징금을 매긴다\"고 설명했다.아울러 피지컬AI 시대 보안과 관련해서는 ▲거버넌스와 정책 ▲인증 ▲라이프사이클과 공급망 ▲실행 전략 및 위협 대응 등 보안 대응책을 제시했다. 이와 더불어 가장 중요한 것은 기초에 충실하는 것이라는 게 한 부사장의 설명이다.그는 \"모든 제품 및 솔루션은 사이버 보안을 기본으로, 바탕에 깔고 시작해야 한다\"면서 \"보안 선진국으로 꼽히는 미국은 1972년부터 '시큐어 바이 디자인(Secure by Design)'의 중요성을 강조하며 시스템 설계 단계부터 보안을 내재화해야 한다고 강조하고 있다\"고 말했다.한편 이날 세미나에서는 IT 분야 전문가 40여명이 참석했다. 한 부사장의 강연 외에도 정효남 아토스 회장이 아토스의 산업안전본부 안전전문 컨설팅에 대해 소개했다. 본격적인 세미나 개최에 앞서 이무건 AIFP 기업경영컨설팅 대표도 'AI-골든브릿지'라는 프로젝트를 소개하며, IPAK의 40년 지혜를 기반으로 한 시니어 IT 전문가와 주니어 IT 전문가를 연결하는 전략에 대해 설명했다.",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "한근희 코어시큐리티 부사장이 IPAK 세미나에서 AI 때문에 시스템 침투에 걸리는 시간이 5년 만에 평균 2.3년에서 20시간 수준으로 줄었다고 발표했어요. 알려지지 않은 취약점을 노리는 제로데이 공격까지 빨라지고 있다고 경고했어요.",
-      "extraction_reason": "사이버 공격의 속도가 빨라지면서 우리 개인·기업도 대비 시간이 부족해졌어요.",
-      "relevance_score": 9.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "예전엔 해커가 큰 회사를 뚫는 데 몇 년이 걸렸지만 이제 하루도 안 걸린다는 뜻이에요. 그러면 인터넷뱅킹·쇼핑몰·병원 시스템이 갑자기 멈추거나 정보가 새는 사고가 더 자주 일어날 가능성이 커요. 우리 개인 정보, 카드 정보, 의료 정보가 흘러나오면 보이스피싱 공격도 더 정교해져요. 나라가 보안 규제를 강화하면 기업들의 비용이 늘어 서비스 요금이 오를 수도 있어요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "스마트폰과 컴퓨터 운영체제, 앱은 업데이트 알림이 오면 미루지 말고 바로 깔아주세요. 비밀번호는 사이트마다 다르게 쓰고, 가능하면 두 단계 인증을 켜주세요. 모르는 사람이 보낸 문자·메일의 링크는 절대 누르지 마세요. 반대로 'AI가 알아서 막아주겠지'라며 비밀번호 같은 기본 보안을 소홀히 하는 건 가장 피해야 할 행동이에요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "10124a0e01e90aeb",
-      "title": "NASA도 레드햇 선택…\"4천개 레거시 VM 현대화\"",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-14T03:40:51+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260514034051",
-      "content_text": "[지디넷코리아][애틀랜타(미국)=김미정 기자] \"우리는 레드햇 플랫폼으로 우주 인프라를 현대화하고 있습니다. 4천 개 넘는 기존 가상머신(VM)을 재편해 실시간 데이터 처리 속도와 운영 효율도 높였습니다. 향후 인공지능(AI) 기반 임무 지원 체계까지 정비할 방침입니다.\"조시아 존슨 미국항공우주국(NASA) 마셜 우주비행센터 시스템 아키텍트는 14일까지 미국 조지아주 애틀랜타에서 열리는 '레드햇 서밋 2026' 기조연설에서 레드햇 기반 인프라 전환 성과와 AI 활용 계획을 공개했다. 마셜 우주비행센터는 달 탐사 프로젝트 '아르테미스'와 국제우주정거장(ISS) 임무를 지원하는 핵심 조직이다. 추진 시스템과 발사체, 과학 데이터 운영을 담당하고 있다.NASA는 현재 아르테미스 2호 임무를 위해 907개 가상 워크로드를 운영했으며, 34만개의 매개변수를 처리한 바 있다. 이를 통해 엔지니어들이 실시간으로 올바른 결정을 내릴 수 있도록 대규모 데이터를 지속적으로 분석하는 식이다. 여기에 수백 차례 모의 발사와 수천 시간에 달하는 리허설도 이뤄졌다.마셜 우주비행센터는 이처럼 방대한 우주 임무 데이터를 안정적으로 다루기 위해 기존 인프라 현대화에 나섰다. 전통적인 워크로드와 차세대 워크로드를 한 플랫폼에서 통합 관리할 필요성이 커지면서 컨테이너와 가상화를 동시에 지원하는 레드햇 플랫폼을 선택한 것이다. 존슨 아키텍트는 \"우리 센터는 4천 개 레거시 VM을 약 2천 개 고성능 VM과 약 4천 개 컨테이너로 재정비했다\"며 \"'마이그레이션 툴킷 포 버추얼라이제이션'을 활용해 대규모 운영 환경을 이전하고 프로덕션 준비도를 끌어올렸다\"고 설명했다. 그 결과 인프라 재편 효과가 가시화된 것으로 나타났다. NASA는 운영 인프라 전반에서 약 40% 수준 비용 절감 효과를 거뒀고, 기존 가상화 공급업체를 유지했을 경우 예상됐던 200~300%의 비용도 발생하지 않은 것으로 나타났다. 워크로드 배포 시간은 기존 며칠에서 수분 단위로 단축된 것으로 전해졌다. 존슨 아키텍트는 \"이런 변화는 ISS와 아르테미스 임무에 필요한 실시간 데이터 제공 역량을 높이는 데 기여했다\"고 강조했다. 이어 \"연구진과 운영자는 임무 현장에서 필요한 데이터를 더 빠르게 확보할 수 있게 됐다\"며 \"복잡한 우주 운영 체계에 대한 대응 속도도 높아졌다\"고 설명했다. NASA는 다음 단계로 AI 기반 임무 지원 체계를 준비하고 있다. 마셜 우주비행센터는 레드햇 솔루션과 AI 노드를 활용해 사전 구축형·맞춤형 모델을 제공하고, 과학자와 운영자 데이터 분석 부담을 줄인다는 계획이다.존슨 아키텍트는 \"현재 과학자와 과학 탑재체 운영자는 본연 연구 업무뿐 아니라 네트워크와 소프트웨어, AI까지 폭넓게 이해해야 하는 상황에 놓였다\"며 \"우리는 AI로 방대한 데이터 흐름을 걸러내고 상관관계를 분석하며 우선순위를 제시할 것\"이라고 말했다.향후 데이터 현대화 방향으로는 '마이크로 모델' 접근법이 제시됐다. 거대한 단일 모델보다 목적에 맞는 소형 모델을 활용해 임무별 데이터 처리와 분석을 정교하게 수행하는 방식이다.존슨 아키텍트는 \"우리는 AI 모델을 인간의 판단을 대체하는 존재가 아니라 우주에서 강력한 역량 증폭 도구로 보고 있다\"며 \"AI가 데이터 흐름을 걸러내고 연관성을 분석하며 우선순위를 정리하면 운영자는 데이터 분류보다 의사결정에 집중할 수 있을 것\"이라고 기대했다.",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "NASA 마셜 우주비행센터가 레드햇 플랫폼으로 4천 개가 넘는 기존 가상머신을 새로 정비했어요. 달 탐사 '아르테미스 2호'를 위해 907개 가상 워크로드와 34만 개 매개변수를 다루고, 앞으로 AI 기반 임무 지원 체계까지 정비할 계획이라고 밝혔어요.",
-      "relevance_score": 6.0,
-      "is_must_know": false
-    },
-    {
-      "article_id": "2e016c00970db780",
-      "title": "레드햇, 하드닝 이미지·허밍버드·데스크톱 출시…\"AI 개발 속도·보안↑\"",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-14T03:05:34+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260514030534",
-      "content_text": "[지디넷코리아][애틀랜타(미국)=김미정 기자] 레드햇이 인공지능(AI) 에이전트 개발 확산에 맞춰 소프트웨어(SW) 공급망 보안과 개발자 작업 속도를 동시에 높이는 통합 전략을 내놨다. 보안이 강화된 컨테이너 이미지부터 최신 운영체제(OS), 샌드박스 기반 개발 환경까지 아우르는 엔터프라이즈 개발 체계를 재정비하겠다는 구상이다.레드햇은 14일까지 미국 조지아주 애틀랜타에서 열리는 '레드햇 서밋 2026'에서 '레드햇 하드닝 이미지(Red Hat Hardened Images)'와 '페도라 허밍버드 리눅스(Fedora Hummingbird Linux)' '레드햇 데스크톱(Red Hat Desktop)'을 공식 출시했다고 밝혔다. 이를 통해 개발 초기 단계부터 배포 환경까지 신뢰성을 높겠다는 전략이다. 레드햇 하드닝 이미지는 최신 프로그래밍 언어와 런타임, 데이터베이스, 웹 서버 등을 위한 초소형·테스트 완료 컨테이너 이미지다. 현대 클라우드 네이티브 애플리케이션 기반 이미지를 보안 중심으로 재구성한 형태다. 레드햇 엔터프라이즈 리눅스(RHEL)와 오픈시프트 구독 고객에게 추가 비용 없이 제공된다.이 이미지는 고도로 자동화된 '에이전틱 소프트웨어(SW) 팩토리'를 통해 지속적으로 빌드된다. 레드햇은 자동화 속도를 끌어올리면서도 사람 개입이 포함된 검토 절차를 유지해 거버넌스와 감독 기능까지 확보했다고 설명했다. 기업은 빠르게 업데이트되는 개발 환경에서도 공급망 보안 기준을 일정 수준으로 유지할 수 있는 셈이다.페도라 허밍버드 리눅스는 롤링 릴리스 방식으로 업스트림 리눅스 커뮤니티가 제공하는 수정 사항과 업데이트를 신속히 반영한다. 레드햇은 허밍버드가 알려진 공통 취약점·노출(CVE) 없는 언어와 런타임, 데이터베이스, 개발 도구를 함께 제공해 AI 에이전트 실험 환경으로 활용될 수 있다고 강조했다.이날 개발자 작업 환경을 겨냥한 레드햇 데스크톱도 정식 출시됐다. 이는 컨테이너 개발 도구인 포드맨 데스크톱의 레드햇 지원 버전 형태다. 레드햇 하드닝 이미지와 '레드햇 트러스티드 라이브러리'에 직접 연결된다. 개발자는 기업 SW 공급망 기준을 충족하는 이미지와 라이브러리를 개발 단계에서부터 손쉽게 찾을 수 있다.레드햇 데스크톱에는 로컬 샌드박스 기능도 추가됐다. 이 기능은 에이전트를 개발자 PC와 기업 인프라로부터 분리하는 기능이다. 에이전트가 작업 범위를 잘못 해석하거나 예기치 않은 동작을 수행했을 때 발생할 수 있는 위험을 줄일 수 있다. 레드햇은 엔비디아와의 협업, 오픈소스 프로젝트 '오픈셸(Openshell)' 통합을 통해 개발자 노트북부터 실제 운영 환경까지 샌드박싱 체계를 확장할 방침이다.아셰시 바다니 레드햇 수석부사장 겸 최고제품책임자(CPO)는 \"기업이 더 빠르게 AI 기반 애플리케이션을 실험하고 배포하되, 그 과정에서 이미지 신뢰성·라이브러리 검증·실행 격리 같은 핵심 보안 요소를 놓치지 않도록 개발 체계를 재설계했다\"고 강조했다.",
-      "category": "ai_news",
-      "keywords": [
-        "엔비디아",
-        "AI",
-        "인공지능",
-        "에이전트"
-      ],
-      "ai_summary": "레드햇이 '레드햇 서밋 2026'에서 보안이 강화된 컨테이너 이미지 '하드닝 이미지'와 새 운영체제 '페도라 허밍버드 리눅스', 그리고 '레드햇 데스크톱'을 공식 출시했어요. AI 에이전트 개발이 확산되는 상황에서 보안과 개발 속도를 함께 높이려는 전략이에요.",
-      "relevance_score": 5.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "5140284148da9527",
-      "title": "레드햇, 150만 VM 고객 정조준…\"가상화·컨테이너·AI 통합\"",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-14T02:50:05+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260514025005",
-      "content_text": "[지디넷코리아][애틀랜타(미국)=김미정 기자] 레드햇이 '오픈시트프'를 앞세워 가상화 전략을 한층 강화했다. 단순히 기존 가상머신(VM)을 옳기는 데 그치지 않고 VM과 컨테이너, 인공지능(AI) 워크로드를 통합 관리하는 애플리케이션 현대화 전략으로 사업을 확장하겠다는 구상이다. 크리스 라이트 레드햇 최고기술책임자(CTO)는 14일까지 미국 조지아주 애틀랜타에서 열리는 '레드햇 서밋 2026' 기조연설에서 레드햇 가상화 경쟁력을 이같이 밝혔다.라이트 CTO는 오픈시프트 기반 가상화 사업이 빠르게 확대되고 있다고 밝혔다. 실제 오픈시프트는 연간반복매출(ARR) 20억 달러 규모로 성장했으며, 이 중 가상화 사업이 6억 달러를 차지한 것으로 집계됐다. 오픈시프트로 이전 가능성을 평가한 VM도 기존 110만 대에서 150만 대로 증가한 것으로 나타났다. 레드햇 가상화 전략의 핵심은 '이전'과 '현대화'를 동시에 추진하는 것이다. 고객이 기존 VM 환경을 오픈시프트 버추얼라이제이션으로 옮기는 과정에서 애플리케이션 구조를 비롯한 네트워크, 스토리지, 시스템 의존성까지 함께 분석한다는 설명이다. 이후 컨테이너화와 AI 워크로드 운영까지 연결할 수 있도록 지원한다. 이를 통해 가상화 전환을 비용 절감 수단이 아니라 장기적인 IT 구조 재편 출발점으로 삼겠다는 전략이다. 라이트 CTO는 가상화 마이그레이션 평가(VMA)를 전환 첫 단계로 내세웠다. VMA는 고객 현행 가상화 환경과 연계 시스템을 종합 진단하는 절차다. 평가 이후 실제 운영에 가까운 파일럿 환경을 구성하고, 대규모 이전이 필요한 고객에게는 반복 가능한 실행 체계인 '마이그레이션 팩토리' 모델을 적용한다. 그는 \"우리는 현재 134건 넘는 VMA를 완료했다\"며 \"이중 16건이 대규모 이전 단계로 넘어갔다\"고 설명했다. 레드햇은 이 같은 접근 방식이 대형 고객 전환 수요에 적합하다고 보고 있다. 실제 북미의 한 유통 기업은 1천 개가 넘는 오픈시프트 기반 애플리케이션을 운영하면서 1천 대 넘는 VM을 통합 아키텍처로 옮기는 프로젝트를 진행 중이다. 또 다른 고객은 6만 대 VM을 대상으로 평가를 시작해, 통합과 마이그레이션을 거쳐 최종적으로 약 4만 대 규모로 최적화하는 방안을 추진하고 있다.레드햇 가상화의 또 다른 강점은 파트너 생태계와 서비스 역량을 함께 묶은 실행 체계다. 아셰시 바다니 레드햇 수석부사장 겸 최고제품책임자(CPO)는 \"우리는 스토리지, 백업, 재해복구, 네트워킹, 가상 데스크톱 분야의 주요 기술 기업들과 통합을 강화하고 있다\"며 \"여기에 컨설팅, 교육, 기술 계정 관리(TAM)를 결합해 고객이 플랫폼 도입 이후 실제 운영 역량까지 확보하도록 지원한다\"고 강조했다. 그는 파트너 주도 확장 전략도 가속하고 있다고 밝혔다. 실제 레드햇은 스페셜라이즈드 파트너 프로그램(RHSP)을 통해 가상화 전문 파트너를 육성 중이다. 전 세계 86개 파트너가 관련 프로그램에 참여하고 있으며, 이 가운데 31개사가 가상화 인증을 추진하고 있다. 현재까지 6개사가 가상화 전문화 인증을 획득한 것으로 전해졌다. 레드햇은 인증 요건에 기술 교육뿐 아니라 실제 고객 프로젝트 수행 경험까지 포함해, 대규모 이전 사업의 품질을 높이겠다는 방침이다.레드햇은 가상화 시장 변화가 단기적인 비용 절감 수요에 머물지 않을 것으로 보고 있다. 브로드컴의 VM웨어 인수 이후 기업들이 대체 플랫폼을 적극 검토하는 상황에서, 레드햇은 오픈시프트 버추얼라이제이션을 기존 VM 운영의 대안이자 차세대 AI·컨테이너 기반 인프라로 넘어가는 연결 고리로 제시하고 있다. 라이트 CTO는 \"우리 가상화 전략은 ‘VM을 어디로 옮길 것인가’보다 ‘이전 후 기업 IT를 어떻게 재설계할 것인가’에 초점이 맞춰졌다\"고 강조했다.",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "레드햇이 가상화 사업을 키우고 있어요. 오픈시프트로 옮길 수 있을 것으로 본 가상머신이 110만 대에서 150만 대로 늘었고, 가상화 사업 매출은 연 6억 달러까지 자랐어요. 가상머신·컨테이너·AI 작업을 하나의 도구로 묶어 관리하는 전략을 펼친다고 발표했어요.",
-      "relevance_score": 5.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "c8d01ecfbb0b6d10",
-      "title": "[현장] \"미토스 쇼크, 한국이 구조적으로 더 취약\"",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-13T17:59:04+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260513175904",
-      "content_text": "[지디넷코리아]한국국방연구원(KIDA) 국방인공지능정책연구실과 과실연 AI미래포럼이 주최한 '5차 국방인공지능혁신네트워크 세미나'가 50여명의 관계자들이 참석한 가운데 13일 고려대학교 미래융합기술관 601호에서 열렸다. 발제는 김승주 고려대 정보보호대학원 교수가 했다.김 교수는 세계적으로 뜨거운 '미토스(Mytos) 쇼크'에 대해 \"한국이 구조적으로 더 취약하다\"며 \"기술이 문제가 아니다. 기술은 우리도 가질 수 있다. 문제는 이런 기술을 활용할 수 있는 생태계가, 문화가 한국이 더 취약하다\"면서 그 이유를 설명했다.김 교수에 따르면 '미토스'는 내부 코드명 카피바라(Capybara)였고, 올 3월 설정 오류로 그 존재가 먼저 노출됐고, 4월 8일 '미토스 프리뷰(미리복)'라는 이름으로 공식 출시됐다. 미토스를 제작한 미국 AI기업 앤트로픽은 이를 \"지식과 아이디어를 연결하는 깊은 연결 조직\"이라는 의미로 설명했다. 앤트로픽은 미토스가 범용AI임에도 보안 취약점 탐지와 공격 능력이 가공스러워 일반에 공개하지 않고 대신 '글래스윙(Glasswing)'이라는 프로젝트로 구글, MS, AWS 등 미국 빅테크와 기관 등 약 50여곳에만 이를 제공했다. 우리 정부도 이 프로젝트에 참여하기 위해 앤트로픽과 접촉중이다.김 교수는 AI가 정확히 자동화 기술이라면서 \"취약점을 찾는 자동화 기술은 이미 미국에서 2005년에 나왔다. 마이크로소프트가 굉장히 발빠르게 움직였고, 2007년에 이미 자동화 도구를 이용해서 취약점들을 찾는 일들을 했다\"고 들려줬다.그는 한국이 '미토스 쇼크'에 구조적으로 취약한 이유로 시간의 비대칭성을 들었다. 미토스 같은 강력한 AI 등장으로 해킹 도구 제작 시간이 기존 2~3년에서 20시간으로 대폭 단축됐음에도 우리나라는 이에 대응하는 절차가 진단->보고->승인->예산편성->장비 구매 및 대응 순으로 이어지면서 방어시간이 너무 길다는 것이다. 전문가에 따라 해킹 도구 제작시간이 10시간이라고 말하는 사람도 있다.김 교수는 외국도 시간의 비대칭성이 존재하지만 우리 같지는 않다면서 \"신속한 의사결정을 어렵게 하는 중앙집중형 보안 거버넌스의 구조적 리스크와 불투명성이 문제\"라고 짚었다. 이어 \"정부와 공공 분야가 가장 경직돼 있다. 다음이 금융이다\"면서 \"(통신 등) 민간 분야도 경직돼 있기는 마찬가지\"라고 꼬집었다. 금융권의 경직된 시스템과 관련, 그는 \"데이터베이스 관련 서버 하나 늘리는데도 금융위한테 물어봐야 하는 현실\"이라고 전했다. 작년 대규모 해킹 사건이 발생하자 우리 정부는 CISO의 권한을 확대하는 한편 CEO 책임을 강화했다. 이사회 보고도 의무적으로 하게 했다. 김 교수는 이사회 보고 의무로 오히려 더 안전한 보안체계를 갖추는 것이 더 길어질 수 있다며 우려했다.국가정보원법의 문제점도 지적했다. 즉, 국가정보원법 제 4조는 직무에 관한 것으로, 북한과 국제범죄, 테러, 안보침해, 국가배후 해킹 조직 등 사이버안보에 관한 정보를 수집, 작성, 배포할 수 있다고 명기돼 있다. 김 교수는 이 조항때문에 각 기관들의 자율적인 보안 방어 능력이 떨어진다면서 \"특히 방첩사나 국정원이 하는 내용들이 투명하게 문서화된 게 거의 없다는 게 문제\"라고 목소리를 높였다. 이어 정보기관 특성상 정보를 공유하고 투명히 운영하는게 한계가 있다며 미국 CISA(Cybersecurity and Infrastructure Security Agency)를 예로들며 우리도 정보당국이 정보를 투명히 더 공개해야 한다고 제안했다. CISA는 미국 연방정부의 사이버보안 및 핵심 인프라 보호를 담당하는 기관이다. 2018년 설립됐고, 미국의 전력망과 통신망, 금융 시스템, 병원, 공항 같은 핵심 인프라를 사이버 공격과 물리적 위협으로부터 보호하는 것이 핵심 임무다.김 교수는 정보기관의 사찰 논란과 구형을 뜻하는 레거시(Legacy) 시스템과 이에 따른 복잡성도 '미토스 쇼크'에서 우리나라가 구조적으로 더 취약한 이유라고 진단했다. 레거시 시스템과 관련해 그는 \"많은 기업들이 자신들의 IT 자산을 제대로 파악하고 있지 않다. 숨어…",
-      "category": "ai_news",
-      "keywords": [
-        "앤트로픽",
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "고려대 김승주 교수가 국방AI혁신 세미나에서 앤트로픽 신모델 '미토스'발 충격에 한국이 구조적으로 더 취약하다고 진단했어요. 기술 문제가 아니라, 새로운 AI를 빠르게 활용해보고 사회로 흡수하는 생태계와 문화가 약하다는 게 핵심 이유라고 짚었어요.",
-      "extraction_reason": "AI 도입 속도가 단순 기술이 아닌 사회·문화에 달려 있다는 경고예요.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "한국이 AI 기술은 만들 수 있어도 그걸 빨리 회사·정부·일상에 녹이는 분위기가 약하다는 이야기예요. 그러면 AI에 잘 적응한 미국·중국 회사들이 한국 시장도 점점 더 빨리 가져갈 수 있어요. 우리 일자리에도 영향을 줘서 단순 사무·고객센터 일이 외국 AI 서비스로 흡수될 가능성이 커요. 정부가 규제만 강하게 짜고 활용 교육은 뒷전이면 격차가 더 벌어질 수 있어요."
-        },
-        "bonus": [
-          {
-            "type": "frame",
-            "title": "이 뉴스, 이렇게 읽어보세요",
-            "icon": "🧐",
-            "text": "이건 세미나 한 곳의 발표라 한 명의 진단이에요. 다른 매체 두세 곳이 같은 진단을 하는지, 정부·기업 입장에서는 어떻게 답하는지 같이 살펴보세요. '미토스 쇼크'라는 단어가 멋있게 들리지만, 어느 정도의 실제 영향이 있는지는 시간이 좀 지나야 가늠할 수 있어요. 우리가 던질 질문은 이거예요. 우리 회사·학교는 새 AI가 나오면 며칠 안에 시험해 볼 수 있는 분위기일까?"
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "cf0c6e461dfbe148",
-      "title": "[카드뉴스] AI가 번 돈, 나한테 올까",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-13T21:25:45+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260513103108",
-      "content_text": "[지디넷코리아]안녕하세요, AMEET 기자입니다. 요즘 AI 호황으로 반도체 주식이 역대급으로 뜨거워지고, 세금까지 넘쳐흐른다는 소식이 들려오면서 자연스럽게 이런 질문이 나오기 시작했어요. \"AI가 번 돈, 나한테도 올 수 있지 않을까?\" 바로 '국민배당금' 논의인데요, AI가 부를 독식하면서 '이게 과연 누구의 돈인가'라는 논쟁이 본격적으로 불붙기 시작했어요. 그런데 현실은 기대만큼 달콤하지 않았어요. AI 전문가 6명이 직접 토론한 결과, 무려 85%가 원안에 반대했고 찬성은 15%에 그쳤는데요, 그 핵심 이유가 바로 '숨겨진 함정' 때문이에요.배당금을 지급받으면 소득으로 인식돼 기존에 받던 복지 혜택이 오히려 깎이는 구조여서, 받은 것보다 잃는 게 더 많아질 수 있다는 거예요. 선한 의도의 정책도 설계가 잘못되면 오히려 독이 된다는 사실, 정말 소름이 돋지 않나요? 그렇다면 지금 우리가 해야 할 일은 뭘까요? 전문가들은 섣부른 투자보다 방어적 접근을 먼저 권하고 있어요. AI 시대일수록 흐름보다 구조를 읽는 눈이 진짜 재산이 된다는 점, 꼭 기억해 두세요. 더 자세한 내용은 카드뉴스에서 직접 확인해보세요!▶ 해당 보고서 보기 https://ameet.zdnet.co.kr/uploads/a2045e59.html▶ 지디넷코리아가 리바랩스 ‘AMEET’과 공동 제공하는 AI 활용 기사입니다. 더 많은 보고서를 보시려면 'AI의 눈' 서비스로 이동해주세요. (☞ 보고서 서비스 바로가기)",
-      "category": "ai_news",
-      "keywords": [
-        "AI"
-      ],
-      "ai_summary": "AI 호황으로 반도체 주가와 세금이 늘면서 '국민배당금' 논의가 나왔어요. 그런데 AI 전문가 6명 토론에서 85%가 원안에 반대했어요. 배당금을 받으면 소득으로 잡혀 기존 복지 혜택이 오히려 깎일 수 있어 받는 것보다 잃는 게 클 수 있다는 이유예요.",
-      "extraction_reason": "AI가 번 돈을 어떻게 나눌지가 우리 복지·세금 정책에 직접 영향을 줘요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "AI로 번 돈을 국민에게 나눠주자는 생각은 듣기엔 좋지만, 받은 만큼 기초연금·기초생활보장 같은 복지가 줄어드는 사람이 생길 수 있어요. 그러면 형편이 어려운 사람들이 오히려 손해를 볼 수 있다는 게 전문가들 걱정이에요. 정책을 짤 때 세금 구조와 복지 기준을 같이 고치지 않으면, 잘 사는 사람이 더 이득 보는 결과가 나올 수 있어요. 정치권에서 이 논의가 어떻게 흘러갈지 지켜봐야 해요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "'국민배당금' 같은 이야기가 나오면 누가 얼마를 받고, 그 대신 무엇이 줄어드는지 한 번 더 따져보세요. 가족 중 기초연금·복지 혜택을 받는 분이 있으면 영향을 더 꼼꼼히 확인해야 해요. 반대로 'AI 주식만 사두면 다 해결돼' 하는 건 위험해요. 전문가들도 섣부른 투자보다 방어적 자세를 권하고 있고, 호황이 길게 갈지 아무도 단정하지 못해요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "d3a285a6f0df7d08",
-      "title": "레드햇 손잡은 닛산 \"AI로 차량 개발 생태계 주도\"",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-14T00:28:08+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260514002808",
-      "content_text": "[지디넷코리아][애틀랜타(미국)=김미정 기자] \"우리는 단순히 차량 운영체제(OS) 교체하는 수준에만 그치지 않습니다. 레드햇과 하드웨어 변화에 유연하게 대응하고, 인공지능(AI) 기능을 지속 확장할 수 있는 'AI 정의 차량 생태계'를 선도할 것입니다.\"가즈마 스기모토 닛산 소프트웨어 정의 차량(SDV) 소프트웨어 플랫폼 개발부문 총괄매니저는 14일까지 미국 조지아주 애틀랜타에서 열리는 '레드햇 서밋 2026' 기조 연설에서 이같이 밝혔다. 닛산은 차세대 중앙 차량 컴퓨터 기반 OS로 '레드햇 인비히클 OS(Red Hat In-Vehicle OS)'를 채택했다고 발표했다. 양사는 닛산 '스케일러블 오픈 SW 플랫폼'에 이를 적용해 표준화·확장 가능한 리눅스 기반 차량 소프트웨어 구조를 공동 개발한다.스기모트 매니저는 차량 안전과 기능 고도화를 동시에 달성하기 위해 SW 구조를 이원화했다고 밝혔다. 브레이크·조향처럼 안정성이 최우선인 SW와 내비게이션·인포테인먼트처럼 지속 업데이트가 필요한 SW를 분리했다는 설명이다. 이를 통해 핵심 안전 기능은 안정적으로 유지하면서도 차량 내 디지털 기능은 빠르게 개선할 수 있도록 했다.스기모토 매니저는 하드웨어 종속 계층도 별도로 떼어냈다고 설명했다. 이에 칩이나 센서 세대가 바뀌어도 변화가 전체 SW 스택으로 번지지 않도록 차단하고 상위 계층에는 표준 응용프로그램인터페이스(API)만 노출하는 구조를 추진할 방침이다. 기능 단위 모듈화도 병행한다. 차량 기능을 컨테이너나 서비스 단위로 쪼개 독립적으로 구축·배포·업데이트할 수 있게 해 필요한 부분만 겨냥한 무선(OTA) SW 업데이트와 지속적인 기능 진화를 가능하게 한다는 구상이다.스기모토 매니저는 이번 협력이 소프트웨어 정의 차량(SDV)을 넘어 'AI 정의 차량'으로 가는 기반이 될 것으로 보고 있다. 특히 AI 드라이브와 AI 파트너를 핵심 제품으로 제시하며 차량 내 컴퓨팅 자원을 특정 칩 세대에 묶지 않고 온보드·오프보드·하이브리드 방식으로 유연하게 조정할 수 있어야 한다고 강조했다.그는 앞으로 차량 데이터 처리 역량이 주요 과제라고 진단했다. AI 성능 고도화를 위해 데이터 활용이 중요해지는 만큼 모델 개선뿐 아니라 책임성·신뢰성·보안·개인정보 보호·거버넌스를 함께 충족하는 데이터 운용 체계가 필요하다는 입장이다.이를 위해 레드햇 엔지니어가 닛산 개발 파이프라인에 직접 참여한다. 기존 시스템 통합 과정 마찰을 줄이고 닛산이 SW 스택을 더 강하게 통제할 수 있는 통합 개발 모델을 추진할 방침이다. 스기모토 매니저는 \"닛산은 모빌리티 시대 고객에게 더 나은 서비스를 제공하기 위해 SW 개발 생애주기를 직접 주도하고 있다\"며 \"차세대 중앙 차량 컴퓨터를 위한 이번 공동 엔지니어링 이니셔티브는 글로벌 차량 라인업 전반에서 혁신을 만들 것\"이라고 자신했다.",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "닛산이 차세대 자동차 운영체제로 '레드햇 인비히클 OS'를 채택한다고 발표했어요. 브레이크·조향처럼 안정성이 중요한 소프트웨어와 내비게이션·인포테인먼트처럼 자주 업데이트되는 부분을 분리해 'AI 정의 차량 생태계'를 만들겠다는 구상이에요.",
-      "relevance_score": 6.0,
-      "is_must_know": false
-    },
-    {
-      "article_id": "c9942cceb55824b6",
-      "title": "\"기업, AI 판단·실행 분리해야 자동화 성과…'앤서블'로 구현\"",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-13T22:49:44+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260513224944",
-      "content_text": "[지디넷코리아][애틀랜타(미국)=김미정 기자] \"기업은 인공지능(AI) 에이전트 판단을 실제 운영으로 연결하는 자동화 체계를 구축해야 합니다. '레드햇 앤서블 플랫폼'은 AI 에이전트가 복잡한 기업 인프라와 원활히 상호작용해 기업 자동화를 강화할 수 있습니다.\"아셰시 바다니 레드햇 수석부사장 겸 최고제품책임자(CPO)는 14일까지 미국 조지아주 애틀랜타에서 열리는 '레드햇 서밋 2026'에서 '레드햇 앤서블 오토메이션 플랫폼 2.7'과 신규 '자동화 오케스트레이터'를 공개했다. 이번 발표는 AI 에이전트가 복잡한 인프라와 상호작용할 때 필요한 신뢰성, 통제력, 실행 정밀도를 높이는 데 초점을 맞췄다.이번 업데이트 핵심은 AI가 제시한 분석과 권고를 안정적인 운영 조치로 옮기는 '신뢰할 수 있는 실행 계층' 구축이다. 자동화 오케스트레이터는 결정론적 자동화, 이벤트 기반 자동화, AI 기반 자동화를 한 흐름으로 묶어 AI 중심 운영 체계를 구현하도록 지원한다.레드햇은 앤서블 오토메이션 플랫폼에 조직별 맥락을 반영한 AI 기능도 더했다. 기업이 자체 지식과 정책을 주입하는 '브링 유어 온 놀리지' 기능을 통해 자동화 지능형 어시스턴트가 보다 구체적이고 환경에 맞는 답변을 내놓도록 돕는다.AI 도구와 자동화 기능을 연결하는 구조도 강화됐다. 앤서블 오토메이션 플랫폼용 '모델 컨텍스트 프로토콜(MCP) 서버'를 통해 별도 맞춤형 통합 없이 AI 도구와 자동화 환경을 연계할 수 있도록 지원한다.대규모 AI 운영관리(AIOps) 확산을 위한 기능도 포함됐다. 바다니 CPO는 \"우리는 IBM 인스타나, 서비스나우, 스플렁크 등 생태계 파트너용 솔루션 가이드를 제공해 AI옵스 도입 과정을 단순화했다\"며 \"자동화 포털을 개선해 콘텐츠 제작과 패키징 효율도 높였다\"고 강조했다. 바다니 CPO는 고객이 자동화 성과를 보다 직접적으로 확인할 수 있게 됐다고 말했다. 새 대시보드는 성능과 투자수익률(ROI) 지표를 보여줘 조직 전반에서 자동화가 만든 효과를 수치로 파악하도록 지원한다는 이유에서다.보안과 접근 통제도 강화됐다. 앤서블 오토메이션 플랫폼은 해시코프 볼트용 '오픈아이디커넥트(OIDC)' 인증 제공자 역할을 수행하며 작업별 단기 토큰을 발급해 정적인 서비스 계정 사용과 자격 증명 확산 위험을 줄인다.바다니 CPO는 기존 자동화 자산을 AI 시대에 맞게 재활용할 수 있다는 점도 강조했다. 기업은 기존 플레이북 기반으로 AI 에이전트가 상황을 조사하고, 조치를 권고하도록 구축할 수 있다. 실제 실행은 사람이 승인한 결정론적 워크플로를 통해 이뤄진다.바다니 CPO는 \"AI 기반 추론과 검증된 결정론적 자동화를 지능적으로 조율해 고객이 효율성과 혁신을 극대화한다\"며 \"AI 토큰과 컴퓨팅 비용을 효과적으로 관리하도록 도울 것\"이라고 밝혔다.",
-      "category": "ai_news",
-      "keywords": [
-        "AI",
-        "인공지능",
-        "에이전트"
-      ],
-      "ai_summary": "레드햇이 '앤서블 오토메이션 플랫폼 2.7'과 신규 '자동화 오케스트레이터'를 공개했어요. AI가 분석·권고한 내용을 실제 운영에 안전하게 옮기는 '신뢰할 수 있는 실행 계층'을 만드는 게 목표예요. 결정형·이벤트형·AI형 자동화를 한 흐름으로 묶는다고 밝혔어요.",
-      "relevance_score": 5.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "4b9071a23b88b04f",
-      "title": "정부 GPU 프로젝트, 네이버·삼성·엘리스 3파전 윤곽…목표 물량 확보는 '난제'",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-13T17:29:04+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260513172238",
-      "content_text": "[지디넷코리아]정부가 추진하는 2조원 규모 인공지능(AI) 그래픽처리장치(GPU) 구축 사업이 발표평가를 마치고 현장실사 단계에 돌입했다. 네이버클라우드·삼성SDS·엘리스그룹이 유력 후보로 거론되는 가운데, 메모리 가격 급등과 공급 불안 영향으로 정부가 당초 목표로 제시한 물량 확보와 연내 서비스 일정 모두 쉽지 않은 과제가 될 수 있다는 전망이 나온다.13일 과학기술정보통신부와 정보통신산업진흥원(NIPA)에 따르면 정부는 '2026년 AI컴퓨팅자원 활용기반 강화사업(GPU 확보·구축·운용지원)' 발표평가를 마치고 이번 주부터 데이터센터 현장실사 절차를 진행 중이다. 과기정통부는 현장실사와 사업비 심의·조정 등을 거쳐 이달 중 최종 수행기관을 선정할 계획이다.이번 사업은 총 2조805억원 규모 예산을 투입해 최신 GPU 총 1만 5000장 확보를 목표로 서버·스토리지·냉각장치·네트워크 등 인프라를 국내 데이터센터에 구축하고 연내 서비스 개시를 추진하는 프로젝트다. 정부는 단순 GPU 확보를 넘어 대규모 클러스터링과 직접 구축·운용 역량, 차세대 엔비디아 GPU '베라루빈' 도입 여부 등을 핵심 평가 요소로 제시해왔다.업계에 따르면 이번 공모에는 네이버클라우드·삼성SDS·엘리스그룹·KT클라우드·쿠팡 등 총 5개사가 제안서를 제출한 것으로 알려졌다. 이 가운데 1차 관문인 발표평가를 통과한 네이버클라우드·삼성SDS·엘리스그룹이 현장실사 대상에 포함된 것으로 전해졌다. 쿠팡과 KT클라우드는 공식적으로 결과를 밝히진 않았지만, 업계에선 두 회사가 1차 심사를 통과하지 못한 것으로 파악 중이다.이번 사업은 네이버클라우드와 삼성SDS 중심으로 무게가 쏠리는 분위기도 감지된다. 네이버클라우드는 베라루빈 약 1000장과 블랙웰 기반 GPU를 포함해 총 4000장 규모를 제안한 것으로 알려졌다. 삼성SDS 역시 3500~3800장 수준 GPU 구축안을 제출한 것으로 전해졌다. 두 회사 모두 대규모 데이터센터 상면과 전력·냉각 인프라, 자체 AI 서비스 운영 수요를 동시에 확보하고 있다는 점에서 선정 유력 후보로 거론된다.엘리스그룹은 자사가 강점으로 내세우는 이동형 모듈러 데이터센터(PMDC)를 활용한 구조를 제안한 것으로 알려졌다. 기존 데이터센터 대비 상면 확보 유연성을 높일 수 있다는 점을 강점으로 내세우고 있지만 실제 심사 과정에서 어떤 평가를 받을지는 변수라는 시각도 나온다.클라우드 업계 관계자는 \"네이버클라우드와 삼성SDS가 사업의 주축이 되고 남은 예산 범위 내에서 엘리스그룹이 일부 물량을 확보하는 형태가 될 가능성이 있다\"며 \"엘리스그룹의 경우 모듈형 데이터센터 방식이 실제 평가에서 어떤 결과를 받을지가 관건\"이라고 말했다.이번 평가 최대 변수로는 베라루빈이 꼽힌다. NIPA는 지난 3월 사업설명회에서 베라루빈 제안 시 평가 가점을 부여하겠다고 밝힌 바 있다.다만 실제 구축과 서비스 일정에는 불확실성이 적지 않다는 지적도 나온다. 베라루빈은 기존 GPU 대비 전력·냉각·하중 조건이 까다로워 이를 수용할 수 있는 데이터센터 자체가 제한적이기 때문이다. 또 엔비디아가 본격 출하할 일정이 올 하반기로 예상되는 만큼, 현재까지는 델·HPE·슈퍼마이크로 등 서버 업체들의 공급 일정도 유동적인 상황이다.GPU 가격 급등 역시 사업 걸림돌이 될 것이라는 우려가 제기된다. 최근 고대역폭메모리(HBM) 등 AI 메모리 반도체 가격이 크게 오르면서 GPU와 서버 단가 자체가 상승하고 있어서다. 업계에선 정부가 당초 목표로 제시한 1만 5000장 수준 확보가 쉽지 않을 것이란 전망도 나온다.업계 관계자는 \"작년 사업과 비교하면 현재는 메모리 가격 상승 영향으로 같은 예산으로 확보 가능한 GPU 물량이 크게 줄었다\"며 \"선정이 유력한 네이버클라우드·삼성SDS·엘리스그룹 제안 물량을 모두 합쳐도 정부 목표치에 미달할 가능성이 있다\"고 설명했다.베라루빈의 실제 연내 공급 가능성 역시 업계가 주목하는 변수다. GPU 공급과 구축 일정이 예상보다 늦어질 경우 정부가 강조해온 연내 서비스 개시 목표에도 영향을 줄 수 있다는 설명이다. 실제 연내…",
-      "category": "ai_news",
-      "keywords": [
-        "엔비디아",
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "정부의 2조 원 규모 AI GPU 구축 사업이 현장실사 단계예요. 네이버클라우드·삼성SDS·엘리스그룹이 유력 후보로 거론돼요. 메모리 가격 급등과 공급 불안 때문에 목표 1만5천 장 GPU 확보와 연내 서비스 개시가 모두 쉽지 않을 수 있다는 전망이 함께 나와요.",
-      "extraction_reason": "한국 AI 산업의 핵심 인프라인 GPU를 어디서 얼마나 확보하느냐의 갈림길이에요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "GPU는 AI 모델을 학습·운영할 때 꼭 필요한 장치예요. 정부가 목표한 양을 못 채우면 국내 AI 서비스 가격이 비싸지거나 새로운 한국형 AI가 늦게 나올 수 있어요. 그러면 우리 회사·학교에 들어오는 AI는 외국 서비스에 더 기댈 수밖에 없어요. 반대로 잘 확보하면 데이터센터·전력 산업에도 일자리가 늘고, 우리 정보가 외국 서버로 안 나가는 자율성도 커져요."
-        }
-      }
-    },
-    {
-      "article_id": "ba12dc28751b9298",
-      "title": "팔로알토 “AI 악용 사이버공격, 3~5개월 내 일상화 가능성”",
-      "source": "전자신문",
-      "published_at": "2026-05-14T07:17:59+09:00",
-      "original_url": "https://www.etnews.com/20260514000009",
-      "content_text": "인공지능(AI)을 악용한 사이버 공격이 수개월 안에 일상화할 수 있다는 경고가 나왔다. 이른바 '미토스 충격'으로 불리는 AI 기반 해킹 위협 우려가 빠르게 확산하는 모습이다. 리 클라리치 팔로알토 네트웍스 최고기술책임자(CTO)는 13일(현지시간) 발간한 보고서에서 “AI 주도 취약점 공격이 새로운 일상이 되기까지 3~5개월밖에 남지 않은 것으로 추정한다”고 밝혔다. 보고서는 앤트로픽의 '클로드 미토스'와 '클로드 오퍼스 4.7', 오픈AI의",
-      "category": "ai_news",
-      "keywords": [
-        "앤트로픽",
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "팔로알토 네트웍스의 리 클라리치 CTO가 13일 보고서에서 AI를 악용한 사이버 공격이 3~5개월 안에 일상화될 수 있다고 경고했어요. 앤트로픽의 '클로드 미토스'와 오픈AI 등 최신 AI를 활용한 공격 위협이 빠르게 늘고 있다는 분석이에요.",
-      "extraction_reason": "AI 기반 해킹 위협이 우리 일상에 닥치는 시점이 매우 가깝게 잡혔어요.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "AI를 쓴 해킹이 일상화되면, 보이스피싱 음성이 진짜 가족 같은 톤이 되고, 가짜 이메일·문자 글이 사람이 쓴 것처럼 자연스러워져요. 그러면 지금까지의 '의심스러우면 무시'라는 기준이 잘 안 통하게 돼요. 회사 시스템도 빠르게 뚫릴 수 있어 우리 카드·은행·병원 정보가 새는 사고가 늘 가능성이 커요. 백신·보안 산업에는 호황이고, 일반인은 비밀번호·인증 습관을 빨리 바꿔야 해요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "두 단계 인증(문자·앱)을 카카오·네이버·은행·이메일 같은 주요 서비스 모두에 켜두세요. 가족 사이엔 '음성·영상이 진짜 본인인지 의심되면 다시 전화한다'는 약속 단어를 정해 놓으세요. 모르는 번호의 영상 통화는 받지 않는 게 좋아요. 반대로 'AI가 만든 메일은 척 보면 안다'며 과신하는 건 위험해요. 점점 더 구분하기 어려워져요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "9d8d53948a1990fb",
-      "title": "[AI는 지금] 메타 AI, 한국 상륙…\"한 방 없인 찻잔 속 태풍\"",
-      "source": "ZDNet Korea",
-      "published_at": "2026-05-13T17:40:01+09:00",
-      "original_url": "https://zdnet.co.kr/view/?no=20260513165541",
-      "content_text": "[지디넷코리아]메타의 인공지능(AI) 챗봇 '메타 AI'가 한국 시장 공략에 나섰지만 초반 흥행이 쉽지 않을 것이란 관측이 나왔다. 챗GPT·제미나이·클로드 등 선발 주자가 이미 이용자 경험과 유료 구독 시장을 장악한 가운데 메타가 인스타그램·페이스북 등 자사 플랫폼 생태계를 AI 서비스 경쟁력으로 입증하지 못하면 후발 주자의 한계를 넘기 쉽지 않을 것이란 분석이다.13일 메타에 따르면 이날부터 국내 이용자는 메타 AI 앱과 웹사이트를 통해 서비스를 이용할 수 있다. 메타 AI는 메타 초지능 연구소(MSL)가 개발한 '뮤즈 스파크' 모델 기반으로, 빠른 응답의 '인스턴트 모드'와 심층 추론을 지원하는 '깊이 생각하기 모드'를 제공한다. 이미지 분석·콘텐츠 생성·코딩·웹 기반 결과물 생성 기능도 갖췄다.메타는 향후 인스타그램·페이스북·메신저·AI 글래스 등 자사 서비스와 기기 전반으로 AI 접점을 확대할 계획이다. 그러나 업계에선 즉각적인 시장 파급력보다 중장기 추이를 지켜봐야 한다는 시각이 우세하다. 업계 관계자는 \"메타가 오픈소스로 주목받아 온 건 맞지만 직접 서비스로 나섰을 때 얼마나 경쟁력이 있을지는 봐야 할 것 같다\"고 말했다.메타가 운영하는 인스타그램과 페이스북에 AI 기능이 이미 탑재돼 있음에도 존재감이 미미하다는 점도 지적된다. 특히 연내 국내 출시 예정인 메타 AI 글래스 경우 \"기기 자체가 대중에게 실제로 받아들여지기까지도 시간이 걸릴 것\"이라고 말했다. 한국을 포함한 전 세계 AI 서비스 시장은 이미 주요 서비스들이 사용자 기반을 선점한 상태다. 고성능 서비스를 제대로 경험하려면 상당한 구독료를 감수해야 하는 만큼 후발 주자인 메타 AI가 추가 지출의 명분을 만들어낼 수 있을지가 관건으로 꼽힌다.최병호 고려대 AI연구소 교수는 메타 AI 현주소를 브랜드·서비스·성능 세 가지 '해자(진입장벽)' 모두 부재한 상태로 진단하며 그록 사례를 들었다. 일론 머스크의 AI 스타트업 xAI가 개발한 모델 그록은 X(옛 트위터)와의 연동으로 차별화를 시도했으나 시장에서 고전하고 있다. 최 교수는 \"단순 플랫폼 결합만으로는 한계가 있다는 의미\"라고 부연했다. 메타가 보유한 사회관계망서비스(SNS) 플랫폼 생태계는 유효한 자산으로 평가된다. 최 교수는 \"오픈AI가 시도하려다 성과를 못 낸 소셜 커뮤니티 기능을 메타는 이미 갖고 있다\"며 \"그걸 AI 생태계로 엮어낼 수 있다면 압도적일 수 있다\"고 설명했다. 다만 한국에서 페이스북 사용률이 세대별로 크게 갈리는 점은 변수다. 인스타그램은 가능성이 있지만 구글의 유튜브를 넘어서긴 쉽지 않다는 평가다.AI 기반 기업과 소비자 간 거래(B2C) 서비스 정면 승부의 어려움도 언급됐다. 최 교수는 앤트로픽이 자사 모델 클로드를 기업 간 거래(B2B)·코딩 특화로 전환해 성공한 사례를 제시하며 \"구글형·그록형·클로드형 중 어떤 방향성을 택할지가 핵심\"이라고 짚었다. 이어 \"압도적인 성능이든 놀라운 서비스든, 강렬한 인상을 남기지 못하면 아무도 관심을 갖지 않을 것\"이라고 강조했다.",
-      "category": "ai_news",
-      "keywords": [
-        "앤트로픽",
-        "챗GPT",
+        "ChatGPT",
+        "Gemini",
         "제미나이",
+        "Google",
         "AI",
-        "인공지능",
         "챗봇"
       ],
-      "ai_summary": "메타 AI가 13일 한국 시장에 정식 진출했지만 초반 흥행이 쉽지 않을 것이라는 분석이 나와요. 챗GPT·제미나이·클로드 등 선발 주자가 이미 자리를 잡았기 때문에, 메타가 인스타그램·페이스북 생태계와의 결합으로 차별점을 입증해야 후발 한계를 넘을 수 있다는 진단이에요.",
-      "relevance_score": 7.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "b2992ace78240153",
-      "title": "앤트로픽, 중소기업 AI 시장 공략 본격화",
-      "source": "전자신문",
-      "published_at": "2026-05-14T07:29:52+09:00",
-      "original_url": "https://www.etnews.com/20260514000012",
-      "content_text": "앤트로픽은 중소기업 시장 공략을 위해 인공지능(AI) 서비스 '클로드 포 스몰 비즈니스(Claude for Small Business)'를 13일 출시했다. 대기업 대비 AI 활용도가 낮은 중소기업 시장을 선점하겠다는 전략이다. 이번 서비스는 중소기업이 기존 업무용 소프트웨어와 연동해 AI 기능을 활용할 수 있도록 설계됐다. 사용자는 토글(toggle) 방식 설치만으로 다양한 업무 환경에서 서비스를 적용할 수 있다. 앤트로픽은 이를 위해 인튜이",
-      "category": "ai_news",
-      "keywords": [
-        "Claude",
-        "앤트로픽",
-        "AI",
-        "인공지능"
-      ],
-      "ai_summary": "앤트로픽이 중소기업 전용 서비스 '클로드 포 스몰 비즈니스'를 13일 출시했어요. 기존 업무용 소프트웨어와 연동되며, 토글 방식 설치만으로 다양한 업무 환경에서 클로드를 쓸 수 있도록 설계됐어요. AI 활용도가 낮은 중소기업 시장을 선점하려는 전략이에요.",
-      "extraction_reason": "AI 도구가 대기업뿐 아니라 동네 가게·작은 회사까지 빠르게 퍼지는 흐름이에요.",
+      "ai_summary": "MIT 테크놀로지 리뷰가 구글 제미나이 AI 어시스턴트가 실제 사용자의 전화번호를 다른 사람에게 답으로 알려주는 사례를 단독 보도했어요. 사용자가 직접 입력하지 않아도, 과거 어딘가에 노출된 번호가 모델 학습 데이터에 들어가 답으로 나오는 거예요. '잊혀질 권리'가 있어도 이미 학습된 모델에서 특정 정보를 지우는 기술은 거의 없어요.",
+      "extraction_reason": "내 개인정보가 AI에 어떻게 남는지 알고 막을 방법을 함께 고민해야 해요.",
       "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "지금까지 중소기업·자영업자는 AI를 깔고 쓰는 게 어려웠어요. 그런데 클릭 한 번으로 설치되는 서비스가 나오면, 동네 가게의 메뉴 안내·고객 응대·세금 계산도 AI가 도와줄 수 있어요. 그러면 작은 가게 사이의 경쟁력 차이가 'AI 잘 쓰는 사장 vs 안 쓰는 사장'으로 갈릴 가능성이 커요. 일자리는 단순 사무·접객 분야에서 변화가 시작될 수 있어요."
-        }
-      }
-    },
-    {
-      "article_id": "41b8a89f93da6beb",
-      "title": "SK AX, 오픈AI와 협력…기업 업무에 챗GPT 심는다",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T08:30:02+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513156200017",
-      "content_text": "(서울=연합뉴스) 한상용 기자 = SK AX가 오픈AI와 손잡고 기업용 챗GPT를 업무 시스템에 안전하게 연계하는 사업을 확대한다.",
-      "category": "ai_news",
-      "keywords": [
-        "챗GPT"
-      ],
-      "ai_summary": "SK AX가 오픈AI와 손잡고 기업용 챗GPT를 회사 업무 시스템에 안전하게 연결하는 사업을 확대한다고 밝혔어요. 국내 기업들이 보안 걱정 없이 챗GPT를 업무에 끌어다 쓸 수 있는 길을 넓히겠다는 협력이에요.",
-      "extraction_reason": "한국 기업 현장에 오픈AI 도구가 빠르게 깊이 들어오는 변곡점이에요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "한국 대기업·중견기업들이 챗GPT를 보안 걱정 없이 본격 도입하는 길이 넓어졌어요. 그러면 보고서 정리·이메일 답장·자료 요약 같은 업무를 챗GPT가 맡고, 직원은 검토·결정에 집중하는 변화가 빨라져요. AI를 잘 쓰는 사람과 못 쓰는 사람 사이의 업무 속도 차이가 커지고, 새로 들어오는 신입의 일도 바뀔 가능성이 높아요."
-        }
-      }
-    },
-    {
-      "article_id": "5123271497c53937",
-      "title": "시스코 4천명 감원 발표…\"AI 중심으로 투자 전환\"",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T08:18:34+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514017900009",
-      "content_text": "(서울=연합뉴스) 설원태 기자 = 네트워킹 장비 제조업체인 시스코가 2026회계연도 4분기(5~7월)에 전체 인력의 약 5%인 4천개의 일자리를...",
-      "category": "ai_news",
-      "keywords": [
-        "AI"
-      ],
-      "ai_summary": "네트워크 장비 회사 시스코가 2026회계연도 4분기에 전체 직원의 약 5%인 4천 명을 줄이겠다고 발표했어요. 회사는 'AI 중심으로 투자 방향을 옮기기 위한 결정'이라고 설명했어요. 글로벌 IT 기업들의 'AI 우선' 구조조정 흐름이 이어지고 있어요.",
-      "extraction_reason": "글로벌 IT 회사 일자리가 AI 중심으로 빠르게 재편되는 흐름을 보여줘요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "큰 IT 회사들이 'AI에 더 투자한다'는 명분으로 사람을 줄이는 흐름이 점점 더 자주 나오고 있어요. 그러면 단순 운영·관리 직무는 자리가 줄고, AI 인프라·보안·데이터 쪽 인재는 몸값이 오를 가능성이 높아요. 한국 IT 회사들도 이런 흐름을 따라 비슷한 구조조정이나 신규 채용 방향 변화가 나올 수 있어 취업 준비생은 미리 어떤 분야가 늘어날지 살펴봐야 해요."
+          "text": "내가 옛날에 인터넷 카페에 한번 올려둔 전화번호가 누군가 AI에 물으면 답으로 나올 수 있어요. AI 학습 데이터에서 특정 사람 정보만 빼는 건 사실상 불가능해요. 한국 카카오·네이버 서비스도 외부 AI를 쓰니 같은 문제가 생길 가능성이 높아요. 정부와 회사들이 '데이터 사용을 막는 권리'를 어떻게 보장할지 새 규칙을 만들어야 할 시점이에요. 더 이상 인터넷에 올린 정보는 안전하지 않아요."
         },
         "bonus": [
           {
             "type": "personal",
             "title": "나는 뭘 해야 할까?",
             "icon": "💡",
-            "text": "지금 다니는 회사나 진로를 정할 때 'AI가 들어와도 사람만이 할 수 있는 일'이 무엇인지 고민해 보세요. 사람을 만나서 설득하는 일, 손으로 직접 무언가를 다루는 일, 책임지고 결정하는 일이 그런 예예요. 반대로 'AI는 거품이라 곧 꺼질 거야'라며 가만히 있는 건 위험해요. 일자리 모양이 바뀌는 건 이미 시작됐고 속도가 빠르거든요."
+            "text": "오래된 SNS·블로그 글에 전화번호·주소가 적혀 있는지 한번 점검해 보세요. 보이는 글에서 개인정보를 지워두면 새 학습 데이터에 들어갈 위험이 줄어요. 또 챗GPT·제미나이 같은 AI에 진짜 개인정보(주민번호·계좌번호)는 절대 입력하지 마세요. 반대로 익명 계정에 의존해 안심하는 것도 피하세요. 일단 들어간 정보는 회수가 어려워요."
           }
         ]
       }
     },
     {
-      "article_id": "193d6abc378aae9d",
-      "title": "미중 정상 오늘 베이징서 '담판'…관세·이란·대만 논의 주목",
+      "article_id": "a8ffe26515350498",
+      "title": "워크데이 “AI 거버넌스 플랫폼 전환…통제 가능한 AI 구현”",
+      "source": "전자신문",
+      "published_at": "2026-05-14T13:56:15+09:00",
+      "original_url": "https://www.etnews.com/20260514000318",
+      "content_text": "워크데이가 인공지능(AI) 거버넌스 플랫폼 기업으로의 전환을 선언했다. AI 도입 과정에서 보안과 컴플라이언스, 감사 체계를 시스템 내부에 내재화함으로써 기업의 관리 역량을 강화하는 데 초점에 맞춘다. AI를 안전하게 통제할 수 있는 거버넌스 체계 구축이 기업의 생존을 결정짓는 핵심 과제로 부상했다는 판단에 따른 것이다. 허정열 워크데이 코리아 지사장은 14일 전자신문이 서울 삼성동 웨스틴 파르나스에서 개최한 CIO/CISO 세미나에서 이같은",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "글로벌 인사관리 소프트웨어 회사 워크데이가 'AI 거버넌스 플랫폼 기업'으로 전환을 선언했어요. AI 도입 과정에서 보안과 컴플라이언스(법규 준수), 감사 체계를 시스템 안에 직접 넣어 회사가 통제할 수 있게 만드는 게 목표예요. 허정열 워크데이 코리아 지사장이 14일 CIO/CISO 세미나에서 발표했어요.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "496d854a9a5ad22f",
+      "title": "바이낸스 “ETF 이후 기관 자금 유입 빨라져…한국은 규제 명확성이 관건”",
+      "source": "전자신문",
+      "published_at": "2026-05-14T13:32:29+09:00",
+      "original_url": "https://www.etnews.com/20260514000290",
+      "content_text": "글로벌 가상자산 시장에서 기관투자자 참여가 빠르게 확대되고 있다. 비트코인 현물 상장지수펀드(ETF)가 기관투자자의 진입 장벽을 낮추고, 토큰화 자산과 스테이블코인이 결제·정산 등 실사용 영역으로 확장되면서다. 캐서린 첸 바이낸스 VIP·기관 부문 총괄은 14일 서울 강남구에서 열린 기자간담회에서 크립토 시장에 기관 자금 유입을 이끈 요인으로 △ETF를 통한 투자 접근성 개선 △토큰화 MMF 등 전통 금융상품의 디지털자산화 △스테이블코인 기반",
+      "category": "ai_news",
+      "keywords": [],
+      "ai_summary": "바이낸스가 비트코인 현물 ETF 출시 이후 기관투자자 참여가 빠르게 늘고 있다고 밝혔어요. 토큰화 자산과 스테이블코인이 결제·정산 영역으로 확장되며 가상자산 시장이 실사용으로 옮겨가고 있어요. 캐서린 첸 바이낸스 VIP·기관 부문 총괄은 한국 시장 활성화의 관건은 '규제 명확성'이라고 강조했어요.",
+      "extraction_reason": "가상자산이 단순 투자 대상에서 결제 수단으로 넘어가는 흐름이라 일상에 영향이 와요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "지금까지 비트코인 같은 가상자산은 위험한 투자처로 여겨졌는데, ETF를 통해 큰 기관들이 들어오면서 점점 정식 자산으로 자리 잡고 있어요. 스테이블코인이 결제에 쓰이면 해외 송금 비용이 크게 줄 가능성이 있어요. 한국에선 규제가 아직 정해지지 않아 다른 나라보다 늦어질 수 있어요. 한국 정부가 어떤 규칙을 만드는지에 따라 우리 금융 회사들의 경쟁력이 갈려요."
+        }
+      }
+    },
+    {
+      "article_id": "57b3f4df42245199",
+      "title": "MS, '미소스' 성능 넘은 사이버보안용 '멀티 에이전트' 시스템 공개",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T16:46:47+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210536",
+      "content_text": "100개 이상의 특수 에이전트를 연결한 마이크로소프트(MS)의 새로운 AI 사이버보안 시스템이 일부 벤치마크에서 앤트로픽의 '클로드 미소스'를 능가한 것으로 나타났다.MS는 12일(현지시간) '엠대시(MDASH)'라는 코드명을 가진 시스템을 공개하며, 윈도우의 여러 버전에서 발견된 16개의 새로운 취약점을 발표했다. 이 중 4개는 이번 달 패치에서 수정된 심각한 원격 코드 실행 취약점이다.MS는 \"여러 모델을 활용하면, 개별 모델이 따라잡을 수 없는 속도로 취약점을 발견할 수 있을 것\"이라고 소개했다.엠대시는 '다중 모델 에이전트",
+      "category": "ai_news",
+      "keywords": [
+        "앤트로픽",
+        "AI",
+        "에이전트"
+      ],
+      "ai_summary": "마이크로소프트가 100개가 넘는 특수 AI 에이전트를 연결한 사이버보안 시스템 '엠대시(MDASH)'를 공개했어요. 일부 시험에서 앤트로픽 '클로드 미소스'를 능가하는 성과를 보였고, 이번 달 윈도우 새 보안 구멍 16개도 함께 발표했어요.",
+      "extraction_reason": "AI가 보안 구멍을 사람보다 빨리 찾아내는 시대가 본격 열려요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "AI가 보안 구멍을 빨리 찾아내면, 좋은 쪽도 나쁜 쪽도 모두 빨라져요. 회사들은 보안 패치를 더 자주 받아 안전해질 수 있어요. 반면 해커들도 같은 AI를 써서 새 공격을 만들면 우리 스마트폰·은행 앱에 위협이 늘어요. 윈도우 자동 업데이트를 미루지 않고 바로 받는 게 점점 더 중요해져요. 한국 보안 회사들도 같은 방식으로 따라갈 가능성이 높아요."
+        }
+      }
+    },
+    {
+      "article_id": "9e32a02466801efb",
+      "title": "SKT, 국방부와 손잡고 국방 특화 AI 모델 개발 나선다",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T16:40:00+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210534",
+      "content_text": "SK텔레콤(대표 정재헌)은 국방부와 '과기정통부 독자 AI 파운데이션 모델 국방 분야 활용'을 위한 업무협약(MOU)을 체결했다고 14일 밝혔다.양사는 ▲국방 특화 AI 모델 개발 및 실증 ▲국방 분야 공개데이터 수집·활용 ▲국가 AI 프로젝트 연계 GPU 활용 지원 등에서 협력을 추진한다.독자 AI 파운데이션 모델을 국방 분야에 적용하는 것은 이번이 처음이다. 국방부는 올해 2분기 중 과기정통부 '국가 AI 프로젝트'를 통해 확보한 GPU 자원을 SKT에 지원해 국방 특화 AI 모델 개발 및 실증을 본격화할 계획이다.SKT는 자체",
+      "category": "ai_news",
+      "keywords": [
+        "AI"
+      ],
+      "ai_summary": "SK텔레콤이 국방부와 함께 국방 분야에 쓸 한국형 자체 AI 모델을 개발하기로 협약을 맺었어요. 과기부의 국가 AI 프로젝트로 확보한 GPU(고성능 그래픽 카드) 자원을 지원받아 2분기부터 본격 실증을 시작해요. 국방 특화 데이터를 모으고 활용하는 일도 함께 해요.",
+      "extraction_reason": "AI가 군사 영역에 본격 들어오면서 국가 안보 그림이 바뀌고 있어요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "외국 AI에 군사 정보를 맡기지 않고 한국 안에서 만든 AI를 쓰는 첫 사례예요. 국가 안보 정보가 외국으로 새 나갈 위험이 줄어드는 효과가 있어요. SK텔레콤뿐 아니라 다른 국내 AI 회사들도 정부 사업 기회가 점점 늘 가능성이 높아요. 반면 군사용 AI가 잘못 작동하면 큰 사고로 이어질 수 있어, 검증 절차도 같이 단단해져야 해요."
+        }
+      }
+    },
+    {
+      "article_id": "b03a2a124e27e17a",
+      "title": "과기부, R&D 예산 배분·조정 지원하는 ‘예산심의 특화 AI’ 도입",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T16:20:00+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210533",
+      "content_text": "과학기술정보통신부(장관 배경훈)는 올해부터 국가연구개발 예산 배분·조정에 ‘예산심의 특화 AI(연구개발 예산심의 인공지능)’를 본격 활용한다고 14일 밝혔다. 예산심의 특화 AI를 활용, 데이터 중심의 과학적 예산심의 체계로 전한다는 전략이다. 과기부 과학기술혁신본부는 독자 AI 파운데이션 모델 중 하나인 업스테이지의 ‘솔라 오픈’ 모델을 바탕으로 예산심의 특화 AI를 개발했다. 대화형 질의를 입력하면 맞춤형 정보와 검토 초안을 즉시 생성해 주는 예산심의 전용 대형언어모델(LLM)이다. 지난 5년간 축적된 5000여개 국가연구개발사",
+      "category": "ai_news",
+      "keywords": [
+        "LLM",
+        "AI",
+        "인공지능"
+      ],
+      "ai_summary": "과학기술정보통신부가 올해부터 국가 연구개발(R&D) 예산을 나누고 조정하는 일에 'AI'를 본격 도입한다고 발표했어요. 한국 회사 업스테이지의 '솔라 오픈' 모델을 바탕으로 만든 예산심의 전용 AI예요. 지난 5년간 모은 5000여 개 국가 연구개발 사업 데이터를 학습해 검토 초안을 바로 만들어줘요.",
+      "extraction_reason": "정부가 큰돈을 나누는 결정에 AI를 직접 쓰는 첫 사례라 영향이 커요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "정부가 어디에 돈을 쓸지 정할 때 AI 의견이 같이 들어가게 됐어요. 잘 쓰면 사람의 편견 없이 데이터로 따져볼 수 있어요. 하지만 AI가 어떻게 점수를 매겼는지 모르면 결정이 불투명해질 수 있어요. 다른 정부 부처도 비슷한 AI를 도입할 가능성이 높아요. 한국 회사 업스테이지가 만든 모델을 정부가 채택한 점도 국산 AI 회사들에 좋은 신호예요."
+        },
+        "bonus": [
+          {
+            "type": "frame",
+            "title": "이 뉴스, 이렇게 읽어보세요",
+            "icon": "🧐",
+            "text": "이 뉴스에서 빠진 정보를 한 번 떠올려 보세요. 'AI가 잘못 판단했을 때 누가 책임지는지', '심사 결과를 시민이 확인할 수 있는지'가 안 나와 있어요. 또 '솔라 오픈'이 어떤 데이터로 배웠는지에 따라 특정 분야에 유리하게 점수가 매겨질 수도 있어요. 이런 질문을 던지며 다음 후속 보도를 살펴보세요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "87cbb68b397fa60a",
+      "title": "'앤트로픽과 추론 칩 논의' 프랙타일, 3300억 투자 유치",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T15:33:30+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210526",
+      "content_text": "영국의 신예 칩 스타트업 프랙타일(Fractile)이 2억2000만달러(약 3300억원)의 투자 유치에 성공했다. 이는 이달 초 앤트로픽과 차세대 추론용 칩 도입을 논의했다는 소식이 전해진 뒤 2주 만에 발표됐다.프랙타일은 13일(현지시간) 액셀과 팩토리얼 펀드, 피터 틸의 파운더스 펀드 등이 주도한 시리즈 B 라운드에서 10억달러(약 1조4900억원) 가치로 2억2000만달러의 투자를 유치했다고 밝혔다. 이를 통해 첫번째 프로세서의 상용화를 추진한다.설립 4년 차인 이 회사는 AI 기업들이 속도 저하 없이 대역폭을 극대화할 수 있",
+      "category": "ai_news",
+      "keywords": [
+        "앤트로픽",
+        "AI"
+      ],
+      "ai_summary": "영국 칩 스타트업 프랙타일이 시리즈 B 투자에서 약 3300억원을 모았어요. 회사 가치는 1조 4900억원으로 올랐고, 이달 초 앤트로픽과 차세대 추론용 칩 도입을 논의했다는 소식 2주 만에 나온 결과예요. 피터 틸의 파운더스 펀드 등이 투자에 참여했어요.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "376f31e12f6d6e54",
+      "title": "MS, 오픈AI 누적 투자 비용 첫 공개…“인프라 포함 150조 넘어”",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T14:29:19+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210522",
+      "content_text": "마이크로소프트(MS)가 오픈AI와의 파트너십에 1000억달러(약 149조3500억원) 이상을 투자했다고 밝혔다. 기존에 알려진 투자금은 130억달러(약 19조4000억원)였지만, 인프라 구축과 컴퓨팅 지원에 추가로 상당한 금액을 투입했다는 설명이다.마이클 웨터 MS 거래 담당 임원은 지난 11일(현지시간) 일론 머스크 CEO와 오픈AI 재판에 등장, 2019년부터 현재까지 오픈AI 투자금과 컴퓨팅 인프라 구축, 모델 호스팅 비용 등을 합치면 1000억달러에 달한다고 증언했다.그는 이러한 비용의 상당 부분이 수익이 발생하기 전에 발생",
+      "category": "ai_news",
+      "keywords": [],
+      "ai_summary": "마이크로소프트가 오픈AI와의 파트너십에 약 149조원이 넘는 돈을 투자했다고 처음 공개했어요. 기존에 알려진 19조원보다 훨씬 큰 금액이에요. 단순 투자뿐 아니라 AI를 돌릴 데이터센터 인프라 구축과 컴퓨팅 지원, 모델 운영 비용까지 모두 합친 결과예요. 머스크 CEO와 오픈AI 사이 재판에서 임원이 증언하며 알려졌어요.",
+      "extraction_reason": "AI 한 회사를 키우는 데 든 비용이 한국 1년 예산 수준이라 산업 규모가 새로 보여요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "AI 회사 하나를 키우는 데 150조원이 들어간다는 뜻은, 작은 회사 혼자서는 같은 수준의 AI를 만들기 거의 불가능하다는 거예요. 그래서 전 세계 AI는 몇몇 큰 회사 손에 모이게 돼요. 한국 회사들도 직접 만들기보다 오픈AI 같은 곳을 빌려 쓰는 일이 늘 거예요. 이런 거대 비용은 결국 우리가 쓰는 챗GPT 요금이나 광고로 돌아올 가능성이 높아요."
+        }
+      }
+    },
+    {
+      "article_id": "fd870ad5c3c3a7c0",
+      "title": "\"급여 관리부터 마케팅까지\"...앤트로픽, 소상공인 전용 AI 패키지 출시",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T13:32:48+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210512",
+      "content_text": "앤트로픽이 소상공인과 중소기업을 겨냥한 새로운 AI 업무 자동화 패키지 ‘클로드 포 스몰 비즈니스(Claude for Small Business)’를 공개하며 대기업 시장에서 중소기업 시장으로 B2B 사업을 확대하고 있다.앤트로픽은 13일(현지시간) 소규모 기업들이 사용하는 각종 업무 소프트웨어와 연동돼 AI가 실제 업무를 자동으로 처리할 수 있도록 한 업무 자동화 솔루션 ‘클로드 포 스몰 비즈니스’를 선보였다.미국에서 소기업은 국내총생산(GDP)의 44%를 차지하고 민간 부문 노동자의 절반 가까이 고용하고 있지만, AI 도입 속도",
+      "category": "ai_news",
+      "keywords": [
+        "Claude",
+        "앤트로픽",
+        "AI"
+      ],
+      "ai_summary": "앤트로픽이 소상공인과 중소기업을 위한 AI 업무 자동화 패키지 '클로드 포 스몰 비즈니스'를 공개했어요. 가게에서 쓰는 여러 소프트웨어와 연결해 급여 관리·마케팅 같은 일을 AI가 직접 처리해줘요. 미국 소기업이 GDP의 44%를 차지하는데도 AI 도입이 늦었다는 점에 주목한 전략이에요.",
+      "extraction_reason": "동네 가게 운영 방식이 AI로 빠르게 바뀔 수 있어요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "지금까지 AI는 큰 회사가 주로 썼는데, 앞으로는 동네 카페·미용실·작은 가게도 AI로 직원 월급 계산이나 SNS 광고를 돌릴 수 있어요. 그러면 사장님 1명이 운영할 수 있는 가게 규모가 커져요. 같은 흐름이 한국 자영업 시장에도 올 가능성이 높아요. 반면 단순 사무 보조 일자리가 줄 수 있고, AI를 잘 다루는 가게와 못 다루는 가게의 매출 차이가 벌어질 수 있어요."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "주변에 작은 가게를 운영하는 분이 있다면 AI 도구를 한두 개 같이 살펴보세요. 매장 SNS 글을 AI에 부탁하는 일부터 천천히 시작해 보면 좋아요. 가게 직원이라면 단순 입력 업무 외에 손님 응대·문제 해결 같은 사람만 할 수 있는 일을 더 익혀두세요. 반대로 AI에 손님 개인정보를 그대로 입력하는 건 피해야 해요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "7f7554fc7eef5b0c",
+      "title": "'국방 AI' 대표 안두릴, 7.4조 투자 유치...기업 가치 90조로 급등",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T13:16:20+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210506",
+      "content_text": "미국의 대표적인 AI 방산 스타트업 안두릴이 50억달러(약 7조4000억원) 규모의 신규 투자를 유치하며 기업 가치를 610억달러(약 90조원)로 끌어올렸다. 불과 1년 전 305억달러 수준이었던 몸값이 2배 가까이 뛰어오르면서, 방산 AI와 자율무기 분야에 대한 관심이 폭발적으로 커졌다는 평가를 받았다.안두릴은 13일(현지시간) 시리즈 H 투자 라운드를 통해 50억달러를 조달했다고 발표했다.이번 투자 라운드는 스라이브 캐피털과 앤드리슨 호로비츠가 주도했다. 안두릴은 이번 자금을 생산 능력 확대와 연구개발(R&D), 인프라 구축에",
+      "category": "ai_news",
+      "keywords": [
+        "AI"
+      ],
+      "ai_summary": "미국의 AI 방산 스타트업 안두릴이 약 7.4조원 규모의 새 투자를 받아 회사 가치가 90조원으로 뛰었어요. 1년 전 45조원에서 2배 가까이 올랐어요. 시리즈 H 투자 라운드는 스라이브 캐피털과 앤드리슨 호로비츠가 주도했고, 자금은 생산 능력 확대와 연구개발에 쓰여요.",
+      "extraction_reason": "AI 무기·자율무기 시장이 폭발적으로 커지며 안보·윤리 논쟁도 함께 커져요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "전쟁터에서 사람을 대신해 결정하는 AI 무기에 큰돈이 모이고 있어요. 미국이 앞서가면 다른 나라들도 따라가기 위해 투자할 가능성이 높아요. 한국도 SK텔레콤처럼 국방 AI 개발에 속도를 내고 있어요. 동시에 'AI가 사람을 공격해도 되는가'라는 윤리 논쟁이 더 커질 거예요. 일자리 측면에선 방산 분야 일자리가 늘 가능성이 있어요."
+        }
+      }
+    },
+    {
+      "article_id": "cb45a7c393b88dfb",
+      "title": "일본 금융권, 2주 내 '미소스' 확보...AI 보안 워킹그룹 가동",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T12:51:37+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210502",
+      "content_text": "일본 대형 은행들이 앤트로픽의 ‘클로드 미소스’에 이르면 이달 말부터 접근할 것으로 알려졌다. 미국 외 지역에서는 거의 처음으로 이에 접근하는 사례로 꼽히게 됐다.13일 일본 니혼게이자이신문에 따르면, 미쓰비시 UFJ 금융 그룹과 미즈호 금융 그룹, 미쓰이 스미토모 금융 그룹 등 일본 3대 은행은 2주 내로 클로드 미소스 사용 권한을 확보할 예정이다.다만 각 은행과 앤트로픽은 이에 대해 공식 논평을 내놓지 않았다.미소스는 '프로젝트 윙글래스'를 통해 미국 주요 은행과 기술 기업, 정부 기관 등에 접근 권한이 주어졌다. 한국 정부도",
+      "category": "ai_news",
+      "keywords": [
+        "앤트로픽",
+        "AI"
+      ],
+      "ai_summary": "일본 3대 은행(미쓰비시 UFJ·미즈호·미쓰이 스미토모)이 2주 내로 앤트로픽의 '클로드 미소스'에 접근 권한을 확보할 예정이에요. 미국 밖에서는 거의 처음 도입 사례예요. 미소스는 '프로젝트 윙글래스'로 미국 주요 은행·정부에만 제한 공급되고 있어요.",
+      "extraction_reason": "한국 금융권에도 같은 흐름이 곧 닥칠 가능성이 높아요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "은행은 보안이 가장 중요한 곳인데, 거기서 AI를 본격 쓰기 시작했어요. 일본이 앞서가면 한국 은행들도 곧 비슷한 도입을 검토할 가능성이 높아요. 그러면 우리가 은행 앱에서 받는 안내 문구나 상담 답변을 AI가 만들어 줄 수 있어요. 보안 사고를 빨리 잡는 장점이 있지만, AI가 잘못 답해 손님이 손해를 볼 위험도 있어요. 또 일본이 우선 받은 점은 한국 금융 인프라 경쟁력에도 영향을 줘요."
+        }
+      }
+    },
+    {
+      "article_id": "da9dccf07850d4a8",
+      "title": "젠슨 황, 트럼프 요청에 알래스카서 '에어포스원' 합류…방중 사절단 포함",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T12:40:21+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210494",
+      "content_text": "젠슨 황 엔비디아 CEO가 도널드 트럼프 미국 대통령의 중국 방문 일정에 합류했다.13일(현지시간) 뉴욕타임스와 CNBC에 따르면, 트럼프 대통령은 황 CEO에 직접 연락해 동행을 요청했다. 이에 따라, 대통령 전용기 에어포스원이 급유를 위해 들른 알래스카 앵커리지로 이동해 탑승한 것으로 전해졌다.앞서 이번 미국 경제사절단 명단에 황 CEO가 포함되지 않았다는 보도가 등장하자, 트럼프 대통령은 트루스 소셜을 통해 이를 오보라고 반박했다. “이 뛰어난 기업인들이 능력을 발휘해 중국 발전에 기여할 수 있도록 중국 시장을 개방해달라고 요",
+      "category": "ai_news",
+      "keywords": [
+        "엔비디아"
+      ],
+      "ai_summary": "엔비디아 CEO 젠슨 황이 트럼프 미국 대통령의 중국 방문 사절단에 합류했어요. 트럼프가 직접 황 CEO에게 동행을 요청해, 알래스카 앵커리지에서 대통령 전용기 에어포스원에 탑승했어요. 트럼프는 '뛰어난 기업인들이 중국 발전에 기여할 수 있도록 중국이 시장을 개방해달라'고 요청했어요.",
+      "extraction_reason": "AI 칩 수출이 미중 외교의 핵심 카드가 되며 한국 산업에도 직접 영향을 줘요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "엔비디아 CEO가 미국 대통령 전용기를 타고 중국으로 가는 모습은, AI 칩이 단순 기술이 아니라 외교 무기가 됐다는 신호예요. 미국이 중국에 칩 수출을 일부 풀어주면, 글로벌 AI 발전 속도가 빨라질 가능성이 높아요. 한국 메모리 회사들도 함께 매출이 늘 수 있어요. 반대로 협상이 틀어지면 한국이 중간에 끼어 수출에 영향이 올 수 있어요."
+        }
+      }
+    },
+    {
+      "article_id": "c6d1ab62cb7678f2",
+      "title": "메타, 미국 9개주 가로지르는 2.5GW 청정에너지 계약 체결",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T12:25:00+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210491",
+      "content_text": "미국 재생에너지 개발사 디이에스알아이(DESRI)가 메타와 850메가와트(MW) 규모의 신규 청정전력 구매계약을 체결했다.양사는 12일(현지시간) 미국 9개 주에 걸친 2.5기가와트(GW) 청정전력 조달 협력에 합의했다고 발표했다.이번 계약은 오클라호마 500MW, 텍사스 200MW, 미시시피 150MW 프로젝트 등으로 구성된다. 메타가 지금까지 계약한 DESRI의 태양광과 배터리에너지 저장장치(BESS) 프로젝트 규모는 2.5GW에 이른다.이번 계약은 대형 전력 수요 기업의 장기 전력구매계약(PPA)이 재생에너지 프로젝트 개발을",
+      "category": "ai_news",
+      "keywords": [],
+      "ai_summary": "메타가 미국 재생에너지 개발사 DESRI와 9개 주에 걸친 2.5기가와트 규모 청정 전력 공급 계약을 맺었어요. 오클라호마 500MW·텍사스 200MW·미시시피 150MW 등 새 850MW 계약이 추가됐어요. 대형 AI 데이터센터를 돌릴 전력을 친환경으로 확보하기 위한 움직임이에요.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "177725a1867db326",
+      "title": "앤트로픽, 연매출 74조 눈앞...\"기업용 시장서 오픈AI 추월\"",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T12:24:13+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210492",
+      "content_text": "앤트로픽이 기업용 AI 시장에서 가파른 성장세를 이어가며 연간 매출 500억달러(약 74조원) 고지를 눈앞에 두고 있다. 한때 독주 체제를 구축했던 오픈AI와의 격차도 빠르게 좁히는 것을 넘어, 일부 지표에서는 이미 앞서기 시작했다는 평가가 나온다.13일(현지시간) 월스트리트저널(WSJ)에 따르면, 앤트로픽은 최근 투자자들에게 연 환산 매출(ARR)이 다음 달 말이면 500억달러 수준에 도달할 수 있다는 전망치를 제시했다.앤트로픽의 ARR은 지난 4월 300억달러를 넘어섰는데, 이는 2025년 말 목표치인 90억달러를 크게 웃도는",
+      "category": "ai_news",
+      "keywords": [
+        "앤트로픽",
+        "AI"
+      ],
+      "ai_summary": "앤트로픽이 다음 달 말이면 연 환산 매출 약 74조원에 이를 거라고 투자자들에게 전망을 제시했어요. 지난 4월 약 44조원을 넘어선 데 이어 가파른 성장세예요. 기업용 AI 시장에서 오픈AI와의 격차를 빠르게 좁히고, 일부 지표에서는 이미 앞섰다는 평가도 나와요.",
+      "extraction_reason": "AI 시장 1·2위 판도가 흔들리며 우리가 쓰는 도구의 선택지도 바뀌어요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "지금까지 AI 1위 자리는 오픈AI(챗GPT) 차지였는데, 앤트로픽(클로드)이 빠르게 따라잡고 있어요. 회사 두 곳이 경쟁하면 우리에게 좋은 점이 많아요. 기능이 더 좋아지고 가격도 내려갈 수 있어요. 한국 회사들도 챗GPT 외에 클로드를 함께 쓰는 일이 늘어요. 반면 두 회사 모두 외국 회사라 국내 데이터가 외국으로 흘러가는 우려는 같이 커져요."
+        }
+      }
+    },
+    {
+      "article_id": "e6cd0eb078433c3a",
+      "title": "\"주민등록등본 발급해 줘\"...카카오, AI 국민비서에 음성 기능 추가",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T12:13:26+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210489",
+      "content_text": "카카오(대표 정신아)는 'AI 국민비서'에 음성 기능을 추가하고 공공시설 예약을 카카오톡 안에서 완결할 수 있도록 서비스를 고도화했다고 14일 밝혔다.AI 국민비서는 카카오와 행정안전부가 협력해 지난 3월 출시한 시범서비스로 카카오톡으로 공공서비스를 이용할 수 있는 AI 에이전트다. 별도 앱 설치 없이 카카오톡 채널 '국민비서 구삐'를 통해 전자증명서 발급과 공공시설 예약 기능을 이용할 수 있다.이번 업데이트로 이용자는 \"주민등록등본 발급해줘\", \"테니스장 예약해줘\" 등의 음성 대화만으로 보다 편리한 공공서비스 이용 경험을 할 수",
+      "category": "ai_news",
+      "keywords": [
+        "AI",
+        "에이전트"
+      ],
+      "ai_summary": "카카오가 'AI 국민비서'에 음성 기능을 추가하고 공공시설 예약을 카카오톡 안에서 끝낼 수 있게 서비스를 고도화했다고 발표했어요. 카카오톡 채널 '국민비서 구삐'를 통해 '주민등록등본 발급해줘', '테니스장 예약해줘' 같은 음성 명령만으로 공공서비스를 이용할 수 있어요. 행정안전부와 협력한 시범서비스예요.",
+      "extraction_reason": "공공서비스가 음성 AI로 바뀌면 일상 행정 절차가 크게 단순해져요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "주민센터 가서 줄 서거나 정부24 사이트를 헤매던 일이 카카오톡 한 줄로 끝나게 돼요. 특히 디지털이 어려운 어르신들도 음성으로 주민등록등본을 받을 수 있어요. 행정 처리 속도가 빨라지면 공무원 단순 업무가 줄고, 더 어려운 민원에 시간을 쓸 수 있어요. 반면 카카오에 행정 정보가 모이는 점에서 개인정보 보안이 더 중요해져요."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "카카오톡에서 '국민비서 구삐' 채널을 한 번 추가해서 시험해 보세요. 가족 어르신께도 쉽게 알려드리면 도움이 돼요. 단, 공공기관을 사칭한 가짜 채널이나 가짜 링크가 늘 가능성이 있으니, 반드시 공식 인증된 노란 별 표시가 있는 채널인지 확인하세요. 모르는 링크나 첨부 파일은 절대 누르지 마세요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "8e6ab4993e58e96d",
+      "title": "SK AX, 오픈AI와 손잡고 기업용 AI 시장 공략한다",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T12:12:21+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210488",
+      "content_text": "SK AX(사장 김완종)는 오픈AI와 '엔터프라이즈 AI 사업 협력을 위한 서비스 파트너 계약'을 체결했다고 14일 밝혔다.이번 협력을 통해 SK AX는 오픈AI의 '챗GPT 엔터프라이즈'를 기업별 업무 환경과 보안 요건에 맞게 도입·운영할 수 있는 AI 활용 환경을 제공한다. 이를 통해 챗GPT를 기존 업무 프로세스 및 시스템과 연계해 실질적 업무 성과를 이끌어내며, 별도 보안·관리 체계 없이 임직원이 무분별하게 AI를 사용하는 '섀도우 AI' 문제를 예방할 수 있을 것으로 기대된다는 설명이다.챗GPT 엔터프라이즈는 기업 환경에",
+      "category": "ai_news",
+      "keywords": [
+        "챗GPT",
+        "AI"
+      ],
+      "ai_summary": "SK AX가 오픈AI와 '엔터프라이즈 AI 사업 협력' 서비스 파트너 계약을 맺었어요. SK AX는 오픈AI의 '챗GPT 엔터프라이즈'를 기업별 업무 환경과 보안 요건에 맞게 도입·운영하는 환경을 제공해요. 직원들이 통제 없이 AI를 쓰는 '섀도우 AI' 문제를 예방할 것으로 기대돼요.",
+      "extraction_reason": "한국 회사 직원들이 챗GPT를 안전하게 쓰는 길이 본격 열려요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "지금까지 회사들은 직원이 챗GPT에 회사 정보를 몰래 입력하는 '섀도우 AI' 때문에 보안 사고를 걱정했어요. 이제 SK AX가 안전하게 도입을 도와주면, 한국 회사들도 본격적으로 챗GPT를 업무에 쓰게 돼요. 회사가 AI 활용 규정을 새로 만드는 일이 늘어요. 직원 입장에선 'AI 쓰기 능력'이 평가 항목에 들어갈 수 있어요. 반면 챗GPT를 잘 모르면 일이 더 느려 보일 수 있어요."
+        }
+      }
+    },
+    {
+      "article_id": "bc07a4a91781848e",
+      "title": "배경훈 부총리, 국가AI전략위 상근 부위원장 겸직…\"운영 공백 최소화\"",
+      "source": "AI타임스",
+      "published_at": "2026-05-14T12:10:52+09:00",
+      "original_url": "https://www.aitimes.com/news/articleView.html?idxno=210499",
+      "content_text": "국가인공지능전략위원회(위원장 이재명 대통령)는 배경훈 과학기술부총리 겸 과학기술정보통신부 장관이 당분간 상근 부위원장 역할을 겸해 위원회를 운영해 나간다고 14일 밝혔다.이는 임문영 상근 부위원장이 보궐선거 출마를 위해 사의 및 해촉됨에 따라, 업무 공백을 최소화하기 위함이다. 배경훈 부위원장 겸 과학기술부총리는 첫 공식 일정으로 이날 제18차 운영위원회를 주재했으며, 이후에도 격주 단위로 계속할 계획이다. 이번 회의에서는 ▲인공지능행동계획 2026년 1분기 이행점검 결과 ▲2027년 연구개발(R&D) 신규사업 기획 지원 결과 및",
+      "category": "ai_news",
+      "keywords": [
+        "인공지능"
+      ],
+      "ai_summary": "국가인공지능전략위원회(위원장 이재명 대통령)에서 배경훈 과학기술부총리 겸 과기부 장관이 상근 부위원장을 겸직하며 운영하기로 했어요. 임문영 전 부위원장이 보궐선거 출마로 사임한 데 따른 결정이에요. 이날 제18차 운영위에서 AI 행동계획 1분기 이행 점검 등을 다뤘어요.",
+      "relevance_score": 7.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "c819bc82b9ec8a78",
+      "title": "\"K뉴스도 세계로\"...AI 더빙 입힌 ‘K채널 82’ 9월 미국 지상파 상륙",
+      "source": "ZDNet Korea",
+      "published_at": "2026-05-14T16:45:46+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260514163055",
+      "content_text": "[지디넷코리아]K팝, 드라마 등 K콘텐츠 글로벌 인기에 발맞춰 한국 뉴스를 전 세계에 알리는 글로벌 보도 체제가 구축된다. 한국 주요 방송사와 미국 싱클레어 그룹이 손잡은 ‘K채널 82’가 오는 9월부터 미국 지상파를 통해 현지인에게 한국 뉴스를 실시간으로 전달할 예정이다.한정훈 K엔터테크허브 대표는 14일 서울 삼성동 코엑스에서 열린 ‘K콘텐츠 전성시대, K뉴스도 필요하다’ 간담회에서 “‘오징어게임’ 등 K콘텐츠가 세계로 뻗어나가고 있음에도 K뉴스를 전하는 글로벌 보도 채널은 없다”며 “높아지는 K콘텐츠 인기에 걸맞게 한국도 글로벌 뉴스 체제를 갖춰야 한다”고 밝혔다.이어, “아리랑TV, KBS월드 등 한국 뉴스 채널은 있으나 현재로선 현지 교민 등 소수를 대상으로 한다”며 “K뉴스가 보다 넓은 세계에 진출하기 위해 민간 자본과 방송사 콘텐츠, 정부의 정책적 지원이 맞물려야 한다”고 강조했다.실제 한국 방송사, 미국 방송 유통 기업이 힘을 합쳐 연내 미국 지상파에 한국 뉴스를 송출하는 프로젝트가 추진된다. 미국 전역 86개 지역에서 185개 방송국, 600개 이상의 채널을 운영하는 싱클레어는 한국 KBS, MBN, SBS 등 보도 채널과 손잡고 미국 지상파 채널 82번에서 오는 9월 워싱턴DC 지역을 시작으로 미국 전역에 한국 뉴스를 선보일 예정이다.미국 거주 한국 교민뿐 아니라, K컬처에 관심 있는 미국 현지 가정을 대상으로 한다. 채널 이름은 K채널 82이다. 현재 싱클레어와 한국 방송사는 K채널 82를 점진적으로 확대하기 위해 연합체 K얼라이언스를 구성하고 있다. KBS는 합류 완료했고, CJ와 SBS 등은 논의 중인 것으로 알려졌다.싱클레어 기술 자회사 캐스트닷에라의 박경모 부사장은 “K팝과 드라마, 푸드 등 K컬처를 묶어주는 것이 뉴스”라며 “한국 문화가 하나의 패키지로 세계에 인식되는 데 뉴스가 시작점이 될 수 있다”고 짚었다.뉴스는 100% 영어 더빙으로 진행되며, 비용 절감을 위해 AI가 사용될 예정이다. 박 대표는 “AI를 통해 화질을 향상하고, 가로 화면을 세로로 바꾸는 등 시도를 하고 있다”며 “최적의 AI솔루션을 확보해 수익을 극대화하기 위한 방법을 모색하고 있다”고 말했다.싱클레어와 K채널 82에 AI 자막 도입을 구상 중인 신현진 허드슨AI 대표는 “뉴스는 실시간 정보 전달과 신뢰도가 중요한 콘텐츠”라며 “과거엔 성우를 거쳐 더빙을 했지만, 최근엔 AI 기술을 통해 실시간으로 더빙할 수 있는 영역이 넓어졌다”고 말했다.신 대표는 더빙, 특히 AI 더빙의 장점으로 신뢰도 제고와 비용 절감을 꼽았다. 신 대표는 “현지에선 더빙을 통해 정보가 제공되면 신뢰가 높아진다는 인식이 있다”며 “AI 더빙을 활용하면 현지 재제작보다 최대 95% 비용을 줄일 수 있다”고 강조했다.이어 “뉴스는 앵커 멘트 등 발음이 정확한 게 대부분이기에 더빙이 상대적으로 수월하긴 하지만, 더빙 과정에서 오역으로 잘못된 정보가 전달된다는 부담도 있다”며 “단순 직역이 아니라 의도된 내용이 정확히 전달돼야 한다는 점에서 어려움은 있다”고 했다.이같은 구상을 바탕으로 K얼라이언스는 2027년부터 전 세계 높은 보급률을 자랑하는 삼성, LG 등 스마트TV를 통해 콘텐츠를 송출하는 FAST를 통해 채널을 확대할 방침이다.FAST는 광고 기반으로 운영되며, 별도의 망 설치, 구독료 없이 방송을 송출할 수 있다는 게 장점이다. 이미 미국에선 활성화된 서비스로, 올해 연간 수익은 140억 8800억 달러(약 22조 1816억원)으로 추산된다.",
+      "category": "ai_news",
+      "keywords": [
+        "AI"
+      ],
+      "ai_summary": "한국 KBS·MBN·SBS 등 보도 채널과 미국 싱클레어 그룹이 손잡고 9월부터 미국 지상파에 한국 뉴스를 송출하는 'K채널 82' 프로젝트를 시작해요. 미국 86개 지역, 185개 방송국에서 100% 영어 더빙으로 전달되며, 비용 절감을 위해 AI 더빙·AI 자막을 사용해요. 워싱턴DC를 시작으로 미국 전역에 확대돼요.",
+      "extraction_reason": "한국 콘텐츠 수출 경로가 미국 지상파까지 넓어지며 AI 더빙이 핵심 도구가 돼요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "K팝과 드라마뿐 아니라 한국 뉴스가 미국 가정에서 영어로 들리는 시대가 열려요. AI 더빙이 본격 쓰이면, 사람 성우 일자리는 줄지만 새 콘텐츠 수출은 빨라져요. 한국 방송사와 한국 AI 회사들이 글로벌 시장에 함께 진출할 길이 열려요. 동시에 자막·더빙 품질이 떨어지면 한국 이미지에 부정적 영향이 갈 수 있어요. 사람의 마지막 검수가 더 중요해져요."
+        }
+      }
+    },
+    {
+      "article_id": "1bbd6ca74d29674c",
+      "title": "샤오펑·지커까지 참전…중국산 전기차, 시장 판 흔든다",
+      "source": "ZDNet Korea",
+      "published_at": "2026-05-14T16:30:07+09:00",
+      "original_url": "https://zdnet.co.kr/view/?no=20260514153358",
+      "content_text": "[지디넷코리아]중국산 전기차 공세가 국내 전기차 시장 판도를 흔들고 있다. 저가형 모델을 앞세운 비야디(BYD)에 이어 지커(Zeekr), 샤오펑(Xpeng) 등 프리미엄 브랜드까지 한국 진출에 속도를 내면서 시장 경쟁이 한층 격화하는 분위기다.14일 카이즈유데이터연구소와 한국수입자동차협회(KAIDA)에 따르면 올해 1~4월 국내 신규 등록 전기차(승용·상용 포함) 12만3957대 가운데 중국 상하이 공장 생산 테슬라 모델Y·모델3와 BYD 판매량은 총 3만8546대로 집계됐다. 국내 전체 등록 전기차의 약 31.1% 수준이다.실제 수입 전기차 시장에서는 중국 생산 차량이 판매 확대를 주도하고 있다. 한국수입자동차협회(KAIDA)에 따르면 올해 4월 수입 승용차 신규 등록은 3만3993대로 전년 동기 대비 58.1% 증가했다. 이 가운데 전기차 비중은 53.9%로 절반을 넘어섰다.테슬라는 4월 한 달 동안 1만3190대를 판매하며 전체 수입차 시장 점유율 38.8%를 기록했다. 모델Y는 1만86대가 등록돼 수입차 전체 베스트셀링 모델에 올랐다. 모델3 판매량도 2596대를 기록했다.BYD 역시 빠른 성장세를 이어가고 있다. BYD는 올해 4월 2023대를 판매하며 전년 동기 대비 272.6% 증가했다. 누적 판매는 5991대로 집계됐다. 대표 모델인 '돌핀'과 '씨라이언7'은 각각 800대, 621대씩 판매됐다.BYD의 주력 모델인 '아토3'는 정부 보조금 적용 시 일부 지자체 기준 2000만원 초반대 구매가 가능해 국산 전기차 대비 높은 가격 경쟁력을 확보했다. 중국 업체들은 저가형 모델 출시와 대규모 할인 정책을 앞세워 국내 소비자 공략에 속도를 내고 있다.중국 전기차 업체들의 공세는 최근 프리미엄 시장으로 확대되는 양상이다. 지리자동차 프리미엄 브랜드 지커는 올해 하반기 국내 공식 출시를 앞두고 서울 강남과 경기 판교에 전용 전시장을 구축했다. 주력 모델인 '지커 001'과 스포츠 세단 '지커 007'을 앞세워 테슬라 모델S와 제네시스 GV60 시장을 공략한다는 전략이다.특히 지커는 볼보자동차 서비스 네트워크 일부 활용도 검토 중이다. 중국차의 약점으로 꼽히는 사후관리 불안을 줄이기 위한 전략이다. 업계에서는 초기 사전예약 물량이 예상치를 웃돌면서 프리미엄 중국 전기차에 대한 국내 소비자 관심이 현실화하고 있다는 평가도 나온다.샤오펑 역시 한국 법인 설립 절차에 착수하며 국내 진출을 공식화했다. 샤오펑은 자율주행 소프트웨어 'XNGP'를 핵심 경쟁력으로 내세우고 있다. 현재 국내 부품사들과 협력해 한글화 및 국내 도로 환경에 최적화된 내비게이션 개발 작업을 진행 중이며, 2027년 초 첫 차량 인도를 목표로 인증 절차를 밟고 있다.국산 완성차 업체들도 대응 수위를 높이고 있다. 현대자동차는 스타리아 일렉트릭 출시와 함께 보급형 전기차 라인업 확대를 추진하고 있다. 기아는 목적기반차량(PBV) 'PV5'를 앞세워 신규 수요 확보에 집중하고 있다.가격 경쟁 대응을 위한 할인 정책도 강화됐다. 현대차는 이달 전기차 신차 구매 시 최대 100만원의 기본 할인과 자사 인증 중고차 매각 시 100만~200만원의 추가 할인을 제공한다.기아는 내연기관 고객의 전기차 전환 시 100만원을 지원하고, 생산 월에 따라 최대 200만원의 재고 할인을 차등 적용한다. 양사 모두 중고차 트레이드인과 금융 혜택을 연계해 실질적인 구매 부담을 낮추는 데 주력하고 있다.국산 전기차 판매 역시 일부 모델을 중심으로 성장세를 이어가고 있다. 현대차·기아 판매 자료에 따르면 올해 4월 아이오닉 5는 1674대 판매돼 전년 동기 대비 14.8% 증가했다. 대형 전기 SUV 아이오닉 9 판매량도 1225대를 기록했다. 반면 아이오닉 6는 475대로 전년 동기 대비 22.1% 감소했다.기아 EV3는 3898대 판매돼 전년 동기 대비 27.5% 증가했으며, EV5도 3308대 판매되며 전기 SUV 수요 확대를 이끌었다.",
+      "category": "ai_news",
+      "keywords": [
+        "자율주행"
+      ],
+      "ai_summary": "중국 전기차 회사 BYD에 이어 프리미엄 브랜드 지커(Zeekr)·샤오펑(Xpeng)까지 한국 진출에 속도를 내고 있어요. 올해 1~4월 국내 신규 등록 전기차 12만3957대 중 중국 생산 테슬라와 BYD가 약 31.1%를 차지했어요. 지커는 강남·판교에 전용 전시장을 만들었고, 샤오펑은 한국 법인 설립 절차에 들어갔어요.",
+      "extraction_reason": "한국 자동차 시장 판도가 빠르게 흔들리며 소비자 선택지가 확 넓어져요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "중국 전기차가 저렴한 가격으로 들어오면 현대·기아도 가격을 내릴 수 있어요. 소비자 입장에서는 선택지가 넓어져요. 반면 국내 자동차 부품 회사 일자리는 영향을 받을 수 있어요. 중국차의 약점이던 사후관리도 지커가 볼보 서비스망을 검토하면서 보완되고 있어요. 한국 전기차 산업 경쟁력이 진짜 시험대에 올랐어요."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "전기차 살 계획이 있다면 지금 바로 사기보단 9월 이후 지커·샤오펑 출시 가격을 비교해 보세요. 보조금 정책이 차종마다 다르니 거주 지자체 기준도 함께 확인하세요. 사후관리망과 배터리 보증 기간을 가장 중요하게 봐야 해요. 반대로 단순히 '싸다'는 이유만으로 잘 모르는 새 브랜드를 충동 구매하는 건 피해야 해요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "858965daa369fe68",
+      "title": "트럼프·시진핑, 베이징서 협력확대 한목소리…대만문제선 '답보'(종합)",
       "source": "연합뉴스",
-      "published_at": "2026-05-14T06:10:00+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513153700083",
-      "content_text": "(베이징=연합뉴스) 한종구 특파원 = 도널드 트럼프 미국 대통령과 시진핑 중국 국가주석이 14일 오전(이하 현지시간) 중국 베이징에서 정상회담을...",
+      "published_at": "2026-05-14T18:06:49+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514165900083",
+      "content_text": "(베이징·워싱턴=연합뉴스) 한종구 김현정 정성조 홍정규 이유미 특파원 = 도널드 트럼프 미국 대통령과 시진핑 중국 국가주석이 14일(현지시간) ...",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "트럼프 미국 대통령과 시진핑 중국 국가주석이 14일 오전 베이징에서 정상회담을 가져요. 관세·이란·대만 문제가 핵심 의제로 다뤄질 전망이라 미중 관계와 세계 경제 흐름에 큰 영향을 줄 수 있는 회담이에요.",
-      "extraction_reason": "미중 정상회담 결과가 한국 경제·안보 환경 전반을 흔들 수 있어요.",
+      "ai_summary": "트럼프 미국 대통령과 시진핑 중국 국가주석이 14일 베이징에서 만나 협력 확대에는 한목소리를 냈지만, 대만 문제에서는 답보 상태에 머물렀어요. 두 정상은 오랜만의 정상회담을 가졌고 경제협력 증진 방안을 논의했어요.",
+      "extraction_reason": "세계 1·2위 강대국의 회담은 한국 외교·경제 모든 영역에 직접 영향을 줘요.",
       "relevance_score": 9.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "관세 합의가 잘 풀리면 한국 반도체·배터리·자동차 회사가 미국·중국에 모두 물건 팔기 좋아져요. 반대로 합의가 깨지면 환율과 주가가 흔들리고, 우리 부모님 월급·국민연금 운용 수익에도 영향이 와요. 대만 문제가 거론되면 동북아 안보 긴장이 커져서 한국 군사·외교가 어려운 결정을 해야 할 수도 있어요. 이란 이야기가 어떻게 나오느냐에 따라 유가도 흔들릴 가능성이 높아요."
+          "text": "미국과 중국이 협력에 합의하면 무역 갈등이 잠시 가라앉아요. 한국 수출 회사들도 중국행 길이 잠시 넓어질 수 있어요. 대만 문제에서 답이 안 나왔다는 건 군사 긴장이 여전하다는 뜻이에요. 한국 주식·환율도 두 나라 관계에 따라 출렁일 가능성이 높아요. 가족 중 무역 관련 일을 하는 분이 있다면 다음 한 달 흐름을 잘 봐야 해요."
         },
         "bonus": [
           {
             "type": "scenario",
             "title": "앞으로 어떻게 될 수 있을까?",
             "icon": "🔮",
-            "text": "가장 가능성이 큰 모습은 큰 합의 없이 '대화는 계속한다' 정도로 마무리되는 거예요. 잘 풀리면 일부 관세가 낮아져 한국 수출 환경이 좋아질 수 있어요. 반대로 안 좋은 경우는 대만·이란 문제로 충돌해 외교 갈등이 더 커지고 환율이 출렁이는 거예요. 다음 며칠 안에 발표될 공식 성명과 두 정상의 표정·언급 분량이 방향을 가늠하는 단서가 돼요."
+            "text": "가장 가능성이 큰 모습은 경제 분야에서 작은 합의가 이어지는 거예요. 잘 풀리면 미국이 일부 관세를 낮추고, 중국이 미국산 농산물을 더 사 한국 부품 회사에도 좋은 영향이 와요. 반대로 안 좋은 경우는 대만 문제로 갈등이 다시 터져 한국 안보 환경이 흔들릴 수 있어요. 다음 몇 주 안에 이어질 후속 회담 결과가 갈림길이에요."
           }
         ]
       }
     },
     {
-      "article_id": "943b33ec6d0a19ca",
-      "title": "워시 美연준의장 후보자 인준안 상원 통과…주중 취임할 듯(종합)",
+      "article_id": "5fcc106922e9640a",
+      "title": "'불장'에 10개 증권사 1분기 4.3조 벌었다…작년 1년치의 48%",
       "source": "연합뉴스",
-      "published_at": "2026-05-14T06:22:23+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514004351071",
-      "content_text": "(워싱턴=연합뉴스) 박성민 백나리 특파원 = 미국 중앙은행인 연방준비제도(Fed·연준)의 케빈 워시 차기 의장 후보자에 대한 인준안이 13일(현...",
+      "published_at": "2026-05-14T17:51:19+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514163100008",
+      "content_text": "(서울=연합뉴스) 김태종 기자 = 코스피가 8,000선을 목전에 두는 등 국내 증시가 연일 사상 최고치를 기록하면서 증권사들이 1분기 4조원 이...",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "미국 연방준비제도(연준)의 차기 의장 케빈 워시 후보자 인준안이 13일 상원을 통과했어요. 주중 취임할 전망이에요. 워시 의장 체제에서 미국의 금리 방향이 어떻게 정해지는지가 세계 금융시장의 최대 관심사예요.",
-      "extraction_reason": "미국 금리 결정 책임자가 바뀌면 한국 환율·대출이자에도 직접 영향이 와요.",
+      "ai_summary": "코스피가 8000선을 눈앞에 두며 국내 증시가 연일 사상 최고치를 기록하는 가운데, 1분기 10개 증권사가 약 4.3조원의 이익을 냈어요. 이는 작년 한 해 이익의 48%에 해당하는 수준이에요.",
+      "extraction_reason": "주식시장 활황은 우리 가족의 자산과 일자리에도 직접 영향을 줘요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "증권사들이 1분기에만 작년 절반을 벌었다는 건 시장에 돈이 활발히 돌고 있다는 뜻이에요. 그래서 주식형 펀드 가입이나 새 IPO 청약 기회가 늘어요. 부동산에서 주식으로 자금이 옮겨가는 흐름이 빨라질 가능성이 높아요. 하지만 너무 빠른 상승은 거품 위험도 동반하니, 연말까지 흐름을 지켜봐야 해요. 가족 중 증권사 다니는 분이 있다면 성과급도 좋아질 거예요."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "지금이 최고치라고 무리해서 빚내 투자하는 건 피해야 해요. 시장이 좋을 때일수록 분산 투자(여러 종목·자산에 나눠 두기)가 더 중요해져요. 부모님이 가입한 펀드가 있다면 어떤 자산에 들어 있는지 한번 같이 살펴보세요. 반대로 'SNS에서 추천하는 종목' 한 곳에 큰돈을 몰아넣는 건 매우 위험해요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "c1f636b53cbebdcb",
+      "title": "\"공짜노동 그만\" … 노동부, 포괄임금 특별감독 착수",
+      "source": "매일경제",
+      "published_at": "2026-05-14T18:00:47+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12047898",
+      "content_text": "정부가 '공짜 노동'의 주요 원인으로 지목된 포괄임금 오남용을 근절하기 위해 연말까지 권역별 릴레이 수시 감독에 돌입한다. 첫 타격지는 서울 구로·가산디지털단지(G밸리)다. 14일..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "정부가 '공짜 노동'의 주요 원인으로 지목된 포괄임금 오남용을 근절하기 위해 연말까지 권역별 릴레이 수시 감독에 돌입해요. 첫 감독지는 서울 구로·가산디지털단지(G밸리)예요. 14일 노동부가 발표했어요.",
+      "extraction_reason": "포괄임금 단속은 IT·제조업 직원의 야근 수당 지급에 직접 영향을 줘요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "포괄임금은 야근·휴일 근무 수당을 월급에 미리 포함했다고 보는 계약이에요. 하지만 실제 일한 만큼 돈을 못 받는 경우가 많았어요. 정부 단속이 시작되면 IT 회사들 야근 수당 지급이 늘 가능성이 높아요. 직원 입장에선 받을 돈이 늘지만, 회사 부담이 커져 인력 채용 속도가 느려질 수도 있어요. 가족 중 G밸리에서 일하는 분이 있다면 회사 정책 변경을 한번 살펴보세요."
+        }
+      }
+    },
+    {
+      "article_id": "cda36941004b43f0",
+      "title": "일은 그대론데 서류상 하루 2시간 근무?…대법 “무효”",
+      "source": "매일경제",
+      "published_at": "2026-05-14T17:56:19+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12047869",
+      "content_text": "택시기사 하루 2시간 근로계약 “최저임금법 잠탈 위한 탈법” 노사합의로 한 단축도 불인정택시기사의 업무량은 그대로 둔 채 근로계약서상 근로시간만 하루 2시간으로 단축한 노사합의는 ..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "택시기사의 업무량은 그대로 둔 채 근로계약서상 근로시간만 하루 2시간으로 단축한 노사 합의는 '최저임금법 회피를 위한 탈법'이라며 대법원이 무효라고 판결했어요. 노사가 합의했더라도 실제 근로 실태와 다른 단축은 인정하지 않는다는 의미예요.",
+      "extraction_reason": "이 판결은 모든 시간제 노동 계약 평가의 기준이 돼요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "이번 대법원 판결은 택시뿐 아니라 모든 업종의 짧은 근로계약 관행에 영향을 줘요. 회사가 최저임금을 피하려고 서류상 시간을 줄이는 방식이 막혀요. 비슷한 계약을 가진 직원들은 그동안 못 받은 임금을 청구할 길이 열렸어요. 회사 입장에선 인건비 부담이 늘 수 있어요. 가족 중 시급제·시간제 일하는 분이 있다면 계약서를 한번 같이 살펴보세요."
+        }
+      }
+    },
+    {
+      "article_id": "d47399be688080d3",
+      "title": "정은경 장관 “사고 재발 않도록 안전한 분만 방안 마련하겠다”",
+      "source": "한겨레",
+      "published_at": "2026-05-14T18:09:00+09:00",
+      "original_url": "https://www.hani.co.kr/arti/society/rights/1258723.html",
+      "content_text": "정은경 보건복지부 장관은 14일 전라남도 순천에 있는 지역모자의료센터를 방문해 “안타까운 사고가 재발하지 않고 임산부가 안전하게 분만할 수 있도록 개선방안을 마련하겠다”고 밝혔다. 정 장관은 이날 오후 지역모자의료센터인 현대여성아동병원을 찾아 전남 지역의 고위험 산모·",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "정은경 보건복지부 장관이 14일 전남 순천 지역모자의료센터인 현대여성아동병원을 찾아 '안타까운 사고가 재발하지 않고 임산부가 안전하게 분만할 수 있도록 개선방안을 마련하겠다'고 밝혔어요. 전남 지역의 고위험 산모 의료 환경을 직접 점검했어요.",
+      "extraction_reason": "지역 분만 의료 환경 개선은 출산을 앞둔 가정에 직접 영향을 줘요.",
+      "relevance_score": 7.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "fdbcdebbfde09b26",
+      "title": "‘오세훈 심판론’-‘정부 심판론’, 서울시장 후보 날선 공방",
+      "source": "한겨레",
+      "published_at": "2026-05-14T18:03:00+09:00",
+      "original_url": "https://www.hani.co.kr/arti/politics/politics_general/1258721.html",
+      "content_text": "정원오 더불어민주당 서울시장 후보와 오세훈 국민의힘 서울시장 후보가 14일 오전 6·3 지방선거 후보 등록을 하고 나란히 출사표를 던졌다. ‘오세훈 심판론’을 내세운 정 후보와 ‘정부 심판론’으로 맞선 오 후보는 부동산 정책과 정 후보의 과거 폭행 사건을 두고 날 선",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "정원오 더불어민주당 서울시장 후보와 오세훈 국민의힘 서울시장 후보가 14일 오전 6·3 지방선거 후보 등록을 하고 나란히 출사표를 던졌어요. '오세훈 심판론'을 내세운 정 후보와 '정부 심판론'으로 맞선 오 후보는 부동산 정책과 정 후보의 과거 폭행 사건을 두고 날 선 공방을 벌였어요.",
+      "extraction_reason": "서울시장 선거 결과는 부동산·교통·복지 정책 방향을 좌우해요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "서울시장은 부동산·교통·교육 정책의 핵심 결정권자예요. 누가 되느냐에 따라 재건축·재개발 속도, 청년 주거 정책, 대중교통 요금이 크게 달라질 수 있어요. 두 후보가 부동산 정책에서 큰 차이를 보이고 있어 6월 3일 결과가 서울 시민의 살림에 직접 영향을 줘요. 가족 회의에서 부동산·복지 정책 차이를 한번 비교해 보면 좋아요. 정쟁만 보지 말고 실제 공약을 살펴보세요."
+        }
+      }
+    },
+    {
+      "article_id": "60f659d31f8a300c",
+      "title": "李대통령 \"농협을 농민의 품으로…지배구조 개선·민주적 통제\"",
+      "source": "연합뉴스",
+      "published_at": "2026-05-14T17:50:02+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514163500001",
+      "content_text": "(서울=연합뉴스) 고동욱 황윤기 기자 = 이재명 대통령은 14일 \"농업의 근간을 지탱하는 농협의 정상화가 무엇보다 중요하다\"며 농협 개혁에 속도...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "이재명 대통령은 14일 '농업의 근간을 지탱하는 농협의 정상화가 무엇보다 중요하다'며 농협 개혁에 속도를 내겠다고 밝혔어요. 지배구조 개선과 민주적 통제를 강조해, 농협을 농민의 품으로 돌려놓겠다고 했어요.",
+      "extraction_reason": "농협 개혁은 식탁 물가와 농민 소득에 직접 연결돼 모두에게 중요해요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "농협은 우리가 사 먹는 쌀·채소·과일 가격에 큰 영향을 주는 곳이에요. 지배구조가 바뀌면 농산물 유통 단계가 줄어 식탁 물가가 안정될 가능성이 있어요. 농민들 입장에선 직접 의견을 낼 길이 더 열릴 수 있어요. 농협은행에서 받는 대출·예금 정책도 함께 바뀔 수 있어요. 농촌과 도시 모두에 영향이 가요."
+        }
+      }
+    },
+    {
+      "article_id": "a2e4f71c1b397e80",
+      "title": "[속보] 백악관 \"미중 정상, 호르무즈 개방·이란 핵무기 불허 합의\"",
+      "source": "연합뉴스",
+      "published_at": "2026-05-14T17:34:58+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514165300009",
+      "content_text": "(",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "백악관이 미중 정상이 호르무즈 해협 개방과 이란 핵무기 불허에 합의했다고 발표했어요. 이번 미중 정상회담에서 중동 안정과 비확산이 합의 의제에 포함된 것이 확인됐어요.",
+      "extraction_reason": "호르무즈 해협 안정과 이란 핵 문제는 한국 기름값과 안보에 직결돼요.",
       "relevance_score": 9.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "미국 중앙은행 총재가 바뀌면 금리 결정 분위기가 바뀌고, 그게 곧바로 환율·주가·우리나라 은행 대출 이자에 영향을 줘요. 워시 의장이 금리를 빨리 낮추면 대출자에겐 좋고 저축자에겐 안 좋을 수 있어요. 반대로 금리를 천천히 낮추면 환율이 출렁여 수입 물가가 올라가요. 우리 부모님 월세·전세 대출 이자, 자영업자 대출 부담에도 직접 영향을 주는 변수예요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "혹시 대출이 있다면 변동 금리인지 고정 금리인지 한 번 확인해 보세요. 환율이 출렁일 수 있으니 해외여행·해외쇼핑 계획이 있다면 시기를 분산해 사는 게 좋아요. 반대로 한 번 환율 떨어졌다고 큰돈을 한꺼번에 달러로 바꾸는 건 피하세요. 워시 의장의 첫 발언이 며칠 안에 나오면 시장이 크게 출렁일 수 있어 그날 충동 결정을 하지 않는 게 안전해요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "80e6d742d151c28d",
-      "title": "이스라엘 \"네타냐후, 3월에 UAE 극비리 방문\"…UAE는 부인(종합2보)",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T07:59:09+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514002652079",
-      "content_text": "(카이로·서울=연합뉴스) 김상훈 특파원 김아람 기자 = 베냐민 네타냐후 이스라엘 총리가 이란과 전쟁 중 아랍권 국가인 아랍에미리트(UAE)를 비...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "이스라엘 총리실이 네타냐후 총리가 이란과 전쟁 중이던 지난 3월 UAE를 극비리에 방문했다고 밝혔어요. UAE 측은 이를 부인했어요. 중동 외교 흐름이 어떻게 움직이는지 보여주는 새로운 단서가 돼요.",
-      "extraction_reason": "중동 전쟁 외교 흐름이 우리 유가·해운·에너지 가격에 직접 영향을 줘요.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "이스라엘과 아랍권의 비밀 외교가 진행 중이라는 건, 중동 전쟁이 단기에 더 격해지지 않을 가능성을 보여주는 신호예요. 그러면 유가가 안정세로 갈 수 있어요. 반대로 UAE가 강하게 부인하는 점에서 보면 어디까지 진실인지 불확실해요. 유가는 우리 기름값·식품 운송비·전기 요금에 모두 영향을 줘서, 중동 외교 흐름은 우리 가계 부담과 직접 연결돼 있어요."
-        },
-        "bonus": [
-          {
-            "type": "frame",
-            "title": "이 뉴스, 이렇게 읽어보세요",
-            "icon": "🧐",
-            "text": "이스라엘은 '방문했다'고 발표하고 UAE는 '부인'한 상황이라, 두 발표 중 어느 쪽이 정확한지 단정하기 어려워요. 외교 협상은 한쪽 정부의 정치 상황에 맞춰 발표 시점을 고르는 경우가 많아요. 다른 매체 두세 곳에서 익명 소식통 인용이 어떻게 다른지 같이 보세요. 우리가 던질 질문은 이거예요. 왜 지금 이 이야기가 공개됐을까? 누구에게 이익일까?"
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "857b18bb7f3b77ca",
-      "title": "인천시, 중동사태 장기화에 중소기업 대출이자 2천억원 지원",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T08:30:15+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514022700065",
-      "content_text": "(인천=연합뉴스) 신민재 기자 = 인천시는 중동사태 장기화로 경영난을 겪는 지역 중소기업에 총 2천억원 규모의 이차보전 자금을 지원한다고...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "인천시가 중동사태 장기화로 경영난을 겪는 지역 중소기업에 총 2천억 원 규모의 이차보전 자금을 지원해요. 대출 이자를 깎아주는 방식으로 영업비용 압박이 큰 중소기업의 자금 사정을 도와주려는 정책이에요.",
-      "relevance_score": 7.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "a86408924464817b",
-      "title": "이란전쟁에 미국채 30년물 입찰금리 19년만에 5%대 돌파",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T06:55:37+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514012100072",
-      "content_text": "(뉴욕=연합뉴스) 이지헌 특파원 = 미국채 30년물 입찰 금리가 약 20년 만에 처음으로 5%대로 올라선 것으로 나타났다.",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "이란 전쟁 여파로 미국 30년 만기 국채 입찰 금리가 약 20년 만에 처음으로 5%대로 올라섰다고 연합뉴스가 전했어요. 미국이 빚을 낼 때 내야 하는 이자가 그만큼 높아졌다는 뜻이라 금융시장 전반의 부담이 커진 신호예요.",
-      "extraction_reason": "미국 장기 금리가 19년 만에 5%대로 오르면 우리 대출 환경에도 큰 영향을 줘요.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "미국 국채 금리가 오르면 전 세계 다른 나라의 대출 이자도 같이 올라가는 게 보통이에요. 그러면 우리 주택담보대출·전세대출 이자 부담이 더 커질 가능성이 있어요. 동시에 환율이 출렁여 수입품 가격이 오르고, 휘발유·라면·옷값까지 영향을 받아요. 기업도 돈을 빌리기 비싸져 투자를 줄이면 채용 시장이 차가워질 수 있어요. 가계와 기업이 함께 부담을 느끼는 흐름이에요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "이번 달 가계부에서 대출 이자 항목이 얼마인지 한 번 확인하고, 변동 금리라면 고정으로 바꿀 시점을 은행과 상의해 보세요. 큰 소비는 한 달 정도 미루고 가격 흐름을 지켜보는 게 좋아요. 반대로 '금리는 곧 떨어진다'고 단정해 빚을 더 내거나 무리한 투자에 들어가는 건 위험해요. 며칠 사이 큰 폭으로 흐름이 뒤집힐 가능성이 높은 시기예요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "5726ae3ca5ecbaa1",
-      "title": "美연준 매파 인사들 케빈 워시 취임 앞두고 \"금리인상 배제못해\"",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T06:16:04+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514008200072",
-      "content_text": "(뉴욕=연합뉴스) 이지헌 특파원 = 미국의 물가 지표가 예상을 뛰어 넘는 상승세를 보인 가운데 연방준비제도(Fed·연준) 주요 인사들도 13일(...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "미국 물가 지표가 예상보다 오르자 연준 안 매파 인사들이 13일 '금리 인상도 배제할 수 없다'는 입장을 내놨어요. 워시 신임 의장 취임을 앞두고 인하 기대가 컸지만 인플레이션 우려가 다시 커지면서 금리 향방 불확실성이 깊어졌어요.",
-      "extraction_reason": "기대했던 금리 인하 대신 인상 가능성까지 거론되는 분위기 변화예요.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "많은 사람이 '곧 금리가 내려갈 거야'라며 부동산·주식 투자를 늘려 왔어요. 그런데 매파 인사들이 '오히려 올릴 수도 있다'고 말하면 분위기가 빠르게 바뀌어요. 그러면 주가가 출렁이고 환율이 오르며, 대출자 부담은 줄지 않을 가능성이 커요. 부동산을 매매하려던 사람도 매수·매도 시기를 다시 짜야 해요. 자영업자에게는 돈을 빌리기 비싸지는 흐름이라 부담이 더 커질 수 있어요."
+          "text": "호르무즈 해협은 전 세계 석유의 약 5분의 1이 지나가는 길목이에요. 이곳이 막히면 한국 기름값이 크게 올라요. 미국과 중국이 함께 '열어두자'고 합의한 건 매우 중요한 신호예요. 이란 핵무기 불허 합의는 중동 전체 긴장을 낮춰요. 한국 자동차·항공·해운 회사 모두에 좋은 소식이에요. 다만 이란이 실제로 받아들일지가 관건이에요."
         }
       }
     },
     {
-      "article_id": "153f4dceb2d3dd5f",
-      "title": "도수치료 고무줄 가격 '마침표'…7월부터 정부가 직접 고삐 죈다",
+      "article_id": "8c91d509856b91fc",
+      "title": "李대통령, '광주 고교생 피살'에 \"청소년·여성 범죄에 전면전\"",
       "source": "연합뉴스",
-      "published_at": "2026-05-14T06:11:01+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513075500530",
-      "content_text": "(서울=연합뉴스) 서한기 기자 = 국내 의료 시장의 무법지대로 불리던 비급여 진료 체계에 정부가 강력한 메스를 들이댔다. 그 첫 번째 타깃은 연...",
+      "published_at": "2026-05-14T17:35:58+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514162300001",
+      "content_text": "(서울=연합뉴스) 설승은 황윤기 기자 = 이재명 대통령은 14일 '광주 고교생 흉기 피살사건'과 관련, 공직자들을 향해 \"비상한 각오로 국가의 ...",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "정부가 비급여 진료 가격이 들쭉날쭉하던 문제에 칼을 빼들어요. 7월부터 첫 대상으로 연합뉴스가 짚은 도수치료 가격을 직접 통제한다는 계획이에요. 의료 시장의 '무법지대'로 불려 온 가격 격차를 줄이겠다는 정책이에요.",
-      "extraction_reason": "도수치료처럼 자주 받는 비급여 진료 가격이 정부 통제 영역에 들어가요.",
+      "ai_summary": "이재명 대통령은 14일 광주 고교생 흉기 피살 사건과 관련해 공직자들에게 '비상한 각오로 국가의 청소년·여성 범죄에 전면전을 펼쳐달라'고 지시했어요. 일반 시민의 안전을 보장하는 일을 정부의 핵심 과제로 정한다는 의미예요.",
+      "extraction_reason": "청소년·여성 안전은 모든 가정과 직접 연결되는 정책이에요.",
       "relevance_score": 8.0,
       "is_must_know": true,
       "insights": {
         "ripple": {
           "title": "이게 우리한테 어떻게 영향을 줄까?",
           "icon": "📡",
-          "text": "병원마다 도수치료 가격이 크게 달랐는데, 정부가 손을 대면 환자 입장에선 가격을 비교하기 쉬워지고 부담이 줄 가능성이 있어요. 다만 일부 병원·실손보험 시장은 수익이 줄어 다른 진료비를 올리거나 보험료 인상으로 이어질 가능성도 있어요. 도수치료 외 다음 대상이 어디가 될지가 의료 시장 흐름을 결정할 큰 변수가 돼요. 무릎·허리 통증 치료를 자주 받는 가족이라면 변화에 관심을 가져야 해요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "도수치료를 자주 받는다면 7월 이후 가격이 어떻게 바뀌는지 병원에 직접 문의해 보세요. 실손보험에 가입돼 있다면 보장 한도와 자기부담금 변화도 확인해 두는 게 좋아요. 반대로 '가격이 내려간다니까 지금 미리 많이 받자'며 굳이 필요 없는 치료를 늘리는 건 피하세요. 치료 효과보다 가격 흐름에 따라 의료 결정을 하는 건 건강에 도움이 되지 않아요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "e6238ab83e5cd908",
-      "title": "중동발 고유가에 차 굴리는 비용 16% 급등…내연차 직격",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T05:57:01+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513159800002",
-      "content_text": "(세종=연합뉴스) 안채원 기자 = 중동 전쟁 장기화에 따른 국제 유가 상승 여파로 차량 유지비 부담이 커지고 있다.",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "중동 전쟁이 길어지면서 국제 유가가 오르고, 그 여파로 국내 차량 유지비 부담이 16% 급등했다고 연합뉴스가 전했어요. 휘발유·경유 가격이 직접 오르면서 내연기관 차량 운전자에게 가장 큰 부담이 가는 흐름이에요.",
-      "extraction_reason": "기름값 인상이 출퇴근·배달·물류 비용을 모두 끌어올려요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "기름값이 오르면 우리집 차 유지비뿐 아니라 마트 진열대 가격까지 따라 올라요. 트럭으로 물건을 옮기는 운송비가 늘면 라면·과자·우유 같은 흔한 먹거리 값이 한꺼번에 오르는 일이 흔해요. 택시·버스 요금도 함께 들썩일 수 있어요. 자영업자와 배달업·물류업 종사자에게 부담이 가장 빨리 와요. 정부의 유류세 인하 조치가 어떻게 결정되느냐가 큰 변수예요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "가까운 거리는 대중교통·자전거를 활용하고, 장거리는 한 번에 묶어서 다녀오는 식으로 기름 소비를 조금이라도 줄여 보세요. 주유는 가장 싼 주유소를 모니터링하는 앱을 활용하면 도움이 돼요. 반대로 '곧 떨어지겠지' 하며 큰 차로 바꾸는 결정을 서두르는 건 위험해요. 유가 흐름은 일주일 단위로도 크게 흔들려서, 큰 지출은 시점을 신중하게 잡는 게 좋아요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "85adc064484ac619",
-      "title": "윤석열 '내란 우두머리' 2심 재판 시작…법관기피 신청 '변수'",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T06:00:01+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513164200004",
-      "content_text": "(서울=연합뉴스) 김빛나 기자 = 12·3 비상계엄 '본류' 격인 윤석열 전 대통령의 내란 우두머리 혐의 항소심 재판이 본격화한다. 1심 판결이...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "12·3 비상계엄의 '본류' 사건인 윤석열 전 대통령의 내란 우두머리 혐의 항소심 재판이 본격적으로 시작돼요. 변호인단의 법관기피 신청이 큰 변수예요. 1심 판결을 뒤집을지 여부가 우리 정치·법치 흐름을 다시 가를 분기점이 돼요.",
-      "extraction_reason": "전직 대통령 내란 혐의 2심 결과가 우리 정치·법제도에 미치는 영향이 커요.",
-      "relevance_score": 9.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "2심 판단은 단순한 형량 결정이 아니라, 앞으로 대통령의 권한이 어디까지 허용되고 어떤 행위가 처벌되는지 한국 정치의 큰 기준을 정하는 일이에요. 결과에 따라 지방선거 분위기, 여야 입법 전략에도 영향을 줘요. 외국 투자자 입장에서도 한국 정치 안정 신호로 받아들이는 흐름이라, 환율과 주가에도 간접적인 영향을 줄 가능성이 있어요. 법관기피 같은 절차 결정이 큰 변수예요."
-        },
-        "bonus": [
-          {
-            "type": "frame",
-            "title": "이 뉴스, 이렇게 읽어보세요",
-            "icon": "🧐",
-            "text": "정치적으로 입장이 강한 사건이라 매체마다 톤이 크게 달라요. 같은 사실을 보수·진보 매체 두 곳에서 확인해 보는 습관이 중요해요. '내란 우두머리'라는 표현도 1심 판결에서 인정된 혐의명이지만 정치적 의도가 담겼다고 보는 견해도 있어요. 우리가 던질 질문은 이거예요. 어떤 부분이 사실 확인된 것이고, 어떤 부분이 양측의 해석일까?"
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "7213600ae75e906f",
-      "title": "물가·워시 불확실성에…월가 \"美 연내 금리인하 안 한다\"",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T05:53:00+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513169800002",
-      "content_text": "(서울=연합뉴스) 임지우 기자 = 미국 연방준비제도(Fed·연준) 의장 교체를 앞두고 인플레이션(물가 상승) 우려가 커지면서 연준이 올해 안에 ...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "월스트리트 분석가들 사이에 '연준이 올해 안에 금리를 더 내리지 않을 수 있다'는 의견이 늘었다고 연합뉴스가 전했어요. 워시 의장 교체 시점에 물가 상승 우려까지 겹치면서 인하 기대가 식는 흐름이에요. 환율·증시 변동성이 커질 수 있어요.",
-      "extraction_reason": "미국 금리 인하 기대가 꺾이면 한국 환율·대출·증시에 곧장 영향이 와요.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "사람들이 기대했던 '연내 금리 인하'가 미뤄지면 달러가 강해져 원화 가치가 떨어질 가능성이 커요. 그러면 우리가 사 먹는 외국 식품·기름·옷이 더 비싸져요. 주식시장에서도 금리 인하 기대로 올랐던 종목이 조정받을 수 있어요. 대출 이자 부담도 줄어들지 않아 자영업자·청년 세대 부담이 이어질 가능성이 있어요. 워시 의장 첫 발언 시점이 분위기를 가르는 변수예요."
+          "text": "정부가 청소년과 여성 범죄 대응을 최우선으로 한다는 메시지예요. 학교 주변 안전 시설이 늘고 경찰 순찰도 강화될 가능성이 높아요. 가정에서도 자녀 안전 교육 자료를 새로 받게 될 수 있어요. 동시에 가해자 처벌이 강화될 수 있어 법 개정 논의가 빨라질 거예요. 가족 안전 관련 정책 변화를 한번 살펴볼 시점이에요."
         }
       }
     },
     {
-      "article_id": "5e7245eaa810fd43",
-      "title": "뉴욕증시, 인플레 우려에도 강세 지속…S&P500 최고치 마감(종합)",
+      "article_id": "e323f5a73a504b8e",
+      "title": "부산 금속공장 용광로 폭발 사고 작업자 1명 경상",
       "source": "연합뉴스",
-      "published_at": "2026-05-14T05:41:55+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514005551072",
-      "content_text": "(뉴욕=연합뉴스) 이지헌 특파원 = 고유가발 인플레이션 상승 우려에도 불구하고 반도체주 랠리 지속에 힘입어 13일(현지시간) 뉴욕증시가 강세로 ...",
+      "published_at": "2026-05-14T17:24:43+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514162400051",
+      "content_text": "(부산=연합뉴스) 김재홍 기자 = 14일 정오께 부산 사상구 한 금속공장 용광로에서 폭발이 발생해 작업자 2명 중 60대 남성 김모 씨가 얼굴과...",
       "category": "general_news",
       "keywords": [],
-      "ai_summary": "13일 뉴욕증시가 고유가발 인플레이션 상승 우려에도 반도체 종목 강세에 힘입어 S&P500 지수가 사상 최고치로 마감했어요. 금리 부담과 AI 호황 기대가 동시에 작용하는 가운데 시장 분위기가 둘로 나뉘는 모습이에요.",
-      "extraction_reason": "한국 반도체 종목·국민연금 운용 성과와 직접 연결된 미국 증시 흐름이에요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "미국 증시 최고치는 한국 주식시장에도 좋은 영향을 줘서 다음 날 코스피·코스닥이 함께 오르는 일이 많아요. 국민연금이 많은 미국 주식을 보유하고 있어 우리 연금 자산도 늘어나는 효과가 있어요. 다만 'AI 거품' 우려도 함께 커지고 있어 주가 변동성이 더 격해질 수 있어요. 반도체 호황이 길어지면 삼성·SK 하이닉스 협력 회사들의 채용도 함께 늘 가능성이 있어요."
-        }
-      }
-    },
-    {
-      "article_id": "2b92d72dc0040d58",
-      "title": "韓성장률 전망 1.9→2.5% 대폭 상향…KDI “재정정책 필요성 크지 않아”",
-      "source": "매일경제",
-      "published_at": "2026-05-14T06:04:44+09:00",
-      "original_url": "https://www.mk.co.kr/news/economy/12047018",
-      "content_text": "KDI “경기 확장국면 돌입해” 반도체 호황이 중동전쟁 상쇄 4월 취업자 증가폭 7.4만 명 1년 4개월 만에 최소치 기록한국개발연구원(KDI)이 올해 우리나라 경제성장률 전망치를..",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "한국개발연구원(KDI)이 올해 우리나라 경제성장률 전망치를 1.9%에서 2.5%로 크게 높였어요. 반도체 호황이 중동 전쟁 충격을 상쇄하면서 경기 확장 국면에 들어섰다는 진단이에요. 다만 4월 취업자 증가폭은 7.4만 명으로 1년 4개월 만에 최소치였어요.",
-      "extraction_reason": "성장률 전망이 크게 오른 만큼 정책·세금 흐름에 큰 영향이 있을 거예요.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "성장률이 높게 잡히면 정부가 추가로 돈을 풀어주는 정책이 줄어들 수 있어요. KDI도 '재정정책 필요성이 크지 않다'고 했어요. 이러면 자영업자·서민 지원금이 늘기 어려운 흐름이 돼요. 반대로 반도체로 번 세금이 늘어 부채 상환·복지 확대 논쟁이 커져요. 다만 취업자 증가폭이 매우 줄어든 점이 마음에 걸려요. 일자리는 좋아지지 않은 채 숫자만 좋아질 가능성도 있어요."
-        },
-        "bonus": [
-          {
-            "type": "frame",
-            "title": "이 뉴스, 이렇게 읽어보세요",
-            "icon": "🧐",
-            "text": "성장률 2.5%는 듣기에 좋지만, 그 안을 보면 반도체 몇 개 회사의 호황이 끌어올린 숫자예요. 우리 동네 가게나 자영업자가 실제 느끼는 경기와 다를 수 있어요. 다른 매체에서 자영업 매출, 청년 일자리 지표가 어떻게 나오는지 같이 확인해 보세요. 우리가 던질 질문은 이거예요. 이 호황이 내 일자리·내 월급에도 실제 영향을 줄까?"
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "43f7ecc39e7ea1d2",
-      "title": "“집값 분명히 오르는데, 1억5천만원 뱉어내도 깬다”…주택연금 해지 4년새 최대",
-      "source": "매일경제",
-      "published_at": "2026-05-14T07:48:22+09:00",
-      "original_url": "https://www.mk.co.kr/news/economy/12047091",
-      "content_text": "집값 기대감에 3월 중도해지 245건 1인당 평균 1억5000만원 넘게 상환집값 상승 기대가 커지면서 주택연금 중도해지 건수가 약 4년 만에 최대 수준으로 늘어난 것으로 나타났다...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "집값 상승 기대가 다시 커지면서 3월 주택연금 중도해지 건수가 245건으로 약 4년 만에 최대 수준으로 늘었어요. 한 사람당 평균 1억5천만 원 넘게 상환하고 계약을 끊은 거예요. 노후 안정보다 자산 가격 상승 기대가 더 크다는 신호예요.",
-      "extraction_reason": "노후 보장 상품을 깨면서까지 집값 상승에 베팅하는 흐름이 커지고 있어요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "노년 생활비를 보장해 주는 상품을 깨면서까지 집값 상승에 기대를 거는 사람이 늘었다는 건, 부동산 시장이 다시 들썩이는 분위기를 보여줘요. 그러면 부동산 가격이 더 오를 수 있지만, 반대로 기대만큼 안 오르면 노후가 무너지는 사람도 늘 수 있어요. 정책 당국이 추가 대출 규제를 꺼낼 가능성도 커져요. 부모님이나 친척 중 비슷한 결정을 고민한다면 신중한 상의가 필요해요."
-        },
-        "bonus": [
-          {
-            "type": "personal",
-            "title": "나는 뭘 해야 할까?",
-            "icon": "💡",
-            "text": "주택연금 해지는 한 번 결정하면 다시 가입하기 어렵고 큰돈을 한꺼번에 돌려줘야 해요. 부모님이 고민한다면 '집값이 정말 더 오를까'뿐 아니라 '오르지 않으면 어떻게 생활비를 마련할까'까지 같이 따져보세요. 반대로 '주변이 다 해지하니까 나도 한다'며 따라가는 건 가장 피해야 할 행동이에요. 노후 안정성과 자산 가치를 함께 보는 시각이 필요해요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "76ac986488aca15a",
-      "title": "‘80년 무노조’ 뒷받침한 ‘기형적 보상 체계’, 삼성전자 성과급 갈등 키웠다",
-      "source": "한겨레",
-      "published_at": "2026-05-14T05:01:00+09:00",
-      "original_url": "https://www.hani.co.kr/arti/economy/it/1258583.html",
-      "content_text": "삼성전자 노사가 성과급 지급 규모와 방식 등을 두고 접점을 찾지 못하고 있는 가운데, 이런 노사 갈등 구조 한편에는 삼성의 80년 ‘무노조 경영’을 뒷받침한 기형적 보상 체계와 성과주의가 자리하고 있다는 지적이 나온다. 성과급을 매개로 노동자들의 끊임없는 경쟁을 유도해",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "삼성전자 노사가 성과급 지급 규모와 방식을 두고 좀처럼 접점을 찾지 못하고 있어요. 한겨레는 그 배경에 80년 무노조 경영을 지탱해 온 '기형적 보상 체계'와 성과주의가 자리한다고 분석했어요. 성과급을 통해 직원 사이 경쟁을 끊임없이 끌어내 온 구조라는 지적이에요.",
-      "extraction_reason": "한국 최대 기업의 임금 협상 결과가 다른 회사들 임금 체계에 영향을 줘요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "perspective": {
-          "title": "입장이 다르면 어떻게 보일까?",
-          "icon": "👥",
-          "text": "회사 경영진은 '성과를 낸 사람에게 더 주자'는 입장이고, 노조는 '성과 평가 기준이 불투명하고 격차가 커서 노동자를 분열시킨다'는 입장이에요. 신입·저연차는 성과급 비중이 큰 구조를 부담스러워 해요. 협력업체와 외주 노동자는 본사 임금 협상의 영향을 간접적으로만 받는데, 그 사이 차별감이 커요. 정부·언론 입장에선 한국 대표 기업의 노사 모델 자체가 큰 관심사예요."
-        }
-      }
-    },
-    {
-      "article_id": "22b8ecca55517d27",
-      "title": "인플레 재확산 속 출범하는 ‘워시 연준’…트럼프 ‘금리 인하’ 압박 버틸까?",
-      "source": "한겨레",
-      "published_at": "2026-05-14T05:14:00+09:00",
-      "original_url": "https://www.hani.co.kr/arti/international/america/1258589.html",
-      "content_text": "도널드 트럼프 미국 대통령이 지명한 케빈 워시 연방준비제도(Fed·연준) 의장 후보자에 대한 인준안이 13일(현지시각) 미국 연방 상원을 통과했다. 워시는 인플레이션 재확산 우려와 연준 독립성 논란 속에서 취임하게 됐다. 상원은 이날 본회의에서 워시 후보자 인준안을 표",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "트럼프 대통령이 지명한 케빈 워시 연준 의장 후보자에 대한 인준안이 13일 미국 상원을 통과했어요. 인플레이션 재확산 우려와 연준 독립성 논란 속에서 취임하게 돼요. 트럼프의 금리 인하 압박을 어떻게 다룰지가 핵심 관전 포인트예요.",
-      "extraction_reason": "연준 독립성이 흔들리면 세계 금융시장 신뢰가 출렁여 우리에게도 영향이 와요.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "scenario": {
-          "title": "앞으로 어떻게 될 수 있을까?",
-          "icon": "🔮",
-          "text": "가장 가능성이 큰 모습은 워시 의장이 처음에는 '독립성을 지킨다'는 신호를 주며 점진적 인하 정도로 가는 거예요. 잘 풀리면 시장이 안정되고 한국 환율도 진정될 수 있어요. 반대로 안 좋은 경우는 트럼프 압박에 굴복해 무리하게 금리를 낮추다가 물가가 다시 튀어오르는 시나리오예요. 그러면 환율이 출렁여 우리 수입 물가가 올라요. 첫 발표가 분수령이에요."
-        },
-        "bonus": [
-          {
-            "type": "ripple",
-            "title": "이게 우리한테 어떻게 영향을 줄까?",
-            "icon": "📡",
-            "text": "미국 연준이 정치 압박에 휘둘리면 세계 금융시장이 미국을 덜 믿게 돼요. 그러면 달러 가치가 흔들리고 한국 환율도 출렁여 기름값·수입 물가가 따라 올라요. 한국 한국은행도 금리 결정이 어려워져, 가계 대출자 부담이 길어질 수 있어요. 외국인 투자자들이 한국 채권·주식을 어떻게 움직이느냐가 우리 노후 자금·국민연금 수익에까지 영향을 줘요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "ce51d2efae794d4f",
-      "title": "젊으니까 피도 내놓으라뇨…70대도 헌혈 가능하게 연령상한 올린다",
-      "source": "매일경제",
-      "published_at": "2026-05-14T07:22:32+09:00",
-      "original_url": "https://www.mk.co.kr/news/it/12047079",
-      "content_text": "헌혈자 55%는 1020, 수혈은 고령층 현행 만69세제한 10년만에 상향검토 부적격기준도 완화…간기능검사 폐지우리나라 전체 헌혈자 중 55%는 10·20대 젊은층이다. 반면 수혈..",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "현행 69세까지인 헌혈 가능 연령을 10년 만에 70대까지 올리는 방안이 검토돼요. 헌혈자의 55%가 10·20대인데 수혈자는 고령층이 많은 구조 때문이에요. 부적격 기준도 완화되고 간기능 검사 항목 폐지도 함께 검토된다고 매일경제가 전했어요.",
-      "extraction_reason": "수혈 자원 부족이 우리 응급 의료 안전과 직접 연결돼요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "수혈은 사고·수술 환자 생명을 살리는 데 꼭 필요한데 젊은 인구가 줄어서 부족해지고 있어요. 70대까지 헌혈을 허용하면 당장 부족분을 메우는 데 도움이 되지만, 고령자 건강 안전을 어떻게 챙기느냐가 큰 숙제예요. 부적격 기준 완화·간기능 검사 폐지가 함께 추진되면 안전성 논쟁이 커질 수 있어요. 부모님 세대가 헌혈에 참여할 기회가 생길 수도 있는 변화예요."
-        }
-      }
-    },
-    {
-      "article_id": "dee0b162a8994b0c",
-      "title": "日자민당, 방위비 증액 기준 '나토·韓' 제시…GDP 3.5%안도",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T08:12:40+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514022100073",
-      "content_text": "(도쿄=연합뉴스) 조성미 특파원 = 일본 집권 자민당이 방위비 증액 관련 북대서양조약기구(NATO·나토) 회원국이나 한국, 호주 등의 방위비 규...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "일본 집권 자민당이 방위비 증액 기준으로 나토 회원국과 한국·호주의 방위비 비율을 참고하겠다고 제시했어요. GDP 대비 3.5% 안까지 거론된다고 연합뉴스가 도쿄발로 전했어요. 동북아 군비 경쟁이 한 단계 더 거세지는 흐름이에요.",
-      "extraction_reason": "일본 군비 확대 흐름은 한국 안보·외교 부담과 직접 연결돼 있어요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "일본 방위비가 GDP 3.5%까지 늘어나면 한국도 미국으로부터 더 많은 분담을 요구받을 가능성이 커요. 우리 세금에서 군사비 비중이 늘면 복지·교육 예산이 영향을 받을 수 있어요. 동시에 동북아 군비 경쟁이 심해지면서 무기 산업 회사들의 매출은 늘 가능성이 있어요. 일본·중국·북한 사이 긴장이 커지면 환율이 출렁여 여행비·수입품 가격에도 영향을 줘요."
-        }
-      }
-    },
-    {
-      "article_id": "ec07847ee3e09959",
-      "title": "美국무 \"中, 최우선 도전이자 관리해야할 가장 중요한 관계\"",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T07:52:52+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514018700071",
-      "content_text": "(워싱턴=연합뉴스) 조준형 특파원 = 미국의 외교 수장이 베이징 미중정상회담을 앞두고 중국은 미국의 '최대 지정학적 도전'이라고 언급했다. 동시...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "미국 외교 수장이 베이징 미중 정상회담을 앞두고 '중국은 미국의 최대 지정학적 도전'이라고 못 박았어요. 동시에 '관리해야 할 가장 중요한 관계'라는 입장도 함께 밝혀, 견제와 협력을 동시에 가져가는 미국의 대중 전략이 드러나는 발언이에요.",
-      "extraction_reason": "미중 관계 톤이 한국 수출·외교 전략에 직접 영향을 줘요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "perspective": {
-          "title": "입장이 다르면 어떻게 보일까?",
-          "icon": "👥",
-          "text": "미국은 '중국을 견제하면서도 관계는 깨지 않겠다'는 두 가지 메시지를 동시에 보내고 있어요. 중국은 이 발언을 '결국 우리가 핵심 상대국'이라며 자존심을 세울 명분으로 받아들일 수 있어요. 한국은 그 사이에서 어느 한쪽에 너무 기울지 않으면서 안보·경제 이익을 챙겨야 하는 위치예요. 일본·유럽은 미국의 견제 수위에 맞춰 자기 입장을 정해야 해요. 곳마다 셈법이 달라요."
-        }
-      }
-    },
-    {
-      "article_id": "d5949aabbee3cb6c",
-      "title": "\"이란전으로 재고 우려…미, 저가 순항미사일 1만기 확보 추진\"",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T07:39:01+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514017300072",
-      "content_text": "(뉴욕=연합뉴스) 김연숙 특파원 = 이란 전쟁으로 미국 무기 재고 소진 우려가 제기된 가운데, 미 국방부가 저가형 순항미사일 확보를 서두르고 있...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "이란 전쟁으로 미국 무기 재고 소진 우려가 커지자 미 국방부가 저가형 순항미사일을 1만 기 규모로 빠르게 확보하려는 움직임을 보이고 있다고 연합뉴스가 전했어요. 전쟁이 길어지면서 무기 부족이 현실 문제로 떠오른 상황이에요.",
-      "extraction_reason": "전쟁 장기화로 미국 무기 부족이 드러나면서 한국 방산 수출 기회와 안보 부담이 동시에 커져요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "미국이 무기를 빠르게 다시 채워야 한다면 한국 방산 회사(한화에어로스페이스·LIG넥스원 등)에 미국 정부의 대규모 주문이 들어올 가능성이 커요. 그러면 방산 회사 매출과 일자리가 늘고 주가도 영향을 받아요. 반대로 미국 무기 재고가 빈 상태가 길어지면 동맹국 한국에 추가 분담이 요구돼 우리 군 예산이 늘 가능성도 있어요. 군사 균형 자체가 흔들리고 있다는 신호예요."
-        }
-      }
-    },
-    {
-      "article_id": "4c5f2a8b0a8fcf72",
-      "title": "트럼프, 9년 만에 베이징 도착…최소 6차례 시진핑 만난다",
-      "source": "한겨레",
-      "published_at": "2026-05-13T21:38:00+09:00",
-      "original_url": "https://www.hani.co.kr/arti/international/china/1258566.html",
-      "content_text": "도널드 트럼프 미국 대통령이 13일 중국 베이징에 도착하며 9년 만의 방중 일정을 본격적으로 시작했다. 트럼프 대통령은 이날 저녁 7시50분(현지시각) 미국 대통령 전용기(에어포스원) 편으로 베이징 서우두 국제공항에 도착해 한정 중국 국가부주석 등 중국 측 고위 인사들",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "트럼프 미국 대통령이 13일 저녁 베이징에 도착하면서 9년 만의 방중 일정을 본격 시작했어요. 한정 중국 국가부주석 등 고위 인사들이 영접했고, 시진핑 주석과는 2박3일 동안 최소 6차례 만남이 예정돼 있다고 한겨레가 전했어요.",
-      "relevance_score": 7.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "127b1ce8c1ab824d",
-      "title": "서울시, 주택공급 속도…'정비사업 종합평가' 도입해 행정력↑",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T06:00:07+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513141000004",
-      "content_text": "(서울=연합뉴스) 황재하 기자 = 서울시는 작년 9월 발표한 '2031년까지 31만호 착공' 목표 달성을 위해 올해부터 매년 11월 '정비사업 ...",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "서울시가 '2031년까지 31만 호 착공' 목표 달성을 위해 올해부터 매년 11월 '정비사업 종합평가'를 도입해요. 재개발·재건축 등 정비사업 추진 속도를 행정력으로 끌어올리려는 정책이에요. 주택 공급 시장에 새로운 흐름을 만들 수 있는 결정이에요.",
-      "extraction_reason": "정비사업 속도 변화는 서울 집값과 전·월세 흐름에 직접 영향을 줘요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "정비사업이 빨리 진행되면 서울 일부 동네는 향후 몇 년간 이주 수요로 전·월세 가격이 흔들리고, 장기적으로는 주택 공급이 늘어 가격 안정에 도움이 될 수 있어요. 반대로 행정 평가가 부실하면 짓다 멈추는 사업이 늘어날 위험도 있어요. 청년·신혼부부의 분양 기회는 어떻게 짜이느냐에 따라 크게 달라져요. 부동산 시장 변동성이 한동안 커질 수 있는 흐름이에요."
-        }
-      }
-    },
-    {
-      "article_id": "a6a38d33ce86d522",
-      "title": "항공사고 피해보상 내실화…보험금 압류 막고 가입거부 금지",
-      "source": "연합뉴스",
-      "published_at": "2026-05-14T06:00:02+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513160400003",
-      "content_text": "(서울=연합뉴스) 홍규빈 기자 = 항공사고 피해자가 보험금을 제대로 받지 못하는 불상사가 줄어들 전망이다.",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "항공사고 피해자가 보험금을 제대로 받지 못하는 일이 줄어들 전망이에요. 정부가 항공사고 보험금 압류를 막고 보험 가입 거부도 제한하는 제도 개선을 추진한다고 연합뉴스가 전했어요. 사고 피해자 보호 사각지대를 줄이려는 조치예요.",
-      "relevance_score": 7.0,
-      "is_must_know": false
-    },
-    {
-      "article_id": "10f8c0b0b8d7ddc8",
-      "title": "나랏빚 상환이냐, 재분배냐…반도체 호황이 부른 초과세수 논쟁",
-      "source": "매일경제",
-      "published_at": "2026-05-13T22:16:21+09:00",
-      "original_url": "https://www.mk.co.kr/news/economy/12046749",
-      "content_text": "경제 전문가 5인 진단 국가재정법 ‘채무상환’ 우선 “미래 빚 갚아야” 신중론에 “양극화 해소 재원으로” 팽팽 李 “기업이윤 배당아냐” 반박반도체 호황에 힘입어 대규모 초과세수..",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "반도체 호황으로 대규모 초과세수가 들어오자 '나랏빚 갚는 데 쓸지, 양극화 해소를 위해 재분배할지' 논쟁이 커지고 있어요. 매일경제 전문가 5인 진단에 따르면 국가재정법은 채무상환을 우선시하지만 이 대통령은 '기업이윤 배당이 아니다'며 재분배 명분에 힘을 실었어요.",
-      "extraction_reason": "초과세수 활용 방향이 내년 복지 예산·세금 정책의 방향을 결정해요.",
-      "relevance_score": 8.0,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "초과세수를 빚 갚는 데 쓰면 미래 세대 부담은 줄지만 지금 어려운 사람들의 지원금은 늘기 어려워요. 반대로 재분배에 쓰면 자영업자·저소득층에 직접 도움이 가지만 나라 빚은 그대로 남아요. 이 결정은 내년 복지·세금 정책 전체 색깔을 바꿔요. 6·3 지방선거 결과에 따라 분위기가 달라질 가능성이 커서, 우리 가계 지원금·세금 부담에 직접 영향을 주는 논쟁이에요."
-        },
-        "bonus": [
-          {
-            "type": "perspective",
-            "title": "입장이 다르면 어떻게 보일까?",
-            "icon": "👥",
-            "text": "재정 건전성을 강조하는 전문가는 '빚부터 갚자'고 해요. 미래 세대 부담이 줄어드는 게 가장 큰 이익이에요. 양극화 해소를 강조하는 전문가는 '지금 어려운 사람부터 돕자'고 해요. 자영업자·저소득층이 가장 큰 수혜자예요. 기업·반도체 회사는 '우리가 번 돈이니 세금 환원·투자 확대'를 요구해요. 청년은 미래 부채 부담과 지금의 일자리·주거 둘 다 신경 써요. 정부는 이 사이에서 균형을 잡아야 해요."
-          }
-        ]
-      }
-    },
-    {
-      "article_id": "406419332457de35",
-      "title": "이 대통령, 베선트에 ‘통화 스와프’ 제안…“핵심 광물, 외환시장 협력 필요”",
-      "source": "한겨레",
-      "published_at": "2026-05-13T21:31:00+09:00",
-      "original_url": "https://www.hani.co.kr/arti/politics/politics_general/1258564.html",
-      "content_text": "이재명 대통령이 미-중 정상회담을 앞두고 방한한 스콧 베선트 미국 재무장관을 접견해 ‘한-미 통화 스와프’를 제안했다. 이 대통령은 13일 오전 청와대에서 베선트 장관과 만나 “경제·기술 분야에서도 양국의 협력 관계를 더욱 발전시켜야 하며 특히 양국 간 핵심 광물 등",
-      "category": "general_news",
-      "keywords": [],
-      "ai_summary": "이재명 대통령이 13일 미중 정상회담을 앞두고 방한한 스콧 베선트 미국 재무장관에게 '한미 통화 스와프'를 제안했어요. 경제·기술 분야 협력을 더 강화하고 핵심 광물·외환시장 협력 필요성도 함께 짚었다고 한겨레가 전했어요.",
-      "extraction_reason": "한미 통화 스와프 협의는 환율·금융 안정성에 가장 강력한 안전망이에요.",
-      "relevance_score": 8.5,
-      "is_must_know": true,
-      "insights": {
-        "ripple": {
-          "title": "이게 우리한테 어떻게 영향을 줄까?",
-          "icon": "📡",
-          "text": "통화 스와프는 위기 때 한국과 미국이 서로 화폐를 바꿔주기로 약속하는 안전망이에요. 체결되면 환율이 흔들릴 때 한국이 비상 달러를 빠르게 끌어 쓸 수 있어 외환 불안이 크게 줄어요. 이는 환율·수입 물가에 직접 영향을 줘서 우리 기름값·수입 식품 가격 안정에 도움이 돼요. 핵심 광물 협력은 배터리·반도체 산업에 좋은 신호예요. 다만 미국 측이 어떤 조건을 요구할지가 관건이에요."
-        }
-      }
-    },
-    {
-      "article_id": "68cb56929192cbbb",
-      "title": "\"우리를 향해 총을 쐈다\"…리애나 부부, 자택 총격사건 증언",
-      "source": "연합뉴스 연예",
-      "published_at": "2026-05-14T04:28:13+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260514004500075",
-      "content_text": "(로스앤젤레스=연합뉴스) 김경윤 특파원 = 팝스타 리애나(본명 로빈 리애나 펜티)가 지난 3월 자택에서 벌어진 총격 사건에 관해 이야기한 생생한...",
-      "category": "entertainment_news",
-      "keywords": [],
-      "ai_summary": "팝스타 리애나가 지난 3월 자택에서 벌어진 총격 사건에 관해 생생하게 증언했다고 연합뉴스 LA발 기사가 전했어요. 부부가 직접 겪은 상황을 풀어내면서 미국 사회의 총기 사고와 유명인 보안 문제에 다시 관심이 모이고 있어요.",
-      "relevance_score": 5.0,
-      "is_must_know": false
-    },
-    {
-      "article_id": "d4ae443de6bcba9b",
-      "title": "2PM, 10년 만의 도쿄돔 공연서 8만5천 관객 동원",
-      "source": "연합뉴스 연예",
-      "published_at": "2026-05-13T17:30:33+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513154700005",
-      "content_text": "(서울=연합뉴스) 김선우 기자 = 그룹 2PM이 지난 9∼10일 일본 도쿄돔에서 연 데뷔 15주년 콘서트 '더 리턴'(THE RETURN)에 8...",
-      "category": "entertainment_news",
-      "keywords": [],
-      "ai_summary": "그룹 2PM이 9·10일 일본 도쿄돔에서 데뷔 15주년 콘서트 '더 리턴'을 열어 8만5천 관객을 모았어요. 10년 만의 도쿄돔 무대였다고 연합뉴스가 전했어요. K팝 1세대 그룹의 일본 영향력이 여전히 강하다는 점을 보여준 공연이에요.",
-      "relevance_score": 5.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "2883668da15c3ccb",
-      "title": "BTS 정국도 노려 …'380억 해킹 조직' 공범 국내송환",
-      "source": "매일경제 연예",
-      "published_at": "2026-05-13T18:02:42+09:00",
-      "original_url": "https://www.mk.co.kr/news/society/12046474",
-      "content_text": "법무부가 국내 유명 연예인과 대기업 회장, 벤처기업 대표 등의 금융계좌와 가상자산 계정에 침입해 380억원대 피해를 입힌 해외 해킹 범죄조직의 총책급 공범을 국내로 송환했다. 13..",
-      "category": "entertainment_news",
-      "keywords": [],
-      "ai_summary": "법무부가 국내 유명 연예인과 대기업 회장, 벤처기업 대표 등의 금융계좌·가상자산 계정에 침입해 380억 원대 피해를 입힌 해외 해킹 범죄조직의 총책급 공범을 국내로 송환했어요. BTS 정국까지 노렸다고 매일경제 연예가 전했어요.",
-      "relevance_score": 6.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "29c3e93f50b2787f",
-      "title": "최태원·노소영, 재산분할 1차 조정 불발",
-      "source": "매일경제 연예",
-      "published_at": "2026-05-13T18:43:18+09:00",
-      "original_url": "https://www.mk.co.kr/news/society/12046521",
-      "content_text": "추가 조정기일 잡아 논의키로 SK 지분도 분할할지 견해차최태원 SK그룹 회장과 노소영 아트센터 나비 관장이 이혼에 따른 수조원대 재산 분할을 두고 의견차를 좁히지 못했다. 법원은 ..",
-      "category": "entertainment_news",
-      "keywords": [],
-      "ai_summary": "최태원 SK그룹 회장과 노소영 아트센터 나비 관장의 이혼에 따른 수조 원대 재산 분할 1차 조정이 불발됐어요. SK 지분 분할 여부를 두고 양측의 견해차가 컸기 때문이라고 매일경제 연예가 전했어요. 법원은 추가 조정기일을 잡아 논의를 이어가기로 했어요.",
+      "ai_summary": "14일 정오께 부산 사상구 한 금속공장 용광로에서 폭발이 발생해 작업자 2명 중 60대 남성 김모 씨가 얼굴과 부위에 경상을 입었어요. 사고 원인은 조사 중이에요.",
       "relevance_score": 6.0,
       "is_must_know": false
     },
     {
-      "article_id": "39df367cf23f3d59",
-      "title": "'이상한 과자 가게 전천당' 라미란 \"판타지 하고픈 욕심 있었죠\"",
+      "article_id": "5c0fc48e49f0c765",
+      "title": "[속보] 李대통령 \"농어촌 기본소득·햇빛소득 확대해 농촌대전환 박차\"",
+      "source": "연합뉴스",
+      "published_at": "2026-05-14T17:11:12+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514159200001",
+      "content_text": "(",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "이재명 대통령이 14일 농어촌 기본소득과 햇빛소득 확대를 통해 농촌 대전환에 박차를 가하겠다고 밝혔어요. 농가 소득 보전과 농촌 활성화를 핵심 정책으로 추진하겠다는 신호예요.",
+      "extraction_reason": "농촌 기본소득은 새로운 복지 모델로, 도시 정책에도 영향이 와요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "농촌 주민에게 매달 일정 금액을 지급하는 농어촌 기본소득이 확대되면, 농촌 인구 유출이 줄어 농산물 공급이 안정될 가능성이 있어요. 햇빛소득(태양광 발전 수익을 농민에게 나눠주는 제도)도 함께 늘어요. 도시민이 시골로 옮길 유인이 커져, 도농 균형이 새로 짜여요. 동시에 정부 예산 부담이 커지므로 다른 복지 예산과 균형을 보는 게 중요해요."
+        }
+      }
+    },
+    {
+      "article_id": "266ef65619fe69cd",
+      "title": "日금리 급등에 국고채 금리 상승 전환…3년물 연 3.654%(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-05-14T17:06:27+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514153151008",
+      "content_text": "(서울=연합뉴스) 고은지 기자 = 일본 국채금리 급등 등의 영향으로 14일 국고채 금리가 일제히 상승 전환했다.",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "일본 국채 금리 급등 등의 영향으로 14일 한국 국고채 금리가 일제히 상승 전환했어요. 3년물 금리는 연 3.654%를 기록했어요.",
+      "extraction_reason": "국고채 금리는 가계 대출 금리에 직접 영향을 주는 중요한 기준이에요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "국고채 금리가 오르면 은행 주택담보대출·신용대출 금리도 같이 올라갈 가능성이 높아요. 빚을 진 가정에는 이자 부담이 커져요. 반대로 예금 이자도 조금씩 오를 수 있어요. 일본 금리 변동이 한국에 바로 영향을 주는 건 두 나라 경제가 긴밀히 연결돼 있기 때문이에요. 새 대출을 받을 계획이라면 며칠 안에 한 번 더 비교해 보세요."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "지금 변동금리 대출이 있다면 고정금리로 갈아타는 옵션을 한번 검토해 보세요. 새 대출을 받을 계획이라면 가까운 시일 안에 두세 곳 은행 금리를 비교해 보세요. 정기예금 가입 시점이라면 만기를 짧게(6개월~1년) 두는 것도 방법이에요. 반대로 '금리가 더 오를 거니까 빨리 빚내자' 같은 조급한 결정은 피하세요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "342dd570fe63c9b8",
+      "title": "\"전세, 매매가 점점 더 끌어올려…전세대출 보증 축소해야\"(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-05-14T16:50:23+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514094051003",
+      "content_text": "(세종=연합뉴스) 오진송 기자 = 전세가격 변동이 매매가격에 미치는 영향이 계속 강화되고 있어 전세자금대출 보증 축소로 전세시장의 유동성 규모를...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "전세가격 변동이 매매가격에 미치는 영향이 계속 강화되고 있어, 전세자금대출 보증을 축소해 전세시장의 유동성 규모를 줄여야 한다는 분석이 나왔어요. 전세가가 매매가를 점점 더 끌어올리는 구조에 대한 정책 대응이 필요하다는 의미예요.",
+      "extraction_reason": "전세대출 보증 축소는 청년·신혼부부 주거에 즉각 영향을 줘요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "전세대출 보증이 줄면 큰돈 빌리기가 더 어려워져요. 전세금 마련이 힘들어진 사람들은 월세로 옮겨가게 돼 월세 가격이 오를 가능성이 있어요. 반면 매매가를 끌어올리던 힘이 약해져 집값 상승 속도가 둔해질 수 있어요. 청년과 신혼부부에게 가장 큰 영향이 와요. 정부 발표를 잘 살펴보고 미리 준비해야 해요."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "전세 계약 만기가 1년 안에 다가오면 지금 미리 준비하세요. 전세 보증 축소가 시행되기 전에 갱신을 마치는 것도 방법이에요. 월세 전환을 검토한다면 보증금·월세 비율을 여러 매물과 비교해 보세요. 반대로 '보증이 줄어드니 무조건 매매하자' 같은 결정은 피해야 해요. 가족 회의를 한번 가져 보세요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "952b20eb03910022",
+      "title": "특검, 곽종근 '반란 혐의' 첫 피의자 조사…국회 등 군투입 관련(종합)",
+      "source": "연합뉴스",
+      "published_at": "2026-05-14T16:41:19+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514052251004",
+      "content_text": "(서울·과천=연합뉴스) 이밝음 최윤선 기자 = 권창영 2차 종합특별검사팀이 12·3 비상계엄 사태와 관련해 14일 곽종근 전 특수전사령관을 피의...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "권창영 2차 종합특별검사팀이 12·3 비상계엄 사태와 관련해 14일 곽종근 전 특수전사령관을 반란 혐의 피의자로 첫 조사했어요. 국회 등 군 투입 관련 사안이 핵심이에요.",
+      "extraction_reason": "비상계엄 진상 규명이 본격 진행되며 한국 정치·군 통제 체계에 큰 변화가 와요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "특검이 본격 수사에 들어간다는 건, 비상계엄이 어떻게 결정되고 진행됐는지 진실이 드러난다는 뜻이에요. 군의 정치적 중립 원칙이 더 강화되는 계기가 될 수 있어요. 사회 분위기도 정치 안정과 민주주의에 대한 새 합의로 흘러갈 가능성이 높아요. 향후 군 인사·법 개정으로 이어질 수 있어 우리 안보 환경 전체가 흔들려요."
+        }
+      }
+    },
+    {
+      "article_id": "2185a6f66deff931",
+      "title": "정부·삼성전자, 대화 제안…노조 \"대표가 요구사항 답해야\"(종합2보)",
+      "source": "연합뉴스",
+      "published_at": "2026-05-14T16:40:04+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514093752003",
+      "content_text": "(서울=연합뉴스) 조성흠 한혜원 김민지 기자 = 삼성전자에 파업 전운이 고조되는 가운데 정부와 삼성전자 사측이 노동조합에 연이어 추가 대화 제안...",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "삼성전자에 파업 전운이 고조되는 가운데, 정부와 삼성전자 사측이 노동조합에 연이어 추가 대화를 제안했어요. 노조는 '대표가 요구사항에 답해야 한다'는 입장을 유지하며 협상 재개 조건을 내걸고 있어요.",
+      "extraction_reason": "삼성 파업은 한국 반도체 수출과 일자리에 직접 영향을 줘요.",
+      "relevance_score": 9.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "삼성전자 파업이 현실화되면 반도체 생산 차질로 한국 수출 전체에 큰 영향이 와요. 가전제품과 스마트폰 가격에도 영향이 갈 수 있어요. 정부가 직접 중재에 나선 건 그만큼 위급한 상황이라는 신호예요. 노조 요구가 타결되면 다른 대기업 노사 협상에도 영향이 가요. 한국 경제 전체가 이번 협상 결과에 달려 있다고 봐도 돼요."
+        }
+      }
+    },
+    {
+      "article_id": "d3e186b524805362",
+      "title": "휴전 끝나자 드론 1천500여대 날린 러…키이우 9층 아파트 붕괴",
+      "source": "연합뉴스",
+      "published_at": "2026-05-14T16:35:17+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514146400109",
+      "content_text": "(로마=연합뉴스) 민경락 특파원 = 러시아가 3일간의 휴전이 끝나자마자 우크라이나 후방 도심을 겨냥한 대규모 공세를 벌이고 있다.",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "러시아가 3일간의 휴전이 끝나자마자 우크라이나 후방 도심을 겨냥한 대규모 공세를 벌이고 있어요. 드론 1500여 대를 날렸고, 키이우 9층 아파트가 붕괴되는 피해가 발생했어요.",
+      "extraction_reason": "우크라이나 전쟁 격화는 글로벌 식량·에너지 가격에 영향을 줘요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "휴전이 깨지고 대규모 공세가 다시 시작됐다는 건, 곡물·천연가스 가격이 다시 오를 수 있다는 신호예요. 우크라이나는 세계 주요 곡물 수출국이라 한국 식품 가격에도 영향이 와요. 주민 거주지가 직접 공격받는 건 전쟁이 더 잔혹해지고 있다는 뜻이에요. 한국 방산 회사들의 우크라이나·NATO향 수출은 늘 가능성이 높아요. 평화 회담 가능성은 더 멀어졌어요."
+        }
+      }
+    },
+    {
+      "article_id": "a994283e9c56bb1f",
+      "title": "자취 감춘 다주택 급매…강남구 집값도 상승 전환",
+      "source": "매일경제",
+      "published_at": "2026-05-14T18:05:45+09:00",
+      "original_url": "https://www.mk.co.kr/news/realestate/12047933",
+      "content_text": "다주택자에 대한 양도소득세 중과가 시작된 첫 주에 서울 아파트값이 껑충 뛰었다. 석 달 동안 하락세를 보였던 강남구까지 상승세로 돌아서면서 서울 25개 자치구의 아파트값이 예외 없..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "다주택자에 대한 양도소득세 중과가 시작된 첫 주에 서울 아파트값이 껑충 뛰었어요. 석 달간 하락세였던 강남구까지 상승으로 돌아서며 서울 25개 자치구가 예외 없이 올랐어요. 다주택 급매물이 자취를 감춘 게 주요 원인이에요.",
+      "extraction_reason": "양도세 중과가 오히려 집값 상승으로 이어지는 역설이라 정책 효과를 다시 봐야 해요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "다주택자가 세금이 무서워 집을 안 팔면 시장에 매물이 줄어요. 그러면 가격이 더 올라가는 역설이 생겨요. 사려는 사람 입장에선 선택지가 줄고, 실거주자 부담이 더 커져요. 정부가 추가 대책을 곧 내놓을 가능성이 높아요. 전세 시장에도 영향이 가서, 전세 가격도 같이 흔들릴 수 있어요. 집 살 계획이 있다면 잠시 흐름을 보는 게 안전해요."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "지금 무리해서 집을 사기보단, 다음 한두 달 정부 추가 대책 발표를 기다려 보세요. 매물이 줄어든 시장에선 비교해 볼 수 있는 가격 정보가 부족해요. 전세 갱신 시점이라면 주변 시세를 두세 곳 부동산에서 확인하세요. 반대로 'SNS 추천 단지'에 묻지마 청약하는 건 피해야 해요. 가족과 자금 계획을 다시 점검할 시점이에요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "7de2cca45e192266",
+      "title": "파업위기 삼전 … 비상체제 돌입",
+      "source": "매일경제",
+      "published_at": "2026-05-14T18:05:44+09:00",
+      "original_url": "https://www.mk.co.kr/news/business/12047931",
+      "content_text": "삼성전자가 노조가 예고한 총파업을 일주일 앞두고 '비상관리'에 돌입했다. 14일 업계에 따르면 삼성전자는 이날부터 파업에 대비해 생산량을 축소하기 위한 작업에 돌입한 것으로 알려졌..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "삼성전자가 노조가 예고한 총파업을 일주일 앞두고 '비상관리'에 돌입했어요. 14일부터 파업에 대비해 생산량을 줄이는 작업에 들어간 것으로 알려졌어요. 100조원 규모 피해가 우려되는 상황이에요.",
+      "extraction_reason": "삼성전자 비상체제는 한국 반도체 수출과 관련 협력업체 일자리에 큰 영향을 줘요.",
+      "relevance_score": 9.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "삼성전자가 미리 생산량을 줄이는 건 파업이 현실화될 가능성이 매우 높다고 본 거예요. 반도체 공급이 줄면 글로벌 IT 회사들이 다른 회사를 찾게 돼요. 한국 입장에선 시장 점유율을 잃을 위험이 커요. 협력업체 직원들의 일감도 줄어 가족 생활에 직접 영향이 와요. 지금 시점에 협상이 어떻게 풀리는지가 한국 경제 한 해를 좌우할 수 있어요."
+        }
+      }
+    },
+    {
+      "article_id": "7c4d421742c86386",
+      "title": "청년미래적금 내달 출시… 年수익 최대 19% '쏠쏠'",
+      "source": "매일경제",
+      "published_at": "2026-05-14T18:05:44+09:00",
+      "original_url": "https://www.mk.co.kr/news/economy/12047932",
+      "content_text": "이재명 정부가 청년들의 자산 형성을 돕기 위해 출시하는 '청년미래적금'의 금리가 최대 연 7~8% 수준으로 확정됐다. 금융위원회는 14일 소상공인시장진흥공단 서울 교육장에서 '청년..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "이재명 정부가 청년의 자산 형성을 돕는 '청년미래적금'의 금리가 최대 연 7~8% 수준으로 확정됐어요. 금융위원회가 14일 소상공인시장진흥공단 서울 교육장에서 발표했어요. 다음 달 출시 예정으로 월 50만원씩 3년 부으면 수익 최대 455만원에 달해요.",
+      "extraction_reason": "청년 자산 형성 정책은 결혼·주거 자금 마련에 직접 도움이 돼요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "청년미래적금은 시중 예금 금리(연 3% 안팎)의 두 배가 넘어요. 가입 자격이 있는 청년은 적극 활용하면 결혼·주거 자금 마련에 큰 도움이 돼요. 정부 예산이 들어가는 사업이라 가입 인원 제한이 있을 가능성이 높아요. 가족 중 청년이 있다면 출시일을 미리 챙기세요. 다른 청년 정책 예산은 그만큼 줄 수 있어 균형을 살펴봐야 해요."
+        },
+        "bonus": [
+          {
+            "type": "personal",
+            "title": "나는 뭘 해야 할까?",
+            "icon": "💡",
+            "text": "본인이나 가족 중 청년이 있다면 가입 자격(소득·연령)을 미리 확인해 두세요. 다음 달 출시일에 빨리 가입해야 정원에 들 가능성이 높아요. 월 50만원이 부담스러우면 30~40만원 부분 가입도 검토해 보세요. 반대로 한정 정원이라고 무리하게 다른 적금을 깨고 옮기는 건 피하세요. 가족 회의로 자금 계획을 같이 짜 보세요."
+          }
+        ]
+      }
+    },
+    {
+      "article_id": "ee93dad9ea329446",
+      "title": "日정부 \"다카이치 19~20일 방한\"",
+      "source": "매일경제",
+      "published_at": "2026-05-14T18:03:43+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12047927",
+      "content_text": "다카이치 사나에 일본 총리가 오는 19~20일 한국을 방문해 이재명 대통령과 정상회담을 한다. 일본 정부는 14일 다카이치 총리의 방한 일정을 국회에 전달했다. 교도통신에 따르면..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "다카이치 사나에 일본 총리가 19~20일 한국을 방문해 이재명 대통령과 정상회담을 가져요. 일본 정부가 14일 다카이치 총리의 방한 일정을 국회에 전달했어요. 한일 정상회담이 다음 주 본격 추진돼요.",
+      "extraction_reason": "한일 정상회담은 안보·경제 협력 방향을 결정짓는 중요한 자리예요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "한일 정상이 만나면 무역과 안보 협력 폭이 넓어질 가능성이 높아요. 미중 갈등 속에서 두 나라가 함께 움직이면 한국 수출에도 좋아요. 반면 과거사 문제가 다시 불거지면 분위기가 빠르게 식을 수 있어요. 다카이치 총리는 보수 성향으로 알려져 있어 회담 결과 예측이 더 어려워요. 다음 주 발표 내용을 잘 봐야 해요."
+        }
+      }
+    },
+    {
+      "article_id": "620e8f5c0975c420",
+      "title": "시진핑 \"중국 더 크게 개방\"… 미국산 소고기·대두 장벽 낮춘다",
+      "source": "매일경제",
+      "published_at": "2026-05-14T18:02:52+09:00",
+      "original_url": "https://www.mk.co.kr/news/world/12047917",
+      "content_text": "시진핑 중국 국가주석이 14일 중국 베이징 인민대회당에서 열린 미·중 정상회담에서 시장 개방을 약속했다. 도널드 트럼프 미국 대통령이 중국에 도착하기 전 '시 주석에게 중국을 개방..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "시진핑 중국 국가주석이 14일 베이징 인민대회당에서 열린 미·중 정상회담에서 시장 개방을 약속했어요. 트럼프 미국 대통령이 회담 전 '시 주석에게 중국을 개방하라'고 요청했고, 시 주석이 미국산 소고기와 대두 수입 장벽을 낮추겠다고 화답했어요.",
+      "extraction_reason": "중국이 미국 농산물 수입을 늘리면 글로벌 곡물·축산 가격에 영향을 줘요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "중국이 미국 농산물을 더 사면 글로벌 소고기·콩 수요가 늘어요. 한국이 수입하는 미국산 소고기 가격이 오를 가능성이 있어요. 동시에 한국 농가에서 키우는 한우·돼지 가격도 영향을 받을 수 있어요. 식용유 같은 콩 가공품 가격도 함께 흔들릴 수 있어요. 식탁 물가 흐름을 한 번 봐야 해요."
+        }
+      }
+    },
+    {
+      "article_id": "3e4fa2c0bd4c62a8",
+      "title": "尹이어 김용현도 재판부 거부 '내란 항소심' 시작부터 정지",
+      "source": "매일경제",
+      "published_at": "2026-05-14T18:02:30+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12047911",
+      "content_text": "윤석열 전 대통령에 이어 김용현 전 국방부 장관, 노상원 전 국군정보사령관 등 12·3 비상계엄 주도자로 기소된 이들이 줄줄이 항소심 재판부를 거부하고 나섰다. 이들의 내란 혐의 ..",
+      "category": "general_news",
+      "keywords": [],
+      "ai_summary": "윤석열 전 대통령에 이어 김용현 전 국방부 장관, 노상원 전 국군정보사령관 등 12·3 비상계엄 주도자로 기소된 이들이 줄줄이 항소심 재판부를 거부하고 나섰어요. 이들의 내란 혐의 항소심이 첫 재판부터 정지됐어요.",
+      "extraction_reason": "비상계엄 진상 규명 재판이 지연되며 한국 사법·정치 안정에 영향을 줘요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "재판부 기피 신청이 받아들여지면 새 재판부 구성에 시간이 걸려 진실 규명이 늦어져요. 사회 갈등이 길어질 수 있어요. 군 통제·민주주의 관련 법 개정 논의도 같이 늦춰질 가능성이 있어요. 동시에 사법부의 독립성과 공정성에 대한 의심이 커질 수 있어요. 재판부 결정이 향후 한국 정치 안정에 큰 영향을 줘요."
+        }
+      }
+    },
+    {
+      "article_id": "8963c20bb4a813bd",
+      "title": "BTS, 북중미 월드컵 결승전 하프타임쇼 선다…마돈나도 출연",
       "source": "연합뉴스 연예",
-      "published_at": "2026-05-13T17:33:44+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513155600005",
-      "content_text": "(서울=연합뉴스) 박원희 기자 = 일본의 히로시마 레이코가 쓴 '이상한 과자 가게 전천당'은 전 세계적으로 인기를 끈 아동 판타지 소설이다.",
+      "published_at": "2026-05-14T14:28:20+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514111700005",
+      "content_text": "(서울=연합뉴스) 이태수 기자 = 그룹 방탄소년단(BTS)이 2026 FIFA(국제축구연맹) 북중미 월드컵 결승전 하프타임쇼에 공동 헤드라이너(...",
       "category": "entertainment_news",
       "keywords": [],
-      "ai_summary": "전 세계적으로 인기를 끈 아동 판타지 소설을 원작으로 한 시리즈 '이상한 과자 가게 전천당'에 출연 중인 배우 라미란이 '판타지 작품을 하고 싶은 욕심이 있었다'고 연합뉴스에 털어놨어요. 시리즈와 캐릭터에 대한 애정을 인터뷰로 풀어냈어요.",
-      "relevance_score": 4.5,
-      "is_must_know": false
+      "ai_summary": "그룹 방탄소년단(BTS)이 2026 FIFA 북중미 월드컵 결승전 하프타임 쇼에 공동 헤드라이너로 무대에 서요. 마돈나도 같은 무대에 함께 출연해요. K팝의 글로벌 영향력이 다시 한번 입증된 무대예요.",
+      "extraction_reason": "BTS의 월드컵 결승 무대는 K팝 위상을 결정짓는 역사적 순간이에요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "월드컵 결승 하프타임쇼는 전 세계가 동시에 보는 무대예요. BTS가 마돈나와 함께 서면 K팝 위상이 한 단계 더 올라가요. 한국 관광·뷰티·푸드 산업도 함께 매출이 늘 가능성이 높아요. 한국에 대한 관심이 커지면 우리 브랜드 가치도 자연스럽게 올라가요. 가족이 함께 볼 수 있는 즐거운 이벤트가 또 하나 생긴 셈이에요."
+        }
+      }
     },
     {
-      "article_id": "8454c902958b446c",
-      "title": "‘13억 불법 도박’ 저지른 김용만 “은퇴 공포 속 종교 믿고 회개”",
-      "source": "매일경제 연예",
-      "published_at": "2026-05-13T17:25:06+09:00",
-      "original_url": "https://www.mk.co.kr/news/society/12046359",
-      "content_text": "방송인 김용만 이 과거 불법 도박 물의로 활동 중단과 은퇴 위기를 맞았던 당시 심경을 털어놓았다. 최근 유튜브 채널 ‘새롭게하소서’에는 ‘제가 만난 하나님, 궁금하시죠?’라는 제목..",
+      "article_id": "0f3ffbfc97001644",
+      "title": "넷플릭스 '케데헌' 월드투어 개최…\"혼문의 마법을 공연장으로\"",
+      "source": "연합뉴스 연예",
+      "published_at": "2026-05-14T11:43:27+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514072400005",
+      "content_text": "(서울=연합뉴스) 장진리 기자 = 넷플릭스가 애니메이션 영화 '케이팝 데몬 헌터스' 월드투어를 개최한다.",
       "category": "entertainment_news",
       "keywords": [],
-      "ai_summary": "방송인 김용만이 과거 13억 원 규모 불법 도박 물의로 활동 중단과 은퇴 위기를 맞았던 시기의 심경을 유튜브 채널 '새롭게하소서'에서 털어놓았어요. 종교 활동을 통해 회개했다는 고백을 담았다고 매일경제 연예가 전했어요.",
-      "relevance_score": 4.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "d819a28f3f51f390",
-      "title": "윤산하, 또 솔로 존재감 드러낸다…'노 리즌' 작사·작곡 참여",
-      "source": "한국경제 연예",
-      "published_at": "2026-05-13T17:51:54+09:00",
-      "original_url": "https://www.hankyung.com/article/202605134623H",
-      "content_text": "윤산하, 또 솔로 존재감 드러낸다…'노 리즌' 작사·작곡 참여, 김수영 기자, 연예",
-      "category": "entertainment_news",
-      "keywords": [],
-      "ai_summary": "그룹 아스트로 출신 윤산하가 신곡 '노 리즌(No Reason)' 작사·작곡에 직접 참여하며 솔로 아티스트로서 존재감을 다시 드러낸다고 한국경제 연예가 전했어요. 솔로 활동에서 자기 색깔을 강조해 가는 행보가 이어지고 있어요.",
-      "relevance_score": 4.0,
-      "is_must_know": false
-    },
-    {
-      "article_id": "a51161984a014d75",
-      "title": "“난 뭘 한 걸까”…개리, 코스피 ‘7800’ 돌파에 한탄",
-      "source": "매일경제 연예",
-      "published_at": "2026-05-13T20:26:48+09:00",
-      "original_url": "https://www.mk.co.kr/news/society/12046639",
-      "content_text": "그룹 리쌍 출신 개리가 연일 코스피 지수가 사상 최고치를 기록하고 있는 것을 보며 씁쓸한 속내를 털어놨다. 개리는 13일 SNS(사회관계망서비스)에 “이러는 동안 난 뭘 한 걸까...",
-      "category": "entertainment_news",
-      "keywords": [],
-      "ai_summary": "리쌍 출신 개리가 코스피 지수가 사상 최고치인 '7800선'까지 오르는 흐름을 보며 '난 뭘 한 걸까'라며 씁쓸한 심정을 SNS에 털어놨어요. 개인이 느낀 자조적 후회가 주식 호황기 일반 투자자들의 마음과 겹쳐 화제가 됐어요.",
-      "relevance_score": 4.5,
-      "is_must_know": false
-    },
-    {
-      "article_id": "f2fdc31efa3d3707",
-      "title": "특검, ‘김건희 명품시계 선물’ 로봇개 사업가에 징역형 구형",
-      "source": "매일경제 연예",
-      "published_at": "2026-05-13T17:54:33+09:00",
-      "original_url": "https://www.mk.co.kr/news/society/12046422",
-      "content_text": "서성빈 “구매대행” 주장에 檢 “그게 바로 사준 것” 반박 ‘매관매직’ 김건희, 15일 구형김건희 여사에게 로봇개 사업 관련 청탁을 하면서 명품 손목시계를 제공한 혐의로 기소된 사..",
-      "category": "entertainment_news",
-      "keywords": [
-        "로봇"
-      ],
-      "ai_summary": "김건희 여사에게 로봇개 사업 관련 청탁을 하면서 명품 손목시계를 제공한 혐의로 기소된 서성빈 씨에 대해 특검이 징역형을 구형했어요. 본인은 '구매대행'이라고 주장했지만 검찰은 '바로 사준 것'이라 반박했다고 매일경제 연예가 전했어요. 김건희 여사는 15일 구형이 예정돼 있어요.",
+      "ai_summary": "넷플릭스가 애니메이션 영화 '케이팝 데몬 헌터스' 월드투어를 개최한다고 공식 발표했어요. '혼문의 마법을 공연장으로'라는 콘셉트로 라이브 무대가 꾸려져요.",
       "relevance_score": 7.0,
       "is_must_know": false
     },
     {
-      "article_id": "3a59a0536889ae59",
-      "title": "[방송소식] EBS 과학 리얼리티 '최후의 인류' 내달 첫 방송",
+      "article_id": "9ae9cccd159a2e9c",
+      "title": "\"한국의 지브리 팬들 꼭 만나자\"…OST 원곡 가수들 첫 내한",
       "source": "연합뉴스 연예",
-      "published_at": "2026-05-13T18:23:34+09:00",
-      "original_url": "https://www.yna.co.kr/view/AKR20260513163300005",
-      "content_text": "(서울=연합뉴스) 고가혜 기자 = ▲ EBS '최후의 인류'…유승호·이은지·비비 출연 = EBS는 과학 생존 리얼리티 '최후의 인류'를 내달 4...",
+      "published_at": "2026-05-14T15:28:09+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514131700005",
+      "content_text": "(서울=연합뉴스) 이태수 기자 = '이웃집 토토로'와 '센과 치히로의 행방불명' 등 유명 지브리 애니메이션의 오리지널사운드트랙(OST)을 무대에...",
       "category": "entertainment_news",
       "keywords": [],
-      "ai_summary": "EBS가 다음 달부터 과학 생존 리얼리티 '최후의 인류'를 첫 방송한다고 연합뉴스 연예가 전했어요. 출연진은 유승호·이은지·비비예요. 과학적 가설을 영상화한 시뮬레이션 리얼리티로 EBS가 시도하는 새로운 장르 실험이에요.",
-      "relevance_score": 4.0,
+      "ai_summary": "'이웃집 토토로'와 '센과 치히로의 행방불명' 등 유명 지브리 애니메이션의 오리지널사운드트랙(OST)을 부른 원곡 가수들이 한국 지브리 팬들을 만나러 처음 내한한다는 소식이에요.",
+      "relevance_score": 6.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "f569b5085b4980d9",
+      "title": "김윤석·김선호의 영혼 동맹…tvN '의원님이 보우하사' 주연",
+      "source": "연합뉴스 연예",
+      "published_at": "2026-05-14T10:23:51+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514057200005",
+      "content_text": "(서울=연합뉴스) 장진리 기자 = 배우 김윤석, 김선호가 운명 공동체로 뭉친다.",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "배우 김윤석과 김선호가 운명 공동체로 뭉친 tvN 신작 '의원님이 보우하사'에서 주연을 맡았어요. 영혼 동맹이라는 콘셉트로 두 배우의 케미가 기대되는 작품이에요.",
+      "relevance_score": 6.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "7f919488b3774a61",
+      "title": "캣츠아이, 9월 아일랜드 더블린서 새 투어 시작",
+      "source": "연합뉴스 연예",
+      "published_at": "2026-05-14T10:11:20+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514055000005",
+      "content_text": "(서울=연합뉴스) 이태수 기자 = 하이브의 한미 합작 걸그룹 캣츠아이가 오는 9월 1일(이하 현지시간) 아일랜드 더블린에서 새 콘서트 투어 '더...",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "하이브의 한미 합작 걸그룹 캣츠아이가 9월 1일 아일랜드 더블린에서 새 콘서트 투어를 시작해요. 글로벌 활동 무대를 본격 확장하는 행보예요.",
+      "relevance_score": 6.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "6515928c8285f67a",
+      "title": "'마이클' 국내 개봉 첫날 10만명 관람…박스오피스 1위",
+      "source": "연합뉴스 연예",
+      "published_at": "2026-05-14T09:48:24+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514043300005",
+      "content_text": "(서울=연합뉴스) 박원희 기자 = '팝의 황제' 마이클 잭슨의 생애를 다룬 영화 '마이클'이 국내 개봉 첫날 10만명에 육박하는 관객을 모으며 ...",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "'팝의 황제' 마이클 잭슨의 생애를 다룬 영화 '마이클'이 국내 개봉 첫날 10만 명에 육박하는 관객을 모으며 박스오피스 1위에 올랐어요. 흥행 시작이 좋은 출발이에요.",
+      "relevance_score": 6.5,
+      "is_must_know": false
+    },
+    {
+      "article_id": "f0ed0e82dc95043a",
+      "title": "“전성기 허비”vs“활동 방해 없어”…다니엘·어도어, ‘431억 손배소’ 격돌 (종합)",
+      "source": "매일경제 연예",
+      "published_at": "2026-05-14T16:39:07+09:00",
+      "original_url": "https://www.mk.co.kr/news/society/12047729",
+      "content_text": "어도어, 대리인단 교체…다니엘 측 “새 판 짜기냐” 사건 분리 심리 두고도 ‘팽팽’어도어가 뉴진스 전 멤버 다니엘, 민희진 전 어도어 대표를 상대로 제기한 약 431억원 규모의 손..",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "어도어가 뉴진스 전 멤버 다니엘과 민희진 전 어도어 대표를 상대로 제기한 약 431억 원 규모의 손해배상 소송에서 양측이 격돌하고 있어요. 어도어는 대리인단을 교체했고, 다니엘 측은 '새 판 짜기냐'고 반발했어요. 사건 분리 심리를 두고도 입장이 팽팽해요.",
+      "extraction_reason": "K팝 아티스트와 소속사 분쟁 결과는 향후 업계 계약 관행에 영향을 줘요.",
+      "relevance_score": 8.0,
+      "is_must_know": true,
+      "insights": {
+        "ripple": {
+          "title": "이게 우리한테 어떻게 영향을 줄까?",
+          "icon": "📡",
+          "text": "K팝 아티스트와 소속사 간 분쟁이 법정에서 어떻게 결정 나는지가 업계 전체에 큰 영향을 줘요. 이번 판결 결과에 따라 다른 아이돌 그룹들의 계약 관행이 바뀔 수 있어요. 팬들 입장에선 좋아하는 아티스트의 활동 계획이 흔들릴 수 있어 불안해져요. K팝 회사들의 주가에도 영향이 가요. 사건이 길어지면 한국 엔터 산업 신뢰도도 함께 영향을 받아요."
+        }
+      }
+    },
+    {
+      "article_id": "9f0fe38365788511",
+      "title": "류준열, 칸 영화제 포착…\"한소희 영화니까 당연히 알죠\"",
+      "source": "한국경제 연예",
+      "published_at": "2026-05-14T17:28:19+09:00",
+      "original_url": "https://www.hankyung.com/article/202605147140H",
+      "content_text": "류준열, 칸 영화제 포착…\"한소희 영화니까 당연히 알죠\", 김예랑 기자, 연예",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "배우 류준열이 칸 영화제에 포착됐어요. 한소희 출연 영화에 대한 질문에 '한소희 영화니까 당연히 알죠'라고 답하며 동료 배우에 대한 응원을 표현했어요.",
+      "relevance_score": 6.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "8931d14c40da1b22",
+      "title": "조정석, 유튜브 활동중단 하더니…가수 컴백 '큰 그림'",
+      "source": "한국경제 연예",
+      "published_at": "2026-05-14T14:39:41+09:00",
+      "original_url": "https://www.hankyung.com/article/202605146540H",
+      "content_text": "조정석, 유튜브 활동중단 하더니…가수 컴백 '큰 그림', 김예랑 기자, 연예",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "배우 조정석이 유튜브 활동을 중단하더니 가수 컴백을 위한 '큰 그림'을 그리고 있다는 소식이에요. 새 음악 활동 준비가 진행 중이에요.",
+      "relevance_score": 6.0,
+      "is_must_know": false
+    },
+    {
+      "article_id": "262b100e8b6aa7cb",
+      "title": "정용화, 일일 음악교사 변신…청소년 위해 재능기부",
+      "source": "연합뉴스 연예",
+      "published_at": "2026-05-14T09:40:36+09:00",
+      "original_url": "https://www.yna.co.kr/view/AKR20260514043400371",
+      "content_text": "(서울=연합뉴스) 정아란 기자 = 가수 정용화가 음악인을 꿈꾸는 청소년들의 '멘토'를 자처하며 재능 기부에 나섰다.",
+      "category": "entertainment_news",
+      "keywords": [],
+      "ai_summary": "가수 정용화가 음악인을 꿈꾸는 청소년들의 멘토를 자처하며 일일 음악교사로 변신해 재능 기부에 나섰어요.",
+      "relevance_score": 6.0,
       "is_must_know": false
     }
   ]
