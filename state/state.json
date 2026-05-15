@@ -1,13 +1,13 @@
 {
-  "issue_number": 79,
+  "issue_number": 80,
   "pipeline_status": "completed",
-  "last_success_at": "2026-05-15T17:40:21+09:00",
-  "last_attempt_at": "2026-05-15T17:40:21+09:00",
+  "last_success_at": "2026-05-16T08:42:17+09:00",
+  "last_attempt_at": "2026-05-16T08:42:17+09:00",
   "failed_stage": null,
   "error_reason": null,
   "retry_count": 0,
-  "next_run_time": "2026-05-15T18:00:00+09:00",
+  "next_run_time": "2026-05-16T18:00:00+09:00",
   "deploy_url": "https://helen13566-netizen.github.io/002-daily-news/",
-  "current_period": "오후",
-  "current_generation_timestamp": "2026-05-15T17:26:49+09:00"
+  "current_period": "오전",
+  "current_generation_timestamp": "2026-05-16T08:26:27+09:00"
 }
