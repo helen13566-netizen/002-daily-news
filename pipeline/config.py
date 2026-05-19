@@ -114,7 +114,7 @@ MORNING_CUTOFF_MINUTE: int = 25
 EVENING_CUTOFF_HOUR: int = 17
 EVENING_CUTOFF_MINUTE: int = 25
 
-DEPLOY_URL: str = "https://helen13566-netizen.github.io/002-daily-news/"
+DEPLOY_URL: str = "https://natureskysh.github.io/002-daily-news/"
 
 STATE_JSON_PATH: str = "state/state.json"
 CANDIDATES_JSON_PATH: str = "state/candidates.json"

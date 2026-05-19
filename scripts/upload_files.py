@@ -24,7 +24,7 @@ from pathlib import Path
 
 import requests
 
-DEFAULT_REPO = "helen13566-netizen/002-daily-news"
+DEFAULT_REPO = "natureskySH/002-daily-news"
 DEFAULT_BRANCH = "main"
 API_BASE = "https://api.github.com"
 
